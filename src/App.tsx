@@ -10,6 +10,7 @@ import AppContext from "./Context";
 import LoginPage from "./pages/login";
 import { Button } from "./components/ui/button";
 import { LogOut } from "lucide-react";
+import Navbar from "./components/navbar";
 
 function App() {
   const [user, setUser] = useState<User | null | undefined>(undefined);
@@ -87,25 +88,7 @@ function App() {
             backgroundPosition: "center",
           }}
         >
-          <nav className="mx-auto flex items-center justify-center gap-6 divide-background py-4">
-            <Link to="/">Home</Link>
-            <Link to="tree">Tree</Link>
-            <Link to="dashboard">Dashboard</Link>
-
-            <Button
-              variant="outline"
-              onClick={() => {
-                backendApi.signOut(refreshToken).then(() => {
-                  setUser(null);
-                  setAccessToken("");
-                  setRefreshToken("");
-                });
-              }}
-            >
-              <LogOut />
-              <span className="text-sm font-bold"> Logout</span>
-            </Button>
-          </nav>
+          <Navbar />
           <Outlet />
         </main>
       </SWRConfig>

@@ -1,9 +1,9 @@
 import { Card } from "@/components/card";
-import { DailyProduction } from "./_components/daily-production";
 import { ProgressAccumulation } from "./_components/progress-accumulation";
 import { Drilling } from "./_components/drilling";
 import TableWidget from "@/components/table-widget";
 import LineChartWidget from "@/components/line-chart-widget";
+import BarChartWidget from "@/components/bar-chart-widget";
 
 export default function HomePage() {
   return (
@@ -54,7 +54,30 @@ export default function HomePage() {
           }}
         />
       </Card>
-      <DailyProduction />
+      <Card className="col-span-3 row-span-7 flex flex-col p-6">
+        <BarChartWidget
+          title="Daily Production BreakUp"
+          attributes={{
+            stacked: true,
+            telemetries: [
+              {
+                name: "EST_PLANIFIE_ROCHE",
+                unit: "T",
+                color: "#4299e1",
+                label: "Planifié",
+                serial: "U9XQMQ1DXYT7LJIP",
+              },
+              {
+                name: "EST_REALISE_ROCHE_Ton",
+                unit: "T",
+                color: "#ed8936",
+                label: "Realisé",
+                serial: "U9XQMQ1DXYT7LJIP",
+              },
+            ],
+          }}
+        />
+      </Card>
       <ProgressAccumulation />
       <Card className="lex col-span-9 row-span-9 flex-col gap-4 p-4">
         <TableWidget
@@ -72,7 +95,30 @@ export default function HomePage() {
           }}
         />
       </Card>
-      <Drilling />
+      <Card className="col-span-3 row-span-9 flex flex-col p-6">
+        <BarChartWidget
+          title="Daily Production BreakUp"
+          attributes={{
+            stacked: true,
+            telemetries: [
+              {
+                name: "EST_PLANIFIE_ROCHE",
+                unit: "T",
+                color: "#4299e1",
+                label: "Planifié",
+                serial: "U9XQMQ1DXYT7LJIP",
+              },
+              {
+                name: "EST_REALISE_ROCHE_Ton",
+                unit: "T",
+                color: "#ed8936",
+                label: "Realisé",
+                serial: "U9XQMQ1DXYT7LJIP",
+              },
+            ],
+          }}
+        />
+      </Card>
       <Card className="col-span-6 row-span-8 p-4">
         <TableWidget
           title="Production"
