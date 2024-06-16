@@ -1,6 +1,14 @@
+import { Card } from "@/components/card";
 
 export default function DashboardPage() {
   return (
-    <div>Dashboard</div>
-  )
+    <main className="grid w-full grid-flow-dense auto-rows-[76px] grid-cols-9 gap-3">
+      <Card className="col-span-2 row-span-2"></Card>
+      <Card className="col-span-4 row-span-9"></Card>
+      <Card className="col-span-3 row-span-5"></Card>
+      <Card className="col-span-2 row-span-3"></Card>
+      <Card className="col-span-3 row-span-4"></Card>
+      <Card className="col-span-2 row-span-4"></Card>
+    </main>
+  );
 }

@@ -95,8 +95,8 @@ nav,
 .card {
   --border-width: 1px;
   --border-radius: 24px;
-  --color-1: #26e2b3;
-  --color-2: white;
+  --color-1: #26e2b37f;
+  --color-2: #ffffff7f;
 }
 
 .card {
@@ -109,6 +109,9 @@ nav,
   background-position:
     0 var(--border-radius),
     100% var(--border-radius);
+  backdrop-filter: blur(4px);
+  background-color: #0a58b71c;
+  border-radius: var(--border-radius);
 }
 
 .card:before,
@@ -143,6 +146,9 @@ nav {
   background-position:
     0 0,
     100% 0;
+  backdrop-filter: blur(8px);
+  background-color: #0a58b72d;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
 }
 
 nav:after {
