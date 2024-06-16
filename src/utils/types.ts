@@ -76,3 +76,12 @@ export type Widget = {
   title: string;
   attributes?: JsonObject;
 };
+
+export type ChartTelemetry = {
+  serial: string;
+  name: string;
+  label?: string;
+  unit?: string;
+  color?: string;
+  area?: boolean;
+};
