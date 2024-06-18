@@ -21,12 +21,12 @@ export function ProgressCircle({
   progress,
 }: ProgressCircleProps) {
   return (
-    <div className={cn("relative h-40 w-40 text-xl font-semibold", className)}>
+    <div className={cn("relative size-32 font-semibold", className)}>
       <svg viewBox="0 0 100 100" className="rotate-180">
         <circle
           cx="50"
           cy="50"
-          r="49"
+          r="46"
           fill="none"
           strokeWidth="1"
           stroke="currentColor"
@@ -50,7 +50,7 @@ export function ProgressCircle({
           r="35"
           fill="none"
           strokeWidth="2"
-          stroke="url(#paint0_linear_62_1156)"
+          stroke={`url(#${gradientStartColor}-${gradientEndColor})`}
           pathLength={100}
           strokeDasharray={150}
           initial={{
@@ -63,7 +63,7 @@ export function ProgressCircle({
         />
         <defs>
           <linearGradient
-            id="paint0_linear_62_1156"
+            id={`${gradientStartColor}-${gradientEndColor}`}
             x1="20"
             y1="50"
             x2="80"
