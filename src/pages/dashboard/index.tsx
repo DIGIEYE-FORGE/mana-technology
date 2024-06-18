@@ -152,6 +152,36 @@ const ProductionEquipment: ProductionEquipmentType[] = [
   },
 ];
 
+const Explosivesconsumption = [
+  {
+    title: "TGMC",
+    data: [
+      { label: "Monthly rolled explosives", value: "3826 (25kg/case)" },
+      { label: "Monthly rolled explosives", value: "3826 (25kg/case)" },
+    ],
+  },
+  {
+    title: "Mining Dept",
+    data: [
+      { label: "Monthly rolled explosives", value: "157 (25kg/case)" },
+      { label: "Monthly emulsion explosives", value: "211552 (kg)" },
+      { label: "Annual rolled explosives", value: "1413 (25kg/case)" },
+      { label: "Annual emulsion explosives", value: "1876467 (kg)" },
+    ],
+  },
+  {
+    title: "JHCX",
+    data: [
+      { label: "Monthly rolled explosives", value: "386 (25kg/case)" },
+      { label: "Monthly emulsion explosives", value: "59820 (kg)" },
+      { label: "Monthly emulsion explosives", value: "40 (25kg/case)" },
+      { label: "Annual rolled explosives", value: "4372 (25kg/case)" },
+      { label: "Annual emulsion explosives", value: "703070 (kg)" },
+      { label: "Annual emulsion explosives", value: "1401 (25kg/case)" },
+    ],
+  },
+];
+
 export default function DashboardPage() {
   return (
     // <main className="grid w-full grid-flow-dense auto-rows-[100px] grid-cols-8 gap-3">
@@ -236,7 +266,28 @@ export default function DashboardPage() {
           }}
         />
       </Card>
-      <Card className="h-[25rem]">5</Card>
+      <Card className="flex h-fit flex-col gap-3 p-4">
+        <h2 className="text-center text-lg font-bold">
+          Explosives consumption
+        </h2>
+        <div className="flex h-full flex-col gap-2">
+          {Explosivesconsumption.map((explosive) => (
+            <div className="flex h-full gap-2 rounded-xl border border-[#26e2b3] p-3">
+              <div className="flex flex-1 items-center justify-center rounded-xl border border-[#26e2b3] px-5 text-center text-xs">
+                {explosive.title}
+              </div>
+              <div className="flex w-full flex-col gap-1">
+                {explosive.data.map((data) => (
+                  <div className="flex items-center justify-between text-xs">
+                    <h4 className="text-[#98989A]">{data.label}:</h4>
+                    <span>{data.value}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </Card>
       <Card className="row-span-2 max-h-[30rem] p-4">
         <div className="flex h-full flex-col gap-2">
           <div className="flex items-center justify-center gap-2">
