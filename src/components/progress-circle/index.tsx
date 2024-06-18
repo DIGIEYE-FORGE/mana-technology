@@ -21,7 +21,7 @@ export function ProgressCircle({
   progress,
 }: ProgressCircleProps) {
   return (
-    <div className={cn("relative size-32 font-semibold", className)}>
+    <div className={cn("relative size-32 text-sm font-semibold", className)}>
       <svg viewBox="0 0 100 100" className="rotate-180">
         <circle
           cx="50"
@@ -44,6 +44,10 @@ export function ProgressCircle({
           opacity={0.2}
         />
         <motion.circle
+          transition={{
+            duration: 0.5,
+            delay: 0.25,
+          }}
           startOffset={0.5}
           cx="50"
           cy="50"
@@ -68,7 +72,7 @@ export function ProgressCircle({
             y1="50"
             x2="80"
             y2="50"
-            gradientUnits="userSpaceOnUse"
+            // gradientUnits="userSpaceOnUse"
           >
             <stop stopColor={gradientEndColor} />
             <stop offset="1" stopColor={gradientStartColor} />

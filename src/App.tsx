@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { User } from "./utils";
 import { z } from "zod";
 import useLocalStorage from "./hooks/use-local-storage";
@@ -8,8 +8,6 @@ import useSWR, { SWRConfig } from "swr";
 import Loader from "./components/loader";
 import AppContext from "./Context";
 import LoginPage from "./pages/login";
-import { Button } from "./components/ui/button";
-import { LogOut } from "lucide-react";
 import Navbar from "./components/navbar";
 
 function App() {

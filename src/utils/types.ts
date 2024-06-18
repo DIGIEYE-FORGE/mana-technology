@@ -73,8 +73,8 @@ export type TableWidgetData = {
 };
 
 export type Widget = {
-  title: string;
   attributes?: JsonObject;
+
 };
 
 export type ChartTelemetry = {

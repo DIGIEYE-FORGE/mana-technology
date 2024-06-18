@@ -2,6 +2,7 @@ import { useAppContext } from "@/Context";
 import Loader from "@/components/loader";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { VirtualizedList } from "@/components/virtualized-list";
+import { cn } from "@/lib/utils";
 import {
   HistoryType,
   JsonValue,
@@ -47,8 +48,10 @@ const Formatter = ({
   return <>{stringify(value)}</>;
 };
 
-type Props = Widget;
-export default function TableWidget({ attributes, title }: Props) {
+type Props = Widget & {
+  className?: string;
+};
+export default function TableWidget({ attributes, className }: Props) {
   const { backendApi } = useAppContext();
   const dateRange = {
     from: new Date("2021-09-01"),
@@ -97,9 +100,8 @@ export default function TableWidget({ attributes, title }: Props) {
   return (
     <main
       ref={containerRef}
-      className="flex h-full w-full flex-col gap-4 text-sm"
+      className={cn("flex h-full w-full flex-col gap-4 text-sm", className)}
     >
-      <h3 className="text-center text-lg font-semibold">{title}</h3>
       <div
         className="grid max-w-full py-3 font-semibold [&>*]:truncate [&>*]:px-2 [&>*]:capitalize"
         style={{
