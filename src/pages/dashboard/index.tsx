@@ -3,16 +3,158 @@ import LineChartWidget from "@/components/line-chart-widget";
 import { ProgressCircle } from "@/components/progress-circle";
 import WidgetLabel from "@/components/widget-label";
 
+import { ScrollArea } from "@/components/ui/scroll-area";
+import {
+  ProductionEquipmentType,
+  columns,
+} from "./_components/production-table/columns";
+import { DataTable } from "@/components/data-table";
+
+const ProductionEquipment: ProductionEquipmentType[] = [
+  {
+    id: "1",
+    equipment: {
+      label: "Excavator",
+      type: "truck",
+    },
+    status: true,
+    location: "Beishen District",
+    date: "2024-06-18",
+  },
+  {
+    id: "2",
+    equipment: {
+      label: "Bulldozer",
+      type: "dump-truck",
+    },
+    status: false,
+    location: "Beishen District",
+    date: "2024-06-18",
+  },
+  {
+    id: "3",
+    equipment: {
+      label: "Dump Truck",
+      type: "tractor",
+    },
+    status: true,
+    location: "Beishen District",
+    date: "2024-06-18",
+  },
+  {
+    id: "4",
+    equipment: {
+      label: "Drill",
+      type: "dump-truck",
+    },
+    status: false,
+    location: "Beishen District",
+    date: "2024-06-18",
+  },
+  {
+    id: "5",
+    equipment: {
+      label: "Loader",
+      type: "truck",
+    },
+    status: true,
+    location: "Beishen District",
+    date: "2024-06-18",
+  },
+  {
+    id: "6",
+    equipment: {
+      label: "Excavator",
+      type: "truck",
+    },
+    status: false,
+    location: "Beishen District",
+    date: "2024-06-18",
+  },
+  {
+    id: "7",
+    equipment: {
+      label: "Bulldozer",
+      type: "dump-truck",
+    },
+    status: false,
+    location: "Beishen District",
+    date: "2024-06-18",
+  },
+  {
+    id: "8",
+    equipment: {
+      label: "Dump Truck",
+      type: "tractor",
+    },
+    status: true,
+    location: "Beishen District",
+    date: "2024-06-18",
+  },
+  {
+    id: "9",
+    equipment: {
+      label: "Drill",
+      type: "dump-truck",
+    },
+    status: true,
+    location: "Beishen District",
+    date: "2024-06-18",
+  },
+  {
+    id: "10",
+    equipment: {
+      label: "Loader",
+      type: "truck",
+    },
+    status: true,
+    location: "Beishen District",
+    date: "2024-06-18",
+  },
+  {
+    id: "11",
+    equipment: {
+      label: "Excavator",
+      type: "truck",
+    },
+    status: true,
+    location: "Beishen District",
+    date: "2024-06-18",
+  },
+  {
+    id: "12",
+    equipment: {
+      label: "Bulldozer",
+      type: "dump-truck",
+    },
+    status: true,
+    location: "Beishen District",
+    date: "2024-06-18",
+  },
+  {
+    id: "13",
+    equipment: {
+      label: "Dump Truck",
+      type: "tractor",
+    },
+    status: true,
+    location: "Beishen District",
+    date: "2024-06-18",
+  },
+  {
+    id: "14",
+    equipment: {
+      label: "Drill",
+      type: "dump-truck",
+    },
+    status: true,
+    location: "Beishen District",
+    date: "2024-06-18",
+  },
+];
+
 export default function DashboardPage() {
   return (
-    // <main className="grid w-full grid-flow-dense auto-rows-[100px] grid-cols-8 gap-3">
-
-    //   <Card className="col-span-3 row-span-9"> </Card>
-    //   <Card className="col-span-3 row-span-5"></Card>
-    //   <Card className="col-span-2 row-span-3"></Card>
-    //   <Card className="col-span-3 row-span-4"></Card>
-    //   <Card className="col-span-2 row-span-4"></Card>
-    // </main>
     <main className="3xl:grid-cols-[480px,1fr,540px] grid h-fit w-full gap-4 lg:grid-cols-2 [&>*]:min-h-[10rem]">
       <Card className="flex flex-col gap-2 p-6">
         <h1 className="text-center text-lg font-bold text-white">
@@ -54,7 +196,7 @@ export default function DashboardPage() {
           </div>
         </div>
       </Card>
-      <Card className="row-span-3 flex flex-col gap-4 p-4 text-xl">
+      <Card className="row-span-3 flex flex-col p-2 text-xl">
         <h1 className="text-center text-lg font-semibold">Power consumption</h1>
         <WidgetLabel
           legendPosition="top"
@@ -142,8 +284,18 @@ export default function DashboardPage() {
           }}
         />
       </Card>
-      <Card className="row-span-2">3</Card>
-      <Card className="flex h-[18rem] flex-col p-4">
+      <Card className="row-span-2 max-h-[35rem] p-4">
+        <div className="flex h-full flex-col gap-2">
+          <div className="flex items-center justify-center gap-2">
+            <span className="rounded-xl bg-[#FFC300] px-4 py-2"></span>
+            <h2>Beishen District</h2>
+          </div>
+          <ScrollArea className="h-full w-full border-none">
+            <DataTable columns={columns} data={ProductionEquipment} />
+          </ScrollArea>
+        </div>
+      </Card>
+      <Card className="flex min-h-[18ren] flex-col p-4">
         <h1 className="text-center text-lg font-semibold">Power consumption</h1>
         <div className="flex flex-wrap justify-between gap-x-1 px-1 pt-4 text-xs">
           <h6 className="space-x-2">
@@ -171,8 +323,18 @@ export default function DashboardPage() {
           />
         </div>
       </Card>
-      <Card className="h-[25rem]">5</Card>
-      <Card>6</Card>
+      <Card>5</Card>
+      <Card className="max-h-[30rem] p-4">
+        <div className="flex h-full flex-col gap-2">
+          <div className="flex items-center justify-center gap-2">
+            <span className="rounded-xl bg-[#FFC300] px-4 py-2"></span>
+            <h2>Beishen District</h2>
+          </div>
+          <ScrollArea className="h-full w-full border-none">
+            <DataTable columns={columns} data={ProductionEquipment} />
+          </ScrollArea>
+        </div>
+      </Card>
     </main>
   );
 }
