@@ -3,8 +3,8 @@ import { ProgressCircle } from "@/components/progress-circle";
 
 export default function DashboardPage() {
   return (
-    <main className="grid w-full grid-flow-dense auto-rows-[90px] grid-cols-8 gap-3">
-      <Card className="col-span-2 row-span-3 flex flex-col gap-2 p-6">
+    <main className="grid w-full grid-flow-dense grid-cols-8 gap-3">
+      <Card className="col-span-2 flex flex-col gap-2 p-6">
         <h1 className="text-center text-lg font-bold text-white">
           Safety hazard analysis
         </h1>
