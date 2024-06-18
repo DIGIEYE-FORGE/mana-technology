@@ -8,7 +8,7 @@ export default function DashboardPage() {
         <h1 className="text-center text-lg font-bold text-white">
           Safety hazard analysis
         </h1>
-        <div className="flex w-full flex-wrap items-center justify-between gap-3">
+        <div className="flex w-full flex-wrap items-center justify-between gap-1">
           <div className="flex flex-col items-center gap-2">
             <ProgressCircle
               progress={50}
@@ -29,7 +29,7 @@ export default function DashboardPage() {
           </div>
           <div className="flex flex-col items-center gap-2">
             <ProgressCircle
-              progress={66}
+              progress={33.57}
               backgroundColor="#948420"
               gradientStartColor="#C9DA00"
               gradientEndColor="#E19400"
