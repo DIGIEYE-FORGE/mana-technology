@@ -1,6 +1,7 @@
 import { Card } from "@/components/card";
 import LineChartWidget from "@/components/line-chart-widget";
 import { ProgressCircle } from "@/components/progress-circle";
+import WidgetLabel from "@/components/widget-label";
 
 export default function DashboardPage() {
   return (
@@ -53,28 +54,122 @@ export default function DashboardPage() {
           </div>
         </div>
       </Card>
-      <Card className="row-span-3 p-6 text-xl">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci vero
-        ipsa, delectus quae impedit explicabo architecto repellendus. Non, saepe
-        laboriosam tempore fuga placeat assumenda unde earum voluptas voluptatem
-        numquam est.
-      </Card>
-      <Card className="row-span-2">3</Card>
-      <Card className="h-[18rem] p-4">
-        <LineChartWidget
-          // title="Power consumption"
+      <Card className="row-span-3 flex flex-col gap-4 p-4 text-xl">
+        <h1 className="text-center text-lg font-semibold">Power consumption</h1>
+        <WidgetLabel
+          legendPosition="top"
           attributes={{
             telemetries: [
               {
-                area: true,
-                name: "EST_PLANIFIE_ROCHE_CUMUL",
-                color: "#E800534D",
-                label: "Cumulative planifié",
+                area: false,
+                name: "EST_REALISE_ROCHE_CUMUL_Ton",
+                color: "#6B6B6B",
+                label: "Mining Dept",
+                serial: "U9XQMQ1DXYT7LJIP",
+              },
+              {
+                area: false,
+                name: "EST11_PLANIFIE_ROCHE_CUMUL",
+                color: "#E80053",
+                label: "TGMC",
+                serial: "U9XQMQ1DXYT7LJIP",
+              },
+              {
+                area: false,
+                name: "EST11_REALISE_STERILE",
+                color: "#FFC300",
+                label: "JCHX",
                 serial: "U9XQMQ1DXYT7LJIP",
               },
             ],
           }}
         />
+
+        <WidgetLabel
+          legendPosition="top"
+          attributes={{
+            telemetries: [
+              {
+                area: false,
+                name: "EST_REALISE_ROCHE_CUMUL_Ton",
+                color: "#6B6B6B",
+                label: "Mining Dept",
+                serial: "U9XQMQ1DXYT7LJIP",
+              },
+              {
+                area: false,
+                name: "EST11_PLANIFIE_ROCHE_CUMUL",
+                color: "#E80053",
+                label: "TGMC",
+                serial: "U9XQMQ1DXYT7LJIP",
+              },
+              {
+                area: false,
+                name: "EST11_REALISE_STERILE",
+                color: "#FFC300",
+                label: "JCHX",
+                serial: "U9XQMQ1DXYT7LJIP",
+              },
+            ],
+          }}
+        />
+        <WidgetLabel
+          legendPosition="top"
+          attributes={{
+            telemetries: [
+              {
+                area: false,
+                name: "EST_REALISE_ROCHE_CUMUL_Ton",
+                color: "#6B6B6B",
+                label: "Mining Dept",
+                serial: "U9XQMQ1DXYT7LJIP",
+              },
+              {
+                area: false,
+                name: "EST11_PLANIFIE_ROCHE_CUMUL",
+                color: "#E80053",
+                label: "TGMC",
+                serial: "U9XQMQ1DXYT7LJIP",
+              },
+              {
+                area: false,
+                name: "EST11_REALISE_STERILE",
+                color: "#FFC300",
+                label: "JCHX",
+                serial: "U9XQMQ1DXYT7LJIP",
+              },
+            ],
+          }}
+        />
+      </Card>
+      <Card className="row-span-2">3</Card>
+      <Card className="flex h-[18rem] flex-col p-4">
+        <h1 className="text-center text-lg font-semibold">Power consumption</h1>
+        <div className="flex flex-wrap justify-between gap-x-1 px-1 pt-4 text-xs">
+          <h6 className="space-x-2">
+            <span>Daily consumption :</span>
+            <span className="font-semibold">140610 kwh</span>
+          </h6>
+          <h6 className="space-x-2">
+            <span>Monthly consumption :</span>
+            <span className="font-semibold">9908540 kwh</span>
+          </h6>
+        </div>
+        <div className="flex-1">
+          <LineChartWidget
+            attributes={{
+              telemetries: [
+                {
+                  area: true,
+                  name: "EST_PLANIFIE_ROCHE_CUMUL",
+                  color: "#E800534D",
+                  label: "Cumulative planifié",
+                  serial: "U9XQMQ1DXYT7LJIP",
+                },
+              ],
+            }}
+          />
+        </div>
       </Card>
       <Card className="h-[25rem]">5</Card>
       <Card>6</Card>
