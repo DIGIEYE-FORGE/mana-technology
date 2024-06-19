@@ -124,7 +124,7 @@ export default function TableWidget({ attributes, className }: Props) {
             <div style={style}>
               <div
                 key={index}
-                className="grid items-center gap-2 rounded-full bg-foreground/5 px-2 py-2 [&>*]:truncate [&>*]:px-2"
+                className="grid items-center gap-2 rounded-full bg-black/10 px-2 py-2 [&>*]:truncate [&>*]:px-2"
                 style={{
                   gridTemplateColumns: `repeat(${mappings.length + 1}, 1fr)`,
                 }}

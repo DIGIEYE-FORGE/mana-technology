@@ -6,7 +6,7 @@ import BarChartWidget from "@/components/bar-chart-widget";
 
 export default function HomePage() {
   return (
-    <main className="grid w-full grid-flow-dense auto-rows-[28px] gap-3 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-12">
+    <main className="grid w-full grid-flow-dense auto-rows-[28px] grid-cols-3 gap-3 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-12">
       <Card className="col-span-3 row-span-7 flex flex-col p-6">
         <h1 className="text-center text-lg font-semibold">
           Production Evolution
@@ -90,8 +90,7 @@ export default function HomePage() {
           />
         </div>
       </Card>
-      <ProgressAccumulation />
-      <Card className="lex col-span-9 row-span-9 flex-col gap-4 p-4">
+      <Card className="col-span-full row-span-9 flex flex-col gap-4 p-4 lg:col-span-9">
         <h3 className="text-center text-lg font-semibold">Production</h3>
         <TableWidget
           className="flex-1"
@@ -108,7 +107,9 @@ export default function HomePage() {
           }}
         />
       </Card>
-      <Card className="col-span-3 row-span-9 flex flex-col p-6">
+      <ProgressAccumulation />
+
+      <Card className="col-span-full row-span-7 flex flex-col p-6 lg:col-span-6 xl:col-span-3 xl:row-span-9">
         <h1 className="text-center text-lg font-semibold">
           Daily Production BreakUp
         </h1>
@@ -136,7 +137,7 @@ export default function HomePage() {
           />
         </div>
       </Card>
-      <Card className="col-span-6 row-span-8 p-4">
+      <Card className="col-span-full row-span-8 p-4 xl:col-span-6">
         <h3 className="text-center text-lg font-semibold">Production</h3>
         <TableWidget
           className="flex-1"
@@ -153,7 +154,7 @@ export default function HomePage() {
           }}
         />
       </Card>
-      <Card className="col-span-6 row-span-8 p-4">
+      <Card className="col-span-full row-span-8 p-4 xl:col-span-6">
         <h3 className="text-center text-lg font-semibold">Production</h3>
         <TableWidget
           className="flex-1"
