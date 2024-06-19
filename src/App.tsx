@@ -78,17 +78,19 @@ function App() {
         }}
       >
         {user === null && <LoginPage />}
-        <main
-          className="dark flex flex-col gap-6 overflow-y-auto px-8 pb-6 text-foreground [&>*]:mx-auto [&>*]:w-full [&>*]:max-w-[1954px]"
-          style={{
-            backgroundImage: 'url("/bg-mesh.png")',
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          <Navbar />
-          <Outlet />
-        </main>
+        {user && backendApi.isReady() && (
+          <main
+            className="dark flex flex-col gap-6 overflow-y-auto px-8 pb-6 text-foreground [&>*]:mx-auto [&>*]:w-full [&>*]:max-w-[1954px]"
+            style={{
+              backgroundImage: 'url("/bg-mesh.png")',
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            <Navbar />
+            <Outlet />
+          </main>
+        )}
       </SWRConfig>
     </AppContext.Provider>
   );
