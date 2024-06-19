@@ -136,18 +136,18 @@ export default function HomePage() {
         </div>
       </Card>
       <Card className="col-span-full row-span-8 p-4 xl:col-span-6">
-        <h3 className="text-center text-lg font-semibold">Production123</h3>
+        <h3 className="text-center text-lg font-semibold">
+          Disponibilité Engins CADEX DRIL
+        </h3>
         <TableWidget
           className="flex-1"
           attributes={{
             serial: "C6XPYU0D920L1M07",
             mappings: [
               { displayName: "", telemetryName: "CADEX_FOREUSE_EPIROCT35_01" },
-              { displayName: "", telemetryName: "NUMERO_DE_TIR" },
-              { displayName: "", telemetryName: "QUNTITE_EXPLOSIF_TIRE" },
-              { displayName: "", telemetryName: "ZONE DE TIRE" },
-              { displayName: "", telemetryName: "TONNAE_MINERAI_ABATTU" },
-              { displayName: "", telemetryName: "TONNAE_STERILE_ABATTU" },
+              { displayName: "", telemetryName: "CADEX_PELLE_VOLVO380_01" },
+              { displayName: "", telemetryName: "CADEX_PELLE_HYUNDAI_01" },
+              { displayName: "", telemetryName: "CADEX_FOREUSE_DX700_02" },
             ],
           }}
         />
@@ -159,12 +159,9 @@ export default function HomePage() {
           attributes={{
             serial: "C6XPYU0D920L1M07",
             mappings: [
-              { displayName: "", telemetryName: "NUMERO_DE_TIR" },
-              { displayName: "", telemetryName: "NUMERO_DE_TIR" },
-              { displayName: "", telemetryName: "QUNTITE_EXPLOSIF_TIRE" },
-              { displayName: "", telemetryName: "ZONE DE TIRE" },
-              { displayName: "", telemetryName: "TONNAE_MINERAI_ABATTU" },
-              { displayName: "", telemetryName: "TONNAE_STERILE_ABATTU" },
+              { displayName: "", telemetryName: "CADEX_CAMION30T_GROUPE" },
+              { displayName: "", telemetryName: "CADEX_PELLE_SANY_01" },
+              { displayName: "", telemetryName: "CADEX_PELLE_SANY_02" },
             ],
           }}
         />
