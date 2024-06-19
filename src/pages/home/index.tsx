@@ -36,7 +36,7 @@ export default function HomePage() {
       </Card>
       <Card className="col-span-3 row-span-7 flex flex-col p-6">
         <h1 className="text-center text-lg font-semibold">
-          Production Evolution
+          Daily Production BreakUp
         </h1>
         <div className="flex-1">
           <LineChartWidget
@@ -44,16 +44,16 @@ export default function HomePage() {
               telemetries: [
                 {
                   area: false,
-                  name: "EST_PLANIFIE_ROCHE_CUMUL",
-                  color: "#0c2364",
-                  label: "Cumulative planifié",
+                  name: "EST11_REALISE_ROCHE",
+                  color: "#ecc94b",
+                  label: "EST11",
                   serial: "U9XQMQ1DXYT7LJIP",
                 },
                 {
                   area: false,
-                  name: "EST_REALISE_ROCHE_CUMUL_Ton",
-                  color: "#ed8936",
-                  label: "Cumulative realisé",
+                  name: "EST12_REALISE_ROCHE",
+                  color: "#4299e1",
+                  label: "EST12",
                   serial: "U9XQMQ1DXYT7LJIP",
                 },
               ],
@@ -62,9 +62,7 @@ export default function HomePage() {
         </div>
       </Card>
       <Card className="col-span-3 row-span-7 flex flex-col p-6">
-        <h1 className="text-center text-lg font-semibold">
-          Daily Production BreakUp
-        </h1>
+        <h1 className="text-center text-lg font-semibold">Daily production</h1>
         <div className="flex-1">
           <BarChartWidget
             // title="Daily Production BreakUp"
@@ -91,7 +89,7 @@ export default function HomePage() {
         </div>
       </Card>
       <Card className="col-span-full row-span-9 flex flex-col gap-4 p-4 lg:col-span-9">
-        <h3 className="text-center text-lg font-semibold">Production</h3>
+        <h3 className="text-center text-lg font-semibold">Test</h3>
         <TableWidget
           className="flex-1"
           attributes={{
@@ -119,17 +117,17 @@ export default function HomePage() {
               stacked: true,
               telemetries: [
                 {
-                  name: "EST_PLANIFIE_ROCHE",
+                  name: "EST_REALISE_FORATION",
                   unit: "T",
                   color: "#4299e1",
-                  label: "Planifié",
+                  label: "Planned ML",
                   serial: "U9XQMQ1DXYT7LJIP",
                 },
                 {
-                  name: "EST_REALISE_ROCHE_Ton",
+                  name: "EST_PLANIFIE_FORATION",
                   unit: "T",
                   color: "#ed8936",
-                  label: "Realisé",
+                  label: "Unplanned ML",
                   serial: "U9XQMQ1DXYT7LJIP",
                 },
               ],
@@ -138,13 +136,13 @@ export default function HomePage() {
         </div>
       </Card>
       <Card className="col-span-full row-span-8 p-4 xl:col-span-6">
-        <h3 className="text-center text-lg font-semibold">Production</h3>
+        <h3 className="text-center text-lg font-semibold">Production123</h3>
         <TableWidget
           className="flex-1"
           attributes={{
             serial: "C6XPYU0D920L1M07",
             mappings: [
-              { displayName: "", telemetryName: "NUMERO_DE_TIR" },
+              { displayName: "", telemetryName: "CADEX_FOREUSE_EPIROCT35_01" },
               { displayName: "", telemetryName: "NUMERO_DE_TIR" },
               { displayName: "", telemetryName: "QUNTITE_EXPLOSIF_TIRE" },
               { displayName: "", telemetryName: "ZONE DE TIRE" },
