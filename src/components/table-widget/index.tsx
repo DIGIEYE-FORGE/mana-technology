@@ -76,8 +76,8 @@ export default function TableWidget({ attributes, className }: Props) {
           where: {
             serial,
             createdAt: {
-              $gt: new Date(dateRange.from as Date),
-              $lte: new Date(dateRange.to || (new Date() as Date)),
+              $gt: new Date(dateRange?.from as Date),
+              $lte: new Date(dateRange?.to || (new Date() as Date)),
             },
           },
         },
