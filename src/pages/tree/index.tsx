@@ -4,7 +4,7 @@ import { useRef, useEffect, useState } from "react";
 import useSWR from "swr";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { MenuIcon, X, XIcon } from "lucide-react";
+import { MenuIcon, XIcon } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 const TreePge: React.FC = () => {
   const canvasRef = useRef(null);
