@@ -1,9 +1,9 @@
 import { useAppContext } from "@/Context";
 import { Card } from "@/components/card";
+import Loader from "@/components/loader";
 import { cn } from "@/lib/utils";
 import { HistoryType, Widget } from "@/utils";
-import { motion } from "framer-motion";
-import { Loader } from "lucide-react";
+import { MotionConfig, motion } from "framer-motion";
 import useSWR from "swr";
 
 export type ProgressAccumulationWidgetData = {
@@ -84,21 +84,27 @@ export function ProgressAccumulation({ attributes }: Widget) {
 
   if (isLoading)
     return (
-      <div className="grid h-full w-full place-content-center">
-        <Loader />
-      </div>
+      <Card className="col-span-3 row-span-7 flex flex-col gap-4 p-4">
+        <div className="grid h-full w-full place-content-center">
+          <Loader />
+        </div>
+      </Card>
     );
   if (error)
     return (
-      <div className="grid h-full w-full place-content-center">
-        <h3>Something went wrong.</h3>
-      </div>
+      <Card className="col-span-3 row-span-7 flex flex-col gap-4 p-4">
+        <div className="grid h-full w-full place-content-center">
+          <h3>Something went wrong.</h3>
+        </div>
+      </Card>
     );
   if (!data)
     return (
-      <div className="grid h-full place-content-center">
-        <h3>No data found.</h3>
-      </div>
+      <Card className="col-span-3 row-span-7 flex flex-col gap-4 p-4">
+        <div className="grid h-full place-content-center">
+          <h3>No data found.</h3>
+        </div>
+      </Card>
     );
 
   const { currentTarget = 0, finalTarget = 0, progress = 0 } = data;
@@ -132,23 +138,44 @@ export function ProgressAccumulation({ attributes }: Widget) {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <motion.path
-            d="M10 74C10 39.7583 37.7583 12 72 12C106.242 12 134 39.7583 134 74"
-            stroke={finalTargetColor}
-            strokeWidth={strokeWidth}
-            pathLength={100}
-            strokeDasharray={100}
-            initial={{
-              strokeDashoffset: 100,
+          <MotionConfig
+            transition={{
+              duration: 0.75,
+              ease: "easeInOut",
             }}
-            animate={{
-              strokeDashoffset: 0,
-            }}
-          />
-          {progress >= currentTarget && (
+          >
             <motion.path
               d="M10 74C10 39.7583 37.7583 12 72 12C106.242 12 134 39.7583 134 74"
-              stroke={progressColor}
+              stroke={finalTargetColor}
+              strokeWidth={strokeWidth}
+              pathLength={100}
+              strokeDasharray={100}
+              initial={{
+                strokeDashoffset: 100,
+              }}
+              animate={{
+                strokeDashoffset: 0,
+              }}
+            />
+            {progress >= currentTarget && (
+              <motion.path
+                d="M10 74C10 39.7583 37.7583 12 72 12C106.242 12 134 39.7583 134 74"
+                stroke={progressColor}
+                strokeWidth={strokeWidth}
+                pathLength={100}
+                strokeDasharray={100}
+                strokeDashoffset={80}
+                initial={{
+                  strokeDashoffset: 100,
+                }}
+                animate={{
+                  strokeDashoffset: 100 - (progress / finalTarget) * 100,
+                }}
+              />
+            )}
+            <motion.path
+              d="M10 74C10 39.7583 37.7583 12 72 12C106.242 12 134 39.7583 134 74"
+              stroke={currentTargetColor}
               strokeWidth={strokeWidth}
               pathLength={100}
               strokeDasharray={100}
@@ -157,40 +184,27 @@ export function ProgressAccumulation({ attributes }: Widget) {
                 strokeDashoffset: 100,
               }}
               animate={{
-                strokeDashoffset: 100 - (progress / finalTarget) * 100,
+                strokeDashoffset:
+                  100 - (currentTarget / finalTarget || 0) * 100,
               }}
             />
-          )}
-          <motion.path
-            d="M10 74C10 39.7583 37.7583 12 72 12C106.242 12 134 39.7583 134 74"
-            stroke={currentTargetColor}
-            strokeWidth={strokeWidth}
-            pathLength={100}
-            strokeDasharray={100}
-            strokeDashoffset={80}
-            initial={{
-              strokeDashoffset: 100,
-            }}
-            animate={{
-              strokeDashoffset: 100 - (currentTarget / finalTarget || 0) * 100,
-            }}
-          />
-          {progress < currentTarget && (
-            <motion.path
-              d="M10 74C10 39.7583 37.7583 12 72 12C106.242 12 134 39.7583 134 74"
-              stroke={progressColor}
-              strokeWidth="20"
-              pathLength={100}
-              strokeDasharray={100}
-              strokeDashoffset={80}
-              initial={{
-                strokeDashoffset: 100,
-              }}
-              animate={{
-                strokeDashoffset: 100 - (progress / finalTarget) * 100,
-              }}
-            />
-          )}
+            {progress < currentTarget && (
+              <motion.path
+                d="M10 74C10 39.7583 37.7583 12 72 12C106.242 12 134 39.7583 134 74"
+                stroke={progressColor}
+                strokeWidth="20"
+                pathLength={100}
+                strokeDasharray={100}
+                strokeDashoffset={80}
+                initial={{
+                  strokeDashoffset: 100,
+                }}
+                animate={{
+                  strokeDashoffset: 100 - (progress / finalTarget) * 100,
+                }}
+              />
+            )}
+          </MotionConfig>
         </svg>
       </div>
       <div className="relative flex flex-wrap justify-center gap-x-4 text-xs font-medium">
