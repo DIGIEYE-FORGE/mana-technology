@@ -14,11 +14,7 @@ export default function LineChartWidget({
   legendPosition = "bottom",
   ...props
 }: Props) {
-  const { backendApi } = useAppContext();
-  const dateRange = {
-    from: new Date("2021-09-01"),
-    to: new Date("2024-06-30"),
-  };
+  const { backendApi, dateRange } = useAppContext();
 
   const telemetries = (props.attributes?.telemetries || []) as ChartTelemetry[];
 

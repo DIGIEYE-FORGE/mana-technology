@@ -1,5 +1,5 @@
 import React from "react";
-import { User } from "./utils";
+import { TDateRange, User } from "./utils";
 import BackendApi from "./api/backend";
 
 const AppContext = React.createContext<{
@@ -10,6 +10,8 @@ const AppContext = React.createContext<{
   user: User | null | undefined;
   setUser: React.Dispatch<React.SetStateAction<User | null | undefined>>;
   backendApi: BackendApi;
+  dateRange: TDateRange;
+  setDateRange: React.Dispatch<React.SetStateAction<TDateRange>>;
 } | null>(null);
 
 export default AppContext;

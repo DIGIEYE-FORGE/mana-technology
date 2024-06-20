@@ -52,11 +52,7 @@ type Props = Widget & {
   className?: string;
 };
 export default function TableWidget({ attributes, className }: Props) {
-  const { backendApi } = useAppContext();
-  const dateRange = {
-    from: new Date("2021-09-01"),
-    to: new Date("2024-06-16"),
-  };
+  const { backendApi, dateRange } = useAppContext();
   const containerRef = useRef<HTMLDivElement>(null);
 
   const { mappings = [], serial } = attributes as TableWidgetData;

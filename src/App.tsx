@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Outlet } from "react-router-dom";
-import { User } from "./utils";
+import { TDateRange, User } from "./utils";
 import { z } from "zod";
 import useLocalStorage from "./hooks/use-local-storage";
 import BackendApi from "./api/backend";
@@ -20,6 +20,10 @@ function App() {
     "refreshToken",
     z.string().default(""),
   );
+  const [dateRange, setDateRange] = useState<TDateRange>({
+    from: new Date("2021-09-01"),
+    to: new Date("2024-06-30"),
+  });
   const backendApi = useMemo(
     () =>
       new BackendApi({
@@ -69,6 +73,8 @@ function App() {
         user,
         setUser,
         backendApi,
+        dateRange,
+        setDateRange,
       }}
     >
       <SWRConfig

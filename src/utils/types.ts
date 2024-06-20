@@ -74,7 +74,6 @@ export type TableWidgetData = {
 
 export type Widget = {
   attributes?: JsonObject;
-
 };
 
 export type ChartTelemetry = {
@@ -86,11 +85,15 @@ export type ChartTelemetry = {
   area?: boolean;
 };
 
-
 export type LastTelemetry = {
   id: string;
   deviceId: number;
   name: string;
   value: string | number | boolean | JsonObject;
   createdAt: Date;
+};
+
+export type TDateRange = {
+  from: Date;
+  to: Date;
 };

@@ -67,7 +67,7 @@ export default function HomePage() {
           <BarChartWidget
             // title="Daily Production BreakUp"
             attributes={{
-              stacked: true,
+              stacked: false,
               telemetries: [
                 {
                   name: "EST_PLANIFIE_ROCHE",
