@@ -14,7 +14,7 @@ type MultipleProgressWidgetData = {
   }[];
 };
 
-export default function RadarChartWidget({ attributes }: Widget) {
+export default function MultiProgressWidget({ attributes }: Widget) {
   const { backendApi } = useAppContext();
   const { telemetries } = attributes as MultipleProgressWidgetData;
 
