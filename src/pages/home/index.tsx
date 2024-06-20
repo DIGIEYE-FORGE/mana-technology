@@ -206,7 +206,7 @@ export default function HomePage() {
           }}
         />
       </Card>
-      <Card className="col-span-2 row-span-6 p-4">
+      <Card className="col-span-2 row-span-6 flex flex-col gap-3 p-4">
         <h3 className="text-center text-lg font-semibold">
           Disponibilité Engine GMC
         </h3>
