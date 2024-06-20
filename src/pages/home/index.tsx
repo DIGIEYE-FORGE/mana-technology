@@ -89,7 +89,7 @@ export default function HomePage() {
         </div>
       </Card>
       <Card className="col-span-full row-span-9 flex flex-col gap-4 p-4 lg:col-span-9">
-        <h3 className="text-center text-lg font-semibold">Test</h3>
+        <h3 className="text-center text-lg font-semibold">Tire</h3>
         <TableWidget
           className="flex-1"
           attributes={{
@@ -105,7 +105,15 @@ export default function HomePage() {
           }}
         />
       </Card>
-      <ProgressAccumulation />
+      <ProgressAccumulation
+        attributes={{
+          serial: "U9XQMQ1DXYT7LJIP",
+          progressColor: "#e5ec4b",
+          currentTargetColor: "#38b2ac",
+          progressTelemetryName: "EST_REALISE_ROCHE_CUMUL_Ton",
+          accumulationTelemetryName: "EST_PLANIFIE_ROCHE_CUMUL",
+        }}
+      />
 
       <Card className="col-span-full row-span-7 flex flex-col p-6 lg:col-span-6 xl:col-span-3 xl:row-span-9">
         <h1 className="text-center text-lg font-semibold">

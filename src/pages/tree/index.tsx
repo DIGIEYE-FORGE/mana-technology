@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 const TreePge: React.FC = () => {
   const canvasRef = useRef(null);
@@ -20,7 +20,22 @@ const TreePge: React.FC = () => {
     drawCanvas();
   }, []);
 
-  return <canvas ref={canvasRef} />;
+  const [selected, setSelected] = useState<"SUD" | "EST" | null>(null);
+  return (
+    <div className="relative overflow-hidden">
+      <canvas ref={canvasRef} className="relative"></canvas>
+      <div className="absolute left-4 top-2">
+        <select
+          className="h-[2rem] min-w-[14rem] border bg-transparent"
+          value={selected || undefined}
+          onChange={(e) => setSelected(e.target.value as any)}
+        >
+          <option value="SUD">SUD</option>
+          <option value="EST">EST</option>
+        </select>
+      </div>
+    </div>
+  );
 };
 
 export default TreePge;
