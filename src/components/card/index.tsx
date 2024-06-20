@@ -6,7 +6,7 @@ export function Card({ className, children, style, ...props }: CardProps) {
   return (
     <div
       className={cn(
-        "relative rounded-lg bg-[#0A59B7]/20 shadow-inner shadow-white/50",
+        "relative rounded-lg bg-card/50 shadow-inner shadow-white/50",
         className,
       )}
       style={{

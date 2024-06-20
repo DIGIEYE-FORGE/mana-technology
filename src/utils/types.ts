@@ -95,5 +95,5 @@ export type LastTelemetry = {
 
 export type TDateRange = {
   from: Date;
-  to: Date;
-};
+  to?: Date;
+}  | undefined;

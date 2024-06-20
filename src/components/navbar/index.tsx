@@ -4,8 +4,7 @@ import { useAppContext } from "@/Context";
 import { LogOut } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { DatePickerWithRange } from "../calander";
-import React from "react";
-import { DateRange } from "react-day-picker";
+import { TDateRange } from "@/utils";
 const links = [
   { name: "Home", path: "/" },
   { name: "Tree", path: "/tree" },
@@ -13,34 +12,35 @@ const links = [
 ];
 
 export default function Navbar() {
-  const { backendApi, refreshToken, setUser, setAccessToken, setRefreshToken } =
-    useAppContext();
+  const {
+    backendApi,
+    refreshToken,
+    setUser,
+    setAccessToken,
+    setRefreshToken,
+    dateRange,
+    setDateRange,
+  } = useAppContext();
 
   const { pathname } = useLocation();
-  const [date, setDate] = React.useState<DateRange | undefined>({
-    from: new Date(),
-    to: new Date(),
-  });
   return (
     <nav
-      className="sticky top-0 z-10 mx-auto flex items-center justify-between gap-6 divide-background rounded-[0_0_1rem_1rem] bg-[#0A59B7]/20 px-4 py-4 lg:px-6"
+      className="sticky top-0 z-10 mx-auto flex items-center justify-between gap-6 divide-background rounded-[0_0_1rem_1rem] bg-card/50 px-4 py-4 lg:px-6"
       style={{
         boxShadow: "inset 0 0 1rem 0px rgba(255,255,255,0.2)",
       }}
     >
-      <div className="hidden border lg:inline-block">
-        <DatePickerWithRange
-          className="w-full"
-          date={date}
-          onChange={(date) => {
-            setDate(date as DateRange);
-          }}
-        />
-      </div>
+      <DatePickerWithRange
+        className="w-full"
+        date={dateRange}
+        onChange={(date) => {
+          setDateRange(date as TDateRange);
+        }}
+      />
       <div className="flex">
-        {links.map((link) => (
+        {links.map((link, index) => (
           <Link
-            key={link.path}
+            key={index}
             to={link.path}
             className={cn(
               "rounded-xl px-3 py-1.5 text-foreground transition-colors hover:bg-foreground/5 active:bg-foreground/10 lg:px-4",
