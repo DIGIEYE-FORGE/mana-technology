@@ -89,7 +89,7 @@ export default function HomePage() {
         </div>
       </Card>
       <Card className="col-span-full row-span-9 flex flex-col gap-4 p-4 lg:col-span-9">
-        <h3 className="text-center text-lg font-semibold">Test</h3>
+        <h3 className="text-center text-lg font-semibold">Tire</h3>
         <TableWidget
           className="flex-1"
           attributes={{
