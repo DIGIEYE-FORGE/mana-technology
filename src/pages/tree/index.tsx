@@ -93,17 +93,19 @@ const TreePge: React.FC = () => {
         ) : error ? (
           <div>Error: {error.message}</div>
         ) : (
-          <ScrollArea>
-            <div className="mb-4 h-[calc(100vh-4rem)] w-full">
-              {data?.results.map((ele, index) => {
-                return (
-                  <div key={index}>
-                    {ele.name} : {ele.value}
-                  </div>
-                );
-              })}
-            </div>
-          </ScrollArea>
+          open && (
+            <ScrollArea>
+              <div className="mb-4 h-[calc(100vh-4rem)] w-full">
+                {data?.results.map((ele, index) => {
+                  return (
+                    <div key={index}>
+                      {ele.name} : {ele.value}
+                    </div>
+                  );
+                })}
+              </div>
+            </ScrollArea>
+          )
         )}
       </motion.div>
     </div>
