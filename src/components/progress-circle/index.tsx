@@ -72,7 +72,7 @@ export function ProgressCircle({
             y1="50"
             x2="80"
             y2="50"
-            // gradientUnits="userSpaceOnUse"
+            gradientUnits="userSpaceOnUse"
           >
             <stop stopColor={gradientEndColor} />
             <stop offset="1" stopColor={gradientStartColor} />
