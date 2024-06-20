@@ -20,7 +20,16 @@ const TreePge: React.FC = () => {
     drawCanvas();
   }, []);
 
-  return <canvas ref={canvasRef} />;
+  return (
+    <div className="h-full w-full">
+      <select className="h-[2rem] min-w-[14rem] border bg-transparent">
+        <option>select EST/SUD</option>
+        <option value="EST">EST</option>
+        <option value="SUD">SUD</option>
+      </select>
+      <canvas ref={canvasRef} />
+    </div>
+  );
 };
 
 export default TreePge;
