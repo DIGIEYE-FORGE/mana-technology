@@ -107,7 +107,15 @@ export default function HomePage() {
           }}
         />
       </Card>
-      <ProgressAccumulation />
+      <ProgressAccumulation
+        attributes={{
+          serial: "U9XQMQ1DXYT7LJIP",
+          progressColor: "#e5ec4b",
+          currentTargetColor: "#38b2ac",
+          progressTelemetryName: "EST_REALISE_ROCHE_CUMUL_Ton",
+          accumulationTelemetryName: "EST_PLANIFIE_ROCHE_CUMUL",
+        }}
+      />
 
       <Card className="col-span-full row-span-7 flex flex-col p-6 lg:col-span-6 xl:col-span-3 xl:row-span-9">
         <h1 className="text-center text-lg font-semibold">

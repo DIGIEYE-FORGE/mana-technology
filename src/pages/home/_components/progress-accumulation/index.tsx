@@ -1,18 +1,108 @@
+import { useAppContext } from "@/Context";
 import { Card } from "@/components/card";
 import { cn } from "@/lib/utils";
+import { HistoryType, Widget } from "@/utils";
 import { motion } from "framer-motion";
+import { Loader } from "lucide-react";
+import useSWR from "swr";
 
-export function ProgressAccumulation() {
-  const { currentTarget, finalTarget, progress } = {
-    currentTarget: 60,
-    finalTarget: 100,
-    progress: 50,
-  };
-  const { progressColor, currentTargetColor, finalTargetColor } = {
-    progressColor: "#FFC300",
-    currentTargetColor: "#E80054",
-    finalTargetColor: "#4D09E8",
-  };
+export type ProgressAccumulationWidgetData = {
+  serial?: string;
+  progressTelemetryName?: string;
+  accumulationTelemetryName?: string;
+  progressColor?: string;
+  currentTargetColor?: string;
+  finalTargetColor?: string;
+  unit?: string;
+};
+
+function lastOfMonth(): Date {
+  return new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0);
+}
+
+export function ProgressAccumulation({ attributes }: Widget) {
+  const { backendApi } = useAppContext();
+
+  const {
+    serial,
+    progressTelemetryName,
+    accumulationTelemetryName,
+    currentTargetColor = "#3b82f6",
+    progressColor = "#22c55e",
+    finalTargetColor = "#64748b",
+  } = attributes as ProgressAccumulationWidgetData;
+
+  const key = `progressAcc?`;
+  JSON.stringify({
+    serial,
+    progressTelemetryName,
+    accumulationTelemetryName,
+  });
+
+  const { data, isLoading, error } = useSWR(
+    key,
+    async () => {
+      if (!serial || !progressTelemetryName || !accumulationTelemetryName)
+        return null;
+      const { results: currentResults } =
+        await backendApi.findMany<HistoryType>("/dpc-history/api/history", {
+          pagination: { page: 1, perPage: 1 },
+          select: [progressTelemetryName, accumulationTelemetryName],
+          where: { serial, createdAt: { $lte: new Date() } },
+        });
+      if (currentResults.length === 0) return null;
+      const { results: endOfMountResult } =
+        await backendApi.findMany<HistoryType>("/dpc-history/api/history", {
+          pagination: { page: 1, perPage: 1 },
+          select: [accumulationTelemetryName],
+          orderBy: "createdAt:desc",
+          where: { serial, createdAt: { $lte: lastOfMonth() } },
+        });
+      if (endOfMountResult.length === 0) return null;
+      const { results: current } = await backendApi.findMany<HistoryType>(
+        "/dpc-history/api/history",
+        {
+          pagination: { page: 1, perPage: 1 },
+          orderBy: "createdAt:desc",
+          select: [accumulationTelemetryName, progressTelemetryName],
+          where: { serial, createdAt: { $lte: new Date() } },
+        },
+      );
+
+      if (current.length === 0) return null;
+      const currentTarget = current[0][progressTelemetryName];
+      const finalTarget = endOfMountResult[0][accumulationTelemetryName];
+      const progress = currentResults[0][accumulationTelemetryName];
+
+      return { currentTarget, finalTarget, progress } as Record<
+        string,
+        number | undefined
+      >;
+    },
+    { refreshInterval: 60_000 },
+  );
+
+  if (isLoading)
+    return (
+      <div className="grid h-full w-full place-content-center">
+        <Loader />
+      </div>
+    );
+  if (error)
+    return (
+      <div className="grid h-full w-full place-content-center">
+        <h3>Something went wrong.</h3>
+      </div>
+    );
+  if (!data)
+    return (
+      <div className="grid h-full place-content-center">
+        <h3>No data found.</h3>
+      </div>
+    );
+
+  const { currentTarget = 0, finalTarget = 0, progress = 0 } = data;
+
   const strokeWidth = 20;
   return (
     <Card className="col-span-3 row-span-7 flex flex-col gap-4 p-4">
