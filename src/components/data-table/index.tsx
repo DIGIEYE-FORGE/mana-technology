@@ -34,7 +34,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="rounded-md border-none">
-      <Table>
+      <Table className="border-separate border-spacing-y-2">
         <TableHeader className="">
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow
@@ -62,16 +62,16 @@ export function DataTable<TData, TValue>({
               <TableRow
                 key={row.id}
                 data-state={row.getIsSelected() && "selected"}
-                className="cursor-pointer rounded-full border-0 bg-foreground/5 px-2 py-2 hover:bg-transparent [&>*]:truncate [&>*]:px-2"
+                className="cursor-pointer rounded-full border-0 bg-black/10"
               >
                 {row.getVisibleCells().map((cell, index) => (
                   <TableCell
                     key={cell.id}
                     className={cn(
                       "border-0 p-3.5 text-xs font-semibold text-[#D2D4DA] 2xl:text-sm",
-                      index === 0 && "rounded-l-lg",
+                      index === 0 && "rounded-l-xl",
                       index === row.getVisibleCells().length - 1 &&
-                        "rounded-r-lg",
+                        "rounded-r-xl",
                     )}
                   >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}

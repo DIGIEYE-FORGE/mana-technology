@@ -17,15 +17,17 @@ export default function Navbar() {
   const { pathname } = useLocation();
 
   return (
-    <nav className="sticky top-0 z-10 mx-auto flex items-center justify-between gap-6 divide-background px-6 py-4">
-      <div className="border">date range selector goes here</div>
+    <nav className="sticky top-0 z-10 mx-auto flex items-center justify-between gap-6 divide-background px-4 py-4 lg:px-6">
+      <div className="hidden border lg:inline-block">
+        date range selector goes here
+      </div>
       <div className="flex">
         {links.map((link) => (
           <Link
             key={link.path}
             to={link.path}
             className={cn(
-              "rounded px-4 py-2 text-foreground transition-colors hover:bg-foreground/5 active:bg-foreground/10",
+              "rounded px-3 py-2 text-foreground transition-colors hover:bg-foreground/5 active:bg-foreground/10 lg:px-4",
               pathname === link.path && "font-bold text-primary",
             )}
           >
@@ -46,7 +48,10 @@ export default function Navbar() {
         }}
       >
         <LogOut size={20} />
-        <span className="text-sm font-bold"> Logout</span>
+        <span className="hidden text-sm font-bold sm:inline-block">
+          {" "}
+          Logout
+        </span>
       </Button>
     </nav>
   );

@@ -19,7 +19,7 @@ export const columns: ColumnDef<ProductionEquipmentType>[] = [
       const equipment: any = row.getValue("equipment");
       console.log(row.getValue("equipment"));
       return (
-        <div className="grid grid-cols-3">
+        <div className="grid min-w-fit grid-cols-3 items-center">
           <span className="col-span-2">{equipment.label}</span>
           <img src={`/${equipment.type}.svg`} alt={equipment.label} />
         </div>
@@ -41,9 +41,17 @@ export const columns: ColumnDef<ProductionEquipmentType>[] = [
   {
     accessorKey: "location",
     header: "Location",
+    cell: ({ row }) => {
+      const location: string = row.getValue("location");
+      return <div className="line-clamp-1 text-wrap">{location}</div>;
+    },
   },
   {
     accessorKey: "date",
     header: "Date",
+    cell: ({ row }) => {
+      const date: string = row.getValue("date");
+      return <div className="min-w-fit text-nowrap">{date}</div>;
+    },
   },
 ];
