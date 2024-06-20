@@ -4,154 +4,11 @@ import { ProgressCircle } from "@/components/progress-circle";
 import WidgetLabel from "@/components/widget-label";
 
 import { ScrollArea } from "@/components/ui/scroll-area";
-import {
-  ProductionEquipmentType,
-  columns,
-} from "./_components/production-table/columns";
+import { columns } from "./_components/production-table/columns";
 import { DataTable } from "@/components/data-table";
-
-const ProductionEquipment: ProductionEquipmentType[] = [
-  {
-    id: "1",
-    equipment: {
-      label: "Excavator",
-      type: "truck",
-    },
-    status: true,
-    location: "Beishen District",
-    date: "2024-06-18",
-  },
-  {
-    id: "2",
-    equipment: {
-      label: "Bulldozer",
-      type: "dump-truck",
-    },
-    status: false,
-    location: "Beishen District",
-    date: "2024-06-18",
-  },
-  {
-    id: "3",
-    equipment: {
-      label: "Dump Truck",
-      type: "tractor",
-    },
-    status: true,
-    location: "Beishen District",
-    date: "2024-06-18",
-  },
-  {
-    id: "4",
-    equipment: {
-      label: "Drill",
-      type: "dump-truck",
-    },
-    status: false,
-    location: "Beishen District",
-    date: "2024-06-18",
-  },
-  {
-    id: "5",
-    equipment: {
-      label: "Loader",
-      type: "truck",
-    },
-    status: true,
-    location: "Beishen District",
-    date: "2024-06-18",
-  },
-  {
-    id: "6",
-    equipment: {
-      label: "Excavator",
-      type: "truck",
-    },
-    status: false,
-    location: "Beishen District",
-    date: "2024-06-18",
-  },
-  {
-    id: "7",
-    equipment: {
-      label: "Bulldozer",
-      type: "dump-truck",
-    },
-    status: false,
-    location: "Beishen District",
-    date: "2024-06-18",
-  },
-  {
-    id: "8",
-    equipment: {
-      label: "Dump Truck",
-      type: "tractor",
-    },
-    status: true,
-    location: "Beishen District",
-    date: "2024-06-18",
-  },
-  {
-    id: "9",
-    equipment: {
-      label: "Drill",
-      type: "dump-truck",
-    },
-    status: true,
-    location: "Beishen District",
-    date: "2024-06-18",
-  },
-  {
-    id: "10",
-    equipment: {
-      label: "Loader",
-      type: "truck",
-    },
-    status: true,
-    location: "Beishen District",
-    date: "2024-06-18",
-  },
-  {
-    id: "11",
-    equipment: {
-      label: "Excavator",
-      type: "truck",
-    },
-    status: true,
-    location: "Beishen District",
-    date: "2024-06-18",
-  },
-  {
-    id: "12",
-    equipment: {
-      label: "Bulldozer",
-      type: "dump-truck",
-    },
-    status: true,
-    location: "Beishen District",
-    date: "2024-06-18",
-  },
-  {
-    id: "13",
-    equipment: {
-      label: "Dump Truck",
-      type: "tractor",
-    },
-    status: true,
-    location: "Beishen District",
-    date: "2024-06-18",
-  },
-  {
-    id: "14",
-    equipment: {
-      label: "Drill",
-      type: "dump-truck",
-    },
-    status: true,
-    location: "Beishen District",
-    date: "2024-06-18",
-  },
-];
+import { useAppContext } from "@/Context";
+import useSWR from "swr";
+import { LastTelemetry } from "@/utils/types";
 
 const Explosivesconsumption = [
   {
@@ -184,6 +41,54 @@ const Explosivesconsumption = [
 ];
 
 export default function DashboardPage() {
+  const { backendApi } = useAppContext();
+
+  const telemetriesNames: string[] = [
+    "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+    "GMC_FOREUSE_EPRIROC_T35_01_DISPO",
+    "GMC_FOREUSE_EPRIROC_T45_02_DISPO",
+    "GMC_PELLE_CAT374_01_DISPO",
+    "GMC_PELLE_CAT374_02_DISPO",
+    "GMC_PELLE_CAT374_03_DISPO",
+    "GMC_PELLE_CAT350_01_DISPO",
+    "GMC_PELLE_CAT350_02_DISPO",
+    "GMC_CAMIONS_SCANIA50T_GROUPE",
+    "GMC_DOZER_D8_01",
+    "GMC_DOZER_D8_02",
+    "GMC_NIVELEUSE_01",
+    "GMC_COMPACTEUR_01",
+    "GMC_COMPACTEUR_01",
+    "GMC_CITERNE_01",
+  ];
+
+  const { data, isLoading } = useSWR("myte", async () => {
+    const res = await backendApi.findMany<LastTelemetry>("lastTelemetry", {
+      where: {
+        name: {
+          in: telemetriesNames,
+        },
+      },
+    });
+    return res;
+  });
+
+  if (isLoading) return <div>Loading...</div>;
+  const telemetries = data?.results || [];
+
+  const ProductionEquipment = telemetries.map((telemetry) => {
+    return {
+      id: telemetry.id,
+      equipment: telemetry.name
+        .split("_")
+        .join(" ")
+        .split("GMC")[1]
+        .split("DISPO")[0],
+      disponibility: telemetry.value,
+      date: telemetry.createdAt,
+      status: true,
+    };
+  });
+
   return (
     <main className="grid h-fit w-full gap-4 lg:grid-cols-2 3xl:grid-cols-[480px,1fr,540px] [&>*]:min-h-[10rem]">
       <Card className="flex flex-col gap-2 p-6">

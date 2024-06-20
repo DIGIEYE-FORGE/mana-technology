@@ -85,3 +85,12 @@ export type ChartTelemetry = {
   color?: string;
   area?: boolean;
 };
+
+
+export type LastTelemetry = {
+  id: string;
+  deviceId: number;
+  name: string;
+  value: string | number | boolean | JsonObject;
+  createdAt: Date;
+};
