@@ -1,41 +1,35 @@
-import { ProgressCircle } from "@/components/progress-circle";
-import { useEffect, useState } from "react";
-
 export default function DevPage() {
-  const [progress, setProgress] = useState(50);
-  useEffect(() => {
-    const intervale = setInterval(() => {
-      setProgress((prev) => (prev + 10) % 100);
-    }, 1000);
-    return () => clearInterval(intervale);
-  }, []);
   return (
     <main className="grid place-content-center">
-      <ProgressCircle
-        className="size-72"
-        progress={progress}
-        backgroundColor="#6d0c1a"
-        gradientStartColor="#E80054"
-        gradientEndColor="teal"
-      />
+      <svg viewBox="0 0 100 100" className="size-72">
+        <foreignObject x="0" y="0" width="100" height="100">
+          <div
+            className="h-full w-full"
+            style={{
+              backgroundImage:
+                "conic-gradient(from 270deg, #ff4800 10%, #dfd902 35%, #20dc68, #0092f4, #da54d8 72% 75%, #ff4800 95%)",
+            }}
+          ></div>
+        </foreignObject>
+
+        <g
+          style={{
+            mixBlendMode: "lighten",
+          }}
+        >
+          <rect x="0" y="0" width="100" height="100" fill="white" />
+          <path
+            d="M 50 96 a 46 46 0 0 1 0 -92 46 46 0 0 1 0 92"
+            stroke="red"
+            fill="none"
+            strokeWidth={4}
+            pathLength={100}
+            strokeDasharray={100}
+            strokeDashoffset={100 - 80}
+            strokeLinecap="round"
+          />
+        </g>
+      </svg>
     </main>
   );
 }
-
-<svg
-  width="34"
-  height="34"
-  viewBox="0 0 34 34"
-  fill="none"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <circle
-    cx="17"
-    cy="17"
-    r="15"
-    fill="#D9D9D9"
-    stroke="#FF0000"
-    stroke-opacity="0.5"
-    stroke-width="4"
-  />
-</svg>;
