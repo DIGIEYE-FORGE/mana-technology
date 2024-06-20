@@ -21,13 +21,14 @@ const TreePge: React.FC = () => {
   }, []);
 
   return (
-    <div className="h-full w-full">
-      <select className="h-[2rem] min-w-[14rem] border bg-transparent">
-        <option>select EST/SUD</option>
-        <option value="EST">EST</option>
-        <option value="SUD">SUD</option>
-      </select>
-      <canvas ref={canvasRef} />
+    <div className="relative overflow-hidden">
+      <canvas ref={canvasRef} className="relative"></canvas>
+      <div className="absolute left-4 top-2">
+        <select className="h-[2rem] min-w-[14rem] border bg-transparent">
+          <option value="SUD">SUD</option>
+          <option value="EST">EST</option>
+        </select>
+      </div>
     </div>
   );
 };
