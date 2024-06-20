@@ -1,14 +1,12 @@
+import { JsonObject } from "@/utils/types";
 import { ColumnDef } from "@tanstack/react-table";
 
 export type ProductionEquipmentType = {
   id: string;
-  equipment: {
-    label: string;
-    type: "truck" | "dump-truck" | "tractor";
-  };
+  equipment: string;
+  disponibility: string | number | boolean | JsonObject;
+  date: Date;
   status: boolean;
-  location: string;
-  date: string;
 };
 
 export const columns: ColumnDef<ProductionEquipmentType>[] = [
@@ -17,11 +15,10 @@ export const columns: ColumnDef<ProductionEquipmentType>[] = [
     header: "Equipment",
     cell: ({ row }) => {
       const equipment: any = row.getValue("equipment");
-      console.log(row.getValue("equipment"));
       return (
-        <div className="grid min-w-fit grid-cols-3 items-center">
-          <span className="col-span-2">{equipment.label}</span>
-          <img src={`/${equipment.type}.svg`} alt={equipment.label} />
+        <div className="grid min-w-fit grid-cols-3 items-center gap-2">
+          <span className="col-span-2 line-clamp-1 text-wrap">{equipment}</span>
+          <img src="/truck.svg" alt={equipment} className="size-6" />
         </div>
       );
     },
@@ -39,11 +36,15 @@ export const columns: ColumnDef<ProductionEquipmentType>[] = [
     },
   },
   {
-    accessorKey: "location",
-    header: "Location",
+    accessorKey: "disponibility",
+    header: "Disponibility",
     cell: ({ row }) => {
-      const location: string = row.getValue("location");
-      return <div className="line-clamp-1 text-wrap">{location}</div>;
+      const disponibility: string = row.getValue("disponibility");
+      return (
+        <div className="line-clamp-1 text-wrap text-center">
+          {disponibility}%
+        </div>
+      );
     },
   },
   {
@@ -51,7 +52,7 @@ export const columns: ColumnDef<ProductionEquipmentType>[] = [
     header: "Date",
     cell: ({ row }) => {
       const date: string = row.getValue("date");
-      return <div className="min-w-fit text-nowrap">{date}</div>;
+      return <div className="min-w-fit text-nowrap">{date.split("T")[0]}</div>;
     },
   },
 ];
