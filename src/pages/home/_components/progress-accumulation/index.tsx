@@ -84,7 +84,7 @@ export function ProgressAccumulation({ attributes }: Widget) {
 
   if (isLoading)
     return (
-      <Card className="col-span-3 row-span-7 flex flex-col gap-4 p-4">
+      <Card className="col-span-3 row-span-3 flex flex-col gap-4 p-4">
         <div className="grid h-full w-full place-content-center">
           <Loader />
         </div>
@@ -92,7 +92,7 @@ export function ProgressAccumulation({ attributes }: Widget) {
     );
   if (error)
     return (
-      <Card className="col-span-3 row-span-7 flex flex-col gap-4 p-4">
+      <Card className="col-span-3 row-span-3 flex flex-col gap-4 p-4">
         <div className="grid h-full w-full place-content-center">
           <h3>Something went wrong.</h3>
         </div>
@@ -100,7 +100,7 @@ export function ProgressAccumulation({ attributes }: Widget) {
     );
   if (!data)
     return (
-      <Card className="col-span-3 row-span-7 flex flex-col gap-4 p-4">
+      <Card className="col-span-3 row-span-3 flex flex-col gap-4 p-4">
         <div className="grid h-full place-content-center">
           <h3>No data found.</h3>
         </div>
@@ -111,7 +111,7 @@ export function ProgressAccumulation({ attributes }: Widget) {
 
   const strokeWidth = 20;
   return (
-    <Card className="col-span-3 row-span-7 flex flex-col gap-4 p-4">
+    <Card className="col-span-3 row-span-3 flex flex-col gap-4 p-4">
       <h3 className="text-center text-lg font-bold">
         Evolution de la production vs planifié
       </h3>
