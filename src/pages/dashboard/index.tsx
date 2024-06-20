@@ -185,7 +185,7 @@ const Explosivesconsumption = [
 
 export default function DashboardPage() {
   return (
-    <main className="3xl:grid-cols-[480px,1fr,540px] grid h-fit w-full gap-4 lg:grid-cols-2 [&>*]:min-h-[10rem]">
+    <main className="grid h-fit w-full gap-4 lg:grid-cols-2 3xl:grid-cols-[480px,1fr,540px] [&>*]:min-h-[10rem]">
       <Card className="flex flex-col gap-2 p-6">
         <h1 className="text-center text-lg font-bold text-white">
           Safety hazard analysis
@@ -314,15 +314,33 @@ export default function DashboardPage() {
           }}
         />
       </Card>
-      <Card className="row-span-2 max-h-[32rem] p-4">
-        <div className="flex h-full flex-col gap-2">
-          <div className="flex items-center justify-center gap-2">
-            <span className="rounded-xl bg-[#FFC300] px-4 py-2"></span>
-            <h2>Beishen District</h2>
-          </div>
-          <ScrollArea className="h-full w-full border-none">
-            <DataTable columns={columns} data={ProductionEquipment} />
-          </ScrollArea>
+      <Card className="row-span-3 flex flex-col gap-3 p-6">
+        <h1 className="text-center text-lg font-semibold">
+          Southeast ore body production equipment status
+        </h1>
+        <div className="grid gap-4">
+          <Card className="max-h-[25rem] p-4">
+            <div className="flex h-full flex-col gap-2">
+              <div className="flex items-center justify-center gap-2 pt-2">
+                <span className="rounded-xl bg-[#E80053] px-4 py-2"></span>
+                <h2 className="text-sm font-semibold">Beishen District</h2>
+              </div>
+              <ScrollArea className="h-full w-full border-none">
+                <DataTable columns={columns} data={ProductionEquipment} />
+              </ScrollArea>
+            </div>
+          </Card>
+          <Card className="row-span-2 max-h-[25rem] p-4">
+            <div className="flex h-full flex-col gap-2">
+              <div className="flex items-center justify-center gap-2 pt-2">
+                <span className="rounded-xl bg-[#FFC300] px-4 py-2"></span>
+                <h2 className="text-sm font-semibold">South mining area</h2>
+              </div>
+              <ScrollArea className="h-full w-full border-none">
+                <DataTable columns={columns} data={ProductionEquipment} />
+              </ScrollArea>
+            </div>
+          </Card>
         </div>
       </Card>
       <Card className="flex min-h-[18ren] flex-col p-4">
@@ -379,17 +397,6 @@ export default function DashboardPage() {
               </div>
             </div>
           ))}
-        </div>
-      </Card>
-      <Card className="row-span-2 max-h-[25rem] p-4">
-        <div className="flex h-full flex-col gap-2">
-          <div className="flex items-center justify-center gap-2">
-            <span className="rounded-xl bg-[#FFC300] px-4 py-2"></span>
-            <h2>Beishen District</h2>
-          </div>
-          <ScrollArea className="h-full w-full border-none">
-            <DataTable columns={columns} data={ProductionEquipment} />
-          </ScrollArea>
         </div>
       </Card>
     </main>
