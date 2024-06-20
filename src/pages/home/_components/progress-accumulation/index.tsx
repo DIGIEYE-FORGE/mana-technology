@@ -113,7 +113,7 @@ export function ProgressAccumulation({ attributes }: Widget) {
   return (
     <Card className="col-span-3 row-span-7 flex flex-col gap-4 p-4">
       <h3 className="text-center text-lg font-bold">
-        % Actual vs Monthly Planned
+        Evolution de la production vs planifié
       </h3>
 
       <div className="relative h-1 flex-1 p-4">
