@@ -41,6 +41,9 @@ dependencies:
   '@tanstack/react-table':
     specifier: ^8.17.3
     version: 8.17.3(react-dom@18.3.1)(react@18.3.1)
+  '@types/three':
+    specifier: ^0.165.0
+    version: 0.165.0
   GLTFLoader:
     specifier: link:three/examples/jsm/loaders/GLTFLoader
     version: link:three/examples/jsm/loaders/GLTFLoader

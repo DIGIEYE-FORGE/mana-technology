@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+// src/Model.tsx
 import { useEffect } from "react";
 import { useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
@@ -7,10 +8,10 @@ function Model({ url }: { url: string }) {
   const gltf = useLoader(GLTFLoader, url);
 
   useEffect(() => {
-    gltf.scene.traverse((node: any) => {
-      if (node.isMesh) {
-        node.castShadow = true;
-        node.receiveShadow = true;
+    gltf.scene.traverse((node) => {
+      if ((node as any).isMesh) {
+        (node as any).castShadow = true;
+        (node as any).receiveShadow = true;
       }
     });
   }, [gltf]);
