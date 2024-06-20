@@ -17,7 +17,12 @@ export default function Navbar() {
   const { pathname } = useLocation();
 
   return (
-    <nav className="sticky top-0 z-10 mx-auto flex items-center justify-between gap-6 divide-background px-4 py-4 lg:px-6">
+    <nav
+      className="sticky top-0 z-10 mx-auto flex items-center justify-between gap-6 divide-background rounded-[0_0_1rem_1rem] bg-[#0A59B7]/20 px-4 py-4 lg:px-6"
+      style={{
+        boxShadow: "inset 0 0 1rem 0px rgba(255,255,255,0.2)",
+      }}
+    >
       <div className="hidden border lg:inline-block">
         date range selector goes here
       </div>
@@ -27,7 +32,7 @@ export default function Navbar() {
             key={link.path}
             to={link.path}
             className={cn(
-              "rounded px-3 py-2 text-foreground transition-colors hover:bg-foreground/5 active:bg-foreground/10 lg:px-4",
+              "rounded-xl px-3 py-1.5 text-foreground transition-colors hover:bg-foreground/5 active:bg-foreground/10 lg:px-4",
               pathname === link.path && "font-bold text-primary",
             )}
           >
@@ -53,6 +58,8 @@ export default function Navbar() {
           Logout
         </span>
       </Button>
+      <span className="absolute bottom-0 left-0 h-6 w-8 rounded-[0_0_0_0.5rem] border-b-2 border-l-2 !border-white/75"></span>
+      <span className="absolute bottom-0 right-0 h-6 w-8 rounded-[0_0_0.5rem_0] border-b-2 border-r-2 !border-white/75"></span>
     </nav>
   );
 }
