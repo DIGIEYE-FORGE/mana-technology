@@ -9,6 +9,7 @@ import Loader from "./components/loader";
 import AppContext from "./Context";
 import LoginPage from "./pages/login";
 import Navbar from "./components/navbar";
+import BpIndicator from "./components/bp-indicator";
 
 function App() {
   const [user, setUser] = useState<User | null | undefined>(undefined);
@@ -97,6 +98,7 @@ function App() {
             <Outlet />
           </main>
         )}
+        <BpIndicator className="fixed bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2 rounded-3xl bg-black p-12 text-6xl text-white opacity-20" />
       </SWRConfig>
     </AppContext.Provider>
   );

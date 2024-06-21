@@ -7,8 +7,8 @@ import MultiProgressWidget from "@/components/multi-progress-widget";
 
 export default function HomePage() {
   return (
-    <main className="grid w-full grid-flow-dense auto-rows-[96px] grid-cols-3 gap-3 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-[repeat(15,minmax(0,1fr))]">
-      <Card className="col-span-5 row-span-3 flex flex-col p-6">
+    <main className="grid w-full grid-flow-dense auto-rows-[96px] grid-cols-3 gap-3 md:grid-cols-6 lg:grid-cols-12 2xl:grid-cols-[repeat(15,minmax(0,1fr))]">
+      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
           Evolution Production cumule
         </h1>
@@ -35,7 +35,7 @@ export default function HomePage() {
           />
         </div>
       </Card>
-      <Card className="col-span-5 row-span-3 flex flex-col p-6">
+      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
           Production Est11 vs Est12
         </h1>
@@ -64,7 +64,7 @@ export default function HomePage() {
           />
         </div>
       </Card>
-      <Card className="col-span-5 row-span-3 flex flex-col p-6">
+      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">STERILE / MINERAI</h1>
         <div className="flex-1">
           <BarChartWidget
@@ -104,17 +104,18 @@ export default function HomePage() {
           />
         </div>
       </Card>
-
-      <ProgressAccumulation
-        attributes={{
-          serial: "U9XQMQ1DXYT7LJIP",
-          progressColor: "#FF5AF1",
-          currentTargetColor: "#727DC6",
-          progressTelemetryName: "EST_REALISE_ROCHE_CUMUL_Ton",
-          accumulationTelemetryName: "EST_PLANIFIE_ROCHE_CUMUL",
-        }}
-      />
-      <Card className="col-span-5 row-span-3 flex flex-col p-6">
+      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-3">
+        <ProgressAccumulation
+          attributes={{
+            serial: "U9XQMQ1DXYT7LJIP",
+            progressColor: "#FF5AF1",
+            currentTargetColor: "#727DC6",
+            progressTelemetryName: "EST_REALISE_ROCHE_CUMUL_Ton",
+            accumulationTelemetryName: "EST_PLANIFIE_ROCHE_CUMUL",
+          }}
+        />
+      </Card>
+      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
           Production journalière
         </h1>
@@ -143,7 +144,7 @@ export default function HomePage() {
           />
         </div>
       </Card>
-      <Card className="col-span-4 row-span-3 flex flex-col p-6">
+      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-4">
         <h1 className="text-center text-lg font-semibold">
           Production cumulée par qualité
         </h1>
@@ -170,7 +171,7 @@ export default function HomePage() {
           />
         </div>
       </Card>
-      <Card className="col-span-8 row-span-3 p-4">
+      <Card className="col-span-full row-span-3 p-4 lg:col-span-8">
         <h3 className="text-center text-lg font-semibold">Production</h3>
         <TableWidget
           className="flex-1"
@@ -206,36 +207,7 @@ export default function HomePage() {
           }}
         />
       </Card>
-      {/* <Card className="col-span-4 row-span-3 flex flex-col p-6">
-        <h1 className="text-center text-lg font-semibold">
-          Production journalière
-        </h1>
-        <div className="flex-1">
-          <BarChartWidget
-            // title="Daily Production BreakUp"
-            attributes={{
-              stacked: false,
-              telemetries: [
-                {
-                  name: "EST_PLANIFIE_ROCHE",
-                  unit: "T",
-                  color: "#78F6EA",
-                  label: "Planifié",
-                  serial: "U9XQMQ1DXYT7LJIP",
-                },
-                {
-                  name: "EST_REALISE_ROCHE_Ton",
-                  unit: "T",
-                  color: "#B98EFF",
-                  label: "Realisé",
-                  serial: "U9XQMQ1DXYT7LJIP",
-                },
-              ],
-            }}
-          />
-        </div>
-      </Card> */}
-      <Card className="col-span-4 row-span-3 flex flex-col p-6">
+      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-4">
         <h1 className="text-center text-lg font-semibold">
           Evolution Production cumule
         </h1>
@@ -262,7 +234,7 @@ export default function HomePage() {
           />
         </div>
       </Card>
-      <Card className="col-span-3 row-span-6 flex flex-col gap-3 p-4">
+      <Card className="col-span-full row-span-6 flex flex-col gap-3 p-4 2xl:col-span-3">
         <h3 className="text-center text-lg font-semibold">
           Disponibilité Engine GMC
         </h3>

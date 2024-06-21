@@ -33,6 +33,7 @@ export default function Navbar() {
       }}
     >
       <DatePickerWithRange
+        className="hidden lg:block"
         date={dateRange}
         onChange={(date) => {
           setDateRange(date as TDateRange);
