@@ -86,8 +86,8 @@ export default function WidgetLabel({
       </main>
     );
   return (
-    <div className="flex flex-1 gap-2 py-[2rem]">
-      <div className="flex-1">
+    <div className="flex flex-1 flex-wrap gap-2 py-[2rem]">
+      <div className="w-full flex-1">
         <ReactApexChart
           options={{
             theme: { mode: "dark" },
