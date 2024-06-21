@@ -88,7 +88,7 @@ function App() {
           <main
             className="dark flex flex-col gap-6 overflow-y-auto px-8 pb-6 text-foreground [&>*]:mx-auto [&>*]:w-full [&>*]:max-w-[1954px]"
             style={{
-              backgroundImage: 'url("/bg-mesh.png")',
+              backgroundImage: 'url("/bg.png")',
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}

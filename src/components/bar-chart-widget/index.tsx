@@ -18,7 +18,7 @@ export default function BarChartWidget(props: Props) {
       dateRange,
     })}`,
     async () => {
-      if (!dateRange.from || telemetries.length === 0) return [];
+      if (!dateRange?.from || telemetries.length === 0) return [];
       const res = await Promise.all(
         telemetries.map(async ({ serial, name }) => {
           const { results } = await backendApi.findMany<HistoryType>(
@@ -33,7 +33,7 @@ export default function BarChartWidget(props: Props) {
                 serial,
                 createdAt: {
                   $gt: new Date(dateRange.from as Date),
-                  $lte: dateRange.to && new Date(dateRange.to as Date),
+                  $lte: dateRange?.to && new Date(dateRange.to as Date),
                 },
               },
             },
@@ -98,7 +98,7 @@ export default function BarChartWidget(props: Props) {
         dataLabels: { enabled: false },
         xaxis: {
           type: "datetime",
-          max: dateRange.to ? new Date(dateRange.to).getTime() : undefined,
+          max: dateRange?.to ? new Date(dateRange?.to).getTime() : undefined,
           axisBorder: { show: false },
           axisTicks: { show: false },
           labels: {

@@ -64,26 +64,31 @@ export default function MultiProgressWidget({ attributes }: Widget) {
     <ScrollArea className="h-full w-full">
       <div className="flex flex-col gap-4 px-3 text-sm">
         {data?.map((item, index) => (
-          <div key={index} className="space-y-1">
-            <div
-              className="flex items-center gap-2"
-              style={{
-                color: telemetries.find((t) => t.name === item?.name)?.color,
-              }}
-            >
-              <span className="font-semibold">
-                {telemetries.find((t) => t.name === item?.name)?.label ||
-                  item?.name}
-              </span>
-              <span className="font-bold">{item?.value as string}</span>
+          <div className="flex items-end gap-2" key={index}>
+            <div>
+              <img src="/public/truck.svg" alt="truck" />
             </div>
-            <Progress
-              key={index}
-              style={{ height: "0.75rem" }}
-              value={parseFloat(item?.value as string) || 0}
-              className="w-full"
-              color={telemetries.find((t) => t.name === item?.name)?.color}
-            />
+            <div key={index} className="flex-1 space-y-1">
+              <div className="flex items-center gap-2">
+                <span className="font-semibold">
+                  {telemetries.find((t) => t.name === item?.name)?.label ||
+                    item?.name}
+                </span>
+              </div>
+              <div className="relative">
+                <Progress
+                  key={index}
+                  style={{ height: "2rem" }}
+                  value={parseFloat(item?.value as string) || 0}
+                  className="w-full rounded-lg"
+                  color={telemetries.find((t) => t.name === item?.name)?.color}
+                />
+
+                <div className="absolute left-2 top-2 font-bold text-black">
+                  {item?.value as string}%
+                </div>
+              </div>
+            </div>
           </div>
         ))}
       </div>
