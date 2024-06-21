@@ -53,6 +53,9 @@ dependencies:
   lucide-react:
     specifier: ^0.395.0
     version: 0.395.0(react@18.3.1)
+  pannellum:
+    specifier: ^2.5.6
+    version: 2.5.6
   react:
     specifier: ^18.2.0
     version: 18.3.1
@@ -2564,6 +2567,10 @@ packages:
 
   /package-json-from-dist@1.0.0:
     resolution: {integrity: sha512-dATvCeZN/8wQsGywez1mzHtTlP22H8OEfPrVMLNr4/eGa+ijtLn/6M5f0dY8UKNrC2O9UCU6SSoG3qRKnt7STw==}
+
+  /pannellum@2.5.6:
+    resolution: {integrity: sha512-R4kSPpj36wQPlyIi9ZftxPfVYF11DEbNBATUEI+pkMGZDFYBV5Jxi6tYFVDdmxA2xaTeKZQHMIuIIj7njVSTQQ==}
+    dev: false
 
   /parent-module@1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
