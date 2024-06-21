@@ -1,9 +1,9 @@
 import { useAppContext } from "@/Context";
-import { Card } from "@/components/card";
 import Loader from "@/components/loader";
 import { cn } from "@/lib/utils";
 import { HistoryType, Widget } from "@/utils";
 import { MotionConfig, motion } from "framer-motion";
+import { Fragment } from "react/jsx-runtime";
 import useSWR from "swr";
 
 export type ProgressAccumulationWidgetData = {
@@ -84,34 +84,28 @@ export function ProgressAccumulation({ attributes }: Widget) {
 
   if (isLoading)
     return (
-      <Card className="col-span-3 row-span-3 flex flex-col gap-4 p-4">
-        <div className="grid h-full w-full place-content-center">
-          <Loader />
-        </div>
-      </Card>
+      <div className="grid h-full w-full place-content-center">
+        <Loader />
+      </div>
     );
   if (error)
     return (
-      <Card className="col-span-3 row-span-3 flex flex-col gap-4 p-4">
-        <div className="grid h-full w-full place-content-center">
-          <h3>Something went wrong.</h3>
-        </div>
-      </Card>
+      <div className="grid h-full w-full place-content-center">
+        <h3>Something went wrong.</h3>
+      </div>
     );
   if (!data)
     return (
-      <Card className="col-span-3 row-span-3 flex flex-col gap-4 p-4">
-        <div className="grid h-full place-content-center">
-          <h3>No data found.</h3>
-        </div>
-      </Card>
+      <div className="grid h-full place-content-center">
+        <h3>No data found.</h3>
+      </div>
     );
 
   const { currentTarget = 0, finalTarget = 0, progress = 0 } = data;
 
   const strokeWidth = 20;
   return (
-    <Card className="col-span-3 row-span-3 flex flex-col gap-4 p-4">
+    <Fragment>
       <h3 className="text-center text-lg font-bold">
         Evolution de la production vs planifié
       </h3>
@@ -232,6 +226,6 @@ export function ProgressAccumulation({ attributes }: Widget) {
           </div>
         </div>
       </div>
-    </Card>
+    </Fragment>
   );
 }
