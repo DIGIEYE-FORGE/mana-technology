@@ -311,54 +311,6 @@ export default function HomePage() {
                 label: "Pelle CAT 350 (1)",
                 serial: "U9XQMQ1DXYT7LJIP",
               },
-              // {
-              //   name: "GMC_PELLE_CAT350_02_DISPO",
-              //   color: "#FFDC8C",
-              //   label: "Pelle CAT 350",
-              //   serial: "U9XQMQ1DXYT7LJIP",
-              // },
-              // {
-              //   name: "GMC_PELLE_CAT_0000_01",
-              //   color: "#ecc94b",
-              //   label: " Pelle CAT ",
-              //   serial: "U9XQMQ1DXYT7LJIP",
-              // },
-              // {
-              //   name: "GMC_CAMIONS_SCANIA50T_GROUPE",
-              //   color: "#ecc94b",
-              //   label: "Camions Scania 50t (15)",
-              //   serial: "U9XQMQ1DXYT7LJIP",
-              // },
-              // {
-              //   name: "GMC_DOZER_D8_01",
-              //   color: "#ecc94b",
-              //   label: "D8 ",
-              //   serial: "U9XQMQ1DXYT7LJIP",
-              // },
-              // {
-              //   name: "GMC_DOZER_D8_02",
-              //   color: "#ecc94b",
-              //   label: "D8 (2)",
-              //   serial: "U9XQMQ1DXYT7LJIP",
-              // },
-              // {
-              //   name: "GMC_NIVELEUSE_01",
-              //   color: "#ecc94b",
-              //   label: "Niveleuse ",
-              //   serial: "U9XQMQ1DXYT7LJIP",
-              // },
-              // {
-              //   name: "GMC_COMPACTEUR_01",
-              //   color: "#ecc94b",
-              //   label: "Compacteur ",
-              //   serial: "U9XQMQ1DXYT7LJIP",
-              // },
-              // {
-              //   name: "GMC_CITERNE_01",
-              //   color: "#ecc94b",
-              //   label: "Citerne d'arrosage ",
-              //   serial: "U9XQMQ1DXYT7LJIP",
-              // },
             ],
           }}
         />
