@@ -73,7 +73,7 @@ export default function MultiProgressWidget({ attributes }: Widget) {
             key={index}
           >
             <div>
-              <img src="/public/truck.svg" alt="truck" />
+              <img src="/truck.svg" alt="truck" />
             </div>
             <div key={index} className="flex-1 space-y-1">
               <div className="flex items-center gap-2">
