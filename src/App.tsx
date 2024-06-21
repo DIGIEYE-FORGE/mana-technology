@@ -92,6 +92,7 @@ function App() {
               backgroundImage: 'url("/bg.png")',
               backgroundSize: "cover",
               backgroundPosition: "center",
+              scrollbarGutter: "stable",
             }}
           >
             <Navbar />

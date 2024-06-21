@@ -99,3 +99,17 @@ nav {
   border-radius: var(--border-radius);
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
+
+*::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+  &-thumb {
+    @apply rounded-lg transition-colors;
+  }
+}
+
+*:hover {
+  &::-webkit-scrollbar-thumb {
+    @apply bg-primary;
+  }
+}

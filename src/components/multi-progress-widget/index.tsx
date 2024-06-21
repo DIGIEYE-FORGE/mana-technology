@@ -2,6 +2,7 @@ import { useAppContext } from "@/Context";
 import { Progress } from "@/components/ui/progress";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { LastTelemetry, Widget } from "@/utils";
+import { motion } from "framer-motion";
 import { Loader } from "lucide-react";
 import useSWR from "swr";
 
@@ -64,7 +65,13 @@ export default function MultiProgressWidget({ attributes }: Widget) {
     <ScrollArea className="h-full w-full">
       <div className="flex flex-col gap-6 px-3 text-sm">
         {data?.map((item, index) => (
-          <div className="flex items-end gap-2" key={index}>
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.75 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.3, delay: index * 0.1 + 0.5 }}
+            className="flex items-end gap-2"
+            key={index}
+          >
             <div>
               <img src="/public/truck.svg" alt="truck" />
             </div>
@@ -89,7 +96,7 @@ export default function MultiProgressWidget({ attributes }: Widget) {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </ScrollArea>
