@@ -7,7 +7,7 @@ function TopLeftCorner() {
     <svg
       viewBox="0 0 169 118"
       fill="none"
-      className="absolute left-0 top-0 aspect-[1.43] h-1/3 max-h-[6rem]"
+      className="absolute left-0 top-0 aspect-[1.43] h-1/3 max-h-[6rem] -translate-x-0.5 -translate-y-0.5"
     >
       <path
         d="M2 115.625V77.75V26C2 12.7452 12.7452 2 26 2H111.75H166.625"
@@ -37,7 +37,7 @@ function TopRightCorner() {
     <svg
       viewBox="0 0 169 118"
       fill="none"
-      className="absolute right-0 top-0 aspect-[1.43] h-1/3 max-h-[6rem]"
+      className="absolute right-0 top-0 aspect-[1.43] h-1/3 max-h-[6rem] -translate-y-0.5 translate-x-0.5"
     >
       <path
         d="M166.625 115.625V77.75V26C166.625 12.7452 155.88 2 142.625 2H56.875H2"
@@ -67,7 +67,7 @@ function BottomRightCorner() {
     <svg
       viewBox="0 0 169 118"
       fill="none"
-      className="absolute bottom-0 right-0 aspect-[1.43] h-1/3 max-h-[6rem]"
+      className="absolute bottom-0 right-0 aspect-[1.43] h-1/3 max-h-[6rem] translate-x-0.5 translate-y-0.5"
     >
       <path
         d="M166.625 2V39.875V91.625C166.625 104.88 155.88 115.625 142.625 115.625H56.875H2"
@@ -97,7 +97,7 @@ function BottomLeftCorner() {
     <svg
       viewBox="0 0 169 118"
       fill="none"
-      className="absolute bottom-0 left-0 aspect-[1.43] h-1/3 max-h-[6rem]"
+      className="absolute bottom-0 left-0 aspect-[1.43] h-1/3 max-h-[6rem] -translate-x-0.5 translate-y-0.5"
     >
       <path
         d="M2 2V39.875V91.625C2 104.88 12.7452 115.625 26 115.625H111.75H166.625"
