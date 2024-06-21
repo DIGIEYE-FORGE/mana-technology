@@ -7,7 +7,7 @@
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
 
-    --card:213 90% 38%;
+    --card: 213 90% 38%;
     --card-foreground: 0 0% 3.9%;
 
     --popover: 0 0% 100%;
@@ -39,7 +39,7 @@
     --background: 222 47% 11%;
     --foreground: 0 0% 98%;
 
-    --card:213 90% 38%;
+    --card: 213 90% 38%;
     --card-foreground: 0 0% 98%;
 
     --popover: 0 0% 3.9%;
@@ -91,116 +91,11 @@ main {
   }
 }
 
-nav,
-.card {
-  --border-width: 1px;
+.card,
+nav {
   --border-radius: 24px;
-  --color-1: #26e2b3;
-  --color-2: #ffffff;
-}
-
-.card {
-  position: relative;
-  background-image: linear-gradient(to bottom, var(--color-1), var(--color-2)),
-    linear-gradient(to bottom, var(--color-1), var(--color-2));
-  background-size: calc(var(--border-width))
-    calc(100% - 2 * var(--border-radius));
-  background-repeat: no-repeat;
-  background-position:
-    0 var(--border-radius),
-    100% var(--border-radius);
-  backdrop-filter: blur(4px);
-  background-color: #0a58b71c;
-  border-radius: var(--border-radius);
-
-  &::before,
-  &::after {
-    content: "";
-    display: block;
-    position: absolute;
-    height: var(--border-radius);
-    left: 0;
-    right: 0;
-  }
-  &::before {
-    top: 0;
-    border: var(--border-width) solid var(--color-1);
-    border-bottom: none;
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
-  }
-  &::after {
-    bottom: 0;
-    border: var(--border-width) solid var(--color-2);
-    border-top: none;
-    border-radius: 0 0 var(--border-radius) var(--border-radius);
-  }
-}
-
-// nav {
-//   position: relative;
-//   background-image: linear-gradient(to bottom, var(--color-1), var(--color-2)),
-//     linear-gradient(to bottom, var(--color-1), var(--color-2));
-//   background-size: calc(var(--border-width)) calc(100% - var(--border-radius));
-//   background-repeat: no-repeat;
-//   background-position:
-//     0 0,
-//     100% 0;
-//   backdrop-filter: blur(8px);
-//   background-color: #0a58b72d;
-//   border-radius: 0 0 var(--border-radius) var(--border-radius);
-//   &:after {
-//     content: "";
-//     display: block;
-//     position: absolute;
-//     height: var(--border-radius);
-//     left: 0;
-//     right: 0;
-//     bottom: 0;
-//     border: var(--border-width) solid var(--color-2);
-//     border-top: none;
-//     border-radius: 0 0 var(--border-radius) var(--border-radius);
-//   }
-// }
-
-.border-gradient {
-  position: relative;
-  overflow: hidden;
-  &::after {
-    content: "";
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-image: linear-gradient(to bottom right, red, blue);
-    animation: rotate 5s linear infinite;
-
-    @keyframes rotate {
-      0% {
-        transform: translate(-50%, -50%) rotate(0deg);
-      }
-      100% {
-        transform: translate(-50%, -50%) rotate(360deg);
-      }
-    }
-  }
-}
-
-.corner {
-  position: absolute;
   --border-width: 4px;
-  --border-radius: 0.5rem;
-  --border-color: #ffffff;
-  --height: 1.5rem;
-  --width: 2rem;
-  &.top-left {
-    top: 0;
-    left: 0;
-    border-top-left-radius: var(--border-radius);
-    border-left: var(--border-width) solid var(--border-color);
-    border-top: var(--border-width) solid var(--border-color);
-    width: var(--width);
-    height: var(--height);
-  }
+  @apply relative bg-card/10 backdrop-blur;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }

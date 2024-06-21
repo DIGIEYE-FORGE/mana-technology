@@ -25,13 +25,14 @@ export default function Navbar() {
   const { pathname } = useLocation();
   return (
     <nav
-      className="sticky top-0 z-10 mx-auto flex items-center justify-between gap-6 divide-background rounded-[0_0_1rem_1rem] bg-card/50 px-4 py-4 lg:px-6"
+      className="sticky top-0 z-10 mx-auto flex items-center justify-between gap-6 border border-primary px-4 py-4 lg:px-6"
       style={{
-        boxShadow: "inset 0 0 1rem 0px rgba(255,255,255,0.2)",
+        borderTopLeftRadius: "8px",
+        borderTopRightRadius: "8px",
+        borderTop: "none",
       }}
     >
       <DatePickerWithRange
-        className="w-full"
         date={dateRange}
         onChange={(date) => {
           setDateRange(date as TDateRange);
@@ -64,13 +65,8 @@ export default function Navbar() {
         }}
       >
         <LogOut size={20} />
-        <span className="hidden text-sm font-bold sm:inline-block">
-          {" "}
-          Logout
-        </span>
+        <span className="hidden text-sm font-bold sm:inline-block">Logout</span>
       </Button>
-      <span className="absolute bottom-0 left-0 h-6 w-8 rounded-[0_0_0_0.5rem] border-b-2 border-l-2 !border-white/75"></span>
-      <span className="absolute bottom-0 right-0 h-6 w-8 rounded-[0_0_0.5rem_0] border-b-2 border-r-2 !border-white/75"></span>
     </nav>
   );
 }
