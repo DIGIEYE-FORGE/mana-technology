@@ -62,7 +62,7 @@ export default function MultiProgressWidget({ attributes }: Widget) {
     );
   return (
     <ScrollArea className="h-full w-full">
-      <div className="flex flex-col gap-4 px-3 text-sm">
+      <div className="flex flex-col gap-6 px-3 text-sm">
         {data?.map((item, index) => (
           <div className="flex items-end gap-2" key={index}>
             <div>
