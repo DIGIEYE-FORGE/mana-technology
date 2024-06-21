@@ -104,7 +104,7 @@ export default function HomePage() {
           />
         </div>
       </Card>
-      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-3">
+      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-4">
         <ProgressAccumulation
           attributes={{
             serial: "U9XQMQ1DXYT7LJIP",
@@ -115,7 +115,7 @@ export default function HomePage() {
           }}
         />
       </Card>
-      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-5">
+      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-4">
         <h1 className="text-center text-lg font-semibold">
           Production journalière
         </h1>

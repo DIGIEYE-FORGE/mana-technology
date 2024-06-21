@@ -110,7 +110,7 @@ export function ProgressAccumulation({ attributes }: Widget) {
         Evolution de la production vs planifié
       </h3>
 
-      <div className="relative h-1 flex-1 p-4">
+      <div className="relative h-1 flex-1 p-8">
         {currentTarget && progress ? (
           <span
             className={cn(
