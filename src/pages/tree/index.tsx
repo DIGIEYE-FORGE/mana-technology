@@ -22,7 +22,7 @@ function TreePage() {
           shadow-camera-top={10}
           shadow-camera-bottom={-10}
         />
-        <Model url="/pelican.glb" />
+        <Model url="/models1.glb" />
         <mesh
           receiveShadow
           rotation={[-Math.PI / 2, 0, 0]}
