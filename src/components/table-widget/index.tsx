@@ -125,13 +125,13 @@ export default function TableWidget({ attributes, className }: Props) {
                   gridTemplateColumns: `repeat(${mappings.length + 1}, 1fr)`,
                 }}
               >
-                <div>
+                <div className="text-[#FEC33A]">
                   {format(new Date(item.date || item.createdAt), "PP ")}
                 </div>
                 {mappings.map((m) => {
                   const value = flatten(item)[m.telemetryName];
                   return (
-                    <div key={m.telemetryName}>
+                    <div key={m.telemetryName} className="text-[#FEC33A]">
                       <Formatter
                         value={value}
                         displayFormat={m.displayFormat}
