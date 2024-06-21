@@ -84,7 +84,11 @@ export default function BarChartWidget(props: Props) {
             borderRadiusWhenStacked: "all",
           },
         },
-        grid: { show: false },
+        grid: {
+          borderColor: "#797979",
+          xaxis: { lines: { show: false } },
+          yaxis: { lines: { show: true } },
+        },
         chart: {
           type: "bar",
           stacked,

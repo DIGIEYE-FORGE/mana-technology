@@ -99,10 +99,11 @@ export default function DashboardPage() {
         <div className="flex w-full flex-wrap items-center justify-evenly gap-1">
           <div className="flex flex-col items-center gap-2">
             <ProgressCircle
+              className="font-bold"
               progress={50}
-              backgroundColor="#6d0c1a"
-              gradientStartColor="#E80054"
-              gradientEndColor="#F725D5"
+              backgroundColor="#6a5cc9"
+              gradientStartColor="#B98EFF"
+              gradientEndColor="#803BF2"
             />
 
             <span className="text-sm">Safety hazards</span>
@@ -110,10 +111,11 @@ export default function DashboardPage() {
 
           <div className="flex flex-col items-center gap-2">
             <ProgressCircle
+              className="font-bold"
               progress={88.34}
-              backgroundColor="#055982"
-              gradientStartColor="#00DAA0"
-              gradientEndColor="#0083E1"
+              backgroundColor="#4697bd"
+              gradientStartColor="#78F6EA"
+              gradientEndColor="#40A097"
             />
 
             <span className="text-sm">Rectifications</span>
@@ -121,9 +123,10 @@ export default function DashboardPage() {
 
           <div className="flex flex-col items-center gap-2">
             <ProgressCircle
+              className="font-bold"
               progress={33.57}
-              backgroundColor="#948420"
-              gradientStartColor="#C9DA00"
+              backgroundColor="#91806e"
+              gradientStartColor="#FFDC8C"
               gradientEndColor="#E19400"
             />
 

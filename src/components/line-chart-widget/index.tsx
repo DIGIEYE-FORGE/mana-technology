@@ -77,9 +77,9 @@ export default function LineChartWidget({
         tooltip: { cssClass: "text-black" },
         colors: telemetries.map((item) => item.color),
         grid: {
-          borderColor: "#373737",
-          xaxis: { lines: { show: true } },
-          yaxis: { lines: { show: false } },
+          borderColor: "#797979",
+          xaxis: { lines: { show: false } },
+          yaxis: { lines: { show: true } },
         },
         chart: {
           background: "transparent",

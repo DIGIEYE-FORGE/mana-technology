@@ -32,13 +32,12 @@ export function ProgressCircle({
           stroke="currentColor"
           opacity={0.1}
         />
-        <circle cx="50" cy="50" r="40" fill={backgroundColor} opacity={0.4} />
+        <circle cx="50" cy="50" r="40" fill={backgroundColor} opacity={0.2} />
         <circle cx="50" cy="50" r="30" fill={backgroundColor} />
         <circle
           cx="50"
           cy="50"
           r="30.25"
-          strokeWidth={0.5}
           fill="none"
           stroke="currentColor"
           opacity={0.2}
@@ -48,13 +47,37 @@ export function ProgressCircle({
             duration: 0.5,
             delay: 0.25,
           }}
-          startOffset={0.5}
           cx="50"
           cy="50"
-          r="35"
+          r="36"
           fill="none"
-          strokeWidth="2"
+          strokeWidth="3"
           stroke={`url(#${gradientStartColor}-${gradientEndColor})`}
+          pathLength={100}
+          strokeDasharray={150}
+          initial={{
+            strokeDashoffset: 150,
+          }}
+          animate={{
+            strokeDashoffset: 150 - progress,
+          }}
+          strokeLinecap="round"
+        />
+        <motion.circle
+          transition={{
+            duration: 0.5,
+            delay: 0.25,
+          }}
+          cx="50"
+          cy="50"
+          r="36"
+          fill="none"
+          strokeWidth="6"
+          opacity={0.66}
+          stroke={`url(#${gradientStartColor}-${gradientEndColor})`}
+          style={{
+            filter: "url(#dropshadow)",
+          }}
           pathLength={100}
           strokeDasharray={150}
           initial={{
@@ -78,6 +101,9 @@ export function ProgressCircle({
             <stop offset="1" stopColor={gradientStartColor} />
           </linearGradient>
         </defs>
+        <filter id="dropshadow" x="-2" y="-2" width="200" height="200">
+          <feGaussianBlur stdDeviation="1" />
+        </filter>
       </svg>
       <span className="absolute bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2">
         {progress.toFixed(2) + " %"}
