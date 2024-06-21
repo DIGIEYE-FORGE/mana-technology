@@ -65,7 +65,9 @@ export default function MultiProgressWidget({ attributes }: Widget) {
       <div className="flex flex-col gap-4 px-3 text-sm">
         {data?.map((item, index) => (
           <div className="flex items-end gap-2" key={index}>
-            {/* <div>hello</div> */}
+            <div>
+              <img src="/public/truck.svg" alt="truck" />
+            </div>
             <div key={index} className="flex-1 space-y-1">
               <div className="flex items-center gap-2">
                 <span className="font-semibold">
