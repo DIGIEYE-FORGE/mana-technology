@@ -224,7 +224,7 @@ export default function DashboardPage() {
           Southeast ore body production equipment status
         </h1>
         <div className="grid gap-4">
-          <Card className="max-h-[25rem] p-4">
+          <div className="max-h-[25rem] rounded-xl border border-primary/50 bg-card/10 p-4">
             <div className="flex h-full flex-col gap-2">
               <div className="flex items-center justify-center gap-2 pt-2">
                 <span className="rounded-xl bg-[#E80053] px-4 py-2"></span>
@@ -234,8 +234,8 @@ export default function DashboardPage() {
                 <DataTable columns={columns} data={ProductionEquipment} />
               </ScrollArea>
             </div>
-          </Card>
-          <Card className="row-span-2 max-h-[25rem] p-4">
+          </div>
+          <div className="max-h-[25rem] rounded-xl border border-primary/50 bg-card/10 p-4">
             <div className="flex h-full flex-col gap-2">
               <div className="flex items-center justify-center gap-2 pt-2">
                 <span className="rounded-xl bg-[#FFC300] px-4 py-2"></span>
@@ -245,7 +245,7 @@ export default function DashboardPage() {
                 <DataTable columns={columns} data={ProductionEquipment} />
               </ScrollArea>
             </div>
-          </Card>
+          </div>
         </div>
       </Card>
       <Card className="flex min-h-[18ren] flex-col p-4">
