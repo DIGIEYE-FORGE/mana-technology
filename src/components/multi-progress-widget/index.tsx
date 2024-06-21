@@ -4,7 +4,6 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { LastTelemetry, Widget } from "@/utils";
 import { Loader } from "lucide-react";
 import useSWR from "swr";
-import { div } from "three/examples/jsm/nodes/Nodes";
 
 type MultipleProgressWidgetData = {
   telemetries?: {
