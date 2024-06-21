@@ -86,7 +86,7 @@ export default function WidgetLabel({
       </main>
     );
   return (
-    <div className="flex flex-1 gap-2 py-[2rem]">
+    <div className="flex flex-1 flex-wrap gap-2 md:flex-nowrap">
       <div className="w-full flex-1">
         <ReactApexChart
           options={{
@@ -162,7 +162,7 @@ export default function WidgetLabel({
           height={"100%"}
         />
       </div>
-      <div className="min-w-[18rem] p-4 py-10">
+      <div className="min-w-[14rem] p-4 py-10">
         {avgData.map((item) => (
           <div key={item.name} className="flex justify-between gap-2">
             <h6 className="text-sm text-gray-400">{item.name}:</h6>

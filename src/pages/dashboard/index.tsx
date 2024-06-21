@@ -134,7 +134,7 @@ export default function DashboardPage() {
           </div>
         </div>
       </Card>
-      <Card className="row-span-3 flex flex-col p-2 text-xl">
+      <Card className="row-span-3 flex flex-col gap-6 p-2 text-xl">
         <h1 className="text-center text-lg font-semibold">Power consumption</h1>
         <WidgetLabel
           legendPosition="top"
