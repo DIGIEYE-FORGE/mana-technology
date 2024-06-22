@@ -85,6 +85,17 @@ export type ChartTelemetry = {
   area?: boolean;
 };
 
+
+export type ChartsWidgetData = {
+  serial: string;
+  name: string;
+  label?: string;
+  unit?: string;
+  color?: string;
+  area?: boolean;
+  type: "line" | "bar";
+}
+
 export type LastTelemetry = {
   id: string;
   deviceId: number;
