@@ -91,6 +91,11 @@ export default function LinesWidget(props: Props) {
               show: true,
               // color: "#008FFB",
             },
+            labels: {
+              formatter: function (value) {
+                return value.toFixed(2);
+              },
+            },
             // labels: {
             //   style: {
             //     colors: "#008FFB",
@@ -106,6 +111,11 @@ export default function LinesWidget(props: Props) {
             opposite: true,
             axisTicks: {
               show: true,
+            },
+            labels: {
+              formatter: function (value) {
+                return value.toFixed(2);
+              },
             },
             axisBorder: {
               show: true,

@@ -23,7 +23,7 @@ function DashboardPage2() {
                 name: "realise",
                 unit: "T",
                 color: "#78F6EA",
-                label: "realise",
+                label: "Réalisé",
                 serial: "DABF7PAT2G4BAG21",
                 type: "bar",
               },
@@ -31,9 +31,8 @@ function DashboardPage2() {
                 name: "forcast",
                 unit: "T",
                 color: "#B98EFF",
-                label: "forcast",
+                label: "Forecast (Monthly)",
                 serial: "DABF7PAT2G4BAG21",
-
                 type: "bar",
               },
 
@@ -41,9 +40,8 @@ function DashboardPage2() {
                 name: "FC",
                 unit: "T",
                 color: "#5c07e5",
-                label: "FC",
+                label: "Planifié (Cumulé)",
                 serial: "DABF7PAT2G4BAG21",
-
                 type: "line",
               },
             ],

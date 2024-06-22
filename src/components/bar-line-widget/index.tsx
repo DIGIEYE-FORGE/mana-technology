@@ -118,6 +118,12 @@ export default function BarLineWidget(props: Props) {
                 color: "#008FFB",
               },
             },
+            /// value i need the take 2 chiffre after the point
+            labels: {
+              formatter: function (value) {
+                return value.toFixed(2);
+              },
+            },
           },
           {
             opposite: true,
@@ -127,6 +133,11 @@ export default function BarLineWidget(props: Props) {
             axisBorder: {
               show: true,
               // color: "#FEB019",
+            },
+            labels: {
+              formatter: function (value) {
+                return value.toFixed(2);
+              },
             },
             title: {
               style: {

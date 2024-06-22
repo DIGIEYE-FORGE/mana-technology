@@ -107,6 +107,11 @@ export default function BarsChartWidget(props: Props) {
             axisBorder: {
               show: true,
             },
+            labels: {
+              formatter: function (value) {
+                return value.toFixed(2);
+              },
+            },
           },
           {
             opposite: true,
@@ -115,6 +120,11 @@ export default function BarsChartWidget(props: Props) {
             },
             axisBorder: {
               show: true,
+            },
+            labels: {
+              formatter: function (value) {
+                return value.toFixed(2);
+              },
             },
           },
         ],
