@@ -3,6 +3,7 @@ import BarsChartWidget from "@/components/bars-chart-widget";
 import { Card } from "@/components/card";
 import LinesWidget from "@/components/lines-chart-widget";
 import MultiProgressWidget from "@/components/multi-progress-widget";
+import Ventillation from "@/components/ventillation";
 
 function DashboardPage2() {
   return (
@@ -77,7 +78,12 @@ function DashboardPage2() {
           }}
         />
       </Card>
-      <Card className="col-span-3">4</Card>
+      <Card className="col-span-3 px-4 py-6">
+        <h1 className="text-center text-lg font-semibold">
+          Dashboard ventillation
+        </h1>
+        <Ventillation />
+      </Card>
       <Card className="col-span-3 p-2">
         <h1 className="text-center text-lg font-semibold">
           Avancement/Arrachement journalier
