@@ -81,7 +81,7 @@ export default function BarLineWidget(props: Props) {
         },
         dataLabels: { enabled: false },
         stroke: {
-          width: [0, 0, 4],
+          width: telemetries.map((item) => (item.type === "line" ? 3 : 0)),
         },
         xaxis: {
           type: "datetime",
@@ -106,19 +106,14 @@ export default function BarLineWidget(props: Props) {
             },
             axisBorder: {
               show: true,
-              // color: "#008FFB",
             },
-            // labels: {
-            //   style: {
-            //     colors: "#008FFB",
-            //   },
-            // },
+
             title: {
               style: {
                 color: "#008FFB",
               },
             },
-            /// value i need the take 2 chiffre after the point
+
             labels: {
               formatter: function (value) {
                 return value.toFixed(2);
