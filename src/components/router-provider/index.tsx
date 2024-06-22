@@ -7,6 +7,7 @@ import DashboardPage from "@/pages/dashboard";
 import TreePage from "@/pages/tree";
 import NotfoundPage from "@/pages/notfound";
 import DevPage from "@/pages/dev";
+import DashboardPage2 from "@/pages/dashboard2";
 
 const routes: RouteObject[] = [
   {
@@ -20,6 +21,10 @@ const routes: RouteObject[] = [
       {
         path: "dashboard",
         element: <DashboardPage />,
+      },
+      {
+        path: "dashboard2",
+        element: <DashboardPage2 />,
       },
       {
         path: "tree",
