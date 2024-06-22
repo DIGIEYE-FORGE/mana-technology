@@ -45,7 +45,7 @@ function Ventillation() {
           <div className="flex flex-col">
             <h3 className="font-semibold">Ventilateur N°1</h3>
             <h3 className="flex gap-2 text-3xl font-bold text-[#FAAC18]">
-              <span>25</span>
+              <span>--</span>
               <span className="space-x-2">RPM</span>
             </h3>
             <div className="flex gap-2 text-xs">
@@ -89,15 +89,15 @@ function Ventillation() {
           </div>
         </div>
       </div>
-      <div className="mt-4 flex flex-wrap gap-1">
+      <div className="grid grid-cols-3">
         {data.map((item, index) => (
           <div className="flex items-center gap-1" key={index}>
             <div className="rounded-full bg-[#061781] p-4">
               <img
                 src={item.icon ? item.icon : "/co2.svg"}
                 alt=""
-                width={25}
-                height={25}
+                width={30}
+                height={30}
               />
             </div>
 
