@@ -106,10 +106,6 @@ export function ProgressAccumulation({ attributes }: Widget) {
   const strokeWidth = 20;
   return (
     <Fragment>
-      <h3 className="text-center text-lg font-bold">
-        Evolution de la production vs planifié
-      </h3>
-
       <div className="relative h-1 flex-1 p-8">
         {currentTarget && progress ? (
           <span
