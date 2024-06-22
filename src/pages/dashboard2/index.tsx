@@ -147,7 +147,7 @@ function DashboardPage2() {
       <Card className="col-span-3">8</Card>
       <Card className="p2-2 col-span-3">
         <h3 className="text-center text-lg font-semibold">
-          Disponibilité Engine GMC
+          Disponibilité et utilisation des engins
         </h3>
         <MultiProgressWidget
           attributes={{

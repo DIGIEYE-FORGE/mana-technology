@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button } from "../ui/button";
 function Ventillation() {
   const [data] = useState([
     {
@@ -108,10 +109,10 @@ function Ventillation() {
           </div>
         ))}
       </div>
-      <div className="flex gap-2">
+      <Button className="flex gap-2" variant={"ghost"}>
         <img src="plus.svg" alt="" width={20} height={20} />
         <span>Voir plus</span>
-      </div>
+      </Button>
     </div>
   );
 }
