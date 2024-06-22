@@ -12,7 +12,7 @@ function TreePage() {
         <ambientLight intensity={0.5} />
         <directionalLight
           castShadow
-          position={[0, 10, 5]}
+          position={[0, 8, 4]}
           intensity={1}
           shadow-mapSize-width={1024}
           shadow-mapSize-height={1024}
@@ -22,7 +22,7 @@ function TreePage() {
           shadow-camera-top={10}
           shadow-camera-bottom={-10}
         />
-        <Model url="/models1.glb" />
+        <Model url="/mine00017.glb" />
         <mesh
           receiveShadow
           rotation={[-Math.PI / 2, 0, 0]}
