@@ -23,7 +23,7 @@ function Ventillation() {
       value: 25,
     },
     {
-      icon: "humide.svg",
+      icon: "vites.svg",
       name: "T. Humide",
       value: 25,
     },
@@ -42,7 +42,7 @@ function Ventillation() {
       </div>
       <div className="flex gap-2 divide-x-2 divide-white [&>*]:px-2">
         <div className="flex flex-1 items-center gap-2">
-          <img src="/vites.svg" alt="" width={100} height={100} />
+          <img src="/ventilateur.svg" alt="" width={100} height={100} />
           <div className="flex flex-col">
             <h3 className="font-semibold">Ventilateur N°1</h3>
             <h3 className="flex gap-2 text-3xl font-bold text-[#FAAC18]">
@@ -66,7 +66,7 @@ function Ventillation() {
           </div>
         </div>
         <div className="flex flex-1 items-center gap-2">
-          <img src="/vites.svg" alt="" width={100} height={100} />
+          <img src="/ventilateur.svg" alt="" width={100} height={100} />
           <div className="flex flex-col">
             <h3 className="font-semibold">Ventilateur N°2</h3>
             <h3 className="flex gap-2 text-3xl font-bold text-[#FAAC18]">
@@ -90,22 +90,20 @@ function Ventillation() {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-3">
+      <div className="flex w-full flex-wrap justify-between">
         {data.map((item, index) => (
-          <div className="flex items-center gap-1" key={index}>
+          <div className="flex flex-col items-center gap-1" key={index}>
             <div className="rounded-full bg-[#061781] p-4">
               <img
                 src={item.icon ? item.icon : "/co2.svg"}
                 alt=""
-                width={30}
-                height={30}
+                width={35}
+                height={35}
               />
             </div>
 
-            <div className="flex flex-col">
-              <h3 className="text-sm font-light">{item.name}</h3>
-              <h3 className="text-[#FAAC18]">{item.value}</h3>
-            </div>
+            <h3 className="text-sm font-light">{item.name}</h3>
+            <h3 className="text-[#FAAC18]">{item.value}</h3>
           </div>
         ))}
       </div>
