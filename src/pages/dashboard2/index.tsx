@@ -6,7 +6,7 @@ import MultiProgressWidget from "@/components/multi-progress-widget";
 
 function DashboardPage2() {
   return (
-    <div className="grid h-fit w-full grid-flow-dense grid-cols-3 gap-4 lg:grid-cols-6 xl:grid-cols-9 [&>*]:min-h-[20rem]">
+    <div className="grid h-fit w-full grid-flow-dense grid-cols-3 gap-6 lg:grid-cols-6 xl:grid-cols-9 [&>*]:min-h-[20rem]">
       <Card className="col-span-3">1</Card>
       <Card className="col-span-3 p-2">
         <h1 className="text-center text-lg font-semibold">
@@ -138,7 +138,7 @@ function DashboardPage2() {
       </Card>
       <Card className="col-span-3">7</Card>
       <Card className="col-span-3">8</Card>
-      <Card className="col-span-3">
+      <Card className="p2-2 col-span-3">
         <h3 className="text-center text-lg font-semibold">
           Disponibilité Engine GMC
         </h3>
