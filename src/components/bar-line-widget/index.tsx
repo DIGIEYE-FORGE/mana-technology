@@ -8,7 +8,7 @@ import Loader from "@/components/loader";
 type Props = Widget;
 
 export default function BarLineWidget(props: Props) {
-  const { backendApi, dateRange } = useAppContext();
+  const { backendApi } = useAppContext();
 
   const telemetries = (props.attributes?.telemetries ||
     []) as ChartsWidgetData[];
@@ -17,10 +17,9 @@ export default function BarLineWidget(props: Props) {
   const { data, isLoading, error } = useSWR(
     `histories?${JSON.stringify({
       telemetries,
-      dateRange,
     })}`,
     async () => {
-      if (!dateRange?.from || telemetries.length === 0) return [];
+      if (telemetries.length === 0) return [];
       const res = await Promise.all(
         telemetries.map(async ({ serial, name }) => {
           const { results } = await backendApi.findMany<HistoryType>(
@@ -34,8 +33,8 @@ export default function BarLineWidget(props: Props) {
               where: {
                 serial,
                 createdAt: {
-                  $gt: new Date(dateRange.from as Date),
-                  $lte: dateRange?.to && new Date(dateRange.to as Date),
+                  $gt: new Date("2023-05-01"),
+                  $lte: new Date("2023-12-01"),
                 },
               },
             },
@@ -86,7 +85,8 @@ export default function BarLineWidget(props: Props) {
         },
         xaxis: {
           type: "datetime",
-          max: dateRange?.to ? new Date(dateRange?.to).getTime() : undefined,
+          // max: dateRange?.to ? new Date(dateRange?.to).getTime() : undefined,
+          max: new Date("2024-12-01").getTime(),
           axisBorder: { show: false },
           axisTicks: { show: false },
           labels: {

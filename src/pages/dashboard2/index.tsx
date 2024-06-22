@@ -20,27 +20,30 @@ function DashboardPage2() {
             stacked: true,
             telemetries: [
               {
-                name: "EST11_REALISE_ROCHE",
+                name: "realise",
                 unit: "T",
                 color: "#78F6EA",
-                label: "Est 11",
-                serial: "U9XQMQ1DXYT7LJIP",
+                label: "realise",
+                serial: "DABF7PAT2G4BAG21",
                 type: "bar",
               },
               {
-                name: "EST12_REALISE_ROCHE",
+                name: "forcast",
                 unit: "T",
                 color: "#B98EFF",
-                label: "Est 12",
-                serial: "U9XQMQ1DXYT7LJIP",
+                label: "forcast",
+                serial: "DABF7PAT2G4BAG21",
+
                 type: "bar",
               },
+
               {
-                name: "EST12_REALISE_ROCHE",
+                name: "FC",
                 unit: "T",
                 color: "#5c07e5",
-                label: "Est 12",
-                serial: "U9XQMQ1DXYT7LJIP",
+                label: "FC",
+                serial: "DABF7PAT2G4BAG21",
+
                 type: "line",
               },
             ],
