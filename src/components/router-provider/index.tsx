@@ -8,6 +8,7 @@ import TreePage from "@/pages/tree";
 import NotfoundPage from "@/pages/notfound";
 import DevPage from "@/pages/dev";
 import DashboardPage2 from "@/pages/dashboard2";
+import IselDevPage from "@/pages/isel-dev";
 
 const routes: RouteObject[] = [
   {
@@ -33,6 +34,10 @@ const routes: RouteObject[] = [
       {
         path: "dev",
         element: <DevPage />,
+      },
+      {
+        path: "isel-dev",
+        element: <IselDevPage />,
       },
     ],
   },
