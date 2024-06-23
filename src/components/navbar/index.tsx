@@ -25,7 +25,7 @@ export default function Navbar() {
   const { pathname } = useLocation();
   return (
     <nav
-      className="sticky top-0 z-10 mx-auto flex items-center justify-between gap-6 border border-primary px-4 py-4 lg:px-6"
+      className="sticky top-0 z-10 mx-auto flex h-[4rem] items-center justify-between gap-6 border border-primary px-4 py-4 lg:px-6"
       style={{
         borderTopLeftRadius: "8px",
         borderTopRightRadius: "8px",

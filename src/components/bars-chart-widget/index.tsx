@@ -40,15 +40,16 @@ export default function BarsChartWidget(props: Props) {
               },
             },
           );
+          console.log(" |||||results ||||||", results);
           return results;
         }),
       );
-      return res.map((item, index) => ({
-        name: telemetries[index].label || telemetries[index].name,
-        type: telemetries[index].type,
+      return res?.map((item, index) => ({
+        name: telemetries[index]?.label || telemetries[index]?.name,
+        type: telemetries[index]?.type,
         data: item.map((item) => ({
-          x: new Date(item.createdAt),
-          y: Number(flatten(item)[telemetries[index].name]),
+          x: new Date(item?.createdAt || new Date()),
+          y: Number(flatten(item)[telemetries[index]?.name]),
         })),
       }));
     },
@@ -149,15 +150,17 @@ export default function BarsChartWidget(props: Props) {
           fontSize: "12px",
         },
       }}
-      series={(data || []).map((item) => ({
+      series={(data || [])?.map((item) => ({
         name: item.name,
-        type: "bar",
-        data: item.data.map((item) => ({
+        type: item.type,
+        data: (item?.data || [])?.map((item) => ({
           x: new Date(item.x),
           y: item.y,
         })),
       }))}
       type="line"
+      width={"100%"}
+      height={"100%"}
     />
   );
 }

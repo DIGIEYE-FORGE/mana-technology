@@ -12,7 +12,6 @@ export default function BarLineWidget(props: Props) {
 
   const telemetries = (props.attributes?.telemetries ||
     []) as ChartsWidgetData[];
-  // const stacked = (props.attributes?.stacked || false) as boolean;
 
   const { data, isLoading, error } = useSWR(
     `histories?${JSON.stringify({
@@ -32,24 +31,54 @@ export default function BarLineWidget(props: Props) {
               select: [name],
               where: {
                 serial,
-                createdAt: {
-                  $gt: new Date("2023-05-01"),
-                  $lte: new Date("2023-12-01"),
+                createdAt: props.dateRange && {
+                  $gte: props.dateRange.from,
+                  $lte: props.dateRange.to,
                 },
               },
             },
           );
+
           return results;
         }),
       );
-      return res.map((item, index) => ({
-        name: telemetries[index].label || telemetries[index].name,
-        type: telemetries[index].type,
-        data: item.map((item) => ({
-          x: new Date(item.createdAt),
-          y: Number(flatten(item)[telemetries[index].name]),
+      const res1 = [
+        ...res.map((item, index) => ({
+          name: telemetries[index].label || telemetries[index].name,
+          type: telemetries[index].type,
+          data: item.map((item) => ({
+            x: new Date(item.createdAt),
+            y: Number(flatten(item)[telemetries[index].name]),
+          })),
         })),
-      }));
+      ];
+      if (props.moyenne) {
+        const res2 = res1.map((item, index) => {
+          return {
+            name:
+              (telemetries[index].label || telemetries[index].name) +
+              " (moyenne)",
+            type: "line" as "line" | "bar",
+            data: [
+              {
+                x: new Date(item.data[0].x),
+                y:
+                  item.data.reduce((acc, item) => acc + item.y, 0) /
+                  item.data.length,
+              },
+              {
+                x: new Date(item.data[item.data.length - 1].x),
+                y:
+                  item.data.reduce((acc, item) => acc + item.y, 0) /
+                  item.data.length,
+              },
+            ],
+          };
+        });
+        res1.push(...res2);
+      }
+
+      return res1;
     },
   );
 
@@ -85,8 +114,8 @@ export default function BarLineWidget(props: Props) {
         },
         xaxis: {
           type: "datetime",
-          // max: dateRange?.to ? new Date(dateRange?.to).getTime() : undefined,
-          max: new Date("2024-12-01").getTime(),
+
+          max: props.dateRange?.to?.getTime(),
           axisBorder: { show: false },
           axisTicks: { show: false },
           labels: {
@@ -120,6 +149,7 @@ export default function BarLineWidget(props: Props) {
               },
             },
           },
+
           {
             opposite: true,
             axisTicks: {
@@ -131,7 +161,7 @@ export default function BarLineWidget(props: Props) {
             },
             labels: {
               formatter: function (value) {
-                return value.toFixed(2);
+                return value?.toFixed(2);
               },
             },
             title: {
@@ -162,8 +192,8 @@ export default function BarLineWidget(props: Props) {
           fontSize: "12px",
         },
       }}
-      series={
-        data?.map((item) => {
+      series={[
+        ...(data?.map((item) => {
           return {
             name: item.name,
             type: item.type,
@@ -172,8 +202,10 @@ export default function BarLineWidget(props: Props) {
               y: item.y,
             })),
           };
-        }) as any
-      }
+        }) as any),
+      ]}
+      width={"100%"}
+      height={"100%"}
       type="line"
     />
   );

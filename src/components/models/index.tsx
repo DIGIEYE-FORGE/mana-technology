@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // src/Model.tsx
-import { useEffect } from "react";
+import { forwardRef, useEffect } from "react";
 import { useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
-function Model({ url }: { url: string }) {
+const Model = forwardRef(({ url }: { url: string }, ref: any) => {
   const gltf = useLoader(GLTFLoader, url);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ function Model({ url }: { url: string }) {
     });
   }, [gltf]);
 
-  return <primitive object={gltf.scene} />;
-}
+  return <primitive object={gltf.scene} ref={ref} />;
+});
 
 export default Model;

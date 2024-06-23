@@ -174,6 +174,8 @@ export default function LinesWidget(props: Props) {
         };
       })}
       type="line"
+      width={"100%"}
+      height={"100%"}
     />
   );
 }
