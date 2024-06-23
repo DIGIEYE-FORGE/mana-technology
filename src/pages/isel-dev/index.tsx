@@ -89,8 +89,6 @@
 //   );
 // }
 
-import React from "react";
-
 function IselDevPage() {
   return <div>index</div>;
 }
