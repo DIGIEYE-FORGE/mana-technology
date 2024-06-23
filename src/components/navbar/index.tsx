@@ -9,6 +9,7 @@ const links = [
   { name: "Home", path: "/" },
   { name: "Tree", path: "/tree" },
   { name: "Dashboard", path: "/dashboard" },
+  { name: "Dashboard2", path: "/dashboard2" },
 ];
 
 export default function Navbar() {
