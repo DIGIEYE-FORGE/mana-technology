@@ -10,6 +10,7 @@ import DevPage from "@/pages/dev";
 import DashboardPage2 from "@/pages/dashboard2";
 import IselDevPage from "@/pages/isel-dev";
 import DashboardPage3 from "@/pages/dashboard3";
+import OjamilDevPage from "@/pages/ojamil-dev";
 
 const routes: RouteObject[] = [
   {
@@ -35,6 +36,10 @@ const routes: RouteObject[] = [
       {
         path: "tree",
         element: <TreePage />,
+      },
+      {
+        path: "ojamil",
+        element: <OjamilDevPage />,
       },
       {
         path: "dev",
