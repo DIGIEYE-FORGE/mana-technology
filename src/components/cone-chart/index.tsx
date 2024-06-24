@@ -62,7 +62,7 @@ interface ConChartProps
   }[];
 }
 
-export function ConChart({
+export function ConeChart({
   className,
   data,
   legendWidth = 200,

@@ -1,7 +1,7 @@
 import { useAppContext } from "@/Context";
 import BarLineWidget from "@/components/bar-line-widget";
 import { Card } from "@/components/card";
-import { ConChart } from "@/components/corn-chart";
+import { ConeChart } from "@/components/cone-chart";
 import { D3DonutChart } from "@/components/d3-donut chart";
 import Engins from "@/components/engins";
 import LineChartWidget from "@/components/line-chart-widget";
@@ -16,7 +16,7 @@ function DashboardPage2() {
         <h3 className="text-center text-lg font-semibold">
           Ce projet a travaillé 395 jours sans blessure avec arrêt de travail
         </h3>
-        <ConChart
+        <ConeChart
           data={[
             {
               name: "Quasi-accidents & observations",
