@@ -28,6 +28,10 @@ const routes: RouteObject[] = [
         element: <DashboardPage2 />,
       },
       {
+        path: "dashboard3",
+        element: <DashboardPage />,
+      },
+      {
         path: "tree",
         element: <TreePage />,
       },
