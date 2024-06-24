@@ -10,7 +10,6 @@ import AppContext from "./Context";
 import LoginPage from "./pages/login";
 import Navbar from "./components/navbar";
 import BpIndicator from "./components/bp-indicator";
-import { addDays } from "date-fns";
 
 function App() {
   const [user, setUser] = useState<User | null | undefined>(undefined);
@@ -23,8 +22,8 @@ function App() {
     z.string().default(""),
   );
   const [dateRange, setDateRange] = useState<TDateRange>({
-    from: new Date(),
-    to: addDays(new Date(), 1),
+    from: new Date("2024-06-01"),
+    to: new Date(),
   });
   const backendApi = useMemo(
     () =>

@@ -74,6 +74,9 @@ export type TableWidgetData = {
 
 export type Widget = {
   attributes?: JsonObject;
+  dateRange?: TDateRange;
+  yAxis?: boolean;
+  moyenne?: boolean;
 };
 
 export type ChartTelemetry = {

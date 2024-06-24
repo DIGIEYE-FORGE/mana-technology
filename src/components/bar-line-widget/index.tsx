@@ -8,19 +8,17 @@ import Loader from "@/components/loader";
 type Props = Widget;
 
 export default function BarLineWidget(props: Props) {
-  const { backendApi, dateRange } = useAppContext();
+  const { backendApi } = useAppContext();
 
   const telemetries = (props.attributes?.telemetries ||
     []) as ChartsWidgetData[];
-  // const stacked = (props.attributes?.stacked || false) as boolean;
 
   const { data, isLoading, error } = useSWR(
     `histories?${JSON.stringify({
       telemetries,
-      dateRange,
     })}`,
     async () => {
-      if (!dateRange?.from || telemetries.length === 0) return [];
+      if (telemetries.length === 0) return [];
       const res = await Promise.all(
         telemetries.map(async ({ serial, name }) => {
           const { results } = await backendApi.findMany<HistoryType>(
@@ -33,24 +31,54 @@ export default function BarLineWidget(props: Props) {
               select: [name],
               where: {
                 serial,
-                createdAt: {
-                  $gt: new Date(dateRange.from as Date),
-                  $lte: dateRange?.to && new Date(dateRange.to as Date),
+                createdAt: props.dateRange && {
+                  $gte: props.dateRange.from,
+                  $lte: props.dateRange.to,
                 },
               },
             },
           );
+
           return results;
         }),
       );
-      return res.map((item, index) => ({
-        name: telemetries[index].label || telemetries[index].name,
-        type: telemetries[index].type,
-        data: item.map((item) => ({
-          x: new Date(item.createdAt),
-          y: Number(flatten(item)[telemetries[index].name]),
+      const res1 = [
+        ...res.map((item, index) => ({
+          name: telemetries[index].label || telemetries[index].name,
+          type: telemetries[index].type,
+          data: item.map((item) => ({
+            x: new Date(item.createdAt),
+            y: Number(flatten(item)[telemetries[index].name]),
+          })),
         })),
-      }));
+      ];
+      if (props.moyenne) {
+        const res2 = res1.map((item, index) => {
+          return {
+            name:
+              (telemetries[index].label || telemetries[index].name) +
+              " (moyenne)",
+            type: "line" as "line" | "bar",
+            data: [
+              {
+                x: new Date(item.data[0].x),
+                y:
+                  item.data.reduce((acc, item) => acc + item.y, 0) /
+                  item.data.length,
+              },
+              {
+                x: new Date(item.data[item.data.length - 1].x),
+                y:
+                  item.data.reduce((acc, item) => acc + item.y, 0) /
+                  item.data.length,
+              },
+            ],
+          };
+        });
+        res1.push(...res2);
+      }
+
+      return res1;
     },
   );
 
@@ -82,11 +110,12 @@ export default function BarLineWidget(props: Props) {
         },
         dataLabels: { enabled: false },
         stroke: {
-          width: [0, 0, 4],
+          width: telemetries.map((item) => (item.type === "line" ? 3 : 0)),
         },
         xaxis: {
           type: "datetime",
-          max: dateRange?.to ? new Date(dateRange?.to).getTime() : undefined,
+
+          max: props.dateRange?.to?.getTime(),
           axisBorder: { show: false },
           axisTicks: { show: false },
           labels: {
@@ -106,19 +135,21 @@ export default function BarLineWidget(props: Props) {
             },
             axisBorder: {
               show: true,
-              // color: "#008FFB",
             },
-            // labels: {
-            //   style: {
-            //     colors: "#008FFB",
-            //   },
-            // },
+
             title: {
               style: {
                 color: "#008FFB",
               },
             },
+
+            labels: {
+              formatter: function (value) {
+                return value.toFixed(2);
+              },
+            },
           },
+
           {
             opposite: true,
             axisTicks: {
@@ -127,6 +158,11 @@ export default function BarLineWidget(props: Props) {
             axisBorder: {
               show: true,
               // color: "#FEB019",
+            },
+            labels: {
+              formatter: function (value) {
+                return value?.toFixed(2);
+              },
             },
             title: {
               style: {
@@ -156,8 +192,8 @@ export default function BarLineWidget(props: Props) {
           fontSize: "12px",
         },
       }}
-      series={
-        data?.map((item) => {
+      series={[
+        ...(data?.map((item) => {
           return {
             name: item.name,
             type: item.type,
@@ -166,8 +202,10 @@ export default function BarLineWidget(props: Props) {
               y: item.y,
             })),
           };
-        }) as any
-      }
+        }) as any),
+      ]}
+      width={"100%"}
+      height={"100%"}
       type="line"
     />
   );

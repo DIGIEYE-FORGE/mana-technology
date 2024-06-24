@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import * as d3 from "d3";
-import { Card } from "../card";
 
 const data = [
   { name: "Element 1", value: 18, color: "#F7DC6F" },
@@ -58,7 +57,7 @@ export const D3DonutChart = () => {
       } as any)
       .style("fill", "none")
       .style("stroke", "#FFFFFF")
-      .style("stroke-width", "0.5px");
+      .style("stroke-width", "0.02rem");
 
     svg
       .selectAll("path")
@@ -91,40 +90,32 @@ export const D3DonutChart = () => {
   };
 
   return (
-    <Card className="col-span-3 flex flex-col items-center p-4">
-      <h1 className="text-center text-lg font-semibold">
-        Avancement/Arrachement journalier
-      </h1>
-      <div className="grid w-full flex-1 grid-cols-10 items-center justify-center">
-        <div className="relative col-span-4 flex h-full flex-col p-5">
-          <h3 className="text-center font-semibold">BFS</h3>
-          <div className="my-2 h-[0.05rem] w-full bg-[#6981C0]"></div>
-          <div className="flex h-full w-full flex-col gap-0.5">
-            {data.map((d, i) => (
-              <div
-                key={i}
-                className="grid grid-cols-10 items-center gap-2 py-0.5"
-              >
-                <span
-                  className="col-span-2 h-3 rounded-md"
-                  style={{
-                    backgroundColor: d.color,
-                  }}
-                ></span>
-                <span className="col-span-7 line-clamp-1 text-sm font-semibold">
-                  {d.name}
-                </span>
-                <span className="col-span-1 text-sm font-semibold">
-                  {d.value}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="col-span-6 flex w-full items-center justify-center">
-          <svg viewBox="0 20 100 55" ref={ref}></svg>
+    <div className="grid w-full flex-1 grid-cols-10 items-center justify-center">
+      <div className="relative col-span-4 flex h-full flex-col p-5">
+        <h3 className="text-center font-semibold">BFS</h3>
+        <div className="my-2 h-[0.05rem] w-full bg-[#6981C0]"></div>
+        <div className="flex h-full w-full flex-col gap-0.5">
+          {data.map((d, i) => (
+            <div key={i} className="grid grid-cols-10 items-center gap-2 py-1">
+              <span
+                className="col-span-2 h-3 rounded-md"
+                style={{
+                  backgroundColor: d.color,
+                }}
+              ></span>
+              <span className="col-span-7 line-clamp-1 text-xs font-semibold">
+                {d.name}
+              </span>
+              <span className="col-span-1 text-xs font-semibold">
+                {d.value}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
-    </Card>
+      <div className="col-span-6 flex w-full items-center justify-center">
+        <svg viewBox="0 20 100 55" ref={ref}></svg>
+      </div>
+    </div>
   );
 };
