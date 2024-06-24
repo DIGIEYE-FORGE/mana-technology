@@ -29,7 +29,7 @@
     "build": "^0.1.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "colors": "^1.4.0",
+    "color": "^4.2.3",
     "d3": "^7.9.0",
     "date-fns": "^3.6.0",
     "framer-motion": "^11.2.10",
@@ -50,6 +50,7 @@
     "zustand": "^4.5.2"
   },
   "devDependencies": {
+    "@types/color": "^3.0.6",
     "@types/node": "^20.14.2",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
