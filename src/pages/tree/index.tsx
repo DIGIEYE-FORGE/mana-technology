@@ -28,14 +28,44 @@ function RotatingModel({ modelRef }: { modelRef: any }) {
   return null; // This component doesn't render anything visible
 }
 
+const machinesImages = [
+  "/machine-01.svg",
+  "/machine-02.svg",
+  "/machine-03.svg",
+  "/machine-04.svg",
+  "/machine-05.svg",
+  "/machine-06.svg",
+];
+
 function TreePage() {
   const modelRef = useRef();
 
   return (
     <div className="h-full w-full">
+      <div className="debug absolute bottom-0 left-0 h-full w-full overflow-hidden">
+        {machinesImages.map((image, index) => {
+          return (
+            <div
+              className="absolute inset-x-[14rem] bottom-[8rem]"
+              style={{
+                transform: `rotate(${(180 / (machinesImages.length - 1)) * index}deg) `,
+              }}
+            >
+              <img
+                src={image}
+                alt={image}
+                className="absolute bottom-1/2 left-0 w-32"
+                style={{
+                  transform: `translateY(50%) rotate(-${(180 / (machinesImages.length - 1)) * index}deg) `,
+                }}
+              />
+            </div>
+          );
+        })}
+      </div>
       <Canvas
         shadows
-        camera={{ position: [10, 45, 20], fov: 35 }}
+        camera={{ position: [10, 0, 35], fov: 35 }}
         onCreated={({ gl }) => {
           gl.shadowMap.enabled = true;
         }}
