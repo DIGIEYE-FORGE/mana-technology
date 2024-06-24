@@ -19,14 +19,14 @@ function Engins({ attribute }: EnginsProps) {
       </div>
       <div className="flex h-[14rem] flex-col gap-2 overflow-auto">
         {attribute.map((engin, index) => (
-          <div key={index} className="flex items-center gap-4">
-            <div className="flex w-[25%] items-center gap-2">
+          <div key={index} className="flex flex-wrap items-center gap-4">
+            <div className="flex w-[25%] min-w-[3rem] items-center gap-2">
               <span className="text-sm font-bold text-white">
                 {engin.label}
               </span>
               <img src={engin.icon} alt={engin.name} className="size-[3rem]" />
             </div>
-            <div className="relative h-[2rem] w-[35%]">
+            <div className="relative h-[2rem] w-[35%] min-w-[5rem]">
               <Progress
                 key={index}
                 value={engin.value || 0}
@@ -37,7 +37,7 @@ function Engins({ attribute }: EnginsProps) {
                 <span className="font-bold text-[#2B50C0]">{engin.value}%</span>
               </div>
             </div>
-            <div className="flex flex-1 items-center gap-1">
+            <div className="flex min-w-[5rem] flex-1 items-center gap-1">
               <div
                 className={`size-5x rounded-full p-2 text-center ${
                   engin.disponibillite === "Disponible"

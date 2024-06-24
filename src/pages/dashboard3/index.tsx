@@ -1,7 +1,192 @@
+import BarChartWidget from "@/components/bar-chart-widget";
+import { Card } from "@/components/card";
+import LineChartWidget from "@/components/line-chart-widget";
 import React from "react";
+import { ProgressAccumulation } from "../home/_components/progress-accumulation";
+import TableWidget from "@/components/table-widget";
 
-function Dashboard3Page() {
-  return <div className="h-full w-full">Dashboard3Page</div>;
+function DashboardPage3() {
+  return (
+    <div className="grid h-full w-full grid-flow-dense auto-rows-[19rem] grid-cols-9 gap-6">
+      <Card className="col-span-3 flex flex-col p-4">
+        <h3 className="text-center text-lg font-semibold">
+          Evolution Production cumule
+        </h3>
+        <div className="flex-1">
+          <LineChartWidget
+            attributes={{
+              telemetries: [
+                {
+                  area: false,
+                  name: "EST_PLANIFIE_ROCHE_CUMUL",
+                  color: "#78F6EA",
+                  label: "Cumulative planifié",
+                  serial: "U9XQMQ1DXYT7LJIP",
+                },
+                {
+                  area: true,
+                  name: "EST_REALISE_ROCHE_CUMUL_Ton",
+                  color: "#B98EFF",
+                  label: "Cumulative realisé",
+                  serial: "U9XQMQ1DXYT7LJIP",
+                },
+              ],
+            }}
+          />
+        </div>
+      </Card>
+      <Card className="col-span-3 flex flex-col p-4">
+        <h3 className="text-center text-lg font-semibold">
+          Production Journaliére
+        </h3>
+        <div className="flex-1">
+          <BarChartWidget
+            moyenne={true}
+            attributes={{
+              stacked: true,
+              telemetries: [
+                {
+                  name: "EST11_REALISE_ROCHE",
+                  unit: "T",
+                  color: "#78F6EA",
+                  label: "Est 11",
+                  serial: "U9XQMQ1DXYT7LJIP",
+                },
+                {
+                  name: "EST12_REALISE_ROCHE",
+                  unit: "T",
+                  color: "#B98EFF",
+                  label: "Est 12",
+                  serial: "U9XQMQ1DXYT7LJIP",
+                },
+              ],
+            }}
+          />
+        </div>
+      </Card>
+      <Card className="col-span-3 flex flex-col p-4">
+        <h3 className="text-center text-lg font-semibold">STERILE / MINERAI</h3>
+        <div className="flex-1">
+          <BarChartWidget
+            // title="Daily Production BreakUp"
+            attributes={{
+              telemetries: [
+                {
+                  name: "EST_PLANIFIE_MINERAI",
+                  unit: "T",
+                  color: "#FE22EB",
+                  label: "MINERAI Planifié",
+                  serial: "U9XQMQ1DXYT7LJIP",
+                },
+                {
+                  name: "EST_PLANIFIE_STERILE",
+                  unit: "T",
+                  color: "#B98EFF",
+                  label: "STERILE Planifié",
+                  serial: "U9XQMQ1DXYT7LJIP",
+                },
+                {
+                  name: "EST_REALISE_MIENRAI",
+                  unit: "T",
+                  color: "#FEC33A",
+                  label: "MINERAI Realisé",
+                  serial: "U9XQMQ1DXYT7LJIP",
+                },
+                {
+                  name: "EST_REALISE_STERILE",
+                  unit: "T",
+                  color: "#78F6EA",
+                  label: "STERILE Realisé",
+                  serial: "U9XQMQ1DXYT7LJIP",
+                },
+              ],
+            }}
+          />
+        </div>
+      </Card>
+      <Card className="col-span-2 flex flex-col p-4">
+        <h1 className="text-center text-lg font-semibold">
+          Evolution de la Production vs Planifié
+        </h1>
+        <ProgressAccumulation
+          attributes={{
+            serial: "U9XQMQ1DXYT7LJIP",
+            progressColor: "#EBC94A",
+            currentTargetColor: "#78F6EA",
+            progressTelemetryName: "EST_REALISE_ROCHE_CUMUL_Ton",
+            accumulationTelemetryName: "EST_PLANIFIE_ROCHE_CUMUL",
+          }}
+        />
+      </Card>
+      <Card className="col-span-4">1</Card>
+      <Card className="col-span-3 flex items-center justify-center text-3xl font-bold">
+        Photo
+      </Card>
+      <Card className="col-span-5 p-4">
+        <h3 className="text-center text-lg font-semibold">Suivi des Tires</h3>
+        <TableWidget
+          className="flex-1"
+          attributes={{
+            serial: "C6XPYU0D920L1M07",
+            element: "telemetries",
+            mappings: [
+              {
+                displayName: "",
+                telemetryName: "NUMERO_DE_TIR",
+              },
+              {
+                displayName: "",
+                telemetryName: "NUMERO_DE_TIR",
+              },
+              {
+                displayName: "",
+                telemetryName: "QUNTITE_EXPLOSIF_TIRE",
+              },
+              {
+                displayName: "",
+                telemetryName: "ZONE DE TIRE",
+              },
+              {
+                displayName: "",
+                telemetryName: "TONNAE_MINERAI_ABATTU",
+              },
+              {
+                displayName: "",
+                telemetryName: "TONNAE_STERILE_ABATTU",
+              },
+            ],
+          }}
+        />
+      </Card>
+      <Card className="col-span-4 flex flex-col p-4">
+        <h1 className="text-center text-lg font-semibold">
+          Evolution Production cumule
+        </h1>
+        <div className="flex-1">
+          <LineChartWidget
+            attributes={{
+              telemetries: [
+                {
+                  area: true,
+                  name: "EST_REALISE_FORATION",
+                  color: "#B98EFF",
+                  label: "Realisé ML/J",
+                  serial: "U9XQMQ1DXYT7LJIP",
+                },
+                {
+                  area: false,
+                  name: "EST_PLANIFIE_FORATION",
+                  color: "#78F6EA",
+                  label: "Objectif ML/J",
+                  serial: "U9XQMQ1DXYT7LJIP",
+                },
+              ],
+            }}
+          />
+        </div>
+      </Card>
+    </div>
+  );
 }
 
-export default Dashboard3Page;
+export default DashboardPage3;
