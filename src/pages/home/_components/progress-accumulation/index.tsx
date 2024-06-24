@@ -21,7 +21,7 @@ function lastOfMonth(): Date {
 }
 
 export function ProgressAccumulation({ attributes }: Widget) {
-  const { backendApi } = useAppContext();
+  const { backendApi, dateRange } = useAppContext();
 
   const {
     serial,
@@ -32,12 +32,14 @@ export function ProgressAccumulation({ attributes }: Widget) {
     finalTargetColor = "#64748b",
   } = attributes as ProgressAccumulationWidgetData;
 
-  const key = `progressAcc?`;
-  JSON.stringify({
-    serial,
-    progressTelemetryName,
-    accumulationTelemetryName,
-  });
+  const key =
+    `progressAcc?` +
+    JSON.stringify({
+      serial,
+      progressTelemetryName,
+      accumulationTelemetryName,
+      dateRange,
+    });
 
   const { data, isLoading, error } = useSWR(
     key,
@@ -59,20 +61,24 @@ export function ProgressAccumulation({ attributes }: Widget) {
           where: { serial, createdAt: { $lte: lastOfMonth() } },
         });
       if (endOfMountResult.length === 0) return null;
-      const { results: current } = await backendApi.findMany<HistoryType>(
-        "/dpc-history/api/history",
-        {
+      const { results: currentProgressResults } =
+        await backendApi.findMany<HistoryType>("/dpc-history/api/history", {
           pagination: { page: 1, perPage: 1 },
           orderBy: "createdAt:desc",
-          select: [accumulationTelemetryName, progressTelemetryName],
-          where: { serial, createdAt: { $lte: new Date() } },
-        },
-      );
+          select: [progressTelemetryName],
+          where: { serial, createdAt: { $lte: dateRange?.to } },
+        });
+      const { results: currentTargetResults } =
+        await backendApi.findMany<HistoryType>("/dpc-history/api/history", {
+          pagination: { page: 1, perPage: 1 },
+          orderBy: "createdAt:desc",
+          select: [accumulationTelemetryName],
+          where: { serial, createdAt: { $lte: dateRange?.to } },
+        });
 
-      if (current.length === 0) return null;
-      const currentTarget = current[0][progressTelemetryName];
       const finalTarget = endOfMountResult[0][accumulationTelemetryName];
-      const progress = currentResults[0][accumulationTelemetryName];
+      const currentTarget = currentTargetResults[0][accumulationTelemetryName];
+      const progress = currentProgressResults[0][progressTelemetryName];
 
       return { currentTarget, finalTarget, progress } as Record<
         string,
