@@ -113,19 +113,22 @@ export function ProgressAccumulation({ attributes }: Widget) {
   return (
     <Fragment>
       <div className="relative h-1 flex-1 p-8">
-        {currentTarget && progress ? (
-          <span
-            className={cn(
-              "absolute right-1/2 top-1/2 translate-x-1/2 text-3xl font-bold text-green-500",
-              {
-                "text-red-500": progress < currentTarget,
-              },
-            )}
-          >
-            {progress >= currentTarget && "+"}
-            {(((progress - currentTarget) / currentTarget) * 100).toFixed(2)}%
+        <div className="absolute bottom-8 right-1/2 flex -translate-y-1/4 translate-x-1/2 flex-col items-center gap-1">
+          <span className="text-3xl font-bold">
+            {((progress / finalTarget) * 100).toFixed(2)} %
           </span>
-        ) : null}
+
+          {currentTarget && progress ? (
+            <span
+              className={cn("text-base font-bold text-green-500", {
+                "text-red-500": progress < currentTarget,
+              })}
+            >
+              {progress >= currentTarget && "+"}
+              {(((progress - currentTarget) / currentTarget) * 100).toFixed(2)}%
+            </span>
+          ) : null}
+        </div>
         <svg
           className="h-full w-full"
           width="144"
