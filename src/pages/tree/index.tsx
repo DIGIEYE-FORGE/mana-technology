@@ -54,7 +54,7 @@ function TreePage() {
               <img
                 src={image}
                 alt={image}
-                className="absolute bottom-1/2 left-0 w-32"
+                className="absolute bottom-1/2 left-0 h-40"
                 style={{
                   transform: `translateY(50%) rotate(-${(180 / (machinesImages.length - 1)) * index}deg) `,
                 }}
