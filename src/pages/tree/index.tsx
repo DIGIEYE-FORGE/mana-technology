@@ -46,7 +46,7 @@ function TreePage() {
         {machinesImages.map((image, index) => {
           return (
             <div
-              className="absolute inset-x-[14rem] bottom-[8rem]"
+              className="absolute inset-x-[6rem] bottom-[8rem]"
               style={{
                 transform: `rotate(${(180 / (machinesImages.length - 1)) * index}deg) `,
               }}

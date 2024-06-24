@@ -1,96 +1,149 @@
-// /* eslint-disable @typescript-eslint/no-explicit-any */
-// import { Card } from "@/components/card";
-// import { cn } from "@/lib/utils";
-// import { useEffect, useRef } from "react";
-// import * as d3 from "d3";
-// interface PolarAreaProps extends React.SVGProps<HTMLDivElement> {
-//   data: {
-//     label: string;
-//     value: number;
-//     color?: string;
-//   }[];
-//   innerRadius?: number;
-//   cornerRadius?: number;
-// }
+import { Card } from "@/components/card";
+import { ProgressCircle } from "@/components/progress-circle";
+import { cn } from "@/lib/utils";
+import Color from "color";
+import { HTMLMotionProps, motion } from "framer-motion";
+interface ConeProps extends HTMLMotionProps<"div"> {
+  data: {
+    name: string;
+    value: number;
+    color: string;
+  }[];
+}
 
-// const PolarArea = ({
-//   data,
-//   className,
-//   innerRadius = 10,
-//   cornerRadius = 1,
-//   ...props
-// }: PolarAreaProps) => {
-//   const ref = useRef<SVGSVGElement>(null);
-//   useEffect(() => {
-//     const svg = d3.select(ref.current).data([data]);
-//     if (!svg) return;
-//     const max = d3.max(data, (d) => d.value) || 0;
+const Cone = ({ data, style, children, ...props }: ConeProps) => {
+  const sum = data.reduce((acc, curr) => acc + curr.value, 0);
+  const cum = data.reduce((acc, curr, index) => {
+    acc.push(index === 0 ? curr.value : acc[index - 1] + curr.value);
+    return acc;
+  }, [] as number[]);
 
-//     const arcs = svg
-//       .selectAll("path")
-//       .data(data)
-//       .enter()
-//       .append("path")
-//       .attr("d", (d, i) => {
-//         const arc: any = d3
-//           .arc()
-//           .cornerRadius(cornerRadius)
-//           .innerRadius(innerRadius)
-//           .outerRadius(innerRadius + ((50 - innerRadius) * d.value) / max)
-//           .startAngle((i * (2 * Math.PI)) / data.length)
-//           .endAngle(((i + 1) * (2 * Math.PI)) / data.length + 0.0005);
-//         return arc();
-//       })
-//       .attr("transform", "translate(50,50)")
-//       .attr("fill", (d) => d.color || "black");
+  const gdF = 0.15;
+  const colors2 = data.map((item, index) => {
+    const start = index === 0 ? 0 : (cum[index - 1] / sum) * 100;
+    const end = (cum[index] / sum) * 100;
+    const color = Color(item.color);
+    return `${color} ${start}% , ${color.darken(gdF)} ${end}%`;
+  });
+  const colors1 = data.map((item, index) => {
+    const start = index === 0 ? 0 : (cum[index - 1] / sum) * 100;
+    const end = (cum[index] / sum) * 100;
+    const color = Color(item.color);
+    return `${color.darken(gdF)} ${start}% , ${color.darken(2 * gdF)} ${end}%`;
+  });
 
-//     svg
-//       .append("circle")
-//       .attr("cx", 50)
-//       .attr("cy", 50)
-//       .attr("r", innerRadius + cornerRadius)
-//       .attr("fill", "white");
+  return (
+    <motion.div
+      transition={{
+        duration: 1,
+        ease: "easeInOut",
+      }}
+      style={{
+        clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)",
+        // overflow: "hidden",
+        backgroundImage: `linear-gradient(to top, ${colors1.join(",")}), linear-gradient(to top, ${colors2.join(",")})`,
+        backgroundSize: "50% 100% , 100% 100%",
+        backgroundRepeat: "no-repeat",
+        ...style,
+      }}
+      {...props}
+    >
+      <>{children}</>
+    </motion.div>
+  );
+};
+const data = [
+  { name: "Quasi-accidents & observations", value: 30, color: "#009AB6" },
+  { name: "Cas de traitement médical", value: 20, color: "#FFCA05" },
+  { name: "Blessure avec perte de temps", value: 50, color: "#F650A0" },
+  { name: "Fatally", value: 30, color: "#903E92" },
+];
 
-//     return () => {
-//       svg.selectAll("*").remove();
-//     };
-//   }, [data, innerRadius, cornerRadius]);
-//   return (
-//     <div className={cn("", className)} {...props}>
-//       <svg
-//         ref={ref}
-//         viewBox="0 0 100 100"
-//         xmlns="http://www.w3.org/2000/svg"
-//         className="h-full w-full"
-//       ></svg>
-//     </div>
-//   );
-// };
-
-// export default function IselDevPage() {
-//   return (
-//     <main className="grid place-content-center">
-//       <Card className="aspect-square w-96 p-6">
-//         <PolarArea
-//           innerRadius={10}
-//           cornerRadius={2}
-//           data={[
-//             { label: "C", value: 50, color: "#68FF80" },
-//             { label: "B", value: 45, color: "#05F2C7" },
-//             { label: "A", value: 40, color: "#7A0BC0" },
-//             { label: "D", value: 35, color: "#F20574" },
-//             { label: "D", value: 30, color: "#F25C05" },
-//             { label: "D", value: 25, color: "#F2A104" },
-//             { label: "D", value: 20, color: "#F2E205" },
-//           ]}
-//         />
-//       </Card>
-//     </main>
-//   );
-// }
+interface ConChartProps
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, "children"> {
+  legendWidth?: number;
+  data: {
+    name: string;
+    value: number;
+    color: string;
+  }[];
+}
+function ConChart({ className, data, legendWidth = 200 }: ConChartProps) {
+  const cum = data.reduce((acc, curr, index) => {
+    acc.push(index === 0 ? curr.value : acc[index - 1] + curr.value);
+    return acc;
+  }, [] as number[]);
+  const cumAvg = data.reduce((acc, curr, index) => {
+    acc.push(index === 0 ? curr.value / 2 : cum[index - 1] + curr.value / 2);
+    return acc;
+  }, [] as number[]);
+  const sum = data.reduce((acc, curr) => acc + curr.value, 0);
+  return (
+    <div className={cn("flex w-full justify-between", className)}>
+      <div className={cn("relative h-full w-full flex-1")}>
+        <div
+          className={cn("full relative h-full")}
+          style={{
+            width: `calc(100% - ${legendWidth + 12}px)`,
+          }}
+        >
+          <Cone className="h-full" data={data} />
+          {data.map((item, index) => {
+            return (
+              <div
+                style={{
+                  bottom: `${(cumAvg[index] / sum) * 100}%`,
+                }}
+                key={index}
+                className="absolute left-1/2 flex w-full translate-y-1/2 items-center gap-3 rounded"
+              >
+                <div className="h-1 w-1/2 shrink-0 rounded bg-[#DBDBDB]"></div>
+                <div
+                  className="flex shrink-0 flex-col overflow-hidden"
+                  style={{ width: legendWidth }}
+                >
+                  <span className="w-full truncate whitespace-nowrap text-base">
+                    {item.name}
+                  </span>
+                  <span className="text-base font-bold text-[#FAAC18]">
+                    {item.value}
+                  </span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <div className="flex w-64 flex-wrap items-center justify-evenly">
+        {data.map((item, index) => {
+          return (
+            <ProgressCircle
+              key={index}
+              className="font-ex size-24 text-xs"
+              progress={(item.value / sum) * 100}
+              backgroundColor={Color(item.color).alpha(0.1).hex()}
+              gradientEndColor={Color(item.color).darken(0.2).hex()}
+              gradientStartColor={Color(item.color).lighten(0.2).hex()}
+              // gradientStartColor={Color(item.color).darken(0.4).toString()}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
+}
 
 function IselDevPage() {
-  return <div>index</div>;
+  return (
+    <main className="grid h-full place-content-center">
+      <Card className="flex aspect-video h-96 flex-col gap-4 p-6">
+        <h3 className="text-center text-lg font-semibold">
+          Ce projet a travaillé 395 jours sans blessure avec arrêt de travail
+        </h3>
+        <ConChart data={data} className="flex-1" />
+      </Card>
+    </main>
+  );
 }
 
 export default IselDevPage;
