@@ -1,16 +1,18 @@
 import { useAppContext } from "@/Context";
 import BarLineWidget from "@/components/bar-line-widget";
 import { Card } from "@/components/card";
+import { D3DonutChart } from "@/components/d3-donut chart";
+import Engins from "@/components/engins";
+import LineChartWidget from "@/components/line-chart-widget";
 import LinesWidget from "@/components/lines-chart-widget";
-import MultiProgressWidget from "@/components/multi-progress-widget";
 import Ventillation from "@/components/ventillation";
 
 function DashboardPage2() {
   const { dateRange } = useAppContext();
   return (
-    <div className="grid h-fit w-full grid-flow-dense auto-rows-[19rem] grid-cols-3 gap-6">
-      <Card className="">1</Card>
-      <Card className="flex flex-col p-4">
+    <div className="grid h-fit w-full grid-flow-dense auto-rows-[19rem] grid-cols-9 gap-6">
+      <Card className="col-span-3">1</Card>
+      <Card className="col-span-3 flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
           Avancement cumulatif annuel
         </h1>
@@ -68,7 +70,7 @@ function DashboardPage2() {
           />
         </div>
       </Card>
-      <Card className="flex flex-col p-4">
+      <Card className="col-span-3 flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
           Avancement Cumulé :
           <span className="text-md text-gray-400"> Réalisé vs Planifié</span>
@@ -100,13 +102,14 @@ function DashboardPage2() {
           />
         </div>
       </Card>
-      <Card className="flex flex-col p-4">
+
+      <Card className="col-span-3 flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
           Dashboard ventillation
         </h1>
         <Ventillation />
       </Card>
-      <Card className="flex flex-col p-4">
+      <Card className="col-span-3 flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
           Arrachement (m) journalier
         </h1>
@@ -138,7 +141,7 @@ function DashboardPage2() {
           />
         </div>
       </Card>
-      <Card className="flex flex-col p-4">
+      <Card className="col-span-3 flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
           Nombre Tir{" "}
           <span className="text-gray-500">(planifié vs réalisé)</span>
@@ -189,36 +192,69 @@ function DashboardPage2() {
           />
         </div>
       </Card>
-      <Card className="">7</Card>
-      <Card className="">8</Card>
-      <Card className="flex flex-col p-4">
-        <h3 className="text-center text-lg font-semibold">
-          Disponibilité et utilisation des engins
-        </h3>
-        <div className="flex-1">
-          <MultiProgressWidget
+      <Card className="col-span-3 p-4">
+        <h1 className="text-center text-lg font-semibold">
+          Avancement/Arrachement journalier
+        </h1>
+        <D3DonutChart />
+      </Card>
+      <Card className="col-span-2 flex flex-col gap-1 p-4">
+        <h1 className="text-center text-lg font-semibold">
+          Avancement/Arrachement journalier
+        </h1>
+        <div className="h-1 flex-1">
+          <LineChartWidget
             attributes={{
               telemetries: [
                 {
-                  name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
-                  color: "#ecc94b",
-                  label: "Foreuse Epiroc  T45 (1)",
-                  serial: "U9XQMQ1DXYT7LJIP",
-                },
-                {
-                  name: "GMC_FOREUSE_EPRIROC_T45_02_DISPO",
-                  color: "#ecc94b",
-                  label: "Foreuse Epiroc  T45 (2)",
-                  serial: "U9XQMQ1DXYT7LJIP",
-                },
-                {
-                  name: "GMC_FOREUSE_EPRIROC_T35_01_DISPO",
-                  color: "#ecc94b",
-                  label: "Foreuse Epiroc T35 ",
+                  area: true,
+                  name: "EST_REALISE_FORATION",
+                  color: "#78F6EA",
+                  label: "Realisé ML/J",
                   serial: "U9XQMQ1DXYT7LJIP",
                 },
               ],
             }}
+          />
+        </div>
+      </Card>
+      <Card className="col-span-2">10</Card>
+      <Card className="col-span-2 flex flex-col p-4">
+        <h3 className="text-center text-lg font-semibold">
+          Disponibilité et utilisation des engins
+        </h3>
+        <div className="flex-1">
+          <Engins
+            attribute={[
+              {
+                name: "LH06",
+                label: "LH06",
+                disponibillite: "Standby",
+                icon: "/truck.svg",
+                value: 65,
+              },
+              {
+                name: "LH06",
+                label: "LH06",
+                disponibillite: "Disponible",
+                icon: "/truck.svg",
+                value: 43,
+              },
+              {
+                name: "LH06",
+                label: "LH06",
+                disponibillite: "Disponible",
+                icon: "/truck.svg",
+                value: 89,
+              },
+              {
+                name: "LH06",
+                label: "LH06",
+                disponibillite: "Indisponible",
+                icon: "/truck.svg",
+                value: 48,
+              },
+            ]}
           />
         </div>
       </Card>
