@@ -12,6 +12,7 @@ const Model = forwardRef(({ url }: { url: string }, ref: any) => {
       if ((node as any).isMesh) {
         (node as any).castShadow = true;
         (node as any).receiveShadow = true;
+
         // add color to the mesh
         (node as any).material.color.set("white");
       }

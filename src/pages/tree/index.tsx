@@ -42,7 +42,7 @@ function TreePage() {
 
   return (
     <div className="h-full w-full">
-      <div className="debug absolute bottom-0 left-0 h-full w-full overflow-hidden">
+      <div className="absolute bottom-0 left-0 h-full w-full overflow-hidden">
         {machinesImages.map((image, index) => {
           return (
             <div
@@ -54,7 +54,7 @@ function TreePage() {
               <img
                 src={image}
                 alt={image}
-                className="absolute bottom-1/2 left-0 w-32"
+                className="absolute bottom-1/2 left-0 h-40"
                 style={{
                   transform: `translateY(50%) rotate(-${(180 / (machinesImages.length - 1)) * index}deg) `,
                 }}
@@ -65,7 +65,13 @@ function TreePage() {
       </div>
       <Canvas
         shadows
-        camera={{ position: [10, 0, 35], fov: 35 }}
+        camera={{
+          position: [0, 20, 40],
+          fov: 35,
+          localToWorld(vector) {
+            return vector;
+          },
+        }}
         onCreated={({ gl }) => {
           gl.shadowMap.enabled = true;
         }}
@@ -89,16 +95,8 @@ function TreePage() {
             ref={modelRef}
           />
         </Suspense>
-        <mesh
-          receiveShadow
-          rotation={[-Math.PI / 2, 0, 0]}
-          position={[0, -1, 0]}
-        >
-          <planeGeometry attach="geometry" args={[200, 100]} />
-          <shadowMaterial attach="material" opacity={0.5} />
-        </mesh>
         <RotatingModel modelRef={modelRef} />
-        <OrbitControls />
+        <OrbitControls zoomToCursor />
       </Canvas>
     </div>
   );
