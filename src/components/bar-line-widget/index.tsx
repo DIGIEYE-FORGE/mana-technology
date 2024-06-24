@@ -1,5 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ChartsWidgetData, HistoryType, Widget, flatten } from "@/utils";
+import {
+  ChartsWidgetData,
+  HistoryType,
+  Widget,
+  flatten,
+  getRandomColor,
+} from "@/utils";
 import useSWR from "swr";
 import { useAppContext } from "@/Context";
 import Chart from "react-apexcharts";
@@ -53,12 +59,13 @@ export default function BarLineWidget(props: Props) {
         })),
       ];
       if (props.moyenne) {
-        const res2 = res1.map((item, index) => {
+        const res2 = (res1 || [])?.map((item, index) => {
           return {
             name:
               (telemetries[index].label || telemetries[index].name) +
               " (moyenne)",
             type: "line" as "line" | "bar",
+            color: getRandomColor(),
             data: [
               {
                 x: new Date(item.data[0].x),

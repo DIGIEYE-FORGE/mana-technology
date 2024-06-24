@@ -1,4 +1,10 @@
-import { ChartTelemetry, HistoryType, Widget, flatten } from "@/utils";
+import {
+  ChartTelemetry,
+  HistoryType,
+  Widget,
+  flatten,
+  getRandomColor,
+} from "@/utils";
 import useSWR from "swr";
 import { useAppContext } from "@/Context";
 import ReactApexChart from "react-apexcharts";
@@ -47,7 +53,7 @@ export default function LineChartWidget({
           return results;
         }),
       );
-      return res.map((item, index) => ({
+      const res1 = res.map((item, index) => ({
         name: telemetries[index].label || telemetries[index].name,
         type: telemetries[index].area ? "area" : "line",
         data: item.map((item) => ({
@@ -55,6 +61,33 @@ export default function LineChartWidget({
           y: Number(flatten(item)[telemetries[index].name]),
         })),
       }));
+      if (props.moyenne) {
+        const res2 = res1.map((item, index) => {
+          return {
+            name:
+              (telemetries[index].label || telemetries[index].name) +
+              " (moyenne)",
+            type: "line",
+            color: getRandomColor(),
+            data: [
+              {
+                x: new Date(item.data[0].x),
+                y:
+                  item.data.reduce((acc, item) => acc + item.y, 0) /
+                  item.data.length,
+              },
+              {
+                x: new Date(item.data[item.data.length - 1].x),
+                y:
+                  item.data.reduce((acc, item) => acc + item.y, 0) /
+                  item.data.length,
+              },
+            ],
+          };
+        });
+        res1.push(...res2);
+      }
+      return res1;
     },
   );
 

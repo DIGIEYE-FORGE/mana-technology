@@ -93,12 +93,12 @@ function Ventillation() {
       <div className="flex w-full flex-wrap justify-between">
         {data.map((item, index) => (
           <div className="flex flex-col items-center" key={index}>
-            <div className="rounded-full bg-[#061781] p-2">
+            <div className="rounded-full bg-[#061781] p-3">
               <img
                 src={item.icon ? item.icon : "/co2.svg"}
                 alt=""
-                width={20}
-                height={20}
+                width={25}
+                height={25}
               />
             </div>
 

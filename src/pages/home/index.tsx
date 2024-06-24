@@ -41,7 +41,7 @@ export default function HomePage() {
         </h1>
         <div className="flex-1">
           <BarChartWidget
-            // title="Daily Production BreakUp"
+            moyenne={true}
             attributes={{
               stacked: true,
               telemetries: [
@@ -149,6 +149,7 @@ export default function HomePage() {
         </h1>
         <div className="flex-1">
           <LineChartWidget
+            moyenne={true}
             attributes={{
               telemetries: [
                 {
@@ -233,7 +234,7 @@ export default function HomePage() {
           />
         </div>
       </Card>
-      <Card className="col-span-full row-span-6 flex flex-col gap-3 p-4 2xl:col-span-3">
+      <Card className="col-span-full row-span-3 flex flex-col gap-3 p-4 2xl:col-span-3">
         <h3 className="text-center text-lg font-semibold">
           Disponibilité Engine GMC
         </h3>
@@ -333,6 +334,9 @@ export default function HomePage() {
             ],
           }}
         />
+      </Card>
+      <Card className="col-span-full row-span-3 flex flex-col gap-3 p-4 2xl:col-span-3">
+        <h3 className="text-center text-lg font-semibold">Comment</h3>
       </Card>
     </main>
   );

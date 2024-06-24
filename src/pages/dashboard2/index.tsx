@@ -1,15 +1,27 @@
 import { useAppContext } from "@/Context";
 import BarLineWidget from "@/components/bar-line-widget";
 import { Card } from "@/components/card";
+import Engins from "@/components/engins";
+import LineChartWidget from "@/components/line-chart-widget";
 import LinesWidget from "@/components/lines-chart-widget";
-import MultiProgressWidget from "@/components/multi-progress-widget";
+import PyramidChart from "@/components/pyramid-chart";
 import Ventillation from "@/components/ventillation";
 
 function DashboardPage2() {
   const { dateRange } = useAppContext();
   return (
     <div className="grid h-fit w-full grid-flow-dense auto-rows-[19rem] grid-cols-3 gap-6">
-      <Card className="">1</Card>
+      <Card className="flex flex-col p-4">
+        <PyramidChart
+          data={[
+            { level: "Level 1", value: 100 },
+            { level: "Level 2", value: 80 },
+            { level: "Level 3", value: 60 },
+            { level: "Level 4", value: 40 },
+            { level: "Level 5", value: 20 },
+          ]}
+        />
+      </Card>
       <Card className="flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
           Avancement cumulatif annuel
@@ -189,36 +201,63 @@ function DashboardPage2() {
           />
         </div>
       </Card>
-      <Card className="">7</Card>
-      <Card className="">8</Card>
       <Card className="flex flex-col p-4">
-        <h3 className="text-center text-lg font-semibold">
-          Disponibilité et utilisation des engins
-        </h3>
+        <h1 className="text-center text-lg font-semibold">
+          Moyenne par mois du temps de cycle
+        </h1>
         <div className="flex-1">
-          <MultiProgressWidget
+          <LineChartWidget
             attributes={{
               telemetries: [
                 {
-                  name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
-                  color: "#ecc94b",
-                  label: "Foreuse Epiroc  T45 (1)",
-                  serial: "U9XQMQ1DXYT7LJIP",
-                },
-                {
-                  name: "GMC_FOREUSE_EPRIROC_T45_02_DISPO",
-                  color: "#ecc94b",
-                  label: "Foreuse Epiroc  T45 (2)",
-                  serial: "U9XQMQ1DXYT7LJIP",
-                },
-                {
-                  name: "GMC_FOREUSE_EPRIROC_T35_01_DISPO",
-                  color: "#ecc94b",
-                  label: "Foreuse Epiroc T35 ",
+                  area: true,
+                  name: "EST_REALISE_FORATION",
+                  color: "#78F6EA",
+                  label: "Realisé ML/J",
                   serial: "U9XQMQ1DXYT7LJIP",
                 },
               ],
             }}
+          />
+        </div>
+      </Card>
+      <Card className="">8</Card>
+      <Card className="flex flex-col p-6">
+        <h3 className="text-center text-lg font-semibold">
+          Disponibilité et utilisation des engins
+        </h3>
+        <div className="flex-1">
+          <Engins
+            attribute={[
+              {
+                name: "LH06",
+                label: "LH06",
+                disponibillite: "Standby",
+                icon: "/truck.svg",
+                value: 65,
+              },
+              {
+                name: "LH06",
+                label: "LH06",
+                disponibillite: "Disponible",
+                icon: "/truck.svg",
+                value: 43,
+              },
+              {
+                name: "LH06",
+                label: "LH06",
+                disponibillite: "Disponible",
+                icon: "/truck.svg",
+                value: 89,
+              },
+              {
+                name: "LH06",
+                label: "LH06",
+                disponibillite: "Indisponible",
+                icon: "/truck.svg",
+                value: 48,
+              },
+            ]}
           />
         </div>
       </Card>
