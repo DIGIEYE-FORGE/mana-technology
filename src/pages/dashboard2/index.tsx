@@ -1,6 +1,7 @@
 import BarLineWidget from "@/components/bar-line-widget";
 import BarsChartWidget from "@/components/bars-chart-widget";
 import { Card } from "@/components/card";
+import { D3DonutChart } from "@/components/d3-donut chart";
 import LinesWidget from "@/components/lines-chart-widget";
 import MultiProgressWidget from "@/components/multi-progress-widget";
 
@@ -137,7 +138,7 @@ function DashboardPage2() {
         />
       </Card>
       <Card className="col-span-3">7</Card>
-      <Card className="col-span-3">8</Card>
+      <D3DonutChart />
       <Card className="p2-2 col-span-3">
         <h3 className="text-center text-lg font-semibold">
           Disponibilité Engine GMC
