@@ -1,9 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Canvas, extend, useFrame } from "@react-three/fiber";
-import { OrbitControls, Html } from "@react-three/drei";
+// import { Canvas, extend, useFrame } from "@react-three/fiber";
+import { extend } from "@react-three/fiber";
+// import { extend, useFrame } from "@react-three/fiber";
+// import { Html } from "@react-three/drei";
+// import { OrbitControls, Html } from "@react-three/drei";
 import { PlaneGeometry } from "three";
-import Model from "@/components/models";
-import { Suspense, useRef, useState } from "react";
+// import Model from "@/components/models";
+// import { useRef, useState } from "react";
+import { useState } from "react";
+// import { Suspense, useRef, useState } from "react";
 import Loader from "@/components/loader";
 import Circle1 from "@/assets/circle-1.svg?react";
 import Circle2 from "@/assets/circle-2.svg?react";
@@ -13,25 +18,25 @@ import Frame from "@/assets/frame.svg?react";
 
 extend({ PlaneGeometry });
 
-function Loader3D() {
-  return (
-    <Html center>
-      {/* <div className="absolute top-0 flex h-full w-full items-center justify-center">
-        <Loader />
-      </div> */}
-    </Html>
-  );
-}
+// function Loader3D() {
+//   return (
+//     <Html center>
+//       {/* <div className="absolute top-0 flex h-full w-full items-center justify-center">
+//         <Loader />
+//       </div> */}
+//     </Html>
+//   );
+// }
 
-function RotatingModel({ modelRef }: { modelRef: any }) {
-  useFrame(() => {
-    if (modelRef.current) {
-      modelRef.current.rotation.y += 0.002; // Adjust rotation speed as needed
-    }
-  });
+// function RotatingModel({ modelRef }: { modelRef: any }) {
+//   useFrame(() => {
+//     if (modelRef.current) {
+//       modelRef.current.rotation.y += 0.002; // Adjust rotation speed as needed
+//     }
+//   });
 
-  return null; // This component doesn't render anything visible
-}
+//   return null; // This component doesn't render anything visible
+// }
 
 const machines = [
   {
@@ -61,9 +66,10 @@ const machines = [
 ];
 
 function TreePage() {
-  const modelRef = useRef();
+  // const modelRef = useRef();
 
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
+  const [loading] = useState(false);
   return (
     <div className="relative flex h-full w-full items-center justify-center pl-6">
       {loading && (

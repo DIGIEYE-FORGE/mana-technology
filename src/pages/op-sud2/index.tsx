@@ -40,7 +40,7 @@ function DashboardPage3() {
         </h1>
         <div className="flex-1">
           <BarChartWidget
-            moyenne={true}
+            // moyenne={true}
             attributes={{
               stacked: false,
               telemetries: [
