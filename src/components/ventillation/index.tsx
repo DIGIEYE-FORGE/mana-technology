@@ -107,10 +107,6 @@ function Ventillation() {
           </div>
         ))}
       </div>
-      <Button className="flex gap-2" variant={"ghost"}>
-        <img src="plus.svg" alt="" width={20} height={20} />
-        <span>Voir plus</span>
-      </Button>
     </div>
   );
 }

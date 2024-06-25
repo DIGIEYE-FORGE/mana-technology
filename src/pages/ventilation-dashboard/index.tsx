@@ -1,7 +1,7 @@
 import { Card } from "@/components/card";
 import { MoteurCard } from "./components/moteurCard";
 
-const DashboardPage5 = () => {
+const VentilationDashboard = () => {
   return (
     <main className="grid h-full w-full grid-flow-dense auto-rows-[9rem] grid-cols-5 gap-4 [&>*]:p-4">
       <Card className="row-span-3 flex flex-col gap-1">
@@ -120,4 +120,4 @@ const DashboardPage5 = () => {
   );
 };
 
-export default DashboardPage5;
+export default VentilationDashboard;
