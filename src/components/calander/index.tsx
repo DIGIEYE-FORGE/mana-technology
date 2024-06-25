@@ -26,16 +26,9 @@ export function DatePickerWithRange({
     <div className={cn("grid gap-2", className)}>
       <Popover>
         <PopoverTrigger asChild>
-          <Button
-            id="date"
-            variant={"ghost"}
-            className={cn(
-              "w-[300px] justify-start border-none text-left font-normal",
-              !date && "text-muted-foreground",
-            )}
-          >
-            <CalendarIcon className="mr-2 h-4 w-4" />
-            {date?.from ? (
+          <Button id="date" variant={"ghost"} size={"icon"}>
+            <CalendarIcon className="size-6" />
+            {/* {date?.from ? (
               date.to ? (
                 <>
                   {format(date.from, "LLL dd, y")} -{" "}
@@ -46,7 +39,7 @@ export function DatePickerWithRange({
               )
             ) : (
               <span>Pick a date</span>
-            )}
+            )} */}
           </Button>
         </PopoverTrigger>
         <PopoverContent
