@@ -9,6 +9,7 @@ import NotfoundPage from "@/pages/notfound";
 import DevPage from "@/pages/dev";
 import DashboardPage2 from "@/pages/dashboard2";
 import IselDevPage from "@/pages/isel-dev";
+import DashboardPage5 from "@/pages/dashboard5";
 
 const routes: RouteObject[] = [
   {
@@ -30,6 +31,10 @@ const routes: RouteObject[] = [
       {
         path: "dashboard3",
         element: <DashboardPage />,
+      },
+      {
+        path: "dashboard5",
+        element: <DashboardPage5 />,
       },
       {
         path: "tree",
