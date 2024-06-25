@@ -234,7 +234,7 @@ export default function UndergroundDashboardPage() {
           <D3DonutChart />
         </div>
       </Card>
-      <Card className="col-span-2 flex flex-col gap-1 p-4">
+      <Card className="col-span-3 flex flex-col gap-1 p-4">
         <h1 className="text-center text-lg font-semibold">
           Avancement/Arrachement journalier
         </h1>
@@ -254,8 +254,8 @@ export default function UndergroundDashboardPage() {
           />
         </div>
       </Card>
-      <Card className="col-span-2">10</Card>
-      <Card className="col-span-2 flex flex-col p-4">
+      {/* <Card className="col-span-2">10</Card> */}
+      <Card className="col-span-3 flex flex-col p-4">
         <h3 className="text-center text-lg font-semibold">
           Disponibilité et utilisation des engins
         </h3>

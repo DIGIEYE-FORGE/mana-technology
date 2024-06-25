@@ -8,7 +8,6 @@ import useSWR, { SWRConfig } from "swr";
 import Loader from "./components/loader";
 import AppContext from "./Context";
 import LoginPage from "./pages/login";
-import Navbar from "./components/navbar";
 import BpIndicator from "./components/bp-indicator";
 
 function App() {

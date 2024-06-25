@@ -1,7 +1,6 @@
 import BarChartWidget from "@/components/bar-chart-widget";
 import { Card } from "@/components/card";
 import LineChartWidget from "@/components/line-chart-widget";
-import React from "react";
 import { ProgressAccumulation } from "../home/_components/progress-accumulation";
 import TableWidget from "@/components/table-widget";
 
