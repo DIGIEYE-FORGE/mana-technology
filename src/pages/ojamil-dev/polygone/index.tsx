@@ -1,4 +1,3 @@
-import React from "react";
 import Color from "color";
 interface OjamilDevPageProps {
   data: {

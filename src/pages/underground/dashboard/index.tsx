@@ -6,7 +6,10 @@ import { D3DonutChart } from "@/components/d3-donut chart";
 import Engins from "@/components/engins";
 import LineChartWidget from "@/components/line-chart-widget";
 import LinesWidget from "@/components/lines-chart-widget";
+import { Button } from "@/components/ui/button";
 import Ventillation from "@/components/ventillation";
+import { ChevronsDown } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function UndergroundDashboardPage() {
   const { dateRange } = useAppContext();
@@ -125,11 +128,20 @@ export default function UndergroundDashboardPage() {
         </div>
       </Card>
 
-      <Card className="col-span-3 flex flex-col p-4">
+      <Card className="col-span-3 flex flex-col items-center gap-1 p-4">
         <h1 className="text-center text-lg font-semibold">
           Dashboard ventillation
         </h1>
-        <Ventillation />
+        <div className="w-full flex-1">
+          <Ventillation />
+        </div>
+        <Link to="/underground/ventilation">
+          <Button className="flex w-fit gap-2" size={"sm"} variant={"link"}>
+            <ChevronsDown size={16} />
+            {/* <img src="plus.svg" alt="" width={20} height={20} /> */}
+            <span>Voir plus</span>
+          </Button>
+        </Link>
       </Card>
       <Card className="col-span-3 flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
@@ -222,7 +234,7 @@ export default function UndergroundDashboardPage() {
           <D3DonutChart />
         </div>
       </Card>
-      <Card className="col-span-2 flex flex-col gap-1 p-4">
+      <Card className="col-span-3 flex flex-col gap-1 p-4">
         <h1 className="text-center text-lg font-semibold">
           Avancement/Arrachement journalier
         </h1>
@@ -242,8 +254,8 @@ export default function UndergroundDashboardPage() {
           />
         </div>
       </Card>
-      <Card className="col-span-2">10</Card>
-      <Card className="col-span-2 flex flex-col p-4">
+      {/* <Card className="col-span-2">10</Card> */}
+      <Card className="col-span-3 flex flex-col p-4">
         <h3 className="text-center text-lg font-semibold">
           Disponibilité et utilisation des engins
         </h3>

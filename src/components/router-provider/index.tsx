@@ -8,12 +8,14 @@ import TreePage from "@/pages/tree";
 import NotfoundPage from "@/pages/notfound";
 import DevPage from "@/pages/dev";
 import IselDevPage from "@/pages/isel-dev";
+import DashboardPage5 from "@/pages/ventilation-dashboard";
 import DashboardPage3 from "@/pages/dashboard3";
 import OjamilDevPage from "@/pages/ojamil-dev";
 import MainProjectPage from "@/pages/main-project";
 import UnderGroundPage from "@/pages/underground";
 import OpSud from "@/pages/op-sud";
 import UndergroundDashboardPage from "@/pages/underground/dashboard";
+import VentilationDashboard from "@/pages/ventilation-dashboard";
 
 const routes: RouteObject[] = [
   {
@@ -44,6 +46,10 @@ const routes: RouteObject[] = [
             path: "tree",
             element: <TreePage />,
           },
+          {
+            path: "ventilation",
+            element: <VentilationDashboard />,
+          },
         ],
       },
       {
@@ -53,6 +59,14 @@ const routes: RouteObject[] = [
       {
         path: "dashboard3",
         element: <DashboardPage3 />,
+      },
+      {
+        path: "dashboard5",
+        element: <DashboardPage5 />,
+      },
+      {
+        path: "tree",
+        element: <TreePage />,
       },
       {
         path: "ojamil",

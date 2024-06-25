@@ -44,7 +44,7 @@ function TreePage() {
   return (
     <div className="relative flex h-full w-full items-center justify-center">
       {loading && (
-        <div className="absolute left-0 top-[4.2rem] z-[999] flex h-full w-full items-center justify-center">
+        <div className="absolute left-0 top-[4.2rem] z-[999] flex h-[calc(100%-5rem)] w-full items-center justify-center">
           <Loader />
         </div>
       )}
