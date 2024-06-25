@@ -218,7 +218,9 @@ export default function UndergroundDashboardPage() {
         <h1 className="text-center text-lg font-semibold">
           Avancement/Arrachement journalier
         </h1>
-        <D3DonutChart />
+        <div className="flex-1">
+          <D3DonutChart />
+        </div>
       </Card>
       <Card className="col-span-2 flex flex-col gap-1 p-4">
         <h1 className="text-center text-lg font-semibold">
