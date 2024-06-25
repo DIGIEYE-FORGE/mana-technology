@@ -115,3 +115,61 @@ nav {
     @apply bg-primary;
   }
 }
+
+.machine-highlight {
+  perspective: 1000px;
+
+  --rotate-x: 70deg;
+  --translate-z: 10px;
+  transform-origin: 50% 50%;
+
+  & .circle {
+    position: absolute;
+    transform-style: preserve-3d;
+    transform-origin: 50% 50% 0;
+  }
+
+  .circle-1 {
+    transform: rotateX(var(--rotate-x));
+  }
+  .circle-2 {
+    transform: translateY(20px) rotateX(var(--rotate-x));
+    opacity: 0.4;
+  }
+  .circle-3 {
+    transform: scale(1.1) translateY(22px) rotateX(var(--rotate-x));
+    opacity: 0.3;
+  }
+
+  & .rotate {
+    animation: rotate 10s linear infinite;
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotateZ(0deg);
+    }
+    100% {
+      transform: rotateZ(-360deg);
+    }
+  }
+}
+
+.machines > .machine {
+  transition:
+    opacity 0.5s,
+    filter 0.5s;
+}
+
+.machines:hover > .machine:not(:hover) {
+  opacity: 0.5;
+  filter: grayscale(0.5);
+}
+.machines:has(.active) > .machine {
+  opacity: 0.5 !important;
+  filter: grayscale(0.5) !important;
+  &.active {
+    opacity: 1 !important;
+    filter: grayscale(0) !important;
+  }
+}

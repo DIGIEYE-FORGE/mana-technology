@@ -150,7 +150,7 @@ export default function UndergroundDashboardPage() {
         <div className="w-full text-center text-xs text-gray-400"></div>
         <div className="flex-1">
           <BarLineWidget
-            moyenne={true}
+            moyenne={["UG_METRES_PLANIFIE", "UG_METRES_REALISE_TOTAL"]}
             attributes={{
               stacked: true,
               telemetries: [
@@ -203,7 +203,6 @@ export default function UndergroundDashboardPage() {
                   serial: "DABF7PAT2G4BAG21",
                   type: "bar",
                 },
-
                 {
                   name: "UG_TIR_PLANIFIE_CUMULE",
                   unit: "T",

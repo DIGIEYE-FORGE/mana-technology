@@ -4,13 +4,14 @@ import TableWidget from "@/components/table-widget";
 import LineChartWidget from "@/components/line-chart-widget";
 import BarChartWidget from "@/components/bar-chart-widget";
 import MultiProgressWidget from "@/components/multi-progress-widget";
+import ProgressMultiple from "@/components/progress-multiple";
 
 export default function HomeDashboard() {
   return (
     <main className="grid w-full grid-flow-dense auto-rows-[80px] grid-cols-3 gap-3 sm:auto-rows-[92px] md:grid-cols-6 lg:grid-cols-12 lg:gap-4 2xl:grid-cols-[repeat(15,minmax(0,1fr))]">
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
-          Evolution Production cumule
+        Évolution Production Cumulée
         </h1>
         <div className="flex-1">
           <LineChartWidget
@@ -37,11 +38,11 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
-          Production Est11 vs Est12
+        Production par Fosse
         </h1>
         <div className="flex-1">
           <BarChartWidget
-            moyenne={true}
+            moyenne={["EST11_REALISE_ROCHE", "EST12_REALISE_ROCHE"]}
             attributes={{
               stacked: true,
               telemetries: [
@@ -65,7 +66,7 @@ export default function HomeDashboard() {
         </div>
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-5">
-        <h1 className="text-center text-lg font-semibold">STERILE / MINERAI</h1>
+        <h1 className="text-center text-lg font-semibold">Stérile / Minera</h1>
         <div className="flex-1">
           <BarChartWidget
             // title="Daily Production BreakUp"
@@ -75,28 +76,28 @@ export default function HomeDashboard() {
                   name: "EST_PLANIFIE_MINERAI",
                   unit: "T",
                   color: "#FE22EB",
-                  label: "MINERAI Planifié",
+                  label: "Minerai Planifié",
                   serial: "U9XQMQ1DXYT7LJIP",
                 },
                 {
                   name: "EST_PLANIFIE_STERILE",
                   unit: "T",
                   color: "#B98EFF",
-                  label: "STERILE Planifié",
+                  label: "Minerai Realisé",
                   serial: "U9XQMQ1DXYT7LJIP",
                 },
                 {
                   name: "EST_REALISE_MIENRAI",
                   unit: "T",
                   color: "#FEC33A",
-                  label: "MINERAI Realisé",
+                  label: "Stérile Planifié",
                   serial: "U9XQMQ1DXYT7LJIP",
                 },
                 {
                   name: "EST_REALISE_STERILE",
                   unit: "T",
                   color: "#78F6EA",
-                  label: "STERILE Realisé",
+                  label: "Stérile Realisé",
                   serial: "U9XQMQ1DXYT7LJIP",
                 },
               ],
@@ -105,6 +106,9 @@ export default function HomeDashboard() {
         </div>
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-4">
+      <h1 className="text-center text-lg font-semibold">
+          Évolution de la Production vs Planifié
+        </h1>
         <ProgressAccumulation
           attributes={{
             serial: "U9XQMQ1DXYT7LJIP",
@@ -145,63 +149,97 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-4">
         <h1 className="text-center text-lg font-semibold">
-          Production cumulée par qualité
+          Production  par qualité
         </h1>
         <div className="flex-1">
-          <LineChartWidget
-            moyenne={true}
-            attributes={{
-              telemetries: [
-                {
-                  area: true,
-                  name: "EST_REALISE_FORATION",
-                  color: "#B98EFF",
-                  label: "Realisé ML/J",
-                  serial: "U9XQMQ1DXYT7LJIP",
-                },
-                {
-                  area: false,
-                  name: "EST_PLANIFIE_FORATION",
-                  color: "#78F6EA",
-                  label: "Objectif ML/J",
-                  serial: "U9XQMQ1DXYT7LJIP",
-                },
-              ],
-            }}
+          <ProgressMultiple
+            attributes={[
+              {
+                title: "Sulfures (HG,MG,LG)",
+                telemetries: [
+                  {
+                    name: "EST_REALISE_ORE_HG_SULF",
+                    serial: "U9XQMQ1DXYT7LJIP",
+                    label: "HG",
+                    color: "#FFDC8C",
+                    // showLabel: true, if you need to show label
+                  },
+                  {
+                    name: "EST_REALISE_ORE_MG_SULF",
+                    serial: "U9XQMQ1DXYT7LJIP",
+                    label: "MG",
+                    color: "#42F5FF",
+                  },
+                  {
+                    name: "EST_REALISE_ORE_LG_SULF",
+                    serial: "U9XQMQ1DXYT7LJIP",
+                    label: "LG",
+                    color: "#FFC8FF",
+                  }
+                ],
+              },
+              {
+                title: "Oxydes (HG,MG,LG)",
+                telemetries: [
+                  {
+                    name: "EST_REALISE_ORE_HG_OXYD",
+                    serial: "U9XQMQ1DXYT7LJIP",
+                    label: "HG",
+                    color: "#FFDC8C",
+                  },
+                  {
+                    name: "EST_REALISE_ORE_MG_OXYD",
+                    serial: "U9XQMQ1DXYT7LJIP",
+                    label: "MG",
+                    color: "#42F5FF",
+                  },
+                  {
+                    name: "EST_REALISE_ORE_LG_OXYD",
+                    serial: "U9XQMQ1DXYT7LJIP",
+                    label: "LG",
+                    color: "#FFC8FF",
+                  },
+                ],
+              },
+            ]}
           />
         </div>
       </Card>
       <Card className="col-span-full row-span-3 p-4 lg:col-span-8">
-        <h3 className="text-center text-lg font-semibold">Production</h3>
+        <h3 className="text-center text-lg font-semibold">Disponibilité Engine</h3>
         <TableWidget
           className="flex-1"
           attributes={{
-            serial: "C6XPYU0D920L1M07",
+            serial: "AATT1JKEZ2V1YVMA",
             element: "telemetries",
             mappings: [
               {
-                displayName: "",
+                displayName: "N° de tir",
                 telemetryName: "NUMERO_DE_TIR",
               },
               {
-                displayName: "",
-                telemetryName: "NUMERO_DE_TIR",
-              },
-              {
-                displayName: "",
+                displayName: "Quantité d'explosif tirée (kg)",
                 telemetryName: "QUNTITE_EXPLOSIF_TIRE",
               },
               {
-                displayName: "",
+                displayName: "Zone de Tir",
                 telemetryName: "ZONE DE TIRE",
               },
               {
-                displayName: "",
+                displayName: "Tonnage Roche Abattu Minerai",
                 telemetryName: "TONNAE_MINERAI_ABATTU",
               },
               {
-                displayName: "",
+                displayName: "Tonnage Roche Abattu Stérile",
                 telemetryName: "TONNAE_STERILE_ABATTU",
+              },
+              {
+                displayName: "Charge instantanée (kg)",
+                telemetryName: "CHARGE_INSTANTANEE",
+              },
+              {
+                displayName: "Charge spécifique (g/t)",
+                telemetryName: "CHARGE_SPECIFIQUE",
               },
             ],
           }}

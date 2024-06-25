@@ -37,11 +37,11 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
-          Production Journalière
+        Production par Fosse
         </h1>
         <div className="flex-1">
           <BarChartWidget
-            moyenne={true}
+            moyenne={["SUD2_REALISE_ROCHE", "SUD4_REALISE_ROCHE"]}
             attributes={{
               stacked: true,
               telemetries: [
@@ -105,7 +105,9 @@ export default function HomeDashboard() {
         </div>
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-4">
-      <h1 className="text-center text-lg font-semibold">Évolution de la Production vs Planifié</h1>
+        <h1 className="text-center text-lg font-semibold">
+          Évolution de la Production vs Planifié
+        </h1>
         <ProgressAccumulation
           attributes={{
             serial: "C6XPYU0D920L1M07",
@@ -118,7 +120,7 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-4">
         <h1 className="text-center text-lg font-semibold">
-        Production par Fosse
+          Production Journalière
         </h1>
         <div className="flex-1">
           <BarChartWidget
@@ -144,13 +146,13 @@ export default function HomeDashboard() {
           />
         </div>
       </Card>
-      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-4 bg-red-500/50">
+      <Card className="col-span-full row-span-3 flex flex-col bg-red-500/50 p-6 lg:col-span-6 2xl:col-span-4">
         <h1 className="text-center text-lg font-semibold">
           Production cumulée par qualité
         </h1>
         <div className="flex-1">
           <LineChartWidget
-            moyenne={true}
+            moyenne={["EST_REALISE_FORATION"]}
             attributes={{
               telemetries: [
                 {
@@ -172,7 +174,7 @@ export default function HomeDashboard() {
           />
         </div>
       </Card>
-      <Card className="col-span-full row-span-3 p-4 lg:col-span-8 bg-red-500/50">
+      <Card className="col-span-full row-span-3 bg-red-500/50 p-4 lg:col-span-8">
         <h3 className="text-center text-lg font-semibold">Suivi des Tirs</h3>
         <TableWidget
           className="flex-1"
@@ -213,9 +215,7 @@ export default function HomeDashboard() {
         />
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-4">
-        <h1 className="text-center text-lg font-semibold">
-        Foration (ml)
-        </h1>
+        <h1 className="text-center text-lg font-semibold">Foration (ml)</h1>
         <div className="flex-1">
           <LineChartWidget
             attributes={{
@@ -340,7 +340,7 @@ export default function HomeDashboard() {
           }}
         />
       </Card>
-      <Card className="col-span-full row-span-3 flex flex-col gap-3 p-4 2xl:col-span-3 bg-red-500/50">
+      <Card className="col-span-full row-span-3 flex flex-col gap-3 bg-red-500/50 p-4 2xl:col-span-3">
         <h3 className="text-center text-lg font-semibold">Comment</h3>
       </Card>
     </main>

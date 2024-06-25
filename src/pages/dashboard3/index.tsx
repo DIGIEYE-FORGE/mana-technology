@@ -40,7 +40,7 @@ function DashboardPage3() {
         </h3>
         <div className="flex-1">
           <BarChartWidget
-            moyenne={true}
+            moyenne={["EST11_REALISE_ROCHE", "EST11_REALISE_ROCHE"]}
             attributes={{
               stacked: true,
               telemetries: [
@@ -52,7 +52,7 @@ function DashboardPage3() {
                   serial: "U9XQMQ1DXYT7LJIP",
                 },
                 {
-                  name: "EST12_REALISE_ROCHE",
+                  name: "EST11_REALISE_ROCHE",
                   unit: "T",
                   color: "#B98EFF",
                   label: "Est 12",

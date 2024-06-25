@@ -56,36 +56,57 @@ export default function LineChartWidget({
       const res1 = res.map((item, index) => ({
         name: telemetries[index].label || telemetries[index].name,
         type: telemetries[index].area ? "area" : "line",
+        nameTelemetry: telemetries[index].name,
         data: item.map((item) => ({
           x: new Date(item.createdAt),
           y: Number(flatten(item)[telemetries[index].name]),
         })),
       }));
       if (props.moyenne) {
-        const res2 = res1.map((item, index) => {
-          return {
-            name:
-              (telemetries[index].label || telemetries[index].name) +
-              " (moyenne)",
+        const res2 = [];
+        if (props.moyenne === "combined") {
+          const allDates = res1.flatMap((item) =>
+            item.data.map((item) => item.x),
+          );
+          const allData = res1.flatMap((item) =>
+            item.data.map((item) => item.y),
+          );
+          const moyenne = allData.reduce((a, b) => a + b, 0) / allData.length;
+          res2.push({
+            name: "Moyenne",
             type: "line",
             color: getRandomColor(),
-            data: [
-              {
-                x: new Date(item.data[0].x),
-                y:
-                  item.data.reduce((acc, item) => acc + item.y, 0) /
-                  item.data.length,
-              },
-              {
-                x: new Date(item.data[item.data.length - 1].x),
-                y:
-                  item.data.reduce((acc, item) => acc + item.y, 0) /
-                  item.data.length,
-              },
-            ],
-          };
-        });
-        res1.push(...res2);
+            data: allDates.map((item) => ({
+              x: item,
+              y: moyenne,
+            })),
+          });
+        } else if (Array.isArray(props.moyenne)) {
+          const newTelemetry = telemetries.filter((item) =>
+            props.moyenne?.includes(item.name),
+          );
+          newTelemetry.forEach((item) => {
+            const dataTelemetry = res1.find(
+              (it) => it.nameTelemetry === item.name,
+            );
+            if (dataTelemetry) {
+              const allDates = dataTelemetry?.data.map((item) => item.x);
+              const allData = dataTelemetry?.data.map((item) => item.y);
+              const moyenne =
+                allData.reduce((a, b) => a + b, 0) / allData.length;
+              res2.push({
+                name: (item.label || item.name) + " (Moyenne)",
+                type: "line",
+                color: getRandomColor(),
+                data: allDates.map((item) => ({
+                  x: item,
+                  y: moyenne,
+                })),
+              });
+            }
+          });
+        }
+        return [...res1, ...(res2 || [])];
       }
       return res1;
     },
@@ -122,7 +143,12 @@ export default function LineChartWidget({
           selection: { enabled: false },
           dropShadow: { enabled: false },
         },
-        stroke: { width: 3, curve: "smooth" },
+        stroke: {
+          width: (data || []).map((item) =>
+            item.type === "line" || item.type === "area" ? 4 : 0,
+          ),
+          curve: "smooth",
+        },
         dataLabels: { enabled: false },
         fill: {
           type: "solid",
@@ -156,6 +182,7 @@ export default function LineChartWidget({
             },
           },
         },
+
         yaxis: {
           min: 0,
           tickAmount: 4,
