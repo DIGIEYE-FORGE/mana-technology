@@ -4,6 +4,7 @@ import TableWidget from "@/components/table-widget";
 import LineChartWidget from "@/components/line-chart-widget";
 import BarChartWidget from "@/components/bar-chart-widget";
 import MultiProgressWidget from "@/components/multi-progress-widget";
+import ProgressMultiple from "@/components/progress-multiple";
 
 export default function HomeDashboard() {
   return (
@@ -148,26 +149,45 @@ export default function HomeDashboard() {
           Production cumulée par qualité
         </h1>
         <div className="flex-1">
-          <LineChartWidget
-            moyenne={["EST_REALISE_FORATION", "EST_PLANIFIE_FORATION"]}
-            attributes={{
-              telemetries: [
-                {
-                  area: true,
-                  name: "EST_REALISE_FORATION",
-                  color: "#B98EFF",
-                  label: "Realisé ML/J",
-                  serial: "U9XQMQ1DXYT7LJIP",
-                },
-                {
-                  area: false,
-                  name: "EST_PLANIFIE_FORATION",
-                  color: "#78F6EA",
-                  label: "Objectif ML/J",
-                  serial: "U9XQMQ1DXYT7LJIP",
-                },
-              ],
-            }}
+          <ProgressMultiple
+            attributes={[
+              {
+                title: "Minerai (HG,MG,LG)",
+                telemetries: [
+                  {
+                    name: "EST_PLANIFIE_ROCHE",
+                    serial: "U9XQMQ1DXYT7LJIP",
+                    label: "Planifié",
+                    color: "#FFDC8C",
+                    // showLabel: true, if you need to show label
+                  },
+
+                  {
+                    name: "EST_REALISE_ROCHE_Ton",
+                    serial: "U9XQMQ1DXYT7LJIP",
+                    label: "Realisé",
+                    color: "#334DBB",
+                  },
+                ],
+              },
+              {
+                title: "Minerai (HG,MG,LG)",
+                telemetries: [
+                  {
+                    name: "EST_PLANIFIE_ROCHE",
+                    serial: "U9XQMQ1DXYT7LJIP",
+                    label: "Planifié",
+                    color: "#FFDC8C",
+                  },
+                  {
+                    name: "EST_REALISE_ROCHE_Ton",
+                    serial: "U9XQMQ1DXYT7LJIP",
+                    label: "Realisé",
+                    color: "#334DBB",
+                  },
+                ],
+              },
+            ]}
           />
         </div>
       </Card>

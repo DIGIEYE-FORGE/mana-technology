@@ -40,7 +40,7 @@ export default function MainProjectPage() {
   return (
     <main className="mx-auto flex max-w-[1920px] flex-col gap-6 pb-6">
       <MainProjectUpBar />
-      <main className="flex h-full w-full flex-col gap-2 px-6 [&>*]:flex-1">
+      {/* <main className="flex h-full w-full flex-col gap-2 px-6 [&>*]:flex-1">
         <canvas
           ref={canvasRef}
           id="canvas"
@@ -49,7 +49,7 @@ export default function MainProjectPage() {
           h-
         />
         <div className="debug flex-1">hello</div>
-      </main>
+      </main> */}
     </main>
   );
 }
