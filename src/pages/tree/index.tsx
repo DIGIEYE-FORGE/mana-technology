@@ -134,7 +134,6 @@ function TreePage() {
         style={{
           width: "70rem",
           height: "40rem",
-          boxShadow: "0 0 20px rgba(0, 0, 0, 0.1)",
           position: "absolute",
           bottom: "0",
         }}

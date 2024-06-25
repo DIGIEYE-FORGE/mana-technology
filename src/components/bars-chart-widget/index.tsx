@@ -40,7 +40,6 @@ export default function BarsChartWidget(props: Props) {
               },
             },
           );
-          console.log(" |||||results ||||||", results);
           return results;
         }),
       );
