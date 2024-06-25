@@ -35,6 +35,10 @@ const routes: RouteObject[] = [
             path: "",
             element: <UndergroundDashboardPage />,
           },
+          {
+            path: "tree",
+            element: <TreePage />,
+          },
         ],
       },
       {
@@ -44,10 +48,6 @@ const routes: RouteObject[] = [
       {
         path: "dashboard3",
         element: <DashboardPage3 />,
-      },
-      {
-        path: "tree",
-        element: <TreePage />,
       },
       {
         path: "ojamil",
