@@ -10,6 +10,7 @@ interface CircularProgressProps
   color?: string;
   progress: number;
   strokeWidth?: number;
+  gradientCoefficient?: number;
 }
 
 export function CircularProgress({
@@ -17,6 +18,7 @@ export function CircularProgress({
   className,
   progress,
   strokeWidth = 10,
+  gradientCoefficient = 0.25,
 }: CircularProgressProps) {
   return (
     <div className={cn("relative size-32 text-sm font-semibold", className)}>
@@ -60,8 +62,11 @@ export function CircularProgress({
             y2="50"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stopColor={Color(color).darken(0.1).hex()} />
-            <stop offset="1" stopColor={Color(color).lighten(0.1).hex()} />
+            <stop stopColor={Color(color).darken(gradientCoefficient).hex()} />
+            <stop
+              offset="1"
+              stopColor={Color(color).lighten(gradientCoefficient).hex()}
+            />
           </linearGradient>
         </defs>
         <defs>
