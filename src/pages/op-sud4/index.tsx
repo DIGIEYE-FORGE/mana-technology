@@ -1,42 +1,161 @@
-import { Link } from "react-router-dom";
-import HomeDashboard from "./dashboard";
-import Logo from "@/assets/logo.svg?react";
-import { DatePickerWithRange } from "@/components/calander";
-import { useAppContext } from "@/Context";
-import { TDateRange } from "@/utils";
-import { Button } from "@/components/ui/button";
-import { MoveRightIcon } from "lucide-react";
+import BarChartWidget from "@/components/bar-chart-widget";
+import { Card } from "@/components/card";
+import LineChartWidget from "@/components/line-chart-widget";
+import { ProgressAccumulation } from "../home/_components/progress-accumulation";
+import TableWidget from "@/components/table-widget";
 
-function HomeUpBar() {
-  const { dateRange, setDateRange } = useAppContext();
+function DashboardPage3() {
   return (
-    <div className="h-up-bar group sticky left-6 top-0 z-10 flex w-[calc(10)] shrink-0 items-center gap-4 rounded-[0_0_0_24px] border-b border-l px-6 backdrop-blur">
-      <Link to="/">
-        <Logo className="h-7 w-40" />
-      </Link>
-      <DatePickerWithRange
-        className="hidden lg:block"
-        date={dateRange}
-        onChange={(date) => {
-          setDateRange(date as TDateRange);
-        }}
-      />
-      <Link to="/main-project" className="ml-auto">
-        <Button variant="ghost">
-          <MoveRightIcon className="size-6" />
-        </Button>
-      </Link>
+    <div className="grid h-full w-full grid-flow-dense auto-rows-[19rem] grid-cols-9 gap-6">
+      <Card className="col-span-3 flex flex-col p-4">
+        <h1 className="text-center text-lg font-semibold">
+          Évolution Production Cumulée
+        </h1>
+        <div className="flex-1">
+          <LineChartWidget
+            attributes={{
+              telemetries: [
+                {
+                  area: false,
+                  name: "SUD4_PLANIFIE_ROCHE_CUMUL",
+                  color: "#78F6EA",
+                  label: "Cumulatif Planifié",
+                  serial: "C6XPYU0D920L1M07",
+                },
+                {
+                  area: true,
+                  name: "SUD4_REALISE_ROCHE_CUMUL",
+                  color: "#B98EFF",
+                  label: "Cumulatif Realisé",
+                  serial: "C6XPYU0D920L1M07",
+                },
+              ],
+            }}
+          />
+        </div>
+      </Card>
+      <Card className="col-span-3 flex flex-col p-4">
+        <h1 className="text-center text-lg font-semibold">
+          Production Journalière
+        </h1>
+        <div className="flex-1">
+          <BarChartWidget
+            moyenne={true}
+            attributes={{
+              stacked: false,
+              telemetries: [
+                {
+                  name: "SUD4_REALISE_ROCHE",
+                  unit: "T",
+                  color: "#78F6EA",
+                  label: "Production",
+                  serial: "C6XPYU0D920L1M07",
+                },
+              ],
+            }}
+          />
+        </div>
+      </Card>
+      <Card className="col-span-3 flex flex-col p-4">
+        <h1 className="text-center text-lg font-semibold">Stérile / Minerai</h1>
+        <div className="flex-1">
+          <BarChartWidget
+            // title="Daily Production BreakUp"
+            attributes={{
+              telemetries: [
+                {
+                  name: "SUD4_PLANIFIE_MINERAI",
+                  unit: "T",
+                  color: "#FE22EB",
+                  label: "Minerai Planifié",
+                  serial: "C6XPYU0D920L1M07",
+                },
+                {
+                  name: "SUD4_REALISE_MIENRAI",
+                  unit: "T",
+                  color: "#FEC33A",
+                  label: "Minerai Realisé",
+                  serial: "C6XPYU0D920L1M07",
+                },
+                {
+                  name: "SUD4_PLANIFIE_STERILE",
+                  unit: "T",
+                  color: "#B98EFF",
+                  label: "Stérile Planifié",
+                  serial: "C6XPYU0D920L1M07",
+                },
+                {
+                  name: "SUD4_REALISE_STERILE",
+                  unit: "T",
+                  color: "#78F6EA",
+                  label: "Stérile Realisé",
+                  serial: "C6XPYU0D920L1M07",
+                },
+              ],
+            }}
+          />
+        </div>
+      </Card>
+      <Card className="col-span-2 flex flex-col p-4">
+        <h1 className="text-center text-lg font-semibold">
+          Évolution de la Production vs Planifié
+        </h1>
+        <ProgressAccumulation
+          attributes={{
+            serial: "C6XPYU0D920L1M07",
+            progressColor: "#EBC94A",
+            currentTargetColor: "#78F6EA",
+            progressTelemetryName: "SUD4_REALISE_ROCHE_CUMUL",
+            accumulationTelemetryName: "SUD4_PLANIFIE_ROCHE_CUMUL",
+          }}
+        />
+      </Card>
+      <Card className="col-span-4">1</Card>
+      <Card className="col-span-3 row-span-2 flex items-center justify-center text-3xl font-bold">
+        Photo
+      </Card>
+      <Card className="col-span-6 p-4">
+        <h3 className="text-center text-lg font-semibold">Suivi des Tires</h3>
+        <TableWidget
+          className="flex-1"
+          attributes={{
+            serial: "C6XPYU0D920L1M07",
+            element: "telemetries",
+            mappings: [
+              {
+                displayName: "N° de tir",
+                telemetryName: "NUMERO_DE_TIR",
+              },
+              {
+                displayName: "Quantité d'explosif tirée (kg)",
+                telemetryName: "QUNTITE_EXPLOSIF_TIRE",
+              },
+              {
+                displayName: "Zone de Tir",
+                telemetryName: "ZONE DE TIRE",
+              },
+              {
+                displayName: "Tonnage Roche Abattu Minerai",
+                telemetryName: "TONNAE_MINERAI_ABATTU",
+              },
+              {
+                displayName: "Tonnage Roche Abattu Stérile",
+                telemetryName: "TONNAE_STERILE_ABATTU",
+              },
+              {
+                displayName: "Charge instantanée (kg)",
+                telemetryName: "CHARGE_INSTANTANEE",
+              },
+              {
+                displayName: "Charge spécifique (g/t)",
+                telemetryName: "CHARGE_SPECIFIQUE",
+              },
+            ],
+          }}
+        />
+      </Card>
     </div>
   );
 }
 
-export default function HomePage() {
-  return (
-    <main className="mx-auto flex max-w-[1920px] flex-col gap-6 pb-6 pl-6">
-      <HomeUpBar />
-      <main className="pr-6">
-        <HomeDashboard />
-      </main>
-    </main>
-  );
-}
+export default DashboardPage3;
