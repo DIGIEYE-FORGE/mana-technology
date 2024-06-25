@@ -1,17 +1,39 @@
 import { useAppContext } from "@/Context";
 import BarLineWidget from "@/components/bar-line-widget";
 import { Card } from "@/components/card";
+import { ConeChart } from "@/components/cone-chart";
 import { D3DonutChart } from "@/components/d3-donut chart";
 import Engins from "@/components/engins";
 import LineChartWidget from "@/components/line-chart-widget";
 import LinesWidget from "@/components/lines-chart-widget";
 import Ventillation from "@/components/ventillation";
 
-function DashboardPage2() {
+export default function UndergroundDashboardPage() {
   const { dateRange } = useAppContext();
   return (
     <div className="grid h-fit w-full grid-flow-dense auto-rows-[19rem] grid-cols-9 gap-6">
-      <Card className="col-span-3">1</Card>
+      <Card className="col-span-3 flex flex-col gap-6 p-6">
+        <h3 className="text-center text-lg font-semibold">
+          Ce projet a travaillé 395 jours sans blessure avec arrêt de travail
+        </h3>
+        <ConeChart
+          data={[
+            {
+              name: "Quasi-accidents & observations",
+              value: 30,
+              color: "#009AB6",
+            },
+            { name: "Cas de traitement médical", value: 20, color: "#FFCA05" },
+            {
+              name: "Blessure avec perte de temps",
+              value: 50,
+              color: "#F650A0",
+            },
+            { name: "Fatally", value: 30, color: "#903E92" },
+          ]}
+          className="flex-1"
+        />
+      </Card>
       <Card className="col-span-3 flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
           Avancement cumulatif annuel
@@ -196,7 +218,9 @@ function DashboardPage2() {
         <h1 className="text-center text-lg font-semibold">
           Avancement/Arrachement journalier
         </h1>
-        <D3DonutChart />
+        <div className="flex-1">
+          <D3DonutChart />
+        </div>
       </Card>
       <Card className="col-span-2 flex flex-col gap-1 p-4">
         <h1 className="text-center text-lg font-semibold">
@@ -261,4 +285,3 @@ function DashboardPage2() {
     </div>
   );
 }
-export default DashboardPage2;

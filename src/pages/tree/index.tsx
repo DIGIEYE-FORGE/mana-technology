@@ -3,7 +3,7 @@ import { Canvas, extend, useFrame } from "@react-three/fiber";
 import { OrbitControls, Html } from "@react-three/drei";
 import { PlaneGeometry } from "three";
 import Model from "@/components/models";
-import { Suspense, useRef } from "react";
+import { Suspense, useRef, useState } from "react";
 import Loader from "@/components/loader";
 
 extend({ PlaneGeometry });
@@ -11,9 +11,9 @@ extend({ PlaneGeometry });
 function Loader3D() {
   return (
     <Html center>
-      <div className="flex h-full w-full items-center justify-center">
+      {/* <div className="absolute top-0 flex h-full w-full items-center justify-center">
         <Loader />
-      </div>
+      </div> */}
     </Html>
   );
 }
@@ -21,7 +21,7 @@ function Loader3D() {
 function RotatingModel({ modelRef }: { modelRef: any }) {
   useFrame(() => {
     if (modelRef.current) {
-      modelRef.current.rotation.y += 0.001; // Adjust rotation speed as needed
+      modelRef.current.rotation.y += 0.002; // Adjust rotation speed as needed
     }
   });
 
@@ -40,34 +40,50 @@ const machinesImages = [
 function TreePage() {
   const modelRef = useRef();
 
+  const [loading, setLoading] = useState(true);
   return (
-    <div className="h-full w-full">
-      <div className="absolute bottom-0 left-0 h-full w-full overflow-hidden">
-        {machinesImages.map((image, index) => {
-          return (
-            <div
-              className="absolute inset-x-[14rem] bottom-[8rem]"
-              style={{
-                transform: `rotate(${(180 / (machinesImages.length - 1)) * index}deg) `,
-              }}
-            >
-              <img
-                src={image}
-                alt={image}
-                className="absolute bottom-1/2 left-0 h-40"
+    <div className="relative flex h-full w-full items-center justify-center">
+      {loading && (
+        <div className="absolute left-0 top-[4.2rem] z-[999] flex h-full w-full items-center justify-center">
+          <Loader />
+        </div>
+      )}
+      {!loading && (
+        <div className="absolute bottom-0 left-0 h-full w-full overflow-hidden">
+          {machinesImages.map((image, index) => {
+            return (
+              <div
+                key={image}
+                className="absolute inset-x-[6rem] bottom-[8rem]"
                 style={{
-                  transform: `translateY(50%) rotate(-${(180 / (machinesImages.length - 1)) * index}deg) `,
+                  transform: `rotate(${(180 / (machinesImages.length - 1)) * index}deg) `,
                 }}
-              />
-            </div>
-          );
-        })}
-      </div>
+              >
+                <img
+                  src={image}
+                  alt={image}
+                  className="absolute bottom-1/2 left-0 h-60"
+                  style={{
+                    transform: `translateY(50%) rotate(-${(180 / (machinesImages.length - 1)) * index}deg) `,
+                  }}
+                />
+              </div>
+            );
+          })}
+        </div>
+      )}
       <Canvas
+        style={{
+          width: "70rem",
+          height: "40rem",
+          boxShadow: "0 0 20px rgba(0, 0, 0, 0.1)",
+          position: "absolute",
+          bottom: "0",
+        }}
         shadows
         camera={{
-          position: [0, 20, 40],
-          fov: 35,
+          position: [0, 60, 40],
+          fov: 28,
           localToWorld(vector) {
             return vector;
           },
@@ -91,12 +107,15 @@ function TreePage() {
         />
         <Suspense fallback={<Loader3D />}>
           <Model
+            color2="#96CFFE"
+            color1="#96CFFE"
             url="https://storage.googleapis.com/nextronic/mine00000017.glb"
             ref={modelRef}
+            onLoad={() => setLoading(false)}
           />
         </Suspense>
         <RotatingModel modelRef={modelRef} />
-        <OrbitControls zoomToCursor />
+        <OrbitControls enableRotate rotateSpeed={1} enableZoom={false} />
       </Canvas>
     </div>
   );
