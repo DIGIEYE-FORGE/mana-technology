@@ -87,15 +87,15 @@ function App() {
         {user === null && <LoginPage />}
         {user && backendApi.isReady() && (
           <main
-            className="dark flex flex-col gap-6 overflow-y-auto bg-[#05177E] px-8 pb-6 text-foreground [&>*]:mx-auto [&>*]:w-full [&>*]:max-w-[1954px]"
+            className="dark overflow-y-auto bg-[#05177E] text-foreground"
             style={{
               backgroundImage: 'url("/bg.png")',
               backgroundSize: "cover",
               backgroundPosition: "center",
-              scrollbarGutter: "stable",
+              // scrollbarGutter: "stable",
             }}
           >
-            <Navbar />
+            {/* <Navbar /> */}
             <Outlet />
           </main>
         )}

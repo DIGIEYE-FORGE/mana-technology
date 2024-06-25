@@ -7,10 +7,12 @@ import DashboardPage from "@/pages/dashboard";
 import TreePage from "@/pages/tree";
 import NotfoundPage from "@/pages/notfound";
 import DevPage from "@/pages/dev";
-import DashboardPage2 from "@/pages/dashboard2";
 import IselDevPage from "@/pages/isel-dev";
 import DashboardPage3 from "@/pages/dashboard3";
 import OjamilDevPage from "@/pages/ojamil-dev";
+import MainProjectPage from "@/pages/main-project";
+import UnderGroundPage from "@/pages/underground";
+import UndergroundDashboardPage from "@/pages/underground/dashboard";
 
 const routes: RouteObject[] = [
   {
@@ -22,12 +24,22 @@ const routes: RouteObject[] = [
         element: <HomePage />,
       },
       {
-        path: "dashboard",
-        element: <DashboardPage />,
+        path: "main-project",
+        element: <MainProjectPage />,
       },
       {
-        path: "dashboard2",
-        element: <DashboardPage2 />,
+        path: "underground",
+        element: <UnderGroundPage />,
+        children: [
+          {
+            path: "",
+            element: <UndergroundDashboardPage />,
+          },
+        ],
+      },
+      {
+        path: "dashboard",
+        element: <DashboardPage />,
       },
       {
         path: "dashboard3",

@@ -20,6 +20,9 @@ module.exports = {
       screens: {
         "3xl": "1920px",
       },
+      spacing: {
+        "up-bar": "var(--up-bar)",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

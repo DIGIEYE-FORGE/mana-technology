@@ -8,7 +8,7 @@ import LineChartWidget from "@/components/line-chart-widget";
 import LinesWidget from "@/components/lines-chart-widget";
 import Ventillation from "@/components/ventillation";
 
-function DashboardPage2() {
+export default function UndergroundDashboardPage() {
   const { dateRange } = useAppContext();
   return (
     <div className="grid h-fit w-full grid-flow-dense auto-rows-[19rem] grid-cols-9 gap-6">
@@ -283,4 +283,3 @@ function DashboardPage2() {
     </div>
   );
 }
-export default DashboardPage2;
