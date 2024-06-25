@@ -57,7 +57,7 @@ const routes: RouteObject[] = [
       {
         path: "tree",
         element: <TreePage />,
-      }
+      },
       {
         path: "ojamil",
         element: <OjamilDevPage />,
