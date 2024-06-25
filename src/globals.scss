@@ -115,3 +115,41 @@ nav {
     @apply bg-primary;
   }
 }
+
+.machine-highlight {
+  perspective: 1000px;
+
+  --rotate-x: 70deg;
+  --translate-z: 100px;
+  transform-origin: 50% 50%;
+
+  & .circle {
+    position: absolute;
+    transform-style: preserve-3d;
+    transform-origin: 50% 50% 0;
+  }
+
+  .circle-1 {
+    transform: rotateX(var(--rotate-x));
+  }
+  .circle-2 {
+    transform: translateY(10px) rotateX(var(--rotate-x));
+    opacity: 0.5;
+  }
+  .circle-3 {
+    transform: scale(1.1) translateY(12px) rotateX(var(--rotate-x));
+  }
+
+  & .rotate {
+    animation: rotate 10s linear infinite;
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotateZ(0deg);
+    }
+    100% {
+      transform: rotateZ(-360deg);
+    }
+  }
+}

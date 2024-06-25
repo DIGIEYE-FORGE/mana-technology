@@ -5,6 +5,11 @@ import { PlaneGeometry } from "three";
 import Model from "@/components/models";
 import { Suspense, useRef, useState } from "react";
 import Loader from "@/components/loader";
+import Circle1 from "@/assets/circle-1.svg?react";
+import Circle2 from "@/assets/circle-2.svg?react";
+import Circle3 from "@/assets/circle-3.svg?react";
+import Light from "@/assets/light.svg?react";
+import Frame from "@/assets/frame.svg?react";
 
 extend({ PlaneGeometry });
 
@@ -28,51 +33,104 @@ function RotatingModel({ modelRef }: { modelRef: any }) {
   return null; // This component doesn't render anything visible
 }
 
-const machinesImages = [
-  "/machine-01.svg",
-  "/machine-02.svg",
-  "/machine-03.svg",
-  "/machine-04.svg",
-  "/machine-05.svg",
-  "/machine-06.svg",
+const machines = [
+  {
+    name: "Foration Simba E70S",
+    image: "/machine-01.png",
+  },
+  {
+    name: "Foration Simba E70S",
+    image: "/machine-02.png",
+  },
+  {
+    name: "Foration Simba E70S",
+    image: "/machine-03.png",
+  },
+  {
+    name: "Foration Simba E70S",
+    image: "/machine-04.png",
+  },
+  {
+    name: "Foration Simba E70S",
+    image: "/machine-05.png",
+  },
+  {
+    name: "Foration Simba E70S",
+    image: "/machine-06.png",
+  },
 ];
 
 function TreePage() {
   const modelRef = useRef();
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   return (
-    <div className="relative flex h-full w-full items-center justify-center">
+    <div className="relative flex h-full w-full items-center justify-center pl-6">
       {loading && (
         <div className="absolute left-0 top-[4.2rem] z-[999] flex h-[calc(100%-5rem)] w-full items-center justify-center">
           <Loader />
         </div>
       )}
       {!loading && (
-        <div className="absolute bottom-0 left-0 h-full w-full overflow-hidden">
-          {machinesImages.map((image, index) => {
+        <>
+          {machines.map((item, index) => {
             return (
               <div
-                key={image}
-                className="absolute inset-x-[6rem] bottom-[8rem]"
+                key={index}
+                className="absolute h-44 w-32 -translate-x-1/2"
                 style={{
-                  transform: `rotate(${(180 / (machinesImages.length - 1)) * index}deg) `,
+                  left: `${50 - (((machines.length - 1) / 2 - index) / (machines.length - 1)) * 80}%`,
+                  top:
+                    {
+                      0: "60%",
+                      1: "30%",
+                      [machines.length - 2]: "30%",
+                      [machines.length - 1]: "60%",
+                    }[index] || "10%",
                 }}
               >
-                <img
-                  src={image}
-                  alt={image}
-                  className="absolute bottom-1/2 left-0 h-60"
+                <div
+                  className="absolute bottom-1/2 right-1/2 z-10 translate-x-1/2 whitespace-nowrap px-2 py-0.5"
                   style={{
-                    transform: `translateY(50%) rotate(-${(180 / (machinesImages.length - 1)) * index}deg) `,
+                    backgroundImage:
+                      "linear-gradient(to right, transparent, #002FBE, transparent)",
+                    border: "10px solid",
+                    borderImageSlice: 1,
+                    borderWidth: "1px",
+                    borderImageSource:
+                      "linear-gradient(to right, transparent, white, transparent)",
                   }}
-                />
+                >
+                  {item.name}
+                </div>
+                <div className="debug absolute bottom-3/4 right-1/2 translate-x-1/2">
+                  <Frame className="bottom-0 right-0 aspect-square size-20 translate-y-[0%]" />
+                  <div className="absolute bottom-2 right-4 z-10 w-32">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="object-contain"
+                    />
+                  </div>
+                </div>
+                <div className="machine-highlight absolute bottom-0 aspect-square w-full">
+                  <div className="circle circle-3 relative h-full w-full">
+                    <Circle3 className="rotate h-full w-full duration-1000" />
+                  </div>
+                  <div className="circle circle-2 relative h-full w-full">
+                    <Circle2 className="rotate h-full w-full duration-1000" />
+                  </div>
+                  <div className="circle circle-1 relative h-full w-full">
+                    <Circle1 className="rotate h-full w-full duration-1000" />
+                  </div>
+                  <Light className="absolute bottom-[40%] right-1/2 w-full translate-x-1/2" />
+                </div>
               </div>
             );
           })}
-        </div>
+        </>
       )}
-      <Canvas
+      {/* <Canvas
         style={{
           width: "70rem",
           height: "40rem",
@@ -116,7 +174,7 @@ function TreePage() {
         </Suspense>
         <RotatingModel modelRef={modelRef} />
         <OrbitControls enableRotate rotateSpeed={1} enableZoom={false} />
-      </Canvas>
+      </Canvas> */}
     </div>
   );
 }
