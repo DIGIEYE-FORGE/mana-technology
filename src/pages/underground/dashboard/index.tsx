@@ -203,7 +203,6 @@ export default function UndergroundDashboardPage() {
                   serial: "DABF7PAT2G4BAG21",
                   type: "bar",
                 },
-
                 {
                   name: "UG_TIR_PLANIFIE_CUMULE",
                   unit: "T",

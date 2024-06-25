@@ -3,6 +3,7 @@ import { Card } from "@/components/card";
 import LineChartWidget from "@/components/line-chart-widget";
 import { ProgressAccumulation } from "../home/_components/progress-accumulation";
 import TableWidget from "@/components/table-widget";
+import ProgressMultiple from "@/components/progress-multiple";
 
 function DashboardPage3() {
   return (
@@ -40,7 +41,7 @@ function DashboardPage3() {
         </h1>
         <div className="flex-1">
           <BarChartWidget
-            moyenne={true}
+            // moyenne={true}
             attributes={{
               stacked: false,
               telemetries: [
@@ -110,7 +111,64 @@ function DashboardPage3() {
           }}
         />
       </Card>
-      <Card className="col-span-4">1</Card>
+      <Card className="col-span-4  flex flex-col p-4">
+        <h1 className="text-center text-lg font-semibold">
+          Production  par qualité
+        </h1>
+        <div className="flex-1">
+          <ProgressMultiple
+            attributes={[
+              {
+                title: "Sulfures (HG,MG,LG)",
+                telemetries: [
+                  {
+                    name: "SUD2_REALISE_ORE_HG_SULF",
+                    serial: "C6XPYU0D920L1M07",
+                    label: "HG",
+                    color: "#FFDC8C",
+                    // showLabel: true, if you need to show label
+                  },
+                  {
+                    name: "SUD2_REALISE_ORE_MG_SULF",
+                    serial: "C6XPYU0D920L1M07",
+                    label: "MG",
+                    color: "#42F5FF",
+                  },
+                  {
+                    name: "SUD2_REALISE_ORE_LG_SULF",
+                    serial: "C6XPYU0D920L1M07",
+                    label: "LG",
+                    color: "#FFC8FF",
+                  }
+                ],
+              },
+              {
+                title: "Oxydes (HG,MG,LG)",
+                telemetries: [
+                  {
+                    name: "SUD2_REALISE_ORE_HG_OXYD",
+                    serial: "C6XPYU0D920L1M07",
+                    label: "HG",
+                    color: "#FFDC8C",
+                  },
+                  {
+                    name: "SUD2_REALISE_ORE_MG_OXYD",
+                    serial: "C6XPYU0D920L1M07",
+                    label: "MG",
+                    color: "#42F5FF",
+                  },
+                  {
+                    name: "SUD2_REALISE_ORE_LG_OXYD",
+                    serial: "C6XPYU0D920L1M07",
+                    label: "LG",
+                    color: "#FFC8FF",
+                  },
+                ],
+              },
+            ]}
+          />
+        </div>
+      </Card>
       <Card className="col-span-3 row-span-2 flex items-center justify-center text-3xl font-bold">
         Photo
       </Card>
@@ -119,7 +177,7 @@ function DashboardPage3() {
         <TableWidget
           className="flex-1"
           attributes={{
-            serial: "C6XPYU0D920L1M07",
+            serial: "V4Z1NGYWPYCTK1DX",
             element: "telemetries",
             mappings: [
               {
