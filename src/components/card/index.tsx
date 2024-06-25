@@ -136,7 +136,7 @@ function Corners() {
 export function Card({ className, children, style, ...props }: CardProps) {
   return (
     <div
-      className={cn("card relative", className)}
+      className={cn("card relative  bg-card/10", className)}
       style={{
         ...style,
       }}

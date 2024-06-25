@@ -12,6 +12,7 @@ import DashboardPage3 from "@/pages/dashboard3";
 import OjamilDevPage from "@/pages/ojamil-dev";
 import MainProjectPage from "@/pages/main-project";
 import UnderGroundPage from "@/pages/underground";
+import OpSud from "@/pages/op-sud";
 import UndergroundDashboardPage from "@/pages/underground/dashboard";
 
 const routes: RouteObject[] = [
@@ -22,6 +23,10 @@ const routes: RouteObject[] = [
       {
         path: "",
         element: <HomePage />,
+      },
+      {
+        path: "op-sud",
+        element: <OpSud />,
       },
       {
         path: "main-project",
