@@ -41,7 +41,7 @@ export default function HomeDashboard() {
         </h1>
         <div className="flex-1">
           <BarChartWidget
-            moyenne={true}
+            moyenne={["EST11_REALISE_ROCHE", "EST12_REALISE_ROCHE"]}
             attributes={{
               stacked: true,
               telemetries: [
@@ -149,7 +149,7 @@ export default function HomeDashboard() {
         </h1>
         <div className="flex-1">
           <LineChartWidget
-            moyenne={true}
+            moyenne={["EST_REALISE_FORATION", "EST_PLANIFIE_FORATION"]}
             attributes={{
               telemetries: [
                 {
