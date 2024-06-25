@@ -50,6 +50,7 @@ export default function BarLineWidget(props: Props) {
       const res1 = [
         ...res.map((item, index) => ({
           name: telemetries[index].label || telemetries[index].name,
+          nameTelemetry: telemetries[index].name,
           type: telemetries[index].type,
           data: item.map((item) => ({
             x: new Date(item.createdAt),
@@ -77,11 +78,13 @@ export default function BarLineWidget(props: Props) {
             })),
           });
         } else if (Array.isArray(props.moyenne)) {
-          const newTelemetr = telemetries.filter((item) =>
+          const newTelemetry = telemetries.filter((item) =>
             props.moyenne?.includes(item.name),
           );
-          newTelemetr.forEach((item) => {
-            const dataTelemetry = res1.find((item) => item.name === item.name);
+          newTelemetry.forEach((item) => {
+            const dataTelemetry = res1.find(
+              (it) => it.nameTelemetry === item.name,
+            );
             if (dataTelemetry) {
               const allDates = dataTelemetry?.data.map((item) => item.x);
               const allData = dataTelemetry?.data.map((item) => item.y);
@@ -132,8 +135,12 @@ export default function BarLineWidget(props: Props) {
           dropShadow: { enabled: false },
         },
         dataLabels: { enabled: false },
+
         stroke: {
-          width: telemetries.map((item) => (item.type === "line" ? 3 : 0)),
+          width: (data || []).map((item) =>
+            item.type === "line" || item.type === "area" ? 4 : 0,
+          ),
+          curve: "smooth",
         },
         xaxis: {
           type: "datetime",

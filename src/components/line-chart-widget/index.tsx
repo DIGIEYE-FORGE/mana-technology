@@ -56,6 +56,7 @@ export default function LineChartWidget({
       const res1 = res.map((item, index) => ({
         name: telemetries[index].label || telemetries[index].name,
         type: telemetries[index].area ? "area" : "line",
+        nameTelemetry: telemetries[index].name,
         data: item.map((item) => ({
           x: new Date(item.createdAt),
           y: Number(flatten(item)[telemetries[index].name]),
@@ -81,11 +82,13 @@ export default function LineChartWidget({
             })),
           });
         } else if (Array.isArray(props.moyenne)) {
-          const newTelemetr = telemetries.filter((item) =>
+          const newTelemetry = telemetries.filter((item) =>
             props.moyenne?.includes(item.name),
           );
-          newTelemetr.forEach((item) => {
-            const dataTelemetry = res1.find((item) => item.name === item.name);
+          newTelemetry.forEach((item) => {
+            const dataTelemetry = res1.find(
+              (it) => it.nameTelemetry === item.name,
+            );
             if (dataTelemetry) {
               const allDates = dataTelemetry?.data.map((item) => item.x);
               const allData = dataTelemetry?.data.map((item) => item.y);
@@ -140,7 +143,12 @@ export default function LineChartWidget({
           selection: { enabled: false },
           dropShadow: { enabled: false },
         },
-        stroke: { width: 3, curve: "smooth" },
+        stroke: {
+          width: (data || []).map((item) =>
+            item.type === "line" || item.type === "area" ? 4 : 0,
+          ),
+          curve: "smooth",
+        },
         dataLabels: { enabled: false },
         fill: {
           type: "solid",
@@ -174,6 +182,7 @@ export default function LineChartWidget({
             },
           },
         },
+
         yaxis: {
           min: 0,
           tickAmount: 4,
