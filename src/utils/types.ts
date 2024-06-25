@@ -76,7 +76,7 @@ export type Widget = {
   attributes?: JsonObject;
   dateRange?: TDateRange;
   yAxis?: boolean;
-  moyenne?: boolean;
+  moyenne?: "combined" | string[];
 };
 
 export type ChartTelemetry = {

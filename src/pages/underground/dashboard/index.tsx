@@ -150,7 +150,7 @@ export default function UndergroundDashboardPage() {
         <div className="w-full text-center text-xs text-gray-400"></div>
         <div className="flex-1">
           <BarLineWidget
-            moyenne={true}
+            moyenne={["UG_METRES_PLANIFIE"]}
             attributes={{
               stacked: true,
               telemetries: [
