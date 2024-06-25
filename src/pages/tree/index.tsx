@@ -41,11 +41,12 @@ function TreePage() {
   const modelRef = useRef();
 
   return (
-    <div className="h-full w-full">
+    <div className="flex h-full w-full items-center justify-center">
       <div className="absolute bottom-0 left-0 h-full w-full overflow-hidden">
         {machinesImages.map((image, index) => {
           return (
             <div
+              key={image}
               className="absolute inset-x-[6rem] bottom-[8rem]"
               style={{
                 transform: `rotate(${(180 / (machinesImages.length - 1)) * index}deg) `,
@@ -66,7 +67,7 @@ function TreePage() {
       <Canvas
         shadows
         camera={{
-          position: [0, 20, 40],
+          position: [0, 60, 40],
           fov: 35,
           localToWorld(vector) {
             return vector;
@@ -91,12 +92,13 @@ function TreePage() {
         />
         <Suspense fallback={<Loader3D />}>
           <Model
+            color="white"
             url="https://storage.googleapis.com/nextronic/mine00000017.glb"
             ref={modelRef}
           />
         </Suspense>
         <RotatingModel modelRef={modelRef} />
-        <OrbitControls zoomToCursor />
+        <OrbitControls enableRotate rotateSpeed={1} enableZoom={false} />
       </Canvas>
     </div>
   );
