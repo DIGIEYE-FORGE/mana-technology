@@ -1,14 +1,7 @@
 import { Card } from "@/components/card";
 import { MoteurCard } from "./components/moteurCard";
-import { useRef } from "react";
 
 const VentilationDashboard = () => {
-  const video = useRef<HTMLVideoElement>(null);
-  // const handleVideoEnd = () => {
-  //   if (!video.current) return;
-  //   video.current.currentTime = 0;
-  //   video.current.play();
-  // };
   return (
     <main className="grid h-full w-full grid-flow-dense auto-rows-[9rem] grid-cols-5 gap-4 [&>*]:p-4">
       <Card className="row-span-3 flex flex-col gap-1">
@@ -97,13 +90,10 @@ const VentilationDashboard = () => {
       </Card>
       <Card className="row-span-6">5</Card>
       <div className="col-span-3 row-span-3 !p-0">
-        <video
-          ref={video}
+        <img
+          src="/animation.gif"
+          alt=""
           className="h-full w-full object-cover"
-          src="/animation.webm"
-          autoPlay
-          loop
-          muted
         />
       </div>
       <Card className="row-span-1 flex flex-col items-center gap-3">
