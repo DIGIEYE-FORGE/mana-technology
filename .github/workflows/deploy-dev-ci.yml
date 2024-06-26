@@ -1,0 +1,44 @@
+name: DEPLOY DEV CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "deploy-dev"
+
+env:
+  image: frontend-mana-technology-dev
+  org: digieye
+
+
+jobs:
+  build:
+    name: build and push image
+    runs-on: ubuntu-latest
+    outputs:
+      build_tag: ${{steps.build-tag.outputs.BUILD_TAG}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set build tag
+        id: build-tag
+        shell: bash
+        run: |
+          echo "BUILD_TAG=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+          echo "BUILD_TAG=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+
+      - name: Build docker image
+        uses: ./.github/actions/build-docker-image
+        with:
+          file: ./Dockerfile
+          context: .
+          tags: |
+            ${{ env.org }}/${{ env.image }}:${{ env.BUILD_TAG }}
+            ${{ env.org }}/${{ env.image }}:latest
+          dockerhub-username: ${{ secrets.DOCKERHUB_USERNAME }}
+          dockerhub-token: ${{ secrets.DOCKERHUB_TOKEN }}
+          login: true
+          push: true
+
+  
