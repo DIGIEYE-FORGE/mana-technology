@@ -364,7 +364,7 @@ export default function MainProjectPage() {
             //   </PopoverContent>
             // </Popover>
           ))}
-          {data.map((item, index) => (
+          {/* {data.map((item, index) => (
             <div
               key={index}
               style={{
@@ -379,18 +379,18 @@ export default function MainProjectPage() {
               {item.type === "information" && (
                 <div className="flex flex-col gap-2 p-4">
                   <h1 className="text-xl font-bold">{item.title}</h1>
-                  {/* {Object.entries(item.attribute).map(([key, value]) => (
+                  {Object.entries(item.attribute).map(([key, value]) => (
                     <div key={key} className="flex items-center gap-3">
                       <span className="min-w-[8rem] text-lg font-bold">
                         {key}:
                       </span>
                       <span className="text-[#A4D3FF]">{value}</span>
                     </div>
-                  ))} */}
+                  ))}
                 </div>
               )}
             </div>
-          ))}
+          ))} */}
         </div>
         {/* <div className="relative flex flex-1 justify-center">
           <div
