@@ -15,23 +15,7 @@ export default function UndergroundDashboardPage() {
   const { dateRange } = useAppContext();
   return (
     <div className="grid h-fit w-full grid-flow-dense auto-rows-[19rem] grid-cols-9 gap-6">
-      <Card className="col-span-3 flex flex-col gap-6 p-6">
-        <h3 className="text-center text-lg font-semibold">
-          Ce projet a travaillé 395 jours sans blessure avec arrêt de travail
-        </h3>
-        <ConeChart
-          attribute={[
-            {
-              name: "CHARGE_INSTANTANEE",
-              color: "#009AB6",
-              label: "Quasi-accidents & observations",
-              serial: "AATT1JKEZ2V1YVMA",
-            },
-          ]}
-          className="flex-1"
-        />
-      </Card>
-      <Card className="col-span-3 flex flex-col p-4">
+      <Card className="col-span-5 flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
           Avancement cumulatif annuel
         </h1>
@@ -89,7 +73,7 @@ export default function UndergroundDashboardPage() {
           />
         </div>
       </Card>
-      <Card className="col-span-3 flex flex-col p-4">
+      <Card className="col-span-4 flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
           Avancement Cumulé :
           <span className="text-md text-gray-400"> Réalisé vs Planifié</span>
@@ -222,16 +206,34 @@ export default function UndergroundDashboardPage() {
       </Card>
       <Card className="relative col-span-3 p-4">
         <h1 className="text-center text-lg font-semibold">
-          Avancement/Arrachement journalier
+          Développement du cycle
         </h1>
         <div className="flex-1">
           <D3DonutChart
             attribute={[
               {
-                name: "CHARGE_INSTANTANEE",
+                name: "UG_FORATION_TIRS_PREPARATION-min",
                 color: "#009AB6",
                 label: "Quasi-accidents & observations",
-                serial: "AATT1JKEZ2V1YVMA",
+                serial: "DABF7PAT2G4BAG21",
+              },
+              {
+                name: "UG_FORATION_TIRS_PREPARATION-min",
+                color: "#009AB6",
+                label: "Quasi-accidents & observations",
+                serial: "DABF7PAT2G4BAG21",
+              },
+              {
+                name: "UG_FORATION_TIRS_PREPARATION-min",
+                color: "#009AB6",
+                label: "Quasi-accidents & observations",
+                serial: "DABF7PAT2G4BAG21",
+              },
+              {
+                name: "UG_FORATION_TIRS_PREPARATION-min",
+                color: "#009AB6",
+                label: "Quasi-accidents & observations",
+                serial: "DABF7PAT2G4BAG21",
               },
             ]}
           />
