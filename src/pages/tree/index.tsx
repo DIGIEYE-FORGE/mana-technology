@@ -85,7 +85,7 @@ const machines = [
 function TreePage() {
   // const modelRef = useRef();
 
-  const [loading, setLoading] = useState(false);
+  const [loading] = useState(false);
   const [active, setActive] = useState<number | null>(null);
   return (
     <main className="relative flex h-full w-full items-center justify-center pl-6">

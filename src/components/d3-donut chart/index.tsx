@@ -8,16 +8,6 @@ import { useAppContext } from "@/Context";
 import useSWR from "swr";
 import Loader from "../loader";
 
-// const data = [
-//   { name: "Element 1", value: 18, color: "#F7DC6F" },
-//   { name: "Element 2", value: 36, color: "#F39C12" },
-//   { name: "Element 3", value: 14, color: "#C0392B" },
-//   { name: "Element 4", value: 8, color: "#8E44AD" },
-//   { name: "Element 5", value: 12, color: "#1ABC9C" },
-//   { name: "Element 6", value: 15, color: "#2ECC71" },
-//   { name: "Element 7", value: 6, color: "#3498DB" },
-// ];
-
 interface D3DonutChartProps {
   attribute: {
     name: string;
