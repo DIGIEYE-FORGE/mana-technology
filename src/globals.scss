@@ -200,3 +200,9 @@ nav {
     @apply -right-6 translate-y-1/2;
   }
 }
+
+button:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  filter: grayscale(0.5);
+}

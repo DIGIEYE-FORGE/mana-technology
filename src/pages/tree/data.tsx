@@ -15,6 +15,7 @@ export const machines = [
       title: "Foration",
       component: <Dashboard1 />,
     },
+    disabled: true,
   },
   {
     name: "Foration Jumbo M20",

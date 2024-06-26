@@ -73,6 +73,7 @@ function TreePage() {
               >
                 <PopoverTrigger asChild>
                   <button
+                    disabled={item.disabled}
                     className={cn(
                       "machine absolute z-10 h-44 w-32 -translate-x-1/2 select-none",
                       {
