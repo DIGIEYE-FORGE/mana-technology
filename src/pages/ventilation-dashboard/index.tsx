@@ -239,8 +239,6 @@ const VentilationDashboard = () => {
           </div>
         </div>
       </Card>
-      {/* <div className="col-span-9 row-span-3 !p-0">6</div> */}
-      {/* <Card className="col-span-3 row-span-1 flex flex-col items-center gap-3"> */}
       <div className="col-span-9 row-span-3 !p-0">
         <img
           src="/animation.gif"

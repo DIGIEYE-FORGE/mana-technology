@@ -1,9 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useRef } from "react";
 import * as d3 from "d3";
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { ChevronsDown } from "lucide-react";
 import { useAppContext } from "@/Context";
 import useSWR from "swr";
 import Loader from "../loader";
@@ -109,7 +106,12 @@ export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
       .data(pie(data as any))
       .enter()
       .append("text")
-      .text((d: any) => d.data.name)
+      .text((d: any) => {
+        const test: string = d.data.name;
+        const wrapedText = test.slice(0, 10) + "...";
+        console.log(wrapedText);
+        return wrapedText;
+      })
       .attr("transform", function (d) {
         const pos = outerArc.centroid(d as any);
         pos[0] = radius * (midAngle(d) < Math.PI ? 1 : -1);
@@ -119,7 +121,8 @@ export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
         return midAngle(d) < Math.PI ? "start" : "end";
       })
       .style("fill", "#FFFFFF")
-      .style("font-size", "0.23rem");
+      .style("font-size", "0.28rem")
+      .style("dominant-baseline", "auto");
 
     function midAngle(d: any) {
       return d.startAngle + (d.endAngle - d.startAngle) / 2;
@@ -134,7 +137,7 @@ export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
 
   if (isLoading)
     return (
-      <div className="flex h-full w-full items-center justify-center">
+      <div className="line-clamp-1 flex h-full w-full items-center justify-center">
         <Loader />
       </div>
     );
@@ -153,47 +156,32 @@ export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
     );
 
   return (
-    <div className="grid w-full flex-1 items-center justify-center">
-      <div className="grid w-full grid-cols-10 items-center justify-center">
-        <div className="relative col-span-4 flex h-full flex-col px-5 pt-5">
-          <h3 className="text-center font-semibold">BFS</h3>
-          <div className="my-1 h-[0.05rem] w-full bg-[#6981C0]"></div>
-          <div className="flex h-full w-full flex-col">
-            {(data || []).map((d, i) => (
-              <div
-                key={i}
-                className="grid grid-cols-10 items-center gap-2 py-1"
-              >
-                <span
-                  className="col-span-2 h-3 rounded-md"
-                  style={{
-                    backgroundColor: d.color,
-                  }}
-                ></span>
-                <span className="col-span-7 line-clamp-1 text-xs font-semibold">
-                  {d.name}
-                </span>
-                <span className="col-span-1 text-xs font-semibold">
-                  {d.value}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="col-span-6 flex w-full items-center justify-center">
-          <svg viewBox="0 20 100 55" ref={ref}></svg>
+    <div className="grid w-full grid-cols-10 items-center justify-center">
+      <div className="relative col-span-4 flex h-full flex-col px-5 pt-5">
+        <h3 className="text-center font-semibold">BFS</h3>
+        <div className="my-1 h-[0.05rem] w-full bg-[#6981C0]"></div>
+        <div className="flex h-full w-full flex-col">
+          {(data || []).map((d, i) => (
+            <div key={i} className="grid grid-cols-10 items-center gap-2 py-1">
+              <span
+                className="col-span-2 h-3 rounded-md"
+                style={{
+                  backgroundColor: d.color,
+                }}
+              ></span>
+              <span className="col-span-7 line-clamp-1 text-xs font-semibold">
+                {d.name}
+              </span>
+              <span className="col-span-1 text-xs font-semibold">
+                {d.value}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
-      <Link
-        to="/underground/tree"
-        className="flex w-full items-center justify-center"
-      >
-        <Button className="flex h-5 w-fit gap-2" size={"sm"} variant={"link"}>
-          <ChevronsDown size={16} />
-          {/* <img src="plus.svg" alt="" width={20} height={20} /> */}
-          <span className="text-center">Voir plus</span>
-        </Button>
-      </Link>
+      <div className="col-span-6 flex w-full items-center justify-center">
+        <svg viewBox="0 20 100 55" ref={ref}></svg>
+      </div>
     </div>
   );
 };

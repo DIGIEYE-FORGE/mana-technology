@@ -133,7 +133,6 @@ export const MoteurCard = (props: Props) => {
           labels: {
             showDuplicates: false,
             show: true,
-            // trim: true,
             formatter(value: string) {
               return Number(value).toFixed(0);
             },
