@@ -3,7 +3,7 @@ import { Canvas, extend, useFrame } from "@react-three/fiber";
 import { OrbitControls, Html } from "@react-three/drei";
 import { PlaneGeometry } from "three";
 import Model from "@/components/models";
-import { Suspense, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import Loader from "@/components/loader";
 import Circle1 from "@/assets/circle-1.svg?react";
 import Circle2 from "@/assets/circle-2.svg?react";
@@ -12,10 +12,13 @@ import Light from "@/assets/light.svg?react";
 import Frame from "@/assets/frame.svg?react";
 import {
   Popover,
+  PopoverClose,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { XIcon } from "lucide-react";
 
 extend({ PlaneGeometry });
 function Loader3D() {
@@ -77,6 +80,15 @@ function TreePage() {
   const modelRef = useRef();
   const [loading, setLoading] = useState(true);
   const [active, setActive] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (!modelRef.current || loading) return;
+    // rotate the model on x-axis
+    const model = modelRef.current as any;
+    model.rotation.x = -Math.PI / 8;
+    model.position.y = -4;
+    model.position.z = 0;
+  }, [loading, modelRef]);
   return (
     <main className="relative flex h-full w-full items-center justify-center pl-6">
       {loading && (
@@ -101,7 +113,7 @@ function TreePage() {
                 <PopoverTrigger asChild>
                   <button
                     className={cn(
-                      "machine absolute h-44 w-32 -translate-x-1/2",
+                      "machine absolute z-10 h-44 w-32 -translate-x-1/2",
                       {
                         active: active === index,
                       },
@@ -159,19 +171,29 @@ function TreePage() {
                   side={item.side as any}
                   align={item.align as any}
                   sideOffset={item.sideOffset}
-                  className="w-fit border-none bg-transparent p-0 backdrop-blur"
+                  className="dark w-fit border-none bg-transparent p-0 backdrop-blur"
                   style={{
                     clipPath:
-                      "polygon(0% 18.5%, 2.8% 13.5%, 34% 13.5%, 37% 8%, 37% 1.5%, 100% 1.5%, 100% 99.5%, 1.6% 99.5%, 1.6% 67%, 0% 64%)",
+                      "polygon(0% 18.5%, 2.8% 13.5%, 34% 13.5%, 36.2% 9.3%, 36.2% 0%, 100% 0%, 100% 99.6%, 1.6% 99.6%, 1.6% 67%, 0% 64%)",
                   }}
                 >
                   <div
-                    className="aspect-video w-[66.66vw]"
+                    className="relative z-10 aspect-video w-[66.66vw]"
                     style={{
                       backgroundImage: "url(/card-bg.png)",
                       backgroundSize: "100% 100%",
                     }}
-                  ></div>
+                  >
+                    <PopoverClose asChild>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="absolute right-6 top-5 text-white"
+                      >
+                        <XIcon size={24} />
+                      </Button>
+                    </PopoverClose>
+                  </div>
                 </PopoverContent>
               </Popover>
             );
@@ -180,15 +202,15 @@ function TreePage() {
       )}
       <Canvas
         style={{
-          width: "90rem",
-          height: "40rem",
+          // width: "",
+          // height: "40rem",
           position: "absolute",
           bottom: "0",
         }}
         shadows
         camera={{
-          position: [0, 60, 40],
-          fov: 20,
+          position: [0, 30, 30],
+          fov: 35,
           localToWorld(vector) {
             return vector;
           },
@@ -214,13 +236,14 @@ function TreePage() {
           <Model
             color2="#96CFFE"
             color1="#96CFFE"
-            url="https://storage.googleapis.com/nextronic/mine00000017.glb"
+            url={`https://storage.googleapis.com/nextronic/mine00000017.glb`}
+            // url="/public/ignore/mine00000017.glb"
             ref={modelRef}
             onLoad={() => setLoading(false)}
           />
         </Suspense>
         <RotatingModel modelRef={modelRef} />
-        <OrbitControls enableRotate rotateSpeed={1} />
+        <OrbitControls enableRotate rotateSpeed={1} zoomToCursor />
       </Canvas>
     </main>
   );
