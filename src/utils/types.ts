@@ -75,8 +75,8 @@ export type TableWidgetData = {
 export type Widget = {
   attributes?: JsonObject;
   dateRange?: TDateRange;
-  yAxis?: boolean;
   moyenne?: "combined" | string[];
+  yAxis?: "one" | "multiple";
 };
 
 export type ChartTelemetry = {
@@ -97,6 +97,7 @@ export type ChartsWidgetData = {
   color?: string;
   area?: boolean;
   type: "line" | "bar";
+  yAxis?: "one" | "multiple";
 }
 
 export type LastTelemetry = {
