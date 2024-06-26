@@ -236,8 +236,8 @@ function TreePage() {
           <Model
             color2="#96CFFE"
             color1="#96CFFE"
-            // url="https://storage.googleapis.com/nextronic/mine00000017.glb"
-            url="/public/ignore/mine00000017.glb"
+            url={`https://storage.googleapis.com/nextronic/mine00000017.glb`}
+            // url="/public/ignore/mine00000017.glb"
             ref={modelRef}
             onLoad={() => setLoading(false)}
           />
