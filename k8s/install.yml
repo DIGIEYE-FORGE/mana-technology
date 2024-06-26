@@ -1,0 +1,90 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: frontend-mana-technology-dev
+  labels:
+    app: frontend-mana-technology-dev
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend-mana-technology-dev
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: frontend-mana-technology-dev
+        version: v1
+    spec:
+      containers:
+        - name: frontend-mana-technology-dev
+          image: digieye/frontend-mana-technology-dev:latest
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+              name: http
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            capabilities:
+              drop:
+                - ALL
+            readOnlyRootFilesystem: true
+          resources:
+            limits:
+              cpu: 500m
+              memory: 1Gi
+            requests:
+              cpu: 200m
+              memory: 500Mi
+          imagePullPolicy: Always
+      imagePullSecrets:
+        - name: dckr-secret
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-mana-technology-dev
+  labels:
+    app: frontend-mana-technology-dev
+    version: v1
+spec:
+  selector:
+    app: frontend-mana-technology-dev
+    version: v1
+  ports:
+    - port: 80
+      targetPort: http
+  type: ClusterIP
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontend-mana-technology-dev
+  labels:
+    app: frontend-mana-technology-dev
+    version: v1
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-cluster-iusser-prod
+spec:
+  tls:
+    - hosts:
+        - managem.digieye.io
+      secretName: managem.digieye.io
+  rules:
+    - host: managem.digieye.io
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: frontend-mana-technology-dev
+                port:
+                  number: 80
