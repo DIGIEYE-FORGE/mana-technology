@@ -212,14 +212,14 @@ export function ProgressAccumulation({ attributes }: Widget) {
             className="h-[12px] w-[26px] rounded-full"
             style={{ backgroundColor: finalTargetColor }}
           ></span>
-          <span>Final Target: {finalTarget}</span>
+          <span>Objectif final: {finalTarget}</span>
         </div>
         <div className="flex items-center gap-1">
           <span
             className="h-[12px] w-[26px] rounded-full"
             style={{ backgroundColor: currentTargetColor }}
           ></span>
-          <span>Current Target: {currentTarget}</span>
+          <span>Cible actuelle: {currentTarget}</span>
         </div>
         <div className="flex items-center gap-1">
           <span
@@ -227,7 +227,7 @@ export function ProgressAccumulation({ attributes }: Widget) {
             style={{ backgroundColor: progressColor }}
           ></span>
           <div className="flex items-center gap-2">
-            <span>progress: {progress}</span>
+            <span>progrès: {progress}</span>
           </div>
         </div>
       </div>

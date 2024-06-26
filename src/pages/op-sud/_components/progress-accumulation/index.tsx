@@ -112,7 +112,7 @@ export function ProgressAccumulation({ attributes }: Widget) {
   const strokeWidth = 20;
   return (
     <Fragment>
-      <div className="relative h-1 flex-1 p-8">
+      <div className="debug relative h-1 flex-1 p-8">
         <div className="absolute bottom-8 right-1/2 flex -translate-y-1/4 translate-x-1/2 flex-col items-center gap-1">
           <span className="text-3xl font-bold">
             {((progress / finalTarget) * 100).toFixed(2)} %
@@ -206,20 +206,20 @@ export function ProgressAccumulation({ attributes }: Widget) {
           </MotionConfig>
         </svg>
       </div>
-      <div className="relative flex flex-wrap justify-center gap-x-4 text-xs font-medium">
+      <div className="debug relative flex flex-wrap justify-center gap-x-4 text-xs font-medium">
         <div className="flex items-center gap-1">
           <span
             className="h-[12px] w-[26px] rounded-full"
             style={{ backgroundColor: finalTargetColor }}
           ></span>
-          <span>Final Target: {finalTarget}</span>
+          <span>Objectif final: {finalTarget} ||||</span>
         </div>
         <div className="flex items-center gap-1">
           <span
             className="h-[12px] w-[26px] rounded-full"
             style={{ backgroundColor: currentTargetColor }}
           ></span>
-          <span>Current Target: {currentTarget}</span>
+          <span>Cible actuelle: {currentTarget} |||</span>
         </div>
         <div className="flex items-center gap-1">
           <span
@@ -227,7 +227,7 @@ export function ProgressAccumulation({ attributes }: Widget) {
             style={{ backgroundColor: progressColor }}
           ></span>
           <div className="flex items-center gap-2">
-            <span>progress: {progress}</span>
+            <span>progrès: {progress} ||</span>
           </div>
         </div>
       </div>
