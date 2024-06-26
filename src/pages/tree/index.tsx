@@ -159,19 +159,29 @@ function TreePage() {
                   side={item.side as any}
                   align={item.align as any}
                   sideOffset={item.sideOffset}
-                  className="w-fit border-none bg-transparent p-0 backdrop-blur"
+                  className="dark w-fit border-none bg-transparent p-0 backdrop-blur"
                   style={{
                     clipPath:
-                      "polygon(0% 18.5%, 2.8% 13.5%, 34% 13.5%, 37% 8%, 37% 1.5%, 100% 1.5%, 100% 99.5%, 1.6% 99.5%, 1.6% 67%, 0% 64%)",
+                      "polygon(0% 18.5%, 2.8% 13.5%, 34% 13.5%, 36.2% 9.3%, 36.2% 0%, 100% 0%, 100% 99.6%, 1.6% 99.6%, 1.6% 67%, 0% 64%)",
                   }}
                 >
                   <div
-                    className="aspect-video w-[66.66vw]"
+                    className="relative z-10 aspect-video w-[66.66vw]"
                     style={{
                       backgroundImage: "url(/card-bg.png)",
                       backgroundSize: "100% 100%",
                     }}
-                  ></div>
+                  >
+                    <PopoverClose asChild>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="absolute right-6 top-5 text-white"
+                      >
+                        <XIcon size={24} />
+                      </Button>
+                    </PopoverClose>
+                  </div>
                 </PopoverContent>
               </Popover>
             );
