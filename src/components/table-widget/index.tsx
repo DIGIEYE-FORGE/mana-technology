@@ -96,10 +96,10 @@ export default function TableWidget({ attributes, className }: Props) {
   return (
     <main
       ref={containerRef}
-      className={cn("flex h-full w-full flex-col gap-4 text-sm", className)}
+      className={cn("flex h-full w-full flex-col text-sm", className)}
     >
       <div
-        className="grid max-w-full py-3 font-semibold [&>*]:truncate [&>*]:px-2 [&>*]:capitalize"
+        className="grid max-w-full font-semibold [&>*]:truncate [&>*]:px-2 [&>*]:capitalize"
         style={{
           gridTemplateColumns: `repeat(${mappings.length + 1}, 1fr)`,
         }}

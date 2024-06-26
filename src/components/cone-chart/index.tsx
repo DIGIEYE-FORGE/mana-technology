@@ -1,7 +1,10 @@
+import { useAppContext } from "@/Context";
 import { ProgressCircle } from "@/components/progress-circle";
 import { cn } from "@/lib/utils";
 import Color from "color";
 import { HTMLMotionProps, motion } from "framer-motion";
+import useSWR from "swr";
+import Loader from "../loader";
 interface ConeProps extends HTMLMotionProps<"div"> {
   data: {
     name: string;
@@ -55,18 +58,80 @@ const Cone = ({ data, style, children, ...props }: ConeProps) => {
 interface ConChartProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, "children"> {
   legendWidth?: number;
-  data: {
+  attribute: {
     name: string;
-    value: number;
+    label: string;
+    serial: string;
     color: string;
   }[];
 }
 
 export function ConeChart({
   className,
-  data,
+  attribute,
   legendWidth = 200,
 }: ConChartProps) {
+  const { backendApi } = useAppContext();
+  const {
+    data: res,
+    isLoading,
+    error,
+  } = useSWR(`telemetry${JSON.stringify(attribute)}`, async () => {
+    if (!attribute?.length) return [];
+    return await Promise.all(
+      attribute.map(async (device) => {
+        const { name, label, color, serial } = device;
+        const res = await backendApi.findMany<{
+          name: string;
+          value: number;
+        }>("lasttelemetry", {
+          where: {
+            name,
+            device: { serial },
+          },
+          select: { name: true, value: true },
+          orderBy: {
+            createdAt: "desc",
+          },
+          pagination: {
+            page: 1,
+            perPage: 1,
+          },
+        });
+        return {
+          color: color,
+          name: label,
+          value: res.results[0].value,
+        };
+      }),
+    );
+  });
+  if (isLoading)
+    return (
+      <div className="flex h-full w-full items-center justify-center">
+        <Loader />
+      </div>
+    );
+  if (error)
+    return (
+      <div className="debug flex h-full w-full items-center justify-center [&>*]:text-xl [&>*]:font-bold">
+        failed to load
+      </div>
+    );
+
+  if (!res)
+    return (
+      <div className="h-full w-full items-center justify-center [&>*]:text-xl [&>*]:font-bold">
+        no data
+      </div>
+    );
+
+  const data = res.map((item, index) => {
+    return {
+      ...item,
+      name: attribute[index].label,
+    };
+  });
   const cum = data.reduce((acc, curr, index) => {
     acc.push(index === 0 ? curr.value : acc[index - 1] + curr.value);
     return acc;
