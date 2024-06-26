@@ -61,11 +61,13 @@ const machines = [
     name: "Chargement Explosif & Tir (Engins)",
     image: "/machine-03.png",
     align: "center",
+    sideOffset: -50,
   },
   {
     name: "Déblayage R1700",
     image: "/machine-04.png",
     align: "center",
+    sideOffset: -50,
   },
   {
     name: "Soutènement boltec m10",
@@ -173,7 +175,7 @@ function TreePage() {
                   className="w-fit border-none bg-transparent p-0 backdrop-blur"
                   style={{
                     clipPath:
-                      "polygon(0% 18.5%, 2.8% 13.5%, 34% 13.5%, 37% 8%, 37% 2%, 100% 2%, 100% 99%, 1.6% 99%, 1.6% 67%, 0% 64%)",
+                      "polygon(0% 18.5%, 2.8% 13.5%, 34% 13.5%, 37% 8%, 37% 1.5%, 100% 1.5%, 100% 99.5%, 1.6% 99.5%, 1.6% 67%, 0% 64%)",
                   }}
                 >
                   <div
