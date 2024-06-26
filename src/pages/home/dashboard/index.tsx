@@ -11,7 +11,7 @@ export default function HomeDashboard() {
     <main className="grid w-full grid-flow-dense auto-rows-[80px] grid-cols-3 gap-3 sm:auto-rows-[92px] md:grid-cols-6 lg:grid-cols-12 lg:gap-4 2xl:grid-cols-[repeat(15,minmax(0,1fr))]">
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
-        Évolution Production Cumulée
+          Évolution Production Cumulée
         </h1>
         <div className="flex-1">
           <LineChartWidget
@@ -38,7 +38,7 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
-        Production par Fosse
+          Production par Fosse
         </h1>
         <div className="flex-1">
           <BarChartWidget
@@ -106,7 +106,7 @@ export default function HomeDashboard() {
         </div>
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-4">
-      <h1 className="text-center text-lg font-semibold">
+        <h1 className="text-center text-lg font-semibold">
           Évolution de la Production vs Planifié
         </h1>
         <ProgressAccumulation
@@ -149,7 +149,7 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-4">
         <h1 className="text-center text-lg font-semibold">
-          Production  par qualité
+          Production par qualité
         </h1>
         <div className="flex-1">
           <ProgressMultiple
@@ -162,7 +162,6 @@ export default function HomeDashboard() {
                     serial: "U9XQMQ1DXYT7LJIP",
                     label: "HG",
                     color: "#FFDC8C",
-                    // showLabel: true, if you need to show label
                   },
                   {
                     name: "EST_REALISE_ORE_MG_SULF",
@@ -175,7 +174,7 @@ export default function HomeDashboard() {
                     serial: "U9XQMQ1DXYT7LJIP",
                     label: "LG",
                     color: "#FFC8FF",
-                  }
+                  },
                 ],
               },
               {
@@ -205,8 +204,10 @@ export default function HomeDashboard() {
           />
         </div>
       </Card>
-      <Card className="col-span-full row-span-3 p-4 lg:col-span-8">
-        <h3 className="text-center text-lg font-semibold">Disponibilité Engine</h3>
+      <Card className="col-span-full row-span-3 flex flex-col gap-1 p-4 lg:col-span-8">
+        <h3 className="text-center text-lg font-semibold">
+          Disponibilité Engine
+        </h3>
         <TableWidget
           className="flex-1"
           attributes={{

@@ -20,19 +20,13 @@ export default function UndergroundDashboardPage() {
           Ce projet a travaillé 395 jours sans blessure avec arrêt de travail
         </h3>
         <ConeChart
-          data={[
+          attribute={[
             {
-              name: "Quasi-accidents & observations",
-              value: 30,
+              name: "CHARGE_INSTANTANEE",
               color: "#009AB6",
+              label: "Quasi-accidents & observations",
+              serial: "AATT1JKEZ2V1YVMA",
             },
-            { name: "Cas de traitement médical", value: 20, color: "#FFCA05" },
-            {
-              name: "Blessure avec perte de temps",
-              value: 50,
-              color: "#F650A0",
-            },
-            { name: "Fatally", value: 30, color: "#903E92" },
           ]}
           className="flex-1"
         />
@@ -230,7 +224,16 @@ export default function UndergroundDashboardPage() {
           Avancement/Arrachement journalier
         </h1>
         <div className="flex-1">
-          <D3DonutChart />
+          <D3DonutChart
+            attribute={[
+              {
+                name: "CHARGE_INSTANTANEE",
+                color: "#009AB6",
+                label: "Quasi-accidents & observations",
+                serial: "AATT1JKEZ2V1YVMA",
+              },
+            ]}
+          />
         </div>
       </Card>
       <Card className="col-span-3 flex flex-col gap-1 p-4">
@@ -254,11 +257,11 @@ export default function UndergroundDashboardPage() {
         </div>
       </Card>
       {/* <Card className="col-span-2">10</Card> */}
-      <Card className="col-span-3 flex flex-col p-4">
+      <Card className="col-span-3 flex flex-col gap-2 p-2">
         <h3 className="text-center text-lg font-semibold">
           Disponibilité et utilisation des engins
         </h3>
-        <div className="flex-1">
+        <div className="mx-6 flex-1 p-1">
           <Engins
             attribute={[
               {
@@ -266,28 +269,32 @@ export default function UndergroundDashboardPage() {
                 label: "LH06",
                 disponibillite: "Standby",
                 icon: "/truck.svg",
-                value: 65,
+                value: 45,
+                value2: 100,
               },
               {
                 name: "LH06",
                 label: "LH06",
                 disponibillite: "Disponible",
                 icon: "/truck.svg",
-                value: 43,
+                value: 64,
+                value2: 59,
               },
               {
                 name: "LH06",
                 label: "LH06",
                 disponibillite: "Disponible",
                 icon: "/truck.svg",
-                value: 89,
+                value: 49,
+                value2: 100,
               },
               {
                 name: "LH06",
                 label: "LH06",
                 disponibillite: "Indisponible",
                 icon: "/truck.svg",
-                value: 48,
+                value: 34,
+                value2: 48,
               },
             ]}
           />

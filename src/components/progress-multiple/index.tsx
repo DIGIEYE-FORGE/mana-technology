@@ -51,16 +51,20 @@ function ProgressData({ data, sum, className }: ProgressTo) {
               className="text-bold flex flex-col items-center justify-center text-white"
               key={index}
               style={{
-                width: `${((telemetry.value * 100) / sum).toFixed(2)}%`,
+                width:
+                  telemetry?.value > 0
+                    ? `${(telemetry.value * 100) / sum}%`
+                    : "0%",
                 backgroundColor: telemetry.color,
               }}
             >
               <span className="text-sm">
-                {((telemetry.value * 100) / sum).toFixed(2)}%
+                {telemetry?.value > 0 &&
+                  ((telemetry.value * 100) / sum).toFixed(2) + "%"}
               </span>
-              {telemetry.label && (
+              {/* {telemetry?.value && (
                 <div className="text-xs">{telemetry.label}</div>
-              )}
+              )} */}
             </div>
           );
         })}
@@ -137,7 +141,7 @@ function ProgressMultiple({ attributes }: props) {
                   label: telemetries.find((tel) => tel.name === ele.name)
                     ?.showLabel
                     ? telemetries.find((tel) => tel.name === ele.name)?.label
-                    : undefined,
+                    : "",
                   color:
                     telemetries.find((tel) => tel.name === ele.name)?.color ||
                     "red",

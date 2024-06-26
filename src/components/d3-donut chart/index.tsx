@@ -1,27 +1,71 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useRef } from "react";
 import * as d3 from "d3";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ChevronsDown } from "lucide-react";
+import { useAppContext } from "@/Context";
+import useSWR from "swr";
+import Loader from "../loader";
 
-const data = [
-  { name: "Element 1", value: 18, color: "#F7DC6F" },
-  { name: "Element 2", value: 36, color: "#F39C12" },
-  { name: "Element 3", value: 14, color: "#C0392B" },
-  { name: "Element 4", value: 8, color: "#8E44AD" },
-  { name: "Element 5", value: 12, color: "#1ABC9C" },
-  { name: "Element 6", value: 15, color: "#2ECC71" },
-  { name: "Element 7", value: 6, color: "#3498DB" },
-];
+// const data = [
+//   { name: "Element 1", value: 18, color: "#F7DC6F" },
+//   { name: "Element 2", value: 36, color: "#F39C12" },
+//   { name: "Element 3", value: 14, color: "#C0392B" },
+//   { name: "Element 4", value: 8, color: "#8E44AD" },
+//   { name: "Element 5", value: 12, color: "#1ABC9C" },
+//   { name: "Element 6", value: 15, color: "#2ECC71" },
+//   { name: "Element 7", value: 6, color: "#3498DB" },
+// ];
 
-export const D3DonutChart = () => {
-  const ref = useRef(null);
+interface D3DonutChartProps {
+  attribute: {
+    name: string;
+    label: string;
+    color: string;
+    serial: string;
+  }[];
+}
+export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
+  const { backendApi } = useAppContext();
+  const { data, isLoading, error } = useSWR(
+    `telemetryDonutChartProps${JSON.stringify(attribute)}`,
+    async () => {
+      if (!attribute?.length) return [];
+      const res1 = await Promise.all(
+        attribute.map(async (device) => {
+          const { name, label, color, serial } = device;
+          const res = await backendApi.findMany<{
+            name: string;
+            value: number;
+          }>("lasttelemetry", {
+            where: {
+              name,
+              device: { serial },
+            },
+            select: { name: true, value: true },
+            orderBy: {
+              createdAt: "desc",
+            },
+            pagination: {
+              page: 1,
+              perPage: 1,
+            },
+          });
+          return {
+            color: color,
+            name: label,
+            value: res.results[0].value,
+          };
+        }),
+      );
+      const sum = res1.reduce((acc, curr) => acc + curr.value, 0);
+      return res1.map((d) => ({ ...d, value: (d.value / sum) * 100 }));
+    },
+  );
 
-  useEffect(() => {
-    drawChart();
-  }, []);
-
-  const drawChart = () => {
+  const drawChart = (data: any) => {
+    if (!data) return;
     const width = 100;
     const height = 100;
     const radius = Math.min(width, height) / 4;
@@ -92,6 +136,32 @@ export const D3DonutChart = () => {
     }
   };
 
+  const ref = useRef(null);
+  useEffect(() => {
+    if (!data) return;
+    drawChart(data);
+  }, [data, ref]);
+
+  if (isLoading)
+    return (
+      <div className="flex h-full w-full items-center justify-center">
+        <Loader />
+      </div>
+    );
+  if (error)
+    return (
+      <div className="debug flex h-full w-full items-center justify-center [&>*]:text-xl [&>*]:font-bold">
+        failed to load
+      </div>
+    );
+
+  if (!data)
+    return (
+      <div className="h-full w-full items-center justify-center [&>*]:text-xl [&>*]:font-bold">
+        no data
+      </div>
+    );
+
   return (
     <div className="grid w-full flex-1 items-center justify-center">
       <div className="grid w-full grid-cols-10 items-center justify-center">
@@ -99,7 +169,7 @@ export const D3DonutChart = () => {
           <h3 className="text-center font-semibold">BFS</h3>
           <div className="my-1 h-[0.05rem] w-full bg-[#6981C0]"></div>
           <div className="flex h-full w-full flex-col">
-            {data.map((d, i) => (
+            {(data || []).map((d, i) => (
               <div
                 key={i}
                 className="grid grid-cols-10 items-center gap-2 py-1"

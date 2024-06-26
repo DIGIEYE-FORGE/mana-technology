@@ -17,7 +17,6 @@ import Light from "@/assets/light.svg?react";
 import Frame from "@/assets/frame.svg?react";
 
 extend({ PlaneGeometry });
-
 // function Loader3D() {
 //   return (
 //     <Html center>
