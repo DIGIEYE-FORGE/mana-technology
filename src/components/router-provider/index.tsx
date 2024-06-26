@@ -14,6 +14,7 @@ import OjamilDevPage from "@/pages/ojamil-dev";
 import MainProjectPage from "@/pages/main-project";
 import UnderGroundPage from "@/pages/underground";
 import OpSud from "@/pages/op-sud";
+import Op from "@/pages/op";
 import OpSud2 from "@/pages/op-sud2";
 import OpSud4 from "@/pages/op-sud4";
 import UndergroundDashboardPage from "@/pages/underground/dashboard";
@@ -31,6 +32,10 @@ const routes: RouteObject[] = [
       {
         path: "op-sud",
         element: <OpSud />,
+      },
+      {
+        path: "op",
+        element: <Op />,
       },
       {
         path: "op-sud2",
