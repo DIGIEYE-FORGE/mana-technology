@@ -12,10 +12,12 @@ import Light from "@/assets/light.svg?react";
 import Frame from "@/assets/frame.svg?react";
 import {
   Popover,
+  PopoverClose,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 extend({ PlaneGeometry });
 function Loader3D() {
