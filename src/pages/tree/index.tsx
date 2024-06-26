@@ -20,6 +20,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { XIcon } from "lucide-react";
 import { machines } from "./data";
+import { env } from "@/utils/env";
 
 extend({ PlaneGeometry });
 function Loader3D() {
@@ -200,8 +201,10 @@ function TreePage() {
           <Model
             color2="#96CFFE"
             color1="#96CFFE"
-            url={`https://storage.googleapis.com/nextronic/mine00000017.glb`}
-            // url="/public/ignore/mine00000017.glb"
+            url={
+              `${env.VITE_LOCAL_MODELS ? "/public/ignore/" : "https://storage.googleapis.com/nextronic/"}` +
+              "mine00000017.glb"
+            }
             ref={modelRef}
             onLoad={() => setLoading(false)}
           />
