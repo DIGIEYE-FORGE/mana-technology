@@ -6,7 +6,7 @@ import { widgetsData } from "./data";
 
 export const Dashboard4 = () => {
   return (
-    <main className="grid auto-rows-[11rem] grid-cols-4 gap-4">
+    <main className="grid auto-rows-[11.5rem] grid-cols-4 gap-4">
       <Card className="col-span-2 flex flex-col p-2">
         <h3 className="text-center text-lg font-semibold">
           {widgetsData[0].title}
