@@ -2,94 +2,26 @@ import { Card } from "@/components/card";
 import { MoteurCard } from "./components/moteurCard";
 import { CircularProgress } from "@/components/circular-progress";
 import { BarChart } from "./components/bar-chart";
+import { data } from "./data";
 
 const VentilationDashboard = () => {
   return (
     <main className="grid h-full w-full grid-flow-dense auto-rows-[9rem] grid-cols-[repeat(16,minmax(0,1fr))] gap-4 [&>*]:p-4">
-      <Card className="col-span-3 row-span-3 flex flex-col gap-1">
-        <h1 className="text-center text-lg font-semibold">Moteur 1</h1>
-        <div className="grid flex-1 auto-rows-[1rem] gap-2">
-          <div className="row-span-4 flex flex-col">
-            <h4 className="text-left text-xs font-semibold">Kw</h4>
-            <MoteurCard color="#FF5AF1" />
+      {data.map((item, index) => (
+        <Card key={index} className={item.cardClassNames}>
+          <h1 className="text-center text-lg font-semibold">{item.title}</h1>
+          <div className="grid flex-1 auto-rows-[1rem] gap-2">
+            {item.children.map((child, index) => (
+              <div key={index} className="row-span-4 flex flex-col">
+                <h4 className="text-left text-xs font-semibold">
+                  {child.title}
+                </h4>
+                <MoteurCard color={child.color} attributes={child.attributes} />
+              </div>
+            ))}
           </div>
-          <div className="row-span-4">
-            <h4 className="text-left text-xs font-semibold">Speed</h4>
-            <MoteurCard color="#FF5AF1" />
-          </div>
-          <div className="row-span-4">
-            <h4 className="text-left text-xs font-semibold">Température</h4>
-            <MoteurCard color="#FF5AF1" />
-          </div>
-          <div className="row-span-4">
-            <h4 className="text-left text-xs font-semibold">Vibration</h4>
-            <MoteurCard color="#78F6EA" />
-          </div>
-        </div>
-      </Card>
-      <Card className="col-span-3 row-span-3 flex flex-col gap-1">
-        <h1 className="text-center text-lg font-semibold">Moteur 1</h1>
-        <div className="grid flex-1 auto-rows-[1rem] gap-2">
-          <div className="row-span-4 flex flex-col">
-            <h4 className="text-left text-xs font-semibold">Kw</h4>
-            <MoteurCard color="#FF5AF1" />
-          </div>
-          <div className="row-span-4">
-            <h4 className="text-left text-xs font-semibold">Speed</h4>
-            <MoteurCard color="#FF5AF1" />
-          </div>
-          <div className="row-span-4">
-            <h4 className="text-left text-xs font-semibold">Température</h4>
-            <MoteurCard color="#FF5AF1" />
-          </div>
-          <div className="row-span-4">
-            <h4 className="text-left text-xs font-semibold">Vibration</h4>
-            <MoteurCard color="#78F6EA" />
-          </div>
-        </div>
-      </Card>
-      <Card className="col-span-3 row-span-3 flex flex-col gap-1">
-        <h1 className="text-center text-lg font-semibold">Moteur 1</h1>
-        <div className="grid flex-1 auto-rows-[1rem] gap-2">
-          <div className="row-span-4 flex flex-col">
-            <h4 className="text-left text-xs font-semibold">Kw</h4>
-            <MoteurCard color="#FF5AF1" />
-          </div>
-          <div className="row-span-4">
-            <h4 className="text-left text-xs font-semibold">Speed</h4>
-            <MoteurCard color="#FF5AF1" />
-          </div>
-          <div className="row-span-4">
-            <h4 className="text-left text-xs font-semibold">Température</h4>
-            <MoteurCard color="#FF5AF1" />
-          </div>
-          <div className="row-span-4">
-            <h4 className="text-left text-xs font-semibold">Vibration</h4>
-            <MoteurCard color="#78F6EA" />
-          </div>
-        </div>
-      </Card>
-      <Card className="col-span-3 row-span-3 flex flex-col gap-1">
-        <h1 className="text-center text-lg font-semibold">Moteur 1</h1>
-        <div className="grid flex-1 auto-rows-[1rem] gap-2">
-          <div className="row-span-4 flex flex-col">
-            <h4 className="text-left text-xs font-semibold">Kw</h4>
-            <MoteurCard color="#FF5AF1" />
-          </div>
-          <div className="row-span-4">
-            <h4 className="text-left text-xs font-semibold">Speed</h4>
-            <MoteurCard color="#FF5AF1" />
-          </div>
-          <div className="row-span-4">
-            <h4 className="text-left text-xs font-semibold">Température</h4>
-            <MoteurCard color="#FF5AF1" />
-          </div>
-          <div className="row-span-4">
-            <h4 className="text-left text-xs font-semibold">Vibration</h4>
-            <MoteurCard color="#78F6EA" />
-          </div>
-        </div>
-      </Card>
+        </Card>
+      ))}
       <Card className="col-span-4 row-span-6 flex flex-col gap-2 p-6">
         <h1 className="text-center text-lg font-semibold">Qualité d’air</h1>
         <div className="grid flex-1 grid-rows-3 gap-2">
@@ -239,8 +171,6 @@ const VentilationDashboard = () => {
           </div>
         </div>
       </Card>
-      {/* <div className="col-span-9 row-span-3 !p-0">6</div> */}
-      {/* <Card className="col-span-3 row-span-1 flex flex-col items-center gap-3"> */}
       <div className="col-span-9 row-span-3 !p-0">
         <img
           src="/animation.gif"

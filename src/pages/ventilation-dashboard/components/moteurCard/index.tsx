@@ -1,12 +1,10 @@
 import ReactApexChart from "react-apexcharts";
 import { ReactNode } from "react";
-import {
-  // ChartTelemetry,
-  // HistoryType,
-  Widget,
-  // flatten,
-  // getRandomColor,
-} from "@/utils";
+import { ChartTelemetry, HistoryType, Widget, flatten } from "@/utils";
+import { useAppContext } from "@/Context";
+
+import useSWR from "swr";
+import Loader from "@/components/loader";
 
 type Props = Widget & {
   children?: ReactNode;
@@ -14,94 +12,71 @@ type Props = Widget & {
 };
 
 export const MoteurCard = (props: Props) => {
-  // const { backendApi, dateRange } = useAppContext();
-  // const telemetries = (props.attributes?.telemetries || []) as ChartTelemetry[];
-  // const {
-  //   data: dym,
-  //   isLoading,
-  //   error,
-  // } = useSWR(
-  //   `histories?${JSON.stringify({
-  //     telemetries,
-  //     dateRange,
-  //   })}`,
-  //   async () => {
-  //     if (!dateRange?.from || telemetries.length === 0) return [];
-  //     const res = await Promise.all(
-  //       telemetries.map(async ({ serial, name }) => {
-  //         const { results } = await backendApi.findMany<HistoryType>(
-  //           "/dpc-history/api/history",
-  //           {
-  //             pagination: {
-  //               page: 1,
-  //               perPage: 10_00,
-  //             },
-  //             select: [name],
-  //             where: {
-  //               serial,
-  //               createdAt: {
-  //                 $gt: new Date(dateRange?.from as Date),
-  //                 $lte: dateRange?.to && new Date(dateRange?.to as Date),
-  //               },
-  //             },
-  //           },
-  //         );
-  //         return results;
-  //       }),
-  //     );
-  //     const res1 = res.map((item, index) => ({
-  //       name: telemetries[index].label || telemetries[index].name,
-  //       type: telemetries[index].area ? "area" : "line",
-  //       data: item.map((item) => ({
-  //         x: new Date(item.createdAt),
-  //         y: Number(flatten(item)[telemetries[index].name]),
-  //       })),
-  //     }));
-  //     if (props.moyenne) {
-  //       const res2 = res1.map((item, index) => {
-  //         return {
-  //           name:
-  //             (telemetries[index].label || telemetries[index].name) +
-  //             " (moyenne)",
-  //           type: "line",
-  //           color: getRandomColor(),
-  //           data: [
-  //             {
-  //               x: new Date(item.data[0].x),
-  //               y:
-  //                 item.data.reduce((acc, item) => acc + item.y, 0) /
-  //                 item.data.length,
-  //             },
-  //             {
-  //               x: new Date(item.data[item.data.length - 1].x),
-  //               y:
-  //                 item.data.reduce((acc, item) => acc + item.y, 0) /
-  //                 item.data.length,
-  //             },
-  //           ],
-  //         };
-  //       });
-  //       res1.push(...res2);
-  //     }
-  //     return res1;
-  //   },
-  // );
+  const { backendApi, dateRange } = useAppContext();
 
-  // if (isLoading)
-  //   return (
-  //     <main className="grid place-content-center">
-  //       <Loader />
-  //     </main>
-  //   );
-  // if (error)
-  //   return (
-  //     <main className="grid place-content-center">
-  //       <h3>Something went wrong.</h3>
-  //     </main>
-  //   );
+  const telemetries = (props.attributes?.telemetries || []) as ChartTelemetry[];
 
-  // console.log("color: ", dym);
-  const data = [10, 100, 5, 200, 3, 150, 220, 0, 10, 300];
+  const { data, isLoading, error } = useSWR(
+    `histories?${JSON.stringify({
+      telemetries,
+      dateRange,
+    })}`,
+    async () => {
+      if (!dateRange?.from || telemetries.length === 0) return [];
+      const res = await Promise.all(
+        telemetries.map(async ({ serial, name }) => {
+          const { results } = await backendApi.findMany<HistoryType>(
+            "/dpc-history/api/history",
+            {
+              pagination: {
+                page: 1,
+                perPage: 10_00,
+              },
+              select: [name],
+              where: {
+                serial,
+                createdAt: {
+                  $gt: new Date(dateRange?.from as Date),
+                  $lte: dateRange?.to && new Date(dateRange?.to as Date),
+                },
+              },
+            },
+          );
+          return results;
+        }),
+      );
+      return (
+        res.map((item, index) => {
+          const name = telemetries[index].name;
+          console.log("item: ", name);
+          return {
+            data: item.map((item) => {
+              return Number(flatten(item)[name]);
+            }),
+          };
+        }) || []
+      );
+    },
+  );
+
+  if (isLoading) {
+    return (
+      <main className="grid place-content-center">
+        <Loader />
+      </main>
+    );
+  }
+
+  if (error) {
+    return (
+      <main className="grid place-content-center">
+        <h3>Something went wrong.</h3>
+      </main>
+    );
+  }
+
+  const finalData = data?.[0]?.data || [];
+
   return (
     <ReactApexChart
       options={{
@@ -133,7 +108,6 @@ export const MoteurCard = (props: Props) => {
           labels: {
             showDuplicates: false,
             show: true,
-            // trim: true,
             formatter(value: string) {
               return Number(value).toFixed(0);
             },
@@ -147,7 +121,7 @@ export const MoteurCard = (props: Props) => {
         },
         yaxis: {
           min: 0,
-          max: data.reduce((a, b) => Math.max(a, b)) + 50,
+          max: finalData.length > 0 ? Math.max(...finalData) + 50 : 100,
           tickAmount: 1,
           labels: {
             show: true,
@@ -157,13 +131,16 @@ export const MoteurCard = (props: Props) => {
               fontWeight: 400,
               cssClass: "apexcharts-yaxis-label",
             },
+            formatter(value) {
+              return value.toFixed(0);
+            },
           },
         },
       }}
       series={[
         {
-          name: "Series 1",
-          data: data,
+          name: "series-1",
+          data: finalData,
         },
       ]}
       type="line"

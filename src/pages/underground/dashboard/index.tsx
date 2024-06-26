@@ -219,7 +219,7 @@ export default function UndergroundDashboardPage() {
           />
         </div>
       </Card>
-      <Card className="col-span-3 p-4">
+      <Card className="relative col-span-3 p-4">
         <h1 className="text-center text-lg font-semibold">
           Avancement/Arrachement journalier
         </h1>
@@ -235,6 +235,15 @@ export default function UndergroundDashboardPage() {
             ]}
           />
         </div>
+        <Link
+          to="/underground/tree"
+          className="absolute bottom-5 flex w-full items-center justify-center"
+        >
+          <Button className="flex h-5 w-fit gap-2" size={"sm"} variant={"link"}>
+            <ChevronsDown size={16} />
+            <span className="text-center">Voir plus</span>
+          </Button>
+        </Link>
       </Card>
       <Card className="col-span-3 flex flex-col gap-1 p-4">
         <h1 className="text-center text-lg font-semibold">

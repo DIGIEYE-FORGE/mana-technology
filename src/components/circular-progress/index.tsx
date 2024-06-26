@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import Color from "color";
 
-interface CircularProgressProps
+export interface CircularProgressProps
   extends Omit<
     React.HTMLAttributes<SVGAElement>,
     "children" | "viewBox" | "color"
