@@ -256,7 +256,6 @@ export default function UndergroundDashboardPage() {
           />
         </div>
       </Card>
-      {/* <Card className="col-span-2">10</Card> */}
       <Card className="col-span-3 flex flex-col gap-2 p-2">
         <h3 className="text-center text-lg font-semibold">
           Disponibilité et utilisation des engins
