@@ -133,11 +133,11 @@ nav {
     transform: rotateX(var(--rotate-x));
   }
   .circle-2 {
-    transform: translateY(20px) rotateX(var(--rotate-x));
+    transform: scale(0.95) translateY(15px) rotateX(var(--rotate-x));
     opacity: 0.4;
   }
   .circle-3 {
-    transform: scale(1.1) translateY(22px) rotateX(var(--rotate-x));
+    transform: scale(1.075) translateY(17px) rotateX(var(--rotate-x));
     opacity: 0.3;
   }
 
