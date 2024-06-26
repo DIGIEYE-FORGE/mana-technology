@@ -2,13 +2,15 @@ FROM node:20-alpine3.18 as builder
 
 WORKDIR /build
 
-COPY package*json .
+RUN npm install pnpm -g
 
-RUN npm install 
+COPY package*json pnpm*.yaml ./
+
+RUN pnpm install 
 
 COPY . .
 
-RUN npm run build
+RUN pnpm build
 
 FROM node:20-alpine3.18 as production
 
