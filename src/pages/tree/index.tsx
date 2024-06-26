@@ -1,14 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// import { Canvas, extend, useFrame } from "@react-three/fiber";
-import { extend } from "@react-three/fiber";
-// import { extend, useFrame } from "@react-three/fiber";
-// import { Html } from "@react-three/drei";
-// import { OrbitControls, Html } from "@react-three/drei";
+import { Canvas, extend, useFrame } from "@react-three/fiber";
+import { OrbitControls, Html } from "@react-three/drei";
 import { PlaneGeometry } from "three";
-// import Model from "@/components/models";
-// import { useRef, useState } from "react";
-import { useState } from "react";
-// import { Suspense, useRef, useState } from "react";
+import Model from "@/components/models";
+import { Suspense, useRef, useState } from "react";
 import Loader from "@/components/loader";
 import Circle1 from "@/assets/circle-1.svg?react";
 import Circle2 from "@/assets/circle-2.svg?react";
@@ -23,25 +18,19 @@ import {
 import { cn } from "@/lib/utils";
 
 extend({ PlaneGeometry });
-// function Loader3D() {
-//   return (
-//     <Html center>
-//       {/* <div className="absolute top-0 flex h-full w-full items-center justify-center">
-//         <Loader />
-//       </div> */}
-//     </Html>
-//   );
-// }
+function Loader3D() {
+  return <Html center></Html>;
+}
 
-// function RotatingModel({ modelRef }: { modelRef: any }) {
-//   useFrame(() => {
-//     if (modelRef.current) {
-//       modelRef.current.rotation.y += 0.002; // Adjust rotation speed as needed
-//     }
-//   });
+function RotatingModel({ modelRef }: { modelRef: any }) {
+  useFrame(() => {
+    if (modelRef.current) {
+      modelRef.current.rotation.y += 0.002; // Adjust rotation speed as needed
+    }
+  });
 
-//   return null; // This component doesn't render anything visible
-// }
+  return null; // This component doesn't render anything visible
+}
 
 const machines = [
   {
@@ -85,9 +74,8 @@ const machines = [
 ];
 
 function TreePage() {
-  // const modelRef = useRef();
-
-  const [loading] = useState(false);
+  const modelRef = useRef();
+  const [loading, setLoading] = useState(true);
   const [active, setActive] = useState<number | null>(null);
   return (
     <main className="relative flex h-full w-full items-center justify-center pl-6">
@@ -190,17 +178,17 @@ function TreePage() {
           })}
         </div>
       )}
-      {/* <Canvas
+      <Canvas
         style={{
-          width: "70rem",
+          width: "90rem",
           height: "40rem",
           position: "absolute",
           bottom: "0",
-          }}
-          shadows
-          camera={{
+        }}
+        shadows
+        camera={{
           position: [0, 60, 40],
-          fov: 28,
+          fov: 20,
           localToWorld(vector) {
             return vector;
           },
@@ -232,8 +220,8 @@ function TreePage() {
           />
         </Suspense>
         <RotatingModel modelRef={modelRef} />
-        <OrbitControls enableRotate rotateSpeed={1} enableZoom={false} />
-      </Canvas> */}
+        <OrbitControls enableRotate rotateSpeed={1} />
+      </Canvas>
     </main>
   );
 }
