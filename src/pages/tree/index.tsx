@@ -15,6 +15,12 @@ import Circle2 from "@/assets/circle-2.svg?react";
 import Circle3 from "@/assets/circle-3.svg?react";
 import Light from "@/assets/light.svg?react";
 import Frame from "@/assets/frame.svg?react";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
 
 extend({ PlaneGeometry });
 
@@ -42,99 +48,146 @@ const machines = [
   {
     name: "Foration Simba E70S",
     image: "/machine-01.png",
+    align: "end",
+    side: "left",
   },
   {
-    name: "Foration Simba E70S",
+    name: "Foration Jumbo M20",
     image: "/machine-02.png",
+    align: "center",
+    side: "left",
   },
   {
-    name: "Foration Simba E70S",
+    name: "Chargement Explosif & Tir (Engins)",
     image: "/machine-03.png",
+    align: "center",
   },
   {
-    name: "Foration Simba E70S",
+    name: "Déblayage R1700",
     image: "/machine-04.png",
+    align: "center",
   },
   {
-    name: "Foration Simba E70S",
+    name: "Soutènement boltec m10",
     image: "/machine-05.png",
+    align: "center",
+    side: "right",
+    sideOffset: 50,
   },
   {
-    name: "Foration Simba E70S",
+    name: "Transport ad45",
     image: "/machine-06.png",
+    align: "end",
+    side: "left",
+    sideOffset: 50,
   },
 ];
 
 function TreePage() {
   // const modelRef = useRef();
 
-  // const [loading, setLoading] = useState(false);
-  const [loading] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [active, setActive] = useState<number | null>(null);
   return (
-    <div className="relative flex h-full w-full items-center justify-center pl-6">
+    <main className="relative flex h-full w-full items-center justify-center pl-6">
       {loading && (
         <div className="absolute left-0 top-[4.2rem] z-[999] flex h-[calc(100%-5rem)] w-full items-center justify-center">
           <Loader />
         </div>
       )}
       {!loading && (
-        <>
+        <div className="machines">
           {machines.map((item, index) => {
             return (
-              <div
+              <Popover
                 key={index}
-                className="absolute h-44 w-32 -translate-x-1/2"
-                style={{
-                  left: `${50 - (((machines.length - 1) / 2 - index) / (machines.length - 1)) * 80}%`,
-                  top:
-                    {
-                      0: "60%",
-                      1: "30%",
-                      [machines.length - 2]: "30%",
-                      [machines.length - 1]: "60%",
-                    }[index] || "10%",
+                onOpenChange={(isOpen) => {
+                  if (isOpen) {
+                    setActive(index);
+                  } else {
+                    setActive(null);
+                  }
                 }}
               >
-                <div
-                  className="absolute bottom-1/2 right-1/2 z-10 translate-x-1/2 whitespace-nowrap px-2 py-0.5"
+                <PopoverTrigger asChild>
+                  <button
+                    className={cn(
+                      "machine absolute h-44 w-32 -translate-x-1/2",
+                      {
+                        active: active === index,
+                      },
+                    )}
+                    style={{
+                      left: `${50 - (((machines.length - 1) / 2 - index) / (machines.length - 1)) * 85}%`,
+                      top:
+                        {
+                          0: "60%",
+                          1: "30%",
+                          [machines.length - 2]: "30%",
+                          [machines.length - 1]: "60%",
+                        }[index] || "10%",
+                    }}
+                  >
+                    <div
+                      className="absolute bottom-1/2 right-1/2 z-10 translate-x-1/2 whitespace-nowrap px-2 py-0.5 font-bold"
+                      style={{
+                        backgroundImage:
+                          "linear-gradient(to right, transparent, #002FBE, transparent)",
+                        border: "10px solid",
+                        borderImageSlice: 1,
+                        borderWidth: "1px",
+                        borderImageSource:
+                          "linear-gradient(to right, transparent, white, transparent)",
+                      }}
+                    >
+                      {item.name}
+                    </div>
+                    <div className="absolute bottom-3/4 right-1/2 translate-x-1/2">
+                      <Frame className="bottom-0 right-0 aspect-square size-20 translate-y-[0%]" />
+                      <div className="absolute bottom-2 right-4 z-10 w-32">
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="object-contain"
+                        />
+                      </div>
+                    </div>
+                    <div className="machine-highlight absolute bottom-0 aspect-square w-full">
+                      <div className="circle circle-3 relative h-full w-full">
+                        <Circle3 className="rotate h-full w-full duration-1000" />
+                      </div>
+                      <div className="circle circle-2 relative h-full w-full">
+                        <Circle2 className="rotate h-full w-full duration-1000" />
+                      </div>
+                      <div className="circle circle-1 relative h-full w-full">
+                        <Circle1 className="rotate h-full w-full duration-1000" />
+                      </div>
+                      <Light className="absolute bottom-[40%] right-1/2 w-full translate-x-1/2" />
+                    </div>
+                  </button>
+                </PopoverTrigger>
+                <PopoverContent
+                  side={item.side as any}
+                  align={item.align as any}
+                  sideOffset={item.sideOffset}
+                  className="w-fit border-none bg-transparent p-0 backdrop-blur"
                   style={{
-                    backgroundImage:
-                      "linear-gradient(to right, transparent, #002FBE, transparent)",
-                    border: "10px solid",
-                    borderImageSlice: 1,
-                    borderWidth: "1px",
-                    borderImageSource:
-                      "linear-gradient(to right, transparent, white, transparent)",
+                    clipPath:
+                      "polygon(0% 18.5%, 2.8% 13.5%, 34% 13.5%, 37% 8%, 37% 2%, 100% 2%, 100% 99%, 1.6% 99%, 1.6% 67%, 0% 64%)",
                   }}
                 >
-                  {item.name}
-                </div>
-                <div className="debug absolute bottom-3/4 right-1/2 translate-x-1/2">
-                  <Frame className="bottom-0 right-0 aspect-square size-20 translate-y-[0%]" />
-                  <div className="absolute bottom-2 right-4 z-10 w-32">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="object-contain"
-                    />
-                  </div>
-                </div>
-                <div className="machine-highlight absolute bottom-0 aspect-square w-full">
-                  <div className="circle circle-3 relative h-full w-full">
-                    <Circle3 className="rotate h-full w-full duration-1000" />
-                  </div>
-                  <div className="circle circle-2 relative h-full w-full">
-                    <Circle2 className="rotate h-full w-full duration-1000" />
-                  </div>
-                  <div className="circle circle-1 relative h-full w-full">
-                    <Circle1 className="rotate h-full w-full duration-1000" />
-                  </div>
-                  <Light className="absolute bottom-[40%] right-1/2 w-full translate-x-1/2" />
-                </div>
-              </div>
+                  <div
+                    className="aspect-video w-[66.66vw]"
+                    style={{
+                      backgroundImage: "url(/card-bg.png)",
+                      backgroundSize: "100% 100%",
+                    }}
+                  ></div>
+                </PopoverContent>
+              </Popover>
             );
           })}
-        </>
+        </div>
       )}
       {/* <Canvas
         style={{
@@ -142,9 +195,9 @@ function TreePage() {
           height: "40rem",
           position: "absolute",
           bottom: "0",
-        }}
-        shadows
-        camera={{
+          }}
+          shadows
+          camera={{
           position: [0, 60, 40],
           fov: 28,
           localToWorld(vector) {
@@ -180,7 +233,7 @@ function TreePage() {
         <RotatingModel modelRef={modelRef} />
         <OrbitControls enableRotate rotateSpeed={1} enableZoom={false} />
       </Canvas> */}
-    </div>
+    </main>
   );
 }
 export default TreePage;

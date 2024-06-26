@@ -11,6 +11,8 @@ interface CircularProgressProps
   progress: number;
   strokeWidth?: number;
   gradientCoefficient?: number;
+  unit?: string;
+  legend?: string;
 }
 
 export function CircularProgress({
@@ -19,6 +21,7 @@ export function CircularProgress({
   progress,
   strokeWidth = 10,
   gradientCoefficient = 0.25,
+  legend = "",
 }: CircularProgressProps) {
   return (
     <div className={cn("relative size-32 text-sm font-semibold", className)}>
@@ -78,14 +81,16 @@ export function CircularProgress({
             y2="100"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stopColor={"#ffffff1f"} />
-            <stop offset="1" stopColor={"ffffff7f"} />
+            <stop stopColor={"#ffffff"} stopOpacity="0" />
+            <stop offset="1" stopColor={"#ffffff"} stopOpacity="0.9" />
           </linearGradient>
         </defs>
       </svg>
-      <span className="absolute bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2 whitespace-nowrap">
-        {progress.toFixed(2) + " %"}
-      </span>
+      {legend && (
+        <span className="absolute bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2 whitespace-nowrap">
+          {legend}
+        </span>
+      )}
     </div>
   );
 }
