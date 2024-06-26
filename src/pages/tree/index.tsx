@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { XIcon } from "lucide-react";
 
 extend({ PlaneGeometry });
 function Loader3D() {
