@@ -265,36 +265,32 @@ export default function UndergroundDashboardPage() {
           <Engins
             attribute={[
               {
-                name: "LH06",
                 label: "LH06",
-                disponibillite: "Standby",
                 icon: "/truck.svg",
-                value: 45,
-                value2: 100,
+                utilisationTelemetry: "UG_LH06_UTILISATION",
+                disponibilliteTelemetry: "UG_LH06_DISPONIBILITE",
+                serial: "DABF7PAT2G4BAG21",
               },
               {
-                name: "LH06",
                 label: "LH06",
-                disponibillite: "Disponible",
                 icon: "/truck.svg",
-                value: 64,
-                value2: 59,
+                utilisationTelemetry: "UG_LH06_UTILISATION",
+                disponibilliteTelemetry: "UG_LH06_DISPONIBILITE",
+                serial: "DABF7PAT2G4BAG21",
               },
               {
-                name: "LH06",
                 label: "LH06",
-                disponibillite: "Disponible",
                 icon: "/truck.svg",
-                value: 49,
-                value2: 100,
+                utilisationTelemetry: "UG_LH06_UTILISATION",
+                disponibilliteTelemetry: "UG_LH06_DISPONIBILITE",
+                serial: "DABF7PAT2G4BAG21",
               },
               {
-                name: "LH06",
                 label: "LH06",
-                disponibillite: "Indisponible",
                 icon: "/truck.svg",
-                value: 34,
-                value2: 48,
+                utilisationTelemetry: "UG_LH06_UTILISATION",
+                disponibilliteTelemetry: "UG_LH06_DISPONIBILITE",
+                serial: "DABF7PAT2G4BAG21",
               },
             ]}
           />
