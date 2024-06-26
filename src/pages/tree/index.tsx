@@ -73,6 +73,7 @@ function TreePage() {
               >
                 <PopoverTrigger asChild>
                   <button
+                    disabled={item.disabled}
                     className={cn(
                       "machine absolute z-10 h-44 w-32 -translate-x-1/2 select-none",
                       {
@@ -154,7 +155,7 @@ function TreePage() {
                         <XIcon size={24} />
                       </Button>
                     </PopoverClose>
-                    <div className="7 flex h-full flex-col gap-[4.75rem] pb-7 pl-11 pr-6 pt-4">
+                    <div className="flex h-full flex-col gap-[3.5rem] pb-7 pl-11 pr-6 pt-4">
                       <div className="ml-auto flex h-14 w-[64%] shrink-0 items-center px-6 text-2xl font-semibold">
                         {item.dashboard.title}
                       </div>
@@ -202,7 +203,7 @@ function TreePage() {
             color2="#96CFFE"
             color1="#96CFFE"
             url={
-              `${env.VITE_LOCAL_MODELS ? "/public/ignore/" : "https://storage.googleapis.com/nextronic/"}` +
+              `${env.VITE_LOCAL_MODELS === "true" ? "/public/ignore/" : "https://storage.googleapis.com/nextronic/"}` +
               "mine00000017.glb"
             }
             ref={modelRef}

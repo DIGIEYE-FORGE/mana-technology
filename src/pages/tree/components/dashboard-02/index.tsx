@@ -7,7 +7,7 @@ import BarChartWidget from "@/components/bar-chart-widget";
 
 export const Dashboard2 = () => {
   return (
-    <main className="grid max-h-full auto-rows-[11rem] grid-cols-4 gap-4">
+    <main className="grid max-h-full auto-rows-[11.5rem] grid-cols-4 gap-4">
       <Card className="col-span-2 flex flex-col p-2">
         <span className="py-2 text-center text-lg font-semibold">
           {widgetsData[0]?.title}
