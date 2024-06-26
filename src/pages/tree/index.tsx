@@ -19,6 +19,12 @@ import {
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { XIcon } from "lucide-react";
+import { Dashboard1 } from "./components/dashboard-01";
+import { Dashboard2 } from "./components/dashboard-02";
+import { Dashboard4 } from "./components/dashboard-04";
+import { Dashboard5 } from "./components/dashboard-05";
+import { Dashboard6 } from "./components/dashboard-06";
+import Dashboard3 from "../dashboard3";
 
 extend({ PlaneGeometry });
 function Loader3D() {
@@ -41,24 +47,40 @@ const machines = [
     image: "/machine-01.png",
     align: "end",
     side: "left",
+    dashboard: {
+      title: "Foration",
+      component: <Dashboard1 />,
+    },
   },
   {
     name: "Foration Jumbo M20",
     image: "/machine-02.png",
     align: "center",
     side: "left",
+    dashboard: {
+      title: "Foration",
+      component: <Dashboard2 />,
+    },
   },
   {
     name: "Chargement Explosif & Tir (Engins)",
     image: "/machine-03.png",
     align: "center",
     sideOffset: -50,
+    dashboard: {
+      title: "Chargement Explosif & Tir ",
+      component: <Dashboard3 />,
+    },
   },
   {
     name: "Déblayage R1700",
     image: "/machine-04.png",
     align: "center",
     sideOffset: -50,
+    dashboard: {
+      title: "Déblayage ",
+      component: <Dashboard4 />,
+    },
   },
   {
     name: "Soutènement boltec m10",
@@ -66,6 +88,10 @@ const machines = [
     align: "center",
     side: "right",
     sideOffset: 50,
+    dashboard: {
+      title: "Soutènement",
+      component: <Dashboard5 />,
+    },
   },
   {
     name: "Transport ad45",
@@ -73,6 +99,10 @@ const machines = [
     align: "end",
     side: "left",
     sideOffset: 50,
+    dashboard: {
+      title: "Transport",
+      component: <Dashboard6 />,
+    },
   },
 ];
 
@@ -113,7 +143,7 @@ function TreePage() {
                 <PopoverTrigger asChild>
                   <button
                     className={cn(
-                      "machine absolute z-10 h-44 w-32 -translate-x-1/2",
+                      "machine absolute z-10 h-44 w-32 -translate-x-1/2 select-none",
                       {
                         active: active === index,
                       },
@@ -122,10 +152,10 @@ function TreePage() {
                       left: `${50 - (((machines.length - 1) / 2 - index) / (machines.length - 1)) * 85}%`,
                       top:
                         {
-                          0: "60%",
-                          1: "30%",
-                          [machines.length - 2]: "30%",
-                          [machines.length - 1]: "60%",
+                          0: "40%",
+                          1: "20%",
+                          [machines.length - 2]: "20%",
+                          [machines.length - 1]: "40%",
                         }[index] || "10%",
                     }}
                   >
@@ -178,7 +208,7 @@ function TreePage() {
                   }}
                 >
                   <div
-                    className="relative z-10 aspect-video w-[66.66vw]"
+                    className="relative z-10 aspect-[1.7] w-[66.66vw]"
                     style={{
                       backgroundImage: "url(/card-bg.png)",
                       backgroundSize: "100% 100%",
@@ -193,6 +223,12 @@ function TreePage() {
                         <XIcon size={24} />
                       </Button>
                     </PopoverClose>
+                    <div className="7 flex h-full flex-col gap-[4.75rem] pb-7 pl-11 pr-6 pt-4">
+                      <div className="ml-auto flex h-14 w-[64%] shrink-0 items-center px-6 text-2xl font-semibold">
+                        {item.dashboard.title}
+                      </div>
+                      {item.dashboard.component}
+                    </div>
                   </div>
                 </PopoverContent>
               </Popover>
@@ -236,8 +272,8 @@ function TreePage() {
           <Model
             color2="#96CFFE"
             color1="#96CFFE"
-            url={`https://storage.googleapis.com/nextronic/mine00000017.glb`}
-            // url="/public/ignore/mine00000017.glb"
+            // url={`https://storage.googleapis.com/nextronic/mine00000017.glb`}
+            url="/public/ignore/mine00000017.glb"
             ref={modelRef}
             onLoad={() => setLoading(false)}
           />
