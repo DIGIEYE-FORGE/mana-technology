@@ -1,5 +1,4 @@
 import { Card } from "@/components/card";
-import { CircularProgress } from "@/components/circular-progress";
 function IselDevPage() {
   return (
     <main className="grid h-full place-content-center">
