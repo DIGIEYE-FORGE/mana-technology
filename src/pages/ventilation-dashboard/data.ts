@@ -489,7 +489,7 @@ export const ventilation = {
     unit: "",
     telemetry: {
       serial: "GQKOD91C6LNG9UGM",
-      name: "s=plc1_DB_Tag_NbVéhicule	",
+      name: "s=plc1_DB_Tag_NbVéhicule",
     }
   },
 }
