@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { MoveLeftIcon, MoveRightIcon } from "lucide-react";
+import { MoveLeftIcon, MoveRightIcon, XIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Circle1 from "@/assets/circle-1.svg?react";
 import Circle2 from "@/assets/circle-2.svg?react";
@@ -15,6 +15,12 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import Line from "@/assets/line.svg?react";
 import ProjectPlaningButton from "./components/project-planing-button";
+import {
+  Popover,
+  PopoverClose,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 function MainProjectUpBar() {
   return (
     <div className="group sticky top-0 z-10 flex h-up-bar w-full shrink-0 items-center gap-4 border-b px-6 backdrop-blur">
@@ -33,7 +39,9 @@ function MainProjectUpBar() {
 }
 
 export default function MainProjectPage() {
-  // const positions = ["right", "left", "bottom", "top", "buttom"];
+  const [dashboadSelected, setDashboardSelected] = useState<string | undefined>(
+    undefined,
+  );
   const magazine = [
     {
       name: "EST",
@@ -41,6 +49,9 @@ export default function MainProjectPage() {
       right: "25%",
       type: "image",
       image: "/screen1.png",
+      side: "left",
+      align: "center",
+      sideOffset: 0,
     },
     {
       name: "SUD",
@@ -48,24 +59,36 @@ export default function MainProjectPage() {
       right: "15%",
       type: "image",
       image: "/screen2.png",
+      side: "left",
+      align: "center",
+      sideOffset: 0,
     },
     {
       name: "PLANT",
       bottom: "10%",
       left: "42%",
       type: "information",
+      side: "top",
+      align: "center",
+      sideOffset: -350,
     },
     {
       name: "LINE ELECTRIC",
       bottom: "40%",
       left: "8%",
       type: "information",
+      side: "left",
+      align: "end",
+      sideOffset: 20,
     },
     {
       name: "LINE ELECTRIC",
       bottom: "20%",
       left: "14%",
       type: "information",
+      side: "left",
+      align: "end",
+      sideOffset: 20,
     },
   ];
 
@@ -74,10 +97,55 @@ export default function MainProjectPage() {
       type: "image",
       image: "/screen1.png",
       position: {
-        top: "18%",
-        right: "24%",
+        top: "22%",
+        right: "25%",
       },
-      background: "url(/shape2.png)",
+      background: "url(/shape2.png),url(/screen1.png)",
+    },
+    {
+      type: "video",
+      image: "/screen1.png",
+      position: {
+        top: "22%",
+        right: "29%",
+      },
+      background: "url(/video.png)",
+    },
+    {
+      type: "image",
+      image: "/screen2.png",
+      position: {
+        bottom: "35%",
+        right: "15%",
+      },
+      background: "url(/shape2.png),url(/screen2.png)",
+    },
+    {
+      type: "video",
+      image: "/screen1.png",
+      position: {
+        bottom: "35%",
+        right: "19%",
+      },
+      background: "url(/video.png)",
+    },
+    {
+      type: "video",
+      image: "/screen1.png",
+      position: {
+        bottom: "32%",
+        left: "22%",
+      },
+      background: "url(/video.png)",
+    },
+    {
+      type: "video",
+      image: "/video.png",
+      position: {
+        top: "40%",
+        left: "4%",
+      },
+      background: "url(/video.png)",
     },
 
     {
@@ -91,19 +159,11 @@ export default function MainProjectPage() {
       },
       background: "url(/shape1.png)",
       position: {
-        top: "10%",
+        top: "6%",
         left: "1%",
       },
     },
-    {
-      type: "image",
-      image: "/screen2.png",
-      position: {
-        bottom: "32%",
-        right: "13%",
-      },
-      background: "url(/shape2.png)",
-    },
+
     {
       type: "information",
       title: "Plant2",
@@ -117,6 +177,21 @@ export default function MainProjectPage() {
       position: {
         bottom: "40%",
         left: "40%",
+      },
+    },
+    {
+      type: "information",
+      title: "Plant2",
+      attribute: {
+        Type: "Plant",
+        Location: "Underground",
+        Status: "Active",
+        Capacity: "1000",
+      },
+      background: "url(/shape1.png)",
+      position: {
+        bottom: "0%",
+        left: "22%",
       },
     },
     {
@@ -198,43 +273,112 @@ export default function MainProjectPage() {
               alt="Magazine"
             />
             {magazine.map((item, index) => (
-              <div
-                key={index}
-                className={cn(
-                  "absolute",
-                  "z-10 h-[4rem] w-[8rem] cursor-pointer",
-                )}
-                style={{
-                  ...item,
-                }}
-              >
-                <div
-                  className="absolute bottom-20 right-1/2 z-10 translate-x-1/2 whitespace-nowrap px-2 py-0.5 font-bold"
+              <Popover key={index}>
+                <PopoverTrigger asChild>
+                  <div
+                    key={index}
+                    className={cn(
+                      "absolute",
+                      "h-[4rem] w-[8rem] cursor-pointer",
+                    )}
+                    style={{
+                      ...item,
+                    }}
+                    onClick={() => setDashboardSelected(item.name)}
+                  >
+                    <div
+                      className="absolute bottom-20 right-1/2 z-10 translate-x-1/2 whitespace-nowrap px-2 py-0.5 font-bold"
+                      style={{
+                        backgroundImage:
+                          "linear-gradient(to right, transparent, #002FBE, transparent)",
+                        border: "10px solid",
+                        borderImageSlice: 1,
+                        borderWidth: "1px",
+                        borderImageSource:
+                          "linear-gradient(to right, transparent, white, transparent)",
+                      }}
+                    >
+                      {item.name}
+                    </div>
+                    <div className="machine-highlight absolute bottom-0 aspect-square size-[8rem] w-full">
+                      <div className="circle circle-3 relative h-full w-full">
+                        <Circle3
+                          className="rotate h-full w-full duration-1000"
+                          style={{
+                            stroke:
+                              dashboadSelected === item.name ? "#FFE473" : "",
+                            filter:
+                              dashboadSelected === item.name
+                                ? "drop-shadow(0px 0px 10px #96CFFE)"
+                                : "none",
+                          }}
+                        />
+                      </div>
+                      <div className="circle circle-2 relative h-full w-full">
+                        <Circle2
+                          className="rotate h-full w-full duration-1000"
+                          style={{
+                            stroke:
+                              dashboadSelected === item.name ? "#FFE473" : "",
+                            filter:
+                              dashboadSelected === item.name
+                                ? "drop-shadow(0px 0px 10px #96CFFE)"
+                                : "none",
+                          }}
+                        />
+                      </div>
+                      <div className="circle circle-1 relative h-full w-full">
+                        <Circle1
+                          className="rotate h-full w-full duration-1000"
+                          style={{
+                            stroke:
+                              dashboadSelected === item.name ? "#FFE473" : "",
+                            filter:
+                              dashboadSelected === item.name
+                                ? "drop-shadow(0px 0px 10px #96CFFE)"
+                                : "none",
+                          }}
+                        />
+                      </div>
+                      <Light className="absolute bottom-[40%] right-1/2 w-full translate-x-1/2" />
+                    </div>
+                  </div>
+                </PopoverTrigger>
+                <PopoverContent
+                  side={item.side as any}
+                  align={item.align as any}
+                  sideOffset={item.sideOffset}
+                  className="dark w-fit border-none bg-transparent p-0 backdrop-blur"
                   style={{
-                    backgroundImage:
-                      "linear-gradient(to right, transparent, #002FBE, transparent)",
-                    border: "10px solid",
-                    borderImageSlice: 1,
-                    borderWidth: "1px",
-                    borderImageSource:
-                      "linear-gradient(to right, transparent, white, transparent)",
+                    clipPath:
+                      "polygon(0% 18.5%, 2.8% 13.5%, 34% 13.5%, 36.2% 9.3%, 36.2% 0%, 100% 0%, 100% 99.6%, 1.6% 99.6%, 1.6% 67%, 0% 64%)",
                   }}
                 >
-                  {item.name}
-                </div>
-                <div className="machine-highlight absolute bottom-0 aspect-square size-[8rem] w-full">
-                  <div className="circle circle-3 relative h-full w-full">
-                    <Circle3 className="rotate h-full w-full duration-1000" />
+                  <div
+                    className="relative z-10 aspect-[1.7] h-[46rem] w-[70rem]"
+                    style={{
+                      backgroundImage: "url(/card-bg.png)",
+                      backgroundSize: "100% 100%",
+                    }}
+                  >
+                    <PopoverClose asChild>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="absolute right-6 top-5 text-white"
+                      >
+                        <XIcon size={24} />
+                      </Button>
+                    </PopoverClose>
+                    <div className="flex h-full flex-col gap-[3.5rem] pb-7 pl-11 pr-6 pt-4">
+                      <div className="ml-auto flex h-14 w-[64%] shrink-0 items-center px-6 text-2xl font-semibold">
+                        {dashboadSelected}
+                      </div>
+                      {/* {item.dashboard.component} */}
+                    </div>
                   </div>
-                  <div className="circle circle-2 relative h-full w-full">
-                    <Circle2 className="rotate h-full w-full duration-1000" />
-                  </div>
-                  <div className="circle circle-1 relative h-full w-full">
-                    <Circle1 className="rotate h-full w-full duration-1000" />
-                  </div>
-                  <Light className="absolute bottom-[40%] right-1/2 w-full translate-x-1/2" />
-                </div>
-              </div>
+                </PopoverContent>
+              </Popover>
             ))}
             {data.map((item, index) => (
               <div
@@ -243,29 +387,23 @@ export default function MainProjectPage() {
                 style={{
                   ...item.position,
                   width:
-                    item.type === "image"
-                      ? "12rem"
+                    item.type === "image" || item.type === "video"
+                      ? "67px"
                       : item.type === "information"
                         ? "15rem"
                         : "22rem",
                   height:
-                    item.type === "image"
-                      ? "7rem"
+                    item.type === "image" || item.type === "video"
+                      ? "64px"
                       : item.type === "information"
                         ? "10rem"
                         : "10rem",
-                  background: item.type != "image" ? `${item.background}` : "",
+                  cursor: item.type === "video" ? "pointer" : "default",
+                  background: `${item.background}`,
                   backgroundSize: "100% 100%",
                   backgroundRepeat: "no-repeat",
                 }}
               >
-                {item.type === "image" && (
-                  <img
-                    src={item.image}
-                    alt="image"
-                    className="object-contain"
-                  />
-                )}
                 {(item.type === "information" ||
                   item.type === "identification") && (
                   <div className="flex flex-col p-4">
