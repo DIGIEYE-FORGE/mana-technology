@@ -65,7 +65,6 @@ function Calendar({
           ),
         }}
         {...props}
-        // / I need the set from width our 00:00 to 23:59
       />
 
       {showOutsideDays && (
