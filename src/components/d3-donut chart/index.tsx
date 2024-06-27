@@ -172,7 +172,7 @@ export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
     );
   if (error)
     return (
-      <div className="debug flex h-full w-full items-center justify-center [&>*]:text-xl [&>*]:font-bold">
+      <div className="flex h-full w-full items-center justify-center [&>*]:text-xl [&>*]:font-bold">
         failed to load
       </div>
     );
