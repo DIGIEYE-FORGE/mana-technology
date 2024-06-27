@@ -11,8 +11,8 @@ export const data = [
         attributes: {
           telemetries: [
             {
-              name: "EST_REALISE_FORATION",
-              serial: "U9XQMQ1DXYT7LJIP",
+              name: "s=Var1_Pw",
+              serial: "GQKOD91C6LNG9UGM",
             },
           ],
         }
@@ -23,8 +23,8 @@ export const data = [
         attributes: {
           telemetries: [
             {
-              name: "EST_REALISE_FORATION",
-              serial: "U9XQMQ1DXYT7LJIP",
+              name: "s=Var1_Vitesse",
+              serial: "GQKOD91C6LNG9UGM",
             },
           ],
         }
@@ -35,8 +35,8 @@ export const data = [
         attributes: {
           telemetries: [
             {
-              name: "EST_REALISE_FORATION",
-              serial: "U9XQMQ1DXYT7LJIP",
+              name: "s=Pt100NdeM1",
+              serial: "GQKOD91C6LNG9UGM",
             },
           ],
         }
@@ -47,8 +47,8 @@ export const data = [
         attributes: {
           telemetries: [
             {
-              name: "EST_REALISE_FORATION",
-              serial: "U9XQMQ1DXYT7LJIP",
+              name: "s=Var1_VibDe",
+              serial: "GQKOD91C6LNG9UGM",
             },
           ],
         }
@@ -66,8 +66,8 @@ export const data = [
         attributes: {
           telemetries: [
             {
-              name: "EST_REALISE_FORATION",
-              serial: "U9XQMQ1DXYT7LJIP",
+              name: "s=Var2_Pw",
+              serial: "GQKOD91C6LNG9UGM",
             },
           ],
         }
@@ -78,8 +78,8 @@ export const data = [
         attributes: {
           telemetries: [
             {
-              name: "EST_REALISE_FORATION",
-              serial: "U9XQMQ1DXYT7LJIP",
+              name: "s=Var2_Vitesse",
+              serial: "GQKOD91C6LNG9UGM",
             },
           ],
         }
@@ -90,8 +90,8 @@ export const data = [
         attributes: {
           telemetries: [
             {
-              name: "EST_REALISE_FORATION",
-              serial: "U9XQMQ1DXYT7LJIP",
+              name: "s=Pt100NdeM2",
+              serial: "GQKOD91C6LNG9UGM",
             },
           ],
         }
@@ -102,8 +102,8 @@ export const data = [
         attributes: {
           telemetries: [
             {
-              name: "EST_REALISE_FORATION",
-              serial: "U9XQMQ1DXYT7LJIP",
+              name: "s=Var2_VibDe",
+              serial: "GQKOD91C6LNG9UGM",
             },
           ],
         }
@@ -121,8 +121,8 @@ export const data = [
         attributes: {
           telemetries: [
             {
-              name: "EST_REALISE_FORATION",
-              serial: "U9XQMQ1DXYT7LJIP",
+              name: "s=Var4_Pw",
+              serial: "GQKOD91C6LNG9UGM",
             },
           ],
         }
@@ -133,8 +133,8 @@ export const data = [
         attributes: {
           telemetries: [
             {
-              name: "EST_REALISE_FORATION",
-              serial: "U9XQMQ1DXYT7LJIP",
+              name: "s=Var4_Vitesse",
+              serial: "GQKOD91C6LNG9UGM",
             },
           ],
         }
@@ -145,8 +145,8 @@ export const data = [
         attributes: {
           telemetries: [
             {
-              name: "EST_REALISE_FORATION",
-              serial: "U9XQMQ1DXYT7LJIP",
+              name: "s=Pt100NdeM4",
+              serial: "GQKOD91C6LNG9UGM",
             },
           ],
         }
@@ -157,8 +157,8 @@ export const data = [
         attributes: {
           telemetries: [
             {
-              name: "EST_REALISE_FORATION",
-              serial: "U9XQMQ1DXYT7LJIP",
+              name: "s=Var4_VibDe",
+              serial: "GQKOD91C6LNG9UGM",
             },
           ],
         }
@@ -176,8 +176,8 @@ export const data = [
         attributes: {
           telemetries: [
             {
-              name: "EST_REALISE_FORATION",
-              serial: "U9XQMQ1DXYT7LJIP",
+              name: "s=Var5_Pw",
+              serial: "GQKOD91C6LNG9UGM",
             },
           ],
         }
@@ -188,8 +188,8 @@ export const data = [
         attributes: {
           telemetries: [
             {
-              name: "EST_REALISE_FORATION",
-              serial: "U9XQMQ1DXYT7LJIP",
+              name: "s=Var5_Vitesse",
+              serial: "GQKOD91C6LNG9UGM",
             },
           ],
         }
@@ -200,8 +200,8 @@ export const data = [
         attributes: {
           telemetries: [
             {
-              name: "EST_REALISE_FORATION",
-              serial: "U9XQMQ1DXYT7LJIP",
+              name: "s=Pt100NdeM5",
+              serial: "GQKOD91C6LNG9UGM",
             },
           ],
         }
@@ -212,8 +212,8 @@ export const data = [
         attributes: {
           telemetries: [
             {
-              name: "EST_REALISE_FORATION",
-              serial: "U9XQMQ1DXYT7LJIP",
+              name: "s=Var5_VibDe",
+              serial: "GQKOD91C6LNG9UGM",
             },
           ],
         }
