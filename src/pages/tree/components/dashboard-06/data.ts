@@ -1,6 +1,6 @@
 export const widgetsData = {
   0: {
-    title: "Tonnage Débalyé",
+    title: "Tonnage Transporté",
     attributes: {
       stacked: false,
       telemetries: [
@@ -14,9 +14,9 @@ export const widgetsData = {
     }
   },
   1: {
-    title: "Dispo et Utilisation",
+    title: "Performance Engin",
     attributes: {
-      image: "/machine-04.png",
+      image: "/machine-06.png",
       name: "Jumbo M20",
       telemetries: [
         {
@@ -35,20 +35,20 @@ export const widgetsData = {
     },
   },
   2: {
-    title: "Performance Déblayage",
+    title: "Performance Transport",
     attributes: {
       stacked: false,
       telemetries: [
         {
           name: "UG_METRES_PLANIFIE",
           color: "#FF5AF1",
-          label: "t/h",
+          label: "AD45",
           serial: "DABF7PAT2G4BAG21",
         },
         {
           name: "UG_METRES_REALISE_TOTAL",
           color: "#FFDC8C",
-          label: "t/h/ml",
+          label: "Performances Roulage",
           serial: "DABF7PAT2G4BAG21",
         },
       ],
@@ -84,7 +84,7 @@ export const widgetsData = {
     },
   },
   5: {
-    title: "Temps de Déblayage",
+    title: "Temps de Transport",
     attributes: {
       stacked: false,
       telemetries: [
@@ -116,23 +116,5 @@ export const widgetsData = {
       ],
     },
   },
-  7: {
-    title: "Distance Trajet",
-    attributes: {
-      telemetries: [
-        {
-          name: "EST_REALISE_FORATION",
-          color: "#CCCCCC",
-          label: "Aller",
-          serial: "U9XQMQ1DXYT7LJIP",
-        },
-        {
-          name: "UG_METRES_PLANIFIE",
-          color: "#25A18E",
-          label: "Retour",
-          serial: "DABF7PAT2G4BAG21",
-        },
-      ],
-    },
-  },
+
 };
