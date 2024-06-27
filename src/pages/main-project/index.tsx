@@ -530,7 +530,9 @@ export default function MainProjectPage() {
               }}
             >
               <div className="flex flex-col p-4">
-                <h1 className="text-lg font-bold text-[#FFE473]">Plant</h1>
+                <h1 className="text-lg font-bold text-[#FFE473]">
+                  {tree?.titile}
+                </h1>
                 {Object.entries(tree?.attribute || {}).map(
                   ([key, value], index) => (
                     <div key={index} className="flex gap-2 text-sm">
