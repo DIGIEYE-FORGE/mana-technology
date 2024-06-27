@@ -1,8 +1,9 @@
 import { Card } from "@/components/card";
 import { MoteurCard } from "./components/moteurCard";
 import { BarChart } from "./components/bar-chart";
-import { data, qualitédair } from "./data";
+import { data, qualitédair, ventilation } from "./data";
 import { QualitAir } from "./components/qualite-air";
+import { VentilationCard } from "./components/ventilation-card";
 
 const VentilationDashboard = () => {
   return (
@@ -71,30 +72,13 @@ const VentilationDashboard = () => {
         />
       </div>
       <Card className="col-span-3 row-span-1 flex flex-col items-center gap-3">
-        <h1 className="text-center text-xl font-semibold">
-          Puissance Totale KW
-        </h1>
-        <div className="flex items-center gap-3 text-5xl font-semibold">
-          <span>1200</span>
-          <span>KW</span>
-        </div>
+        <VentilationCard {...ventilation[0]} />
       </Card>
       <Card className="col-span-3 row-span-1 flex flex-col items-center gap-3">
-        <h1 className="text-center text-xl font-semibold">
-          Puissance Thermique galerie
-        </h1>
-        <div className="flex items-center gap-3 text-5xl font-semibold">
-          <span>160</span>
-          <span>KW</span>
-        </div>
+        <VentilationCard {...ventilation[1]} />
       </Card>
       <Card className="col-span-3 row-span-1 flex flex-col items-center gap-3 text-[#CAD2D6]">
-        <h1 className="text-center text-xl font-semibold">
-          Nombre d’Engins Présents
-        </h1>
-        <div className="flex items-center gap-3 text-5xl font-semibold">
-          <span>0000</span>
-        </div>
+        <VentilationCard {...ventilation[2]} />
       </Card>
     </main>
   );

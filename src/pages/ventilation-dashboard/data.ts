@@ -466,3 +466,30 @@ export const qualitédair = {
     }
   }
 }
+
+export const ventilation = {
+  0: {
+    title: "Puissance Totale KW",
+    unit: "Kw",
+    telemetry: {
+      serial: "U9XQMQ1DXYT7LJIP",
+      name: "EST_REALISE_FORATION",
+    }
+  },
+  1: {
+    title: "Puissance Thermique galerie",
+    unit: "Kw",
+    telemetry: {
+      serial: "U9XQMQ1DXYT7LJIP",
+      name: "EST_REALISE_FORATION",
+    }
+  },
+  2: {
+    title: "Nombre d’Engins Présents",
+    unit: "Kw",
+    telemetry: {
+      serial: "U9XQMQ1DXYT7LJIP",
+      name: "EST_REALISE_FORATION",
+    }
+  },
+}
