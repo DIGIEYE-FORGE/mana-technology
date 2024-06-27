@@ -7,10 +7,8 @@ import Loader from "../loader";
 
 interface D3DonutChartProps {
   attribute: {
-    nameTelemetry: string;
-    nameLabelTelemetry: string;
-    btsTelemetry: string;
-    btsLabelTelemetry: string;
+    name: string;
+    label: string;
     color: string;
     serial: string;
   }[];
@@ -23,20 +21,13 @@ export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
       if (!attribute?.length) return [];
       const res1 = await Promise.all(
         attribute.map(async (device) => {
-          const {
-            nameTelemetry,
-            nameLabelTelemetry,
-            btsTelemetry,
-            btsLabelTelemetry,
-            color,
-            serial,
-          } = device;
-          const res1 = await backendApi.findMany<{
+          const { name, label, color, serial } = device;
+          const res = await backendApi.findMany<{
             name: string;
             value: number;
           }>("lasttelemetry", {
             where: {
-              name: nameTelemetry,
+              name,
               device: { serial },
             },
             select: { name: true, value: true },
@@ -48,28 +39,11 @@ export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
               perPage: 1,
             },
           });
-          const res2 = await backendApi.findMany<{
-            name: string;
-            value: number;
-          }>("lasttelemetry", {
-            where: {
-              name: btsTelemetry,
-              device: { serial },
-            },
-            select: { name: true, value: true },
-            orderBy: {
-              createdAt: "desc",
-            },
-            pagination: {
-              page: 1,
-              perPage: 1,
-            },
-          });
-          // return {
-          //   color: color,
-          //   name: label,
-          //   value: res.results[0].value,
-          // };
+          return {
+            color: color,
+            name: label,
+            value: res.results[0].value,
+          };
         }),
       );
       const sum = res1.reduce((acc, curr) => acc + curr.value, 0);
