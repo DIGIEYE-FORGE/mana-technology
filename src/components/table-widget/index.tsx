@@ -1,7 +1,6 @@
 import { useAppContext } from "@/Context";
 import Loader from "@/components/loader";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { VirtualizedList } from "@/components/virtualized-list";
 import { cn } from "@/lib/utils";
 import {
   HistoryType,
