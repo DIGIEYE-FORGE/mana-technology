@@ -239,6 +239,7 @@ export default function HomeDashboard() {
               {
                 displayName: "Charge spécifique (g/t)",
                 telemetryName: "CHARGE_SPECIFIQUE",
+                displayFormat: "float",
               },
             ],
           }}

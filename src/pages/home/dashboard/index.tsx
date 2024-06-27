@@ -69,7 +69,6 @@ export default function HomeDashboard() {
         <h1 className="text-center text-lg font-semibold">Stérile / Minera</h1>
         <div className="flex-1">
           <BarChartWidget
-            // title="Daily Production BreakUp"
             attributes={{
               telemetries: [
                 {

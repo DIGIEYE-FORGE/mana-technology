@@ -7,7 +7,7 @@ import {
 } from "@/utils";
 import useSWR from "swr";
 import { useAppContext } from "@/Context";
-import ReactApexChart from "react-apexcharts";
+import Chart from "react-apexcharts";
 import Loader from "@/components/loader";
 
 type Props = Widget;
@@ -119,7 +119,7 @@ export default function BarChartWidget(props: Props) {
       </div>
     );
   return (
-    <ReactApexChart
+    <Chart
       options={{
         theme: { mode: "dark" },
         tooltip: { cssClass: "text-black" },
@@ -198,7 +198,6 @@ export default function BarChartWidget(props: Props) {
         },
       }}
       series={data || []}
-      type={"bar"}
       width={"100%"}
       height={"100%"}
     />

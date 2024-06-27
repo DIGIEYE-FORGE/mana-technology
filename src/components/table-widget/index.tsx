@@ -1,7 +1,6 @@
 import { useAppContext } from "@/Context";
 import Loader from "@/components/loader";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { VirtualizedList } from "@/components/virtualized-list";
 import { cn } from "@/lib/utils";
 import {
   HistoryType,
@@ -29,7 +28,7 @@ const Formatter = ({
   }
   if (displayFormat === "integer") return <>{parseInt(stringify(value), 10)}</>;
   if (displayFormat === "float")
-    return <>====={parseFloat(stringify(value || 0)).toFixed(2)}====</>;
+    return <>{parseFloat(stringify(value || 0)).toFixed(2)}</>;
   if (displayFormat === "boolean") return <>{value ? "true" : "false"}</>;
   if (displayFormat === "date")
     return <>{format(new Date(stringify(value)), "PP")}</>;
