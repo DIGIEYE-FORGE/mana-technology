@@ -11,7 +11,7 @@ const tabs = [
     subTabs: [
       {
         title: "master plant",
-        image: "/public/dashboard1.png",
+        image: "/dashboard1.png",
       },
     ],
   },
@@ -20,7 +20,7 @@ const tabs = [
     subTabs: [
       {
         title: "project progress",
-        image: "/public/dashboard2.png",
+        image: "/dashboard2.png",
       },
     ],
   },
@@ -29,11 +29,11 @@ const tabs = [
     subTabs: [
       {
         title: "planning",
-        image: "/public/dashboard3.png",
+        image: "/dashboard3.png",
       },
       {
         title: "planning",
-        image: "/public/dashboard4.png",
+        image: "/dashboard4.png",
       },
     ],
   },
@@ -42,11 +42,11 @@ const tabs = [
     subTabs: [
       {
         title: "Need updated chart  from Reminex ",
-        image: "/public/dashboard5.png",
+        image: "/dashboard5.png",
       },
       {
         title: "risk",
-        image: "/public/dashboard6.png",
+        image: "/dashboard6.png",
       },
     ],
   },
@@ -55,7 +55,7 @@ const tabs = [
     subTabs: [
       {
         title: "cost",
-        image: "/public/dashboard7.png",
+        image: "/dashboard7.png",
       },
     ],
   },
