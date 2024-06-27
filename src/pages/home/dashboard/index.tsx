@@ -5,6 +5,8 @@ import LineChartWidget from "@/components/line-chart-widget";
 import BarChartWidget from "@/components/bar-chart-widget";
 import MultiProgressWidget from "@/components/multi-progress-widget";
 import ProgressMultiple from "@/components/progress-multiple";
+import { format } from "date-fns";
+import { CalendarDays } from "lucide-react";
 
 export default function HomeDashboard() {
   return (
@@ -376,6 +378,19 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col gap-3 p-4 2xl:col-span-3">
         <h3 className="text-center text-lg font-semibold">Comment</h3>
+        <div className="flex items-center gap-2">
+          <CalendarDays size={20} />
+          {format(new Date(), "PP p")}
+        </div>
+        <div className="h-1 flex-1 overflow-auto">
+          <q className="text-center">
+            {" "}
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde
+            distinctio, sed eos consequuntur sequi magnam nam quasi impedit
+            error perferendis rerum ducimus possimus perspiciatis voluptate
+            minima! Possimus adipiscialsdjlkajlkasddjlksajlkdj sdlfkjsdf dslkj{" "}
+          </q>
+        </div>
       </Card>
     </main>
   );
