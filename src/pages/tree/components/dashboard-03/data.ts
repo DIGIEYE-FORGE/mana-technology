@@ -93,7 +93,6 @@ export const widgetsData = {
           label: "Aller",
           serial: "U9XQMQ1DXYT7LJIP",
         },
-
       ],
     },
   },

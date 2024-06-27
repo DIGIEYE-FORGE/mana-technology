@@ -2,7 +2,6 @@ export const widgetsData = {
   0: {
     title: "Tonnage Transporté",
     attributes: {
-      stacked: false,
       telemetries: [
         {
           name: "UG_METRES_PLANIFIE",
@@ -17,7 +16,7 @@ export const widgetsData = {
     title: "Performance Engin",
     attributes: {
       image: "/machine-06.png",
-      name: "Jumbo M20",
+      name: "Transport ad45",
       telemetries: [
         {
           name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
@@ -37,7 +36,6 @@ export const widgetsData = {
   2: {
     title: "Performance Transport",
     attributes: {
-      stacked: false,
       telemetries: [
         {
           name: "UG_METRES_PLANIFIE",
@@ -55,38 +53,27 @@ export const widgetsData = {
     },
   },
   3: {
-    title: "Tonnage par Tir",
+    title: "Performance engins",
     attributes: {
-      stacked: false,
       telemetries: [
         {
           name: "UG_METRES_PLANIFIE",
-          color: "#FFDC8C",
-          label: "Prévus",
+          color: "#FF5AF1",
+          label: "AD45 01",
           serial: "DABF7PAT2G4BAG21",
-          type: "bar",
+        },
+        {
+          name: "UG_METRES_REALISE_TOTAL",
+          color: "#FFDC8C",
+          label: "AD45 02",
+          serial: "DABF7PAT2G4BAG21",
         },
       ],
     },
   },
   4: {
-    title: "Distance",
-    attributes: {
-      telemetries: [
-        {
-          area: true,
-          name: "EST_REALISE_FORATION",
-          color: "#78F6EA",
-          label: "Realisé ML/J",
-          serial: "U9XQMQ1DXYT7LJIP",
-        },
-      ],
-    },
-  },
-  5: {
     title: "Temps de Transport",
     attributes: {
-      stacked: false,
       telemetries: [
         {
           name: "UG_METRES_PLANIFIE",
@@ -97,7 +84,7 @@ export const widgetsData = {
       ],
     },
   },
-  6: {
+  5: {
     title: "Temps trajet",
     attributes: {
       telemetries: [
@@ -116,5 +103,4 @@ export const widgetsData = {
       ],
     },
   },
-
 };

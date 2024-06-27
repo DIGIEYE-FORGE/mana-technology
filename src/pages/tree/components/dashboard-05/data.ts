@@ -2,7 +2,6 @@ export const widgetsData = {
   0: {
     title: "Consommation des boulons",
     attributes: {
-      stacked: false,
       telemetries: [
         {
           name: "UG_METRES_PLANIFIE",
@@ -14,10 +13,10 @@ export const widgetsData = {
     }
   },
   1: {
-    title: "Performance Engin",
+    title: "Dispo et Utilisation",
     attributes: {
-      image: "/machine-03.png",
-      name: "Jumbo M20",
+      image: "/machine-05.png",
+      name: "boltec m10",
       telemetries: [
         {
           name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
@@ -37,7 +36,6 @@ export const widgetsData = {
   2: {
     title: "Consommation Grillage",
     attributes: {
-      stacked: false,
       telemetries: [
         {
           name: "UG_METRES_PLANIFIE",
@@ -49,38 +47,21 @@ export const widgetsData = {
     },
   },
   3: {
-    title: "Tonnage par Tir",
+    title: "Performance engins",
     attributes: {
-      stacked: false,
       telemetries: [
         {
           name: "UG_METRES_PLANIFIE",
           color: "#FFDC8C",
           label: "Prévus",
           serial: "DABF7PAT2G4BAG21",
-          type: "bar",
         },
       ],
     },
   },
   4: {
-    title: "Distance",
-    attributes: {
-      telemetries: [
-        {
-          area: true,
-          name: "EST_REALISE_FORATION",
-          color: "#78F6EA",
-          label: "Realisé ML/J",
-          serial: "U9XQMQ1DXYT7LJIP",
-        },
-      ],
-    },
-  },
-  5: {
     title: "Temps de soutennement",
     attributes: {
-      stacked: false,
       telemetries: [
         {
           name: "UG_METRES_PLANIFIE",
@@ -91,21 +72,16 @@ export const widgetsData = {
       ],
     },
   },
-  6: {
-    title: "Temps trajet",
+  5: {
+    title: "Disponibilité",
     attributes: {
       telemetries: [
         {
+          area: true,
           name: "EST_REALISE_FORATION",
-          color: "#CCCCCC",
-          label: "Aller",
+          color: "#78F6EA",
+          label: "Realisé ML/J",
           serial: "U9XQMQ1DXYT7LJIP",
-        },
-        {
-          name: "UG_METRES_PLANIFIE",
-          color: "#25A18E",
-          label: "Retour",
-          serial: "DABF7PAT2G4BAG21",
         },
       ],
     },

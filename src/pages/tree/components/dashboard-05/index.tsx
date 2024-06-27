@@ -24,7 +24,7 @@ export const Dashboard5 = () => {
           <div className="flex flex-col items-center gap-1">
             <div className="relative aspect-square h-20">
               <MachineFrame className="h-full w-full" />
-              <div className="absolute bottom-2 right-3 z-10 w-32">
+              <div className="absolute -bottom-2 right-3 z-10 w-32">
                 <img
                   src={widgetsData[1].attributes.image}
                   alt="image"
@@ -61,20 +61,20 @@ export const Dashboard5 = () => {
           <LineChartWidget attributes={widgetsData[2].attributes} />
         </div>
       </Card>
-      <Card className="flex flex-col p-2">
+      <Card className="col-span-2 flex flex-col p-2">
         <h3 className="text-center text-lg font-semibold">
           {widgetsData[3].title}
         </h3>
         <div className="h-1 flex-1">
-          <BarChartWidget attributes={widgetsData[3].attributes} />
+          <LineChartWidget attributes={widgetsData[3].attributes} />
         </div>
       </Card>
-      <Card className="flex flex-col p-2">
+      <Card className="col-span-2 flex flex-col p-2">
         <h1 className="text-center text-lg font-semibold">
           {widgetsData[4].title}
         </h1>
         <div className="h-1 flex-1">
-          <LineChartWidget attributes={widgetsData[4].attributes} />
+          <BarChartWidget attributes={widgetsData[4].attributes} />
         </div>
       </Card>
       <Card className="col-span-2 flex flex-col p-2">
@@ -83,14 +83,6 @@ export const Dashboard5 = () => {
         </h3>
         <div className="h-1 flex-1">
           <BarChartWidget attributes={widgetsData[5].attributes} />
-        </div>
-      </Card>
-      <Card className="col-span-2 flex flex-col p-2">
-        <h1 className="text-center text-lg font-semibold">
-          {widgetsData[6].title}
-        </h1>
-        <div className="h-1 flex-1">
-          <LineChartWidget attributes={widgetsData[6].attributes} />
         </div>
       </Card>
     </main>

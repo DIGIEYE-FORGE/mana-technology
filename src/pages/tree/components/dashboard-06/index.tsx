@@ -61,36 +61,28 @@ export const Dashboard6 = () => {
           <BarChartWidget attributes={widgetsData[2].attributes} />
         </div>
       </Card>
-      <Card className="flex flex-col p-2">
+      <Card className="col-span-2 flex flex-col p-2">
         <h3 className="text-center text-lg font-semibold">
           {widgetsData[3].title}
         </h3>
         <div className="h-1 flex-1">
-          <BarChartWidget attributes={widgetsData[3].attributes} />
-        </div>
-      </Card>
-      <Card className="flex flex-col p-2">
-        <h1 className="text-center text-lg font-semibold">
-          {widgetsData[4].title}
-        </h1>
-        <div className="h-1 flex-1">
-          <LineChartWidget attributes={widgetsData[4].attributes} />
+          <LineChartWidget attributes={widgetsData[3].attributes} />
         </div>
       </Card>
       <Card className="col-span-2 flex flex-col p-2">
         <h3 className="text-center text-lg font-semibold">
-          {widgetsData[5].title}
+          {widgetsData[4].title}
         </h3>
         <div className="h-1 flex-1">
-          <BarChartWidget attributes={widgetsData[5].attributes} />
+          <BarChartWidget attributes={widgetsData[4].attributes} />
         </div>
       </Card>
       <Card className="col-span-2 flex flex-col p-2">
         <h1 className="text-center text-lg font-semibold">
-          {widgetsData[6].title}
+          {widgetsData[5].title}
         </h1>
         <div className="h-1 flex-1">
-          <LineChartWidget attributes={widgetsData[6].attributes} />
+          <LineChartWidget attributes={widgetsData[5].attributes} />
         </div>
       </Card>
     </main>
