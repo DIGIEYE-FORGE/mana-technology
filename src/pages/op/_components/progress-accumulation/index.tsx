@@ -66,7 +66,15 @@ export function ProgressAccumulation({ attributes }: Widget) {
           pagination: { page: 1, perPage: 1 },
           orderBy: "createdAt:desc",
           select: [progressTelemetryName],
-          where: { serial, createdAt: { $lte: dateRange?.to } },
+          where: {
+            serial,
+            createdAt: {
+              $lte:
+                dateRange?.to && dateRange.to > new Date()
+                  ? new Date()
+                  : dateRange?.to,
+            },
+          },
         });
       const { results: currentTargetResults } =
         await backendApi.findMany<HistoryType>("/dpc-history/api/history", {
