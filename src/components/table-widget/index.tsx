@@ -96,9 +96,12 @@ export default function TableWidget({ attributes, className }: Props) {
   return (
     <main
       ref={containerRef}
-      className={cn("flex h-full w-full flex-col text-sm", className)}
+      className={cn(
+        "flex h-full w-full flex-col overflow-auto text-sm",
+        className,
+      )}
     >
-      <div
+      {/* <div
         className="grid max-w-full font-semibold [&>*]:truncate [&>*]:px-2 [&>*]:capitalize"
         style={{
           gridTemplateColumns: `repeat(${mappings.length + 1}, 1fr)`,
@@ -140,10 +143,35 @@ export default function TableWidget({ attributes, className }: Props) {
                   );
                 })}
               </div>
-            </div>
+            </div>bo
           );
         }}
-      </VirtualizedList>
+      </VirtualizedList> */}
+      <table className="table-auto odd:[&>tbody>tr]:bg-black/10 [&_*]:whitespace-nowrap [&_td]:px-3 [&_td]:py-2 [&_td]:pb-3 [&_th]:px-3 [&_th]:pb-3 [&_th]:text-left [&_th]:first-letter:uppercase">
+        <thead>
+          <tr>
+            <th>date</th>
+            {mappings.map((m) => (
+              <th key={m.telemetryName}>{m.displayName || m.telemetryName}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody className="text-yellow-500">
+          {data?.map((item, index) => (
+            <tr key={index}>
+              <td>{format(new Date(item.date || item.createdAt), "PP ")}</td>
+              {mappings.map((m) => {
+                const value = flatten(item)[m.telemetryName];
+                return (
+                  <td key={m.telemetryName}>
+                    <Formatter value={value} displayFormat={m.displayFormat} />
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
       {isLoading && (
         <main className="absolute inset-0 grid place-content-center">
           <Loader />
