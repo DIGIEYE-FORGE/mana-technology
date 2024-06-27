@@ -70,7 +70,7 @@ export function ProgressAccumulation({ attributes }: Widget) {
             serial,
             createdAt: {
               $lte:
-                dateRange?.to && dateRange.to > new Date()
+                dateRange?.to && new Date(dateRange.to) > new Date()
                   ? new Date()
                   : dateRange?.to,
             },
@@ -85,7 +85,7 @@ export function ProgressAccumulation({ attributes }: Widget) {
             serial,
             createdAt: {
               $lte:
-                dateRange?.to && dateRange.to > new Date()
+                dateRange?.to && new Date(dateRange.to) > new Date()
                   ? new Date()
                   : dateRange?.to,
             },

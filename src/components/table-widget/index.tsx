@@ -100,52 +100,6 @@ export default function TableWidget({ attributes, className }: Props) {
         className,
       )}
     >
-      {/* <div
-        className="grid max-w-full font-semibold [&>*]:truncate [&>*]:px-2 [&>*]:capitalize"
-        style={{
-          gridTemplateColumns: `repeat(${mappings.length + 1}, 1fr)`,
-        }}
-      >
-        <div>date</div>
-        {mappings.map((m) => (
-          <div key={m.telemetryName}>{m.displayName || m.telemetryName}</div>
-        ))}
-      </div>
-      <VirtualizedList
-        containerHeight={1200}
-        itemHeight={48}
-        items={data || []}
-        className="h-2 flex-1"
-      >
-        {({ item, index, style }) => {
-          return (
-            <div style={style}>
-              <div
-                key={index}
-                className="grid items-center gap-2 rounded-full bg-black/10 px-2 py-2 [&>*]:truncate [&>*]:px-2"
-                style={{
-                  gridTemplateColumns: `repeat(${mappings.length + 1}, 1fr)`,
-                }}
-              >
-                <div className="text-[#FEC33A]">
-                  {format(new Date(item.date || item.createdAt), "PP ")}
-                </div>
-                {mappings.map((m) => {
-                  const value = flatten(item)[m.telemetryName];
-                  return (
-                    <div key={m.telemetryName} className="text-[#FEC33A]">
-                      <Formatter
-                        value={value}
-                        displayFormat={m.displayFormat}
-                      />
-                    </div>
-                  );
-                })}
-              </div>
-            </div>bo
-          );
-        }}
-      </VirtualizedList> */}
       <table className="table-auto odd:[&>tbody>tr]:bg-black/10 [&_*]:whitespace-nowrap [&_td]:px-3 [&_td]:py-2 [&_td]:pb-3 [&_th]:px-3 [&_th]:pb-3 [&_th]:text-left [&_th]:first-letter:uppercase">
         <thead>
           <tr>
