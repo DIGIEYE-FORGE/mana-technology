@@ -102,7 +102,7 @@ function ProjectPlaningButton() {
           </DialogClose>
         </div>
         <div
-          className="debug mx-auto flex h-1 max-h-[920px] w-full max-w-[1920px] flex-1 flex-col gap-4"
+          className="mx-auto flex h-1 max-h-[920px] w-full max-w-[1920px] flex-1 flex-col gap-4"
           style={{
             backgroundImage: "url(/public/dashboard-frame.png)",
             backgroundRepeat: "no-repeat",
