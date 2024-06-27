@@ -1,6 +1,6 @@
-import Dashboard3 from "../dashboard3";
 import { Dashboard1 } from "./components/dashboard-01";
 import { Dashboard2 } from "./components/dashboard-02";
+import { Dashboard3 } from "./components/dashboard-03";
 import { Dashboard4 } from "./components/dashboard-04";
 import { Dashboard5 } from "./components/dashboard-05";
 import { Dashboard6 } from "./components/dashboard-06";
