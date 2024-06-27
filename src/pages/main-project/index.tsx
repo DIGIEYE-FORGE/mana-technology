@@ -178,7 +178,7 @@ export default function MainProjectPage() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <main className="relative mx-auto w-full max-w-[1920px]">
+      <main className="relative mx-auto max-h-[1200px] w-full max-w-[1920px]">
         <MainProjectUpBar />
         <div className="debug absolute right-4 top-[70%] flex h-[2rem] items-center gap-2 sm:hidden">
           <span>100m</span>
@@ -285,7 +285,7 @@ export default function MainProjectPage() {
             ))}
           </div>
           <div
-            className="relative flex-1 sm:hidden"
+            className="debug relative flex-1"
             style={{
               backgroundImage: "url('/llustration.png')",
               backgroundSize: "contain",
