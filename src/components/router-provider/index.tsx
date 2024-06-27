@@ -31,7 +31,7 @@ const routes: RouteObject[] = [
         element: <HomePage />,
         children: [
           {
-            path: "",
+            path: "op-est11",
             element: <HomeDashboard />,
           },
           {
@@ -39,7 +39,7 @@ const routes: RouteObject[] = [
             element: <OpSud />,
           },
           {
-            path: "op",
+            path: "",
             element: <Op />,
           },
           {
