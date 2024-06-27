@@ -147,7 +147,6 @@ export default function BarLineWidget(props: Props) {
         },
         xaxis: {
           type: "datetime",
-
           max: props.dateRange?.to?.getTime(),
           axisBorder: { show: false },
           axisTicks: { show: false },
@@ -244,26 +243,8 @@ export default function BarLineWidget(props: Props) {
         },
       }}
       series={data as any}
-      // series={[
-      //   {
-      //     name: "Column A",
-      //     type: "column",
-      //     data: [21.1, 23, 33.1, 34, 44.1, 44.9, 56.5, 58.5],
-      //   },
-      //   {
-      //     name: "Column B",
-      //     type: "column",
-      //     data: [10, 19, 27, 26, 34, 35, 40, 38],
-      //   },
-      //   {
-      //     name: "Line C",
-      //     type: "line",
-      //     data: [1.4, 2, 2.5, 1.5, 2.5, 2.8, 3.8, 4.6],
-      //   },
-      // ]}
       width={"100%"}
       height={"100%"}
-      type="line"
     />
   );
 }
