@@ -1,6 +1,7 @@
 import { useAppContext } from "@/Context";
 import BarLineWidget from "@/components/bar-line-widget";
 import { Card } from "@/components/card";
+// import { ConeChart } from "@/components/cone-chart";
 import { D3DonutChart } from "@/components/d3-donut chart";
 import Engins from "@/components/engins";
 import LineChartWidget from "@/components/line-chart-widget";
@@ -211,27 +212,35 @@ export default function UndergroundDashboardPage() {
           <D3DonutChart
             attribute={[
               {
-                name: "UG_FORATION_TIRS_PREPARATION-min",
+                nameTelemetry: "UG_FORATION_TIRS_PREPARATION-min",
+                nameLabelTelemetry: "Quasi-accidents & observations",
+                bfsTelemetry: "UG_FORATION_TIRS_PREPARATION-min",
+                bfsLabelTelemetry: "test",
                 color: "#009AB6",
-                label: "Quasi-accidents & observations",
                 serial: "DABF7PAT2G4BAG21",
               },
               {
-                name: "UG_FORATION_TIRS_PREPARATION-min",
+                nameTelemetry: "UG_FORATION_TIRS_PREPARATION-min",
+                nameLabelTelemetry: "Quasi-accidents & observations",
+                bfsTelemetry: "UG_FORATION_TIRS_PREPARATION-min",
+                bfsLabelTelemetry: "Quasi-accidents & observations",
                 color: "#009AB6",
-                label: "Quasi-accidents & observations",
                 serial: "DABF7PAT2G4BAG21",
               },
               {
-                name: "UG_FORATION_TIRS_PREPARATION-min",
+                nameTelemetry: "UG_FORATION_TIRS_PREPARATION-min",
+                nameLabelTelemetry: "Quasi-accidents & observations",
+                bfsTelemetry: "UG_FORATION_TIRS_PREPARATION-min",
+                bfsLabelTelemetry: "Quasi-accidents & observations",
                 color: "#009AB6",
-                label: "Quasi-accidents & observations",
                 serial: "DABF7PAT2G4BAG21",
               },
               {
-                name: "UG_FORATION_TIRS_PREPARATION-min",
+                nameTelemetry: "UG_FORATION_TIRS_PREPARATION-min",
+                nameLabelTelemetry: "Quasi-accidents & observations",
+                bfsTelemetry: "UG_FORATION_TIRS_PREPARATION-min",
+                bfsLabelTelemetry: "Quasi-accidents & observations",
                 color: "#009AB6",
-                label: "Quasi-accidents & observations",
                 serial: "DABF7PAT2G4BAG21",
               },
             ]}

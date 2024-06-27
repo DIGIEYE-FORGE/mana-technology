@@ -7,7 +7,7 @@ import {
 } from "@/utils";
 import useSWR from "swr";
 import { useAppContext } from "@/Context";
-import ReactApexChart from "react-apexcharts";
+import Chart from "react-apexcharts";
 import Loader from "@/components/loader";
 import { ReactNode } from "react";
 
@@ -59,7 +59,8 @@ export default function LineChartWidget({
         nameTelemetry: telemetries[index].name,
         data: item.map((item) => ({
           x: new Date(item.createdAt),
-          y: Number(flatten(item)[telemetries[index].name]),
+          // y: Number(flatten(item)[telemetries[index].name]),
+          y: Number(Number(flatten(item)[telemetries[index].name]).toFixed(2)),
         })),
       }));
       if (props.moyenne) {
@@ -125,7 +126,7 @@ export default function LineChartWidget({
       </main>
     );
   return (
-    <ReactApexChart
+    <Chart
       options={{
         theme: { mode: "dark" },
         tooltip: { cssClass: "text-black" },
@@ -136,6 +137,7 @@ export default function LineChartWidget({
           yaxis: { lines: { show: true } },
         },
         chart: {
+          type: "line",
           background: "transparent",
           toolbar: { show: false },
           animations: { enabled: true },
@@ -189,7 +191,7 @@ export default function LineChartWidget({
           labels: {
             show: true,
             formatter: function (value) {
-              return value.toFixed(2);
+              return Math.ceil(value) + " ";
             },
             style: {
               fontSize: "12px",

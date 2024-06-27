@@ -103,7 +103,7 @@ export default function MainProjectPage() {
       positionModel: {
         side: "left",
         align: "end",
-        sideOffset: 40,
+        sideOffset: -10,
       },
     },
     {

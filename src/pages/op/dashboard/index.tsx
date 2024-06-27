@@ -205,11 +205,9 @@ export default function HomeDashboard() {
         </div>
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col gap-1 p-4 lg:col-span-8">
-        <h3 className="text-center text-lg font-semibold">
-        Suivi des Tirs
-        </h3>
+        <h3 className="text-center text-lg font-semibold">Suivi des Tirs</h3>
         <TableWidget
-          className="flex-1"
+          className="h-1 flex-1"
           attributes={{
             serial: "AATT1JKEZ2V1YVMA",
             element: "telemetries",
@@ -241,6 +239,7 @@ export default function HomeDashboard() {
               {
                 displayName: "Charge spécifique (g/t)",
                 telemetryName: "CHARGE_SPECIFIQUE",
+                displayFormat: "float",
               },
             ],
           }}

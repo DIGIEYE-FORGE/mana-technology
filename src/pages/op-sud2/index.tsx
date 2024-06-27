@@ -111,9 +111,9 @@ function DashboardPage3() {
           }}
         />
       </Card>
-      <Card className="col-span-4  flex flex-col p-4">
+      <Card className="col-span-4 flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
-          Production  par qualité
+          Production par qualité
         </h1>
         <div className="flex-1">
           <ProgressMultiple
@@ -139,7 +139,7 @@ function DashboardPage3() {
                     serial: "C6XPYU0D920L1M07",
                     label: "LG",
                     color: "#FFC8FF",
-                  }
+                  },
                 ],
               },
               {
@@ -170,12 +170,16 @@ function DashboardPage3() {
         </div>
       </Card>
       <Card className="col-span-3 row-span-2 flex items-center justify-center text-3xl font-bold">
-        Photo
+        <img
+          src="/picture1.png"
+          alt="machine"
+          className="h-full w-full object-contain"
+        />
       </Card>
       <Card className="col-span-6 p-4">
         <h3 className="text-center text-lg font-semibold">Suivi des Tires</h3>
         <TableWidget
-          className="flex-1"
+          className="h-1 flex-1"
           attributes={{
             serial: "V4Z1NGYWPYCTK1DX",
             element: "telemetries",

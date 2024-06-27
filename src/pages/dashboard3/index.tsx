@@ -124,7 +124,7 @@ function DashboardPage3() {
       <Card className="col-span-5 p-4">
         <h3 className="text-center text-lg font-semibold">Suivi des Tires</h3>
         <TableWidget
-          className="flex-1"
+          className="h-1 flex-1"
           attributes={{
             serial: "C6XPYU0D920L1M07",
             element: "telemetries",

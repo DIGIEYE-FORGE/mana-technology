@@ -1,7 +1,6 @@
 import { useAppContext } from "@/Context";
 import Loader from "@/components/loader";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { VirtualizedList } from "@/components/virtualized-list";
 import { cn } from "@/lib/utils";
 import {
   HistoryType,
@@ -29,7 +28,7 @@ const Formatter = ({
   }
   if (displayFormat === "integer") return <>{parseInt(stringify(value), 10)}</>;
   if (displayFormat === "float")
-    return <>====={parseFloat(stringify(value || 0)).toFixed(2)}====</>;
+    return <>{parseFloat(stringify(value || 0)).toFixed(2)}</>;
   if (displayFormat === "boolean") return <>{value ? "true" : "false"}</>;
   if (displayFormat === "date")
     return <>{format(new Date(stringify(value)), "PP")}</>;
@@ -96,54 +95,36 @@ export default function TableWidget({ attributes, className }: Props) {
   return (
     <main
       ref={containerRef}
-      className={cn("flex h-full w-full flex-col text-sm", className)}
+      className={cn(
+        "flex h-full w-full flex-col overflow-auto text-sm",
+        className,
+      )}
     >
-      <div
-        className="grid max-w-full font-semibold [&>*]:truncate [&>*]:px-2 [&>*]:capitalize"
-        style={{
-          gridTemplateColumns: `repeat(${mappings.length + 1}, 1fr)`,
-        }}
-      >
-        <div>date</div>
-        {mappings.map((m) => (
-          <div key={m.telemetryName}>{m.displayName || m.telemetryName}</div>
-        ))}
-      </div>
-      <VirtualizedList
-        containerHeight={1200}
-        itemHeight={48}
-        items={data || []}
-        className="h-2 flex-1"
-      >
-        {({ item, index, style }) => {
-          return (
-            <div style={style}>
-              <div
-                key={index}
-                className="grid items-center gap-2 rounded-full bg-black/10 px-2 py-2 [&>*]:truncate [&>*]:px-2"
-                style={{
-                  gridTemplateColumns: `repeat(${mappings.length + 1}, 1fr)`,
-                }}
-              >
-                <div className="text-[#FEC33A]">
-                  {format(new Date(item.date || item.createdAt), "PP ")}
-                </div>
-                {mappings.map((m) => {
-                  const value = flatten(item)[m.telemetryName];
-                  return (
-                    <div key={m.telemetryName} className="text-[#FEC33A]">
-                      <Formatter
-                        value={value}
-                        displayFormat={m.displayFormat}
-                      />
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          );
-        }}
-      </VirtualizedList>
+      <table className="table-auto odd:[&>tbody>tr]:bg-black/10 [&_*]:whitespace-nowrap [&_td]:px-3 [&_td]:py-2 [&_td]:pb-3 [&_th]:px-3 [&_th]:pb-3 [&_th]:text-left [&_th]:first-letter:uppercase">
+        <thead>
+          <tr>
+            <th>date</th>
+            {mappings.map((m) => (
+              <th key={m.telemetryName}>{m.displayName || m.telemetryName}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody className="text-yellow-500">
+          {data?.map((item, index) => (
+            <tr key={index}>
+              <td>{format(new Date(item.date || item.createdAt), "PP ")}</td>
+              {mappings.map((m) => {
+                const value = flatten(item)[m.telemetryName];
+                return (
+                  <td key={m.telemetryName}>
+                    <Formatter value={value} displayFormat={m.displayFormat} />
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
       {isLoading && (
         <main className="absolute inset-0 grid place-content-center">
           <Loader />
