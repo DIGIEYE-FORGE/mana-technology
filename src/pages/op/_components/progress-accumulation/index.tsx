@@ -68,12 +68,7 @@ export function ProgressAccumulation({ attributes }: Widget) {
           select: [progressTelemetryName],
           where: {
             serial,
-            createdAt: {
-              $lte:
-                dateRange?.to && dateRange.to > new Date()
-                  ? new Date()
-                  : dateRange?.to,
-            },
+            createdAt: { $lte: dateRange?.to },
           },
         });
       const { results: currentTargetResults } =
@@ -81,7 +76,15 @@ export function ProgressAccumulation({ attributes }: Widget) {
           pagination: { page: 1, perPage: 1 },
           orderBy: "createdAt:desc",
           select: [accumulationTelemetryName],
-          where: { serial, createdAt: { $lte: dateRange?.to } },
+          where: {
+            serial,
+            createdAt: {
+              $lte:
+                dateRange?.to && dateRange.to > new Date()
+                  ? new Date()
+                  : dateRange?.to,
+            },
+          },
         });
 
       const finalTarget = endOfMountResult[0][accumulationTelemetryName];
