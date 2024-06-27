@@ -40,7 +40,7 @@ function PyramidChart({ data }: any) {
   const styles = calculateStyles(data);
 
   return (
-    <div className="pyramid-chart-container debug h-full w-full">
+    <div className="pyramid-chart-container h-full w-full">
       {data.map((entry: any, index: number) => (
         <div
           key={index}
