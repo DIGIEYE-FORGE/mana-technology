@@ -1,7 +1,7 @@
 import { useAppContext } from "@/Context";
 import BarLineWidget from "@/components/bar-line-widget";
 import { Card } from "@/components/card";
-import { ConeChart } from "@/components/cone-chart";
+// import { ConeChart } from "@/components/cone-chart";
 import { D3DonutChart } from "@/components/d3-donut chart";
 import Engins from "@/components/engins";
 import LineChartWidget from "@/components/line-chart-widget";
@@ -15,23 +15,7 @@ export default function UndergroundDashboardPage() {
   const { dateRange } = useAppContext();
   return (
     <div className="grid h-fit w-full grid-flow-dense auto-rows-[19rem] grid-cols-9 gap-6">
-      <Card className="col-span-3 flex flex-col gap-6 p-6">
-        <h3 className="text-center text-lg font-semibold">
-          Ce projet a travaillé 395 jours sans blessure avec arrêt de travail
-        </h3>
-        <ConeChart
-          attribute={[
-            {
-              name: "CHARGE_INSTANTANEE",
-              color: "#009AB6",
-              label: "Quasi-accidents & observations",
-              serial: "AATT1JKEZ2V1YVMA",
-            },
-          ]}
-          className="flex-1"
-        />
-      </Card>
-      <Card className="col-span-3 flex flex-col p-4">
+      <Card className="col-span-5 flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
           Avancement cumulatif annuel
         </h1>
@@ -89,7 +73,7 @@ export default function UndergroundDashboardPage() {
           />
         </div>
       </Card>
-      <Card className="col-span-3 flex flex-col p-4">
+      <Card className="col-span-4 flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
           Avancement Cumulé :
           <span className="text-md text-gray-400"> Réalisé vs Planifié</span>
@@ -145,6 +129,7 @@ export default function UndergroundDashboardPage() {
         <div className="flex-1">
           <BarLineWidget
             moyenne={["UG_METRES_PLANIFIE", "UG_METRES_REALISE_TOTAL"]}
+            yAxis="one"
             attributes={{
               stacked: true,
               telemetries: [
@@ -221,16 +206,34 @@ export default function UndergroundDashboardPage() {
       </Card>
       <Card className="relative col-span-3 p-4">
         <h1 className="text-center text-lg font-semibold">
-          Avancement/Arrachement journalier
+          Développement du cycle
         </h1>
         <div className="flex-1">
           <D3DonutChart
             attribute={[
               {
-                name: "CHARGE_INSTANTANEE",
+                name: "UG_FORATION_TIRS_PREPARATION-min",
                 color: "#009AB6",
                 label: "Quasi-accidents & observations",
-                serial: "AATT1JKEZ2V1YVMA",
+                serial: "DABF7PAT2G4BAG21",
+              },
+              {
+                name: "UG_FORATION_TIRS_PREPARATION-min",
+                color: "#009AB6",
+                label: "Quasi-accidents & observations",
+                serial: "DABF7PAT2G4BAG21",
+              },
+              {
+                name: "UG_FORATION_TIRS_PREPARATION-min",
+                color: "#009AB6",
+                label: "Quasi-accidents & observations",
+                serial: "DABF7PAT2G4BAG21",
+              },
+              {
+                name: "UG_FORATION_TIRS_PREPARATION-min",
+                color: "#009AB6",
+                label: "Quasi-accidents & observations",
+                serial: "DABF7PAT2G4BAG21",
               },
             ]}
           />
@@ -265,7 +268,6 @@ export default function UndergroundDashboardPage() {
           />
         </div>
       </Card>
-      {/* <Card className="col-span-2">10</Card> */}
       <Card className="col-span-3 flex flex-col gap-2 p-2">
         <h3 className="text-center text-lg font-semibold">
           Disponibilité et utilisation des engins
@@ -274,36 +276,32 @@ export default function UndergroundDashboardPage() {
           <Engins
             attribute={[
               {
-                name: "LH06",
                 label: "LH06",
-                disponibillite: "Standby",
                 icon: "/truck.svg",
-                value: 45,
-                value2: 100,
+                utilisationTelemetry: "UG_LH06_UTILISATION",
+                disponibilliteTelemetry: "UG_LH06_DISPONIBILITE",
+                serial: "DABF7PAT2G4BAG21",
               },
               {
-                name: "LH06",
                 label: "LH06",
-                disponibillite: "Disponible",
                 icon: "/truck.svg",
-                value: 64,
-                value2: 59,
+                utilisationTelemetry: "UG_LH06_UTILISATION",
+                disponibilliteTelemetry: "UG_LH06_DISPONIBILITE",
+                serial: "DABF7PAT2G4BAG21",
               },
               {
-                name: "LH06",
                 label: "LH06",
-                disponibillite: "Disponible",
                 icon: "/truck.svg",
-                value: 49,
-                value2: 100,
+                utilisationTelemetry: "UG_LH06_UTILISATION",
+                disponibilliteTelemetry: "UG_LH06_DISPONIBILITE",
+                serial: "DABF7PAT2G4BAG21",
               },
               {
-                name: "LH06",
                 label: "LH06",
-                disponibillite: "Indisponible",
                 icon: "/truck.svg",
-                value: 34,
-                value2: 48,
+                utilisationTelemetry: "UG_LH06_UTILISATION",
+                disponibilliteTelemetry: "UG_LH06_DISPONIBILITE",
+                serial: "DABF7PAT2G4BAG21",
               },
             ]}
           />

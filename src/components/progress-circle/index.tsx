@@ -105,7 +105,7 @@ export function ProgressCircle({
           <feGaussianBlur stdDeviation="1" />
         </filter>
       </svg>
-      <span className="absolute bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2">
+      <span className="absolute bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2 whitespace-nowrap">
         {progress.toFixed(2) + " %"}
       </span>
     </div>

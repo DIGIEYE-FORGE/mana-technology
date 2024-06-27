@@ -121,8 +121,6 @@ export default function BarLineWidget(props: Props) {
       </div>
     );
 
-  console.log({ data });
-
   return (
     <Chart
       options={{
@@ -161,94 +159,67 @@ export default function BarLineWidget(props: Props) {
             },
           },
         },
-        yaxis: [
-          // {
-          //   axisTicks: {
-          //     show: true,
-          //   },
-          //   axisBorder: {
-          //     show: true,
-          //   },
+        yaxis:
+          props.yAxis === "one"
+            ? {
+                axisTicks: {
+                  show: true,
+                },
+                axisBorder: {
+                  show: true,
+                },
+                labels: {
+                  formatter: function (value) {
+                    return value.toFixed(2);
+                  },
+                },
+              }
+            : [
+                {
+                  seriesName: data?.[0].name,
+                  axisTicks: {
+                    show: true,
+                  },
+                  axisBorder: {
+                    show: true,
+                  },
+                  title: {
+                    style: {
+                      color: "#008FFB",
+                    },
+                  },
 
-          //   title: {
-          //     style: {
-          //       color: "#008FFB",
-          //     },
-          //   },
-
-          //   labels: {
-          //     formatter: function (value) {
-          //       return value.toFixed(2);
-          //     },
-          //   },
-          // },
-
-          // {
-          //   opposite: true,
-          //   axisTicks: {
-          //     show: true,
-          //   },
-          //   axisBorder: {
-          //     show: true,
-          //     // color: "#FEB019",
-          //   },
-          //   labels: {
-          //     formatter: function (value) {
-          //       return value?.toFixed(2);
-          //     },
-          //   },
-          //   title: {
-          //     style: {
-          //       color: "#FEB019",
-          //     },
-          //   },
-          // },
-
-          {
-            seriesName: data?.[0].name,
-            axisTicks: {
-              show: true,
-            },
-            axisBorder: {
-              show: true,
-            },
-            title: {
-              style: {
-                color: "#008FFB",
-              },
-            },
-
-            labels: {
-              formatter: function (value) {
-                return value.toFixed(2);
-              },
-            },
-          },
-          {
-            seriesName: data?.[1].name,
-            show: false,
-          },
-          {
-            opposite: true,
-            seriesName: data?.[2].name,
-            axisTicks: {
-              show: true,
-            },
-            axisBorder: {
-              show: true,
-            },
-            labels: {
-              formatter: function (value) {
-                return value?.toFixed(2);
-              },
-            },
-            title: {
-              style: {
-                color: "#FEB019",
-              },
-            },
-          },
-        ],
+                  labels: {
+                    formatter: function (value) {
+                      return value.toFixed(2);
+                    },
+                  },
+                },
+                {
+                  seriesName: data?.[1].name,
+                  show: false,
+                },
+                {
+                  opposite: true,
+                  seriesName: data?.[2].name,
+                  axisTicks: {
+                    show: true,
+                  },
+                  axisBorder: {
+                    show: true,
+                  },
+                  labels: {
+                    formatter: function (value) {
+                      return value?.toFixed(2);
+                    },
+                  },
+                  title: {
+                    style: {
+                      color: "#FEB019",
+                    },
+                  },
+                },
+              ],
         grid: {
           borderColor: "#797979",
           xaxis: { lines: { show: false } },

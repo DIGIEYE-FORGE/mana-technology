@@ -14,10 +14,12 @@ import OjamilDevPage from "@/pages/ojamil-dev";
 import MainProjectPage from "@/pages/main-project";
 import UnderGroundPage from "@/pages/underground";
 import OpSud from "@/pages/op-sud";
+import Op from "@/pages/op";
 import OpSud2 from "@/pages/op-sud2";
 import OpSud4 from "@/pages/op-sud4";
 import UndergroundDashboardPage from "@/pages/underground/dashboard";
 import VentilationDashboard from "@/pages/ventilation-dashboard";
+import HomeDashboard from "@/pages/home/dashboard";
 
 const routes: RouteObject[] = [
   {
@@ -27,19 +29,30 @@ const routes: RouteObject[] = [
       {
         path: "",
         element: <HomePage />,
+        children: [
+          {
+            path: "op-est11",
+            element: <HomeDashboard />,
+          },
+          {
+            path: "op-sud",
+            element: <OpSud />,
+          },
+          {
+            path: "",
+            element: <Op />,
+          },
+          {
+            path: "op-sud2",
+            element: <OpSud2 />,
+          },
+          {
+            path: "op-sud4",
+            element: <OpSud4 />,
+          },
+        ],
       },
-      {
-        path: "op-sud",
-        element: <OpSud />,
-      },
-      {
-        path: "op-sud2",
-        element: <OpSud2 />,
-      },
-      {
-        path: "op-sud4",
-        element: <OpSud4 />,
-      },
+
       {
         path: "main-project",
         element: <MainProjectPage />,
