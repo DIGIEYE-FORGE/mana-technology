@@ -10,7 +10,7 @@ import { MoveRightIcon } from "lucide-react";
 function HomeUpBar() {
   const { dateRange, setDateRange } = useAppContext();
   return (
-    <div className="h-up-bar group sticky left-6 top-0 z-10 flex w-[calc(10)] shrink-0 items-center gap-4 rounded-[0_0_0_24px] border-b border-l px-6 backdrop-blur">
+    <div className="group sticky left-6 top-0 z-10 flex h-up-bar w-[calc(10)] shrink-0 items-center gap-4 rounded-[0_0_0_24px] border-b border-l px-6 backdrop-blur">
       <Link to="/">
         <Logo className="h-7 w-40" />
       </Link>
@@ -31,12 +31,5 @@ function HomeUpBar() {
 }
 
 export default function HomePage() {
-  return (
-    <main className="mx-auto flex max-w-[1920px] flex-col gap-6 pb-6 pl-6">
-      <HomeUpBar />
-      <main className="pr-6">
-        <HomeDashboard />
-      </main>
-    </main>
-  );
+  return <HomeDashboard />;
 }

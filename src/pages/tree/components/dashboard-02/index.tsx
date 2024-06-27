@@ -12,22 +12,22 @@ export const Dashboard2 = () => {
         <span className="py-2 text-center text-lg font-semibold">
           {widgetsData[0]?.title}
         </span>
-        <div className="flex h-1 flex-1 gap-4">
+        <div className="flex h-1 flex-1 gap-12 px-8">
           <div
-            className="flex-1 object-contain"
+            className="flex-1 rounded-lg"
             style={{
               backgroundImage: `url(${widgetsData[0].attributes.image1})`,
               backgroundRepeat: "no-repeat",
-              backgroundSize: "contain",
+              backgroundSize: "cover",
               backgroundPosition: "center",
             }}
           />
           <div
-            className="flex-1 object-contain"
+            className="flex-1 rounded-lg"
             style={{
               backgroundImage: `url(${widgetsData[0].attributes.image2})`,
               backgroundRepeat: "no-repeat",
-              backgroundSize: "contain",
+              backgroundSize: "cover",
               backgroundPosition: "center",
             }}
           />

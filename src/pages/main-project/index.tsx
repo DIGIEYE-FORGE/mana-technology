@@ -171,189 +171,197 @@ export default function MainProjectPage() {
   // }
   return (
     <main
-      className="relative mx-auto flex max-w-[1920px] flex-col gap-2 pb-6 2xl:overflow-hidden"
+      className="relative flex flex-col gap-2 pb-6 2xl:overflow-hidden"
       style={{
         backgroundImage: "url('/sceen24.png')",
         backgroundSize: "100% 100%",
         backgroundRepeat: "no-repeat",
       }}
     >
-      <MainProjectUpBar />
-      <div className="absolute right-4 top-[70%] flex h-[2rem] items-center gap-2">
-        <span>100m</span>
-        <Line />
-      </div>
+      <main className="relative mx-auto w-full max-w-[1920px]">
+        <MainProjectUpBar />
+        <div className="debug absolute right-4 top-[70%] flex h-[2rem] items-center gap-2 sm:hidden">
+          <span>100m</span>
+          <Line />
+        </div>
 
-      <div className="absolute top-[60%] flex w-[25rem] flex-col gap-4 px-[4rem]">
-        <button className="btn-3d w-fit">HSE</button>
-        <button className="btn-3d h-fit">Project Planning</button>
-      </div>
-      <div className="flex h-full w-full flex-col gap-4">
-        <div className="relative flex flex-1 items-center justify-center pt-[3rem]">
-          <img
-            className="object-contain opacity-70"
-            src="/magazine2.png"
-            alt="Magazine"
-          />
-          {magazine.map((item, index) => (
-            <div
-              key={index}
-              className={cn(
-                "absolute",
-                "z-10 h-[4rem] w-[8rem] cursor-pointer",
-              )}
-              style={{
-                ...item,
-              }}
-            >
+        <div className="absolute top-[60%] flex w-[25rem] flex-col gap-4 px-[4rem] sm:hidden">
+          <button className="btn-3d w-fit">HSE</button>
+          <button className="btn-3d h-fit">Project Planning</button>
+        </div>
+        <div className="flex h-full w-full flex-col gap-4">
+          <div className="max-h-1/2 relative flex items-center justify-center">
+            <img
+              className="object-contain opacity-70"
+              src="/magazine2.png"
+              alt="Magazine"
+            />
+            {magazine.map((item, index) => (
               <div
-                className="absolute bottom-20 right-1/2 z-10 translate-x-1/2 whitespace-nowrap px-2 py-0.5 font-bold"
+                key={index}
+                className={cn(
+                  "absolute",
+                  "z-10 h-[4rem] w-[8rem] cursor-pointer",
+                )}
                 style={{
-                  backgroundImage:
-                    "linear-gradient(to right, transparent, #002FBE, transparent)",
-                  border: "10px solid",
-                  borderImageSlice: 1,
-                  borderWidth: "1px",
-                  borderImageSource:
-                    "linear-gradient(to right, transparent, white, transparent)",
+                  ...item,
                 }}
               >
-                {item.name}
+                <div
+                  className="absolute bottom-20 right-1/2 z-10 translate-x-1/2 whitespace-nowrap px-2 py-0.5 font-bold"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(to right, transparent, #002FBE, transparent)",
+                    border: "10px solid",
+                    borderImageSlice: 1,
+                    borderWidth: "1px",
+                    borderImageSource:
+                      "linear-gradient(to right, transparent, white, transparent)",
+                  }}
+                >
+                  {item.name}
+                </div>
+                <div className="machine-highlight absolute bottom-0 aspect-square size-[8rem] w-full">
+                  <div className="circle circle-3 relative h-full w-full">
+                    <Circle3 className="rotate h-full w-full duration-1000" />
+                  </div>
+                  <div className="circle circle-2 relative h-full w-full">
+                    <Circle2 className="rotate h-full w-full duration-1000" />
+                  </div>
+                  <div className="circle circle-1 relative h-full w-full">
+                    <Circle1 className="rotate h-full w-full duration-1000" />
+                  </div>
+                  <Light className="absolute bottom-[40%] right-1/2 w-full translate-x-1/2" />
+                </div>
               </div>
-              <div className="machine-highlight absolute bottom-0 aspect-square size-[8rem] w-full">
-                <div className="circle circle-3 relative h-full w-full">
-                  <Circle3 className="rotate h-full w-full duration-1000" />
-                </div>
-                <div className="circle circle-2 relative h-full w-full">
-                  <Circle2 className="rotate h-full w-full duration-1000" />
-                </div>
-                <div className="circle circle-1 relative h-full w-full">
-                  <Circle1 className="rotate h-full w-full duration-1000" />
-                </div>
-                <Light className="absolute bottom-[40%] right-1/2 w-full translate-x-1/2" />
+            ))}
+            {data.map((item, index) => (
+              <div
+                key={index}
+                className="absolute"
+                style={{
+                  ...item.position,
+                  width:
+                    item.type === "image"
+                      ? "12rem"
+                      : item.type === "information"
+                        ? "15rem"
+                        : "22rem",
+                  height:
+                    item.type === "image"
+                      ? "7rem"
+                      : item.type === "information"
+                        ? "10rem"
+                        : "10rem",
+                  background: item.type != "image" ? `${item.background}` : "",
+                  backgroundSize: "100% 100%",
+                  backgroundRepeat: "no-repeat",
+                }}
+              >
+                {item.type === "image" && (
+                  <img
+                    src={item.image}
+                    alt="image"
+                    className="object-contain"
+                  />
+                )}
+                {(item.type === "information" ||
+                  item.type === "identification") && (
+                  <div className="flex flex-col p-4">
+                    <h1 className="text-lg font-bold">{item.title}</h1>
+                    {Object.entries(item?.attribute || {}).map(
+                      ([key, value], index) => (
+                        <div key={index} className="flex gap-2">
+                          <span className="w-[5rem] truncate font-medium">
+                            {key}
+                          </span>
+                          <span className="text-[#A4D3FF]">{value}</span>
+                        </div>
+                      ),
+                    )}
+                  </div>
+                )}
               </div>
-            </div>
-          ))}
-          {data.map((item, index) => (
-            <div
-              key={index}
-              className="absolute"
+            ))}
+          </div>
+          <div
+            className="relative flex-1 sm:hidden"
+            style={{
+              backgroundImage: "url('/llustration.png')",
+              backgroundSize: "contain",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+            }}
+          >
+            <Canvas
               style={{
-                ...item.position,
-                width:
-                  item.type === "image"
-                    ? "12rem"
-                    : item.type === "information"
-                      ? "15rem"
-                      : "22rem",
-                height:
-                  item.type === "image"
-                    ? "7rem"
-                    : item.type === "information"
-                      ? "10rem"
-                      : "10rem",
-                background: item.type != "image" ? `${item.background}` : "",
+                position: "absolute",
+                bottom: "0",
+              }}
+              shadows
+              camera={{
+                position: [30, 30, 30],
+                fov: 20,
+                localToWorld(vector) {
+                  return vector;
+                },
+              }}
+              onCreated={({ gl }) => {
+                gl.shadowMap.enabled = true;
+              }}
+            >
+              <ambientLight intensity={0.5} />
+              <directionalLight
+                castShadow
+                position={[0, 10, 0]}
+                intensity={1}
+                shadow-mapSize-width={1024}
+                shadow-mapSize-height={1024}
+                shadow-camera-far={50}
+                shadow-camera-left={-10}
+                shadow-camera-right={10}
+                shadow-camera-top={10}
+                shadow-camera-bottom={-10}
+              />
+              <Suspense fallback={<Loader3D />}>
+                <Model
+                  color2="#96CFFE"
+                  color1="#96CFFE"
+                  url={
+                    `${env.VITE_LOCAL_MODELS === "true" ? "/public/ignore/" : "https://storage.googleapis.com/nextronic/"}` +
+                    "mine00000017.glb"
+                  }
+                  ref={modelRef}
+                  onLoad={() => setLoading(false)}
+                />
+              </Suspense>
+              <OrbitControls enableRotate rotateSpeed={1} zoomToCursor />
+            </Canvas>
+            <div
+              className="absolute bottom-[0%] left-[10%] h-[10rem] w-[16rem]"
+              style={{
+                backgroundImage: "url(/vector.png)",
                 backgroundSize: "100% 100%",
                 backgroundRepeat: "no-repeat",
               }}
             >
-              {item.type === "image" && (
-                <img src={item.image} alt="image" className="object-contain" />
-              )}
-              {(item.type === "information" ||
-                item.type === "identification") && (
-                <div className="flex flex-col p-4">
-                  <h1 className="text-lg font-bold">{item.title}</h1>
-                  {Object.entries(item?.attribute || {}).map(
-                    ([key, value], index) => (
-                      <div key={index} className="flex gap-2">
-                        <span className="w-[5rem] truncate font-medium">
-                          {key}
-                        </span>
-                        <span className="text-[#A4D3FF]">{value}</span>
-                      </div>
-                    ),
-                  )}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-        <div
-          className="relative flex-1"
-          style={{
-            backgroundImage: "url('/llustration.png')",
-            backgroundSize: "contain",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
-          }}
-        >
-          <Canvas
-            style={{
-              position: "absolute",
-              bottom: "0",
-            }}
-            shadows
-            camera={{
-              position: [30, 30, 30],
-              fov: 20,
-              localToWorld(vector) {
-                return vector;
-              },
-            }}
-            onCreated={({ gl }) => {
-              gl.shadowMap.enabled = true;
-            }}
-          >
-            <ambientLight intensity={0.5} />
-            <directionalLight
-              castShadow
-              position={[0, 10, 0]}
-              intensity={1}
-              shadow-mapSize-width={1024}
-              shadow-mapSize-height={1024}
-              shadow-camera-far={50}
-              shadow-camera-left={-10}
-              shadow-camera-right={10}
-              shadow-camera-top={10}
-              shadow-camera-bottom={-10}
-            />
-            <Suspense fallback={<Loader3D />}>
-              <Model
-                color2="#96CFFE"
-                color1="#96CFFE"
-                url={
-                  `${env.VITE_LOCAL_MODELS === "true" ? "/public/ignore/" : "https://storage.googleapis.com/nextronic/"}` +
-                  "mine00000017.glb"
-                }
-                ref={modelRef}
-                onLoad={() => setLoading(false)}
-              />
-            </Suspense>
-            <OrbitControls enableRotate rotateSpeed={1} zoomToCursor />
-          </Canvas>
-          <div
-            className="absolute bottom-[0%] left-[10%] h-[10rem] w-[16rem]"
-            style={{
-              backgroundImage: "url(/vector.png)",
-              backgroundSize: "100% 100%",
-              backgroundRepeat: "no-repeat",
-            }}
-          >
-            <div className="flex flex-col p-4">
-              <h1 className="text-lg font-bold">Plant</h1>
-              {Object.entries(tree?.attribute || {}).map(
-                ([key, value], index) => (
-                  <div key={index} className="flex gap-2">
-                    <span className="w-[5rem] truncate font-medium">{key}</span>
-                    <span className="text-[#A4D3FF]">{value}</span>
-                  </div>
-                ),
-              )}
+              <div className="flex flex-col p-4">
+                <h1 className="text-lg font-bold">Plant</h1>
+                {Object.entries(tree?.attribute || {}).map(
+                  ([key, value], index) => (
+                    <div key={index} className="flex gap-2">
+                      <span className="w-[5rem] truncate font-medium">
+                        {key}
+                      </span>
+                      <span className="text-[#A4D3FF]">{value}</span>
+                    </div>
+                  ),
+                )}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </main>
     </main>
   );
 }

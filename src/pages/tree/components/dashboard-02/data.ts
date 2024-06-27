@@ -2,8 +2,8 @@ export const widgetsData = {
   0: {
     title: "Schema de tir",
     attributes: {
-      image1: "/machine-01.png",
-      image2: "/machine-02.png",
+      image1: "/dashboard-02.01.jpeg",
+      image2: "/dashboard-02.02.jpeg",
     },
   },
   1: {

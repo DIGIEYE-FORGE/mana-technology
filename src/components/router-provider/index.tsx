@@ -19,6 +19,7 @@ import OpSud2 from "@/pages/op-sud2";
 import OpSud4 from "@/pages/op-sud4";
 import UndergroundDashboardPage from "@/pages/underground/dashboard";
 import VentilationDashboard from "@/pages/ventilation-dashboard";
+import HomeDashboard from "@/pages/home/dashboard";
 
 const routes: RouteObject[] = [
   {
@@ -28,23 +29,30 @@ const routes: RouteObject[] = [
       {
         path: "",
         element: <HomePage />,
+        children: [
+          {
+            path: "",
+            element: <HomeDashboard />,
+          },
+          {
+            path: "op-sud",
+            element: <OpSud />,
+          },
+          {
+            path: "op",
+            element: <Op />,
+          },
+          {
+            path: "op-sud2",
+            element: <OpSud2 />,
+          },
+          {
+            path: "op-sud4",
+            element: <OpSud4 />,
+          },
+        ],
       },
-      {
-        path: "op-sud",
-        element: <OpSud />,
-      },
-      {
-        path: "op",
-        element: <Op />,
-      },
-      {
-        path: "op-sud2",
-        element: <OpSud2 />,
-      },
-      {
-        path: "op-sud4",
-        element: <OpSud4 />,
-      },
+
       {
         path: "main-project",
         element: <MainProjectPage />,
