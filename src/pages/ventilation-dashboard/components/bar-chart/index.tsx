@@ -1,12 +1,77 @@
+import { useAppContext } from "@/Context";
 import Chart from "react-apexcharts";
 
-export const BarChart = () => {
-  const series = [
-    {
-      name: "Temperature",
-      data: [20, 30],
+import useSWR from "swr";
+import Loader from "@/components/loader";
+
+interface QualitAirProps {
+  attributes: {
+    telemetries: {
+      name: string;
+      serial: string;
+      color: string;
+      label: string;
+    }[];
+  };
+}
+
+export const BarChart = ({ attributes }: QualitAirProps) => {
+  const { backendApi } = useAppContext();
+  const { data, isLoading, error } = useSWR(
+    `telemetryDonutChartProps${JSON.stringify(attributes)}`,
+    async () => {
+      if (!attributes.telemetries?.length) return [];
+      const res1 = await Promise.all(
+        attributes.telemetries.map(async (device) => {
+          const { name, color, serial, label } = device;
+          const res = await backendApi.findMany<{
+            name: string;
+            value: number;
+          }>("lasttelemetry", {
+            where: {
+              name,
+              device: { serial },
+            },
+            select: { name: true, value: true },
+            orderBy: {
+              createdAt: "desc",
+            },
+            pagination: {
+              page: 1,
+              perPage: 1,
+            },
+          });
+          return {
+            color: color,
+            name: label,
+            value: res.results[0].value,
+          };
+        }),
+      );
+      return res1;
     },
-  ];
+    { onSuccess: (data) => console.log(data) },
+  );
+
+  if (isLoading)
+    return (
+      <div className="line-clamp-1 flex h-full w-full items-center justify-center">
+        <Loader />
+      </div>
+    );
+  if (error)
+    return (
+      <div className="debug flex h-full w-full items-center justify-center [&>*]:text-xl [&>*]:font-bold">
+        failed to load
+      </div>
+    );
+
+  if (!data)
+    return (
+      <div className="h-full w-full items-center justify-center [&>*]:text-xl [&>*]:font-bold">
+        no data
+      </div>
+    );
 
   return (
     <Chart
@@ -47,7 +112,7 @@ export const BarChart = () => {
         },
         xaxis: {
           type: "category",
-          categories: ["Température Humide", "Température Sèche"],
+          categories: data.map((d) => d.name),
           axisBorder: { show: false },
           axisTicks: { show: false },
           labels: {
@@ -61,7 +126,7 @@ export const BarChart = () => {
         },
         yaxis: {
           min: 0,
-          max: series[0].data.reduce((a, b) => Math.max(a, b)) + 20,
+          max: data.reduce((acc, curr) => Math.max(acc, curr.value), 0) + 10,
           tickAmount: 1,
           axisBorder: { show: false },
           axisTicks: { show: false },
@@ -92,7 +157,12 @@ export const BarChart = () => {
           },
         },
       }}
-      series={series}
+      series={[
+        {
+          name: "Temperature",
+          data: data.map((d) => d.value),
+        },
+      ]}
       type="bar"
       height="80%"
     />

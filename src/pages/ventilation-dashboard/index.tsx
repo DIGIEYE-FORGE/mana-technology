@@ -1,8 +1,8 @@
 import { Card } from "@/components/card";
 import { MoteurCard } from "./components/moteurCard";
-import { CircularProgress } from "@/components/circular-progress";
 import { BarChart } from "./components/bar-chart";
-import { data } from "./data";
+import { data, qualitédair } from "./data";
+import { QualitAir } from "./components/qualite-air";
 
 const VentilationDashboard = () => {
   return (
@@ -26,147 +26,39 @@ const VentilationDashboard = () => {
         <h1 className="text-center text-lg font-semibold">Qualité d’air</h1>
         <div className="grid flex-1 grid-rows-3 gap-2">
           <div className="flex flex-1 flex-col gap-1">
-            <h4 className="text-lg font-semibold">Niveau 100</h4>
+            <h4 className="text-lg font-semibold">{qualitédair[0].title}</h4>
             <div className="grid flex-1 grid-cols-3 rounded-2xl border-2 border-[#26E2B3] py-2">
-              <div className="flex flex-col items-center justify-center">
-                <h5 className="text-sm font-semibold">O2</h5>
-                <CircularProgress
-                  progress={60}
-                  color="#E6BF68"
-                  strokeWidth={11}
-                  className="size-[5.5rem]"
-                  legend="60%"
-                />
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <h5 className="text-sm font-semibold">CO</h5>
-                <CircularProgress
-                  progress={60}
-                  color="#E6BF68"
-                  strokeWidth={11}
-                  className="size-[5.7rem]"
-                  legend="60 ppm"
-                />
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <h5 className="text-sm font-semibold">NO2</h5>
-                <CircularProgress
-                  progress={60}
-                  color="#E6BF68"
-                  strokeWidth={11}
-                  className="size-[5.7rem]"
-                  legend="60 ppm"
-                />
-              </div>
+              <QualitAir {...qualitédair[0].children[0]} />
+              <QualitAir {...qualitédair[0].children[1]} />
+              <QualitAir {...qualitédair[0].children[2]} />
               <div className="col-span-2">
-                <BarChart />
+                <BarChart attributes={qualitédair[0].children[4].attributes} />
               </div>
-              <div className="flex flex-col items-center justify-center">
-                <h5 className="text-sm font-semibold">Vitesse air</h5>
-                <CircularProgress
-                  progress={60}
-                  color="#E6BF68"
-                  strokeWidth={11}
-                  className="size-[5.7rem]"
-                  legend="0.2 m/s"
-                />
-              </div>
+              <QualitAir {...qualitédair[0].children[3]} />
             </div>
           </div>
           <div className="flex flex-1 flex-col gap-1">
-            <h4 className="text-lg font-semibold">Niveau 500</h4>
+            <h4 className="text-lg font-semibold">{qualitédair[1].title}</h4>
             <div className="grid flex-1 grid-cols-3 rounded-2xl border-2 border-[#26E2B3] py-2">
-              <div className="flex flex-col items-center justify-center">
-                <h5 className="text-sm font-semibold">O2</h5>
-                <CircularProgress
-                  progress={60}
-                  color="#E6BF68"
-                  strokeWidth={11}
-                  className="size-[5.5rem]"
-                  legend="60%"
-                />
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <h5 className="text-sm font-semibold">CO</h5>
-                <CircularProgress
-                  progress={60}
-                  color="#E6BF68"
-                  strokeWidth={11}
-                  className="size-[5.7rem]"
-                  legend="60 ppm"
-                />
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <h5 className="text-sm font-semibold">NO2</h5>
-                <CircularProgress
-                  progress={60}
-                  color="#E6BF68"
-                  strokeWidth={11}
-                  className="size-[5.7rem]"
-                  legend="60 ppm"
-                />
-              </div>
+              <QualitAir {...qualitédair[1].children[0]} />
+              <QualitAir {...qualitédair[1].children[1]} />
+              <QualitAir {...qualitédair[1].children[2]} />
               <div className="col-span-2">
-                <BarChart />
+                <BarChart attributes={qualitédair[0].children[4].attributes} />
               </div>
-              <div className="flex flex-col items-center justify-center">
-                <h5 className="text-sm font-semibold">Vitesse air</h5>
-                <CircularProgress
-                  progress={60}
-                  color="#E6BF68"
-                  strokeWidth={11}
-                  className="size-[5.7rem]"
-                  legend="0.2 m/s"
-                />
-              </div>
+              <QualitAir {...qualitédair[1].children[3]} />
             </div>
           </div>
           <div className="flex flex-1 flex-col gap-1">
-            <h4 className="text-lg font-semibold">Niveau 500</h4>
+            <h4 className="text-lg font-semibold">{qualitédair[2].title}</h4>
             <div className="grid flex-1 grid-cols-3 rounded-2xl border-2 border-[#26E2B3] py-2">
-              <div className="flex flex-col items-center justify-center">
-                <h5 className="text-sm font-semibold">O2</h5>
-                <CircularProgress
-                  progress={60}
-                  color="#E6BF68"
-                  strokeWidth={11}
-                  className="size-[5.5rem]"
-                  legend="60%"
-                />
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <h5 className="text-sm font-semibold">CO</h5>
-                <CircularProgress
-                  progress={60}
-                  color="#E6BF68"
-                  strokeWidth={11}
-                  className="size-[5.7rem]"
-                  legend="60 ppm"
-                />
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <h5 className="text-sm font-semibold">NO2</h5>
-                <CircularProgress
-                  progress={60}
-                  color="#E6BF68"
-                  strokeWidth={11}
-                  className="size-[5.7rem]"
-                  legend="60 ppm"
-                />
-              </div>
+              <QualitAir {...qualitédair[2].children[0]} />
+              <QualitAir {...qualitédair[2].children[1]} />
+              <QualitAir {...qualitédair[2].children[2]} />
               <div className="col-span-2">
-                <BarChart />
+                <BarChart attributes={qualitédair[0].children[4].attributes} />
               </div>
-              <div className="flex flex-col items-center justify-center">
-                <h5 className="text-sm font-semibold">Vitesse air</h5>
-                <CircularProgress
-                  progress={60}
-                  color="#E6BF68"
-                  strokeWidth={11}
-                  className="size-[5.7rem]"
-                  legend="0.2 m/s"
-                />
-              </div>
+              <QualitAir {...qualitédair[2].children[3]} />
             </div>
           </div>
         </div>

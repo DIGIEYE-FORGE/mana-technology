@@ -220,4 +220,249 @@ export const data = [
       },
     ]
   },
+
 ]
+
+
+export const qualitédair = {
+  0: {
+    title: "Niveau 100",
+    children: {
+      0: {
+        title: "O2",
+        attributes: {
+          telemetries: [
+            {
+              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              label: "Disponibilité",
+              serial: "U9XQMQ1DXYT7LJIP",
+              color: "#cda943",
+              unit: "%",
+            }
+          ]
+        }
+      },
+      1: {
+        title: "CO",
+        attributes: {
+          telemetries: [
+            {
+              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              label: "Disponibilité",
+              serial: "U9XQMQ1DXYT7LJIP",
+              color: "#cda943",
+              unit: "ppm",
+            }
+          ]
+        }
+      },
+      2: {
+        title: "NO2",
+        attributes: {
+          telemetries: [
+            {
+              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              label: "Disponibilité",
+              serial: "U9XQMQ1DXYT7LJIP",
+              color: "#cda943",
+              unit: "ppm",
+            },
+          ]
+        }
+      },
+      3: {
+        title: "Vitesse air",
+        attributes: {
+          telemetries: [
+            {
+              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              label: "Disponibilité",
+              serial: "U9XQMQ1DXYT7LJIP",
+              color: "#cda943",
+              unit: "m/s",
+            },
+          ]
+        }
+      },
+      4: {
+        title: "CO",
+        attributes: {
+          telemetries: [
+            {
+              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              label: "Température Humide",
+              serial: "U9XQMQ1DXYT7LJIP",
+              color: "#fff",
+            },
+            {
+              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              label: "Température Sèche",
+              serial: "U9XQMQ1DXYT7LJIP",
+              color: "#cda943",
+            },
+          ]
+        }
+      }
+    }
+  },
+  1: {
+    title: "Niveau 100",
+    children: {
+      0: {
+        title: "O2",
+        attributes: {
+          telemetries: [
+            {
+              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              label: "Disponibilité",
+              serial: "U9XQMQ1DXYT7LJIP",
+              color: "#cda943",
+              unit: "%",
+            }
+          ]
+        }
+      },
+      1: {
+        title: "CO",
+        attributes: {
+          telemetries: [
+            {
+              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              label: "Disponibilité",
+              serial: "U9XQMQ1DXYT7LJIP",
+              color: "#cda943",
+              unit: "ppm",
+            }
+          ]
+        }
+      },
+      2: {
+        title: "NO2",
+        attributes: {
+          telemetries: [
+            {
+              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              label: "Disponibilité",
+              serial: "U9XQMQ1DXYT7LJIP",
+              color: "#cda943",
+              unit: "ppm",
+            },
+          ]
+        }
+      },
+      3: {
+        title: "Vitesse air",
+        attributes: {
+          telemetries: [
+            {
+              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              label: "Disponibilité",
+              serial: "U9XQMQ1DXYT7LJIP",
+              color: "#cda943",
+              unit: "m/s",
+            },
+          ]
+        }
+      },
+      4: {
+        title: "CO",
+        attributes: {
+          telemetries: [
+            {
+              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              label: "Température Humide",
+              serial: "U9XQMQ1DXYT7LJIP",
+              color: "#fff",
+            },
+            {
+              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              label: "Température Sèche",
+              serial: "U9XQMQ1DXYT7LJIP",
+              color: "#cda943",
+            },
+          ]
+        }
+      }
+    }
+  },
+  2: {
+    title: "Niveau 100",
+    children: {
+      0: {
+        title: "O2",
+        attributes: {
+          telemetries: [
+            {
+              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              label: "Disponibilité",
+              serial: "U9XQMQ1DXYT7LJIP",
+              color: "#cda943",
+              unit: "%",
+            }
+          ]
+        }
+      },
+      1: {
+        title: "CO",
+        attributes: {
+          telemetries: [
+            {
+              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              label: "Disponibilité",
+              serial: "U9XQMQ1DXYT7LJIP",
+              color: "#cda943",
+              unit: "ppm",
+            }
+          ]
+        }
+      },
+      2: {
+        title: "NO2",
+        attributes: {
+          telemetries: [
+            {
+              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              label: "Disponibilité",
+              serial: "U9XQMQ1DXYT7LJIP",
+              color: "#cda943",
+              unit: "ppm",
+            },
+          ]
+        }
+      },
+      3: {
+        title: "Vitesse air",
+        attributes: {
+          telemetries: [
+            {
+              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              label: "Disponibilité",
+              serial: "U9XQMQ1DXYT7LJIP",
+              color: "#cda943",
+              unit: "m/s",
+            },
+          ]
+        }
+      },
+      4: {
+        title: "CO",
+        attributes: {
+          telemetries: [
+            {
+              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              label: "Température Humide",
+              serial: "U9XQMQ1DXYT7LJIP",
+              color: "#fff",
+            },
+            {
+              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              label: "Température Sèche",
+              serial: "U9XQMQ1DXYT7LJIP",
+              color: "#cda943",
+            },
+          ]
+        }
+      }
+    }
+  }
+}

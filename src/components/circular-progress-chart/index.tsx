@@ -10,10 +10,12 @@ export interface CircularProgressChartProps
     serial: string;
     name: string;
   };
+  unit?: string;
 }
 
 export const CircularProgressChart = ({
   telemetry,
+  unit = "%",
   ...props
 }: CircularProgressChartProps) => {
   const { backendApi } = useAppContext();
@@ -44,11 +46,14 @@ export const CircularProgressChart = ({
     );
 
   const progress = typeof data?.value === "number" ? data.value : 0;
-  return (
-    <CircularProgress
-      progress={progress}
-      {...props}
-      legend={`${progress.toFixed(2)}%`}
-    />
-  );
+
+  let legend = "";
+  if (unit === "%") {
+    legend = `${progress.toFixed(2)}%`;
+  } else if (unit === "m/s") {
+    legend = `${progress.toFixed(1)} m/s`;
+  } else {
+    legend = `${progress.toFixed(0)} ${unit}`;
+  }
+  return <CircularProgress progress={progress} {...props} legend={legend} />;
 };
