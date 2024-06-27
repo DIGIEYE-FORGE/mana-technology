@@ -35,11 +35,11 @@ const tabs = [
     title: "planning",
     subTabs: [
       {
-        title: "planning title 1",
+        title: "planning",
         image: "/public/dashboard3.png",
       },
       {
-        title: "planning title 2",
+        title: "planning",
         image: "/public/dashboard4.png",
       },
     ],
@@ -48,11 +48,11 @@ const tabs = [
     title: "risk",
     subTabs: [
       {
-        title: "risk title 1",
+        title: "Need updated chart  from Reminex ",
         image: "/public/dashboard5.png",
       },
       {
-        title: "risk title 2",
+        title: "risk",
         image: "/public/dashboard6.png",
       },
     ],
@@ -78,16 +78,16 @@ function ProjectPlaningButton() {
       </DialogTrigger>
       <DialogContent
         showCloseButton={false}
-        className="dark bottom-0 top-[4rem] flex w-[100vw] max-w-none translate-y-0 flex-col rounded-none border-none bg-transparent p-4 text-foreground backdrop-blur-sm"
+        className="max dark bottom-0 top-[4rem] flex w-[100%] max-w-none translate-y-0 flex-col rounded-none border-none bg-card/10 p-4 text-foreground backdrop-blur"
         overlayClassName="bg-transparent"
       >
-        <div className="flex gap-2">
+        <div className="mx-auto flex w-full max-w-[1920px] gap-2">
           {tabs.map((tab, index) => (
             <button
               className={cn(
                 "custom-button flex flex-1 justify-center rounded-lg py-2 text-xl font-bold uppercase transition-colors hover:brightness-125",
                 {
-                  "bg-[#00A3FF]/50": activeTab === index,
+                  "bg-[#00A3FF]/50 hover:brightness-110": activeTab === index,
                 },
               )}
               onClick={() => {
@@ -109,7 +109,7 @@ function ProjectPlaningButton() {
           </DialogClose>
         </div>
         <div
-          className="flex h-1 max-h-[1000px] flex-1 flex-col gap-4"
+          className="mx-auto flex h-1 max-h-[1000px] w-full max-w-[1920px] flex-1 flex-col gap-4"
           style={{
             backgroundImage: "url(/public/dashboard-frame.png)",
             backgroundRepeat: "no-repeat",
