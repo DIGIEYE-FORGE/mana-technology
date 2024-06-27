@@ -68,7 +68,12 @@ export function ProgressAccumulation({ attributes }: Widget) {
           select: [progressTelemetryName],
           where: {
             serial,
-            createdAt: { $lte: dateRange?.to },
+            createdAt: {
+              $lte:
+                dateRange?.to && dateRange.to > new Date()
+                  ? new Date()
+                  : dateRange?.to,
+            },
           },
         });
       const { results: currentTargetResults } =
