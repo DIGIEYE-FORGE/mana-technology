@@ -7,14 +7,13 @@ import Circle1 from "@/assets/circle-1.svg?react";
 import Circle2 from "@/assets/circle-2.svg?react";
 import Circle3 from "@/assets/circle-3.svg?react";
 import Light from "@/assets/light.svg?react";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { image } from "d3";
-import { data } from "../ventilation-dashboard/data";
-
+import { Suspense, useRef, useState } from "react";
+import { Loader3D } from "../tree";
+import Model from "@/components/models";
+import { env } from "@/utils/env";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import Line from "@/assets/line.svg?react";
 function MainProjectUpBar() {
   return (
     <div className="group sticky top-0 z-10 flex h-up-bar w-full shrink-0 items-center gap-4 border-b px-6 backdrop-blur">
@@ -37,80 +36,35 @@ export default function MainProjectPage() {
   const magazine = [
     {
       name: "EST",
-      bottom: "50%",
+      bottom: "45%",
       right: "25%",
       type: "image",
       image: "/screen1.png",
-      // information: {
-      //   title: "EST",
-      //   attribute: {
-      //     Type: "EST",
-      //     Location: "Underground",
-      //     Status: "Active",
-      //     Capacity: "1000",
-      //   },
-      // },
     },
     {
       name: "SUD",
       bottom: "15%",
-      right: "18%",
+      right: "15%",
       type: "image",
       image: "/screen2.png",
-      // information: {
-      //   title: "SUD",
-      //   attribute: {
-      //     Type: "SUD",
-      //     Location: "Underground",
-      //     Status: "Active",
-      //     Capacity: "1000",
-      //   },
-      // },
     },
     {
       name: "PLANT",
       bottom: "10%",
       left: "42%",
       type: "information",
-      // data: {
-      //   title: "Plant",
-      //   attribute: {
-      //     Type: "Plant",
-      //     Location: "Underground",
-      //     Status: "Active",
-      //     Capacity: "1000",
-      //   },
-      // },
     },
     {
       name: "LINE ELECTRIC",
       bottom: "40%",
-      left: "10%",
+      left: "8%",
       type: "information",
-      // data: {
-      //   title: "Nanfeng host",
-      //   attribute: {
-      //     Flow: "176.9m³/h",
-      //     ["wind speed"]: "10.5m/s",
-      //     ["Full pressure"]: "0.5MPa",
-      //     ["static pressure"]: "0.2MPa",
-      //   },
-      // },
     },
     {
       name: "LINE ELECTRIC",
-      bottom: "10%",
-      left: "15%",
+      bottom: "20%",
+      left: "14%",
       type: "information",
-      // data: {
-      //   title: "PUMP LINE",
-      //   attribute: {
-      //     Flow: "176.9m³/h",
-      //     ["wind speed"]: "10.5m/s",
-      //     ["Full pressure"]: "0.5MPa",
-      //     ["static pressure"]: "0.2MPa",
-      //   },
-      // },
     },
   ];
 
@@ -119,60 +73,68 @@ export default function MainProjectPage() {
       type: "image",
       image: "/screen1.png",
       position: {
-        bottom: "50%",
-        right: "30%",
+        top: "18%",
+        right: "24%",
       },
       background: "url(/shape2.png)",
     },
+
     {
-      title: "Plant",
+      type: "information",
+      title: "Plant1",
       attribute: {
         Type: "Plant",
         Location: "Underground",
         Status: "Active",
         Capacity: "1000",
       },
+      background: "url(/shape1.png)",
       position: {
-        bottom: "10%",
-        left: "42%",
+        top: "10%",
+        left: "1%",
       },
     },
     {
       type: "image",
-      image: "/screen1.png",
+      image: "/screen2.png",
       position: {
-        bottom: "10%",
-        right: "30%",
+        bottom: "32%",
+        right: "13%",
       },
       background: "url(/shape2.png)",
     },
     {
-      title: "Plant",
+      type: "information",
+      title: "Plant2",
       attribute: {
         Type: "Plant",
         Location: "Underground",
         Status: "Active",
         Capacity: "1000",
       },
+      background: "url(/shape1.png)",
       position: {
-        bottom: "10%",
-        left: "42%",
+        bottom: "40%",
+        left: "40%",
       },
     },
     {
-      title: "Plant",
+      type: "identification",
+      title: "Plan1",
       attribute: {
         Type: "Plant",
         Location: "Underground",
         Status: "Active",
         Capacity: "1000",
       },
+      background: "url(/vector.png)",
       position: {
-        bottom: "10%",
-        left: "42%",
+        top: "10%",
+        right: "3%",
       },
     },
     {
+      type: "identification",
       title: "Plant",
       attribute: {
         Type: "Plant",
@@ -180,13 +142,33 @@ export default function MainProjectPage() {
         Status: "Active",
         Capacity: "1000",
       },
+      background: "url(/vector.png)",
       position: {
-        bottom: "10%",
-        left: "42%",
+        bottom: "-10%",
+        right: "9%",
       },
     },
   ];
 
+  const tree = {
+    titile: "Tree",
+    attribute: {
+      Type: "Tree",
+      Location: "Underground",
+      Status: "Active",
+      Capacity: "1000",
+    },
+  };
+  const modelRef = useRef();
+  const [, setLoading] = useState(true);
+
+  // if (loading) {
+  //   return (
+  //     <div className="flex h-full w-full items-center justify-center">
+  //       <Loader />
+  //     </div>
+  //   );
+  // }
   return (
     <main
       className="relative mx-auto flex max-w-[1920px] flex-col gap-2 pb-6 2xl:overflow-hidden"
@@ -197,12 +179,17 @@ export default function MainProjectPage() {
       }}
     >
       <MainProjectUpBar />
-      {/* <div className="justify-center-center absolute left-[5%] top-[52%] flex flex-col gap-3">
+      <div className="absolute right-4 top-[70%] flex h-[2rem] items-center gap-2">
+        <span>100m</span>
+        <Line />
+      </div>
+
+      <div className="absolute top-[60%] flex w-[25rem] flex-col gap-4 px-[4rem]">
         <button className="btn-3d w-fit">HSE</button>
-        <button className="btn-3d">PROJECT PLANNING</button>
-      </div> */}
+        <button className="btn-3d h-fit">Project Planning</button>
+      </div>
       <div className="flex h-full w-full flex-col gap-4">
-        <div className="relative flex items-center justify-center pt-[3rem]">
+        <div className="relative flex flex-1 items-center justify-center pt-[3rem]">
           <img
             className="object-contain opacity-70"
             src="/magazine2.png"
@@ -246,180 +233,126 @@ export default function MainProjectPage() {
                 <Light className="absolute bottom-[40%] right-1/2 w-full translate-x-1/2" />
               </div>
             </div>
-            // <div
-            // <Popover key={index} open>
-            //   <PopoverTrigger asChild>
-            //     <div
-            //       key={index}
-            //       className={cn(
-            //         "absolute",
-            //         "z-10 h-[4rem] w-[8rem] cursor-pointer",
-            //       )}
-            //       style={{
-            //         ...item,
-            //       }}
-            //     >
-            //       <div
-            //         className="absolute bottom-20 right-1/2 z-10 translate-x-1/2 whitespace-nowrap px-2 py-0.5 font-bold"
-            //         style={{
-            //           backgroundImage:
-            //             "linear-gradient(to right, transparent, #002FBE, transparent)",
-            //           border: "10px solid",
-            //           borderImageSlice: 1,
-            //           borderWidth: "1px",
-            //           borderImageSource:
-            //             "linear-gradient(to right, transparent, white, transparent)",
-            //         }}
-            //       >
-            //         {item.name}
-            //       </div>
-            //       <div className="machine-highlight absolute bottom-0 aspect-square size-[8rem] w-full">
-            //         <div className="circle circle-3 relative h-full w-full">
-            //           <Circle3 className="rotate h-full w-full duration-1000" />
-            //         </div>
-            //         <div className="circle circle-2 relative h-full w-full">
-            //           <Circle2 className="rotate h-full w-full duration-1000" />
-            //         </div>
-            //         <div className="circle circle-1 relative h-full w-full">
-            //           <Circle1 className="rotate h-full w-full duration-1000" />
-            //         </div>
-            //         <Light className="absolute bottom-[40%] right-1/2 w-full translate-x-1/2" />
-            //       </div>
-            //     </div>
-            //   </PopoverTrigger>
-            //   <PopoverContent
-            //     side={positions[index] as any}
-            //     // side="top"
-            //     sideOffset={-10}
-            //     className={cn(
-            //       "flex flex-wrap gap-2 border-none bg-transparent p-0",
-            //       {
-            //         "w-[30rem]": item?.type === "image",
-            //         "w-[20rem]": item?.type === "information",
-            //       },
-            //     )}
-            //   >
-            //     <div
-            //       className="debug relative w-[20rem] overflow-hidden rounded-lg p-2"
-            //       style={{
-            //         height: item?.type === "information" ? "14rem" : "10rem",
-            //         background:
-            //           item?.type === "information"
-            //             ? `url("vector.png")`
-            //             : `url(${item.image})`,
-            //         backgroundSize: "100% 100%",
-            //         backgroundRepeat: "no-repeat",
-            //         clipPath:
-            //           "polygon(0 1%, 31% 6%, 98% 0, 86% 44%, 100% 100%, 0 100%, 0% 70%, 0% 30%);",
-            //       }}
-            //     >
-            //       {item?.type === "information" && (
-            //         <div className="flex w-full flex-col gap-1 overflow-y-scroll p-2 text-white">
-            //           <h1 className="text-xl font-bold">
-            //             {item?.data?.title || ""}
-            //           </h1>
-            //           {Object.entries(item?.data?.attribute || {}).map(
-            //             ([key, value]) => (
-            //               <div key={key} className="flex items-center gap-2">
-            //                 <span className="min-w-[8rem] text-lg font-bold">
-            //                   {key}:
-            //                 </span>
-            //                 <span className="text-[#A4D3FF]">{value}</span>
-            //               </div>
-            //             ),
-            //           )}
-            //         </div>
-            //       )}
-            //     </div>
-            //     {/* {item.type === "image" && (
-            //       <div
-            //         className="flex flex-1 flex-col gap-2 rounded-lg bg-[#1A1A1A] p-2 text-white"
-            //         style={{
-            //           background: "url(/vector.png)",
-            //           backgroundSize: "contain",
-            //           backgroundRepeat: "no-repeat",
-            //         }}
-            //       >
-            //         {
-            //           <div className="flex flex-col">
-            //             <h1 className="text-xl font-bold">
-            //               {item?.information?.title || ""}
-            //             </h1>
-            //             <div className="flex h-full flex-col overflow-y-auto">
-            //               {Object.entries(
-            //                 item?.information?.attribute || {},
-            //               ).map(([key, value]) => (
-            //                 <div key={key} className="flex items-center gap-3">
-            //                   <span className="min-w-[8rem] text-lg font-bold">
-            //                     {key}:
-            //                   </span>
-            //                   <span className="text-[#A4D3FF]">{value}</span>
-            //                 </div>
-            //               ))}
-            //             </div>
-            //           </div>
-            //         }
-            //       </div>
-            //     )} */}
-            //   </PopoverContent>
-            // </Popover>
           ))}
-          {/* {data.map((item, index) => (
+          {data.map((item, index) => (
             <div
               key={index}
+              className="absolute"
               style={{
-                background: `${item.background}`,
+                ...item.position,
+                width:
+                  item.type === "image"
+                    ? "12rem"
+                    : item.type === "information"
+                      ? "15rem"
+                      : "22rem",
+                height:
+                  item.type === "image"
+                    ? "7rem"
+                    : item.type === "information"
+                      ? "10rem"
+                      : "10rem",
+                background: item.type != "image" ? `${item.background}` : "",
                 backgroundSize: "100% 100%",
                 backgroundRepeat: "no-repeat",
-                position: "absolute",
-                ...item.position,
               }}
             >
-              {item.type === "image" && <img src={item.image} alt="image" />}
-              {item.type === "information" && (
-                <div className="flex flex-col gap-2 p-4">
-                  <h1 className="text-xl font-bold">{item.title}</h1>
-                  {Object.entries(item.attribute).map(([key, value]) => (
-                    <div key={key} className="flex items-center gap-3">
-                      <span className="min-w-[8rem] text-lg font-bold">
-                        {key}:
-                      </span>
-                      <span className="text-[#A4D3FF]">{value}</span>
-                    </div>
-                  ))}
+              {item.type === "image" && (
+                <img src={item.image} alt="image" className="object-contain" />
+              )}
+              {(item.type === "information" ||
+                item.type === "identification") && (
+                <div className="flex flex-col p-4">
+                  <h1 className="text-lg font-bold">{item.title}</h1>
+                  {Object.entries(item?.attribute || {}).map(
+                    ([key, value], index) => (
+                      <div key={index} className="flex gap-2">
+                        <span className="w-[5rem] truncate font-medium">
+                          {key}
+                        </span>
+                        <span className="text-[#A4D3FF]">{value}</span>
+                      </div>
+                    ),
+                  )}
                 </div>
               )}
             </div>
-          ))} */}
+          ))}
         </div>
-        {/* <div className="relative flex flex-1 justify-center">
-          <div
-            className="absolute left-[2%] top-[40%] w-[18rem] overflow-y-auto"
+        <div
+          className="relative flex-1"
+          style={{
+            backgroundImage: "url('/llustration.png')",
+            backgroundSize: "contain",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+          }}
+        >
+          <Canvas
             style={{
-              backgroundImage: "url(/shape1.png)",
+              position: "absolute",
+              bottom: "0",
+            }}
+            shadows
+            camera={{
+              position: [30, 30, 30],
+              fov: 20,
+              localToWorld(vector) {
+                return vector;
+              },
+            }}
+            onCreated={({ gl }) => {
+              gl.shadowMap.enabled = true;
+            }}
+          >
+            <ambientLight intensity={0.5} />
+            <directionalLight
+              castShadow
+              position={[0, 10, 0]}
+              intensity={1}
+              shadow-mapSize-width={1024}
+              shadow-mapSize-height={1024}
+              shadow-camera-far={50}
+              shadow-camera-left={-10}
+              shadow-camera-right={10}
+              shadow-camera-top={10}
+              shadow-camera-bottom={-10}
+            />
+            <Suspense fallback={<Loader3D />}>
+              <Model
+                color2="#96CFFE"
+                color1="#96CFFE"
+                url={
+                  `${env.VITE_LOCAL_MODELS === "true" ? "/public/ignore/" : "https://storage.googleapis.com/nextronic/"}` +
+                  "mine00000017.glb"
+                }
+                ref={modelRef}
+                onLoad={() => setLoading(false)}
+              />
+            </Suspense>
+            <OrbitControls enableRotate rotateSpeed={1} zoomToCursor />
+          </Canvas>
+          <div
+            className="absolute bottom-[0%] left-[10%] h-[10rem] w-[16rem]"
+            style={{
+              backgroundImage: "url(/vector.png)",
               backgroundSize: "100% 100%",
               backgroundRepeat: "no-repeat",
             }}
           >
-            <div className="flex flex-col gap-2 p-4">
-              <h1 className="text-xl font-bold">Plant</h1>
-              {Object.entries(data2.attribute).map(([key, value]) => (
-                <div key={key} className="flex items-center gap-3">
-                  <span className="min-w-[8rem] text-lg font-bold">{key}:</span>
-                  <span className="text-[#A4D3FF]">{value}</span>
-                </div>
-              ))}
+            <div className="flex flex-col p-4">
+              <h1 className="text-lg font-bold">Plant</h1>
+              {Object.entries(tree?.attribute || {}).map(
+                ([key, value], index) => (
+                  <div key={index} className="flex gap-2">
+                    <span className="w-[5rem] truncate font-medium">{key}</span>
+                    <span className="text-[#A4D3FF]">{value}</span>
+                  </div>
+                ),
+              )}
             </div>
           </div>
-          <img className="object-cover" src="/shape3.png" alt="Shape" />
-          <span className="absolute bottom-[40%] right-[46%] origin-center rotate-[11deg] transform text-xl font-bold text-white">
-            800m
-          </span>
-          <div className="absolute right-[2rem] flex h-full items-center justify-center gap-2">
-            <span className="text-xl font-bold">100m</span>
-            <div className="h-[80%] w-2 border-r-[6px] border-dashed border-[#FFE37D]"></div>
-          </div>
-        </div> */}
+        </div>
       </div>
     </main>
   );

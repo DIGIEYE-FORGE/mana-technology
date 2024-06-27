@@ -23,11 +23,11 @@ import { machines } from "./data";
 import { env } from "@/utils/env";
 
 extend({ PlaneGeometry });
-function Loader3D() {
+export function Loader3D() {
   return <Html center></Html>;
 }
 
-function RotatingModel({ modelRef }: { modelRef: any }) {
+export function RotatingModel({ modelRef }: { modelRef: any }) {
   useFrame(() => {
     if (modelRef.current) {
       modelRef.current.rotation.y += 0.002; // Adjust rotation speed as needed
