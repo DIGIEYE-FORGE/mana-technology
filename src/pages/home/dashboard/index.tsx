@@ -209,7 +209,7 @@ export default function HomeDashboard() {
           Disponibilité Engine
         </h3>
         <TableWidget
-          className="flex-1"
+          className="h-1 flex-1"
           attributes={{
             serial: "AATT1JKEZ2V1YVMA",
             element: "telemetries",

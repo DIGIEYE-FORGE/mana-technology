@@ -91,7 +91,7 @@ export default function HomePage() {
       <Card className="col-span-full row-span-9 flex flex-col gap-4 p-4 lg:col-span-9">
         <h3 className="text-center text-lg font-semibold">Tire</h3>
         <TableWidget
-          className="flex-1"
+          className="h-1 flex-1"
           attributes={{
             serial: "C6XPYU0D920L1M07",
             mappings: [
@@ -148,7 +148,7 @@ export default function HomePage() {
           Disponibilité Engins CADEX DRIL
         </h3>
         <TableWidget
-          className="flex-1"
+          className="h-1 flex-1"
           attributes={{
             serial: "C6XPYU0D920L1M07",
             mappings: [
@@ -163,7 +163,7 @@ export default function HomePage() {
       <Card className="col-span-full row-span-8 p-4 xl:col-span-6">
         <h3 className="text-center text-lg font-semibold">Production</h3>
         <TableWidget
-          className="flex-1"
+          className="h-1 flex-1"
           attributes={{
             serial: "C6XPYU0D920L1M07",
             mappings: [

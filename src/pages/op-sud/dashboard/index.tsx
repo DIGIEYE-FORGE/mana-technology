@@ -177,7 +177,7 @@ export default function HomeDashboard() {
       <Card className="col-span-full row-span-3 bg-red-500/50 p-4 lg:col-span-8">
         <h3 className="text-center text-lg font-semibold">Suivi des Tirs</h3>
         <TableWidget
-          className="flex-1"
+          className="flex-1 h-1"
           attributes={{
             serial: "C6XPYU0D920L1M07",
             element: "telemetries",
