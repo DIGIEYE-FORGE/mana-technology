@@ -59,7 +59,8 @@ export default function LineChartWidget({
         nameTelemetry: telemetries[index].name,
         data: item.map((item) => ({
           x: new Date(item.createdAt),
-          y: Number(flatten(item)[telemetries[index].name]),
+          // y: Number(flatten(item)[telemetries[index].name]),
+          y: Number(Number(flatten(item)[telemetries[index].name]).toFixed(2)),
         })),
       }));
       if (props.moyenne) {
@@ -189,7 +190,7 @@ export default function LineChartWidget({
           labels: {
             show: true,
             formatter: function (value) {
-              return value.toFixed(2);
+              return Math.ceil(value) + " ";
             },
             style: {
               fontSize: "12px",

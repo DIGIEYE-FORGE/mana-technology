@@ -54,7 +54,9 @@ export default function BarLineWidget(props: Props) {
           type: telemetries[index].type,
           data: item.map((item) => ({
             x: new Date(item.createdAt),
-            y: Number(flatten(item)[telemetries[index].name]),
+            y: Number(
+              Number(flatten(item)[telemetries[index].name]).toFixed(2),
+            ),
           })),
         })),
       ];
@@ -170,7 +172,7 @@ export default function BarLineWidget(props: Props) {
                 },
                 labels: {
                   formatter: function (value) {
-                    return value.toFixed(2);
+                    return Math.ceil(value) + " ";
                   },
                 },
               }
@@ -191,7 +193,7 @@ export default function BarLineWidget(props: Props) {
 
                   labels: {
                     formatter: function (value) {
-                      return value.toFixed(2);
+                      return Math.ceil(value) + " ";
                     },
                   },
                 },
@@ -210,7 +212,7 @@ export default function BarLineWidget(props: Props) {
                   },
                   labels: {
                     formatter: function (value) {
-                      return value?.toFixed(2);
+                      return Math.ceil(value) + " ";
                     },
                   },
                   title: {

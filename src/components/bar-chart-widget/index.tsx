@@ -53,7 +53,7 @@ export default function BarChartWidget(props: Props) {
         nameTelemetry: telemetries[index].name,
         data: item.map((item) => ({
           x: new Date(item.createdAt),
-          y: Number(flatten(item)[telemetries[index].name]),
+          y: Number(Number(flatten(item)[telemetries[index].name]).toFixed(2)),
         })),
       }));
       if (props.moyenne) {
@@ -185,7 +185,8 @@ export default function BarChartWidget(props: Props) {
           labels: {
             show: true,
             formatter: function (value) {
-              return value.toFixed(2);
+              // return value.toFixed(2);
+              return Math.ceil(value) + " ";
             },
             style: {
               fontSize: "12px",
