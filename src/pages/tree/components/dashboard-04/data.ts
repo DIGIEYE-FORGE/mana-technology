@@ -1,6 +1,6 @@
 export const widgetsData = {
   0: {
-    title: "Tonne stérile par post",
+    title: "Tonnage Débalyé",
     attributes: {
       stacked: false,
       telemetries: [
@@ -14,29 +14,42 @@ export const widgetsData = {
     }
   },
   1: {
-    title: "Performances déblayage avec LHD R1700",
+    title: "Dispo et Utilisation",
     attributes: {
+      image: "/machine-04.png",
+      name: "Jumbo M20",
       telemetries: [
         {
-          area: true,
-          name: "EST_REALISE_FORATION",
-          color: "#FF5AF1",
-          label: "Realisé ML/J",
+          name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+          label: "Disponibilité",
           serial: "U9XQMQ1DXYT7LJIP",
+          color: "#cda943",
+        },
+        {
+          name: "GMC_FOREUSE_EPRIROC_T45_02_DISPO",
+          label: "Utilisation",
+          serial: "U9XQMQ1DXYT7LJIP",
+          color: "#18a5c1",
         },
       ],
     },
   },
   2: {
-    title: "Production totale par poste",
+    title: "Performance Déblayage",
     attributes: {
       stacked: false,
       telemetries: [
         {
-          name: "EST11_REALISE_ROCHE",
-          color: "#CCCCCC",
-          label: "Est 11",
-          serial: "U9XQMQ1DXYT7LJIP",
+          name: "UG_METRES_PLANIFIE",
+          color: "#FF5AF1",
+          label: "t/h",
+          serial: "DABF7PAT2G4BAG21",
+        },
+        {
+          name: "UG_METRES_REALISE_TOTAL",
+          color: "#FFDC8C",
+          label: "t/h/ml",
+          serial: "DABF7PAT2G4BAG21",
         },
       ],
     },
@@ -71,31 +84,40 @@ export const widgetsData = {
     },
   },
   5: {
-    title: "Temps de chargement",
+    title: "Temps de Déblayage",
     attributes: {
       stacked: false,
       telemetries: [
         {
           name: "UG_METRES_PLANIFIE",
-          unit: "T",
           color: "#FF5AF1",
           label: "Chargement explosif",
           serial: "DABF7PAT2G4BAG21",
-          type: "bar",
-        },
-        {
-          name: "UG_METRES_REALISE_TOTAL",
-          unit: "T",
-          color: "#FFDC8C",
-          label: "Charge / Trou",
-          serial: "DABF7PAT2G4BAG21",
-          type: "bar",
         },
       ],
     },
   },
   6: {
     title: "Temps trajet",
+    attributes: {
+      telemetries: [
+        {
+          name: "EST_REALISE_FORATION",
+          color: "#CCCCCC",
+          label: "Aller",
+          serial: "U9XQMQ1DXYT7LJIP",
+        },
+        {
+          name: "UG_METRES_PLANIFIE",
+          color: "#25A18E",
+          label: "Retour",
+          serial: "DABF7PAT2G4BAG21",
+        },
+      ],
+    },
+  },
+  7: {
+    title: "Distance Trajet",
     attributes: {
       telemetries: [
         {
