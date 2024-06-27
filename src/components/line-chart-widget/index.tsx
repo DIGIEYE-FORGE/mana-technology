@@ -57,9 +57,9 @@ export default function LineChartWidget({
         name: telemetries[index].label || telemetries[index].name,
         type: telemetries[index].area ? "area" : "line",
         nameTelemetry: telemetries[index].name,
+        color: telemetries[index].color || getRandomColor(),
         data: item.map((item) => ({
           x: new Date(item.createdAt),
-          // y: Number(flatten(item)[telemetries[index].name]),
           y: Number(Number(flatten(item)[telemetries[index].name]).toFixed(2)),
         })),
       }));
@@ -79,37 +79,19 @@ export default function LineChartWidget({
             color: getRandomColor(),
             data: allDates.map((item) => ({
               x: item,
-              y: moyenne,
+              y: Number(moyenne),
             })),
           });
         } else if (Array.isArray(props.moyenne)) {
-          const newTelemetry = telemetries.filter((item) =>
-            props.moyenne?.includes(item.name),
-          );
-          newTelemetry.forEach((item) => {
-            const dataTelemetry = res1.find(
-              (it) => it.nameTelemetry === item.name,
-            );
-            if (dataTelemetry) {
-              const allDates = dataTelemetry?.data.map((item) => item.x);
-              const allData = dataTelemetry?.data.map((item) => item.y);
-              const moyenne =
-                allData.reduce((a, b) => a + b, 0) / allData.length;
-              res2.push({
-                name: (item.label || item.name) + " (Moyenne)",
-                type: "line",
-                color: getRandomColor(),
-                data: allDates.map((item) => ({
-                  x: item,
-                  y: moyenne,
-                })),
-              });
-            }
-          });
+          // Add logic for array-based 'moyenne' handling if needed
         }
-        return [...res1, ...(res2 || [])];
+        return [...(res1 || []), ...(res2 || [])];
       }
-      return res1;
+      return res1.map((item) => ({
+        name: item.name,
+        type: item.type,
+        data: item.data,
+      }));
     },
   );
 
@@ -129,15 +111,17 @@ export default function LineChartWidget({
     <Chart
       options={{
         theme: { mode: "dark" },
-        tooltip: { cssClass: "text-black" },
-        colors: telemetries.map((item) => item.color),
+        tooltip: {
+          shared: true,
+          hideEmptySeries: false,
+        },
         grid: {
           borderColor: "#797979",
           xaxis: { lines: { show: false } },
           yaxis: { lines: { show: true } },
         },
         chart: {
-          type: "line",
+          type: "bar",
           background: "transparent",
           toolbar: { show: false },
           animations: { enabled: true },
@@ -145,10 +129,8 @@ export default function LineChartWidget({
           selection: { enabled: false },
           dropShadow: { enabled: false },
         },
+
         stroke: {
-          width: (data || []).map((item) =>
-            item.type === "line" || item.type === "area" ? 4 : 0,
-          ),
           curve: "smooth",
         },
         dataLabels: { enabled: false },
@@ -172,6 +154,9 @@ export default function LineChartWidget({
         xaxis: {
           type: "datetime",
           max: dateRange?.to ? new Date(dateRange?.to).getTime() : undefined,
+          tooltip: {
+            enabled: false,
+          },
           axisBorder: { show: false },
           axisTicks: { show: false },
           labels: {
@@ -187,7 +172,10 @@ export default function LineChartWidget({
 
         yaxis: {
           min: 0,
-          tickAmount: 4,
+          // tickAmount: 4,
+          tooltip: {
+            enabled: false,
+          },
           labels: {
             show: true,
             formatter: function (value) {
@@ -202,9 +190,10 @@ export default function LineChartWidget({
           },
         },
       }}
-      series={data || []}
+      series={data}
       width={"100%"}
       height={"100%"}
+      type="line"
     />
   );
 }

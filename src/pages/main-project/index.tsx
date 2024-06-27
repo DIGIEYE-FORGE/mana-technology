@@ -99,6 +99,7 @@ export default function MainProjectPage() {
         top: "22%",
         right: "29%",
       },
+      url: "/est_video.mp4",
       background: "url(/video.png)",
       positionModel: {
         side: "left",
@@ -113,6 +114,7 @@ export default function MainProjectPage() {
         bottom: "27%",
         left: "48%",
       },
+      url: "/est_video.mp4",
       background: "url(/video.png)",
       positionModel: {
         side: "top",
@@ -141,6 +143,7 @@ export default function MainProjectPage() {
         bottom: "35%",
         right: "19%",
       },
+      url: "/est_video.mp4",
       positionModel: {
         side: "left",
         align: "end",
@@ -155,6 +158,7 @@ export default function MainProjectPage() {
         bottom: "32%",
         left: "22%",
       },
+      url: "/est_video.mp4",
       positionModel: {
         side: "left",
         align: "end",
@@ -169,6 +173,7 @@ export default function MainProjectPage() {
         top: "40%",
         left: "4%",
       },
+      url: "/est_video.mp4",
       positionModel: {
         side: "left",
         align: "end",
@@ -456,11 +461,17 @@ export default function MainProjectPage() {
                           <XIcon size={24} />
                         </Button>
                       </PopoverClose>
-                      <div className="flex h-full flex-col gap-[3.5rem] pb-7 pl-11 pr-6 pt-4">
+                      <div className="flex h-full flex-col gap-[3.5rem] pb-7 pl-11 pr-6 pt-2">
                         <div className="ml-auto flex h-14 w-[64%] shrink-0 items-center px-6 text-2xl font-semibold">
                           {dashboadSelected}
                         </div>
-                        {/* {item.dashboard.component} */}
+                        {item?.type === "video" && item?.url && (
+                          <video
+                            className="aspect-video w-full object-contain opacity-90"
+                            controls
+                            src={item.url}
+                          />
+                        )}
                       </div>
                     </div>
                   </PopoverContent>

@@ -251,20 +251,21 @@ export default function HomeDashboard() {
         </h1>
         <div className="flex-1">
           <LineChartWidget
+            moyenne={"combined"}
             attributes={{
               telemetries: [
-                {
-                  area: true,
-                  name: "REALISE_FORATION",
-                  color: "#B98EFF",
-                  label: "Realisé ML/J",
-                  serial: "TIRSIL71OBOT4UB4",
-                },
                 {
                   area: false,
                   name: "PLANIFIE_FORATION",
                   color: "#78F6EA",
                   label: "Objectif ML/J",
+                  serial: "TIRSIL71OBOT4UB4",
+                },
+                {
+                  area: true,
+                  name: "REALISE_FORATION",
+                  color: "#B98EFF",
+                  label: "Realisé ML/J",
                   serial: "TIRSIL71OBOT4UB4",
                 },
               ],

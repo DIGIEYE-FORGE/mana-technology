@@ -251,6 +251,7 @@ export default function HomeDashboard() {
         </h1>
         <div className="flex-1">
           <LineChartWidget
+            moyenne={"combined"}
             attributes={{
               telemetries: [
                 {
