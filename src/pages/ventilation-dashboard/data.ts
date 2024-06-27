@@ -233,9 +233,9 @@ export const qualitédair = {
         attributes: {
           telemetries: [
             {
-              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              name: "s=Plc2_O2",
               label: "Disponibilité",
-              serial: "U9XQMQ1DXYT7LJIP",
+              serial: "GQKOD91C6LNG9UGM",
               color: "#cda943",
               unit: "%",
             }
@@ -247,9 +247,9 @@ export const qualitédair = {
         attributes: {
           telemetries: [
             {
-              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              name: "s=Plc2_CO",
               label: "Disponibilité",
-              serial: "U9XQMQ1DXYT7LJIP",
+              serial: "GQKOD91C6LNG9UGM",
               color: "#cda943",
               unit: "ppm",
             }
@@ -261,9 +261,9 @@ export const qualitédair = {
         attributes: {
           telemetries: [
             {
-              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              name: "s=Plc2_No2",
               label: "Disponibilité",
-              serial: "U9XQMQ1DXYT7LJIP",
+              serial: "GQKOD91C6LNG9UGM",
               color: "#cda943",
               unit: "ppm",
             },
@@ -275,9 +275,9 @@ export const qualitédair = {
         attributes: {
           telemetries: [
             {
-              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              name: "s=Plc2_Vm/s",
               label: "Disponibilité",
-              serial: "U9XQMQ1DXYT7LJIP",
+              serial: "GQKOD91C6LNG9UGM",
               color: "#cda943",
               unit: "m/s",
             },
@@ -289,15 +289,15 @@ export const qualitédair = {
         attributes: {
           telemetries: [
             {
-              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              name: "s=Plc2_T°H",
               label: "Température Humide",
-              serial: "U9XQMQ1DXYT7LJIP",
+              serial: "GQKOD91C6LNG9UGM",
               color: "#fff",
             },
             {
-              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              name: "s=Plc2_T°S",
               label: "Température Sèche",
-              serial: "U9XQMQ1DXYT7LJIP",
+              serial: "GQKOD91C6LNG9UGM",
               color: "#cda943",
             },
           ]
@@ -306,16 +306,16 @@ export const qualitédair = {
     }
   },
   1: {
-    title: "Niveau 100",
+    title: "Niveau 500",
     children: {
       0: {
         title: "O2",
         attributes: {
           telemetries: [
             {
-              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              name: "s=Plc3_O2",
               label: "Disponibilité",
-              serial: "U9XQMQ1DXYT7LJIP",
+              serial: "GQKOD91C6LNG9UGM",
               color: "#cda943",
               unit: "%",
             }
@@ -327,9 +327,9 @@ export const qualitédair = {
         attributes: {
           telemetries: [
             {
-              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              name: "s=Plc3_CO",
               label: "Disponibilité",
-              serial: "U9XQMQ1DXYT7LJIP",
+              serial: "GQKOD91C6LNG9UGM",
               color: "#cda943",
               unit: "ppm",
             }
@@ -341,9 +341,9 @@ export const qualitédair = {
         attributes: {
           telemetries: [
             {
-              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              name: "s=Plc3_No2",
               label: "Disponibilité",
-              serial: "U9XQMQ1DXYT7LJIP",
+              serial: "GQKOD91C6LNG9UGM",
               color: "#cda943",
               unit: "ppm",
             },
@@ -355,9 +355,9 @@ export const qualitédair = {
         attributes: {
           telemetries: [
             {
-              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              name: "s=Plc3_Vm/s",
               label: "Disponibilité",
-              serial: "U9XQMQ1DXYT7LJIP",
+              serial: "GQKOD91C6LNG9UGM",
               color: "#cda943",
               unit: "m/s",
             },
@@ -369,15 +369,15 @@ export const qualitédair = {
         attributes: {
           telemetries: [
             {
-              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              name: "s=Plc3_T°H",
               label: "Température Humide",
-              serial: "U9XQMQ1DXYT7LJIP",
+              serial: "GQKOD91C6LNG9UGM",
               color: "#fff",
             },
             {
-              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              name: "s=Plc3_T°S",
               label: "Température Sèche",
-              serial: "U9XQMQ1DXYT7LJIP",
+              serial: "GQKOD91C6LNG9UGM",
               color: "#cda943",
             },
           ]
@@ -386,16 +386,16 @@ export const qualitédair = {
     }
   },
   2: {
-    title: "Niveau 100",
+    title: "Niveau 1000",
     children: {
       0: {
         title: "O2",
         attributes: {
           telemetries: [
             {
-              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              name: "",
               label: "Disponibilité",
-              serial: "U9XQMQ1DXYT7LJIP",
+              serial: "GQKOD91C6LNG9UGM",
               color: "#cda943",
               unit: "%",
             }
@@ -407,9 +407,9 @@ export const qualitédair = {
         attributes: {
           telemetries: [
             {
-              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              name: "",
               label: "Disponibilité",
-              serial: "U9XQMQ1DXYT7LJIP",
+              serial: "GQKOD91C6LNG9UGM",
               color: "#cda943",
               unit: "ppm",
             }
@@ -421,9 +421,9 @@ export const qualitédair = {
         attributes: {
           telemetries: [
             {
-              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              name: "",
               label: "Disponibilité",
-              serial: "U9XQMQ1DXYT7LJIP",
+              serial: "GQKOD91C6LNG9UGM",
               color: "#cda943",
               unit: "ppm",
             },
@@ -435,9 +435,9 @@ export const qualitédair = {
         attributes: {
           telemetries: [
             {
-              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              name: "s=Plc3_Vm/s",
               label: "Disponibilité",
-              serial: "U9XQMQ1DXYT7LJIP",
+              serial: "GQKOD91C6LNG9UGM",
               color: "#cda943",
               unit: "m/s",
             },
@@ -449,15 +449,15 @@ export const qualitédair = {
         attributes: {
           telemetries: [
             {
-              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              name: "",
               label: "Température Humide",
-              serial: "U9XQMQ1DXYT7LJIP",
+              serial: "GQKOD91C6LNG9UGM",
               color: "#fff",
             },
             {
-              name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+              name: "",
               label: "Température Sèche",
-              serial: "U9XQMQ1DXYT7LJIP",
+              serial: "GQKOD91C6LNG9UGM",
               color: "#cda943",
             },
           ]
@@ -472,7 +472,7 @@ export const ventilation = {
     title: "Puissance Totale KW",
     unit: "Kw",
     telemetry: {
-      serial: "U9XQMQ1DXYT7LJIP",
+      serial: "GQKOD91C6LNG9UGM",
       name: "EST_REALISE_FORATION",
     }
   },
@@ -480,16 +480,16 @@ export const ventilation = {
     title: "Puissance Thermique galerie",
     unit: "Kw",
     telemetry: {
-      serial: "U9XQMQ1DXYT7LJIP",
-      name: "EST_REALISE_FORATION",
+      serial: "GQKOD91C6LNG9UGM",
+      name: "s=plc1_DB_Tag_ΣPwDiesel",
     }
   },
   2: {
     title: "Nombre d’Engins Présents",
-    unit: "Kw",
+    unit: "",
     telemetry: {
-      serial: "U9XQMQ1DXYT7LJIP",
-      name: "EST_REALISE_FORATION",
+      serial: "GQKOD91C6LNG9UGM",
+      name: "s=plc1_DB_Tag_NbVéhicule	",
     }
   },
 }
