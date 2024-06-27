@@ -7,7 +7,7 @@ import {
 } from "@/utils";
 import useSWR from "swr";
 import { useAppContext } from "@/Context";
-import ReactApexChart from "react-apexcharts";
+import Chart from "react-apexcharts";
 import Loader from "@/components/loader";
 
 type Props = Widget;
@@ -53,7 +53,7 @@ export default function BarChartWidget(props: Props) {
         nameTelemetry: telemetries[index].name,
         data: item.map((item) => ({
           x: new Date(item.createdAt),
-          y: Number(flatten(item)[telemetries[index].name]),
+          y: Number(Number(flatten(item)[telemetries[index].name]).toFixed(2)),
         })),
       }));
       if (props.moyenne) {
@@ -119,7 +119,7 @@ export default function BarChartWidget(props: Props) {
       </div>
     );
   return (
-    <ReactApexChart
+    <Chart
       options={{
         theme: { mode: "dark" },
         tooltip: { cssClass: "text-black" },
@@ -185,7 +185,8 @@ export default function BarChartWidget(props: Props) {
           labels: {
             show: true,
             formatter: function (value) {
-              return value.toFixed(2);
+              // return value.toFixed(2);
+              return Math.ceil(value) + " ";
             },
             style: {
               fontSize: "12px",
@@ -197,7 +198,6 @@ export default function BarChartWidget(props: Props) {
         },
       }}
       series={data || []}
-      type={"bar"}
       width={"100%"}
       height={"100%"}
     />

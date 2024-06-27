@@ -70,7 +70,7 @@ export default function MainProjectPage() {
       type: "information",
     },
     {
-      name: "LINE ELECTRIC",
+      name: "PIPELINE",
       bottom: "20%",
       left: "14%",
       type: "information",
@@ -99,11 +99,12 @@ export default function MainProjectPage() {
         top: "22%",
         right: "29%",
       },
+      url: "/est_video.mp4",
       background: "url(/video.png)",
       positionModel: {
         side: "left",
         align: "end",
-        sideOffset: 40,
+        sideOffset: -10,
       },
     },
     {
@@ -113,6 +114,7 @@ export default function MainProjectPage() {
         bottom: "27%",
         left: "48%",
       },
+      url: "/est_video.mp4",
       background: "url(/video.png)",
       positionModel: {
         side: "top",
@@ -141,6 +143,7 @@ export default function MainProjectPage() {
         bottom: "35%",
         right: "19%",
       },
+      url: "/est_video.mp4",
       positionModel: {
         side: "left",
         align: "end",
@@ -155,6 +158,7 @@ export default function MainProjectPage() {
         bottom: "32%",
         left: "22%",
       },
+      url: "/est_video.mp4",
       positionModel: {
         side: "left",
         align: "end",
@@ -169,6 +173,7 @@ export default function MainProjectPage() {
         top: "40%",
         left: "4%",
       },
+      url: "/est_video.mp4",
       positionModel: {
         side: "left",
         align: "end",
@@ -179,12 +184,11 @@ export default function MainProjectPage() {
 
     {
       type: "information",
-      title: "Plant1",
+      title: "Electrical power line",
       attribute: {
-        Type: "Plant",
-        Location: "Underground",
-        Status: "Active",
-        Capacity: "1000",
+        ["60 kV line"]: "70 Km",
+        ["22 kV line"]: "39 Km",
+        ["Electrical substation"]: "60/22 kV",
       },
       background: "url(/shape1.png)",
       position: {
@@ -195,12 +199,12 @@ export default function MainProjectPage() {
 
     {
       type: "information",
-      title: "Plant2",
+      title: "Process plant",
       attribute: {
-        Type: "Plant",
-        Location: "Underground",
-        Status: "Active",
-        Capacity: "1000",
+        Capacity: "3,6 mtpa",
+        ["Processing method"]: "Flotation",
+        ["Product"]: "Copper Silver concentrate",
+        ["Concentrate production capacity"]: "120 Ktonnes per year",
       },
       background: "url(/shape1.png)",
       position: {
@@ -210,12 +214,12 @@ export default function MainProjectPage() {
     },
     {
       type: "information",
-      title: "Plant2",
+      title: "Pipeline",
       attribute: {
-        Type: "Plant",
-        Location: "Underground",
-        Status: "Active",
-        Capacity: "1000",
+        ["Pipe length"]: "146 km ",
+        ["Pipe diameter"]: "400 mm ",
+        ["Pumping station's number"]: "8 PS /1350m",
+        ["Origine"]: "Treated waste water (STEP Agadir)",
       },
       background: "url(/shape1.png)",
       position: {
@@ -225,12 +229,12 @@ export default function MainProjectPage() {
     },
     {
       type: "identification",
-      title: "Plan1",
+      title: "EST",
       attribute: {
-        Type: "Plant",
-        Location: "Underground",
-        Status: "Active",
-        Capacity: "1000",
+        ["Mineral reserves"]: "4,5 Mtonnes @0,8 % Cu et 27 g/t Ag ",
+        ["Waste tonnage"]: "39 Mtonnes ",
+        ["Rock production capacity "]: "1,2 Mtonnes rock per month",
+        ["Life of mine "]: "4 years ",
       },
       background: "url(/vector.png)",
       position: {
@@ -240,12 +244,12 @@ export default function MainProjectPage() {
     },
     {
       type: "identification",
-      title: "Plant",
+      title: "SUD",
       attribute: {
-        Type: "Plant",
-        Location: "Underground",
-        Status: "Active",
-        Capacity: "1000",
+        ["Mineral reserves"]: "3,1 Mtonnes @ 0,9 % Cu et 16 g/t Ag",
+        ["Waste tonnage"]: "23 Mtonnes ",
+        ["Rock production capacity "]: "0,9 Mtonnes rock per month",
+        ["Life of mine "]: "3 years ",
       },
       background: "url(/vector.png)",
       position: {
@@ -256,12 +260,15 @@ export default function MainProjectPage() {
   ];
 
   const tree = {
-    titile: "Tree",
+    titile: "Underground Mine",
     attribute: {
-      Type: "Tree",
-      Location: "Underground",
-      Status: "Active",
-      Capacity: "1000",
+      ["Mineral reserves"]: "54 Mtonnes @ 0,9 %Cu et 19 g/t Ag",
+      ["Mining methods"]: "R&P /LHOS",
+      ["Total development"]: "230 km lateral",
+      ["Daily production capacity"]: "10800 tpd from 2028",
+      ["Extraction method"]: "Belt conveyor",
+      ["Backfilling"]: "Paste backfilling",
+      ["Life of mine"]: "15 year",
     },
   };
   const modelRef = useRef();
@@ -376,7 +383,7 @@ export default function MainProjectPage() {
                       item.type === "image" || item.type === "video"
                         ? "67px"
                         : item.type === "information"
-                          ? "15rem"
+                          ? "17rem"
                           : "22rem",
                     height:
                       item.type === "image" || item.type === "video"
@@ -398,11 +405,13 @@ export default function MainProjectPage() {
                       </h1>
                       {Object.entries(item?.attribute || {}).map(
                         ([key, value], index) => (
-                          <div key={index} className="flex gap-2">
-                            <span className="w-[5rem] truncate font-medium">
+                          <div key={index} className="flex items-center gap-4">
+                            <span className="w-[7rem] truncate text-xs font-medium">
                               {key}
                             </span>
-                            <span className="text-[#A4D3FF]">{value}</span>
+                            <span className="text-xs text-[#A4D3FF]">
+                              {value}
+                            </span>
                           </div>
                         ),
                       )}
@@ -452,11 +461,17 @@ export default function MainProjectPage() {
                           <XIcon size={24} />
                         </Button>
                       </PopoverClose>
-                      <div className="flex h-full flex-col gap-[3.5rem] pb-7 pl-11 pr-6 pt-4">
+                      <div className="flex h-full flex-col gap-[3.5rem] pb-7 pl-11 pr-6 pt-2">
                         <div className="ml-auto flex h-14 w-[64%] shrink-0 items-center px-6 text-2xl font-semibold">
                           {dashboadSelected}
                         </div>
-                        {/* {item.dashboard.component} */}
+                        {item?.type === "video" && item?.url && (
+                          <video
+                            className="aspect-video w-full object-contain opacity-90"
+                            controls
+                            src={item.url}
+                          />
+                        )}
                       </div>
                     </div>
                   </PopoverContent>
@@ -518,7 +533,7 @@ export default function MainProjectPage() {
               <OrbitControls enableRotate rotateSpeed={1} zoomToCursor />
             </Canvas>
             <div
-              className="absolute bottom-[25%] left-[5%] h-[11rem] w-[16rem]"
+              className="absolute bottom-[18%] left-[1%] h-[15rem] w-[24rem]"
               style={{
                 backgroundImage: "url(/vector.png)",
                 backgroundSize: "100% 100%",
@@ -526,11 +541,13 @@ export default function MainProjectPage() {
               }}
             >
               <div className="flex flex-col p-4">
-                <h1 className="text-lg font-bold text-[#FFE473]">Plant</h1>
+                <h1 className="text-lg font-bold text-[#FFE473]">
+                  {tree?.titile}
+                </h1>
                 {Object.entries(tree?.attribute || {}).map(
                   ([key, value], index) => (
-                    <div key={index} className="flex gap-2">
-                      <span className="w-[5rem] truncate font-medium">
+                    <div key={index} className="flex gap-2 text-sm">
+                      <span className="w-[13rem] truncate font-medium">
                         {key}
                       </span>
                       <span className="text-[#A4D3FF]">{value}</span>

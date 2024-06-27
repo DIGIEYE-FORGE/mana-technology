@@ -1,23 +1,22 @@
 import useSWR from "swr";
-import { CircularProgress, CircularProgressProps } from "../circular-progress";
 import { useAppContext } from "@/Context";
-import Loader from "../loader";
+import Loader from "@/components/loader";
 import { LastTelemetry } from "@/utils";
 
-export interface CircularProgressChartProps
-  extends Omit<CircularProgressProps, "progress" | "legend"> {
-  telemetry: {
-    serial: string;
-    name: string;
-  };
+interface VentilationCardProps {
+  title: string;
   unit?: string;
+  telemetry: {
+    name: string;
+    serial: string;
+  };
 }
 
-export const CircularProgressChart = ({
+export const VentilationCard = ({
+  title,
+  unit = "",
   telemetry,
-  unit = "%",
-  ...props
-}: CircularProgressChartProps) => {
+}: VentilationCardProps) => {
   const { backendApi } = useAppContext();
   const { data, isLoading, error } = useSWR(
     `telemetry?${JSON.stringify({ telemetry })}`,
@@ -45,15 +44,14 @@ export const CircularProgressChart = ({
       </div>
     );
 
-  const progress = typeof data?.value === "number" ? data.value : 0;
-
-  let legend = "";
-  if (unit === "%") {
-    legend = `${progress.toFixed(2)}%`;
-  } else if (unit === "m/s") {
-    legend = `${progress.toFixed(1)} m/s`;
-  } else {
-    legend = `${progress.toFixed(0)} ${unit}`;
-  }
-  return <CircularProgress progress={progress} {...props} legend={legend} />;
+  const value = typeof data?.value === "number" ? data.value : 0;
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <h1 className="text-center text-xl font-semibold">{title}</h1>
+      <div className="flex items-center gap-3 text-5xl font-semibold">
+        <span>{value}</span>
+        {unit && <span>{unit}</span>}
+      </div>
+    </div>
+  );
 };

@@ -7,9 +7,11 @@ import Loader from "../loader";
 
 interface D3DonutChartProps {
   attribute: {
-    name: string;
-    label: string;
+    bfsLabelTelemetry: string;
+    bfsTelemetry: string;
     color: string;
+    nameLabelTelemetry: string;
+    nameTelemetry: string;
     serial: string;
   }[];
 }
@@ -21,13 +23,38 @@ export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
       if (!attribute?.length) return [];
       const res1 = await Promise.all(
         attribute.map(async (device) => {
-          const { name, label, color, serial } = device;
-          const res = await backendApi.findMany<{
+          // const { name, label, color, serial } = device;
+          const {
+            bfsLabelTelemetry,
+            bfsTelemetry,
+            color,
+            nameLabelTelemetry,
+            nameTelemetry,
+            serial,
+          } = device;
+          const res1 = await backendApi.findMany<{
             name: string;
             value: number;
           }>("lasttelemetry", {
             where: {
-              name,
+              name: nameTelemetry,
+              device: { serial },
+            },
+            select: { name: true, value: true },
+            orderBy: {
+              createdAt: "desc",
+            },
+            pagination: {
+              page: 1,
+              perPage: 1,
+            },
+          });
+          const res2 = await backendApi.findMany<{
+            name: string;
+            value: number;
+          }>("lasttelemetry", {
+            where: {
+              name: bfsTelemetry,
               device: { serial },
             },
             select: { name: true, value: true },
@@ -41,13 +68,15 @@ export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
           });
           return {
             color: color,
-            name: label,
-            value: res.results[0].value,
+            name: nameLabelTelemetry,
+            value: res1?.results[0]?.value || 0,
+            valueBfs: res2?.results[0]?.value || 0,
+            bfsLabel: bfsLabelTelemetry,
           };
         }),
       );
       const sum = res1.reduce((acc, curr) => acc + curr.value, 0);
-      return res1.map((d) => ({ ...d, value: (d.value / sum) * 100 }));
+      return res1.map((d) => ({ ...d, valueName: (d.value / sum) * 100 }));
     },
   );
 
@@ -99,7 +128,7 @@ export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
       .enter()
       .append("path")
       .attr("d", arc as any)
-      .attr("fill", (d: any) => d.data.color);
+      .attr("fill", (d: any) => d?.data?.color);
 
     svg
       .selectAll("text")
@@ -107,8 +136,8 @@ export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
       .enter()
       .append("text")
       .text((d: any) => {
-        const test: string = d.data.name;
-        const wrapedText = test.slice(0, 10) + "...";
+        const test: string = d?.data?.name || "";
+        const wrapedText = test?.slice(0, 10) + "...";
         console.log(wrapedText);
         return wrapedText;
       })
@@ -143,7 +172,7 @@ export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
     );
   if (error)
     return (
-      <div className="debug flex h-full w-full items-center justify-center [&>*]:text-xl [&>*]:font-bold">
+      <div className="flex h-full w-full items-center justify-center [&>*]:text-xl [&>*]:font-bold">
         failed to load
       </div>
     );
@@ -170,10 +199,10 @@ export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
                 }}
               ></span>
               <span className="col-span-7 line-clamp-1 text-xs font-semibold">
-                {d.name}
+                {d?.bfsLabel || ""}
               </span>
               <span className="col-span-1 text-xs font-semibold">
-                {d.value}
+                {(d?.valueBfs || 0).toFixed(2)}
               </span>
             </div>
           ))}

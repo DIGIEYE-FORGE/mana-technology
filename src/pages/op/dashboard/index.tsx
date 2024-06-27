@@ -205,11 +205,9 @@ export default function HomeDashboard() {
         </div>
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col gap-1 p-4 lg:col-span-8">
-        <h3 className="text-center text-lg font-semibold">
-        Suivi des Tirs
-        </h3>
+        <h3 className="text-center text-lg font-semibold">Suivi des Tirs</h3>
         <TableWidget
-          className="flex-1"
+          className="h-1 flex-1"
           attributes={{
             serial: "AATT1JKEZ2V1YVMA",
             element: "telemetries",
@@ -241,6 +239,7 @@ export default function HomeDashboard() {
               {
                 displayName: "Charge spécifique (g/t)",
                 telemetryName: "CHARGE_SPECIFIQUE",
+                displayFormat: "float",
               },
             ],
           }}
@@ -252,20 +251,21 @@ export default function HomeDashboard() {
         </h1>
         <div className="flex-1">
           <LineChartWidget
+            moyenne={"combined"}
             attributes={{
               telemetries: [
-                {
-                  area: true,
-                  name: "REALISE_FORATION",
-                  color: "#B98EFF",
-                  label: "Realisé ML/J",
-                  serial: "TIRSIL71OBOT4UB4",
-                },
                 {
                   area: false,
                   name: "PLANIFIE_FORATION",
                   color: "#78F6EA",
                   label: "Objectif ML/J",
+                  serial: "TIRSIL71OBOT4UB4",
+                },
+                {
+                  area: true,
+                  name: "REALISE_FORATION",
+                  color: "#B98EFF",
+                  label: "Realisé ML/J",
                   serial: "TIRSIL71OBOT4UB4",
                 },
               ],

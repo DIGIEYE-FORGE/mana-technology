@@ -46,7 +46,7 @@ export function VirtualizedList<T>({
   return (
     <div
       onScroll={handleScroll}
-      className={twMerge(" relative flex flex-col overflow-auto ", className)}
+      className={twMerge("relative flex flex-col overflow-auto", className)}
       {...props}
     >
       <div

@@ -4,6 +4,7 @@ import TableWidget from "@/components/table-widget";
 import LineChartWidget from "@/components/line-chart-widget";
 import BarChartWidget from "@/components/bar-chart-widget";
 import MultiProgressWidget from "@/components/multi-progress-widget";
+import ProgressMultiple from "@/components/progress-multiple";
 
 export default function HomeDashboard() {
   return (
@@ -56,7 +57,7 @@ export default function HomeDashboard() {
                   name: "SUD4_REALISE_ROCHE",
                   unit: "T",
                   color: "#B98EFF",
-                  label: "SUD 4",
+                  label: "Sud 4",
                   serial: "C6XPYU0D920L1M07",
                 },
               ],
@@ -128,56 +129,85 @@ export default function HomeDashboard() {
               stacked: false,
               telemetries: [
                 {
-                  name: "EST_PLANIFIE_ROCHE",
+                  name: "SUD_PLANIFIE_ROCHE",
                   unit: "T",
                   color: "#78F6EA",
                   label: "Planifié",
-                  serial: "U9XQMQ1DXYT7LJIP",
+                  serial: "C6XPYU0D920L1M07",
                 },
                 {
-                  name: "EST_REALISE_ROCHE_Ton",
+                  name: "SUD_REALISE_ROCHE",
                   unit: "T",
                   color: "#B98EFF",
                   label: "Realisé",
-                  serial: "U9XQMQ1DXYT7LJIP",
+                  serial: "C6XPYU0D920L1M07",
                 },
               ],
             }}
           />
         </div>
       </Card>
-      <Card className="col-span-full row-span-3 flex flex-col bg-red-500/50 p-6 lg:col-span-6 2xl:col-span-4">
+      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-4">
         <h1 className="text-center text-lg font-semibold">
           Production cumulée par qualité
         </h1>
         <div className="flex-1">
-          <LineChartWidget
-            moyenne={["EST_REALISE_FORATION"]}
-            attributes={{
-              telemetries: [
-                {
-                  area: true,
-                  name: "EST_REALISE_FORATION",
-                  color: "#B98EFF",
-                  label: "Realisé ML/J",
-                  serial: "U9XQMQ1DXYT7LJIP",
-                },
-                {
-                  area: false,
-                  name: "EST_PLANIFIE_FORATION",
-                  color: "#78F6EA",
-                  label: "Objectif ML/J",
-                  serial: "U9XQMQ1DXYT7LJIP",
-                },
-              ],
-            }}
+        <ProgressMultiple
+            attributes={[
+              {
+                title: "Sulfures (HG,MG,LG)",
+                telemetries: [
+                  {
+                    name: "SUD_REALISE_ORE_HG_SULF",
+                    serial: "C6XPYU0D920L1M07",
+                    label: "HG",
+                    color: "#FFDC8C",
+                  },
+                  {
+                    name: "SUD_REALISE_ORE_MG_SULF",
+                    serial: "C6XPYU0D920L1M07",
+                    label: "MG",
+                    color: "#42F5FF",
+                  },
+                  {
+                    name: "SUD_REALISE_ORE_LG_SULF",
+                    serial: "C6XPYU0D920L1M07",
+                    label: "LG",
+                    color: "#FFC8FF",
+                  },
+                ],
+              },
+              {
+                title: "Oxydes (HG,MG,LG)",
+                telemetries: [
+                  {
+                    name: "SUD_REALISE_ORE_HG_OXYD",
+                    serial: "C6XPYU0D920L1M07",
+                    label: "HG",
+                    color: "#FFDC8C",
+                  },
+                  {
+                    name: "SUD_REALISE_ORE_MG_OXYD",
+                    serial: "C6XPYU0D920L1M07",
+                    label: "MG",
+                    color: "#42F5FF",
+                  },
+                  {
+                    name: "SUD_REALISE_ORE_LG_OXYD",
+                    serial: "C6XPYU0D920L1M07",
+                    label: "LG",
+                    color: "#FFC8FF",
+                  },
+                ],
+              },
+            ]}
           />
         </div>
       </Card>
-      <Card className="col-span-full row-span-3 bg-red-500/50 p-4 lg:col-span-8">
+      <Card className="col-span-full row-span-3 p-4 lg:col-span-8">
         <h3 className="text-center text-lg font-semibold">Suivi des Tirs</h3>
         <TableWidget
-          className="flex-1"
+          className="h-1 flex-1"
           attributes={{
             serial: "C6XPYU0D920L1M07",
             element: "telemetries",
@@ -189,10 +219,6 @@ export default function HomeDashboard() {
               {
                 displayName: "Quantité d'explosif tirée (kg)",
                 telemetryName: "QUNTITE_EXPLOSIF_TIRE",
-              },
-              {
-                displayName: "Zone de Tir",
-                telemetryName: "ZONE DE TIRE",
               },
               {
                 displayName: "Tonnage Roche Abattu Minerai",
@@ -209,6 +235,7 @@ export default function HomeDashboard() {
               {
                 displayName: "Charge spécifique (g/t)",
                 telemetryName: "CHARGE_SPECIFIQUE",
+                displayFormat: "float",
               },
             ],
           }}
@@ -241,106 +268,100 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col gap-3 p-4 2xl:col-span-3">
         <h3 className="text-center text-lg font-semibold">
-          Disponibilité Engine GMC
+          Disponibilité Engine CADEX
         </h3>
         <MultiProgressWidget
           attributes={{
             telemetries: [
               {
-                name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+                name: "CADEX_CAMION30T_GROUPE",
                 color: "#ecc94b",
                 label: "Foreuse Epiroc  T45 (1)",
-                serial: "U9XQMQ1DXYT7LJIP",
+                serial: "C6XPYU0D920L1M07",
               },
               {
-                name: "GMC_FOREUSE_EPRIROC_T45_02_DISPO",
+                name: "CADEX_CAMION60T_GROUPE",
                 color: "#ecc94b",
                 label: "Foreuse Epiroc  T45 (2)",
-                serial: "U9XQMQ1DXYT7LJIP",
+                serial: "C6XPYU0D920L1M07",
               },
               {
-                name: "GMC_FOREUSE_EPRIROC_T35_01_DISPO",
+                name: "CADEX_FOREUSE_DX700_01",
                 color: "#ecc94b",
                 label: "Foreuse Epiroc T35 ",
-                serial: "U9XQMQ1DXYT7LJIP",
+                serial: "C6XPYU0D920L1M07",
               },
               {
-                name: "GMC_PELLE_CAT374_01_DISPO",
+                name: "CADEX_FOREUSE_DX700_02",
                 color: "#ecc94b",
                 label: "Pelle CAT 374 (1)",
-                serial: "U9XQMQ1DXYT7LJIP",
+                serial: "C6XPYU0D920L1M07",
               },
               {
-                name: "GMC_PELLE_CAT374_02_DISPO",
+                name: "CADEX_FOREUSE_EPIROCT35_01",
                 color: "#ecc94b",
                 label: "Pelle CAT 374 (2) ",
-                serial: "U9XQMQ1DXYT7LJIP",
+                serial: "C6XPYU0D920L1M07",
               },
               {
-                name: "GMC_PELLE_CAT374_03_DISPO",
+                name: "CADEX_PELLE_CAT320_02",
                 color: "#ecc94b",
                 label: "Pelle CAT 374 (3)",
-                serial: "U9XQMQ1DXYT7LJIP",
+                serial: "C6XPYU0D920L1M07",
               },
               {
-                name: "GMC_PELLE_CAT350_01_DISPO",
+                name: "CADEX_PELLE_DOSAN_01",
                 color: "#ecc94b",
                 label: "Pelle CAT 350 (1)",
-                serial: "U9XQMQ1DXYT7LJIP",
+                serial: "C6XPYU0D920L1M07",
               },
               {
-                name: "GMC_PELLE_CAT350_02_DISPO",
+                name: "CADEX_PELLE_HYUNDAI_01",
                 color: "#ecc94b",
                 label: "Pelle CAT 350",
-                serial: "U9XQMQ1DXYT7LJIP",
+                serial: "C6XPYU0D920L1M07",
               },
               {
-                name: "GMC_PELLE_CAT_0000_01",
+                name: "CADEX_PELLE_SANY_01",
                 color: "#ecc94b",
                 label: " Pelle CAT ",
-                serial: "U9XQMQ1DXYT7LJIP",
+                serial: "C6XPYU0D920L1M07",
               },
               {
-                name: "GMC_CAMIONS_SCANIA50T_GROUPE",
+                name: "CADEX_PELLE_SANY_02",
                 color: "#ecc94b",
                 label: "Camions Scania 50t (15)",
-                serial: "U9XQMQ1DXYT7LJIP",
+                serial: "C6XPYU0D920L1M07",
               },
               {
-                name: "GMC_DOZER_D8_01",
+                name: "CADEX_PELLE_VOLVO380_01",
                 color: "#ecc94b",
                 label: "D8 ",
-                serial: "U9XQMQ1DXYT7LJIP",
+                serial: "C6XPYU0D920L1M07",
               },
               {
-                name: "GMC_DOZER_D8_02",
+                name: "CADEX_PELLE_VOLVO480_01",
                 color: "#ecc94b",
                 label: "D8 (2)",
-                serial: "U9XQMQ1DXYT7LJIP",
+                serial: "C6XPYU0D920L1M07",
               },
               {
-                name: "GMC_NIVELEUSE_01",
+                name: "CHARGE_INSTANTANEE",
                 color: "#ecc94b",
                 label: "Niveleuse ",
-                serial: "U9XQMQ1DXYT7LJIP",
+                serial: "C6XPYU0D920L1M07",
               },
               {
-                name: "GMC_COMPACTEUR_01",
+                name: "CHARGE_SPECIFIQUE",
                 color: "#ecc94b",
                 label: "Compacteur ",
-                serial: "U9XQMQ1DXYT7LJIP",
-              },
-              {
-                name: "GMC_CITERNE_01",
-                color: "#ecc94b",
-                label: "Citerne d'arrosage ",
-                serial: "U9XQMQ1DXYT7LJIP",
-              },
+                serial: "C6XPYU0D920L1M07",
+              }
             ],
           }}
         />
       </Card>
-      <Card className="col-span-full row-span-3 flex flex-col gap-3 bg-red-500/50 p-4 2xl:col-span-3">
+      <Card className="col-span-full row-span-3 flex flex-col gap-3 p-4 2xl:col-span-3">
         <h3 className="text-center text-lg font-semibold">Comment</h3>
       </Card>
     </main>

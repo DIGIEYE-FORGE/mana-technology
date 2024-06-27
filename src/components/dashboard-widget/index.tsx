@@ -27,7 +27,7 @@ export const DashboardWidget = ({ widget }: DashboardWidgetProps) => {
   }
   if (widget.type === "tableWidget") {
     return (
-      <div className="flex-1">
+      <div className="h-1 flex-1">
         <TableWidget attributes={widget.attributes} />
       </div>
     );

@@ -5,8 +5,6 @@ import LineChartWidget from "@/components/line-chart-widget";
 import BarChartWidget from "@/components/bar-chart-widget";
 import MultiProgressWidget from "@/components/multi-progress-widget";
 import ProgressMultiple from "@/components/progress-multiple";
-import { format } from "date-fns";
-import { CalendarDays } from "lucide-react";
 
 export default function HomeDashboard() {
   return (
@@ -71,6 +69,7 @@ export default function HomeDashboard() {
         <h1 className="text-center text-lg font-semibold">Stérile / Minera</h1>
         <div className="flex-1">
           <BarChartWidget
+            // title="Daily Production BreakUp"
             attributes={{
               telemetries: [
                 {
@@ -81,14 +80,14 @@ export default function HomeDashboard() {
                   serial: "U9XQMQ1DXYT7LJIP",
                 },
                 {
-                  name: "EST_PLANIFIE_STERILE",
+                  name: "EST_REALISE_MINERAI",
                   unit: "T",
                   color: "#B98EFF",
                   label: "Minerai Realisé",
                   serial: "U9XQMQ1DXYT7LJIP",
                 },
                 {
-                  name: "EST_REALISE_MIENRAI",
+                  name: "EST_PLANIFIE_STERILE",
                   unit: "T",
                   color: "#FEC33A",
                   label: "Stérile Planifié",
@@ -206,9 +205,7 @@ export default function HomeDashboard() {
         </div>
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col gap-1 p-4 lg:col-span-8">
-        <h3 className="text-center text-lg font-semibold">
-          Disponibilité Engine
-        </h3>
+        <h3 className="text-center text-lg font-semibold">Suivi des Tirs</h3>
         <TableWidget
           className="h-1 flex-1"
           attributes={{
@@ -222,10 +219,6 @@ export default function HomeDashboard() {
               {
                 displayName: "Quantité d'explosif tirée (kg)",
                 telemetryName: "QUNTITE_EXPLOSIF_TIRE",
-              },
-              {
-                displayName: "Zone de Tir",
-                telemetryName: "ZONE DE TIRE",
               },
               {
                 displayName: "Tonnage Roche Abattu Minerai",
@@ -242,6 +235,7 @@ export default function HomeDashboard() {
               {
                 displayName: "Charge spécifique (g/t)",
                 telemetryName: "CHARGE_SPECIFIQUE",
+                displayFormat: "float",
               },
             ],
           }}
@@ -249,11 +243,11 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-4">
         <h1 className="text-center text-lg font-semibold">
-          Evolution Production cumule
+        Foration (ml)
         </h1>
         <div className="flex-1">
           <LineChartWidget
-            moyenne={"combined"}
+          moyenne={["EST_REALISE_FORATION", "EST_PLANIFIE_FORATION"]}
             attributes={{
               telemetries: [
                 {
@@ -378,19 +372,6 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col gap-3 p-4 2xl:col-span-3">
         <h3 className="text-center text-lg font-semibold">Comment</h3>
-        <div className="flex items-center gap-2">
-          <CalendarDays size={20} />
-          {format(new Date(), "PP p")}
-        </div>
-        <div className="h-1 flex-1 overflow-auto">
-          <q className="text-center">
-            {" "}
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde
-            distinctio, sed eos consequuntur sequi magnam nam quasi impedit
-            error perferendis rerum ducimus possimus perspiciatis voluptate
-            minima! Possimus adipiscialsdjlkajlkasddjlksajlkdj sdlfkjsdf dslkj{" "}
-          </q>
-        </div>
       </Card>
     </main>
   );
