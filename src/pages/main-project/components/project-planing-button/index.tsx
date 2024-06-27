@@ -35,11 +35,11 @@ const tabs = [
     title: "planning",
     subTabs: [
       {
-        title: "planning title 1",
+        title: "planning",
         image: "/public/dashboard3.png",
       },
       {
-        title: "planning title 2",
+        title: "planning",
         image: "/public/dashboard4.png",
       },
     ],
@@ -48,11 +48,11 @@ const tabs = [
     title: "risk",
     subTabs: [
       {
-        title: "risk title 1",
+        title: "Need updated chart  from Reminex ",
         image: "/public/dashboard5.png",
       },
       {
-        title: "risk title 2",
+        title: "risk",
         image: "/public/dashboard6.png",
       },
     ],
