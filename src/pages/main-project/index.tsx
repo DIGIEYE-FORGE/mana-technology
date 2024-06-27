@@ -14,6 +14,7 @@ import { env } from "@/utils/env";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import Line from "@/assets/line.svg?react";
+import ProjectPlaningButton from "./components/project-planing-button";
 function MainProjectUpBar() {
   return (
     <div className="group sticky top-0 z-10 flex h-up-bar w-full shrink-0 items-center gap-4 border-b px-6 backdrop-blur">
@@ -180,14 +181,14 @@ export default function MainProjectPage() {
     >
       <main className="relative mx-auto max-h-[1200px] w-full max-w-[1920px]">
         <MainProjectUpBar />
-        <div className="debug absolute right-4 top-[70%] flex h-[2rem] items-center gap-2 sm:hidden">
+        <div className="absolute right-4 top-[70%] flex h-[0.5rem] items-center gap-2">
           <span>100m</span>
           <Line />
         </div>
 
-        <div className="absolute top-[60%] flex w-[25rem] flex-col gap-4 px-[4rem] sm:hidden">
+        <div className="absolute top-[55%] z-[10] flex w-[25rem] flex-col gap-4 px-[4rem]">
           <button className="btn-3d w-fit">HSE</button>
-          <button className="btn-3d h-fit">Project Planning</button>
+          <ProjectPlaningButton />
         </div>
         <div className="flex h-full w-full flex-col gap-4">
           <div className="max-h-1/2 relative flex items-center justify-center">
@@ -268,7 +269,9 @@ export default function MainProjectPage() {
                 {(item.type === "information" ||
                   item.type === "identification") && (
                   <div className="flex flex-col p-4">
-                    <h1 className="text-lg font-bold">{item.title}</h1>
+                    <h1 className="text-lg font-bold text-[#FFE473]">
+                      {item.title}
+                    </h1>
                     {Object.entries(item?.attribute || {}).map(
                       ([key, value], index) => (
                         <div key={index} className="flex gap-2">
@@ -285,10 +288,10 @@ export default function MainProjectPage() {
             ))}
           </div>
           <div
-            className="debug relative flex-1"
+            className="relative flex-1"
             style={{
               backgroundImage: "url('/llustration.png')",
-              backgroundSize: "contain",
+              backgroundSize: "50% 80%",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
             }}
@@ -338,7 +341,7 @@ export default function MainProjectPage() {
               <OrbitControls enableRotate rotateSpeed={1} zoomToCursor />
             </Canvas>
             <div
-              className="absolute bottom-[0%] left-[10%] h-[10rem] w-[16rem]"
+              className="absolute bottom-[25%] left-[5%] h-[11rem] w-[16rem]"
               style={{
                 backgroundImage: "url(/vector.png)",
                 backgroundSize: "100% 100%",
@@ -346,7 +349,7 @@ export default function MainProjectPage() {
               }}
             >
               <div className="flex flex-col p-4">
-                <h1 className="text-lg font-bold">Plant</h1>
+                <h1 className="text-lg font-bold text-[#FFE473]">Plant</h1>
                 {Object.entries(tree?.attribute || {}).map(
                   ([key, value], index) => (
                     <div key={index} className="flex gap-2">
