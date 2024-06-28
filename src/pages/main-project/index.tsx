@@ -11,7 +11,7 @@ import { Suspense, useRef, useState } from "react";
 import { Loader3D } from "../tree";
 import Model from "@/components/models";
 import { env } from "@/utils/env";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import ProjectPlaningButton from "./components/project-planing-button";
 import {
@@ -36,6 +36,16 @@ function MainProjectUpBar() {
       </Link>
     </div>
   );
+}
+
+export function RotatingModel({ modelRef }: { modelRef: any }) {
+  useFrame(() => {
+    if (modelRef.current) {
+      modelRef.current.rotation.y += 0.002; // Adjust rotation speed as needed
+    }
+  });
+
+  return null; // This component doesn't render anything visible
 }
 
 export default function MainProjectPage() {
@@ -486,6 +496,7 @@ export default function MainProjectPage() {
                   onLoad={() => setLoading(false)}
                 />
               </Suspense>
+              <RotatingModel modelRef={modelRef} />
               <OrbitControls enableRotate rotateSpeed={1} zoomToCursor />
             </Canvas>
             <div

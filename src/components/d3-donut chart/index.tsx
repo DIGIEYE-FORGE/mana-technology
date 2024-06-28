@@ -166,7 +166,7 @@ export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
 
   if (isLoading)
     return (
-      <div className="line-clamp-1 flex h-full w-full items-center justify-center">
+      <div className="line-clamp-1 flex h-full w-full flex-1 items-center justify-center">
         <Loader />
       </div>
     );
