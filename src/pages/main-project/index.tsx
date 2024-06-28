@@ -13,7 +13,6 @@ import Model from "@/components/models";
 import { env } from "@/utils/env";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import Line from "@/assets/line.svg?react";
 import ProjectPlaningButton from "./components/project-planing-button";
 import {
   Popover,
@@ -39,9 +38,6 @@ function MainProjectUpBar() {
 }
 
 export default function MainProjectPage() {
-  const [dashboadSelected, setDashboardSelected] = useState<string | undefined>(
-    undefined,
-  );
   const magazine = [
     {
       name: "EST",
@@ -93,28 +89,14 @@ export default function MainProjectPage() {
       },
     },
     {
-      type: "video",
-      image: "/screen1.png",
-      position: {
-        top: "22%",
-        right: "29%",
-      },
-      url: "/est_video.mp4",
-      background: "url(/video.png)",
-      positionModel: {
-        side: "left",
-        align: "end",
-        sideOffset: -10,
-      },
-    },
-    {
+      title: "EST",
       type: "video",
       image: "/screen1.png",
       position: {
         bottom: "27%",
         left: "48%",
       },
-      url: "/est_video.mp4",
+      url: "",
       background: "url(/video.png)",
       positionModel: {
         side: "top",
@@ -137,13 +119,14 @@ export default function MainProjectPage() {
       background: "url(/shape2.png),url(/screen2.png)",
     },
     {
+      title: "SUD",
       type: "video",
       image: "/screen1.png",
       position: {
         bottom: "35%",
         right: "19%",
       },
-      url: "/est_video.mp4",
+      url: "/sud_vd.mp4",
       positionModel: {
         side: "left",
         align: "end",
@@ -152,6 +135,7 @@ export default function MainProjectPage() {
       background: "url(/video.png)",
     },
     {
+      title: "",
       type: "video",
       image: "/screen1.png",
       position: {
@@ -167,6 +151,7 @@ export default function MainProjectPage() {
       background: "url(/video.png)",
     },
     {
+      title: "plant",
       type: "video",
       image: "/video.png",
       position: {
@@ -292,11 +277,6 @@ export default function MainProjectPage() {
     >
       <main className="relative mx-auto max-h-[1200px] w-full max-w-[1920px]">
         <MainProjectUpBar />
-        <div className="absolute right-4 top-[70%] flex h-[0.5rem] items-center gap-2">
-          <span>100m</span>
-          <Line />
-        </div>
-
         <div className="absolute top-[55%] z-[10] flex w-[25rem] flex-col gap-4 px-[4rem]">
           <button className="btn-3d w-fit">HSE</button>
           <ProjectPlaningButton />
@@ -315,7 +295,6 @@ export default function MainProjectPage() {
                 style={{
                   ...item,
                 }}
-                onClick={() => setDashboardSelected(item.name)}
               >
                 <div
                   className="absolute bottom-20 right-1/2 z-10 translate-x-1/2 whitespace-nowrap px-2 py-0.5 font-bold"
@@ -333,40 +312,13 @@ export default function MainProjectPage() {
                 </div>
                 <div className="machine-highlight absolute bottom-0 aspect-square size-[8rem] w-full">
                   <div className="circle circle-3 relative h-full w-full">
-                    <Circle3
-                      className="rotate h-full w-full duration-1000"
-                      style={{
-                        stroke: dashboadSelected === item.name ? "#FFE473" : "",
-                        filter:
-                          dashboadSelected === item.name
-                            ? "drop-shadow(0px 0px 10px #96CFFE)"
-                            : "none",
-                      }}
-                    />
+                    <Circle3 className="rotate h-full w-full duration-1000" />
                   </div>
                   <div className="circle circle-2 relative h-full w-full">
-                    <Circle2
-                      className="rotate h-full w-full duration-1000"
-                      style={{
-                        stroke: dashboadSelected === item.name ? "#FFE473" : "",
-                        filter:
-                          dashboadSelected === item.name
-                            ? "drop-shadow(0px 0px 10px #96CFFE)"
-                            : "none",
-                      }}
-                    />
+                    <Circle2 className="rotate h-full w-full duration-1000" />
                   </div>
                   <div className="circle circle-1 relative h-full w-full">
-                    <Circle1
-                      className="rotate h-full w-full duration-1000"
-                      style={{
-                        stroke: dashboadSelected === item.name ? "#FFE473" : "",
-                        filter:
-                          dashboadSelected === item.name
-                            ? "drop-shadow(0px 0px 10px #96CFFE)"
-                            : "none",
-                      }}
-                    />
+                    <Circle1 className="rotate h-full w-full duration-1000" />
                   </div>
                   <Light className="absolute bottom-[40%] right-1/2 w-full translate-x-1/2" />
                 </div>
@@ -463,7 +415,7 @@ export default function MainProjectPage() {
                       </PopoverClose>
                       <div className="flex h-full flex-col gap-[3.5rem] pb-7 pl-11 pr-6 pt-2">
                         <div className="ml-auto flex h-14 w-[64%] shrink-0 items-center px-6 text-2xl font-semibold">
-                          {dashboadSelected}
+                          {item?.title}
                         </div>
                         {item?.type === "video" && item?.url && (
                           <video

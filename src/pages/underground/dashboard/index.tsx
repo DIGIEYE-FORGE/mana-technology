@@ -148,70 +148,69 @@ export default function UndergroundDashboardPage() {
           <Ventillation
             attribute={[
               {
-                telemetryName: "Energie",
-                labelTelemetry: "Energie",
-                serial: "DABF7PAT2G4BAG21",
+                telemetryName: "s=plc1_DB_Tag_NbVéhicule",
+                labelTelemetry: "Energie1",
+                serial: "GQKOD91C6LNG9UGM",
                 randomValue: 104,
                 unit: "kWh",
               },
               {
-                telemetryName: "Ventilateur_N°1",
+                telemetryName: "s=plc1_DB_Tag_ΣPwDiesel",
+                labelTelemetry: "Energie2",
+                serial: "GQKOD91C6LNG9UGM",
+                randomValue: 106,
+                unit: "kWh",
+              },
+              {
+                telemetryName: "s=Ventil1_Pw",
                 labelTelemetry: "Ventilateur N°1",
-                serial: "DABF7PAT2G4BAG21",
+                serial: "GQKOD91C6LNG9UGM",
                 randomValue: 0,
               },
               {
-                telemetryName: "Ventilateur_N°2",
+                telemetryName: "s=Ventil2_Pw",
                 labelTelemetry: "Ventilateur N°2",
-                serial: "DABF7PAT2G4BAG21",
+                serial: "GQKOD91C6LNG9UGM",
                 randomValue: 230,
               },
               {
-                telemetryName: "Oxygène",
+                telemetryName: "s=Plc2_O²",
                 randomValue: 19.6,
                 unit: "%",
                 labelTelemetry: "Oxygène",
-                serial: "DABF7PAT2G4BAG21",
+                serial: "GQKOD91C6LNG9UGM",
                 icon: "co2.svg",
               },
               {
-                telemetryName: "co2",
+                telemetryName: "s=Plc2_CO",
                 randomValue: 1,
                 unit: "ppm",
                 labelTelemetry: "co2",
-                serial: "DABF7PAT2G4BAG21",
+                serial: "GQKOD91C6LNG9UGM",
                 icon: "co2.svg",
               },
               {
-                telemetryName: "no2",
+                telemetryName: "s=Plc2_NO²",
                 randomValue: 0.5,
                 unit: "ppm",
                 labelTelemetry: "no2",
-                serial: "DABF7PAT2G4BAG21",
+                serial: "GQKOD91C6LNG9UGM",
                 icon: "co2.svg",
               },
               {
-                telemetryName: "T. Sèche",
+                telemetryName: "s=Plc2_T°S",
                 randomValue: 22.2,
                 unit: "°C",
                 labelTelemetry: "T. Sèche",
-                serial: "DABF7PAT2G4BAG21",
+                serial: "GQKOD91C6LNG9UGM",
                 icon: "seche.svg",
               },
               {
-                telemetryName: "T. Humide",
+                telemetryName: "s=Plc2_T°H",
                 randomValue: 21.9,
                 unit: "°C",
                 labelTelemetry: "T. Humide",
-                serial: "DABF7PAT2G4BAG21",
-                icon: "vites.svg",
-              },
-              {
-                telemetryName: "Vitesse de l’air",
-                randomValue: 0.2,
-                unit: "m/s",
-                labelTelemetry: "Vitesse de l’air",
-                serial: "DABF7PAT2G4BAG21",
+                serial: "GQKOD91C6LNG9UGM",
                 icon: "vites.svg",
               },
             ]}
@@ -390,7 +389,7 @@ export default function UndergroundDashboardPage() {
         <h3 className="text-center text-lg font-semibold">
           Disponibilité et utilisation des engins
         </h3>
-        <div className="mx-6 flex-1 p-1">
+        <div className="flex-1">
           <Engins
             attribute={[
               {

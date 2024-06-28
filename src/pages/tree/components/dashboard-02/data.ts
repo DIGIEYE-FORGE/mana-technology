@@ -13,15 +13,15 @@ export const widgetsData = {
       name: "Jumbo M20",
       telemetries: [
         {
-          name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+          name: "MECANISE_TIZERT_JUMBO_M20_PERC_DISPO",
           label: "Disponibilité",
-          serial: "U9XQMQ1DXYT7LJIP",
+          serial: "DABF7PAT2G4BAG21",
           color: "#cda943",
         },
         {
-          name: "GMC_FOREUSE_EPRIROC_T45_02_DISPO",
+          name: "MECANISE_TIZERT_JUMBO_M20_TAUX_D'UTILISATION",
           label: "Utilisation",
-          serial: "U9XQMQ1DXYT7LJIP",
+          serial: "DABF7PAT2G4BAG21",
           color: "#18a5c1",
         },
       ],
@@ -33,10 +33,10 @@ export const widgetsData = {
       telemetries: [
         {
           area: false,
-          name: "EST_PLANIFIE_FORATION",
+          name: "UG_FORATION_TIRS_VITESSE_DE_PENETRATION-min_par_m",
           color: "#cda943",
           label: "Objectif ML/J",
-          serial: "U9XQMQ1DXYT7LJIP",
+          serial: "DABF7PAT2G4BAG21",
         },
       ],
     },
@@ -47,10 +47,10 @@ export const widgetsData = {
       telemetries: [
         {
           area: false,
-          name: "EST_PLANIFIE_FORATION",
+          name: "MECANISE_TIZERT_JUMBO_M20_PERC_DISPO",
           color: "#cda943",
           label: "Objectif ML/J",
-          serial: "U9XQMQ1DXYT7LJIP",
+          serial: "DABF7PAT2G4BAG21",
         },
       ],
     },
@@ -61,10 +61,10 @@ export const widgetsData = {
       telemetries: [
         {
           area: false,
-          name: "EST_PLANIFIE_FORATION",
+          name: "MECANISE_TIZERT_JUMBO_M20_TAUX_D'UTILISATION",
           color: "#18a5c1",
           label: "Objectif ML/J",
-          serial: "U9XQMQ1DXYT7LJIP",
+          serial: "DABF7PAT2G4BAG21",
         },
       ],
     },
@@ -74,16 +74,10 @@ export const widgetsData = {
     attributes: {
       telemetries: [
         {
-          name: "EST_PLANIFIE_FORATION",
+          name: "UG_FORATION_TIRS_TEMPS_DE_FORATION-min",
           color: "#18a5c1",
           label: "Utilisation",
-          serial: "U9XQMQ1DXYT7LJIP",
-        },
-        {
-          name: "EST_PLANIFIE_FORATION",
-          color: "#cda943",
-          label: "Disponibilité",
-          serial: "U9XQMQ1DXYT7LJIP",
+          serial: "DABF7PAT2G4BAG21",
         },
       ],
     },
@@ -93,10 +87,10 @@ export const widgetsData = {
     attributes: {
       telemetries: [
         {
-          name: "EST_PLANIFIE_FORATION",
+          name: "UG_FORATION_TIRS_TEMPS_PERDU_ENTRE_TROUmin",
           color: "#18a5c1",
           label: "Utilisation",
-          serial: "U9XQMQ1DXYT7LJIP",
+          serial: "DABF7PAT2G4BAG21",
         },
       ],
     },

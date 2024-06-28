@@ -12,6 +12,7 @@ type MultipleProgressWidgetData = {
     name: string;
     label?: string;
     color?: string;
+    icon?: string;
   }[];
 };
 
@@ -73,7 +74,15 @@ export default function MultiProgressWidget({ attributes }: Widget) {
             key={index}
           >
             <div>
-              <img src="/truck.svg" alt="truck" />
+              <img
+                width="40"
+                height="40"
+                src={
+                  telemetries.find((t) => t.name === item?.name)?.icon ||
+                  "/truck.svg"
+                }
+                alt="truck"
+              />
             </div>
             <div key={index} className="flex-1 space-y-1">
               <div className="flex items-center gap-2">

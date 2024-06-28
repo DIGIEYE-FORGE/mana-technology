@@ -92,9 +92,10 @@ export function ProgressAccumulation({ attributes }: Widget) {
           },
         });
 
-      const finalTarget = endOfMountResult[0][accumulationTelemetryName];
-      const currentTarget = currentTargetResults[0][accumulationTelemetryName];
-      const progress = currentProgressResults[0][progressTelemetryName];
+      const finalTarget = endOfMountResult[0]?.[accumulationTelemetryName];
+      const currentTarget =
+        currentTargetResults[0]?.[accumulationTelemetryName];
+      const progress = currentProgressResults[0]?.[progressTelemetryName];
 
       return { currentTarget, finalTarget, progress } as Record<
         string,

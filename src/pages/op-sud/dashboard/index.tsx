@@ -152,7 +152,7 @@ export default function HomeDashboard() {
           Production cumulée par qualité
         </h1>
         <div className="flex-1">
-        <ProgressMultiple
+          <ProgressMultiple
             attributes={[
               {
                 title: "Sulfures (HG,MG,LG)",
@@ -278,73 +278,85 @@ export default function HomeDashboard() {
                 color: "#ecc94b",
                 label: "Foreuse Epiroc  T45 (1)",
                 serial: "C6XPYU0D920L1M07",
+                icon: "foreuse.svg",
               },
               {
                 name: "CADEX_CAMION60T_GROUPE",
                 color: "#ecc94b",
                 label: "Foreuse Epiroc  T45 (2)",
                 serial: "C6XPYU0D920L1M07",
+                icon: "foreuse.svg",
               },
               {
                 name: "CADEX_FOREUSE_DX700_01",
                 color: "#ecc94b",
                 label: "Foreuse Epiroc T35 ",
                 serial: "C6XPYU0D920L1M07",
+                icon: "foreuse.svg",
               },
               {
                 name: "CADEX_FOREUSE_DX700_02",
                 color: "#ecc94b",
                 label: "Pelle CAT 374 (1)",
                 serial: "C6XPYU0D920L1M07",
+                icon: "pelle.svg",
               },
               {
                 name: "CADEX_FOREUSE_EPIROCT35_01",
                 color: "#ecc94b",
                 label: "Pelle CAT 374 (2) ",
                 serial: "C6XPYU0D920L1M07",
+                icon: "pelle.svg",
               },
               {
                 name: "CADEX_PELLE_CAT320_02",
                 color: "#ecc94b",
                 label: "Pelle CAT 374 (3)",
                 serial: "C6XPYU0D920L1M07",
+                icon: "pelle.svg",
               },
               {
                 name: "CADEX_PELLE_DOSAN_01",
                 color: "#ecc94b",
                 label: "Pelle CAT 350 (1)",
                 serial: "C6XPYU0D920L1M07",
+                icon: "pelle.svg",
               },
               {
                 name: "CADEX_PELLE_HYUNDAI_01",
                 color: "#ecc94b",
                 label: "Pelle CAT 350",
                 serial: "C6XPYU0D920L1M07",
+                icon: "pelle.svg",
               },
               {
                 name: "CADEX_PELLE_SANY_01",
                 color: "#ecc94b",
-                label: " Pelle CAT ",
+                label: "Pelle CAT ",
                 serial: "C6XPYU0D920L1M07",
+                icon: "pelle.svg",
               },
               {
                 name: "CADEX_PELLE_SANY_02",
                 color: "#ecc94b",
                 label: "Camions Scania 50t (15)",
                 serial: "C6XPYU0D920L1M07",
+                icon: "camions.svg",
               },
               {
                 name: "CADEX_PELLE_VOLVO380_01",
                 color: "#ecc94b",
-                label: "D8 ",
+                label: "D8",
                 serial: "C6XPYU0D920L1M07",
+                icon: "d8.svg",
               },
               {
                 name: "CADEX_PELLE_VOLVO480_01",
                 color: "#ecc94b",
                 label: "D8 (2)",
                 serial: "C6XPYU0D920L1M07",
-              }
+                icon: "d8.svg",
+              },
             ],
           }}
         />

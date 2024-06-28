@@ -97,7 +97,7 @@ export const BarChart = ({ attributes }: QualitAirProps) => {
         dataLabels: {
           enabled: true, // Enable data labels
           formatter: function (val) {
-            return val + "°C"; // Format the label to include °C
+            return Number(val).toFixed(1) + "°C";
           },
           offsetY: 30,
           style: {
@@ -130,6 +130,18 @@ export const BarChart = ({ attributes }: QualitAirProps) => {
           tickAmount: 1,
           axisBorder: { show: false },
           axisTicks: { show: false },
+          labels: {
+            show: true,
+            style: {
+              fontSize: "12px",
+              fontFamily: "Helvetica, Arial, sans-serif",
+              fontWeight: 400,
+              cssClass: "apexcharts-yaxis-label",
+            },
+            formatter: function (val) {
+              return Number(val).toFixed(1);
+            },
+          },
         },
 
         fill: {

@@ -14,7 +14,8 @@ interface VentillationProps {
       | "T. Sèche"
       | "T. Humide"
       | "Vitesse de l’air"
-      | "Energie"
+      | "Energie1"
+      | "Energie2"
       | "Ventilateur N°1"
       | "Ventilateur N°2";
 
@@ -60,9 +61,12 @@ function Ventillation({ attribute }: VentillationProps) {
           return {
             name: labelTelemetry,
             value:
-              (res?.results[0]?.value ?? randomValue ?? "--") +
-              "" +
-              (unit || ""),
+              res?.results[0]?.value &&
+              (Number(res?.results[0]?.value).toFixed(2) ??
+                randomValue ??
+                "--") +
+                "" +
+                (unit || ""),
             icon,
           };
         }),
@@ -86,12 +90,21 @@ function Ventillation({ attribute }: VentillationProps) {
     );
   return (
     <div className="flex w-full flex-col gap-2">
-      <div className="flex items-center justify-center gap-2">
-        <img src="/energy.svg" alt="" width={20} height={20} />
-        Energie
-        <span className="text-[#FAAC18]">
-          {data?.find((item) => item?.name === "Energie")?.value ?? "--"}
-        </span>
+      <div className="flex items-start [&>*]:flex-1">
+        <div className="flex items-center justify-center gap-2">
+          <img src="/energy.svg" alt="" width={15} height={15} />
+          Energie
+          <span className="text-[#FAAC18]">
+            {data?.find((item) => item?.name === "Energie1")?.value ?? "--"}
+          </span>
+        </div>
+        <div className="flex items-center justify-center gap-2">
+          <img src="/energy.svg" alt="" width={15} height={15} />
+          Energie
+          <span className="text-[#FAAC18]">
+            {data?.find((item) => item?.name === "Energie2")?.value ?? "--"}
+          </span>
+        </div>
       </div>
       <div className="flex gap-2 divide-x-2 divide-white [&>*]:px-2">
         <div className="flex flex-1 items-center gap-2">
@@ -155,7 +168,8 @@ function Ventillation({ attribute }: VentillationProps) {
             (item) =>
               item?.name !== "Ventilateur N°1" &&
               item?.name !== "Ventilateur N°2" &&
-              item?.name !== "Energie",
+              item?.name !== "Energie1" &&
+              item?.name !== "Energie2",
           )
           .map((item, index) => (
             <div className="flex flex-col items-center" key={index}>
