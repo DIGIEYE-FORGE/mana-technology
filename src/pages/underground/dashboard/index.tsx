@@ -116,9 +116,16 @@ export default function UndergroundDashboardPage() {
             attribute={[
               {
                 telemetryName: "Energie",
-                labelTelemetry: "Energie",
+                labelTelemetry: "Energie1",
                 serial: "DABF7PAT2G4BAG21",
                 randomValue: 104,
+                unit: "kWh",
+              },
+              {
+                telemetryName: "Energie",
+                labelTelemetry: "Energie2",
+                serial: "DABF7PAT2G4BAG21",
+                randomValue: 106,
                 unit: "kWh",
               },
               {
@@ -170,14 +177,6 @@ export default function UndergroundDashboardPage() {
                 randomValue: 21.9,
                 unit: "°C",
                 labelTelemetry: "T. Humide",
-                serial: "DABF7PAT2G4BAG21",
-                icon: "vites.svg",
-              },
-              {
-                telemetryName: "Vitesse de l’air",
-                randomValue: 0.2,
-                unit: "m/s",
-                labelTelemetry: "Vitesse de l’air",
                 serial: "DABF7PAT2G4BAG21",
                 icon: "vites.svg",
               },
