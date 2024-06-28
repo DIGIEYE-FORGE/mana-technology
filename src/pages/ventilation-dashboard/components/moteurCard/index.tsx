@@ -48,10 +48,12 @@ export const MoteurCard = (props: Props) => {
       return (
         res.map((item, index) => {
           const name = telemetries[index].name;
-          console.log("item: ", name);
           return {
             data: item.map((item) => {
-              return Number(flatten(item)[name]);
+              return {
+                x: new Date(item.createdAt),
+                y: Number(flatten(item)[name]),
+              };
             }),
           };
         }) || []
@@ -76,6 +78,7 @@ export const MoteurCard = (props: Props) => {
   }
 
   const finalData = data?.[0]?.data || [];
+  const yaxisMax = Math.max(...finalData.map((item) => item.y)) + 50;
 
   return (
     <ReactApexChart
@@ -87,6 +90,7 @@ export const MoteurCard = (props: Props) => {
           borderColor: "#797979", // Adjust grid color to be more visible against the dark background
           xaxis: { lines: { show: false } }, // Hide x-axis grid lines
           yaxis: { lines: { show: true } }, // Hide y-axis grid lines
+          padding: { top: -15 }, // Remove padding around the chart
         },
         chart: {
           background: "transparent",
@@ -102,15 +106,13 @@ export const MoteurCard = (props: Props) => {
           type: "solid",
         },
         xaxis: {
-          type: "numeric",
+          type: "datetime",
+          max: dateRange?.to ? new Date(dateRange?.to).getTime() : undefined,
           axisBorder: { show: false },
           axisTicks: { show: false },
           labels: {
             showDuplicates: false,
             show: true,
-            formatter(value: string) {
-              return Number(value).toFixed(0);
-            },
             style: {
               fontSize: "12px",
               fontFamily: "Helvetica, Arial, sans-serif",
@@ -121,7 +123,7 @@ export const MoteurCard = (props: Props) => {
         },
         yaxis: {
           min: 0,
-          max: finalData.length > 0 ? Math.max(...finalData) + 50 : 100,
+          max: yaxisMax,
           tickAmount: 1,
           labels: {
             show: true,
