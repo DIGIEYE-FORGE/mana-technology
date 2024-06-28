@@ -174,7 +174,7 @@ export default function HomeDashboard() {
           />
         </div>
       </Card>
-      <Card className="col-span-full row-span-3 p-4 lg:col-span-8">
+      <Card className="col-span-full row-span-3 flex flex-col p-4 lg:col-span-8">
         <h3 className="text-center text-lg font-semibold">Suivi des Tirs</h3>
         <TableWidget
           className="h-1 flex-1"

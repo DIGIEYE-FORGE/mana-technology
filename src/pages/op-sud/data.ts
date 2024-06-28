@@ -186,7 +186,7 @@ export const homePageWidgets: Widget[] = [
   {
     type: "tableWidget",
     title: "Suivi des Tirs",
-    className: "col-span-full row-span-3 p-4 lg:col-span-8",
+    className: "col-span-full row-span-3 p-4 lg:col-span-8 ",
     attributes: {
       serial: "C6XPYU0D920L1M07",
       element: "telemetries",
