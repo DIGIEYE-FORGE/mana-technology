@@ -142,7 +142,7 @@ export default function BarLineWidget(props: Props) {
 
         stroke: {
           width: (data || []).map((item) =>
-            item.type === "line" || item.type === "area" ? 4 : 0,
+            item.type === "line" || item.type === "area" ? 2.5 : 0,
           ),
           curve: "smooth",
         },

@@ -139,7 +139,7 @@ export default function BarChartWidget(props: Props) {
           },
         },
         stroke: {
-          width: (data || []).map((item) => (item.type === "line" ? 4 : 0)),
+          width: (data || []).map((item) => (item.type === "line" ? 2.5 : 0)),
           curve: "smooth",
         },
         grid: {
