@@ -42,23 +42,23 @@ export default function HomeDashboard() {
         </h1>
         <div className="flex-1">
           <BarChartWidget
-            moyenne={["EST11_REALISE_ROCHE", "EST12_REALISE_ROCHE"]}
+            moyenne={["SUD_REALISE_ROCHE", "EST_REALISE_ROCHE_Ton"]}
             attributes={{
               stacked: true,
               telemetries: [
                 {
-                  name: "EST11_REALISE_ROCHE",
+                  name: "EST_REALISE_ROCHE_Ton",
                   unit: "T",
                   color: "#78F6EA",
-                  label: "Est 11",
+                  label: "Est",
                   serial: "U9XQMQ1DXYT7LJIP",
                 },
                 {
-                  name: "EST12_REALISE_ROCHE",
+                  name: "SUD_REALISE_ROCHE",
                   unit: "T",
                   color: "#B98EFF",
-                  label: "Est 12",
-                  serial: "U9XQMQ1DXYT7LJIP",
+                  label: "Sud",
+                  serial: "C6XPYU0D920L1M07",
                 },
               ],
             }}
@@ -66,7 +66,7 @@ export default function HomeDashboard() {
         </div>
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-5">
-        <h1 className="text-center text-lg font-semibold">Stérile / Minera</h1>
+        <h1 className="text-center text-lg font-semibold">Stérile / Minerai</h1>
         <div className="flex-1">
           <BarChartWidget
             // title="Daily Production BreakUp"
@@ -209,7 +209,7 @@ export default function HomeDashboard() {
         <TableWidget
           className="h-1 flex-1"
           attributes={{
-            serial: "AATT1JKEZ2V1YVMA",
+            serial: "TIRSIL71OBOT4UB4",
             element: "telemetries",
             mappings: [
               {
@@ -241,6 +241,7 @@ export default function HomeDashboard() {
                 telemetryName: "CHARGE_SPECIFIQUE",
                 displayFormat: "float",
               },
+              
             ],
           }}
         />

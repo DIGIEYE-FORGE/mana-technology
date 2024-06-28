@@ -344,18 +344,6 @@ export default function HomeDashboard() {
                 color: "#ecc94b",
                 label: "D8 (2)",
                 serial: "C6XPYU0D920L1M07",
-              },
-              {
-                name: "CHARGE_INSTANTANEE",
-                color: "#ecc94b",
-                label: "Niveleuse ",
-                serial: "C6XPYU0D920L1M07",
-              },
-              {
-                name: "CHARGE_SPECIFIQUE",
-                color: "#ecc94b",
-                label: "Compacteur ",
-                serial: "C6XPYU0D920L1M07",
               }
             ],
           }}
