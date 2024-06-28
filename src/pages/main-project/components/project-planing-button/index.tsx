@@ -16,6 +16,15 @@ const tabs = [
     ],
   },
   {
+    title: "Performance",
+    subTabs: [
+      {
+        title: "Performance Indicators",
+        image: "/dashboard8.png",
+      },
+    ],
+  },
+  {
     title: "progress",
     subTabs: [
       {
@@ -56,15 +65,6 @@ const tabs = [
       {
         title: "cost",
         image: "/dashboard7.png",
-      },
-    ],
-  },
-  {
-    title: "Performance",
-    subTabs: [
-      {
-        title: "Performance Indicators",
-        image: "/dashboard8.png",
       },
     ],
   },
