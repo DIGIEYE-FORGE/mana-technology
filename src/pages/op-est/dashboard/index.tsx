@@ -370,14 +370,14 @@ export default function HomeDashboard() {
                 color: "#ecc94b",
                 label: "Compacteur",
                 serial: "U9XQMQ1DXYT7LJIP",
-                icon: "compacteur.svg",
+                icon: "compacteuse.svg",
               },
               {
                 name: "GMC_CITERNE_01",
                 color: "#ecc94b",
                 label: "Citerne d'arrosage ",
                 serial: "U9XQMQ1DXYT7LJIP",
-                icon: "compacteur.svg",
+                icon: "compacteuse.svg",
               },
             ],
           }}

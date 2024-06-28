@@ -176,7 +176,7 @@ export default function LineChartWidget({
           labels: {
             show: true,
             formatter: function (value) {
-              return Math.ceil(value) + " ";
+              return value < 2 ? value.toFixed(1) : Math.ceil(value) + " ";
             },
             style: {
               fontSize: "12px",

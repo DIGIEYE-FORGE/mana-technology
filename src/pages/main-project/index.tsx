@@ -11,7 +11,7 @@ import { Suspense, useRef, useState } from "react";
 import { Loader3D } from "../tree";
 import Model from "@/components/models";
 import { env } from "@/utils/env";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import ProjectPlaningButton from "./components/project-planing-button";
 import {
@@ -20,6 +20,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import HseButton from "./components/hse-button";
 function MainProjectUpBar() {
   return (
     <div className="group sticky top-0 z-10 flex h-up-bar w-full shrink-0 items-center gap-4 border-b px-6 backdrop-blur">
@@ -35,6 +36,16 @@ function MainProjectUpBar() {
       </Link>
     </div>
   );
+}
+
+export function RotatingModel({ modelRef }: { modelRef: any }) {
+  useFrame(() => {
+    if (modelRef.current) {
+      modelRef.current.rotation.y += 0.002; // Adjust rotation speed as needed
+    }
+  });
+
+  return null; // This component doesn't render anything visible
 }
 
 export default function MainProjectPage() {
@@ -281,7 +292,7 @@ export default function MainProjectPage() {
           <img src="/main_img.jpeg" alt="logo" className="object-cover" />
         </div>
         <div className="absolute top-[55%] z-[10] flex w-[25rem] flex-col gap-4 px-[4rem]">
-          <button className="btn-3d w-fit">HSE</button>
+          <HseButton />
           <ProjectPlaningButton />
         </div>
         <div className="flex h-full w-full flex-col gap-4">
@@ -485,6 +496,7 @@ export default function MainProjectPage() {
                   onLoad={() => setLoading(false)}
                 />
               </Suspense>
+              <RotatingModel modelRef={modelRef} />
               <OrbitControls enableRotate rotateSpeed={1} zoomToCursor />
             </Canvas>
             <div

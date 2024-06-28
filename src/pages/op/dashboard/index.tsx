@@ -273,7 +273,7 @@ export default function HomeDashboard() {
           />
         </div>
       </Card>
-      <Card className="col-span-full row-span-3 flex flex-col gap-3 p-4 2xl:col-span-3">
+      <Card className="col-span-full row-span-6 flex flex-col gap-3 p-4 2xl:col-span-3">
         <h3 className="text-center text-lg font-semibold">
           Disponibilité Engine
         </h3>
@@ -376,7 +376,7 @@ export default function HomeDashboard() {
                 color: "#ecc94b",
                 label: "Compacteur",
                 serial: "U9XQMQ1DXYT7LJIP",
-                icon: "compacteur.svg",
+                icon: "compacteuse.svg",
               },
               {
                 name: "GMC_CITERNE_01",
@@ -387,9 +387,6 @@ export default function HomeDashboard() {
             ],
           }}
         />
-      </Card>
-      <Card className="col-span-full row-span-3 flex flex-col gap-3 p-4 2xl:col-span-3">
-        <h3 className="text-center text-lg font-semibold">Comment</h3>
       </Card>
     </main>
   );
