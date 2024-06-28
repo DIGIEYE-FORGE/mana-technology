@@ -177,7 +177,7 @@ export function ConeChart({
           })}
         </div>
       </div>
-      {/* <div className="flex w-52 flex-wrap items-center justify-evenly">
+      <div className="flex w-52 flex-wrap items-center justify-evenly">
         {data.map((item, index) => {
           return (
             <ProgressCircle
@@ -190,7 +190,7 @@ export function ConeChart({
             />
           );
         })}
-      </div> */}
+      </div>
     </div>
   );
 }
