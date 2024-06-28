@@ -135,14 +135,14 @@ export default function MainProjectPage() {
       background: "url(/video.png)",
     },
     {
-      title: "",
+      title: "EST",
       type: "video",
       image: "/screen1.png",
       position: {
-        bottom: "32%",
-        left: "22%",
+        top: "22%",
+        right: "29%",
       },
-      url: "/est_video.mp4",
+      url: "/est_vd.mp4",
       positionModel: {
         side: "left",
         align: "end",
@@ -277,6 +277,9 @@ export default function MainProjectPage() {
     >
       <main className="relative mx-auto max-h-[1200px] w-full max-w-[1920px]">
         <MainProjectUpBar />
+        <div className="absolute bottom-0 right-4 aspect-video w-[16rem]">
+          <img src="/main_img.jpeg" alt="logo" className="object-cover" />
+        </div>
         <div className="absolute top-[55%] z-[10] flex w-[25rem] flex-col gap-4 px-[4rem]">
           <button className="btn-3d w-fit">HSE</button>
           <ProjectPlaningButton />
