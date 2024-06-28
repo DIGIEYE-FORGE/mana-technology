@@ -1,43 +1,97 @@
-import { useState } from "react";
-function Ventillation() {
-  const [data] = useState([
-    {
-      icon: "/co2.svg",
-      name: "Oxygène",
-      value: "19.6%",
+import { useAppContext } from "@/Context";
+import useSWR from "swr";
+import Loader from "../loader";
+
+interface VentillationProps {
+  attribute: {
+    telemetryName: string;
+    serial: string;
+    labelTelemetry:
+      | "Oxygène"
+      | "co2"
+      | "no2"
+      | "Energie"
+      | "T. Sèche"
+      | "T. Humide"
+      | "Vitesse de l’air"
+      | "Energie"
+      | "Ventilateur N°1"
+      | "Ventilateur N°2";
+
+    icon?: string;
+    randomValue?: number;
+    unit?: "m/s" | "ppm" | "%" | "°C" | "RPM" | "kw" | "m3/h" | "kWh" | "m3";
+  }[];
+}
+function Ventillation({ attribute }: VentillationProps) {
+  const { backendApi } = useAppContext();
+  const { data, isLoading, error } = useSWR(
+    `telemetryDonutChartProps${JSON.stringify(attribute)}`,
+    async () => {
+      if (!attribute?.length) return [];
+      const res1 = await Promise.all(
+        attribute.map(async (device) => {
+          // const { name, label, color, serial } = device;
+          const {
+            telemetryName,
+            labelTelemetry,
+            icon,
+            unit,
+            randomValue,
+            serial,
+          } = device;
+          const res = await backendApi.findMany<{
+            name: string;
+            value: number;
+          }>("lasttelemetry", {
+            where: {
+              name: telemetryName,
+              device: { serial },
+            },
+            select: { name: true, value: true },
+            orderBy: {
+              createdAt: "desc",
+            },
+            pagination: {
+              page: 1,
+              perPage: 1,
+            },
+          });
+          return {
+            name: labelTelemetry,
+            value:
+              (res?.results[0]?.value ?? randomValue ?? "--") +
+              "" +
+              (unit || ""),
+            icon,
+          };
+        }),
+      );
+      return res1;
     },
-    {
-      icon: "/co2.svg",
-      name: "co2",
-      value: "1 ppm",
-    },
-    {
-      icon: "/co2.svg",
-      name: "no2",
-      value: "0.5 ppm",
-    },
-    {
-      icon: "seche.svg",
-      name: "T. Sèche",
-      value: "22.2 °C",
-    },
-    {
-      icon: "vites.svg",
-      name: "T. Humide",
-      value: "21.9 °C",
-    },
-    {
-      icon: "vites.svg",
-      name: "Vitesse de l’air",
-      value: "0.2 m/s",
-    },
-  ]);
+  );
+
+  if (isLoading)
+    return (
+      <div className="flex h-full w-full items-center justify-center">
+        <Loader />
+      </div>
+    );
+
+  if (error)
+    return (
+      <div className="flex h-full w-full items-center justify-center">
+        failed to load
+      </div>
+    );
   return (
     <div className="flex w-full flex-col gap-2">
       <div className="flex items-center justify-center gap-2">
         <img src="/energy.svg" alt="" width={20} height={20} />
         Energie
-        <span className="text-[#FAAC18]">150kw</span>
+        <span className="text-[#FAAC18]">
+          {data?.find((item) => item?.name === "Energie")?.value ?? "--"}
+        </span>
       </div>
       <div className="flex gap-2 divide-x-2 divide-white [&>*]:px-2">
         <div className="flex flex-1 items-center gap-2">
@@ -45,7 +99,10 @@ function Ventillation() {
           <div className="flex flex-col">
             <h3 className="font-semibold">Ventilateur N°1</h3>
             <h3 className="flex gap-2 text-xl font-bold text-[#FAAC18]">
-              <span>--</span>
+              <span>
+                {data?.find((item) => item?.name === "Ventilateur N°1")
+                  ?.value ?? "--"}
+              </span>
               <span className="space-x-2">RPM</span>
             </h3>
             <div className="flex gap-2 text-xs">
@@ -69,7 +126,10 @@ function Ventillation() {
           <div className="flex flex-col">
             <h3 className="font-semibold">Ventilateur N°2</h3>
             <h3 className="flex gap-2 text-xl font-bold text-[#FAAC18]">
-              <span>25</span>
+              <span>
+                {data?.find((item) => item?.name === "Ventilateur N°2")
+                  ?.value ?? "--"}
+              </span>
               <span className="space-x-2">RPM</span>
             </h3>
             <div className="flex gap-2 text-xs">
@@ -90,21 +150,28 @@ function Ventillation() {
         </div>
       </div>
       <div className="flex w-full flex-wrap justify-between">
-        {data.map((item, index) => (
-          <div className="flex flex-col items-center" key={index}>
-            <div className="rounded-full bg-[#061781] p-3">
-              <img
-                src={item.icon ? item.icon : "/co2.svg"}
-                alt=""
-                width={25}
-                height={25}
-              />
-            </div>
+        {data
+          ?.filter(
+            (item) =>
+              item?.name !== "Ventilateur N°1" &&
+              item?.name !== "Ventilateur N°2" &&
+              item?.name !== "Energie",
+          )
+          .map((item, index) => (
+            <div className="flex flex-col items-center" key={index}>
+              <div className="rounded-full bg-[#061781] p-3">
+                <img
+                  src={item?.icon ? item?.icon : "/co2.svg"}
+                  alt=""
+                  width={25}
+                  height={25}
+                />
+              </div>
 
-            <h3 className="text-sm font-light">{item.name}</h3>
-            <h3 className="text-[#FAAC18]">{item.value}</h3>
-          </div>
-        ))}
+              <h3 className="text-sm font-light">{item?.name}</h3>
+              <h3 className="text-[#FAAC18]">{item?.value}</h3>
+            </div>
+          ))}
       </div>
     </div>
   );

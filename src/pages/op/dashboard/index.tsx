@@ -241,7 +241,6 @@ export default function HomeDashboard() {
                 telemetryName: "CHARGE_SPECIFIQUE",
                 displayFormat: "float",
               },
-              
             ],
           }}
         />
