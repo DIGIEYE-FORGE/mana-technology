@@ -281,7 +281,7 @@ export default function MainProjectPage() {
     <main
       className="relative flex flex-col gap-2 pb-6 2xl:overflow-hidden"
       style={{
-        backgroundImage: "url('/sceen24.png')",
+        // backgroundImage: "url('/sceen24.png')",
         backgroundSize: "100% 100%",
         backgroundRepeat: "no-repeat",
       }}
