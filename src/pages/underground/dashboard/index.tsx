@@ -81,6 +81,7 @@ export default function UndergroundDashboardPage() {
         <div className="w-full text-center text-xs text-gray-400"></div>
         <div className="flex-1">
           <LinesWidget
+            yAxis="one"
             attributes={{
               stacked: true,
               telemetries: [
