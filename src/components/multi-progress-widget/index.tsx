@@ -75,6 +75,8 @@ export default function MultiProgressWidget({ attributes }: Widget) {
           >
             <div>
               <img
+                width="40"
+                height="40"
                 src={
                   telemetries.find((t) => t.name === item?.name)?.icon ||
                   "/truck.svg"

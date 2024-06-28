@@ -124,7 +124,6 @@ export default function HomeDashboard() {
                     serial: "C6XPYU0D920L1M07",
                     label: "HG",
                     color: "#FFDC8C",
-                    // showLabel: true, if you need to show label
                   },
                   {
                     name: "SUD4_REALISE_ORE_MG_SULF",

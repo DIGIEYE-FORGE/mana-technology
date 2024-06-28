@@ -242,12 +242,10 @@ export default function HomeDashboard() {
         />
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-4">
-        <h1 className="text-center text-lg font-semibold">
-        Foration (ml)
-        </h1>
+        <h1 className="text-center text-lg font-semibold">Foration (ml)</h1>
         <div className="flex-1">
           <LineChartWidget
-          moyenne={["EST_REALISE_FORATION", "EST_PLANIFIE_FORATION"]}
+            moyenne={["EST_REALISE_FORATION", "EST_PLANIFIE_FORATION"]}
             attributes={{
               telemetries: [
                 {
@@ -281,90 +279,105 @@ export default function HomeDashboard() {
                 color: "#ecc94b",
                 label: "Foreuse Epiroc  T45 (1)",
                 serial: "U9XQMQ1DXYT7LJIP",
+                icon: "foreuse.svg",
               },
               {
                 name: "GMC_FOREUSE_EPRIROC_T45_02_DISPO",
                 color: "#ecc94b",
                 label: "Foreuse Epiroc  T45 (2)",
                 serial: "U9XQMQ1DXYT7LJIP",
+                icon: "foreuse.svg",
               },
               {
                 name: "GMC_FOREUSE_EPRIROC_T35_01_DISPO",
                 color: "#ecc94b",
                 label: "Foreuse Epiroc T35 ",
                 serial: "U9XQMQ1DXYT7LJIP",
+                icon: "foreuse.svg",
               },
               {
                 name: "GMC_PELLE_CAT374_01_DISPO",
                 color: "#ecc94b",
                 label: "Pelle CAT 374 (1)",
                 serial: "U9XQMQ1DXYT7LJIP",
+                icon: "pelle.svg",
               },
               {
                 name: "GMC_PELLE_CAT374_02_DISPO",
                 color: "#ecc94b",
                 label: "Pelle CAT 374 (2) ",
                 serial: "U9XQMQ1DXYT7LJIP",
+                icon: "pelle.svg",
               },
               {
                 name: "GMC_PELLE_CAT374_03_DISPO",
                 color: "#ecc94b",
                 label: "Pelle CAT 374 (3)",
                 serial: "U9XQMQ1DXYT7LJIP",
+                icon: "pelle.svg",
               },
               {
                 name: "GMC_PELLE_CAT350_01_DISPO",
                 color: "#ecc94b",
                 label: "Pelle CAT 350 (1)",
                 serial: "U9XQMQ1DXYT7LJIP",
+                icon: "pelle.svg",
               },
               {
                 name: "GMC_PELLE_CAT350_02_DISPO",
                 color: "#ecc94b",
                 label: "Pelle CAT 350",
                 serial: "U9XQMQ1DXYT7LJIP",
+                icon: "pelle.svg",
               },
               {
                 name: "GMC_PELLE_CAT_0000_01",
                 color: "#ecc94b",
                 label: " Pelle CAT ",
                 serial: "U9XQMQ1DXYT7LJIP",
+                icon: "pelle.svg",
               },
               {
                 name: "GMC_CAMIONS_SCANIA50T_GROUPE",
                 color: "#ecc94b",
                 label: "Camions Scania 50t (15)",
                 serial: "U9XQMQ1DXYT7LJIP",
+                icon: "camions.svg",
               },
               {
                 name: "GMC_DOZER_D8_01",
                 color: "#ecc94b",
                 label: "D8 ",
                 serial: "U9XQMQ1DXYT7LJIP",
+                icon: "d8.svg",
               },
               {
                 name: "GMC_DOZER_D8_02",
                 color: "#ecc94b",
                 label: "D8 (2)",
                 serial: "U9XQMQ1DXYT7LJIP",
+                icon: "d8.svg",
               },
               {
                 name: "GMC_NIVELEUSE_01",
                 color: "#ecc94b",
                 label: "Niveleuse ",
                 serial: "U9XQMQ1DXYT7LJIP",
+                icon: "niveleuse.svg",
               },
               {
                 name: "GMC_COMPACTEUR_01",
                 color: "#ecc94b",
-                label: "Compacteur ",
+                label: "Compacteur",
                 serial: "U9XQMQ1DXYT7LJIP",
+                icon: "compacteur.svg",
               },
               {
                 name: "GMC_CITERNE_01",
                 color: "#ecc94b",
                 label: "Citerne d'arrosage ",
                 serial: "U9XQMQ1DXYT7LJIP",
+                icon: "compacteur.svg",
               },
             ],
           }}
