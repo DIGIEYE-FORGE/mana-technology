@@ -4,6 +4,8 @@ import { BarChart } from "./components/bar-chart";
 import { data, qualitédair, ventilation } from "./data";
 import { QualitAir } from "./components/qualite-air";
 import { VentilationCard } from "./components/ventilation-card";
+import { cn } from "@/lib/utils";
+// import LineChartWidget from "@/components/line-chart-widget";
 
 const VentilationDashboard = () => {
   return (
@@ -13,11 +15,18 @@ const VentilationDashboard = () => {
           <h1 className="text-center text-lg font-semibold">{item.title}</h1>
           <div className="grid flex-1 auto-rows-[1rem] gap-2">
             {item.children.map((child, index) => (
-              <div key={index} className="row-span-4 flex flex-col">
+              <div
+                key={index}
+                className={cn(
+                  "row-span-4 flex flex-col",
+                  index !== 0 && "pt-4",
+                )}
+              >
                 <h4 className="text-left text-xs font-semibold">
                   {child.title}
                 </h4>
                 <MoteurCard color={child.color} attributes={child.attributes} />
+                {/* <LineChartWidget attributes={child.attributes} /> */}
               </div>
             ))}
           </div>
