@@ -1,45 +1,16 @@
 import { Card } from "@/components/card";
-import { HorizontalBarChart } from "@/components/horizontal-bar-chart";
-
-const groups = [
-  {
-    name: "Arrachement",
-    telemetries: [
-      {
-        name: "Réalisé",
-        value: 400,
-        color: "#FFDC8C",
-      },
-      {
-        name: "Fore",
-        value: 600,
-        color: "#25A18E",
-      },
-    ],
-  },
-  {
-    name: "Arrachement",
-    telemetries: [
-      {
-        name: "Réalisé",
-        value: 400,
-        color: "green",
-      },
-      {
-        name: "Planne",
-        value: 600,
-        color: "yellow",
-      },
-    ],
-  },
-];
+import FlipCountdown from "@rumess/react-flip-countdown";
 
 function IselDevPage() {
   return (
     <main className="grid h-full place-content-center">
-      <Card className="flex aspect-square w-96 flex-col gap-4 p-6">
-        <h3 className="text-xl font-semibold">Performance avancement</h3>
-        <HorizontalBarChart data={groups} className="h-1 flex-1 gap-8" />
+      <Card className="flex aspect-square w-[30rem] flex-col gap-4 p-6">
+        <FlipCountdown
+          hideYear
+          hideMonth
+          theme="dark"
+          endAt={"2024-12-12 01:26:58"}
+        />
       </Card>
     </main>
   );
