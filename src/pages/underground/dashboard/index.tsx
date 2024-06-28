@@ -347,11 +347,11 @@ export default function UndergroundDashboardPage() {
           />
         </div>
       </Card>
-      <Card className="col-span-3 flex flex-col gap-2 p-2">
+      <Card className="col-span-3 flex flex-col gap-2 px-4 pt-2">
         <h3 className="text-center text-lg font-semibold">
           Disponibilité et utilisation des engins
         </h3>
-        <div className="mx-6 flex-1 p-1">
+        <div className="flex-1">
           <Engins
             attribute={[
               {
