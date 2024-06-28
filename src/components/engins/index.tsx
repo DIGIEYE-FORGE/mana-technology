@@ -104,7 +104,7 @@ function Engins({ attribute }: EnginsProps) {
         <h3 className="w-[35%]">Utilisation</h3>
         <h3 className="w-[40%]">Disponibillité</h3>
       </div>
-      <div className="flex h-[14rem] flex-col gap-2 overflow-auto">
+      <div className="flex min-h-[14rem] flex-col overflow-auto">
         {(data || [])?.map((engin, index) => (
           <div key={index} className="flex flex-1 flex-wrap items-center gap-4">
             <div className="flex w-[25%] min-w-[3rem] items-center gap-2">
