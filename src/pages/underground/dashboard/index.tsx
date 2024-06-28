@@ -112,7 +112,77 @@ export default function UndergroundDashboardPage() {
           Dashboard ventillation
         </h1>
         <div className="w-full flex-1">
-          <Ventillation />
+          <Ventillation
+            attribute={[
+              {
+                telemetryName: "Energie",
+                labelTelemetry: "Energie",
+                serial: "DABF7PAT2G4BAG21",
+                randomValue: 104,
+                unit: "kWh",
+              },
+              {
+                telemetryName: "Ventilateur_N°1",
+                labelTelemetry: "Ventilateur N°1",
+                serial: "DABF7PAT2G4BAG21",
+                randomValue: 0,
+              },
+              {
+                telemetryName: "Ventilateur_N°2",
+                labelTelemetry: "Ventilateur N°2",
+                serial: "DABF7PAT2G4BAG21",
+                randomValue: 230,
+              },
+              {
+                telemetryName: "Oxygène",
+                randomValue: 19.6,
+                unit: "%",
+                labelTelemetry: "Oxygène",
+                serial: "DABF7PAT2G4BAG21",
+                icon: "co2.svg",
+              },
+              {
+                telemetryName: "co2",
+                randomValue: 1,
+                unit: "ppm",
+                labelTelemetry: "co2",
+                serial: "DABF7PAT2G4BAG21",
+                icon: "co2.svg",
+              },
+              {
+                telemetryName: "no2",
+                randomValue: 0.5,
+                unit: "ppm",
+                labelTelemetry: "no2",
+                serial: "DABF7PAT2G4BAG21",
+                icon: "co2.svg",
+              },
+              {
+                telemetryName: "T. Sèche",
+                randomValue: 22.2,
+                unit: "°C",
+                labelTelemetry: "T. Sèche",
+                serial: "DABF7PAT2G4BAG21",
+                icon: "seche.svg",
+              },
+              {
+                telemetryName: "T. Humide",
+                randomValue: 21.9,
+                unit: "°C",
+                labelTelemetry: "T. Humide",
+                serial: "DABF7PAT2G4BAG21",
+                icon: "vites.svg",
+              },
+              {
+                telemetryName: "Vitesse de l’air",
+                randomValue: 0.2,
+                unit: "m/s",
+                labelTelemetry: "Vitesse de l’air",
+                serial: "DABF7PAT2G4BAG21",
+                icon: "vites.svg",
+              },
+            ]}
+          />
         </div>
         <Link to="/underground/ventilation">
           <Button className="flex w-fit gap-2" size={"sm"} variant={"link"}>

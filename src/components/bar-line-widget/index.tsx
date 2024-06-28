@@ -136,6 +136,7 @@ export default function BarLineWidget(props: Props) {
           zoom: { enabled: false },
           selection: { enabled: false },
           dropShadow: { enabled: false },
+          stacked: props.stacked || false,
         },
         dataLabels: { enabled: false },
 
@@ -202,7 +203,7 @@ export default function BarLineWidget(props: Props) {
                 },
                 {
                   opposite: true,
-                  seriesName: data?.[2].name,
+                  seriesName: data?.[2]?.name,
                   axisTicks: {
                     show: true,
                   },

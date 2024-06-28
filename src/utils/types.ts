@@ -77,6 +77,7 @@ export type Widget = {
   dateRange?: TDateRange;
   moyenne?: "combined" | string[];
   yAxis?: "one" | "multiple";
+  stacked?: boolean;
 };
 
 export type ChartTelemetry = {
