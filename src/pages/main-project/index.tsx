@@ -291,7 +291,7 @@ export default function MainProjectPage() {
         <MainProjectUpBar />
         <div className="absolute bottom-4 right-4 z-10 flex w-[18.5rem] flex-col gap-2">
           <h4 className="text-center text-lg font-semibold">
-            1 <sud>st</sud> copper concentrate
+            1 <sup>st</sup> copper concentrate
           </h4>
           <FlipCountdown
             size="small"
