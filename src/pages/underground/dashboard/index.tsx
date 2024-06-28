@@ -148,28 +148,40 @@ export default function UndergroundDashboardPage() {
           <Ventillation
             attribute={[
               {
-                telemetryName: "s=plc1_DB_Tag_NbVéhicule",
+                telemetryName: "s=plc1_DB_Conso2_KWHTotale",
                 labelTelemetry: "Energie1",
                 serial: "GQKOD91C6LNG9UGM",
                 randomValue: 104,
                 unit: "kWh",
               },
               {
-                telemetryName: "s=plc1_DB_Tag_ΣPwDiesel",
+                telemetryName: "s=plc1_DB_Conso2_KWHTotale",
                 labelTelemetry: "Energie2",
                 serial: "GQKOD91C6LNG9UGM",
                 randomValue: 106,
                 unit: "kWh",
               },
               {
-                telemetryName: "s=Ventil1_Pw",
+                telemetryName: "s=Ventil1_Q",
                 labelTelemetry: "Ventilateur N°1",
                 serial: "GQKOD91C6LNG9UGM",
                 randomValue: 0,
               },
               {
-                telemetryName: "s=Ventil2_Pw",
+                telemetryName: "s=Ventil2_Q",
                 labelTelemetry: "Ventilateur N°2",
+                serial: "GQKOD91C6LNG9UGM",
+                randomValue: 230,
+              },
+              {
+                telemetryName: "s=plc1_DB_Conso1_HcpTotalMarche",
+                labelTelemetry: "Marche1",
+                serial: "GQKOD91C6LNG9UGM",
+                randomValue: 230,
+              },
+              {
+                telemetryName: "s=plc1_DB_Conso1_HcpTotalMarche",
+                labelTelemetry: "Marche2",
                 serial: "GQKOD91C6LNG9UGM",
                 randomValue: 230,
               },

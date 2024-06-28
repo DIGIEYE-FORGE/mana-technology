@@ -16,6 +16,8 @@ interface VentillationProps {
       | "Vitesse de l’air"
       | "Energie1"
       | "Energie2"
+      | "Marche1"
+      | "Marche2"
       | "Ventilateur N°1"
       | "Ventilateur N°2";
 
@@ -118,18 +120,10 @@ function Ventillation({ attribute }: VentillationProps) {
               </span>
               <span className="space-x-2">RPM</span>
             </h3>
-            <div className="flex gap-2 text-xs">
-              <span className="flex gap-1">
-                M1
-                <span className="text-[#FAAC18]/80">
-                  0,1 <span>m/s</span>
-                </span>
-              </span>
-              <span className="flex gap-1">
-                M1
-                <span className="text-[#FAAC18]/80">
-                  0,1 <span>m/s</span>
-                </span>
+            <div className="flex gap-2 text-sm">
+              <span>H.marche</span>
+              <span className="text-[#FAAC18]/80">
+                {data?.find((item) => item?.name === "Marche1")?.value ?? "--"}
               </span>
             </div>
           </div>
@@ -145,18 +139,10 @@ function Ventillation({ attribute }: VentillationProps) {
               </span>
               <span className="space-x-2">RPM</span>
             </h3>
-            <div className="flex gap-2 text-xs">
-              <span className="flex gap-1">
-                M1
-                <span className="text-[#FAAC18]/80">
-                  0,1 <span>m/s</span>
-                </span>
-              </span>
-              <span className="flex gap-1">
-                M1
-                <span className="text-[#FAAC18]/80">
-                  0,1 <span>m/s</span>
-                </span>
+            <div className="flex gap-2 text-sm">
+              <span>H.marche</span>
+              <span className="text-[#FAAC18]/80">
+                {data?.find((item) => item?.name === "Marche1")?.value ?? "--"}
               </span>
             </div>
           </div>
@@ -169,7 +155,9 @@ function Ventillation({ attribute }: VentillationProps) {
               item?.name !== "Ventilateur N°1" &&
               item?.name !== "Ventilateur N°2" &&
               item?.name !== "Energie1" &&
-              item?.name !== "Energie2",
+              item?.name !== "Energie2" &&
+              item?.name !== "Marche1" &&
+              item?.name !== "Marche2",
           )
           .map((item, index) => (
             <div className="flex flex-col items-center" key={index}>
