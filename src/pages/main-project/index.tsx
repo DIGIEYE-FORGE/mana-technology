@@ -100,14 +100,14 @@ export default function MainProjectPage() {
       },
     },
     {
-      title: "EST",
+      title: "Underground Mine",
       type: "video",
       image: "/screen1.png",
       position: {
         bottom: "27%",
         left: "48%",
       },
-      url: "",
+      url: "UndergroundMine.mp4",
       background: "url(/video.png)",
       positionModel: {
         side: "top",
