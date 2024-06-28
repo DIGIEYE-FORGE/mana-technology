@@ -63,12 +63,12 @@ function Ventillation({ attribute }: VentillationProps) {
           return {
             name: labelTelemetry,
             value:
-              res?.results[0]?.value &&
-              (Number(res?.results[0]?.value).toFixed(2) ??
-                randomValue ??
-                "--") +
-                "" +
-                (unit || ""),
+              (res?.results[0]?.value !== undefined &&
+              res?.results[0]?.value !== null
+                ? Number(res?.results[0]?.value).toFixed(2)
+                : randomValue ?? "--") +
+              "" +
+              (unit || ""),
             icon,
           };
         }),
