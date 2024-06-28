@@ -64,12 +64,16 @@ interface ConChartProps
     serial: string;
     color: string;
   }[];
+  coneClassName?: string;
+  progressClassName?: string;
 }
 
 export function ConeChart({
   className,
   attributes,
   legendWidth = 200,
+  coneClassName,
+  progressClassName,
 }: ConChartProps) {
   const { backendApi } = useAppContext();
   const {
@@ -142,8 +146,8 @@ export function ConeChart({
   }, [] as number[]);
   const sum = data.reduce((acc, curr) => acc + curr.value, 0);
   return (
-    <div className={cn("flex w-full justify-between", className)}>
-      <div className={cn("relative h-full w-full flex-1")}>
+    <div className={cn("flex w-full flex-col justify-between", className)}>
+      <div className={cn("relative h-full w-full flex-1", coneClassName)}>
         <div
           className={cn("full relative h-full")}
           style={{
@@ -177,7 +181,12 @@ export function ConeChart({
           })}
         </div>
       </div>
-      <div className="flex w-52 flex-wrap items-center justify-evenly">
+      <div
+        className={cn(
+          "flex flex-wrap items-center justify-evenly",
+          progressClassName,
+        )}
+      >
         {data.map((item, index) => {
           return (
             <ProgressCircle

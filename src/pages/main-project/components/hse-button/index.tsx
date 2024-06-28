@@ -60,11 +60,12 @@ export default function HseButton() {
             </h3>
             <div className="h-1 flex-1">
               <ConeChart
-                className="h-full w-3/4"
+                className="h-full gap-4"
+                legendWidth={240}
+                coneClassName="px-12"
                 attributes={widgetsData[3].attributes.telemetries}
               />
             </div>
-            <div className="flex h-32 justify-evenly gap-4"></div>
           </Card>
           <Card className="row-span-3 flex flex-col p-6">
             <h3 className="text-center text-lg font-semibold">
