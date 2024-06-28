@@ -21,6 +21,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import HseButton from "./components/hse-button";
+import FlipCountdown from "@rumess/react-flip-countdown";
 function MainProjectUpBar() {
   return (
     <div className="group sticky top-0 z-10 flex h-up-bar w-full shrink-0 items-center gap-4 border-b px-6 backdrop-blur">
@@ -288,8 +289,17 @@ export default function MainProjectPage() {
     >
       <main className="relative mx-auto max-h-[1200px] w-full max-w-[1920px]">
         <MainProjectUpBar />
-        <div className="absolute bottom-0 right-4 aspect-video w-[16rem]">
-          <img src="/main_img.jpeg" alt="logo" className="object-cover" />
+        <div className="absolute bottom-4 right-4 z-10 flex w-[18.5rem] flex-col gap-2">
+          <h4 className="text-center text-lg font-semibold">
+            1 <sup>st</sup> copper concentrate
+          </h4>
+          <FlipCountdown
+            size="small"
+            hideYear
+            // hideMonth
+            theme="dark"
+            endAt={"2025-05-14 00:00:00"}
+          />
         </div>
         <div className="absolute top-[55%] z-[10] flex w-[25rem] flex-col gap-4 px-[4rem]">
           <HseButton />
