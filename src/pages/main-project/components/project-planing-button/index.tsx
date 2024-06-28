@@ -59,6 +59,15 @@ const tabs = [
       },
     ],
   },
+  {
+    title: "Performance",
+    subTabs: [
+      {
+        title: "Performance Indicators",
+        image: "/dashboard8.png",
+      },
+    ],
+  },
 ];
 
 function ProjectPlaningButton() {
