@@ -22,29 +22,31 @@ const routes = [
     path: "/",
     children: [
       {
-      name: "Fosse Est",
-      path: "/op-est",
-      children: [
-        {
-          name: "Est 11",
-          path: "/op-est11",
-        },
-      ],
-    },
-    {
-      name: "Fosse Sud",
-      path: "/op-sud",
-      children: [
-        {
-          name: "SUD 2",
-          path: "/op-sud2",
-        },
-        {
-          name: "SUD 4",
-          path: "/op-sud4",
-        },
+        name: "Fosse Est",
+        path: "/op-est",
+        children: [
+          {
+            name: "Est 11",
+            path: "/op-est11",
+          },
+        ],
+      },
+      {
+        name: "Fosse Sud",
+        path: "/op-sud",
+        children: [
+          {
+            name: "SUD 2",
+            path: "/op-sud2",
+          },
+          {
+            name: "SUD 4",
+            path: "/op-sud4",
+          },
+        ],
+      },
     ],
-  },],},
+  },
 ];
 
 const links = routes.flatMap((route) => {
@@ -133,9 +135,9 @@ export default function HomePage() {
     }
   }, []);
   return (
-    <main className="mx-auto flex max-w-[1920px] flex-col gap-6 pb-6 pl-6">
+    <main className="mx-auto flex max-w-[1920px] shrink-0 flex-col gap-6 pl-6">
       <HomeUpBar />
-      <main className="pr-6">
+      <main className="pb-6 pr-6">
         <Outlet />
       </main>
     </main>
