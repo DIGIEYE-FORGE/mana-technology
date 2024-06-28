@@ -20,6 +20,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import HseButton from "./components/hse-button";
 function MainProjectUpBar() {
   return (
     <div className="group sticky top-0 z-10 flex h-up-bar w-full shrink-0 items-center gap-4 border-b px-6 backdrop-blur">
@@ -281,7 +282,7 @@ export default function MainProjectPage() {
           <img src="/main_img.jpeg" alt="logo" className="object-cover" />
         </div>
         <div className="absolute top-[55%] z-[10] flex w-[25rem] flex-col gap-4 px-[4rem]">
-          <button className="btn-3d w-fit">HSE</button>
+          <HseButton />
           <ProjectPlaningButton />
         </div>
         <div className="flex h-full w-full flex-col gap-4">
