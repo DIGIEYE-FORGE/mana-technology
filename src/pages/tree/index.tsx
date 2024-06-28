@@ -30,7 +30,7 @@ export function Loader3D() {
 export function RotatingModel({ modelRef }: { modelRef: any }) {
   useFrame(() => {
     if (modelRef.current) {
-      modelRef.current.rotation.y += 0.002; // Adjust rotation speed as needed
+      modelRef.current.rotation.y += 0.002;
     }
   });
 

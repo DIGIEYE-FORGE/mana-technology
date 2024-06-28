@@ -385,7 +385,7 @@ export default function UndergroundDashboardPage() {
           />
         </div>
       </Card>
-      <Card className="flex flex-col gap-2 p-2">
+      <Card className="flex flex-col gap-2 px-6 pt-4">
         <h3 className="text-center text-lg font-semibold">
           Disponibilité et utilisation des engins
         </h3>
