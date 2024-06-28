@@ -181,7 +181,7 @@ export default function BarChartWidget(props: Props) {
               ...(data || []).flatMap((item) =>
                 item.data.map((item) => item.y),
               ),
-            ) * (stacked ? 2 : 1),
+            ) * (stacked ? data?.length || 1 : 1),
           labels: {
             show: true,
             formatter: function (value) {

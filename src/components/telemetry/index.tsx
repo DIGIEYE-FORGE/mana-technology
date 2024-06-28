@@ -1,0 +1,73 @@
+import { useAppContext } from "@/Context";
+import {
+  JsonValue,
+  LastTelemetry,
+  TableDisplayForma,
+  stringify,
+} from "@/utils";
+import useSWR from "swr";
+import Loader from "../loader";
+import { format } from "date-fns";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { env } from "@/utils/env";
+
+const Formatter = ({
+  value,
+  displayFormat,
+}: {
+  value: JsonValue;
+  displayFormat: TableDisplayForma | undefined;
+}) => {
+  if (displayFormat === "string" || displayFormat === "json") {
+    return <>{stringify(value)}</>;
+  }
+  if (displayFormat === "integer") return <>{parseInt(stringify(value), 10)}</>;
+  if (displayFormat === "float")
+    return <>{parseFloat(stringify(value || 0)).toFixed(2)}</>;
+  if (displayFormat === "boolean") return <>{value ? "true" : "false"}</>;
+  if (displayFormat === "date")
+    return <>{format(new Date(stringify(value)), "PP")}</>;
+  if (displayFormat === "image")
+    return (
+      <Avatar className="w-full rounded-none">
+        <AvatarImage
+          src={`${env.VITE_BACKEND_API}/uploads/${stringify(value)}`}
+        />
+
+        <AvatarFallback className="bg-foreground/5 font-bold [&>]:rounded">
+          {stringify(value) || "No Image"}
+        </AvatarFallback>
+      </Avatar>
+    );
+  return <>{stringify(value)}</>;
+};
+
+export default function Telemetry({
+  telemetry,
+  displayFormat,
+}: {
+  telemetry: {
+    name: string;
+    serial: string;
+  };
+  displayFormat?: TableDisplayForma;
+}) {
+  const { backendApi } = useAppContext();
+  const { data, isLoading, error } = useSWR(
+    `telemetry?${JSON.stringify({ telemetry })}`,
+    async () => {
+      const res = await backendApi.findMany<LastTelemetry>("lasttelemetry", {
+        where: {
+          name: telemetry.name,
+          device: { serial: telemetry.serial },
+        },
+      });
+      return res.results[0];
+    },
+  );
+
+  if (isLoading) return <Loader />;
+  if (error) return "Something went wrong.";
+  if (!data) return "No data";
+  return <Formatter value={data?.value} displayFormat={displayFormat} />;
+}

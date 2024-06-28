@@ -58,28 +58,32 @@ const Cone = ({ data, style, children, ...props }: ConeProps) => {
 interface ConChartProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, "children"> {
   legendWidth?: number;
-  attribute: {
+  attributes: {
     name: string;
     label: string;
     serial: string;
     color: string;
   }[];
+  coneClassName?: string;
+  progressClassName?: string;
 }
 
 export function ConeChart({
   className,
-  attribute,
+  attributes,
   legendWidth = 200,
+  coneClassName,
+  progressClassName,
 }: ConChartProps) {
   const { backendApi } = useAppContext();
   const {
     data: res,
     isLoading,
     error,
-  } = useSWR(`telemetry${JSON.stringify(attribute)}`, async () => {
-    if (!attribute?.length) return [];
+  } = useSWR(`telemetry${JSON.stringify(attributes)}`, async () => {
+    if (!attributes?.length) return [];
     return await Promise.all(
-      attribute.map(async (device) => {
+      attributes.map(async (device) => {
         const { name, label, color, serial } = device;
         const res = await backendApi.findMany<{
           name: string;
@@ -114,7 +118,7 @@ export function ConeChart({
     );
   if (error)
     return (
-      <div className=" flex h-full w-full items-center justify-center [&>*]:text-xl [&>*]:font-bold">
+      <div className="flex h-full w-full items-center justify-center [&>*]:text-xl [&>*]:font-bold">
         failed to load
       </div>
     );
@@ -129,7 +133,7 @@ export function ConeChart({
   const data = res.map((item, index) => {
     return {
       ...item,
-      name: attribute[index].label,
+      name: attributes[index].label,
     };
   });
   const cum = data.reduce((acc, curr, index) => {
@@ -142,8 +146,8 @@ export function ConeChart({
   }, [] as number[]);
   const sum = data.reduce((acc, curr) => acc + curr.value, 0);
   return (
-    <div className={cn("flex w-full justify-between", className)}>
-      <div className={cn("relative h-full w-full flex-1")}>
+    <div className={cn("flex w-full flex-col justify-between", className)}>
+      <div className={cn("relative h-full w-full flex-1", coneClassName)}>
         <div
           className={cn("full relative h-full")}
           style={{
@@ -177,7 +181,12 @@ export function ConeChart({
           })}
         </div>
       </div>
-      <div className="flex w-52 flex-wrap items-center justify-evenly">
+      <div
+        className={cn(
+          "flex flex-wrap items-center justify-evenly",
+          progressClassName,
+        )}
+      >
         {data.map((item, index) => {
           return (
             <ProgressCircle

@@ -4,6 +4,7 @@ import { Card } from "@/components/card";
 // import { ConeChart } from "@/components/cone-chart";
 import { D3DonutChart } from "@/components/d3-donut chart";
 import Engins from "@/components/engins";
+import { GroupedHorizontalBarChart } from "@/components/grouped-horizontal-bar-chart";
 import LineChartWidget from "@/components/line-chart-widget";
 import LinesWidget from "@/components/lines-chart-widget";
 import { Button } from "@/components/ui/button";
@@ -14,8 +15,8 @@ import { Link } from "react-router-dom";
 export default function UndergroundDashboardPage() {
   const { dateRange } = useAppContext();
   return (
-    <div className="grid h-fit w-full grid-flow-dense auto-rows-[19rem] grid-cols-9 gap-6">
-      <Card className="col-span-5 flex flex-col p-4">
+    <div className="grid h-fit w-full auto-rows-[19rem] grid-cols-3 gap-6">
+      <Card className="flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
           Avancement cumulatif annuel
         </h1>
@@ -73,7 +74,7 @@ export default function UndergroundDashboardPage() {
           />
         </div>
       </Card>
-      <Card className="col-span-4 flex flex-col p-4">
+      <Card className="flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
           Avancement Cumulé :
           <span className="text-md text-gray-400"> Réalisé vs Planifié</span>
@@ -106,8 +107,40 @@ export default function UndergroundDashboardPage() {
           />
         </div>
       </Card>
-
-      <Card className="col-span-3 flex flex-col items-center gap-1 p-4">
+      <Card className="flex flex-col p-4">
+        <h1 className="text-center text-lg font-semibold">
+          Arrachement (m) journalier
+        </h1>
+        <div className="w-full text-center text-xs text-gray-400"></div>
+        <div className="flex-1">
+          <BarLineWidget
+            moyenne={["UG_METRES_PLANIFIE", "UG_METRES_REALISE_TOTAL"]}
+            yAxis="one"
+            attributes={{
+              stacked: true,
+              telemetries: [
+                {
+                  name: "UG_METRES_PLANIFIE",
+                  unit: "T",
+                  color: "#78F6EA",
+                  label: "Prévus",
+                  serial: "DABF7PAT2G4BAG21",
+                  type: "bar",
+                },
+                {
+                  name: "UG_METRES_REALISE_TOTAL",
+                  unit: "T",
+                  color: "#B98EFF",
+                  label: "Réalisé",
+                  serial: "DABF7PAT2G4BAG21",
+                  type: "bar",
+                },
+              ],
+            }}
+          />
+        </div>
+      </Card>
+      <Card className="flex flex-col items-center gap-1 p-4">
         <h1 className="text-center text-lg font-semibold">
           Dashboard ventillation
         </h1>
@@ -186,45 +219,12 @@ export default function UndergroundDashboardPage() {
         <Link to="/underground/ventilation">
           <Button className="flex w-fit gap-2" size={"sm"} variant={"link"}>
             <ChevronsDown size={16} />
-            {/* <img src="plus.svg" alt="" width={20} height={20} /> */}
             <span>Voir plus</span>
           </Button>
         </Link>
       </Card>
-      <Card className="col-span-3 flex flex-col p-4">
-        <h1 className="text-center text-lg font-semibold">
-          Arrachement (m) journalier
-        </h1>
-        <div className="w-full text-center text-xs text-gray-400"></div>
-        <div className="flex-1">
-          <BarLineWidget
-            moyenne={["UG_METRES_PLANIFIE", "UG_METRES_REALISE_TOTAL"]}
-            yAxis="one"
-            attributes={{
-              stacked: true,
-              telemetries: [
-                {
-                  name: "UG_METRES_PLANIFIE",
-                  unit: "T",
-                  color: "#78F6EA",
-                  label: "Prévus",
-                  serial: "DABF7PAT2G4BAG21",
-                  type: "bar",
-                },
-                {
-                  name: "UG_METRES_REALISE_TOTAL",
-                  unit: "T",
-                  color: "#B98EFF",
-                  label: "Réalisé",
-                  serial: "DABF7PAT2G4BAG21",
-                  type: "bar",
-                },
-              ],
-            }}
-          />
-        </div>
-      </Card>
-      <Card className="col-span-3 flex flex-col p-4">
+
+      <Card className="flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
           Nombre Tir{" "}
           <span className="text-gray-500">(planifié vs réalisé)</span>
@@ -274,11 +274,50 @@ export default function UndergroundDashboardPage() {
           />
         </div>
       </Card>
-      <Card className="relative col-span-3 p-4">
+      <Card className="flex flex-col gap-4 p-4">
+        <h1 className="text-center text-lg font-semibold">
+          Performance avancement
+        </h1>
+        <GroupedHorizontalBarChart
+          attributes={{
+            telemetries: [
+              {
+                group: "Arrachement",
+                name: "UG_TIR_REALISE",
+                color: "#FFDC8C",
+                label: "Réalisé",
+                serial: "DABF7PAT2G4BAG21",
+              },
+              {
+                group: "Arrachement",
+                name: "UG_TIR_PLANIFIE",
+                color: "#25A18E",
+                label: "Foré",
+                serial: "DABF7PAT2G4BAG21",
+              },
+              {
+                group: "Avancement",
+                name: "UG_TIR_PLANIFIE_CUMULE",
+                color: "#FFDC8C",
+                label: "Réalisé",
+                serial: "DABF7PAT2G4BAG21",
+              },
+              {
+                group: "Avancement",
+                name: "UG_TIR_REALISE_CUMULE",
+                color: "#25A18E",
+                label: "Planifié",
+                serial: "DABF7PAT2G4BAG21",
+              },
+            ],
+          }}
+        />
+      </Card>
+      <Card className="relative flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
           Développement du cycle
         </h1>
-        <div className="flex-1">
+        <div className="h-1 flex-1">
           <D3DonutChart
             attribute={[
               {
@@ -326,7 +365,7 @@ export default function UndergroundDashboardPage() {
           </Button>
         </Link>
       </Card>
-      <Card className="col-span-3 flex flex-col gap-1 p-4">
+      <Card className="flex flex-col gap-1 p-4">
         <h1 className="text-center text-lg font-semibold">
           Avancement/Arrachement journalier
         </h1>
@@ -346,7 +385,7 @@ export default function UndergroundDashboardPage() {
           />
         </div>
       </Card>
-      <Card className="col-span-3 flex flex-col gap-2 px-4 pt-2">
+      <Card className="flex flex-col gap-2 p-2">
         <h3 className="text-center text-lg font-semibold">
           Disponibilité et utilisation des engins
         </h3>
