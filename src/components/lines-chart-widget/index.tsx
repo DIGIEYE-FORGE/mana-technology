@@ -79,7 +79,7 @@ export default function LinesWidget(props: Props) {
         },
         dataLabels: { enabled: false },
         stroke: {
-          width: [4, 4],
+          width: [2.5, 2.5],
         },
 
         yaxis:

@@ -129,10 +129,7 @@ export default function LineChartWidget({
           selection: { enabled: false },
           dropShadow: { enabled: false },
         },
-
-        stroke: {
-          curve: "smooth",
-        },
+        stroke: { curve: "smooth", width: 2.5 },
         dataLabels: { enabled: false },
         fill: {
           type: "solid",
