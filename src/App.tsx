@@ -86,11 +86,12 @@ function App() {
         {user === null && <LoginPage />}
         {user && backendApi.isReady() && (
           <main
-            className="dark overflow-y-auto bg-[#05177E] text-foreground"
+            className="dark overflow-y-auto text-foreground"
             style={{
-              backgroundImage: 'url("/bg.png")',
-              backgroundSize: "cover",
-              backgroundPosition: "center",
+              backgroundImage:
+                "linear-gradient(to bottom,  #172f6dd0 0%, #0f172ad0 70%), url(/public/sky-bg.png)",
+              backgroundSize: "100% 100%, 100% 100%",
+              // backgroundPosition: "center",
               // scrollbarGutter: "stable",
             }}
           >
