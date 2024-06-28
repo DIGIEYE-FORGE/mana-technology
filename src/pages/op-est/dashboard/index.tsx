@@ -19,17 +19,17 @@ export default function HomeDashboard() {
               telemetries: [
                 {
                   area: false,
-                  name: "SUD_PLANIFIE_ROCHE_CUMUL",
+                  name: "EST_PLANIFIE_ROCHE_CUMUL",
                   color: "#78F6EA",
-                  label: "Cumulatif Planifié",
-                  serial: "C6XPYU0D920L1M07",
+                  label: "Cumulative planifié",
+                  serial: "U9XQMQ1DXYT7LJIP",
                 },
                 {
                   area: true,
-                  name: "SUD_REALISE_ROCHE_CUMUL",
+                  name: "EST_REALISE_ROCHE_CUMUL_Ton",
                   color: "#B98EFF",
-                  label: "Cumulatif Realisé",
-                  serial: "C6XPYU0D920L1M07",
+                  label: "Cumulative realisé",
+                  serial: "U9XQMQ1DXYT7LJIP",
                 },
               ],
             }}
@@ -42,23 +42,23 @@ export default function HomeDashboard() {
         </h1>
         <div className="flex-1">
           <BarChartWidget
-            moyenne={["SUD2_REALISE_ROCHE", "SUD4_REALISE_ROCHE"]}
+            moyenne={["EST11_REALISE_ROCHE", "EST12_REALISE_ROCHE"]}
             attributes={{
               stacked: true,
               telemetries: [
                 {
-                  name: "SUD2_REALISE_ROCHE",
+                  name: "EST11_REALISE_ROCHE",
                   unit: "T",
                   color: "#78F6EA",
-                  label: "Sud 2",
-                  serial: "C6XPYU0D920L1M07",
+                  label: "Est 11",
+                  serial: "U9XQMQ1DXYT7LJIP",
                 },
                 {
-                  name: "SUD4_REALISE_ROCHE",
+                  name: "EST12_REALISE_ROCHE",
                   unit: "T",
                   color: "#B98EFF",
-                  label: "Sud 4",
-                  serial: "C6XPYU0D920L1M07",
+                  label: "Est 12",
+                  serial: "U9XQMQ1DXYT7LJIP",
                 },
               ],
             }}
@@ -66,39 +66,39 @@ export default function HomeDashboard() {
         </div>
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-5">
-        <h1 className="text-center text-lg font-semibold">Stérile / Minerai</h1>
+        <h1 className="text-center text-lg font-semibold">Stérile / Minera</h1>
         <div className="flex-1">
           <BarChartWidget
             // title="Daily Production BreakUp"
             attributes={{
               telemetries: [
                 {
-                  name: "SUD_PLANIFIE_MINERAI",
+                  name: "EST_PLANIFIE_MINERAI",
                   unit: "T",
                   color: "#FE22EB",
                   label: "Minerai Planifié",
-                  serial: "C6XPYU0D920L1M07",
+                  serial: "U9XQMQ1DXYT7LJIP",
                 },
                 {
-                  name: "SUD_REALISE_MIENRAI",
-                  unit: "T",
-                  color: "#FEC33A",
-                  label: "Minerai Realisé",
-                  serial: "C6XPYU0D920L1M07",
-                },
-                {
-                  name: "SUD_PLANIFIE_STERILE",
+                  name: "EST_REALISE_MINERAI",
                   unit: "T",
                   color: "#B98EFF",
-                  label: "Stérile Planifié",
-                  serial: "C6XPYU0D920L1M07",
+                  label: "Minerai Realisé",
+                  serial: "U9XQMQ1DXYT7LJIP",
                 },
                 {
-                  name: "SUD_REALISE_STERILE",
+                  name: "EST_PLANIFIE_STERILE",
+                  unit: "T",
+                  color: "#FEC33A",
+                  label: "Stérile Planifié",
+                  serial: "U9XQMQ1DXYT7LJIP",
+                },
+                {
+                  name: "EST_REALISE_STERILE",
                   unit: "T",
                   color: "#78F6EA",
                   label: "Stérile Realisé",
-                  serial: "C6XPYU0D920L1M07",
+                  serial: "U9XQMQ1DXYT7LJIP",
                 },
               ],
             }}
@@ -111,17 +111,17 @@ export default function HomeDashboard() {
         </h1>
         <ProgressAccumulation
           attributes={{
-            serial: "C6XPYU0D920L1M07",
+            serial: "U9XQMQ1DXYT7LJIP",
             progressColor: "#FF5AF1",
             currentTargetColor: "#727DC6",
-            progressTelemetryName: "SUD_REALISE_ROCHE_CUMUL",
-            accumulationTelemetryName: "SUD_PLANIFIE_ROCHE_CUMUL",
+            progressTelemetryName: "EST_REALISE_ROCHE_CUMUL_Ton",
+            accumulationTelemetryName: "EST_PLANIFIE_ROCHE_CUMUL",
           }}
         />
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-4">
         <h1 className="text-center text-lg font-semibold">
-          Production Journalière
+          Production journalière
         </h1>
         <div className="flex-1">
           <BarChartWidget
@@ -129,18 +129,18 @@ export default function HomeDashboard() {
               stacked: false,
               telemetries: [
                 {
-                  name: "SUD_PLANIFIE_ROCHE",
+                  name: "EST_PLANIFIE_ROCHE",
                   unit: "T",
                   color: "#78F6EA",
                   label: "Planifié",
-                  serial: "C6XPYU0D920L1M07",
+                  serial: "U9XQMQ1DXYT7LJIP",
                 },
                 {
-                  name: "SUD_REALISE_ROCHE",
+                  name: "EST_REALISE_ROCHE_Ton",
                   unit: "T",
                   color: "#B98EFF",
                   label: "Realisé",
-                  serial: "C6XPYU0D920L1M07",
+                  serial: "U9XQMQ1DXYT7LJIP",
                 },
               ],
             }}
@@ -149,29 +149,29 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-4">
         <h1 className="text-center text-lg font-semibold">
-          Production cumulée par qualité
+          Production par qualité
         </h1>
         <div className="flex-1">
-        <ProgressMultiple
+          <ProgressMultiple
             attributes={[
               {
                 title: "Sulfures (HG,MG,LG)",
                 telemetries: [
                   {
-                    name: "SUD_REALISE_ORE_HG_SULF",
-                    serial: "C6XPYU0D920L1M07",
+                    name: "EST_REALISE_ORE_HG_SULF",
+                    serial: "U9XQMQ1DXYT7LJIP",
                     label: "HG",
                     color: "#FFDC8C",
                   },
                   {
-                    name: "SUD_REALISE_ORE_MG_SULF",
-                    serial: "C6XPYU0D920L1M07",
+                    name: "EST_REALISE_ORE_MG_SULF",
+                    serial: "U9XQMQ1DXYT7LJIP",
                     label: "MG",
                     color: "#42F5FF",
                   },
                   {
-                    name: "SUD_REALISE_ORE_LG_SULF",
-                    serial: "C6XPYU0D920L1M07",
+                    name: "EST_REALISE_ORE_LG_SULF",
+                    serial: "U9XQMQ1DXYT7LJIP",
                     label: "LG",
                     color: "#FFC8FF",
                   },
@@ -181,20 +181,20 @@ export default function HomeDashboard() {
                 title: "Oxydes (HG,MG,LG)",
                 telemetries: [
                   {
-                    name: "SUD_REALISE_ORE_HG_OXYD",
-                    serial: "C6XPYU0D920L1M07",
+                    name: "EST_REALISE_ORE_HG_OXYD",
+                    serial: "U9XQMQ1DXYT7LJIP",
                     label: "HG",
                     color: "#FFDC8C",
                   },
                   {
-                    name: "SUD_REALISE_ORE_MG_OXYD",
-                    serial: "C6XPYU0D920L1M07",
+                    name: "EST_REALISE_ORE_MG_OXYD",
+                    serial: "U9XQMQ1DXYT7LJIP",
                     label: "MG",
                     color: "#42F5FF",
                   },
                   {
-                    name: "SUD_REALISE_ORE_LG_OXYD",
-                    serial: "C6XPYU0D920L1M07",
+                    name: "EST_REALISE_ORE_LG_OXYD",
+                    serial: "U9XQMQ1DXYT7LJIP",
                     label: "LG",
                     color: "#FFC8FF",
                   },
@@ -204,12 +204,12 @@ export default function HomeDashboard() {
           />
         </div>
       </Card>
-      <Card className="col-span-full row-span-3 flex flex-col p-4 lg:col-span-8">
+      <Card className="col-span-full row-span-3 flex flex-col gap-1 p-4 lg:col-span-8">
         <h3 className="text-center text-lg font-semibold">Suivi des Tirs</h3>
         <TableWidget
           className="h-1 flex-1"
           attributes={{
-            serial: "C6XPYU0D920L1M07",
+            serial: "AATT1JKEZ2V1YVMA",
             element: "telemetries",
             mappings: [
               {
@@ -242,24 +242,27 @@ export default function HomeDashboard() {
         />
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-4">
-        <h1 className="text-center text-lg font-semibold">Foration (ml)</h1>
+        <h1 className="text-center text-lg font-semibold">
+        Foration (ml)
+        </h1>
         <div className="flex-1">
           <LineChartWidget
+          moyenne={["EST_REALISE_FORATION", "EST_PLANIFIE_FORATION"]}
             attributes={{
               telemetries: [
                 {
                   area: true,
-                  name: "SUD_REALISE_FORATION",
+                  name: "EST_REALISE_FORATION",
                   color: "#B98EFF",
                   label: "Realisé ML/J",
-                  serial: "C6XPYU0D920L1M07",
+                  serial: "U9XQMQ1DXYT7LJIP",
                 },
                 {
                   area: false,
-                  name: "SUD_PLANIFIE_FORATION",
+                  name: "EST_PLANIFIE_FORATION",
                   color: "#78F6EA",
                   label: "Objectif ML/J",
-                  serial: "C6XPYU0D920L1M07",
+                  serial: "U9XQMQ1DXYT7LJIP",
                 },
               ],
             }}
@@ -268,95 +271,101 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col gap-3 p-4 2xl:col-span-3">
         <h3 className="text-center text-lg font-semibold">
-          Disponibilité Engine CADEX
+          Disponibilité Engine GMC
         </h3>
         <MultiProgressWidget
           attributes={{
             telemetries: [
               {
-                name: "CADEX_CAMION30T_GROUPE",
+                name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
                 color: "#ecc94b",
                 label: "Foreuse Epiroc  T45 (1)",
-                serial: "C6XPYU0D920L1M07",
+                serial: "U9XQMQ1DXYT7LJIP",
               },
               {
-                name: "CADEX_CAMION60T_GROUPE",
+                name: "GMC_FOREUSE_EPRIROC_T45_02_DISPO",
                 color: "#ecc94b",
                 label: "Foreuse Epiroc  T45 (2)",
-                serial: "C6XPYU0D920L1M07",
+                serial: "U9XQMQ1DXYT7LJIP",
               },
               {
-                name: "CADEX_FOREUSE_DX700_01",
+                name: "GMC_FOREUSE_EPRIROC_T35_01_DISPO",
                 color: "#ecc94b",
                 label: "Foreuse Epiroc T35 ",
-                serial: "C6XPYU0D920L1M07",
+                serial: "U9XQMQ1DXYT7LJIP",
               },
               {
-                name: "CADEX_FOREUSE_DX700_02",
+                name: "GMC_PELLE_CAT374_01_DISPO",
                 color: "#ecc94b",
                 label: "Pelle CAT 374 (1)",
-                serial: "C6XPYU0D920L1M07",
+                serial: "U9XQMQ1DXYT7LJIP",
               },
               {
-                name: "CADEX_FOREUSE_EPIROCT35_01",
+                name: "GMC_PELLE_CAT374_02_DISPO",
                 color: "#ecc94b",
                 label: "Pelle CAT 374 (2) ",
-                serial: "C6XPYU0D920L1M07",
+                serial: "U9XQMQ1DXYT7LJIP",
               },
               {
-                name: "CADEX_PELLE_CAT320_02",
+                name: "GMC_PELLE_CAT374_03_DISPO",
                 color: "#ecc94b",
                 label: "Pelle CAT 374 (3)",
-                serial: "C6XPYU0D920L1M07",
+                serial: "U9XQMQ1DXYT7LJIP",
               },
               {
-                name: "CADEX_PELLE_DOSAN_01",
+                name: "GMC_PELLE_CAT350_01_DISPO",
                 color: "#ecc94b",
                 label: "Pelle CAT 350 (1)",
-                serial: "C6XPYU0D920L1M07",
+                serial: "U9XQMQ1DXYT7LJIP",
               },
               {
-                name: "CADEX_PELLE_HYUNDAI_01",
+                name: "GMC_PELLE_CAT350_02_DISPO",
                 color: "#ecc94b",
                 label: "Pelle CAT 350",
-                serial: "C6XPYU0D920L1M07",
+                serial: "U9XQMQ1DXYT7LJIP",
               },
               {
-                name: "CADEX_PELLE_SANY_01",
+                name: "GMC_PELLE_CAT_0000_01",
                 color: "#ecc94b",
                 label: " Pelle CAT ",
-                serial: "C6XPYU0D920L1M07",
+                serial: "U9XQMQ1DXYT7LJIP",
               },
               {
-                name: "CADEX_PELLE_SANY_02",
+                name: "GMC_CAMIONS_SCANIA50T_GROUPE",
                 color: "#ecc94b",
                 label: "Camions Scania 50t (15)",
-                serial: "C6XPYU0D920L1M07",
+                serial: "U9XQMQ1DXYT7LJIP",
               },
               {
-                name: "CADEX_PELLE_VOLVO380_01",
+                name: "GMC_DOZER_D8_01",
                 color: "#ecc94b",
                 label: "D8 ",
-                serial: "C6XPYU0D920L1M07",
+                serial: "U9XQMQ1DXYT7LJIP",
               },
               {
-                name: "CADEX_PELLE_VOLVO480_01",
+                name: "GMC_DOZER_D8_02",
                 color: "#ecc94b",
                 label: "D8 (2)",
-                serial: "C6XPYU0D920L1M07",
+                serial: "U9XQMQ1DXYT7LJIP",
               },
               {
-                name: "CHARGE_INSTANTANEE",
+                name: "GMC_NIVELEUSE_01",
                 color: "#ecc94b",
                 label: "Niveleuse ",
-                serial: "C6XPYU0D920L1M07",
+                serial: "U9XQMQ1DXYT7LJIP",
               },
               {
-                name: "CHARGE_SPECIFIQUE",
+                name: "GMC_COMPACTEUR_01",
                 color: "#ecc94b",
                 label: "Compacteur ",
-                serial: "C6XPYU0D920L1M07",
-              }
+                serial: "U9XQMQ1DXYT7LJIP",
+              },
+              {
+                name: "GMC_CITERNE_01",
+                color: "#ecc94b",
+                label: "Citerne d'arrosage ",
+                serial: "U9XQMQ1DXYT7LJIP",
+              },
             ],
           }}
         />

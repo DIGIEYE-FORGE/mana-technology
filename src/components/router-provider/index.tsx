@@ -15,6 +15,7 @@ import MainProjectPage from "@/pages/main-project";
 import UnderGroundPage from "@/pages/underground";
 import OpSud from "@/pages/op-sud";
 import Op from "@/pages/op";
+import OpEst from "@/pages/op-est";
 import OpSud2 from "@/pages/op-sud2";
 import OpSud4 from "@/pages/op-sud4";
 import UndergroundDashboardPage from "@/pages/underground/dashboard";
@@ -41,6 +42,10 @@ const routes: RouteObject[] = [
           {
             path: "",
             element: <Op />,
+          },
+          {
+            path: "/op-est",
+            element: <OpEst />,
           },
           {
             path: "op-sud2",

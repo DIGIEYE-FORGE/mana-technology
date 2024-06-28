@@ -18,29 +18,33 @@ type Route = {
 
 const routes = [
   {
-    name: "FOSS EST",
+    name: "Open Pit",
     path: "/",
     children: [
       {
-        name: "EST11",
-        path: "/op-est11",
-      },
+      name: "Fosse Est",
+      path: "/op-est",
+      children: [
+        {
+          name: "Est 11",
+          path: "/op-est11",
+        },
+      ],
+    },
+    {
+      name: "Fosse Sud",
+      path: "/op-sud",
+      children: [
+        {
+          name: "SUD 2",
+          path: "/op-sud2",
+        },
+        {
+          name: "SUD 4",
+          path: "/op-sud4",
+        },
     ],
-  },
-  {
-    name: "FOSS SUD",
-    path: "/op-sud",
-    children: [
-      {
-        name: "FOSS SUD 2",
-        path: "/op-sud2",
-      },
-      {
-        name: "FOSS SUD 4",
-        path: "/op-sud4",
-      },
-    ],
-  },
+  },],},
 ];
 
 const links = routes.flatMap((route) => {
