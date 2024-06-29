@@ -10,11 +10,13 @@ interface VentilationCardProps {
     name: string;
     serial: string;
   };
+  interval?: number;
 }
 
 export const VentilationCard = ({
   title,
   unit = "",
+  interval,
   telemetry,
 }: VentilationCardProps) => {
   const { backendApi } = useAppContext();
@@ -29,14 +31,17 @@ export const VentilationCard = ({
       });
       return res.results[0];
     },
+    {
+      refreshInterval: interval || undefined,
+    },
   );
 
-  if (isLoading)
-    return (
-      <div className="grid h-full w-full place-content-center">
-        <Loader />
-      </div>
-    );
+  // if (isLoading)
+  //   return (
+  //     <div className="grid h-full w-full place-content-center">
+  //       <Loader />
+  //     </div>
+  //   );
   if (error)
     return (
       <div className="grid h-full w-full place-content-center">

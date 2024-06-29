@@ -25,7 +25,11 @@ const VentilationDashboard = () => {
                 <h4 className="text-left text-xs font-semibold">
                   {child.title}
                 </h4>
-                <MoteurCard color={child.color} attributes={child.attributes} />
+                <MoteurCard
+                  color={child.color}
+                  attributes={child.attributes}
+                  interval={5000}
+                />
                 {/* <LineChartWidget attributes={child.attributes} /> */}
               </div>
             ))}
@@ -81,13 +85,13 @@ const VentilationDashboard = () => {
         />
       </div>
       <Card className="col-span-3 row-span-1 flex flex-col items-center gap-3">
-        <VentilationCard {...ventilation[0]} />
+        <VentilationCard {...ventilation[0]} interval={5000} />
       </Card>
       <Card className="col-span-3 row-span-1 flex flex-col items-center gap-3">
-        <VentilationCard {...ventilation[1]} />
+        <VentilationCard {...ventilation[1]} interval={5000} />
       </Card>
       <Card className="col-span-3 row-span-1 flex flex-col items-center gap-3 text-[#CAD2D6]">
-        <VentilationCard {...ventilation[2]} />
+        <VentilationCard {...ventilation[2]} interval={5000} />
       </Card>
     </main>
   );

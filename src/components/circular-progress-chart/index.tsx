@@ -11,16 +11,18 @@ export interface CircularProgressChartProps
     name: string;
   };
   unit?: string;
+  interval?: number;
 }
 
 export const CircularProgressChart = ({
   telemetry,
+  interval,
   unit = "%",
   ...props
 }: CircularProgressChartProps) => {
   const { backendApi } = useAppContext();
   const { data, isLoading, error } = useSWR(
-    `telemetry?${JSON.stringify({ telemetry })}`,
+    `telemetry?${telemetry.name})}`,
     async () => {
       const res = await backendApi.findMany<LastTelemetry>("lasttelemetry", {
         where: {
@@ -29,6 +31,9 @@ export const CircularProgressChart = ({
         },
       });
       return res.results[0];
+    },
+    {
+      refreshInterval: interval || undefined,
     },
   );
 
