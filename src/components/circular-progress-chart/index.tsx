@@ -29,8 +29,11 @@ export const CircularProgressChart = ({
           name: telemetry.name,
           device: { serial: telemetry.serial },
         },
+        select: {
+          value: true,
+        },
       });
-      return res.results[0];
+      return (res?.results[0]?.value || 0) as number;
     },
     {
       refreshInterval: interval || undefined,
@@ -50,8 +53,7 @@ export const CircularProgressChart = ({
       </div>
     );
 
-  const progress = typeof data?.value === "number" ? data.value : 0;
-
+  const progress = data as number;
   let legend = "";
   if (unit === "%") {
     legend = `${progress.toFixed(2)}%`;

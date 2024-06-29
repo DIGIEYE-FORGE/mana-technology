@@ -1,18 +1,52 @@
-import Polygone from "./polygone";
+import useSWR from "swr";
+import { useAppContext } from "@/Context";
+import Loader from "@/components/loader";
+import { LastTelemetry } from "@/utils";
 
+let count = 0;
 function OjamilDevPage() {
+  const { backendApi } = useAppContext();
+  const { data, isLoading, isValidating, error } = useSWR(
+    `telemetry`,
+    async () => {
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+
+      const res = await backendApi.findMany<LastTelemetry>("lasttelemetry", {
+        where: {
+          name: "temperature",
+          device: { serial: "123456" },
+        },
+      });
+      return res?.results[0] || 0;
+      // return "hello world" + count++;
+    },
+    {
+      refreshInterval: 5000,
+    },
+  );
+
+  if (isLoading) {
+    return (
+      <div className="grid h-full w-full place-content-center">
+        <Loader />
+      </div>
+    );
+  }
+  if (error) {
+    return (
+      <div className="grid h-full w-full place-content-center">
+        <h3>Something went wrong.</h3>
+      </div>
+    );
+  }
   return (
     <div className="flex h-full w-full items-center justify-center">
-      <Polygone
-        width={400}
-        height={400}
-        data={[
-          { value: 100, color: "#02c6e8", name: "A" },
-          { value: 200, color: "#09e158", name: "B" },
-          { value: 100, color: "#ff0606", name: "C" },
-          { value: 100, color: "#e0f000", name: "D" },
-        ]}
-      />
+      {JSON.stringify({
+        data,
+        isLoading,
+        isValidating,
+        error,
+      })}
     </div>
   );
 }

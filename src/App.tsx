@@ -79,8 +79,9 @@ function App() {
     >
       <SWRConfig
         value={{
-          shouldRetryOnError: false,
+          revalidateIfStale: false,
           revalidateOnFocus: false,
+          revalidateOnReconnect: false,
         }}
       >
         {user === null && <LoginPage />}

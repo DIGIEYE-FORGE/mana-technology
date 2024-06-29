@@ -29,19 +29,19 @@ export const VentilationCard = ({
           device: { serial: telemetry.serial },
         },
       });
-      return res.results[0];
+      return res?.results[0] || 0;
     },
     {
       refreshInterval: interval || undefined,
     },
   );
 
-  // if (isLoading)
-  //   return (
-  //     <div className="grid h-full w-full place-content-center">
-  //       <Loader />
-  //     </div>
-  //   );
+  if (isLoading)
+    return (
+      <div className="grid h-full w-full place-content-center">
+        <Loader />
+      </div>
+    );
   if (error)
     return (
       <div className="grid h-full w-full place-content-center">
