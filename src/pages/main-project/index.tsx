@@ -108,7 +108,7 @@ export default function MainProjectPage() {
         bottom: "27%",
         left: "48%",
       },
-      url: "UndergroundMine.mp4",
+      url: "Underground.mp4",
       background: "url(/video.png)",
       positionModel: {
         side: "top",
