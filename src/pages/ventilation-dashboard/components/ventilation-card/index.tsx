@@ -2,6 +2,7 @@ import useSWR from "swr";
 import { useAppContext } from "@/Context";
 import Loader from "@/components/loader";
 import { LastTelemetry } from "@/utils";
+import { cn } from "@/lib/utils";
 
 interface VentilationCardProps {
   title: string;
@@ -11,6 +12,7 @@ interface VentilationCardProps {
     serial: string;
   };
   interval?: number;
+  disabled?: boolean;
 }
 
 export const VentilationCard = ({
@@ -32,7 +34,7 @@ export const VentilationCard = ({
       return res?.results[0] || 0;
     },
     {
-      refreshInterval: interval || undefined,
+      refreshInterval: interval,
     },
   );
 
@@ -42,6 +44,7 @@ export const VentilationCard = ({
         <Loader />
       </div>
     );
+
   if (error)
     return (
       <div className="grid h-full w-full place-content-center">
@@ -51,7 +54,7 @@ export const VentilationCard = ({
 
   const value = typeof data?.value === "number" ? data.value : 0;
   return (
-    <div className="flex flex-col items-center gap-3">
+    <div className={cn(`flex flex-col items-center gap-3`, {})}>
       <h1 className="text-center text-xl font-semibold">{title}</h1>
       <div className="flex items-center gap-3 text-5xl font-semibold">
         <span>{value}</span>

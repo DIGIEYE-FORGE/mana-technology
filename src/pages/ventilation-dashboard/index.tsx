@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Card } from "@/components/card";
 import { MoteurCard } from "./components/moteurCard";
 import { BarChart } from "./components/bar-chart";
@@ -63,7 +64,7 @@ const VentilationDashboard = () => {
               <QualitAir {...qualitédair[1].children[3]} />
             </div>
           </div>
-          <div className="flex flex-1 flex-col gap-1">
+          <div className="flex flex-1 cursor-not-allowed flex-col opacity-50">
             <h4 className="text-lg font-semibold">{qualitédair[2].title}</h4>
             <div className="grid flex-1 grid-cols-3 rounded-2xl border-2 border-[#26E2B3] py-2">
               <QualitAir {...qualitédair[2].children[0]} />
@@ -84,13 +85,21 @@ const VentilationDashboard = () => {
           className="h-full w-full object-cover"
         />
       </div>
-      <Card className="col-span-3 row-span-1 flex flex-col items-center gap-3">
-        <VentilationCard {...ventilation[0]} interval={5000} />
+      <Card
+        className={cn(
+          "col-span-3 row-span-1 flex flex-col items-center gap-3 rounded-none",
+        )}
+      >
+        <VentilationCard {...(ventilation[0] as any)} interval={5000} />
       </Card>
       <Card className="col-span-3 row-span-1 flex flex-col items-center gap-3">
         <VentilationCard {...ventilation[1]} interval={5000} />
       </Card>
-      <Card className="col-span-3 row-span-1 flex flex-col items-center gap-3 text-[#CAD2D6]">
+      <Card
+        className={cn(
+          "col-span-3 row-span-1 flex cursor-not-allowed flex-col items-center gap-3 rounded-none opacity-50",
+        )}
+      >
         <VentilationCard {...ventilation[2]} interval={5000} />
       </Card>
     </main>

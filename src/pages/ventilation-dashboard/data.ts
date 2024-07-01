@@ -56,7 +56,7 @@ export const data = [
     ]
   },
   {
-    title: "Moteur 1",
+    title: "Moteur 2",
     cardType: "MoteurGroup",
     cardClassNames: "col-span-3 row-span-3 flex flex-col gap-1",
     children: [
@@ -111,7 +111,7 @@ export const data = [
     ]
   },
   {
-    title: "Moteur 1",
+    title: "Moteur 4",
     cardType: "MoteurGroup",
     cardClassNames: "col-span-3 row-span-3 flex flex-col gap-1",
     children: [
@@ -166,7 +166,7 @@ export const data = [
     ]
   },
   {
-    title: "Moteur 1",
+    title: "Moteur 5",
     cardType: "MoteurGroup",
     cardClassNames: "col-span-3 row-span-3 flex flex-col gap-1",
     children: [
@@ -471,10 +471,16 @@ export const ventilation = {
   0: {
     title: "Puissance Totale KW",
     unit: "Kw",
-    telemetry: {
+    telemetry: [
+      {
       serial: "GQKOD91C6LNG9UGM",
-      name: "EST_REALISE_FORATION",
-    }
+      name: "=plc1_DB_Conso2_kWhTotale",
+      },
+      {
+      serial: "GQKOD91C6LNG9UGM",
+      name: "=plc1_DB_Conso1_kWhTotale",
+      }
+    ]
   },
   1: {
     title: "Puissance Thermique galerie",

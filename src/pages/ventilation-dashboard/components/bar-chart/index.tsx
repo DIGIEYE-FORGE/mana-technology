@@ -13,6 +13,7 @@ interface QualitAirProps {
       label: string;
     }[];
   };
+  interval?: number;
 }
 
 export const BarChart = ({ attributes }: QualitAirProps) => {
@@ -44,13 +45,12 @@ export const BarChart = ({ attributes }: QualitAirProps) => {
           return {
             color: color,
             name: label,
-            value: res.results[0].value,
+            value: res.results[0]?.value,
           };
         }),
       );
-      return res1;
+      return res1 || [];
     },
-    { onSuccess: (data) => console.log(data) },
   );
 
   if (isLoading)
