@@ -485,17 +485,17 @@ export const ventilation = {
   1: {
     title: "Puissance Thermique galerie",
     unit: "Kw",
-    telemetry: {
+    telemetry: [{
       serial: "GQKOD91C6LNG9UGM",
       name: "s=plc1_DB_Tag_ΣPwDiesel",
-    }
+    }]
   },
   2: {
     title: "Nombre d’Engins Présents",
     unit: "",
-    telemetry: {
+    telemetry: [{
       serial: "GQKOD91C6LNG9UGM",
       name: "s=plc1_DB_Tag_NbVéhicule",
-    }
+    }]
   },
 }

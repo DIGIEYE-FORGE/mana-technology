@@ -90,7 +90,7 @@ const VentilationDashboard = () => {
           "col-span-3 row-span-1 flex flex-col items-center gap-3 rounded-none",
         )}
       >
-        <VentilationCard {...(ventilation[0] as any)} interval={5000} />
+        <VentilationCard {...ventilation[0]} interval={5000} />
       </Card>
       <Card className="col-span-3 row-span-1 flex flex-col items-center gap-3">
         <VentilationCard {...ventilation[1]} interval={5000} />
