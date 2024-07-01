@@ -176,7 +176,7 @@ function DashboardPage3() {
           className="h-full w-full object-contain"
         />
       </Card>
-      <Card className="col-span-6 p-4">
+      <Card className="col-span-6 flex flex-col p-4">
         <h3 className="text-center text-lg font-semibold">Suivi des Tires</h3>
         <TableWidget
           className="h-1 flex-1"

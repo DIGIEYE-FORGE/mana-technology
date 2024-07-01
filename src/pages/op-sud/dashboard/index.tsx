@@ -204,7 +204,7 @@ export default function HomeDashboard() {
           />
         </div>
       </Card>
-      <Card className="col-span-full row-span-3 p-4 lg:col-span-8">
+      <Card className="col-span-full row-span-3 flex flex-col p-4 lg:col-span-8">
         <h3 className="text-center text-lg font-semibold">Suivi des Tirs</h3>
         <TableWidget
           className="h-1 flex-1"
@@ -343,18 +343,6 @@ export default function HomeDashboard() {
                 name: "CADEX_PELLE_VOLVO480_01",
                 color: "#ecc94b",
                 label: "D8 (2)",
-                serial: "C6XPYU0D920L1M07",
-              },
-              {
-                name: "CHARGE_INSTANTANEE",
-                color: "#ecc94b",
-                label: "Niveleuse ",
-                serial: "C6XPYU0D920L1M07",
-              },
-              {
-                name: "CHARGE_SPECIFIQUE",
-                color: "#ecc94b",
-                label: "Compacteur ",
                 serial: "C6XPYU0D920L1M07",
               }
             ],

@@ -136,14 +136,14 @@ function ProgressMultiple({ attributes }: props) {
             <ProgressData
               data={data[index].map((ele) => {
                 return {
-                  value: ele.value,
-                  name: ele.name,
-                  label: telemetries.find((tel) => tel.name === ele.name)
+                  value: ele?.value || 0,
+                  name: ele?.name || "",
+                  label: telemetries.find((tel) => tel?.name === ele?.name)
                     ?.showLabel
-                    ? telemetries.find((tel) => tel.name === ele.name)?.label
+                    ? telemetries.find((tel) => tel?.name === ele?.name)?.label
                     : "",
                   color:
-                    telemetries.find((tel) => tel.name === ele.name)?.color ||
+                    telemetries.find((tel) => tel?.name === ele?.name)?.color ||
                     "red",
                 };
               })}

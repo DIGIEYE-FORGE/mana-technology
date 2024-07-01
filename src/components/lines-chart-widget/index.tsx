@@ -82,52 +82,67 @@ export default function LinesWidget(props: Props) {
           width: [4, 4],
         },
 
-        yaxis: [
-          {
-            axisTicks: {
-              show: true,
-            },
-            axisBorder: {
-              show: true,
-              // color: "#008FFB",
-            },
-            labels: {
-              formatter: function (value) {
-                return value.toFixed(2);
-              },
-            },
-            // labels: {
-            //   style: {
-            //     colors: "#008FFB",
-            //   },
-            // },
-            title: {
-              style: {
-                color: "#008FFB",
-              },
-            },
-          },
-          {
-            opposite: true,
-            axisTicks: {
-              show: true,
-            },
-            labels: {
-              formatter: function (value) {
-                return value.toFixed(2);
-              },
-            },
-            axisBorder: {
-              show: true,
-              // color: "#FEB019",
-            },
-            title: {
-              style: {
-                color: "#FEB019",
-              },
-            },
-          },
-        ],
+        yaxis:
+          props.yAxis === "one"
+            ? {
+                axisTicks: {
+                  show: true,
+                },
+                axisBorder: {
+                  show: true,
+                },
+                labels: {
+                  formatter: function (value) {
+                    return Math.ceil(value) + " ";
+                  },
+                },
+              }
+            : [
+                {
+                  axisTicks: {
+                    show: true,
+                  },
+                  axisBorder: {
+                    show: true,
+                    // color: "#008FFB",
+                  },
+                  labels: {
+                    formatter: function (value) {
+                      return value.toFixed(2);
+                    },
+                  },
+                  // labels: {
+                  //   style: {
+                  //     colors: "#008FFB",
+                  //   },
+                  // },
+                  title: {
+                    style: {
+                      color: "#008FFB",
+                    },
+                  },
+                },
+                {
+                  opposite: true,
+                  axisTicks: {
+                    show: true,
+                  },
+                  labels: {
+                    formatter: function (value) {
+                      return value.toFixed(2);
+                    },
+                  },
+                  axisBorder: {
+                    show: true,
+                    // color: "#FEB019",
+                  },
+                  title: {
+                    style: {
+                      color: "#FEB019",
+                    },
+                  },
+                },
+              ],
         xaxis: {
           type: "datetime",
           max: dateRange?.to ? new Date(dateRange?.to).getTime() : undefined,
