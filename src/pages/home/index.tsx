@@ -118,7 +118,10 @@ function HomeUpBar() {
           ))}
         </PopoverContent>
       </Popover>
-      <Link to="/main-project">
+      <Link
+        to="/main-project"
+        className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+      >
         <Button variant="ghost">
           <MoveRightIcon className="size-6" />
         </Button>
