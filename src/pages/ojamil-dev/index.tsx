@@ -3,7 +3,7 @@ import { useAppContext } from "@/Context";
 import Loader from "@/components/loader";
 import { LastTelemetry } from "@/utils";
 
-let count = 0;
+// let count = 0;
 function OjamilDevPage() {
   const { backendApi } = useAppContext();
   const { data, isLoading, isValidating, error } = useSWR(

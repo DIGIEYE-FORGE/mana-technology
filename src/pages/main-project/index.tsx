@@ -25,12 +25,18 @@ import FlipCountdown from "@rumess/react-flip-countdown";
 function MainProjectUpBar() {
   return (
     <div className="group sticky top-0 z-10 flex h-up-bar w-full shrink-0 items-center gap-4 border-b px-6 backdrop-blur">
-      <Link to="/">
+      <Link
+        to="/"
+        className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+      >
         <Button variant="ghost">
           <MoveLeftIcon className="size-6" />
         </Button>
       </Link>
-      <Link to="/underground" className="ml-auto">
+      <Link
+        to="/underground"
+        className="ml-auto opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+      >
         <Button variant="ghost">
           <MoveRightIcon className="size-6" />
         </Button>
