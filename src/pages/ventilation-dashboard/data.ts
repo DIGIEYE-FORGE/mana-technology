@@ -13,6 +13,7 @@ export const data = [
             {
               name: "s=Var1_Pw",
               serial: "GQKOD91C6LNG9UGM",
+              label: "Puissance",
             },
           ],
         }
@@ -25,6 +26,7 @@ export const data = [
             {
               name: "s=Var1_Vitesse",
               serial: "GQKOD91C6LNG9UGM",
+              label: "Vitesse",
             },
           ],
         }
@@ -37,6 +39,7 @@ export const data = [
             {
               name: "s=Pt100NdeM1",
               serial: "GQKOD91C6LNG9UGM",
+              label: "Température",
             },
           ],
         }
@@ -49,6 +52,7 @@ export const data = [
             {
               name: "s=Var1_VibDe",
               serial: "GQKOD91C6LNG9UGM",
+              label: "Vibration",
             },
           ],
         }
@@ -56,7 +60,7 @@ export const data = [
     ]
   },
   {
-    title: "Moteur 1",
+    title: "Moteur 2",
     cardType: "MoteurGroup",
     cardClassNames: "col-span-3 row-span-3 flex flex-col gap-1",
     children: [
@@ -68,6 +72,7 @@ export const data = [
             {
               name: "s=Var2_Pw",
               serial: "GQKOD91C6LNG9UGM",
+              label: "Puissance",
             },
           ],
         }
@@ -80,6 +85,7 @@ export const data = [
             {
               name: "s=Var2_Vitesse",
               serial: "GQKOD91C6LNG9UGM",
+              label: "Vitesse",
             },
           ],
         }
@@ -92,6 +98,7 @@ export const data = [
             {
               name: "s=Pt100NdeM2",
               serial: "GQKOD91C6LNG9UGM",
+              label: "Température",
             },
           ],
         }
@@ -104,6 +111,7 @@ export const data = [
             {
               name: "s=Var2_VibDe",
               serial: "GQKOD91C6LNG9UGM",
+              label: "Vibration",
             },
           ],
         }
@@ -111,7 +119,7 @@ export const data = [
     ]
   },
   {
-    title: "Moteur 1",
+    title: "Moteur 4",
     cardType: "MoteurGroup",
     cardClassNames: "col-span-3 row-span-3 flex flex-col gap-1",
     children: [
@@ -123,6 +131,7 @@ export const data = [
             {
               name: "s=Var4_Pw",
               serial: "GQKOD91C6LNG9UGM",
+              label: "Puissance",
             },
           ],
         }
@@ -135,6 +144,7 @@ export const data = [
             {
               name: "s=Var4_Vitesse",
               serial: "GQKOD91C6LNG9UGM",
+              label: "Vitesse",
             },
           ],
         }
@@ -147,6 +157,7 @@ export const data = [
             {
               name: "s=Pt100NdeM4",
               serial: "GQKOD91C6LNG9UGM",
+              label: "Température",
             },
           ],
         }
@@ -159,6 +170,7 @@ export const data = [
             {
               name: "s=Var4_VibDe",
               serial: "GQKOD91C6LNG9UGM",
+              label: "Vibration",
             },
           ],
         }
@@ -166,7 +178,7 @@ export const data = [
     ]
   },
   {
-    title: "Moteur 1",
+    title: "Moteur 5",
     cardType: "MoteurGroup",
     cardClassNames: "col-span-3 row-span-3 flex flex-col gap-1",
     children: [
@@ -178,6 +190,7 @@ export const data = [
             {
               name: "s=Var5_Pw",
               serial: "GQKOD91C6LNG9UGM",
+              label: "Puissance",
             },
           ],
         }
@@ -190,6 +203,7 @@ export const data = [
             {
               name: "s=Var5_Vitesse",
               serial: "GQKOD91C6LNG9UGM",
+              label: "Vitesse",
             },
           ],
         }
@@ -202,6 +216,7 @@ export const data = [
             {
               name: "s=Pt100NdeM5",
               serial: "GQKOD91C6LNG9UGM",
+              label: "Température",
             },
           ],
         }
@@ -214,6 +229,7 @@ export const data = [
             {
               name: "s=Var5_VibDe",
               serial: "GQKOD91C6LNG9UGM",
+              label: "Vibration",
             },
           ],
         }
@@ -471,25 +487,31 @@ export const ventilation = {
   0: {
     title: "Puissance Totale KW",
     unit: "Kw",
-    telemetry: {
-      serial: "GQKOD91C6LNG9UGM",
-      name: "EST_REALISE_FORATION",
-    }
+    telemetry: [
+      {
+        serial: "GQKOD91C6LNG9UGM",
+        name: "=plc1_DB_Conso2_kWhTotale",
+      },
+      {
+        serial: "GQKOD91C6LNG9UGM",
+        name: "=plc1_DB_Conso1_kWhTotale",
+      }
+    ]
   },
   1: {
     title: "Puissance Thermique galerie",
     unit: "Kw",
-    telemetry: {
+    telemetry: [{
       serial: "GQKOD91C6LNG9UGM",
       name: "s=plc1_DB_Tag_ΣPwDiesel",
-    }
+    }]
   },
   2: {
     title: "Nombre d’Engins Présents",
     unit: "",
-    telemetry: {
+    telemetry: [{
       serial: "GQKOD91C6LNG9UGM",
       name: "s=plc1_DB_Tag_NbVéhicule",
-    }
+    }]
   },
 }
