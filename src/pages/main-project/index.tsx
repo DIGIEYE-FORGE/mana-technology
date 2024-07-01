@@ -87,13 +87,14 @@ export default function MainProjectPage() {
 
   const data = [
     {
-      type: "image",
+      type: "link",
+      to: "/op-est",
       image: "/screen1.png",
       position: {
         top: "22%",
         right: "25%",
       },
-      background: "url(/shape2.png),url(/screen1.png)",
+      background: "url(/dashboard.svg)",
       positionModel: {
         side: "left",
         align: "end",
@@ -109,7 +110,7 @@ export default function MainProjectPage() {
         left: "48%",
       },
       url: "Underground.mp4",
-      background: "url(/video.png)",
+      background: "url(/video.svg)",
       positionModel: {
         side: "top",
         align: "center",
@@ -117,8 +118,9 @@ export default function MainProjectPage() {
       },
     },
     {
-      type: "image",
+      type: "link",
       image: "/screen2.png",
+      to: "/op-sud",
       position: {
         bottom: "35%",
         right: "15%",
@@ -128,7 +130,7 @@ export default function MainProjectPage() {
         align: "end",
         sideOffset: 20,
       },
-      background: "url(/shape2.png),url(/screen2.png)",
+      background: "url(/dashboard.svg)",
     },
     {
       title: "SUD",
@@ -144,7 +146,7 @@ export default function MainProjectPage() {
         align: "end",
         sideOffset: 20,
       },
-      background: "url(/video.png)",
+      background: "url(/video.svg)",
     },
     {
       title: "EST",
@@ -160,7 +162,7 @@ export default function MainProjectPage() {
         align: "end",
         sideOffset: 20,
       },
-      background: "url(/video.png)",
+      background: "url(/video.svg)",
     },
     {
       title: "plant",
@@ -176,7 +178,7 @@ export default function MainProjectPage() {
         align: "end",
         sideOffset: 20,
       },
-      background: "url(/video.png)",
+      background: "url(/video.svg)",
     },
 
     {
@@ -282,7 +284,6 @@ export default function MainProjectPage() {
     <main
       className="relative flex flex-col gap-2 pb-6 2xl:overflow-hidden"
       style={{
-        // backgroundImage: "url('/sceen24.png')",
         backgroundSize: "100% 100%",
         backgroundRepeat: "no-repeat",
       }}
@@ -349,20 +350,20 @@ export default function MainProjectPage() {
               </div>
             ))}
             {data.map((item, index) =>
-              item.type !== "image" && item.type !== "video" ? (
+              item.type !== "link" && item.type !== "video" ? (
                 <div
                   key={index}
                   className="absolute"
                   style={{
                     ...item.position,
                     width:
-                      item.type === "image" || item.type === "video"
+                      item.type === "link" || item.type === "video"
                         ? "67px"
                         : item.type === "information"
                           ? "17rem"
                           : "22rem",
                     height:
-                      item.type === "image" || item.type === "video"
+                      item.type === "link" || item.type === "video"
                         ? "64px"
                         : item.type === "information"
                           ? "10rem"
@@ -394,7 +395,7 @@ export default function MainProjectPage() {
                     </div>
                   )}
                 </div>
-              ) : (
+              ) : item.type === "video" ? (
                 <Popover key={index}>
                   <PopoverTrigger asChild>
                     <div
@@ -406,7 +407,7 @@ export default function MainProjectPage() {
                         height: "64px",
                         cursor: "pointer",
                         background: `${item.background}`,
-                        backgroundSize: "100% 100%",
+                        backgroundSize: "contain",
                         backgroundRepeat: "no-repeat",
                       }}
                     ></div>
@@ -452,6 +453,25 @@ export default function MainProjectPage() {
                     </div>
                   </PopoverContent>
                 </Popover>
+              ) : (
+                item.type === "link" &&
+                item.to && (
+                  <Link key={index} to={item?.to}>
+                    <div
+                      key={index}
+                      className="absolute"
+                      style={{
+                        ...item.position,
+                        width: "67px",
+                        height: "64px",
+                        cursor: "pointer",
+                        background: `${item.background}`,
+                        backgroundSize: "contain",
+                        backgroundRepeat: "no-repeat",
+                      }}
+                    ></div>
+                  </Link>
+                )
               ),
             )}
           </div>

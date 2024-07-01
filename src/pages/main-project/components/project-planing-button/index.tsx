@@ -80,12 +80,13 @@ function ProjectPlaningButton() {
       </DialogTrigger>
       <DialogContent
         showCloseButton={false}
-        className="max dark bottom-0 top-[4rem] flex w-[100%] max-w-none translate-y-0 flex-col rounded-none border-none bg-card/10 p-4 text-foreground backdrop-blur"
+        className="max dark bottom-0 top-[4rem] flex w-[100%] max-w-none translate-y-0 flex-col rounded-none border-none bg-card/10 p-4 text-foreground backdrop-blur-xl"
         overlayClassName="bg-transparent"
       >
         <div className="mx-auto flex w-full max-w-[1920px] gap-2">
           {tabs.map((tab, index) => (
             <button
+              key={index}
               className={cn(
                 "custom-button flex flex-1 justify-center rounded-lg py-2 text-xl font-bold uppercase transition-colors hover:brightness-125",
                 {
