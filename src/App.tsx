@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { TDateRange, User } from "./utils";
 import { z } from "zod";
@@ -9,9 +9,12 @@ import Loader from "./components/loader";
 import AppContext from "./Context";
 import LoginPage from "./pages/login";
 import BpIndicator from "./components/bp-indicator";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function App() {
   const [user, setUser] = useState<User | null | undefined>(undefined);
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
   const [accessToken, setAccessToken] = useLocalStorage(
     "accessToken",
     z.string().default(""),
@@ -54,6 +57,12 @@ function App() {
       errorRetryCount: 0,
     },
   );
+
+  useEffect(() => {
+    if (pathname === "/") {
+      navigate("/main-project");
+    }
+  }, []);
 
   if (isLoading || user === undefined) {
     return (
