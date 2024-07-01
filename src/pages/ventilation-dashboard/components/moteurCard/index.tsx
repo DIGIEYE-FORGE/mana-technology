@@ -57,6 +57,7 @@ export const MoteurCard = (props: Props) => {
         res.map((item, index) => {
           const name = telemetries[index].name;
           return {
+            name: telemetries[index].label || telemetries[index].name,
             data: item.map((item) => {
               return {
                 x: new Date(item.createdAt),
@@ -84,6 +85,7 @@ export const MoteurCard = (props: Props) => {
       </main>
     );
   }
+  // console.log(data);
 
   const finalData = data?.[0]?.data || [];
   const yaxisMax = Math.max(...finalData.map((item) => item.y)) + 50;
@@ -147,12 +149,7 @@ export const MoteurCard = (props: Props) => {
           },
         },
       }}
-      series={[
-        {
-          name: "series-1",
-          data: finalData,
-        },
-      ]}
+      series={data || []}
       type="line"
       height="100%"
     />
