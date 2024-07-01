@@ -543,11 +543,9 @@ export default function MainProjectPage() {
               />
               <Suspense fallback={<Loader3D />}>
                 <Model
-                  color2="#96CFFE"
-                  color1="#96CFFE"
                   url={
                     `${env.VITE_LOCAL_MODELS === "true" ? "/public/ignore/" : "https://storage.googleapis.com/nextronic/"}` +
-                    "mine00000017.glb"
+                    "mine0019.glb"
                   }
                   ref={modelRef}
                   onLoad={() => setLoading(false)}

@@ -101,11 +101,8 @@ function App() {
               backgroundImage:
                 "linear-gradient(to bottom,  #172f6dd0 0%, #0f172ad0 70%), url(/public/sky-bg.png)",
               backgroundSize: "100% 100%, 100% 100%",
-              // backgroundPosition: "center",
-              // scrollbarGutter: "stable",
             }}
           >
-            {/* <Navbar /> */}
             <Outlet />
           </main>
         )}
