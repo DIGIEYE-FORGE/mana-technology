@@ -41,6 +41,27 @@ function MainProjectUpBar() {
           <MoveRightIcon className="size-6" />
         </Button>
       </Link>
+      <div
+        className="absolute right-1/2 h-full w-96"
+        style={{
+          perspective: "100px",
+          transform: "translateX(50%) rotateX(20deg)",
+        }}
+      >
+        <div
+          className="grid place-content-center border-2 bg-[#182c5d] outline outline-4 outline-[#182c5d]"
+          style={{
+            borderTop: "none",
+            borderRadius: "0 0 1rem 1rem",
+            height: "150%",
+            transform: "rotateX(-10deg)",
+            transformOrigin: "0 0",
+            perspective: "100px",
+          }}
+        >
+          <h1 className="text-2xl font-bold">hello world</h1>
+        </div>
+      </div>
     </div>
   );
 }
