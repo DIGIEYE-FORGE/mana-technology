@@ -22,42 +22,7 @@ import {
 } from "@/components/ui/popover";
 import FlipCountdown from "@rumess/react-flip-countdown";
 import React from "react";
-
-function MainProjectUpBar() {
-  return (
-    <div
-      style={{
-        backgroundImage: "url(/main-project-upbar.svg)",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "50% 0",
-        backgroundSize: "500% 100%",
-      }}
-      className="sticky top-0 z-10 flex h-[5rem] w-full shrink-0 backdrop-blur"
-    >
-      <div className="group relative flex h-[60%] w-full shrink-0 items-center justify-between gap-4 px-6">
-        <Link
-          to="/"
-          className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-        >
-          <Button variant="ghost">
-            <MoveLeftIcon className="size-6" />
-          </Button>
-        </Link>
-        <div className="relative top-3 text-2xl font-medium">
-          Tizert Mine Project Overview
-        </div>
-        <Link
-          to="/underground"
-          className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-        >
-          <Button variant="ghost">
-            <MoveRightIcon className="size-6" />
-          </Button>
-        </Link>
-      </div>
-    </div>
-  );
-}
+import { MainProjectUpBar } from "./components/up-bar";
 
 export function RotatingModel({ modelRef }: { modelRef: any }) {
   useFrame(() => {
@@ -69,231 +34,231 @@ export function RotatingModel({ modelRef }: { modelRef: any }) {
   return null; // This component doesn't render anything visible
 }
 
-export default function MainProjectPage() {
-  const magazine = [
-    {
-      name: "EST",
-      bottom: "50%",
-      right: "27%",
-      type: "image",
-      image: "/screen1.png",
+const magazine = [
+  {
+    name: "EST",
+    bottom: "50%",
+    right: "27%",
+    type: "image",
+    image: "/screen1.png",
+  },
+  {
+    name: "SUD",
+    bottom: "18%",
+    right: "13%",
+    type: "image",
+    image: "/screen2.png",
+  },
+  {
+    name: "PLANT",
+    bottom: "10%",
+    left: "42%",
+    type: "information",
+  },
+  {
+    name: "ELECTRICAL LINE",
+    bottom: "40%",
+    left: "7%",
+    type: "information",
+  },
+  {
+    name: "PIPELINE",
+    bottom: "20%",
+    left: "14%",
+    type: "information",
+  },
+];
+
+const data = [
+  {
+    type: "link",
+    to: "/op-est",
+    image: "/screen1.png",
+    position: {
+      top: "14%",
+      right: "28%",
     },
-    {
-      name: "SUD",
-      bottom: "18%",
-      right: "13%",
-      type: "image",
-      image: "/screen2.png",
+    background: "url(/screen1.png)",
+    positionModel: {
+      side: "left",
+      align: "end",
+      sideOffset: 20,
     },
-    {
-      name: "PLANT",
-      bottom: "10%",
-      left: "42%",
-      type: "information",
+  },
+  {
+    title: "Underground Mine",
+    type: "video",
+    image: "/screen1.png",
+    position: {
+      bottom: "27%",
+      left: "48%",
     },
-    {
-      name: "ELECTRICAL LINE",
+    url: "Underground.mp4",
+    background: "url(/video.svg)",
+    positionModel: {
+      side: "top",
+      align: "center",
+      sideOffset: -300,
+    },
+  },
+  {
+    type: "link",
+    image: "/screen2.png",
+    to: "/op-sud",
+    position: {
+      bottom: "35%",
+      right: "19%",
+    },
+    positionModel: {
+      side: "left",
+      align: "end",
+      sideOffset: 20,
+    },
+    background: "url(/dashboard.svg)",
+  },
+  {
+    title: "Pit SUD",
+    type: "video",
+    image: "/screen1.png",
+    position: {
+      bottom: "35%",
+      right: "23%",
+    },
+    url: "/sud_vd.mp4",
+    positionModel: {
+      side: "left",
+      align: "start",
+      sideOffset: -100,
+    },
+    background: "url(/video.svg)",
+  },
+  {
+    title: " Pit EST",
+    type: "video",
+    image: "/screen1.png",
+    position: {
+      top: "14%",
+      right: "32%",
+    },
+    url: "/est_vd.mp4",
+    positionModel: {
+      side: "left",
+      align: "start",
+      sideOffset: -200,
+    },
+    background: "url(/video.svg)",
+  },
+  {
+    title: "Electrical power line",
+    type: "image",
+    image: "/ElectricalPowerLine.png",
+    position: {
+      top: "40%",
+      left: "2.5%",
+    },
+    url: "/ElectricalPowerLine.png",
+    positionModel: {
+      side: "left",
+      align: "end",
+      sideOffset: 20,
+    },
+    background: "url(/video.svg)",
+  },
+
+  {
+    type: "information",
+    title: "Electrical power line",
+    attribute: {
+      ["60 kV line"]: "72 Km",
+      ["22 kV line"]: "52 Km",
+      ["Electrical substation"]: "60/22 kV",
+    },
+    background: "url(/shape1.png)",
+    position: {
+      top: "6%",
+      left: "1%",
+    },
+  },
+
+  {
+    type: "information",
+    title: "Process plant",
+    attribute: {
+      Capacity: "3,6 mtpa",
+      ["Processing method"]: "Flotation",
+      ["Product"]: "Copper Silver concentrate",
+      ["Concentrate production capacity"]: "120 Ktonnes per year",
+    },
+    background: "url(/shape1.png)",
+    position: {
       bottom: "40%",
-      left: "7%",
-      type: "information",
+      left: "40%",
     },
-    {
-      name: "PIPELINE",
-      bottom: "20%",
-      left: "14%",
-      type: "information",
+  },
+  {
+    title: "Pipe Line",
+    type: "image",
+    image: "/PIPELINE.png",
+    position: {
+      bottom: "24%",
+      left: "9.5%",
     },
-  ];
+    url: "/PIPELINE.png",
+    positionModel: {
+      side: "left",
+      align: "end",
+      sideOffset: 20,
+    },
+    background: "url(/video.svg)",
+  },
+  {
+    type: "information",
+    title: "Pipeline",
+    attribute: {
+      ["Pipe length"]: "146 km ",
+      ["Pipe diameter"]: "400 mm ",
+      ["Pumping station's number"]: "8 PS /1350m",
+      ["Origine"]: "Treated waste water",
+    },
+    background: "url(/shape1.png)",
+    position: {
+      bottom: "0%",
+      left: "20%",
+    },
+  },
+  {
+    type: "identification",
+    title: "Pit EST",
+    attribute: {
+      ["Mineral reserves"]: "4,5 Mt @0,8 % Cu et 27 g/t Ag ",
+      ["Waste tonnage"]: "39 Mt ",
+      ["Rock production capacity "]: "1,2 Mt rock per month",
+      ["Life of mine "]: "4 years ",
+    },
+    background: "url(/vector.png)",
+    position: {
+      top: "10%",
+      right: "3%",
+    },
+  },
+  {
+    type: "identification",
+    title: "Pit SUD",
+    attribute: {
+      ["Mineral reserves"]: "3,1 Mt @ 0,9 % Cu et 16 g/t Ag",
+      ["Waste tonnage"]: "23 Mt ",
+      ["Rock production capacity "]: "0,9 Mt rock per month",
+      ["Life of mine "]: "3 years ",
+    },
+    background: "url(/vector.png)",
+    position: {
+      bottom: "-18%",
+      right: "2%",
+    },
+  },
+];
 
-  const data = [
-    {
-      type: "link",
-      to: "/op-est",
-      image: "/screen1.png",
-      position: {
-        top: "14%",
-        right: "28%",
-      },
-      background: "url(/screen1.png)",
-      positionModel: {
-        side: "left",
-        align: "end",
-        sideOffset: 20,
-      },
-    },
-    {
-      title: "Underground Mine",
-      type: "video",
-      image: "/screen1.png",
-      position: {
-        bottom: "27%",
-        left: "48%",
-      },
-      url: "Underground.mp4",
-      background: "url(/video.svg)",
-      positionModel: {
-        side: "top",
-        align: "center",
-        sideOffset: -300,
-      },
-    },
-    {
-      type: "link",
-      image: "/screen2.png",
-      to: "/op-sud",
-      position: {
-        bottom: "35%",
-        right: "19%",
-      },
-      positionModel: {
-        side: "left",
-        align: "end",
-        sideOffset: 20,
-      },
-      background: "url(/dashboard.svg)",
-    },
-    {
-      title: "Pit SUD",
-      type: "video",
-      image: "/screen1.png",
-      position: {
-        bottom: "35%",
-        right: "23%",
-      },
-      url: "/sud_vd.mp4",
-      positionModel: {
-        side: "left",
-        align: "start",
-        sideOffset: -100,
-      },
-      background: "url(/video.svg)",
-    },
-    {
-      title: " Pit EST",
-      type: "video",
-      image: "/screen1.png",
-      position: {
-        top: "14%",
-        right: "32%",
-      },
-      url: "/est_vd.mp4",
-      positionModel: {
-        side: "left",
-        align: "start",
-        sideOffset: -200,
-      },
-      background: "url(/video.svg)",
-    },
-    {
-      title: "Electrical power line",
-      type: "image",
-      image: "/ElectricalPowerLine.png",
-      position: {
-        top: "40%",
-        left: "2.5%",
-      },
-      url: "/ElectricalPowerLine.png",
-      positionModel: {
-        side: "left",
-        align: "end",
-        sideOffset: 20,
-      },
-      background: "url(/video.svg)",
-    },
-
-    {
-      type: "information",
-      title: "Electrical power line",
-      attribute: {
-        ["60 kV line"]: "72 Km",
-        ["22 kV line"]: "52 Km",
-        ["Electrical substation"]: "60/22 kV",
-      },
-      background: "url(/shape1.png)",
-      position: {
-        top: "6%",
-        left: "1%",
-      },
-    },
-
-    {
-      type: "information",
-      title: "Process plant",
-      attribute: {
-        Capacity: "3,6 mtpa",
-        ["Processing method"]: "Flotation",
-        ["Product"]: "Copper Silver concentrate",
-        ["Concentrate production capacity"]: "120 Ktonnes per year",
-      },
-      background: "url(/shape1.png)",
-      position: {
-        bottom: "40%",
-        left: "40%",
-      },
-    },
-    {
-      title: "Pipe Line",
-      type: "image",
-      image: "/PIPELINE.png",
-      position: {
-        bottom: "24%",
-        left: "9.5%",
-      },
-      url: "/PIPELINE.png",
-      positionModel: {
-        side: "left",
-        align: "end",
-        sideOffset: 20,
-      },
-      background: "url(/video.svg)",
-    },
-    {
-      type: "information",
-      title: "Pipeline",
-      attribute: {
-        ["Pipe length"]: "146 km ",
-        ["Pipe diameter"]: "400 mm ",
-        ["Pumping station's number"]: "8 PS /1350m",
-        ["Origine"]: "Treated waste water",
-      },
-      background: "url(/shape1.png)",
-      position: {
-        bottom: "0%",
-        left: "20%",
-      },
-    },
-    {
-      type: "identification",
-      title: "Pit EST",
-      attribute: {
-        ["Mineral reserves"]: "4,5 Mt @0,8 % Cu et 27 g/t Ag ",
-        ["Waste tonnage"]: "39 Mt ",
-        ["Rock production capacity "]: "1,2 Mt rock per month",
-        ["Life of mine "]: "4 years ",
-      },
-      background: "url(/vector.png)",
-      position: {
-        top: "10%",
-        right: "3%",
-      },
-    },
-    {
-      type: "identification",
-      title: "Pit SUD",
-      attribute: {
-        ["Mineral reserves"]: "3,1 Mt @ 0,9 % Cu et 16 g/t Ag",
-        ["Waste tonnage"]: "23 Mt ",
-        ["Rock production capacity "]: "0,9 Mt rock per month",
-        ["Life of mine "]: "3 years ",
-      },
-      background: "url(/vector.png)",
-      position: {
-        bottom: "-18%",
-        right: "2%",
-      },
-    },
-  ];
-
+export default function MainProjectPage() {
   const tree = {
     titile: "Underground Mine",
     attribute: {

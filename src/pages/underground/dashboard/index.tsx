@@ -76,7 +76,7 @@ export default function UndergroundDashboardPage() {
       </Card>
       <Card className="flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
-           Avancement Cumulé (m):
+          Avancement Cumulé (m):
           <span className="text-md text-gray-400"> Réalisé vs Planifié</span>
         </h1>
         <div className="w-full text-center text-xs text-gray-400"></div>
@@ -238,7 +238,7 @@ export default function UndergroundDashboardPage() {
 
       <Card className="flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
-          Nombre Tir{" "}
+          Underground{" "}
           <span className="text-gray-500">(planifié vs réalisé)</span>
         </h1>
         <div className="w-full text-center text-xs text-gray-400"></div>
