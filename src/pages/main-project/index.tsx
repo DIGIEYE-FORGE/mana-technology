@@ -24,14 +24,20 @@ import FlipCountdown from "@rumess/react-flip-countdown";
 import React from "react";
 import { MainProjectUpBar } from "./components/up-bar";
 
-export function RotatingModel({ modelRef }: { modelRef: any }) {
+export function RotatingModel({
+  modelRef,
+  isRotating,
+}: {
+  modelRef: any;
+  isRotating?: boolean;
+}) {
   useFrame(() => {
     if (modelRef.current) {
-      modelRef.current.rotation.y += 0.002; // Adjust rotation speed as needed
+      modelRef.current.rotation.y += isRotating ? 0.002 : 0;
     }
   });
 
-  return null; // This component doesn't render anything visible
+  return null;
 }
 
 const magazine = [
@@ -259,6 +265,7 @@ const data = [
 ];
 
 export default function MainProjectPage() {
+  const [isRotating, setIsRotating] = useState(true);
   const tree = {
     titile: "Underground Mine",
     attribute: {
@@ -494,6 +501,7 @@ export default function MainProjectPage() {
               onCreated={({ gl }) => {
                 gl.shadowMap.enabled = true;
               }}
+              onClick={() => setIsRotating(!isRotating)}
             >
               <ambientLight intensity={0.5} />
               <directionalLight
@@ -519,7 +527,7 @@ export default function MainProjectPage() {
                   onLoad={() => setLoading(false)}
                 />
               </Suspense>
-              <RotatingModel modelRef={modelRef} />
+              <RotatingModel modelRef={modelRef} isRotating={isRotating} />
               <OrbitControls enableRotate rotateSpeed={1} zoomToCursor />
             </Canvas>
             <div
