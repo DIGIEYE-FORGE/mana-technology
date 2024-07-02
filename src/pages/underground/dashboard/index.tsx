@@ -349,9 +349,11 @@ export default function UndergroundDashboardPage() {
                 serial: "Y1UMITGTHATVAUQI",
               },
               {
-                nameTelemetry: "UG_FORATION_TIRS_TEMPS_DE_CHARGEMENT_EXPLOSIF-min",
+                nameTelemetry:
+                  "UG_FORATION_TIRS_TEMPS_DE_CHARGEMENT_EXPLOSIF-min",
                 nameLabelTelemetry: "Temps de chargement explosif",
-                bfsTelemetry: "UG_TAUX_ARRACHEMENT_TEMPS_DE_CHARGEMENT_EXPLOSIF_BFS",
+                bfsTelemetry:
+                  "UG_TAUX_ARRACHEMENT_TEMPS_DE_CHARGEMENT_EXPLOSIF_BFS",
                 bfsLabelTelemetry: "T. chargement explosif",
                 color: "#F25C05",
                 serial: "Y1UMITGTHATVAUQI",
@@ -366,16 +368,20 @@ export default function UndergroundDashboardPage() {
               },
               {
                 nameTelemetry: "UG_FORATION_TIRS_TIR_DELAI_GAZ_ET_LAVAGE-min",
-                nameLabelTelemetry: "Temps retour après le tir et le lavage du front",
-                bfsTelemetry: "UG_TAUX_ARRACHEMENT_TEMPS_DE_PURGE_ET_SOUFLAGE_BFS",
+                nameLabelTelemetry:
+                  "Temps retour après le tir et le lavage du front",
+                bfsTelemetry:
+                  "UG_TAUX_ARRACHEMENT_TEMPS_DE_PURGE_ET_SOUFLAGE_BFS",
                 bfsLabelTelemetry: "T. Purge et Souflage",
                 color: "#05F2C7",
                 serial: "Y1UMITGTHATVAUQI",
               },
               {
-                nameTelemetry: "UG_SOUTENEMENT_TEMPS_DE_MISE_EN_PLACE_SOUTENEMENT-min",
+                nameTelemetry:
+                  "UG_SOUTENEMENT_TEMPS_DE_MISE_EN_PLACE_SOUTENEMENT-min",
                 nameLabelTelemetry: "Temps de mise en place Souténement",
-                bfsTelemetry: "UG_TAUX_ARRACHEMENT_TEMPS_DE_MISE_EN_PLACE_SOUTENEMENT_BFS",
+                bfsTelemetry:
+                  "UG_TAUX_ARRACHEMENT_TEMPS_DE_MISE_EN_PLACE_SOUTENEMENT_BFS",
                 bfsLabelTelemetry: "T. Mise en place Souténement",
                 color: "#009AB6",
                 serial: "Y1UMITGTHATVAUQI",
@@ -395,7 +401,7 @@ export default function UndergroundDashboardPage() {
       </Card>
       <Card className="flex flex-col gap-1 p-4">
         <h1 className="text-center text-lg font-semibold">
-        Temps Moyen de cycle
+          Temps Moyen de cycle
         </h1>
         <div className="h-1 flex-1">
           <LineChartWidget
@@ -418,36 +424,171 @@ export default function UndergroundDashboardPage() {
         <h3 className="text-center text-lg font-semibold">
           Disponibilité et utilisation des engins
         </h3>
-        <div className="flex-1">
+        <div className="h-1 flex-1 overflow-y-auto">
           <Engins
             attribute={[
               {
-                label: "LH06",
+                label: "BOLTEC M10",
                 icon: "/truck.svg",
-                utilisationTelemetry: "UG_LH06_UTILISATION",
-                disponibilliteTelemetry: "UG_LH06_DISPONIBILITE",
-                serial: "DABF7PAT2G4BAG21",
+                utilisationTelemetry: "BOLTEC_M10_TAUX_D'UTILISATION",
+                disponibilliteTelemetry: "BOLTEC_M10_PERC_DISPO",
+                serial: "Y1UMITGTHATVAUQI",
               },
               {
-                label: "LH06",
+                label: "CHARGEUR D'EXPLOSIF TITAN BAC2X350",
                 icon: "/truck.svg",
-                utilisationTelemetry: "UG_LH06_UTILISATION",
-                disponibilliteTelemetry: "UG_LH06_DISPONIBILITE",
-                serial: "DABF7PAT2G4BAG21",
+                utilisationTelemetry:
+                  "CHARGEUR_D'EXPLOSIF_TITAN_BAC2X350_TAUX_D'UTILISATION",
+                disponibilliteTelemetry:
+                  "CHARGEUR_D'EXPLOSIF_TITAN_BAC2X350_PERC_DISPO",
+                serial: "Y1UMITGTHATVAUQI",
               },
               {
-                label: "LH06",
+                label: "CHARGEUSE CAT R1700 14T N°1",
                 icon: "/truck.svg",
-                utilisationTelemetry: "UG_LH06_UTILISATION",
-                disponibilliteTelemetry: "UG_LH06_DISPONIBILITE",
-                serial: "DABF7PAT2G4BAG21",
+                utilisationTelemetry:
+                  "CHARGEUSE_CAT_R1700_14T_N1_TAUX_D'UTILISATION",
+                disponibilliteTelemetry:
+                  "CHARGEUSE_CAT_R1700_14T_N1_PERC_DISPO",
+                serial: "Y1UMITGTHATVAUQI",
               },
               {
-                label: "LH06",
+                label: "CHARGEUSE CAT R1700 14T N°2",
                 icon: "/truck.svg",
-                utilisationTelemetry: "UG_LH06_UTILISATION",
-                disponibilliteTelemetry: "UG_LH06_DISPONIBILITE",
-                serial: "DABF7PAT2G4BAG21",
+                utilisationTelemetry:
+                  "CHARGEUSE_CAT_R1700_14T_N2_TAUX_D'UTILISATION",
+                disponibilliteTelemetry:
+                  "CHARGEUSE_CAT_R1700_14T_N2_PERC_DISPO",
+                serial: "Y1UMITGTHATVAUQI",
+              },
+              {
+                label: "CHARIOT ELEVATEUR",
+                icon: "/truck.svg",
+                utilisationTelemetry: "CHARIOT_ELEVATEUR_TAUX_D'UTILISATION",
+                disponibilliteTelemetry: "CHARIOT_ELEVATEUR_PERC_DISPO",
+                serial: "Y1UMITGTHATVAUQI",
+              },
+              {
+                label: "CHARGEUSE CAT R1700 14T N°2",
+                icon: "/truck.svg",
+                utilisationTelemetry:
+                  "CHARGEUSE_CAT_R1700_14T_N2_TAUX_D'UTILISATION",
+                disponibilliteTelemetry:
+                  "CHARGEUSE_CAT_R1700_14T_N2_PERC_DISPO",
+                serial: "Y1UMITGTHATVAUQI",
+              },
+              {
+                label: "COMPRESSEUR ATLAS COPCO XAVS600 PACE SQE N°1",
+                icon: "/truck.svg",
+                utilisationTelemetry:
+                  "COMPRESSEUR_ATLAS_COPCO_XAVS600_PACE_SQE_N1_TAUX_D'UTILISATION",
+                disponibilliteTelemetry:
+                  "COMPRESSEUR_ATLAS_COPCO_XAVS600_PACE_SQE_N1_PERC_DISPO",
+                serial: "Y1UMITGTHATVAUQI",
+              },
+              {
+                label: "COMPRESSEUR ATLAS COPCO XAVS600 PACE SQE N°2",
+                icon: "/truck.svg",
+                utilisationTelemetry:
+                  "COMPRESSEUR_ATLAS_COPCO_XAVS600_PACE_SQE_N2_TAUX_D'UTILISATION",
+                disponibilliteTelemetry:
+                  "COMPRESSEUR_ATLAS_COPCO_XAVS600_PACE_SQE_N2_PERC_DISPO",
+                serial: "Y1UMITGTHATVAUQI",
+              },
+              {
+                label: "DUMPER CAT AD 45T N°1",
+                icon: "/truck.svg",
+                utilisationTelemetry: "DUMPER_CAT_AD_45T_N1_TAUX_D'UTILISATION",
+                disponibilliteTelemetry: "DUMPER_CAT_AD_45T_N1_PERC_DISPO",
+                serial: "Y1UMITGTHATVAUQI",
+              },
+              {
+                label: "DUMPER CAT AD 45T N°2",
+                icon: "/truck.svg",
+                utilisationTelemetry: "DUMPER_CAT_AD_45T_N2_TAUX_D'UTILISATION",
+                disponibilliteTelemetry: "DUMPER_CAT_AD_45T_N2_PERC_DISPO",
+                serial: "Y1UMITGTHATVAUQI",
+              },
+              {
+                label: "GROUPE ELECTROGENE DEUTZ DPS 450 N°1",
+                icon: "/truck.svg",
+                utilisationTelemetry:
+                  "GROUPE_ELECTROGENE_DEUTZ_DPS_450_N1_TAUX_D'UTILISATION",
+                disponibilliteTelemetry:
+                  "GROUPE_ELECTROGENE_DEUTZ_DPS_450_N1_PERC_DISPO",
+                serial: "Y1UMITGTHATVAUQI",
+              },
+              {
+                label: "GROUPE ELECTROGENE DEUTZ DPS 450 N°2",
+                icon: "/truck.svg",
+                utilisationTelemetry:
+                  "GROUPE_ELECTROGENE_DEUTZ_DPS_450_N2_TAUX_D'UTILISATION",
+                disponibilliteTelemetry:
+                  "GROUPE_ELECTROGENE_DEUTZ_DPS_450_N2_PERC_DISPO",
+                serial: "Y1UMITGTHATVAUQI",
+              },
+              {
+                label: "GROUPE ELECTROGENE DEUTZ DPS 450 N°3",
+                icon: "/truck.svg",
+                utilisationTelemetry:
+                  "GROUPE_ELECTROGENE_DEUTZ_DPS_450_N3_TAUX_D'UTILISATION",
+                disponibilliteTelemetry:
+                  "GROUPE_ELECTROGENE_DEUTZ_DPS_450_N3_PERC_DISPO",
+                serial: "Y1UMITGTHATVAUQI",
+              },
+              {
+                label: "MECANISE TIZERT JUMBO EPIROC T1D N°1",
+                icon: "/truck.svg",
+                utilisationTelemetry:
+                  "MECANISE_TIZERT_JUMBO_EPIROC_T1D_N1_TAUX_D'UTILISATION",
+                disponibilliteTelemetry:
+                  "MECANISE_TIZERT_JUMBO_EPIROC_T1D_N1_PERC_DISPO",
+                serial: "Y1UMITGTHATVAUQI",
+              },
+              {
+                label: "MECANISE TIZERT JUMBO M20",
+                icon: "/truck.svg",
+                utilisationTelemetry:
+                  "MECANISE_TIZERT_JUMBO_M20_TAUX_D'UTILISATION",
+                disponibilliteTelemetry: "MECANISE_TIZERT_JUMBO_M20_PERC_DISPO",
+                serial: "Y1UMITGTHATVAUQI",
+              },
+              {
+                label: "PLATEFORME A TABLE ELEVATRICE TITAN BMP2X3				",
+                icon: "/truck.svg",
+                utilisationTelemetry:
+                  "PLATEFORME_A_TABLE_ELEVATRICE_TITAN_BMP2X3_TAUX_D'UTILISATION",
+                disponibilliteTelemetry:
+                  "PLATEFORME_A_TABLE_ELEVATRICE_TITAN_BMP2X3_PERC_DISPO",
+                serial: "Y1UMITGTHATVAUQI",
+              },
+              {
+                label: "SIMBA",
+                icon: "/truck.svg",
+                utilisationTelemetry: "SIMBA_TAUX_D'UTILISATION",
+                disponibilliteTelemetry: "SIMBA_PERC_DISPO",
+                serial: "Y1UMITGTHATVAUQI",
+              },
+              {
+                label: "TRACTEUR",
+                icon: "/truck.svg",
+                utilisationTelemetry: "TRACTEUR_TAUX_D'UTILISATION",
+                disponibilliteTelemetry: "TRACTEUR_PERC_DISPO",
+                serial: "Y1UMITGTHATVAUQI",
+              },
+              {
+                label: "VEHICULE  MUV11",
+                icon: "/truck.svg",
+                utilisationTelemetry: "VEHICULE__MUV11_TAUX_D'UTILISATION",
+                disponibilliteTelemetry: "VEHICULE__MUV11_PERC_DISPO",
+                serial: "Y1UMITGTHATVAUQI",
+              },
+              {
+                label: "VEHICULE  MUV5",
+                icon: "/truck.svg",
+                utilisationTelemetry: "VEHICULE__MUV5_TAUX_D'UTILISATION",
+                disponibilliteTelemetry: "VEHICULE__MUV5_PERC_DISPO",
+                serial: "Y1UMITGTHATVAUQI",
               },
             ]}
           />

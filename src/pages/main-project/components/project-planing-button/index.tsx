@@ -17,7 +17,7 @@ const tabs = [
     ],
   },
   {
-    title: "Performance",
+    title: "Progress",
     subTabs: [
       {
         title: "Performance Indicators",
@@ -26,7 +26,7 @@ const tabs = [
     ],
   },
   {
-    title: "progress",
+    title: "S-curve",
     subTabs: [
       {
         title: "project progress",
@@ -70,7 +70,7 @@ const tabs = [
     ],
   },
   {
-    title: "HSE",
+    title: "ESG",
     subTabs: [
       {
         title: "hse",
@@ -86,7 +86,7 @@ function ProjectPlaningButton() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <button className="btn-3d h-fit">Project Planning</button>
+        <button className="btn-3d h-fit">Integrated Project Planning</button>
       </DialogTrigger>
       <DialogContent
         showCloseButton={false}

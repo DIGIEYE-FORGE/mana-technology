@@ -19,6 +19,7 @@ export default function HseButton() {
         <h3 className="text-lg font-semibold">{widgetsData[0].title}</h3>
         <div className="text-4xl font-bold">
           <Telemetry
+            displayFormat="float"
             telemetry={{
               name: widgetsData[0].telemetryName,
               serial: widgetsData[0].serial,
