@@ -105,8 +105,8 @@ export default function HomeDashboard() {
           />
         </div>
       </Card>
-      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-4">
-        <h1 className="text-center text-lg font-semibold">
+      <Card className="col-span-full row-span-3 flex flex-col px-2 py-6 lg:col-span-6 xl:col-span-4">
+        <h1 className="text-center text-base font-semibold 2xl:text-lg">
           Évolution de la Production vs Planifié
         </h1>
         <ProgressAccumulation
