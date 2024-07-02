@@ -11,7 +11,7 @@ export default function HomeDashboard() {
     <main className="grid w-full grid-flow-dense auto-rows-[80px] grid-cols-3 gap-3 md:grid-cols-6 lg:grid-cols-12 lg:gap-4 xl:grid-cols-[repeat(15,minmax(0,1fr))] 2xl:auto-rows-[92px]">
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
-          Évolution Production Roche Cumulée
+          Évolution Production Roche Cumulée (t)
         </h1>
         <div className="flex-1">
           <LineChartWidget
@@ -21,14 +21,14 @@ export default function HomeDashboard() {
                   area: false,
                   name: "PLANIFIE_ROCHE_CUMUL",
                   color: "#78F6EA",
-                  label: "Cumulative planifié",
+                  label: "Cumulative Planifié",
                   serial: "TIRSIL71OBOT4UB4",
                 },
                 {
                   area: true,
                   name: "REALISE_ROCHE_CUMUL",
                   color: "#B98EFF",
-                  label: "Cumulative realisé",
+                  label: "Cumulative Réalisé",
                   serial: "TIRSIL71OBOT4UB4",
                 },
               ],
@@ -38,13 +38,13 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
-          Production Roche par Fosse
+          Production Roche par Fosse (t)
         </h1>
         <div className="flex-1">
           <BarChartWidget
             moyenne={["SUD_REALISE_ROCHE", "EST_REALISE_ROCHE_Ton"]}
             attributes={{
-              stacked: true,
+              // stacked: true,
               telemetries: [
                 {
                   name: "EST_REALISE_ROCHE_Ton",
@@ -66,7 +66,7 @@ export default function HomeDashboard() {
         </div>
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
-        <h1 className="text-center text-lg font-semibold">Stérile / Minerai</h1>
+        <h1 className="text-center text-lg font-semibold">Stérile / Minerai (t)</h1>
         <div className="flex-1">
           <BarChartWidget
             // title="Daily Production BreakUp"
@@ -83,7 +83,7 @@ export default function HomeDashboard() {
                   name: "REALISE_MINERAI",
                   unit: "T",
                   color: "#B98EFF",
-                  label: "Minerai Realisé",
+                  label: "Minerai Réalisé",
                   serial: "TIRSIL71OBOT4UB4",
                 },
                 {
@@ -97,7 +97,7 @@ export default function HomeDashboard() {
                   name: "REALISE_STERILE",
                   unit: "T",
                   color: "#78F6EA",
-                  label: "Stérile Realisé",
+                  label: "Stérile Réalisé",
                   serial: "TIRSIL71OBOT4UB4",
                 },
               ],
@@ -107,7 +107,7 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col px-2 py-6 lg:col-span-6 xl:col-span-4">
         <h1 className="text-center text-base font-semibold 2xl:text-lg">
-          Évolution de la Production vs Planifié
+          Évolution de la Production vs Planifié 
         </h1>
         <ProgressAccumulation
           attributes={{
@@ -121,7 +121,7 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-4">
         <h1 className="text-center text-lg font-semibold">
-          Production journalière
+          Production journalière (t)
         </h1>
         <div className="flex-1">
           <BarChartWidget
@@ -139,7 +139,7 @@ export default function HomeDashboard() {
                   name: "REALISE_ROCHE",
                   unit: "T",
                   color: "#B98EFF",
-                  label: "Realisé",
+                  label: "Réalisé",
                   serial: "TIRSIL71OBOT4UB4",
                 },
               ],
@@ -149,7 +149,7 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-4">
         <h1 className="text-center text-lg font-semibold">
-          Production par qualité
+          Production par qualité (t)
         </h1>
         <div className="flex-1">
           <ProgressMultiple
@@ -222,7 +222,7 @@ export default function HomeDashboard() {
               },
               {
                 displayName: "Zone de Tir",
-                telemetryName: "ZONE DE TIRE",
+                telemetryName: "ZONE_DE_TIRE",
               },
               {
                 displayName: "Tonnage Roche Abattu Minerai",
@@ -263,7 +263,7 @@ export default function HomeDashboard() {
                   area: true,
                   name: "REALISE_FORATION",
                   color: "#B98EFF",
-                  label: "Realisé ML/J",
+                  label: "Réalisé ML/J",
                   serial: "TIRSIL71OBOT4UB4",
                 },
               ],
@@ -273,7 +273,7 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-3 row-span-3 flex flex-col gap-3 p-4 lg:col-span-6 xl:col-span-3">
         <h3 className="text-center text-lg font-semibold">
-          Disponibilité Engine GMC
+          Disponibilité Engins GMC
         </h3>
         <MultiProgressWidget
           attributes={{
@@ -389,7 +389,7 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-3 row-span-3 flex flex-col gap-3 p-4 lg:col-span-6 xl:col-span-3">
         <h3 className="text-center text-lg font-semibold">
-          Disponibilité Engine CADEX
+          Disponibilité Engins CADEX
         </h3>
         <MultiProgressWidget
           attributes={{
