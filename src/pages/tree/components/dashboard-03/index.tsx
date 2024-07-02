@@ -82,7 +82,10 @@ export const Dashboard3 = () => {
           {widgetsData[5].title}
         </h3>
         <div className="h-1 flex-1">
-          <BarChartWidget attributes={widgetsData[5].attributes} />
+          <BarChartWidget
+            attributes={widgetsData[5].attributes}
+            moyenne="combined"
+          />
         </div>
       </Card>
       <Card className="col-span-2 flex flex-col p-2">

@@ -73,7 +73,7 @@ export const widgetsData = {
     },
   },
   5: {
-    title: "Temps de soutennement",
+    title: "Temps de soutènement (h)",
     attributes: {
       telemetries: [
         {

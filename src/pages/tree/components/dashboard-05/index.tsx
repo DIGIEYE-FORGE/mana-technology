@@ -61,7 +61,7 @@ export const Dashboard5 = () => {
           <LineChartWidget attributes={widgetsData[2].attributes} />
         </div>
       </Card>
-      <Card className="debug col-span-1 flex flex-col p-2">
+      <Card className="col-span-1 flex flex-col p-2">
         <h3 className="text-center text-lg font-semibold">
           {widgetsData[3].title}
         </h3>
@@ -69,7 +69,7 @@ export const Dashboard5 = () => {
           <LineChartWidget attributes={widgetsData[3].attributes} />
         </div>
       </Card>
-      <Card className="debug col-span-1 flex flex-col p-2">
+      <Card className="col-span-1 flex flex-col p-2">
         <h3 className="text-center text-lg font-semibold">
           {widgetsData[4].title}
         </h3>

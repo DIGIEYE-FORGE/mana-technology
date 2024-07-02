@@ -14,9 +14,10 @@ interface QualitAirProps {
     }[];
   };
   interval?: number;
+  disabled?: boolean;
 }
 
-export const BarChart = ({ attributes }: QualitAirProps) => {
+export const BarChart = ({ attributes, disabled = false }: QualitAirProps) => {
   const { backendApi } = useAppContext();
   const { data, isLoading, error } = useSWR(
     `telemetryDonutChartProps${JSON.stringify(attributes)}`,
@@ -73,6 +74,7 @@ export const BarChart = ({ attributes }: QualitAirProps) => {
       </div>
     );
 
+  console.log(data);
   return (
     <Chart
       options={{
@@ -97,7 +99,7 @@ export const BarChart = ({ attributes }: QualitAirProps) => {
         dataLabels: {
           enabled: true, // Enable data labels
           formatter: function (val) {
-            return Number(val).toFixed(1) + "°C";
+            return disabled ? "" : Number(val).toFixed(1) + "°C";
           },
           offsetY: 30,
           style: {
@@ -153,12 +155,12 @@ export const BarChart = ({ attributes }: QualitAirProps) => {
             colorStops: [
               {
                 offset: 0,
-                color: "#FFDC8C",
+                color: disabled ? "#ffffff4d" : "#FFDC8C",
                 opacity: 1,
               },
               {
                 offset: 100,
-                color: "#C99E3E",
+                color: disabled ? "#ffffffb3" : "#C99E3E",
                 opacity: 1,
               },
             ],
