@@ -7,7 +7,7 @@ import Circle1 from "@/assets/circle-1.svg?react";
 import Circle2 from "@/assets/circle-2.svg?react";
 import Circle3 from "@/assets/circle-3.svg?react";
 import Light from "@/assets/light.svg?react";
-import { Fragment, Suspense, useRef, useState } from "react";
+import { Suspense, useRef, useState } from "react";
 import { Loader3D } from "../tree";
 import Model from "@/components/models";
 import { env } from "@/utils/env";
@@ -101,7 +101,7 @@ export default function MainProjectPage() {
     {
       name: "ELECTRICAL LINE",
       bottom: "40%",
-      left: "8%",
+      left: "7%",
       type: "information",
     },
     {
@@ -170,8 +170,8 @@ export default function MainProjectPage() {
       url: "/sud_vd.mp4",
       positionModel: {
         side: "left",
-        align: "end",
-        sideOffset: 20,
+        align: "start",
+        sideOffset: -100,
       },
       background: "url(/video.svg)",
     },
@@ -186,20 +186,20 @@ export default function MainProjectPage() {
       url: "/est_vd.mp4",
       positionModel: {
         side: "left",
-        align: "end",
-        sideOffset: 20,
+        align: "start",
+        sideOffset: -200,
       },
       background: "url(/video.svg)",
     },
     {
-      title: "plant",
-      type: "video",
-      image: "/video.png",
+      title: "Electrical power line",
+      type: "image",
+      image: "/ElectricalPowerLine.png",
       position: {
         top: "40%",
         left: "2.5%",
       },
-      url: "/est_video.mp4",
+      url: "/ElectricalPowerLine.png",
       positionModel: {
         side: "left",
         align: "end",
@@ -239,14 +239,14 @@ export default function MainProjectPage() {
       },
     },
     {
-      title: "pipe line",
-      type: "video",
-      image: "/video.png",
+      title: "Pipe Line",
+      type: "image",
+      image: "/PIPELINE.png",
       position: {
         bottom: "24%",
         left: "9.5%",
       },
-      url: "/est_video.mp4",
+      url: "/PIPELINE.png",
       positionModel: {
         side: "left",
         align: "end",
@@ -387,7 +387,9 @@ export default function MainProjectPage() {
               </div>
             ))}
             {data.map((item, index) =>
-              item.type !== "link" && item.type !== "video" ? (
+              item.type !== "link" &&
+              item.type !== "video" &&
+              item.type != "image" ? (
                 <div
                   key={index}
                   className={cn(`absolute`, {
@@ -413,10 +415,10 @@ export default function MainProjectPage() {
                       {Object.entries(item?.attribute || {}).map(
                         ([key, value], index) => (
                           <React.Fragment key={index}>
-                            <span className="text-xs font-medium 2xl:text-lg">
+                            <span className="text-xs font-medium 3xl:text-base">
                               {key}
                             </span>
-                            <span className="text-xs text-[#A4D3FF] 2xl:text-sm">
+                            <span className="text-xs text-[#A4D3FF] 3xl:text-sm">
                               {value}
                             </span>
                           </React.Fragment>
@@ -425,7 +427,7 @@ export default function MainProjectPage() {
                     </div>
                   )}
                 </div>
-              ) : item.type === "video" ? (
+              ) : item.type === "video" || item.type === "image" ? (
                 <Popover key={index}>
                   <PopoverTrigger asChild>
                     <div
@@ -463,7 +465,7 @@ export default function MainProjectPage() {
                         <Button
                           variant="ghost"
                           size="icon"
-                          className="absolute right-6 top-5 text-white"
+                          className="absolute right-4 top-4 text-white"
                         >
                           <XIcon size={24} />
                         </Button>
@@ -472,13 +474,19 @@ export default function MainProjectPage() {
                         <div className="ml-auto flex h-14 w-[64%] shrink-0 items-center px-6 text-2xl font-semibold">
                           {item?.title}
                         </div>
-                        {item?.type === "video" && item?.url && (
+                        {item?.type === "video" && item?.url ? (
                           <video
                             className="aspect-video w-full object-contain opacity-90"
                             controls
                             src={item.url}
                           />
-                        )}
+                        ) : item?.type === "image" && item?.url ? (
+                          <img
+                            className="aspect-video w-full object-contain"
+                            src={item.url}
+                            alt={item.title}
+                          />
+                        ) : null}
                       </div>
                     </div>
                   </PopoverContent>
@@ -580,6 +588,52 @@ export default function MainProjectPage() {
                 )}
               </div>
             </div>
+            <div
+              className={cn(
+                "absolute left-[55%] top-[15%]",
+                "size-[6rem] cursor-pointer",
+              )}
+            >
+              <div
+                className="absolute bottom-20 right-1/2 z-10 translate-x-1/2 whitespace-nowrap px-1 py-0.5 text-xs font-bold 2xl:text-base"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(to right, transparent, #002FBE, transparent)",
+                  border: "10px solid",
+                  borderImageSlice: 1,
+                  borderWidth: "1px",
+                  borderImageSource:
+                    "linear-gradient(to right, transparent, white, transparent)",
+                }}
+              >
+                Underground Mine
+              </div>
+              <div className="machine-highlight absolute bottom-0 aspect-square w-full">
+                <div className="circle circle-3 relative h-full w-full">
+                  <Circle3 className="rotate h-full w-full duration-1000" />
+                </div>
+                <div className="circle circle-2 relative h-full w-full">
+                  <Circle2 className="rotate h-full w-full duration-1000" />
+                </div>
+                <div className="circle circle-1 relative h-full w-full">
+                  <Circle1 className="rotate h-full w-full duration-1000" />
+                </div>
+                <Light className="absolute bottom-[40%] right-1/2 w-full translate-x-1/2" />
+              </div>
+            </div>
+            <Link to={`/`}>
+              <div
+                className="absolute h-[40px] w-[40px] xl:h-[45px] xl:w-[45px] 2xl:h-[64px] 2xl:w-[67px]"
+                style={{
+                  top: "12%",
+                  left: "49%",
+                  cursor: "pointer",
+                  background: "url(/dashboard.svg)",
+                  backgroundSize: "contain",
+                  backgroundRepeat: "no-repeat",
+                }}
+              ></div>
+            </Link>
             <Popover>
               <PopoverTrigger asChild>
                 <div
@@ -588,7 +642,9 @@ export default function MainProjectPage() {
                   )}
                   style={{
                     cursor: "pointer",
-                    // background: `${item.background}`,
+                    top: "12%",
+                    left: "44.8%",
+                    background: `url(/video.svg)`,
                     backgroundSize: "contain",
                     backgroundRepeat: "no-repeat",
                   }}
@@ -596,7 +652,8 @@ export default function MainProjectPage() {
               </PopoverTrigger>
               <PopoverContent
                 side={"right"}
-                sideOffset={0}
+                align={"center"}
+                sideOffset={-450}
                 className="dark w-fit border-none bg-transparent p-0 backdrop-blur"
                 style={{
                   clipPath:
@@ -614,22 +671,21 @@ export default function MainProjectPage() {
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="absolute right-6 top-5 text-white"
+                      className="absolute right-4 top-4 text-white"
                     >
                       <XIcon size={24} />
                     </Button>
                   </PopoverClose>
                   <div className="flex h-full flex-col gap-[3.5rem] pb-7 pl-11 pr-6 pt-2">
-                    {/* <div className="ml-auto flex h-14 w-[64%] shrink-0 items-center px-6 text-2xl font-semibold">
-                      {item?.title}
+                    <div className="ml-auto flex h-14 w-[64%] shrink-0 items-center px-6 text-2xl font-semibold">
+                      Underground Mine
                     </div>
-                    {item?.type === "video" && item?.url && (
-                      <video
-                        className="aspect-video w-full object-contain opacity-90"
-                        controls
-                        src={item.url}
-                      />
-                    )} */}
+
+                    <video
+                      className="aspect-video w-full object-contain opacity-90"
+                      controls
+                      src={"Underground.mp4"}
+                    />
                   </div>
                 </div>
               </PopoverContent>
