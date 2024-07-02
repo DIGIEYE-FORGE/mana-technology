@@ -7,20 +7,20 @@ import { useState } from "react";
 
 const tabs = [
   {
-    title: "title 1",
+    title: "Evolution réserves",
     subTabs: [
       {
-        title: "sub title 1",
-        image: "/image1.svg",
+        title: "Evolution réserves",
+        image: "/overview-001.svg",
       },
     ],
   },
   {
-    title: "title 2",
+    title: "Exploration Evolution since 2011",
     subTabs: [
       {
-        title: "sub title 2",
-        image: "/image2.svg",
+        title: "Exploration Evolution since 2011",
+        image: "/overview-002.svg",
       },
     ],
   },
@@ -29,7 +29,7 @@ const tabs = [
     subTabs: [
       {
         title: "sub title 3",
-        image: "/image3.svg",
+        image: "/overview-001.svg",
       },
     ],
   },
@@ -117,6 +117,19 @@ export function OverviewButton({ className, ...props }: OverviewButtonProps) {
                 </Button>
               )}
             </div>
+          </div>
+          <div className="mb-8 ml-16 mr-8 h-1 flex-1">
+            {tabs[activeTab].subTabs[activeSubTab].title === "hse" ? (
+              <div className="h-full w-full">
+                <HseButton />
+              </div>
+            ) : (
+              <img
+                src={tabs[activeTab].subTabs[activeSubTab].image}
+                alt={tabs[activeTab].subTabs[activeSubTab].title}
+                className="h-full w-full"
+              />
+            )}
           </div>
         </div>
       </DialogContent>
