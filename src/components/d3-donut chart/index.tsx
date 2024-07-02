@@ -4,6 +4,7 @@ import * as d3 from "d3";
 import { useAppContext } from "@/Context";
 import useSWR from "swr";
 import Loader from "../loader";
+import { HistoryType } from "@/utils";
 
 interface D3DonutChartProps {
   attribute: {
@@ -16,7 +17,7 @@ interface D3DonutChartProps {
   }[];
 }
 export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
-  const { backendApi } = useAppContext();
+  const { backendApi, dateRange } = useAppContext();
   const { data, isLoading, error } = useSWR(
     `telemetryDonutChartProps${JSON.stringify(attribute)}`,
     async () => {
@@ -32,23 +33,32 @@ export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
             nameTelemetry,
             serial,
           } = device;
-          const res1 = await backendApi.findMany<{
-            name: string;
-            value: number;
-          }>("lasttelemetry", {
-            where: {
-              name: nameTelemetry,
-              device: { serial },
+          const resWithouyAvg = await backendApi.findMany<HistoryType>(
+            "/dpc-history/api/history",
+            {
+              pagination: {
+                page: 1,
+                perPage: 10_00,
+              },
+              select: [nameTelemetry],
+              where: {
+                serial,
+                createdAt: dateRange && {
+                  $gt: new Date(dateRange?.from as Date),
+                  $lte: dateRange?.to && new Date(dateRange?.to as Date),
+                },
+              },
             },
-            select: { name: true, value: true },
-            orderBy: {
-              createdAt: "desc",
-            },
-            pagination: {
-              page: 1,
-              perPage: 1,
-            },
-          });
+          );
+          const sum = resWithouyAvg.results.reduce(
+            (acc, curr) => acc + Number(curr[nameTelemetry]),
+            0,
+          );
+
+          let avg = 0;
+          if (sum) {
+            avg = sum / resWithouyAvg.results?.length;
+          }
           const res2 = await backendApi.findMany<{
             name: string;
             value: number;
@@ -69,14 +79,13 @@ export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
           return {
             color: color,
             name: nameLabelTelemetry,
-            value: res1?.results[0]?.value || 0,
+            value: avg,
             valueBfs: res2?.results[0]?.value || 0,
             bfsLabel: bfsLabelTelemetry,
           };
         }),
       );
-      const sum = res1.reduce((acc, curr) => acc + curr.value, 0);
-      return res1.map((d) => ({ ...d, valueName: (d.value / sum) * 100 }));
+      return res1;
     },
   );
 
