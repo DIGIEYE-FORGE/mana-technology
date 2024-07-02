@@ -424,7 +424,7 @@ export default function UndergroundDashboardPage() {
         <h3 className="text-center text-lg font-semibold">
           Disponibilité et utilisation des engins
         </h3>
-        <div className="debug h-1 flex-1 overflow-y-auto">
+        <div className="h-1 flex-1 overflow-y-auto">
           <Engins
             attribute={[
               {
@@ -437,22 +437,28 @@ export default function UndergroundDashboardPage() {
               {
                 label: "CHARGEUR D'EXPLOSIF TITAN BAC2X350",
                 icon: "/truck.svg",
-                utilisationTelemetry: "CHARGEUR_D'EXPLOSIF_TITAN_BAC2X350_TAUX_D'UTILISATION",
-                disponibilliteTelemetry: "CHARGEUR_D'EXPLOSIF_TITAN_BAC2X350_PERC_DISPO",
+                utilisationTelemetry:
+                  "CHARGEUR_D'EXPLOSIF_TITAN_BAC2X350_TAUX_D'UTILISATION",
+                disponibilliteTelemetry:
+                  "CHARGEUR_D'EXPLOSIF_TITAN_BAC2X350_PERC_DISPO",
                 serial: "Y1UMITGTHATVAUQI",
               },
               {
                 label: "CHARGEUSE CAT R1700 14T N°1",
                 icon: "/truck.svg",
-                utilisationTelemetry: "CHARGEUSE_CAT_R1700_14T_N1_TAUX_D'UTILISATION",
-                disponibilliteTelemetry: "CHARGEUSE_CAT_R1700_14T_N1_PERC_DISPO",
+                utilisationTelemetry:
+                  "CHARGEUSE_CAT_R1700_14T_N1_TAUX_D'UTILISATION",
+                disponibilliteTelemetry:
+                  "CHARGEUSE_CAT_R1700_14T_N1_PERC_DISPO",
                 serial: "Y1UMITGTHATVAUQI",
               },
               {
                 label: "CHARGEUSE CAT R1700 14T N°2",
                 icon: "/truck.svg",
-                utilisationTelemetry: "CHARGEUSE_CAT_R1700_14T_N2_TAUX_D'UTILISATION",
-                disponibilliteTelemetry: "CHARGEUSE_CAT_R1700_14T_N2_PERC_DISPO",
+                utilisationTelemetry:
+                  "CHARGEUSE_CAT_R1700_14T_N2_TAUX_D'UTILISATION",
+                disponibilliteTelemetry:
+                  "CHARGEUSE_CAT_R1700_14T_N2_PERC_DISPO",
                 serial: "Y1UMITGTHATVAUQI",
               },
               {
@@ -465,22 +471,28 @@ export default function UndergroundDashboardPage() {
               {
                 label: "CHARGEUSE CAT R1700 14T N°2",
                 icon: "/truck.svg",
-                utilisationTelemetry: "CHARGEUSE_CAT_R1700_14T_N2_TAUX_D'UTILISATION",
-                disponibilliteTelemetry: "CHARGEUSE_CAT_R1700_14T_N2_PERC_DISPO",
+                utilisationTelemetry:
+                  "CHARGEUSE_CAT_R1700_14T_N2_TAUX_D'UTILISATION",
+                disponibilliteTelemetry:
+                  "CHARGEUSE_CAT_R1700_14T_N2_PERC_DISPO",
                 serial: "Y1UMITGTHATVAUQI",
               },
               {
                 label: "COMPRESSEUR ATLAS COPCO XAVS600 PACE SQE N°1",
                 icon: "/truck.svg",
-                utilisationTelemetry: "COMPRESSEUR_ATLAS_COPCO_XAVS600_PACE_SQE_N1_TAUX_D'UTILISATION",
-                disponibilliteTelemetry: "COMPRESSEUR_ATLAS_COPCO_XAVS600_PACE_SQE_N1_PERC_DISPO",
+                utilisationTelemetry:
+                  "COMPRESSEUR_ATLAS_COPCO_XAVS600_PACE_SQE_N1_TAUX_D'UTILISATION",
+                disponibilliteTelemetry:
+                  "COMPRESSEUR_ATLAS_COPCO_XAVS600_PACE_SQE_N1_PERC_DISPO",
                 serial: "Y1UMITGTHATVAUQI",
               },
               {
                 label: "COMPRESSEUR ATLAS COPCO XAVS600 PACE SQE N°2",
                 icon: "/truck.svg",
-                utilisationTelemetry: "COMPRESSEUR_ATLAS_COPCO_XAVS600_PACE_SQE_N2_TAUX_D'UTILISATION",
-                disponibilliteTelemetry: "COMPRESSEUR_ATLAS_COPCO_XAVS600_PACE_SQE_N2_PERC_DISPO",
+                utilisationTelemetry:
+                  "COMPRESSEUR_ATLAS_COPCO_XAVS600_PACE_SQE_N2_TAUX_D'UTILISATION",
+                disponibilliteTelemetry:
+                  "COMPRESSEUR_ATLAS_COPCO_XAVS600_PACE_SQE_N2_PERC_DISPO",
                 serial: "Y1UMITGTHATVAUQI",
               },
               {
@@ -500,43 +512,54 @@ export default function UndergroundDashboardPage() {
               {
                 label: "GROUPE ELECTROGENE DEUTZ DPS 450 N°1",
                 icon: "/truck.svg",
-                utilisationTelemetry: "GROUPE_ELECTROGENE_DEUTZ_DPS_450_N1_TAUX_D'UTILISATION",
-                disponibilliteTelemetry: "GROUPE_ELECTROGENE_DEUTZ_DPS_450_N1_PERC_DISPO",
+                utilisationTelemetry:
+                  "GROUPE_ELECTROGENE_DEUTZ_DPS_450_N1_TAUX_D'UTILISATION",
+                disponibilliteTelemetry:
+                  "GROUPE_ELECTROGENE_DEUTZ_DPS_450_N1_PERC_DISPO",
                 serial: "Y1UMITGTHATVAUQI",
               },
               {
                 label: "GROUPE ELECTROGENE DEUTZ DPS 450 N°2",
                 icon: "/truck.svg",
-                utilisationTelemetry: "GROUPE_ELECTROGENE_DEUTZ_DPS_450_N2_TAUX_D'UTILISATION",
-                disponibilliteTelemetry: "GROUPE_ELECTROGENE_DEUTZ_DPS_450_N2_PERC_DISPO",
+                utilisationTelemetry:
+                  "GROUPE_ELECTROGENE_DEUTZ_DPS_450_N2_TAUX_D'UTILISATION",
+                disponibilliteTelemetry:
+                  "GROUPE_ELECTROGENE_DEUTZ_DPS_450_N2_PERC_DISPO",
                 serial: "Y1UMITGTHATVAUQI",
               },
               {
                 label: "GROUPE ELECTROGENE DEUTZ DPS 450 N°3",
                 icon: "/truck.svg",
-                utilisationTelemetry: "GROUPE_ELECTROGENE_DEUTZ_DPS_450_N3_TAUX_D'UTILISATION",
-                disponibilliteTelemetry: "GROUPE_ELECTROGENE_DEUTZ_DPS_450_N3_PERC_DISPO",
+                utilisationTelemetry:
+                  "GROUPE_ELECTROGENE_DEUTZ_DPS_450_N3_TAUX_D'UTILISATION",
+                disponibilliteTelemetry:
+                  "GROUPE_ELECTROGENE_DEUTZ_DPS_450_N3_PERC_DISPO",
                 serial: "Y1UMITGTHATVAUQI",
               },
               {
                 label: "MECANISE TIZERT JUMBO EPIROC T1D N°1",
                 icon: "/truck.svg",
-                utilisationTelemetry: "MECANISE_TIZERT_JUMBO_EPIROC_T1D_N1_TAUX_D'UTILISATION",
-                disponibilliteTelemetry: "MECANISE_TIZERT_JUMBO_EPIROC_T1D_N1_PERC_DISPO",
+                utilisationTelemetry:
+                  "MECANISE_TIZERT_JUMBO_EPIROC_T1D_N1_TAUX_D'UTILISATION",
+                disponibilliteTelemetry:
+                  "MECANISE_TIZERT_JUMBO_EPIROC_T1D_N1_PERC_DISPO",
                 serial: "Y1UMITGTHATVAUQI",
               },
               {
                 label: "MECANISE TIZERT JUMBO M20",
                 icon: "/truck.svg",
-                utilisationTelemetry: "MECANISE_TIZERT_JUMBO_M20_TAUX_D'UTILISATION",
+                utilisationTelemetry:
+                  "MECANISE_TIZERT_JUMBO_M20_TAUX_D'UTILISATION",
                 disponibilliteTelemetry: "MECANISE_TIZERT_JUMBO_M20_PERC_DISPO",
                 serial: "Y1UMITGTHATVAUQI",
               },
               {
                 label: "PLATEFORME A TABLE ELEVATRICE TITAN BMP2X3				",
                 icon: "/truck.svg",
-                utilisationTelemetry: "PLATEFORME_A_TABLE_ELEVATRICE_TITAN_BMP2X3_TAUX_D'UTILISATION",
-                disponibilliteTelemetry: "PLATEFORME_A_TABLE_ELEVATRICE_TITAN_BMP2X3_PERC_DISPO",
+                utilisationTelemetry:
+                  "PLATEFORME_A_TABLE_ELEVATRICE_TITAN_BMP2X3_TAUX_D'UTILISATION",
+                disponibilliteTelemetry:
+                  "PLATEFORME_A_TABLE_ELEVATRICE_TITAN_BMP2X3_PERC_DISPO",
                 serial: "Y1UMITGTHATVAUQI",
               },
               {
