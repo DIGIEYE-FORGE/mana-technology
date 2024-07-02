@@ -100,7 +100,7 @@ export default function MainProjectPage() {
       type: "information",
     },
     {
-      name: "LINE ELECTRIC",
+      name: "ELECTRICAL LINE",
       bottom: "40%",
       left: "8%",
       type: "information",
@@ -161,7 +161,7 @@ export default function MainProjectPage() {
       background: "url(/dashboard.svg)",
     },
     {
-      title: "SUD",
+      title: "Pit SUD",
       type: "video",
       image: "/screen1.png",
       position: {
@@ -177,7 +177,7 @@ export default function MainProjectPage() {
       background: "url(/video.svg)",
     },
     {
-      title: "EST",
+      title: " Pit EST",
       type: "video",
       image: "/screen1.png",
       position: {
@@ -256,11 +256,11 @@ export default function MainProjectPage() {
     },
     {
       type: "identification",
-      title: "EST",
+      title: "Pit EST",
       attribute: {
-        ["Mineral reserves"]: "4,5 Mtn @0,8 % Cu et 27 g/t Ag ",
-        ["Waste tonnage"]: "39 Mtn ",
-        ["Rock production capacity "]: "1,2 Mtn rock per month",
+        ["Mineral reserves"]: "4,5 Mt @0,8 % Cu et 27 g/t Ag ",
+        ["Waste tonnage"]: "39 Mt ",
+        ["Rock production capacity "]: "1,2 Mt rock per month",
         ["Life of mine "]: "4 years ",
       },
       background: "url(/vector.png)",
@@ -271,11 +271,11 @@ export default function MainProjectPage() {
     },
     {
       type: "identification",
-      title: "SUD",
+      title: "Pit SUD",
       attribute: {
-        ["Mineral reserves"]: "3,1 Mtonnes @ 0,9 % Cu et 16 g/t Ag",
-        ["Waste tonnage"]: "23 Mtonnes ",
-        ["Rock production capacity "]: "0,9 Mtonnes rock per month",
+        ["Mineral reserves"]: "3,1 Mt @ 0,9 % Cu et 16 g/t Ag",
+        ["Waste tonnage"]: "23 Mt ",
+        ["Rock production capacity "]: "0,9 Mt rock per month",
         ["Life of mine "]: "3 years ",
       },
       background: "url(/vector.png)",
@@ -289,7 +289,7 @@ export default function MainProjectPage() {
   const tree = {
     titile: "Underground Mine",
     attribute: {
-      ["Mineral reserves"]: "54 Mtonnes @ 0,9 %Cu et 19 g/t Ag",
+      ["Mineral reserves"]: "54 Mt @ 0,9 %Cu et 19 g/t Ag",
       ["Mining methods"]: "R&P /LHOS",
       ["Total development"]: "230 km lateral",
       ["Daily production capacity"]: "10800 tpd from 2028",

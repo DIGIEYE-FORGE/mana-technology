@@ -334,35 +334,51 @@ export default function UndergroundDashboardPage() {
             attribute={[
               {
                 nameTelemetry: "UG_FORATION_TIRS_PREPARATION-min",
-                nameLabelTelemetry: "Quasi-accidents & observations",
-                bfsTelemetry: "UG_FORATION_TIRS_PREPARATION-min",
-                bfsLabelTelemetry: "test",
-                color: "#009AB6",
-                serial: "DABF7PAT2G4BAG21",
+                nameLabelTelemetry: "Préparation",
+                bfsTelemetry: "UG_TAUX_ARRACHEMENT_PREPARATION_BFS",
+                bfsLabelTelemetry: "Préparation",
+                color: "#F2E205",
+                serial: "Y1UMITGTHATVAUQI",
+              },
+              {
+                nameTelemetry: "UG_FORATION_TIRS_TEMPS_DE_FORATION-min",
+                nameLabelTelemetry: "Temps de foration",
+                bfsTelemetry: "UG_TAUX_ARRACHEMENT_TEMPS_DE_FORATION_BFS",
+                bfsLabelTelemetry: "T. foration",
+                color: "#F2A104",
+                serial: "Y1UMITGTHATVAUQI",
+              },
+              {
+                nameTelemetry: "UG_FORATION_TIRS_TEMPS_DE_CHARGEMENT_EXPLOSIF-min",
+                nameLabelTelemetry: "Temps de chargement explosif",
+                bfsTelemetry: "UG_TAUX_ARRACHEMENT_TEMPS_DE_CHARGEMENT_EXPLOSIF_BFS",
+                bfsLabelTelemetry: "T. chargement explosif",
+                color: "#F25C05",
+                serial: "Y1UMITGTHATVAUQI",
               },
               {
                 nameTelemetry: "UG_FORATION_TIRS_PREPARATION-min",
-                nameLabelTelemetry: "Quasi-accidents & observations",
+                nameLabelTelemetry: "Temps de déblayage",
                 bfsTelemetry: "UG_FORATION_TIRS_PREPARATION-min",
-                bfsLabelTelemetry: "Quasi-accidents & observations",
-                color: "#009AB6",
-                serial: "DABF7PAT2G4BAG21",
+                bfsLabelTelemetry: "T. déblayage",
+                color: "#F20574",
+                serial: "Y1UMITGTHATVAUQI",
               },
               {
-                nameTelemetry: "UG_FORATION_TIRS_PREPARATION-min",
-                nameLabelTelemetry: "Quasi-accidents & observations",
-                bfsTelemetry: "UG_FORATION_TIRS_PREPARATION-min",
-                bfsLabelTelemetry: "Quasi-accidents & observations",
-                color: "#009AB6",
-                serial: "DABF7PAT2G4BAG21",
+                nameTelemetry: "UG_FORATION_TIRS_TIR_DELAI_GAZ_ET_LAVAGE-min",
+                nameLabelTelemetry: "Temps retour après le tir et le lavage du front",
+                bfsTelemetry: "UG_TAUX_ARRACHEMENT_TEMPS_DE_PURGE_ET_SOUFLAGE_BFS",
+                bfsLabelTelemetry: "T. Purge et Souflage",
+                color: "#05F2C7",
+                serial: "Y1UMITGTHATVAUQI",
               },
               {
-                nameTelemetry: "UG_FORATION_TIRS_PREPARATION-min",
-                nameLabelTelemetry: "Quasi-accidents & observations",
-                bfsTelemetry: "UG_FORATION_TIRS_PREPARATION-min",
-                bfsLabelTelemetry: "Quasi-accidents & observations",
+                nameTelemetry: "UG_SOUTENEMENT_TEMPS_DE_MISE_EN_PLACE_SOUTENEMENT-min",
+                nameLabelTelemetry: "Temps de mise en place Souténement",
+                bfsTelemetry: "UG_TAUX_ARRACHEMENT_TEMPS_DE_MISE_EN_PLACE_SOUTENEMENT_BFS",
+                bfsLabelTelemetry: "T. Mise en place Souténement",
                 color: "#009AB6",
-                serial: "DABF7PAT2G4BAG21",
+                serial: "Y1UMITGTHATVAUQI",
               },
             ]}
           />
@@ -379,7 +395,7 @@ export default function UndergroundDashboardPage() {
       </Card>
       <Card className="flex flex-col gap-1 p-4">
         <h1 className="text-center text-lg font-semibold">
-          Avancement/Arrachement journalier
+        Temps Moyen de cycle
         </h1>
         <div className="h-1 flex-1">
           <LineChartWidget
@@ -388,10 +404,10 @@ export default function UndergroundDashboardPage() {
               telemetries: [
                 {
                   area: true,
-                  name: "EST_REALISE_FORATION",
+                  name: "UG_SUIVI_TEMPS_MOYEN_CYCLE",
                   color: "#78F6EA",
                   label: "Realisé ML/J",
-                  serial: "U9XQMQ1DXYT7LJIP",
+                  serial: "Y1UMITGTHATVAUQI",
                 },
               ],
             }}
