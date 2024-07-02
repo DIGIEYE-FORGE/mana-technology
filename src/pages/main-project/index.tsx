@@ -614,7 +614,7 @@ export default function MainProjectPage() {
                 <Light className="absolute bottom-[40%] right-1/2 w-full translate-x-1/2" />
               </div>
             </div>
-            <Link to={`/`}>
+            <Link to={`/underground`}>
               <div
                 className="absolute h-[40px] w-[40px] xl:h-[45px] xl:w-[45px] 2xl:h-[64px] 2xl:w-[67px]"
                 style={{
