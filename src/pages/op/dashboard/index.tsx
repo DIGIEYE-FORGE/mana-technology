@@ -11,7 +11,7 @@ export default function HomeDashboard() {
     <main className="grid w-full grid-flow-dense auto-rows-[80px] grid-cols-3 gap-3 md:grid-cols-6 lg:grid-cols-12 lg:gap-4 xl:grid-cols-[repeat(15,minmax(0,1fr))] 2xl:auto-rows-[92px]">
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
-          Évolution Production Cumulée
+          Évolution Production Cumulée (t)
         </h1>
         <div className="flex-1">
           <LineChartWidget
@@ -38,7 +38,7 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
-          Production par Fosse
+          Production par fosse (t) (t)
         </h1>
         <div className="flex-1">
           <BarChartWidget
@@ -66,7 +66,7 @@ export default function HomeDashboard() {
         </div>
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
-        <h1 className="text-center text-lg font-semibold">Stérile / Minerai</h1>
+        <h1 className="text-center text-lg font-semibold">Stérile / Minerai (t)</h1>
         <div className="flex-1">
           <BarChartWidget
             // title="Daily Production BreakUp"
@@ -121,7 +121,7 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-4">
         <h1 className="text-center text-lg font-semibold">
-          Production journalière
+          Production Journalière (t) (t)
         </h1>
         <div className="flex-1">
           <BarChartWidget
@@ -149,7 +149,7 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-4">
         <h1 className="text-center text-lg font-semibold">
-          Production par qualité
+          Production par qualité (t)
         </h1>
         <div className="flex-1">
           <ProgressMultiple
@@ -225,11 +225,11 @@ export default function HomeDashboard() {
                 telemetryName: "ZONE DE TIRE",
               },
               {
-                displayName: "Tonnage Roche Abattu Minerai",
+                displayName: "Tonnage Roche Abattu Minerai (t)",
                 telemetryName: "TONNAE_MINERAI_ABATTU",
               },
               {
-                displayName: "Tonnage Roche Abattu Stérile",
+                displayName: "Tonnage Roche Abattu Stérile (t)",
                 telemetryName: "TONNAE_STERILE_ABATTU",
               },
               {
@@ -273,7 +273,7 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-6 flex flex-col gap-3 p-4 xl:col-span-3">
         <h3 className="text-center text-lg font-semibold">
-          Disponibilité Engine
+          Disponibilité Engins
         </h3>
         <MultiProgressWidget
           attributes={{
