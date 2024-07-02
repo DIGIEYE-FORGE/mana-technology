@@ -47,11 +47,20 @@ const magazine = [
     right: "27%",
     type: "image",
     image: "/screen1.png",
+    click: "Pit EST",
   },
   {
     name: "SUD",
     bottom: "18%",
-    right: "13%",
+    right: "20%",
+    type: "image",
+    image: "/screen2.png",
+    click: "Pit SUD",
+  },
+  {
+    name: "OPEN PIT",
+    bottom: "30%",
+    right: "12%",
     type: "image",
     image: "/screen2.png",
   },
@@ -60,18 +69,21 @@ const magazine = [
     bottom: "10%",
     left: "42%",
     type: "information",
+    click: "Process plant",
   },
   {
     name: "ELECTRICAL LINE",
     bottom: "40%",
     left: "7%",
     type: "information",
+    click: "Electrical power line",
   },
   {
     name: "PIPELINE",
     bottom: "20%",
     left: "14%",
     type: "information",
+    click: "Pipeline",
   },
 ];
 
@@ -90,6 +102,21 @@ const data = [
       align: "end",
       sideOffset: 20,
     },
+  },
+  {
+    type: "link",
+    image: "/screen2.png",
+    to: "/",
+    position: {
+      bottom: "43%",
+      right: "8%",
+    },
+    positionModel: {
+      side: "left",
+      align: "end",
+      sideOffset: 20,
+    },
+    background: "url(/dashboard.svg)",
   },
   {
     title: "Underground Mine",
@@ -179,7 +206,7 @@ const data = [
       ["22 kV line"]: "52 Km",
       ["Electrical substation"]: "60/22 kV",
     },
-    background: "url(/shape1.png)",
+    background: "url(/vector.png)",
     position: {
       top: "6%",
       left: "1%",
@@ -195,7 +222,7 @@ const data = [
       ["Product"]: "Copper Silver concentrate",
       ["Concentrate production capacity"]: "120 Ktonnes per year",
     },
-    background: "url(/shape1.png)",
+    background: "url(/vector.png)",
     position: {
       bottom: "40%",
       left: "40%",
@@ -226,7 +253,7 @@ const data = [
       ["Pumping station's number"]: "8 PS /1350m",
       ["Origine"]: "Treated waste water",
     },
-    background: "url(/shape1.png)",
+    background: "url(/vector.png)",
     position: {
       bottom: "0%",
       left: "20%",
@@ -243,8 +270,8 @@ const data = [
     },
     background: "url(/vector.png)",
     position: {
-      top: "10%",
-      right: "3%",
+      top: "3%",
+      right: "8%",
     },
   },
   {
@@ -282,6 +309,8 @@ export default function MainProjectPage() {
   const [, setLoading] = useState(true);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [hovered] = useState("");
+
+  const [showInfo, setShowInfo] = useState<string[]>([]);
   return (
     <main
       className="relative flex flex-col gap-2 pb-6 2xl:overflow-hidden"
@@ -304,7 +333,7 @@ export default function MainProjectPage() {
             endAt={"2025-05-14 00:00:00"}
           />
         </div>
-        <div className="absolute top-[55%] z-[10] flex w-[18rem] flex-col gap-4 px-[4rem]">
+        <div className="absolute top-[55%] z-[10] flex flex-col gap-4 px-[2.5rem]">
           {/* <HseButton /> */}
           <ProjectPlaningButton />
         </div>
@@ -337,7 +366,18 @@ export default function MainProjectPage() {
                 >
                   {item.name}
                 </div>
-                <div className="machine-highlight absolute bottom-0 aspect-square w-full">
+                <div
+                  className="machine-highlight absolute bottom-0 aspect-square w-full"
+                  onClick={() => {
+                    if (item.click) {
+                      if (showInfo.includes(item?.click)) {
+                        setShowInfo(showInfo.filter((i) => i !== item.click));
+                      } else {
+                        setShowInfo([...showInfo, item.click]);
+                      }
+                    }
+                  }}
+                >
                   <div className="circle circle-3 relative h-full w-full">
                     <Circle3 className="rotate h-full w-full duration-1000" />
                   </div>
@@ -373,7 +413,16 @@ export default function MainProjectPage() {
                 >
                   {(item.type === "information" ||
                     item.type === "identification") && (
-                    <div className="grid grid-cols-[fit-content,1fr] gap-1 p-3 pr-6">
+                    <div
+                      className={cn(
+                        "grid grid-cols-[fit-content,1fr] gap-1 p-3 pr-6",
+                        {
+                          hidden:
+                            item?.title &&
+                            !showInfo.includes(item?.title as never),
+                        },
+                      )}
+                    >
                       <h1 className="col-span-2 text-lg font-bold text-[#FFE473]">
                         {item.title}
                       </h1>
@@ -531,7 +580,12 @@ export default function MainProjectPage() {
               <OrbitControls enableRotate rotateSpeed={1} zoomToCursor />
             </Canvas>
             <div
-              className="absolute bottom-[18%] left-[1%] w-[22rem] backdrop-blur"
+              className={cn(
+                "absolute bottom-[18%] left-[1%] w-[22rem] backdrop-blur",
+                {
+                  hidden: !showInfo.includes("Underground Mine"),
+                },
+              )}
               style={{
                 backgroundImage: "url(/vector.png)",
                 backgroundSize: "100% 100%",
@@ -574,7 +628,18 @@ export default function MainProjectPage() {
               >
                 Underground Mine
               </div>
-              <div className="machine-highlight absolute bottom-0 aspect-square w-full">
+              <div
+                className="machine-highlight absolute bottom-0 aspect-square w-full"
+                onClick={() => {
+                  if (showInfo.includes(`Underground Mine`)) {
+                    setShowInfo(
+                      showInfo.filter((i) => i !== "Underground Mine"),
+                    );
+                  } else {
+                    setShowInfo([...showInfo, "Underground Mine"]);
+                  }
+                }}
+              >
                 <div className="circle circle-3 relative h-full w-full">
                   <Circle3 className="rotate h-full w-full duration-1000" />
                 </div>
