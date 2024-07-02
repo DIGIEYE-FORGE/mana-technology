@@ -85,7 +85,7 @@ export const widgetsData = {
     },
   },
   5: {
-    title: "Temps de chargement explosif et moyenne",
+    title: "Temps de chargement explosif (min)",
     attributes: {
       stacked: false,
       telemetries: [
@@ -105,7 +105,7 @@ export const widgetsData = {
     },
   },
   6: {
-    title: "Arrchament %",
+    title: "Arrachement %",
     attributes: {
       telemetries: [
         {

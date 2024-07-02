@@ -93,7 +93,7 @@ export const widgetsData = {
 
   
   5: {
-    title: "Temps de Déblayage",
+    title: "Temps de Déblayage (h)",
     attributes: {
       telemetries: [
         {
@@ -106,7 +106,7 @@ export const widgetsData = {
     },
   },
   6: {
-    title: "Temps trajet",
+    title: "Temps trajet (h)",
     attributes: {
       telemetries: [
         {
@@ -125,7 +125,7 @@ export const widgetsData = {
     },
   },
   7: {
-    title: "Distance Trajet",
+    title: "Distance Trajet (m)",
     attributes: {
       telemetries: [
         {
