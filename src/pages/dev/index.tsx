@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { pannellum } from "@/pannellum";
+import { scenes } from "./data";
 
 export default function DevPage() {
   const { current: id } = useRef(
@@ -8,25 +9,32 @@ export default function DevPage() {
   const viewer = useRef<any>(null);
 
   useEffect(() => {
+    const pannellumScenes: any = {};
+    scenes.forEach((scene) => {
+      pannellumScenes[scene.id] = {
+        panorama: scene.path,
+        type: "equirectangular",
+        compass: false,
+        friction: 0,
+        mouseZoom: false,
+        showZoomCtrl: false,
+        showFullscreenCtrl: false,
+        hotSpots: scene.hotSpots,
+      };
+    });
+
     viewer.current = pannellum.viewer(id, {
-      autoLoad: true,
-      panorama: "https://pannellum.org/images/cerro-toco-0.jpg",
-      dynamicUpdate: true,
-      compass: false,
-      friction: 0,
-      mouseZoom: false,
-      showZoomCtrl: false,
-      showFullscreenCtrl: false,
-      type: "equirectangular",
+      default: {
+        firstScene: "scene6",
+        autoLoad: true,
+      },
+      scenes: pannellumScenes,
     });
 
     return () => {
       viewer.current.destroy();
     };
-  }, [id]);
-  return (
-    // <main className="grid place-content-center">
-    <div id={id} className="flex h-screen w-full flex-grow rounded-xl"></div>
-    // </main>
-  );
+  }, [id, scenes]);
+
+  return <div id={id} className="flex h-screen w-full flex-grow"></div>;
 }
