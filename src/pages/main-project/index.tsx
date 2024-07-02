@@ -81,15 +81,15 @@ export default function MainProjectPage() {
   const magazine = [
     {
       name: "EST",
-      bottom: "45%",
-      right: "25%",
+      bottom: "50%",
+      right: "27%",
       type: "image",
       image: "/screen1.png",
     },
     {
       name: "SUD",
-      bottom: "15%",
-      right: "15%",
+      bottom: "18%",
+      right: "13%",
       type: "image",
       image: "/screen2.png",
     },
@@ -119,8 +119,8 @@ export default function MainProjectPage() {
       to: "/op-est",
       image: "/screen1.png",
       position: {
-        top: "22%",
-        right: "25%",
+        top: "14%",
+        right: "28%",
       },
       background: "url(/dashboard.svg)",
       positionModel: {
@@ -151,7 +151,7 @@ export default function MainProjectPage() {
       to: "/op-sud",
       position: {
         bottom: "35%",
-        right: "15%",
+        right: "19%",
       },
       positionModel: {
         side: "left",
@@ -166,7 +166,7 @@ export default function MainProjectPage() {
       image: "/screen1.png",
       position: {
         bottom: "35%",
-        right: "19%",
+        right: "23%",
       },
       url: "/sud_vd.mp4",
       positionModel: {
@@ -181,8 +181,8 @@ export default function MainProjectPage() {
       type: "video",
       image: "/screen1.png",
       position: {
-        top: "22%",
-        right: "29%",
+        top: "14%",
+        right: "32%",
       },
       url: "/est_vd.mp4",
       positionModel: {
@@ -198,7 +198,7 @@ export default function MainProjectPage() {
       image: "/video.png",
       position: {
         top: "40%",
-        left: "4%",
+        left: "2.5%",
       },
       url: "/est_video.mp4",
       positionModel: {
@@ -240,6 +240,22 @@ export default function MainProjectPage() {
       },
     },
     {
+      title: "pipe line",
+      type: "video",
+      image: "/video.png",
+      position: {
+        bottom: "24%",
+        left: "9.5%",
+      },
+      url: "/est_video.mp4",
+      positionModel: {
+        side: "left",
+        align: "end",
+        sideOffset: 20,
+      },
+      background: "url(/video.svg)",
+    },
+    {
       type: "information",
       title: "Pipeline",
       attribute: {
@@ -251,7 +267,7 @@ export default function MainProjectPage() {
       background: "url(/shape1.png)",
       position: {
         bottom: "0%",
-        left: "22%",
+        left: "20%",
       },
     },
     {
@@ -280,8 +296,8 @@ export default function MainProjectPage() {
       },
       background: "url(/vector.png)",
       position: {
-        bottom: "-10%",
-        right: "9%",
+        bottom: "-18%",
+        right: "2%",
       },
     },
   ];
@@ -376,8 +392,10 @@ export default function MainProjectPage() {
                 <div
                   key={index}
                   className={cn(`absolute`, {
-                    "h-fit w-fit max-w-[18rem]": item.type === "information",
-                    "h-fit w-fit max-w-[17rem]": item.type === "identification",
+                    "h-fit w-fit max-w-[18rem] 2xl:max-w-[22rem]":
+                      item.type === "information",
+                    "h-fit w-fit max-w-[17rem] 2xl:max-w-[22rem]":
+                      item.type === "identification",
                   })}
                   style={{
                     ...item.position,
@@ -396,8 +414,10 @@ export default function MainProjectPage() {
                       {Object.entries(item?.attribute || {}).map(
                         ([key, value], index) => (
                           <React.Fragment key={index}>
-                            <span className="text-xs font-medium">{key}</span>
-                            <span className="text-xs text-[#A4D3FF]">
+                            <span className="text-xs font-medium 2xl:text-lg">
+                              {key}
+                            </span>
+                            <span className="text-xs text-[#A4D3FF] 2xl:text-sm">
                               {value}
                             </span>
                           </React.Fragment>
@@ -561,6 +581,60 @@ export default function MainProjectPage() {
                 )}
               </div>
             </div>
+            <Popover>
+              <PopoverTrigger asChild>
+                <div
+                  className={cn(
+                    `absolute h-[40px] w-[40px] xl:h-[45px] xl:w-[45px] 2xl:h-[64px] 2xl:w-[67px]`,
+                  )}
+                  style={{
+                    cursor: "pointer",
+                    // background: `${item.background}`,
+                    backgroundSize: "contain",
+                    backgroundRepeat: "no-repeat",
+                  }}
+                ></div>
+              </PopoverTrigger>
+              <PopoverContent
+                side={"right"}
+                sideOffset={0}
+                className="dark w-fit border-none bg-transparent p-0 backdrop-blur"
+                style={{
+                  clipPath:
+                    "polygon(0% 18.5%, 2.8% 13.5%, 34% 13.5%, 36.2% 9.3%, 36.2% 0%, 100% 0%, 100% 99.6%, 1.6% 99.6%, 1.6% 67%, 0% 64%)",
+                }}
+              >
+                <div
+                  className="relative z-10 aspect-[1.7] h-[35rem] w-[50rem] lg:h-[40rem] lg:w-[60rem] 2xl:h-[46rem] 2xl:w-[70rem]"
+                  style={{
+                    backgroundImage: "url(/card-bg.png)",
+                    backgroundSize: "100% 100%",
+                  }}
+                >
+                  <PopoverClose asChild>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="absolute right-6 top-5 text-white"
+                    >
+                      <XIcon size={24} />
+                    </Button>
+                  </PopoverClose>
+                  <div className="flex h-full flex-col gap-[3.5rem] pb-7 pl-11 pr-6 pt-2">
+                    {/* <div className="ml-auto flex h-14 w-[64%] shrink-0 items-center px-6 text-2xl font-semibold">
+                      {item?.title}
+                    </div>
+                    {item?.type === "video" && item?.url && (
+                      <video
+                        className="aspect-video w-full object-contain opacity-90"
+                        controls
+                        src={item.url}
+                      />
+                    )} */}
+                  </div>
+                </div>
+              </PopoverContent>
+            </Popover>
           </div>
         </div>
       </main>
