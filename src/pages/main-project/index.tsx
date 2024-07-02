@@ -32,7 +32,7 @@ function MainProjectUpBar() {
         backgroundPosition: "50% 0",
         backgroundSize: "500% 100%",
       }}
-      className="sticky top-0 z-10 flex h-[6rem] w-full shrink-0 backdrop-blur"
+      className="sticky top-0 z-10 flex h-[5rem] w-full shrink-0 backdrop-blur"
     >
       <div className="group relative flex h-[60%] w-full shrink-0 items-center justify-between gap-4 px-6">
         <Link
