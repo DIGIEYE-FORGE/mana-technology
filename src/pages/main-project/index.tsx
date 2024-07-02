@@ -303,7 +303,7 @@ export default function MainProjectPage() {
       ["Daily production capacity"]: "10800 tpd from 2028",
       ["Extraction method"]: "Belt conveyor",
       ["Backfilling"]: "Paste backfilling",
-      ["Life of mine"]: "15 year",
+      ["Life of mine"]: "15 years",
     },
   };
   const modelRef = useRef();
