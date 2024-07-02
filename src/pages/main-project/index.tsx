@@ -7,7 +7,7 @@ import Circle1 from "@/assets/circle-1.svg?react";
 import Circle2 from "@/assets/circle-2.svg?react";
 import Circle3 from "@/assets/circle-3.svg?react";
 import Light from "@/assets/light.svg?react";
-import { Fragment, Suspense, useRef, useState } from "react";
+import { Suspense, useRef, useState } from "react";
 import { Loader3D } from "../tree";
 import Model from "@/components/models";
 import { env } from "@/utils/env";
@@ -22,45 +22,38 @@ import {
 } from "@/components/ui/popover";
 import FlipCountdown from "@rumess/react-flip-countdown";
 import React from "react";
+
 function MainProjectUpBar() {
   return (
-    <div className="group sticky top-0 z-10 flex h-up-bar w-full shrink-0 items-center gap-4 border-b px-6 backdrop-blur">
-      <Link
-        to="/"
-        className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-      >
-        <Button variant="ghost">
-          <MoveLeftIcon className="size-6" />
-        </Button>
-      </Link>
-      <Link
-        to="/underground"
-        className="ml-auto opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-      >
-        <Button variant="ghost">
-          <MoveRightIcon className="size-6" />
-        </Button>
-      </Link>
-      <div
-        className="absolute right-1/2 h-full w-96"
-        style={{
-          perspective: "100px",
-          transform: "translateX(50%) rotateX(20deg)",
-        }}
-      >
-        <div
-          className="grid place-content-center border-2 bg-[#182c5d] outline outline-4 outline-[#182c5d]"
-          style={{
-            borderTop: "none",
-            borderRadius: "0 0 1rem 1rem",
-            height: "150%",
-            transform: "rotateX(-10deg)",
-            transformOrigin: "0 0",
-            perspective: "100px",
-          }}
+    <div
+      style={{
+        backgroundImage: "url(/main-project-upbar.svg)",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "50% 0",
+        backgroundSize: "500% 100%",
+      }}
+      className="sticky top-0 z-10 flex h-[6rem] w-full shrink-0 backdrop-blur"
+    >
+      <div className="group relative flex h-[60%] w-full shrink-0 items-center justify-between gap-4 px-6">
+        <Link
+          to="/"
+          className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
         >
-          <h1 className="text-2xl font-bold">Tizert Mine Project Overvue</h1>
+          <Button variant="ghost">
+            <MoveLeftIcon className="size-6" />
+          </Button>
+        </Link>
+        <div className="relative top-3 text-lg font-bold">
+          Tizert Mine Project Overvue
         </div>
+        <Link
+          to="/underground"
+          className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        >
+          <Button variant="ghost">
+            <MoveRightIcon className="size-6" />
+          </Button>
+        </Link>
       </div>
     </div>
   );
