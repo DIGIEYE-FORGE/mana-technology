@@ -114,7 +114,7 @@ export function ProgressAccumulation({ attributes }: Widget) {
     <Fragment>
       <div className="relative h-1 flex-1 p-8">
         <div className="absolute bottom-8 right-1/2 flex -translate-y-1/4 translate-x-1/2 flex-col items-center gap-1">
-          <span className="text-3xl font-bold">
+          <span className="text-lg font-bold md:text-xl lg:text-3xl">
             {((progress / finalTarget) * 100).toFixed(2)} %
           </span>
 

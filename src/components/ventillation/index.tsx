@@ -96,14 +96,14 @@ function Ventillation({ attribute }: VentillationProps) {
         <div className="flex items-center justify-center gap-2">
           <img src="/energy.svg" alt="" width={15} height={15} />
           Energie
-          <span className="text-[#FAAC18]">
+          <span className="text-sm text-[#FAAC18]">
             {data?.find((item) => item?.name === "Energie1")?.value ?? "--"}
           </span>
         </div>
         <div className="flex items-center justify-center gap-2">
           <img src="/energy.svg" alt="" width={15} height={15} />
           Energie
-          <span className="text-[#FAAC18]">
+          <span className="text-sm text-[#FAAC18]">
             {data?.find((item) => item?.name === "Energie2")?.value ?? "--"}
           </span>
         </div>
@@ -111,9 +111,9 @@ function Ventillation({ attribute }: VentillationProps) {
       <div className="flex gap-2 divide-x-2 divide-white [&>*]:px-2">
         <div className="flex flex-1 items-center gap-2">
           <img src="/ventilateur.svg" alt="" width={60} height={60} />
-          <div className="flex flex-col">
+          <div className="flex flex-col [&>*]:text-sm">
             <h3 className="font-semibold">Ventilateur N°1</h3>
-            <h3 className="flex gap-2 text-xl font-bold text-[#FAAC18]">
+            <h3 className="flex gap-2 font-bold text-[#FAAC18]">
               <span>
                 {data?.find((item) => item?.name === "Ventilateur N°1")
                   ?.value ?? "--"}
@@ -130,9 +130,9 @@ function Ventillation({ attribute }: VentillationProps) {
         </div>
         <div className="flex flex-1 items-center gap-2">
           <img src="/ventilateur.svg" alt="" width={60} height={60} />
-          <div className="flex flex-col">
+          <div className="flex flex-col [&>*]:text-sm">
             <h3 className="font-semibold">Ventilateur N°2</h3>
-            <h3 className="flex gap-2 text-xl font-bold text-[#FAAC18]">
+            <h3 className="flex gap-2 text-sm font-bold text-[#FAAC18]">
               <span>
                 {data?.find((item) => item?.name === "Ventilateur N°2")
                   ?.value ?? "--"}
@@ -170,8 +170,10 @@ function Ventillation({ attribute }: VentillationProps) {
                 />
               </div>
 
-              <h3 className="text-sm font-light">{item?.name}</h3>
-              <h3 className="text-[#FAAC18]">{item?.value}</h3>
+              <h3 className="text-xs font-light md:text-sm">{item?.name}</h3>
+              <h3 className="text-xs text-[#FAAC18] md:text-sm">
+                {item?.value}
+              </h3>
             </div>
           ))}
       </div>

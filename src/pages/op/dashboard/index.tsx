@@ -8,7 +8,7 @@ import ProgressMultiple from "@/components/progress-multiple";
 
 export default function HomeDashboard() {
   return (
-    <main className="grid w-full grid-flow-dense auto-rows-[80px] grid-cols-3 gap-3 sm:auto-rows-[92px] md:grid-cols-6 lg:grid-cols-12 lg:gap-4 2xl:grid-cols-[repeat(15,minmax(0,1fr))]">
+    <main className="debug grid w-full grid-flow-dense auto-rows-[80px] grid-cols-3 gap-3 sm:auto-rows-[92px] md:grid-cols-6 lg:grid-cols-12 lg:gap-4 2xl:grid-cols-[repeat(15,minmax(0,1fr))]">
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
           Évolution Production Cumulée
@@ -246,9 +246,7 @@ export default function HomeDashboard() {
         />
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-4">
-        <h1 className="text-center text-lg font-semibold">
-        Foration (ml)
-        </h1>
+        <h1 className="text-center text-lg font-semibold">Foration (ml)</h1>
         <div className="flex-1">
           <LineChartWidget
             moyenne={"combined"}
