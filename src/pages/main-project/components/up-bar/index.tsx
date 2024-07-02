@@ -17,10 +17,10 @@ export function MainProjectUpBar() {
         </Link>
         <img src="/logo.svg" alt="logo" />
       </div>
-      <div className="group relative flex items-center gap-2 text-2xl font-medium">
+      <div className="relative flex items-center gap-2 text-2xl font-medium">
         <span className="h-full py-3">Tizert Mine</span>
 
-        <OverviewButton className="absolute right-1/2 top-1/2 flex translate-x-1/2 items-center gap-2 whitespace-nowrap opacity-0 transition-[top,opacity] group-hover:top-full group-hover:opacity-100">
+        <OverviewButton className="absolute right-1/2 top-1/2 flex translate-x-1/2 items-center gap-2 whitespace-nowrap border opacity-0 backdrop-blur-sm transition-[top,opacity] group-hover:top-full group-hover:opacity-100">
           <FilePieChart size={20} />
           Project Overview
         </OverviewButton>

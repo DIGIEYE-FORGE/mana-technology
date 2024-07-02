@@ -12,7 +12,7 @@ export function OverviewButton({ className, ...props }: OverviewButtonProps) {
       <DialogTrigger asChild>
         <button
           className={cn(
-            "rounded-lg bg-white/10 px-3 py-1.5 active:bg-white/20",
+            "rounded-lg bg-white/10 px-3 py-1.5 text-primary active:bg-white/20",
             className,
           )}
           {...props}
