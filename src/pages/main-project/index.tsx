@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { MoveLeftIcon, MoveRightIcon, XIcon } from "lucide-react";
+import { XIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Circle1 from "@/assets/circle-1.svg?react";
 import Circle2 from "@/assets/circle-2.svg?react";
