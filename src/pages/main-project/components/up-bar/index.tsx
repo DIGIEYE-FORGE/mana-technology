@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { MoveLeftIcon, MoveRightIcon } from "lucide-react";
+import { FilePieChart, MoveLeftIcon, MoveRightIcon } from "lucide-react";
 import { Link } from "react-router-dom";
+import { OverviewButton } from "../overview-button";
 
 export function MainProjectUpBar() {
   return (
@@ -13,7 +14,15 @@ export function MainProjectUpBar() {
           <MoveLeftIcon className="size-6" />
         </Button>
       </Link>
-      <div className="text-2xl font-medium">Tizert Mine Project Overview</div>
+      <img src="/logo.svg" className="absolute left-20" alt="logo" />
+      <div className="relative flex items-center gap-2 text-2xl font-medium">
+        <span className="h-full py-3">Tizert Mine</span>
+
+        <OverviewButton className="absolute right-1/2 top-full flex translate-x-1/2 translate-y-2 items-center gap-2 whitespace-nowrap border">
+          <FilePieChart size={20} />
+          Project Overview
+        </OverviewButton>
+      </div>
       <Link
         to="/underground"
         className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
