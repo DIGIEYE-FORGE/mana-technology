@@ -18,11 +18,8 @@ export default function UndergroundDashboardPage() {
     <div className="grid h-fit w-full auto-rows-[17rem] grid-cols-3 gap-6 md:grid-cols-6 xl:grid-cols-9 2xl:auto-rows-[19rem] [&>*]:col-span-3">
       <Card className="flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
-          Avancement cumulatif annuel (m)
+          Avancement Cumulé annuel (m)
         </h1>
-        <div className="w-full text-center text-xs text-gray-400">
-          Piloting Work - S-curve for Planned % Vs Actual %
-        </div>
         <div className="h-1 flex-1">
           <BarLineWidget
             attributes={{
@@ -76,7 +73,7 @@ export default function UndergroundDashboardPage() {
       </Card>
       <Card className="flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
-           Avancement Cumulé (m):
+           Avancement Cumulé monsuel (m):
           <span className="text-md text-gray-400"> Réalisé vs Planifié</span>
         </h1>
         <div className="w-full text-center text-xs text-gray-400"></div>
@@ -238,7 +235,7 @@ export default function UndergroundDashboardPage() {
 
       <Card className="flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
-          Nombre Tir{" "}
+          Nombre de Tir {" "}
           <span className="text-gray-500">(planifié vs réalisé)</span>
         </h1>
         <div className="w-full text-center text-xs text-gray-400"></div>
@@ -252,7 +249,7 @@ export default function UndergroundDashboardPage() {
                   name: "UG_TIR_REALISE",
                   unit: "T",
                   color: "#FFDC8C",
-                  label: "TIRS RÉALISÉ",
+                  label: "Tirs Réalisés",
                   serial: "DABF7PAT2G4BAG21",
                   type: "bar",
                 },
@@ -260,7 +257,7 @@ export default function UndergroundDashboardPage() {
                   name: "UG_TIR_PLANIFIE",
                   unit: "T",
                   color: "#78F6EA",
-                  label: "TIRS PRÉVUES",
+                  label: "Tirs Prévues",
                   serial: "DABF7PAT2G4BAG21",
                   type: "bar",
                 },
@@ -269,7 +266,7 @@ export default function UndergroundDashboardPage() {
                   unit: "T",
 
                   color: "#B98EFF",
-                  label: "TIRS PRÉVUES CUMULÉE",
+                  label: "Tirs Prévues Cumulée",
                   serial: "DABF7PAT2G4BAG21",
                   type: "line",
                 },
@@ -277,7 +274,7 @@ export default function UndergroundDashboardPage() {
                   name: "UG_TIR_REALISE_CUMULE",
                   unit: "T",
                   color: "#FF5AF1",
-                  label: "TIRS RÉALISÉ CUMULÉE",
+                  label: "Tirs Réalisés Cumulée",
                   serial: "DABF7PAT2G4BAG21",
                   type: "line",
                 },
@@ -288,42 +285,28 @@ export default function UndergroundDashboardPage() {
       </Card>
       <Card className="flex flex-col gap-4 p-4">
         <h1 className="text-center text-lg font-semibold">
-          Performance avancement
+          Arrachement (%)
         </h1>
-        <GroupedHorizontalBarChart
-          attributes={{
-            telemetries: [
-              {
-                group: "Arrachement",
-                name: "UG_TIR_REALISE",
-                color: "#FFDC8C",
-                label: "Réalisé",
-                serial: "DABF7PAT2G4BAG21",
-              },
-              {
-                group: "Arrachement",
-                name: "UG_TIR_PLANIFIE",
-                color: "#25A18E",
-                label: "Foré",
-                serial: "DABF7PAT2G4BAG21",
-              },
-              {
-                group: "Avancement",
-                name: "UG_TIR_PLANIFIE_CUMULE",
-                color: "#FFDC8C",
-                label: "Réalisé",
-                serial: "DABF7PAT2G4BAG21",
-              },
-              {
-                group: "Avancement",
-                name: "UG_TIR_REALISE_CUMULE",
-                color: "#25A18E",
-                label: "Planifié",
-                serial: "DABF7PAT2G4BAG21",
-              },
-            ],
-          }}
-        />
+        <div className="flex-1">
+        <BarLineWidget
+            moyenne={["UG_METRES_PLANIFIE", "UG_METRES_REALISE_TOTAL"]}
+            yAxis="one"
+            attributes={{
+              stacked: true,
+              telemetries: [
+                {
+                  name: "UG_TAUX_ARRACHEMENT_ARRACHEMENT",
+                  unit: "%",
+                  color: "#78F6EA",
+                  label: "Arrachelment",
+                  serial: "Y1UMITGTHATVAUQI",
+                  type: "bar",
+                },
+
+              ],
+            }}
+          />
+        </div>
       </Card>
       <Card className="relative flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
