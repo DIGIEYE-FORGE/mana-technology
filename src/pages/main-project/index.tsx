@@ -44,7 +44,7 @@ function MainProjectUpBar() {
           </Button>
         </Link>
         <div className="relative top-3 text-2xl font-medium">
-          Tizert Mine Project Overvue
+          Tizert Mine Project Overview
         </div>
         <Link
           to="/underground"
@@ -92,7 +92,7 @@ export default function MainProjectPage() {
       type: "information",
     },
     {
-      name: "ELECTRICAL POWER LINE",
+      name: "ELECTRICAL LINE",
       bottom: "40%",
       left: "7%",
       type: "information",
@@ -205,8 +205,8 @@ export default function MainProjectPage() {
       type: "information",
       title: "Electrical power line",
       attribute: {
-        ["60 kV line"]: "70 Km",
-        ["22 kV line"]: "39 Km",
+        ["60 kV line"]: "72 Km",
+        ["22 kV line"]: "52 Km",
         ["Electrical substation"]: "60/22 kV",
       },
       background: "url(/shape1.png)",
@@ -548,7 +548,7 @@ export default function MainProjectPage() {
                   hovered={hovered}
                   url={
                     `${env.VITE_LOCAL_MODELS === "true" ? "/public/ignore/" : "https://storage.googleapis.com/nextronic/"}` +
-                    "mine021.glb"
+                    "mine026.glb"
                   }
                   ref={modelRef}
                   onLoad={() => setLoading(false)}
