@@ -85,7 +85,7 @@ export const widgetsData = {
     },
   },
   5: {
-    title: "Temps de Transport",
+    title: "Temps de Transport (h)",
     attributes: {
       telemetries: [
         {
@@ -98,7 +98,7 @@ export const widgetsData = {
     },
   },
   6: {
-    title: "Temps trajet",
+    title: "Temps trajet (h)",
     attributes: {
       telemetries: [
         {
