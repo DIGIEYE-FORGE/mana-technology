@@ -7,7 +7,7 @@ import Circle1 from "@/assets/circle-1.svg?react";
 import Circle2 from "@/assets/circle-2.svg?react";
 import Circle3 from "@/assets/circle-3.svg?react";
 import Light from "@/assets/light.svg?react";
-import { Suspense, useRef, useState } from "react";
+import { Fragment, Suspense, useRef, useState } from "react";
 import { Loader3D } from "../tree";
 import Model from "@/components/models";
 import { env } from "@/utils/env";
@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/popover";
 import HseButton from "./components/hse-button";
 import FlipCountdown from "@rumess/react-flip-countdown";
+import React from "react";
 function MainProjectUpBar() {
   return (
     <div className="group sticky top-0 z-10 flex h-up-bar w-full shrink-0 items-center gap-4 border-b px-6 backdrop-blur">
@@ -301,14 +302,6 @@ export default function MainProjectPage() {
   const [, setLoading] = useState(true);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [hovered] = useState("");
-
-  // if (loading) {
-  //   return (
-  //     <div className="flex h-full w-full items-center justify-center">
-  //       <Loader />
-  //     </div>
-  //   );
-  // }
   return (
     <main
       className="relative flex flex-col gap-2 pb-6 2xl:overflow-hidden"
@@ -319,18 +312,6 @@ export default function MainProjectPage() {
     >
       <main className="relative mx-auto max-h-[1200px] w-full max-w-[1920px]">
         <MainProjectUpBar />
-        {/* <div className="absolute inset-x-0 top-24 z-[9999] flex justify-center gap-4 py-2">
-          <div
-            className="aspect-video h-12 rounded bg-yellow-500"
-            onMouseEnter={() => setHovered("yellow001")}
-            onMouseLeave={() => setHovered("")}
-          ></div>
-          <div
-            className="aspect-video h-12 rounded bg-blue-500"
-            onMouseEnter={() => setHovered("blue001")}
-            onMouseLeave={() => setHovered("")}
-          ></div>
-        </div> */}
         <div className="absolute bottom-4 right-4 z-10 flex w-[18.5rem] flex-col gap-2">
           <h4 className="text-center text-lg font-semibold">
             1 <sup>st</sup> copper concentrate
@@ -363,7 +344,7 @@ export default function MainProjectPage() {
                 }}
               >
                 <div
-                  className="absolute bottom-20 right-1/2 z-10 translate-x-1/2 whitespace-nowrap px-2 py-0.5 font-bold"
+                  className="absolute bottom-20 right-1/2 z-10 translate-x-1/2 whitespace-nowrap px-2 py-0.5 text-xs font-bold 2xl:text-base"
                   style={{
                     backgroundImage:
                       "linear-gradient(to right, transparent, #002FBE, transparent)",
@@ -395,10 +376,8 @@ export default function MainProjectPage() {
                 <div
                   key={index}
                   className={cn(`absolute`, {
-                    "h-fit max-h-[9rem] w-fit max-w-[18rem]":
-                      item.type === "information",
-                    "h-fit max-h-[10rem] w-fit max-w-[17rem]":
-                      item.type === "identification",
+                    "h-fit w-fit max-w-[18rem]": item.type === "information",
+                    "h-fit w-fit max-w-[17rem]": item.type === "identification",
                   })}
                   style={{
                     ...item.position,
@@ -410,23 +389,18 @@ export default function MainProjectPage() {
                 >
                   {(item.type === "information" ||
                     item.type === "identification") && (
-                    <div className="flex flex-col py-2 pl-4 pr-2">
-                      <h1 className="text-lg font-bold text-[#FFE473]">
+                    <div className="grid grid-cols-[fit-content,1fr] gap-1 p-3 pr-6">
+                      <h1 className="col-span-2 text-lg font-bold text-[#FFE473]">
                         {item.title}
                       </h1>
                       {Object.entries(item?.attribute || {}).map(
                         ([key, value], index) => (
-                          <div
-                            key={index}
-                            className="flex items-center gap-4 [&>*]:text-xs"
-                          >
-                            <span className="w-[7rem] truncate text-xs font-medium">
-                              {key}
-                            </span>
+                          <React.Fragment key={index}>
+                            <span className="text-xs font-medium">{key}</span>
                             <span className="text-xs text-[#A4D3FF]">
                               {value}
                             </span>
-                          </div>
+                          </React.Fragment>
                         ),
                       )}
                     </div>
@@ -437,7 +411,9 @@ export default function MainProjectPage() {
                   <PopoverTrigger asChild>
                     <div
                       key={index}
-                      className={cn(`absolute h-[50px] w-[50px]`)}
+                      className={cn(
+                        `absolute h-[40px] w-[40px] xl:h-[45px] xl:w-[45px] 2xl:h-[64px] 2xl:w-[67px]`,
+                      )}
                       style={{
                         ...item.position,
                         cursor: "pointer",
@@ -494,11 +470,9 @@ export default function MainProjectPage() {
                   <Link key={index} to={item?.to}>
                     <div
                       key={index}
-                      className="absolute"
+                      className="absolute h-[40px] w-[40px] xl:h-[45px] xl:w-[45px] 2xl:h-[64px] 2xl:w-[67px]"
                       style={{
                         ...item.position,
-                        width: "50px",
-                        height: "50px",
                         cursor: "pointer",
                         background: `${item.background}`,
                         backgroundSize: "contain",
@@ -564,25 +538,25 @@ export default function MainProjectPage() {
               <OrbitControls enableRotate rotateSpeed={1} zoomToCursor />
             </Canvas>
             <div
-              className="absolute bottom-[18%] left-[1%] h-[12rem] w-[22rem]"
+              className="absolute bottom-[18%] left-[1%] w-[22rem] backdrop-blur"
               style={{
                 backgroundImage: "url(/vector.png)",
                 backgroundSize: "100% 100%",
                 backgroundRepeat: "no-repeat",
               }}
             >
-              <div className="flex flex-col p-4">
-                <h1 className="text-lg font-bold text-[#FFE473]">
+              <div className="grid grid-cols-[min-content,1fr] gap-1 p-3 pr-4">
+                <h1 className="col-span-2 text-lg font-bold text-[#FFE473]">
                   {tree?.titile}
                 </h1>
                 {Object.entries(tree?.attribute || {}).map(
                   ([key, value], index) => (
-                    <div key={index} className="flex gap-2 text-xs">
-                      <span className="w-[11rem] truncate font-medium">
+                    <React.Fragment key={index}>
+                      <span className="whitespace-nowrap text-xs font-medium">
                         {key}
                       </span>
-                      <span className="text-[#A4D3FF]">{value}</span>
-                    </div>
+                      <span className="text-xs text-[#A4D3FF]">{value}</span>
+                    </React.Fragment>
                   ),
                 )}
               </div>
