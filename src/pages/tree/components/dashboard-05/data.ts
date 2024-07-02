@@ -13,7 +13,7 @@ export const widgetsData = {
     }
   },
   1: {
-    title: "Dispo et Utilisation",
+    title: "Performance Engins",
     attributes: {
       image: "/machine-05.png",
       name: "boltec m10",
@@ -47,7 +47,7 @@ export const widgetsData = {
     },
   },
   3: {
-    title: "Performance engins",
+    title: "Performance Engins",
     attributes: {
       telemetries: [
         {
@@ -60,7 +60,7 @@ export const widgetsData = {
     },
   },
   4: {
-    title: "Temps de soutennement",
+    title: "Temps de soutènement (h)",
     attributes: {
       telemetries: [
         {
