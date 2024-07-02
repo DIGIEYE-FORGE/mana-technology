@@ -11,7 +11,7 @@ export default function HomeDashboard() {
     <main className="grid w-full grid-flow-dense auto-rows-[80px] grid-cols-3 gap-3 md:grid-cols-6 lg:grid-cols-12 lg:gap-4 xl:grid-cols-[repeat(15,minmax(0,1fr))] 2xl:auto-rows-[92px]">
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
-          Évolution Production Cumulée (t)
+          Évolution Production Roche Cumulée (t)
         </h1>
         <div className="flex-1">
           <LineChartWidget
@@ -21,14 +21,14 @@ export default function HomeDashboard() {
                   area: false,
                   name: "PLANIFIE_ROCHE_CUMUL",
                   color: "#78F6EA",
-                  label: "Cumulative planifié",
+                  label: "Cumulative Planifié",
                   serial: "TIRSIL71OBOT4UB4",
                 },
                 {
                   area: true,
                   name: "REALISE_ROCHE_CUMUL",
                   color: "#B98EFF",
-                  label: "Cumulative realisé",
+                  label: "Cumulative Réalisé",
                   serial: "TIRSIL71OBOT4UB4",
                 },
               ],
@@ -38,7 +38,7 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
-          Production par fosse (t)
+          Production Roche par Fosse (t)
         </h1>
         <div className="flex-1">
           <BarChartWidget
@@ -83,7 +83,7 @@ export default function HomeDashboard() {
                   name: "REALISE_MINERAI",
                   unit: "T",
                   color: "#B98EFF",
-                  label: "Minerai Realisé",
+                  label: "Minerai Réalisé",
                   serial: "TIRSIL71OBOT4UB4",
                 },
                 {
@@ -97,7 +97,7 @@ export default function HomeDashboard() {
                   name: "REALISE_STERILE",
                   unit: "T",
                   color: "#78F6EA",
-                  label: "Stérile Realisé",
+                  label: "Stérile Réalisé",
                   serial: "TIRSIL71OBOT4UB4",
                 },
               ],
@@ -107,7 +107,7 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col px-2 py-6 lg:col-span-6 xl:col-span-4">
         <h1 className="text-center text-base font-semibold 2xl:text-lg">
-          Évolution de la Production vs Planifié
+          Évolution de la Production vs Planifié 
         </h1>
         <ProgressAccumulation
           attributes={{
@@ -139,7 +139,7 @@ export default function HomeDashboard() {
                   name: "REALISE_ROCHE",
                   unit: "T",
                   color: "#B98EFF",
-                  label: "Realisé",
+                  label: "Réalisé",
                   serial: "TIRSIL71OBOT4UB4",
                 },
               ],
@@ -222,7 +222,7 @@ export default function HomeDashboard() {
               },
               {
                 displayName: "Zone de Tir",
-                telemetryName: "ZONE DE TIRE",
+                telemetryName: "ZONE_DE_TIRE",
               },
               {
                 displayName: "Tonnage Roche Abattu Minerai (t)",
@@ -263,7 +263,7 @@ export default function HomeDashboard() {
                   area: true,
                   name: "REALISE_FORATION",
                   color: "#B98EFF",
-                  label: "Realisé ML/J",
+                  label: "Réalisé ML/J",
                   serial: "TIRSIL71OBOT4UB4",
                 },
               ],
@@ -271,9 +271,9 @@ export default function HomeDashboard() {
           />
         </div>
       </Card>
-      <Card className="col-span-full row-span-6 flex flex-col gap-3 p-4 xl:col-span-3">
+      <Card className="col-span-3 row-span-3 flex flex-col gap-3 p-4 lg:col-span-6 xl:col-span-3">
         <h3 className="text-center text-lg font-semibold">
-          Disponibilité Engins
+          Disponibilité Engins GMC
         </h3>
         <MultiProgressWidget
           attributes={{
@@ -337,7 +337,7 @@ export default function HomeDashboard() {
               {
                 name: "GMC_PELLE_CAT_0000_01",
                 color: "#ecc94b",
-                label: "Pelle CAT ",
+                label: " Pelle CAT ",
                 serial: "U9XQMQ1DXYT7LJIP",
                 icon: "pelle.svg",
               },
@@ -351,7 +351,7 @@ export default function HomeDashboard() {
               {
                 name: "GMC_DOZER_D8_01",
                 color: "#ecc94b",
-                label: "D8",
+                label: "D8 ",
                 serial: "U9XQMQ1DXYT7LJIP",
                 icon: "d8.svg",
               },
@@ -365,7 +365,7 @@ export default function HomeDashboard() {
               {
                 name: "GMC_NIVELEUSE_01",
                 color: "#ecc94b",
-                label: "Niveleuse",
+                label: "Niveleuse ",
                 serial: "U9XQMQ1DXYT7LJIP",
                 icon: "niveleuse.svg",
               },
@@ -379,8 +379,104 @@ export default function HomeDashboard() {
               {
                 name: "GMC_CITERNE_01",
                 color: "#ecc94b",
-                label: "Citerne d'arrosage",
+                label: "Citerne d'arrosage ",
                 serial: "U9XQMQ1DXYT7LJIP",
+                icon: "citerne.svg",
+              },
+            ],
+          }}
+        />
+      </Card>
+      <Card className="col-span-3 row-span-3 flex flex-col gap-3 p-4 lg:col-span-6 xl:col-span-3">
+        <h3 className="text-center text-lg font-semibold">
+          Disponibilité Engins CADEX
+        </h3>
+        <MultiProgressWidget
+          attributes={{
+            telemetries: [
+              {
+                name: "CADEX_CAMION30T_GROUPE",
+                color: "#ecc94b",
+                label: "CAMIONS 30 T",
+                serial: "C6XPYU0D920L1M07",
+                icon: "camions.svg",
+              },
+              {
+                name: "CADEX_CAMION60T_GROUPE",
+                color: "#ecc94b",
+                label: "CAMIONS 60 T",
+                serial: "C6XPYU0D920L1M07",
+                icon: "camions.svg",
+              },
+              {
+                name: "CADEX_FOREUSE_DX700_01",
+                color: "#ecc94b",
+                label: "DX700 (1)",
+                serial: "C6XPYU0D920L1M07",
+                icon: "foreuse.svg",
+              },
+              {
+                name: "CADEX_FOREUSE_DX700_02",
+                color: "#ecc94b",
+                label: "DX700 (2)",
+                serial: "C6XPYU0D920L1M07",
+                icon: "foreuse.svg",
+              },
+              {
+                name: "CADEX_FOREUSE_EPIROCT35_01",
+                color: "#ecc94b",
+                label: "Epiroc T35",
+                serial: "C6XPYU0D920L1M07",
+                icon: "foreuse.svg",
+              },
+              {
+                name: "CADEX_PELLE_CAT320_02",
+                color: "#ecc94b",
+                label: "CAT320",
+                serial: "C6XPYU0D920L1M07",
+                icon: "pelle.svg",
+              },
+              {
+                name: "CADEX_PELLE_DOSAN_01",
+                color: "#ecc94b",
+                label: "DOSAN",
+                serial: "C6XPYU0D920L1M07",
+                icon: "pelle.svg",
+              },
+              {
+                name: "CADEX_PELLE_HYUNDAI_01",
+                color: "#ecc94b",
+                label: "HYUNDAI",
+                serial: "C6XPYU0D920L1M07",
+                icon: "pelle.svg",
+              },
+              {
+                name: "CADEX_PELLE_SANY_01",
+                color: "#ecc94b",
+                label: "SANY N°1 ",
+                serial: "C6XPYU0D920L1M07",
+                icon: "pelle.svg",
+              },
+              {
+                name: "CADEX_PELLE_SANY_02",
+                color: "#ecc94b",
+                label: "SANY N°2",
+                serial: "C6XPYU0D920L1M07",
+                icon: "pelle.svg",
+              },
+              {
+                name: "CADEX_PELLE_VOLVO380_01",
+                color: "#ecc94b",
+                label: "VOLVO 380",
+                serial: "C6XPYU0D920L1M07",
+                icon: "pelle.svg",
+              },
+              {
+                name: "CADEX_PELLE_VOLVO480_01",
+                color: "#ecc94b",
+                label: "VOLVO 480",
+                serial: "C6XPYU0D920L1M07",
+                icon: "pelle.svg",
               },
             ],
           }}
