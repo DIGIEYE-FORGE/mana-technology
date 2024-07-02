@@ -300,7 +300,7 @@ export default function MainProjectPage() {
   const modelRef = useRef();
   const [, setLoading] = useState(true);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [hovered, setHovered] = useState("");
+  const [hovered] = useState("");
 
   // if (loading) {
   //   return (

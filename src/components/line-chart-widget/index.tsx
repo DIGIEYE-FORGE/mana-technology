@@ -14,10 +14,12 @@ import { ReactNode } from "react";
 type Props = Widget & {
   legendPosition?: "top" | "bottom" | "left" | "right" | "none";
   children?: ReactNode;
+  selectionDate?: boolean;
 };
 
 export default function LineChartWidget({
   legendPosition = "bottom",
+  selectionDate = true,
   ...props
 }: Props) {
   const { backendApi, dateRange } = useAppContext();
@@ -25,10 +27,16 @@ export default function LineChartWidget({
   const telemetries = (props.attributes?.telemetries || []) as ChartTelemetry[];
 
   const { data, isLoading, error } = useSWR(
-    `histories?${JSON.stringify({
-      telemetries,
-      dateRange,
-    })}`,
+    `histories?${
+      selectionDate
+        ? JSON.stringify({
+            telemetries,
+            dateRange,
+          })
+        : JSON.stringify({
+            telemetries,
+          })
+    }`,
     async () => {
       if (!dateRange?.from || telemetries.length === 0) return [];
       const res = await Promise.all(
@@ -43,10 +51,12 @@ export default function LineChartWidget({
               select: [name],
               where: {
                 serial,
-                createdAt: {
-                  $gt: new Date(dateRange?.from as Date),
-                  $lte: dateRange?.to && new Date(dateRange?.to as Date),
-                },
+                createdAt: selectionDate
+                  ? {
+                      $gt: new Date(dateRange?.from as Date),
+                      $lte: dateRange?.to && new Date(dateRange?.to as Date),
+                    }
+                  : undefined,
               },
             },
           );
@@ -150,7 +160,10 @@ export default function LineChartWidget({
             : { show: false },
         xaxis: {
           type: "datetime",
-          max: dateRange?.to ? new Date(dateRange?.to).getTime() : undefined,
+          max:
+            dateRange?.to && selectionDate
+              ? new Date(dateRange?.to).getTime()
+              : undefined,
           tooltip: {
             enabled: false,
           },

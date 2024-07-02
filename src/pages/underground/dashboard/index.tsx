@@ -383,6 +383,7 @@ export default function UndergroundDashboardPage() {
         </h1>
         <div className="h-1 flex-1">
           <LineChartWidget
+            selectionDate={false}
             attributes={{
               telemetries: [
                 {
