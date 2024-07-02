@@ -7,7 +7,7 @@ import ProgressMultiple from "@/components/progress-multiple";
 
 export default function HomeDashboard() {
   return (
-    <div className="grid min-h-full w-full grid-flow-dense auto-rows-[19rem] grid-cols-3 gap-6 lg:grid-cols-6 xl:grid-cols-9">
+    <div className="grid min-h-full w-full grid-flow-dense auto-rows-[19rem] grid-cols-3 gap-6 md:grid-cols-6 xl:grid-cols-9">
       <Card className="col-span-3 flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
           Évolution Production Cumulée
