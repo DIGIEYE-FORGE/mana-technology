@@ -21,7 +21,7 @@ const tabs = [
     subTabs: [
       {
         title: "Performance Indicators",
-        image: "/usine.svg",
+        image: "/usins.png",
       },
     ],
   },
