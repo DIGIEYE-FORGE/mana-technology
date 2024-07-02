@@ -15,7 +15,10 @@ function UndergroundBar() {
 
   return (
     <div className="group sticky top-0 z-10 flex h-up-bar w-[calc(10)] shrink-0 items-center gap-4 rounded-[0_0_24px_0] border-b border-r px-6 backdrop-blur">
-      <Link to={parentPath || "/main-project"}>
+      <Link
+        to={parentPath || "/main-project"}
+        className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+      >
         <Button variant="ghost">
           <MoveLeftIcon
             size={24}
@@ -39,6 +42,7 @@ function UndergroundBar() {
 export default function MainProjectPage() {
   return (
     <main
+      className="h-fit min-h-full"
       style={{
         backgroundImage:
           "linear-gradient(to left, #061991b1 75%, transparent 100%)",

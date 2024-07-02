@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { TDateRange, User } from "./utils";
 import { z } from "zod";
@@ -9,9 +9,12 @@ import Loader from "./components/loader";
 import AppContext from "./Context";
 import LoginPage from "./pages/login";
 import BpIndicator from "./components/bp-indicator";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function App() {
   const [user, setUser] = useState<User | null | undefined>(undefined);
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
   const [accessToken, setAccessToken] = useLocalStorage(
     "accessToken",
     z.string().default(""),
@@ -55,6 +58,12 @@ function App() {
     },
   );
 
+  useEffect(() => {
+    if (pathname === "/") {
+      navigate("/main-project");
+    }
+  }, []);
+
   if (isLoading || user === undefined) {
     return (
       <div className="flex min-h-[100svh] w-full items-center justify-center bg-black/20">
@@ -92,11 +101,8 @@ function App() {
               backgroundImage:
                 "linear-gradient(to bottom,  #172f6dd0 0%, #0f172ad0 70%), url(/public/sky-bg.png)",
               backgroundSize: "100% 100%, 100% 100%",
-              // backgroundPosition: "center",
-              // scrollbarGutter: "stable",
             }}
           >
-            {/* <Navbar /> */}
             <Outlet />
           </main>
         )}

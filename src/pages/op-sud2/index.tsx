@@ -7,7 +7,7 @@ import ProgressMultiple from "@/components/progress-multiple";
 
 function DashboardPage3() {
   return (
-    <div className="grid h-full w-full grid-flow-dense auto-rows-[19rem] grid-cols-9 gap-6">
+    <div className="grid h-full w-full grid-flow-dense auto-rows-[19rem] grid-cols-3 gap-6 lg:grid-cols-6 xl:grid-cols-9">
       <Card className="col-span-3 flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
           Évolution Production Cumulée
@@ -97,7 +97,7 @@ function DashboardPage3() {
           />
         </div>
       </Card>
-      <Card className="col-span-2 flex flex-col p-4">
+      <Card className="col-span-3 flex flex-col p-4 2xl:col-span-2">
         <h1 className="text-center text-lg font-semibold">
           Évolution de la Production vs Planifié
         </h1>
@@ -111,7 +111,7 @@ function DashboardPage3() {
           }}
         />
       </Card>
-      <Card className="col-span-4 flex flex-col p-4">
+      <Card className="col-span-3 flex flex-col p-4 2xl:col-span-4">
         <h1 className="text-center text-lg font-semibold">
           Production par qualité
         </h1>
@@ -169,14 +169,14 @@ function DashboardPage3() {
           />
         </div>
       </Card>
-      <Card className="col-span-3 row-span-2 flex items-center justify-center text-3xl font-bold">
+      <Card className="col-span-3 flex items-center justify-center text-3xl font-bold xl:row-span-2 2xl:col-span-3">
         <img
           src="/picture1.png"
           alt="machine"
           className="h-full w-full object-contain"
         />
       </Card>
-      <Card className="col-span-6 flex flex-col p-4">
+      <Card className="col-span-full flex flex-col p-4 xl:col-span-6">
         <h3 className="text-center text-lg font-semibold">Suivi des Tires</h3>
         <TableWidget
           className="h-1 flex-1"

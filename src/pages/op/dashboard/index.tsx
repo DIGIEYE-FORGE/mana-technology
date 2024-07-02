@@ -247,7 +247,7 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-4">
         <h1 className="text-center text-lg font-semibold">
-          Evolution Production cumule
+        Foration (ml)
         </h1>
         <div className="flex-1">
           <LineChartWidget

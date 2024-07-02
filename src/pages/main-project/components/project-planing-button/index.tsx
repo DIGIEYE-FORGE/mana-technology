@@ -11,7 +11,7 @@ const tabs = [
     subTabs: [
       {
         title: "master plant",
-        image: "/dashboard1.png",
+        image: "/Timeline.svg",
       },
     ],
   },
@@ -20,7 +20,7 @@ const tabs = [
     subTabs: [
       {
         title: "Performance Indicators",
-        image: "/dashboard8.png",
+        image: "/usine.svg",
       },
     ],
   },
@@ -29,7 +29,7 @@ const tabs = [
     subTabs: [
       {
         title: "project progress",
-        image: "/dashboard2.png",
+        image: "/progress.svg",
       },
     ],
   },
@@ -38,11 +38,11 @@ const tabs = [
     subTabs: [
       {
         title: "planning",
-        image: "/dashboard3.png",
+        image: "/planning1.svg",
       },
       {
         title: "planning",
-        image: "/dashboard4.png",
+        image: "/planning2.svg",
       },
     ],
   },
@@ -51,11 +51,11 @@ const tabs = [
     subTabs: [
       {
         title: "Need updated chart  from Reminex ",
-        image: "/dashboard5.png",
+        image: "/risk.svg",
       },
       {
         title: "risk",
-        image: "/dashboard6.png",
+        image: "/schedule.svg",
       },
     ],
   },
@@ -64,7 +64,7 @@ const tabs = [
     subTabs: [
       {
         title: "cost",
-        image: "/dashboard7.png",
+        image: "/cost.svg",
       },
     ],
   },
@@ -80,12 +80,13 @@ function ProjectPlaningButton() {
       </DialogTrigger>
       <DialogContent
         showCloseButton={false}
-        className="max dark bottom-0 top-[4rem] flex w-[100%] max-w-none translate-y-0 flex-col rounded-none border-none bg-card/10 p-4 text-foreground backdrop-blur"
+        className="max dark bottom-0 top-[4rem] flex w-[100%] max-w-none translate-y-0 flex-col rounded-none border-none bg-card/10 p-4 text-foreground backdrop-blur-xl"
         overlayClassName="bg-transparent"
       >
         <div className="mx-auto flex w-full max-w-[1920px] gap-2">
           {tabs.map((tab, index) => (
             <button
+              key={index}
               className={cn(
                 "custom-button flex flex-1 justify-center rounded-lg py-2 text-xl font-bold uppercase transition-colors hover:brightness-125",
                 {
