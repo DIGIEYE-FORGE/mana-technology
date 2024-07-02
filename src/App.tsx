@@ -99,7 +99,7 @@ function App() {
             className="dark overflow-y-auto text-foreground"
             style={{
               backgroundImage:
-                "linear-gradient(to bottom,  #172f6dd0 0%, #0f172ad0 70%), url(/public/sky-bg.png)",
+                "linear-gradient(to bottom,  #172f6dd0 0%, #0f172ad0 70%), url(/sky-bg.png)",
               backgroundSize: "100% 100%, 100% 100%",
             }}
           >
