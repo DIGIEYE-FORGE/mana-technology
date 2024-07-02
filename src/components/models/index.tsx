@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // src/Model.tsx
-import { forwardRef } from "react";
+import { forwardRef, useEffect } from "react";
 import { useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 // import * as THREE from "three";
@@ -26,9 +26,17 @@ import React from "react";
 //   gl_FragColor = vec4(mix(color1, color2, gradient), 2.0);
 // }
 // `;
+const colorsMap = new Map<string, string>();
 
 const Model = forwardRef(
-  ({ url, onLoad }: { url: string; onLoad: () => void }, ref: any) => {
+  (
+    {
+      url,
+      onLoad,
+      hovered,
+    }: { url: string; onLoad: () => void; hovered?: string },
+    ref: any,
+  ) => {
     const gltf = useLoader(GLTFLoader, url);
     // const shaderMaterial = new THREE.ShaderMaterial({
     //   uniforms: {
@@ -43,16 +51,26 @@ const Model = forwardRef(
       if (gltf) {
         onLoad();
       }
-    }, [gltf, onLoad]);
+    }, [gltf, onLoad, hovered]);
 
     gltf.scene.traverse((node) => {
       if ((node as any).isMesh) {
         (node as any).castShadow = true;
         (node as any).receiveShadow = true;
-
-        // (node as any).material = shaderMaterial;
+        if (!colorsMap.has((node as any)?.name)) {
+          colorsMap.set(
+            (node as any)?.name,
+            "#" + (node as any).material.color.getHexString(),
+          );
+        }
+        if ((node as any)?.name === hovered) {
+          (node as any).material.color.set(0xff0000);
+        } else if (colorsMap.has((node as any)?.name)) {
+          (node as any).material.color.set(colorsMap.get((node as any)?.name));
+        }
       }
     });
+    console.log(colorsMap);
     // return <primitive object={gltf.scene} ref={ref} />;
     return <primitive object={gltf.scene} ref={ref} />;
   },

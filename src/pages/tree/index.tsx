@@ -51,7 +51,7 @@ function TreePage() {
     model.position.z = 0;
   }, [loading, modelRef]);
   return (
-    <main className="relative flex h-full w-full items-center justify-center pl-6">
+    <main className="relative flex h-[960px] w-full items-center justify-center">
       {loading && (
         <div className="absolute left-0 top-[4.2rem] z-[999] flex h-[calc(100%-5rem)] w-full items-center justify-center">
           <Loader />
@@ -200,11 +200,11 @@ function TreePage() {
         />
         <Suspense fallback={<Loader3D />}>
           <Model
-            color2="#96CFFE"
-            color1="#96CFFE"
+            // color2="#96CFFE"
+            // color1="#96CFFE"
             url={
-              `${env.VITE_LOCAL_MODELS === "true" ? "/public/ignore/" : "https://storage.googleapis.com/nextronic/"}` +
-              "mine00000017.glb"
+              `${env.VITE_LOCAL_MODELS === "true" ? "/ignore/" : "https://storage.googleapis.com/nextronic/"}` +
+              "mine021.glb"
             }
             ref={modelRef}
             onLoad={() => setLoading(false)}

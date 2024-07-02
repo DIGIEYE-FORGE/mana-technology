@@ -299,6 +299,8 @@ export default function MainProjectPage() {
   };
   const modelRef = useRef();
   const [, setLoading] = useState(true);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [hovered, setHovered] = useState("");
 
   // if (loading) {
   //   return (
@@ -317,6 +319,18 @@ export default function MainProjectPage() {
     >
       <main className="relative mx-auto max-h-[1200px] w-full max-w-[1920px]">
         <MainProjectUpBar />
+        {/* <div className="absolute inset-x-0 top-24 z-[9999] flex justify-center gap-4 py-2">
+          <div
+            className="aspect-video h-12 rounded bg-yellow-500"
+            onMouseEnter={() => setHovered("yellow001")}
+            onMouseLeave={() => setHovered("")}
+          ></div>
+          <div
+            className="aspect-video h-12 rounded bg-blue-500"
+            onMouseEnter={() => setHovered("blue001")}
+            onMouseLeave={() => setHovered("")}
+          ></div>
+        </div> */}
         <div className="absolute bottom-4 right-4 z-10 flex w-[18.5rem] flex-col gap-2">
           <h4 className="text-center text-lg font-semibold">
             1 <sup>st</sup> copper concentrate
@@ -543,15 +557,16 @@ export default function MainProjectPage() {
               />
               <Suspense fallback={<Loader3D />}>
                 <Model
+                  hovered={hovered}
                   url={
                     `${env.VITE_LOCAL_MODELS === "true" ? "/public/ignore/" : "https://storage.googleapis.com/nextronic/"}` +
-                    "mine0019.glb"
+                    "mine021.glb"
                   }
                   ref={modelRef}
                   onLoad={() => setLoading(false)}
                 />
               </Suspense>
-              <RotatingModel modelRef={modelRef} />
+              {/* <RotatingModel modelRef={modelRef} /> */}
               <OrbitControls enableRotate rotateSpeed={1} zoomToCursor />
             </Canvas>
             <div
