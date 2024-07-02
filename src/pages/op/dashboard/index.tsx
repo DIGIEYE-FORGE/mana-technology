@@ -44,7 +44,7 @@ export default function HomeDashboard() {
           <BarChartWidget
             moyenne={["SUD_REALISE_ROCHE", "EST_REALISE_ROCHE_Ton"]}
             attributes={{
-              stacked: true,
+              // stacked: true,
               telemetries: [
                 {
                   name: "EST_REALISE_ROCHE_Ton",

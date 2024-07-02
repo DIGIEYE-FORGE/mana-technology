@@ -92,7 +92,7 @@ export default function MainProjectPage() {
       type: "information",
     },
     {
-      name: "ELECTRICAL LINE",
+      name: "ELECTRICAL POWER LINE",
       bottom: "40%",
       left: "7%",
       type: "information",
