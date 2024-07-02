@@ -304,7 +304,7 @@ export default function MainProjectPage() {
             endAt={"2025-05-14 00:00:00"}
           />
         </div>
-        <div className="absolute top-[55%] z-[10] flex w-[18rem] flex-col gap-4 px-[4rem]">
+        <div className="absolute top-[55%] z-[10] flex flex-col gap-4 px-[2.5rem]">
           {/* <HseButton /> */}
           <ProjectPlaningButton />
         </div>
