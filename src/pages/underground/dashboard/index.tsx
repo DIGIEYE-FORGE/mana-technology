@@ -349,9 +349,11 @@ export default function UndergroundDashboardPage() {
                 serial: "Y1UMITGTHATVAUQI",
               },
               {
-                nameTelemetry: "UG_FORATION_TIRS_TEMPS_DE_CHARGEMENT_EXPLOSIF-min",
+                nameTelemetry:
+                  "UG_FORATION_TIRS_TEMPS_DE_CHARGEMENT_EXPLOSIF-min",
                 nameLabelTelemetry: "Temps de chargement explosif",
-                bfsTelemetry: "UG_TAUX_ARRACHEMENT_TEMPS_DE_CHARGEMENT_EXPLOSIF_BFS",
+                bfsTelemetry:
+                  "UG_TAUX_ARRACHEMENT_TEMPS_DE_CHARGEMENT_EXPLOSIF_BFS",
                 bfsLabelTelemetry: "T. chargement explosif",
                 color: "#F25C05",
                 serial: "Y1UMITGTHATVAUQI",
@@ -366,16 +368,20 @@ export default function UndergroundDashboardPage() {
               },
               {
                 nameTelemetry: "UG_FORATION_TIRS_TIR_DELAI_GAZ_ET_LAVAGE-min",
-                nameLabelTelemetry: "Temps retour après le tir et le lavage du front",
-                bfsTelemetry: "UG_TAUX_ARRACHEMENT_TEMPS_DE_PURGE_ET_SOUFLAGE_BFS",
+                nameLabelTelemetry:
+                  "Temps retour après le tir et le lavage du front",
+                bfsTelemetry:
+                  "UG_TAUX_ARRACHEMENT_TEMPS_DE_PURGE_ET_SOUFLAGE_BFS",
                 bfsLabelTelemetry: "T. Purge et Souflage",
                 color: "#05F2C7",
                 serial: "Y1UMITGTHATVAUQI",
               },
               {
-                nameTelemetry: "UG_SOUTENEMENT_TEMPS_DE_MISE_EN_PLACE_SOUTENEMENT-min",
+                nameTelemetry:
+                  "UG_SOUTENEMENT_TEMPS_DE_MISE_EN_PLACE_SOUTENEMENT-min",
                 nameLabelTelemetry: "Temps de mise en place Souténement",
-                bfsTelemetry: "UG_TAUX_ARRACHEMENT_TEMPS_DE_MISE_EN_PLACE_SOUTENEMENT_BFS",
+                bfsTelemetry:
+                  "UG_TAUX_ARRACHEMENT_TEMPS_DE_MISE_EN_PLACE_SOUTENEMENT_BFS",
                 bfsLabelTelemetry: "T. Mise en place Souténement",
                 color: "#009AB6",
                 serial: "Y1UMITGTHATVAUQI",
@@ -395,7 +401,7 @@ export default function UndergroundDashboardPage() {
       </Card>
       <Card className="flex flex-col gap-1 p-4">
         <h1 className="text-center text-lg font-semibold">
-        Temps Moyen de cycle
+          Temps Moyen de cycle
         </h1>
         <div className="h-1 flex-1">
           <LineChartWidget
@@ -418,7 +424,7 @@ export default function UndergroundDashboardPage() {
         <h3 className="text-center text-lg font-semibold">
           Disponibilité et utilisation des engins
         </h3>
-        <div className="flex-1">
+        <div className="debug h-1 flex-1 overflow-y-auto">
           <Engins
             attribute={[
               {
