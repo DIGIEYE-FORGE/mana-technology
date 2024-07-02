@@ -9,6 +9,7 @@ import Loader from "@/components/loader";
 type Props = Widget & {
   children?: ReactNode;
   color: string;
+  interval?: number;
 };
 
 export const MoteurCard = (props: Props) => {
@@ -24,31 +25,39 @@ export const MoteurCard = (props: Props) => {
     async () => {
       if (!dateRange?.from || telemetries.length === 0) return [];
       const res = await Promise.all(
-        telemetries.map(async ({ serial, name }) => {
-          const { results } = await backendApi.findMany<HistoryType>(
-            "/dpc-history/api/history",
-            {
-              pagination: {
-                page: 1,
-                perPage: 10_00,
-              },
-              select: [name],
-              where: {
-                serial,
-                createdAt: {
-                  $gt: new Date(dateRange?.from as Date),
-                  $lte: dateRange?.to && new Date(dateRange?.to as Date),
+        telemetries.map(
+          async ({ serial, name }) => {
+            const { results } = await backendApi.findMany<HistoryType>(
+              "/dpc-history/api/history",
+              {
+                pagination: {
+                  page: 1,
+                  perPage: 10_00,
+                },
+
+                select: [name],
+                where: {
+                  serial,
+                  createdAt: {
+                    $gt: new Date(dateRange?.from as Date),
+                    $lte: dateRange?.to && new Date(dateRange?.to as Date),
+                  },
                 },
               },
-            },
-          );
-          return results;
-        }),
+            );
+            return results;
+          },
+          {
+            // i need the interval 5 s
+            interval: props.interval || undefined,
+          },
+        ),
       );
       return (
         res.map((item, index) => {
           const name = telemetries[index].name;
           return {
+            name: telemetries[index].label || telemetries[index].name,
             data: item.map((item) => {
               return {
                 x: new Date(item.createdAt),
@@ -76,6 +85,7 @@ export const MoteurCard = (props: Props) => {
       </main>
     );
   }
+  // console.log(data);
 
   const finalData = data?.[0]?.data || [];
   const yaxisMax = Math.max(...finalData.map((item) => item.y)) + 50;
@@ -139,12 +149,7 @@ export const MoteurCard = (props: Props) => {
           },
         },
       }}
-      series={[
-        {
-          name: "series-1",
-          data: finalData,
-        },
-      ]}
+      series={data || []}
       type="line"
       height="100%"
     />

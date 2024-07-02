@@ -1,15 +1,22 @@
 export const widgetsData = {
   0: {
-    title: "Chiffre effectif (Cost Value)",
-    telemetryName: "MECANISE_TIZERT_JUMBO_M20_PERC_DISPO",
+    // title: "Chiffre effectif (Cost Value)",
+    title: "Effectif Projet",
+    telemetryName: "HSE_MP_Total",
     label: "Disponibilité",
-    serial: "DABF7PAT2G4BAG21",
+    serial: "XEXX5PDMNHBWUN7Q",
   },
   1: {
     title: "Cumul des heures travaillées",
+    telemetryName: "HSE_MH_Total",
+    label: "Disponibilité",
+    serial: "XEXX5PDMNHBWUN7Q",
+  },
+  2: {
+    title: "Taux do clôture",
     telemetryName: "MECANISE_TIZERT_JUMBO_M20_PERC_DISPO",
     label: "Disponibilité",
-    serial: "DABF7PAT2G4BAG21",
+    serial: "XEXX5PDMNHBWUN7Q",
   },
   3: {
     title: "HSE Project Indicators",
@@ -43,34 +50,34 @@ export const widgetsData = {
     },
   },
   4: {
-    title: "Heures Travaillées",
+    title: "Évolution Heures Travaillées (par semaine)",
     attributes: {
       telemetries: [
         {
           area: false,
-          name: "MECANISE_TIZERT_JUMBO_M20_TAUX_D'UTILISATION",
+          name: "HSE_MH_Total",
           color: "#78F6EA",
           label: "Heures Travaillées",
-          serial: "DABF7PAT2G4BAG21",
+          serial: "XEXX5PDMNHBWUN7Q",
         },
       ],
     },
   },
   5: {
-    title: "Fréquence",
+    title: "Évolution Effectif (par semaine)",
     attributes: {
       telemetries: [
         {
-          name: "UG_FORATION_TIRS_TEMPS_DE_FORATION-min",
+          name: "HSE_MP_Total",
           color: "#FF5AF1",
           label: "Fréquence",
-          serial: "DABF7PAT2G4BAG21",
+          serial: "XEXX5PDMNHBWUN7Q",
         },
       ],
     },
   },
   6: {
-    title: "Répartition d’incidents",
+    title: "Répartition des incidents",
     attributes: {
       telemetries: [
         {
@@ -95,47 +102,59 @@ export const widgetsData = {
     },
   },
   7: {
-    title: "Répartition par catégorie",
+    title: "Incidents par catégorie",
     attributes: {
       stacked: true,
       telemetries: [
         {
-          name: "EST11_REALISE_ROCHE",
+          name: "HSE_ASSET DAMAGE_Total",
           color: "#FF5AF1",
-          label: "Asset Damage",
-          serial: "U9XQMQ1DXYT7LJIP",
+          label: "Asset",
+          serial: "XEXX5PDMNHBWUN7Q",
         },
         {
-          name: "EST11_REALISE_ROCHE",
+          name: "HSE_ENVI_Total",
           color: "#D2DDFF",
           label: "Environment",
-          serial: "U9XQMQ1DXYT7LJIP",
+          serial: "XEXX5PDMNHBWUN7Q",
         },
       ],
     },
   },
   8: {
-    title: "Répartition par zone",
+    title: "Incidents par Zone",
     attributes: {
       stacked: true,
       telemetries: [
         {
-          name: "EST11_REALISE_ROCHE",
+          name: "HSE_Incident_ONS",
           color: "#25A18E",
-          label: "Injury",
-          serial: "U9XQMQ1DXYT7LJIP",
+          label: "ONS",
+          serial: "XEXX5PDMNHBWUN7Q",
         },
         {
-          name: "EST11_REALISE_ROCHE",
-          color: "#FF5AF1",
-          label: "Asset Damage",
-          serial: "U9XQMQ1DXYT7LJIP",
+          name: "HSE_Incident_OFS",
+          color: "#25A18E",
+          label: "OFS",
+          serial: "XEXX5PDMNHBWUN7Q",
         },
         {
-          name: "EST11_REALISE_ROCHE",
-          color: "#D2DDFF",
-          label: "Environment",
-          serial: "U9XQMQ1DXYT7LJIP",
+          name: "HSE_Incident_UG",
+          color: "#25A18E",
+          label: "ug",
+          serial: "XEXX5PDMNHBWUN7Q",
+        },
+        {
+          name: "HSE_Incident_OP",
+          color: "#25A18E",
+          label: "OP",
+          serial: "XEXX5PDMNHBWUN7Q",
+        },
+        {
+          name: "HSE_Incident_OP",
+          color: "#25A18E",
+          label: "OP",
+          serial: "XEXX5PDMNHBWUN7Q",
         },
       ],
     },

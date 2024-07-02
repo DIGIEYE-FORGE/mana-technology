@@ -7,7 +7,7 @@ import ProgressMultiple from "@/components/progress-multiple";
 
 export default function HomeDashboard() {
   return (
-    <div className="grid h-full w-full grid-flow-dense auto-rows-[19rem] grid-cols-9 gap-6">
+    <div className="grid min-h-full w-full grid-flow-dense auto-rows-[19rem] grid-cols-3 gap-6 lg:grid-cols-6 xl:grid-cols-9">
       <Card className="col-span-3 flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
           Évolution Production Cumulée
@@ -95,7 +95,7 @@ export default function HomeDashboard() {
           />
         </div>
       </Card>
-      <Card className="col-span-2 flex flex-col p-4">
+      <Card className="col-span-3 flex flex-col p-4 xl:col-span-2">
         <h1 className="text-center text-lg font-semibold">
           Évolution de la Production vs Planifié
         </h1>
@@ -109,7 +109,7 @@ export default function HomeDashboard() {
           }}
         />
       </Card>
-      <Card className="col-span-4 flex flex-col p-4">
+      <Card className="col-span-3 flex flex-col p-4 xl:col-span-4">
         <h1 className="text-center text-lg font-semibold">
           Production par qualité
         </h1>
@@ -166,10 +166,10 @@ export default function HomeDashboard() {
           />
         </div>
       </Card>
-      <Card className="col-span-3 row-span-2 flex items-center justify-center overflow-hidden text-3xl font-bold">
+      <Card className="col-span-3 flex items-center justify-center overflow-hidden text-3xl font-bold xl:row-span-2">
         <img src="/est.png" alt="Logo" className="h-full w-full object-cover" />
       </Card>
-      <Card className="col-span-6 flex flex-col p-4">
+      <Card className="col-span-full flex flex-col p-4 xl:col-span-6">
         <h3 className="text-center text-lg font-semibold">Suivi des Tires</h3>
         <TableWidget
           className="h-1 flex-1"

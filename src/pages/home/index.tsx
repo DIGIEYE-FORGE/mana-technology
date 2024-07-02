@@ -49,15 +49,18 @@ const routes = [
   },
 ];
 
-const links = routes.flatMap((route) => {
-  return [
-    {
-      name: route.name,
-      path: route.path,
-    },
-    ...(route.children || []),
-  ];
-});
+const recursiveFlatten = (routes: Route[]): Route[] => {
+  return routes.flatMap((route) => {
+    return [
+      route,
+      ...(route.children?.flatMap((child) => {
+        return recursiveFlatten([child]);
+      }) || []),
+    ];
+  });
+};
+
+const links = recursiveFlatten(routes);
 
 export const RoutLink = ({
   route,
@@ -73,7 +76,9 @@ export const RoutLink = ({
         <Button
           variant="ghost"
           className="w-full justify-between"
-          style={{ paddingLeft: `${index * 1 + 0.5}rem` }}
+          style={{
+            paddingLeft: `${index * 1 + 0.5}rem`,
+          }}
         >
           <span className="font-semibold capitalize">{route.name}</span>
           <span className="w-6 justify-center">
@@ -118,7 +123,10 @@ function HomeUpBar() {
           ))}
         </PopoverContent>
       </Popover>
-      <Link to="/main-project">
+      <Link
+        to="/main-project"
+        className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+      >
         <Button variant="ghost">
           <MoveRightIcon className="size-6" />
         </Button>
@@ -136,6 +144,7 @@ export default function HomePage() {
   }, []);
   return (
     <main
+      className="h-fit"
       style={{
         backgroundImage:
           "linear-gradient(to right, #061991b1 75%, transparent 100%)",

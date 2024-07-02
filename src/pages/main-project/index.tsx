@@ -25,16 +25,43 @@ import FlipCountdown from "@rumess/react-flip-countdown";
 function MainProjectUpBar() {
   return (
     <div className="group sticky top-0 z-10 flex h-up-bar w-full shrink-0 items-center gap-4 border-b px-6 backdrop-blur">
-      <Link to="/">
+      <Link
+        to="/"
+        className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+      >
         <Button variant="ghost">
           <MoveLeftIcon className="size-6" />
         </Button>
       </Link>
-      <Link to="/underground" className="ml-auto">
+      <Link
+        to="/underground"
+        className="ml-auto opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+      >
         <Button variant="ghost">
           <MoveRightIcon className="size-6" />
         </Button>
       </Link>
+      <div
+        className="absolute right-1/2 h-full w-96"
+        style={{
+          perspective: "100px",
+          transform: "translateX(50%) rotateX(20deg)",
+        }}
+      >
+        <div
+          className="grid place-content-center border-2 bg-[#182c5d] outline outline-4 outline-[#182c5d]"
+          style={{
+            borderTop: "none",
+            borderRadius: "0 0 1rem 1rem",
+            height: "150%",
+            transform: "rotateX(-10deg)",
+            transformOrigin: "0 0",
+            perspective: "100px",
+          }}
+        >
+          <h1 className="text-2xl font-bold">hello world</h1>
+        </div>
+      </div>
     </div>
   );
 }
@@ -87,13 +114,14 @@ export default function MainProjectPage() {
 
   const data = [
     {
-      type: "image",
+      type: "link",
+      to: "/op-est",
       image: "/screen1.png",
       position: {
         top: "22%",
         right: "25%",
       },
-      background: "url(/shape2.png),url(/screen1.png)",
+      background: "url(/dashboard.svg)",
       positionModel: {
         side: "left",
         align: "end",
@@ -108,8 +136,8 @@ export default function MainProjectPage() {
         bottom: "27%",
         left: "48%",
       },
-      url: "UndergroundMine.mp4",
-      background: "url(/video.png)",
+      url: "Underground.mp4",
+      background: "url(/video.svg)",
       positionModel: {
         side: "top",
         align: "center",
@@ -117,8 +145,9 @@ export default function MainProjectPage() {
       },
     },
     {
-      type: "image",
+      type: "link",
       image: "/screen2.png",
+      to: "/op-sud",
       position: {
         bottom: "35%",
         right: "15%",
@@ -128,7 +157,7 @@ export default function MainProjectPage() {
         align: "end",
         sideOffset: 20,
       },
-      background: "url(/shape2.png),url(/screen2.png)",
+      background: "url(/dashboard.svg)",
     },
     {
       title: "SUD",
@@ -144,7 +173,7 @@ export default function MainProjectPage() {
         align: "end",
         sideOffset: 20,
       },
-      background: "url(/video.png)",
+      background: "url(/video.svg)",
     },
     {
       title: "EST",
@@ -160,7 +189,7 @@ export default function MainProjectPage() {
         align: "end",
         sideOffset: 20,
       },
-      background: "url(/video.png)",
+      background: "url(/video.svg)",
     },
     {
       title: "plant",
@@ -176,7 +205,7 @@ export default function MainProjectPage() {
         align: "end",
         sideOffset: 20,
       },
-      background: "url(/video.png)",
+      background: "url(/video.svg)",
     },
 
     {
@@ -270,6 +299,8 @@ export default function MainProjectPage() {
   };
   const modelRef = useRef();
   const [, setLoading] = useState(true);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [hovered, setHovered] = useState("");
 
   // if (loading) {
   //   return (
@@ -282,13 +313,24 @@ export default function MainProjectPage() {
     <main
       className="relative flex flex-col gap-2 pb-6 2xl:overflow-hidden"
       style={{
-        // backgroundImage: "url('/sceen24.png')",
         backgroundSize: "100% 100%",
         backgroundRepeat: "no-repeat",
       }}
     >
       <main className="relative mx-auto max-h-[1200px] w-full max-w-[1920px]">
         <MainProjectUpBar />
+        {/* <div className="absolute inset-x-0 top-24 z-[9999] flex justify-center gap-4 py-2">
+          <div
+            className="aspect-video h-12 rounded bg-yellow-500"
+            onMouseEnter={() => setHovered("yellow001")}
+            onMouseLeave={() => setHovered("")}
+          ></div>
+          <div
+            className="aspect-video h-12 rounded bg-blue-500"
+            onMouseEnter={() => setHovered("blue001")}
+            onMouseLeave={() => setHovered("")}
+          ></div>
+        </div> */}
         <div className="absolute bottom-4 right-4 z-10 flex w-[18.5rem] flex-col gap-2">
           <h4 className="text-center text-lg font-semibold">
             1 <sup>st</sup> copper concentrate
@@ -349,20 +391,20 @@ export default function MainProjectPage() {
               </div>
             ))}
             {data.map((item, index) =>
-              item.type !== "image" && item.type !== "video" ? (
+              item.type !== "link" && item.type !== "video" ? (
                 <div
                   key={index}
                   className="absolute"
                   style={{
                     ...item.position,
                     width:
-                      item.type === "image" || item.type === "video"
+                      item.type === "link" || item.type === "video"
                         ? "67px"
                         : item.type === "information"
                           ? "17rem"
                           : "22rem",
                     height:
-                      item.type === "image" || item.type === "video"
+                      item.type === "link" || item.type === "video"
                         ? "64px"
                         : item.type === "information"
                           ? "10rem"
@@ -394,7 +436,7 @@ export default function MainProjectPage() {
                     </div>
                   )}
                 </div>
-              ) : (
+              ) : item.type === "video" ? (
                 <Popover key={index}>
                   <PopoverTrigger asChild>
                     <div
@@ -406,7 +448,7 @@ export default function MainProjectPage() {
                         height: "64px",
                         cursor: "pointer",
                         background: `${item.background}`,
-                        backgroundSize: "100% 100%",
+                        backgroundSize: "contain",
                         backgroundRepeat: "no-repeat",
                       }}
                     ></div>
@@ -452,6 +494,25 @@ export default function MainProjectPage() {
                     </div>
                   </PopoverContent>
                 </Popover>
+              ) : (
+                item.type === "link" &&
+                item.to && (
+                  <Link key={index} to={item?.to}>
+                    <div
+                      key={index}
+                      className="absolute"
+                      style={{
+                        ...item.position,
+                        width: "67px",
+                        height: "64px",
+                        cursor: "pointer",
+                        background: `${item.background}`,
+                        backgroundSize: "contain",
+                        backgroundRepeat: "no-repeat",
+                      }}
+                    ></div>
+                  </Link>
+                )
               ),
             )}
           </div>
@@ -496,17 +557,16 @@ export default function MainProjectPage() {
               />
               <Suspense fallback={<Loader3D />}>
                 <Model
-                  color2="#96CFFE"
-                  color1="#96CFFE"
+                  hovered={hovered}
                   url={
                     `${env.VITE_LOCAL_MODELS === "true" ? "/public/ignore/" : "https://storage.googleapis.com/nextronic/"}` +
-                    "mine00000017.glb"
+                    "mine021.glb"
                   }
                   ref={modelRef}
                   onLoad={() => setLoading(false)}
                 />
               </Suspense>
-              <RotatingModel modelRef={modelRef} />
+              {/* <RotatingModel modelRef={modelRef} /> */}
               <OrbitControls enableRotate rotateSpeed={1} zoomToCursor />
             </Canvas>
             <div
