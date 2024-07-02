@@ -76,7 +76,7 @@ function ProjectPlaningButton() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <button className="btn-3d h-fit">Project Planning</button>
+        <button className="btn-3d h-fit">Integrated Project Planning</button>
       </DialogTrigger>
       <DialogContent
         showCloseButton={false}
