@@ -59,8 +59,8 @@ const magazine = [
   },
   {
     name: "OPEN PIT",
-    bottom: "25%",
-    right: "10%",
+    bottom: "30%",
+    right: "12%",
     type: "image",
     image: "/screen2.png",
   },
@@ -109,7 +109,7 @@ const data = [
     to: "/",
     position: {
       bottom: "43%",
-      right: "11%",
+      right: "8%",
     },
     positionModel: {
       side: "left",
@@ -270,8 +270,8 @@ const data = [
     },
     background: "url(/vector.png)",
     position: {
-      top: "8%",
-      right: "10%",
+      top: "3%",
+      right: "8%",
     },
   },
   {
