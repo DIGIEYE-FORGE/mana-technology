@@ -53,7 +53,7 @@ export const widgetsData = {
     },
   },
   3: {
-    title: "Performance Engins",
+    title: "Disponibilité",
     attributes: {
       telemetries: [
         {
@@ -72,7 +72,28 @@ export const widgetsData = {
     },
   },
   4: {
-    title: "Temps de Déblayage (h)",
+    title: "Utilisation",
+    attributes: {
+      telemetries: [
+        {
+          name: "UG_METRES_PLANIFIE",
+          color: "#FF5AF1",
+          label: "R1700 01",
+          serial: "DABF7PAT2G4BAG21",
+        },
+        {
+          name: "UG_METRES_REALISE_TOTAL",
+          color: "#FFDC8C",
+          label: "R1700 02",
+          serial: "DABF7PAT2G4BAG21",
+        },
+      ],
+    },
+  },
+
+  
+  5: {
+    title: "Temps de Déblayage",
     attributes: {
       telemetries: [
         {
@@ -84,8 +105,8 @@ export const widgetsData = {
       ],
     },
   },
-  5: {
-    title: "Temps trajet (h)",
+  6: {
+    title: "Temps trajet",
     attributes: {
       telemetries: [
         {
@@ -103,8 +124,8 @@ export const widgetsData = {
       ],
     },
   },
-  6: {
-    title: "Distance Trajet (m)",
+  7: {
+    title: "Distance Trajet",
     attributes: {
       telemetries: [
         {

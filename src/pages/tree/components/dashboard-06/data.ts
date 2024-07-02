@@ -53,7 +53,7 @@ export const widgetsData = {
     },
   },
   3: {
-    title: "Performance Engins",
+    title: "Disponibilité",
     attributes: {
       telemetries: [
         {
@@ -72,7 +72,7 @@ export const widgetsData = {
     },
   },
   4: {
-    title: "Temps de Transport (h)",
+    title: "Utilisation",
     attributes: {
       telemetries: [
         {
@@ -85,7 +85,20 @@ export const widgetsData = {
     },
   },
   5: {
-    title: "Temps trajet (h)",
+    title: "Temps de Transport",
+    attributes: {
+      telemetries: [
+        {
+          name: "UG_METRES_PLANIFIE",
+          color: "#FF5AF1",
+          label: "Chargement explosif",
+          serial: "DABF7PAT2G4BAG21",
+        },
+      ],
+    },
+  },
+  6: {
+    title: "Temps trajet",
     attributes: {
       telemetries: [
         {
