@@ -59,7 +59,7 @@ function MainProjectUpBar() {
             perspective: "100px",
           }}
         >
-          <h1 className="text-2xl font-bold">hello world</h1>
+          <h1 className="text-2xl font-bold">Tizert Mine Project Overvue</h1>
         </div>
       </div>
     </div>
