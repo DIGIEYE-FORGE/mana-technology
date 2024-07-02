@@ -7,7 +7,7 @@ import ProgressMultiple from "@/components/progress-multiple";
 
 function DashboardPage3() {
   return (
-    <div className="grid h-full w-full grid-flow-dense auto-rows-[19rem] grid-cols-9 gap-6">
+    <div className="debug grid h-full w-full grid-flow-dense auto-rows-[19rem] gap-6 2xl:grid-cols-9">
       <Card className="col-span-3 flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
           Évolution Production Cumulée

@@ -42,7 +42,7 @@ function UndergroundBar() {
 export default function MainProjectPage() {
   return (
     <main
-      className="h-fit"
+      className="h-fit min-h-full"
       style={{
         backgroundImage:
           "linear-gradient(to left, #061991b1 75%, transparent 100%)",

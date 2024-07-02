@@ -144,7 +144,7 @@ export default function HomePage() {
   }, []);
   return (
     <main
-      className="h-fit"
+      className="h-fit min-h-full"
       style={{
         backgroundImage:
           "linear-gradient(to right, #061991b1 75%, transparent 100%)",
