@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 export default function UndergroundDashboardPage() {
   const { dateRange } = useAppContext();
   return (
-    <div className="grid h-fit w-full auto-rows-[19rem] grid-cols-3 gap-6 md:grid-cols-6 xl:grid-cols-9 [&>*]:col-span-3">
+    <div className="grid h-fit w-full auto-rows-[17rem] grid-cols-3 gap-6 md:grid-cols-6 xl:grid-cols-9 2xl:auto-rows-[19rem] [&>*]:col-span-3">
       <Card className="flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
           Avancement cumulatif annuel

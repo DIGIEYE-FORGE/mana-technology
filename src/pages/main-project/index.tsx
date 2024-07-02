@@ -560,7 +560,7 @@ export default function MainProjectPage() {
                   onLoad={() => setLoading(false)}
                 />
               </Suspense>
-              {/* <RotatingModel modelRef={modelRef} /> */}
+              <RotatingModel modelRef={modelRef} />
               <OrbitControls enableRotate rotateSpeed={1} zoomToCursor />
             </Canvas>
             <div

@@ -7,7 +7,7 @@ import ProgressMultiple from "@/components/progress-multiple";
 
 export default function HomeDashboard() {
   return (
-    <div className="grid min-h-full w-full grid-flow-dense auto-rows-[19rem] grid-cols-3 gap-6 md:grid-cols-6 xl:grid-cols-9">
+    <div className="grid min-h-full w-full grid-flow-dense grid-cols-3 gap-6 md:grid-cols-6 xl:auto-rows-[17rem] xl:grid-cols-9 2xl:auto-rows-[19rem]">
       <Card className="col-span-3 flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
           Évolution Production Cumulée
@@ -95,7 +95,7 @@ export default function HomeDashboard() {
           />
         </div>
       </Card>
-      <Card className="col-span-3 flex flex-col p-4 xl:col-span-2">
+      <Card className="col-span-3 flex flex-col p-4 xl:col-span-3 2xl:col-span-2">
         <h1 className="text-center text-lg font-semibold">
           Évolution de la Production vs Planifié
         </h1>
@@ -109,7 +109,7 @@ export default function HomeDashboard() {
           }}
         />
       </Card>
-      <Card className="col-span-3 flex flex-col p-4 xl:col-span-4">
+      <Card className="col-span-3 flex flex-col p-4 xl:col-span-3 2xl:col-span-4">
         <h1 className="text-center text-lg font-semibold">
           Production par qualité
         </h1>
