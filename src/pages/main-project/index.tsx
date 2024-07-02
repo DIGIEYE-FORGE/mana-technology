@@ -319,7 +319,7 @@ export default function MainProjectPage() {
     >
       <main className="relative mx-auto max-h-[1200px] w-full max-w-[1920px]">
         <MainProjectUpBar />
-        {/* <div className="absolute inset-x-0 top-24 z-[9999] flex justify-center gap-4 py-2">
+        <div className="absolute inset-x-0 top-24 z-[9999] flex justify-center gap-4 py-2">
           <div
             className="aspect-video h-12 rounded bg-yellow-500"
             onMouseEnter={() => setHovered("yellow001")}
@@ -330,7 +330,7 @@ export default function MainProjectPage() {
             onMouseEnter={() => setHovered("blue001")}
             onMouseLeave={() => setHovered("")}
           ></div>
-        </div> */}
+        </div>
         <div className="absolute bottom-4 right-4 z-10 flex w-[18.5rem] flex-col gap-2">
           <h4 className="text-center text-lg font-semibold">
             1 <sup>st</sup> copper concentrate
@@ -566,7 +566,7 @@ export default function MainProjectPage() {
                   onLoad={() => setLoading(false)}
                 />
               </Suspense>
-              {/* <RotatingModel modelRef={modelRef} /> */}
+              <RotatingModel modelRef={modelRef} />
               <OrbitControls enableRotate rotateSpeed={1} zoomToCursor />
             </Canvas>
             <div
