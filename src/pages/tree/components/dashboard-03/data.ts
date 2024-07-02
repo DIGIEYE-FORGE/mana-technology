@@ -55,7 +55,7 @@ export const widgetsData = {
     },
   },
   3: {
-    title: "Performance engins",
+    title: "Disponibilité",
     attributes: {
       stacked: false,
       telemetries: [
@@ -70,6 +70,21 @@ export const widgetsData = {
     },
   },
   4: {
+    title: "Utilisation",
+    attributes: {
+      stacked: false,
+      telemetries: [
+        {
+          name: "UG_METRES_PLANIFIE",
+          color: "#FFDC8C",
+          label: "Chargeur d'explosif titan 1000 BAC2X350",
+          serial: "DABF7PAT2G4BAG21",
+          type: "bar",
+        },
+      ],
+    },
+  },
+  5: {
     title: "Temps de chargement explosif et moyenne",
     attributes: {
       stacked: false,
@@ -83,7 +98,7 @@ export const widgetsData = {
       ],
     },
   },
-  5: {
+  6: {
     title: "Arrchament %",
     attributes: {
       telemetries: [

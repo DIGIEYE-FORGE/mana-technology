@@ -47,7 +47,7 @@ export const widgetsData = {
     },
   },
   3: {
-    title: "Performance engins",
+    title: "Disponibilité",
     attributes: {
       telemetries: [
         {
@@ -60,6 +60,19 @@ export const widgetsData = {
     },
   },
   4: {
+    title: "Utilisation",
+    attributes: {
+      telemetries: [
+        {
+          name: "UG_METRES_PLANIFIE",
+          color: "#FFDC8C",
+          label: "Prévus",
+          serial: "DABF7PAT2G4BAG21",
+        },
+      ],
+    },
+  },
+  5: {
     title: "Temps de soutennement",
     attributes: {
       telemetries: [
@@ -72,7 +85,7 @@ export const widgetsData = {
       ],
     },
   },
-  5: {
+  6: {
     title: "Disponibilité",
     attributes: {
       telemetries: [
