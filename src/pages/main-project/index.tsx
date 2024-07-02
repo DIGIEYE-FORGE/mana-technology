@@ -91,12 +91,12 @@ const data = [
   {
     type: "link",
     to: "/op-est",
-    image: "/screen1.png",
+    image: "/screen1.svg",
     position: {
       top: "14%",
       right: "28%",
     },
-    background: "url(/screen1.png)",
+    background: "url(/screen1.svg)",
     positionModel: {
       side: "left",
       align: "end",
@@ -105,7 +105,7 @@ const data = [
   },
   {
     type: "link",
-    image: "/screen2.png",
+    image: "/screen1.svg",
     to: "/",
     position: {
       bottom: "43%",
@@ -116,7 +116,7 @@ const data = [
       align: "end",
       sideOffset: 20,
     },
-    background: "url(/dashboard.svg)",
+    background: "url(/screen2.svg)",
   },
   {
     title: "Underground Mine",
@@ -136,7 +136,7 @@ const data = [
   },
   {
     type: "link",
-    image: "/screen2.png",
+    image: "screen1.svg",
     to: "/op-sud",
     position: {
       bottom: "35%",
@@ -147,7 +147,7 @@ const data = [
       align: "end",
       sideOffset: 20,
     },
-    background: "url(/dashboard.svg)",
+    background: "url(/screen1.svg)",
   },
   {
     title: "Pit SUD",
@@ -659,7 +659,7 @@ export default function MainProjectPage() {
                   top: "12%",
                   left: "49%",
                   cursor: "pointer",
-                  background: "url(/dashboard.svg)",
+                  background: "url(/screen4.svg)",
                   backgroundSize: "contain",
                   backgroundRepeat: "no-repeat",
                 }}
