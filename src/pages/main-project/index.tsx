@@ -24,14 +24,20 @@ import FlipCountdown from "@rumess/react-flip-countdown";
 import React from "react";
 import { MainProjectUpBar } from "./components/up-bar";
 
-export function RotatingModel({ modelRef }: { modelRef: any }) {
+export function RotatingModel({
+  modelRef,
+  isRotating,
+}: {
+  modelRef: any;
+  isRotating?: boolean;
+}) {
   useFrame(() => {
     if (modelRef.current) {
-      modelRef.current.rotation.y += 0.002; // Adjust rotation speed as needed
+      modelRef.current.rotation.y += isRotating ? 0.002 : 0;
     }
   });
 
-  return null; // This component doesn't render anything visible
+  return null;
 }
 
 const magazine = [
@@ -200,7 +206,7 @@ const data = [
       ["22 kV line"]: "52 Km",
       ["Electrical substation"]: "60/22 kV",
     },
-    background: "url(/shape1.png)",
+    background: "url(/vector.png)",
     position: {
       top: "6%",
       left: "1%",
@@ -216,7 +222,7 @@ const data = [
       ["Product"]: "Copper Silver concentrate",
       ["Concentrate production capacity"]: "120 Ktonnes per year",
     },
-    background: "url(/shape1.png)",
+    background: "url(/vector.png)",
     position: {
       bottom: "40%",
       left: "40%",
@@ -247,7 +253,7 @@ const data = [
       ["Pumping station's number"]: "8 PS /1350m",
       ["Origine"]: "Treated waste water",
     },
-    background: "url(/shape1.png)",
+    background: "url(/vector.png)",
     position: {
       bottom: "0%",
       left: "20%",
@@ -286,6 +292,7 @@ const data = [
 ];
 
 export default function MainProjectPage() {
+  const [isRotating, setIsRotating] = useState(true);
   const tree = {
     titile: "Underground Mine",
     attribute: {
@@ -326,7 +333,7 @@ export default function MainProjectPage() {
             endAt={"2025-05-14 00:00:00"}
           />
         </div>
-        <div className="absolute top-[55%] z-[10] flex w-[18rem] flex-col gap-4 px-[4rem]">
+        <div className="absolute top-[55%] z-[10] flex flex-col gap-4 px-[2.5rem]">
           {/* <HseButton /> */}
           <ProjectPlaningButton />
         </div>
@@ -543,6 +550,7 @@ export default function MainProjectPage() {
               onCreated={({ gl }) => {
                 gl.shadowMap.enabled = true;
               }}
+              onClick={() => setIsRotating(!isRotating)}
             >
               <ambientLight intensity={0.5} />
               <directionalLight
@@ -568,7 +576,7 @@ export default function MainProjectPage() {
                   onLoad={() => setLoading(false)}
                 />
               </Suspense>
-              <RotatingModel modelRef={modelRef} />
+              <RotatingModel modelRef={modelRef} isRotating={isRotating} />
               <OrbitControls enableRotate rotateSpeed={1} zoomToCursor />
             </Canvas>
             <div
