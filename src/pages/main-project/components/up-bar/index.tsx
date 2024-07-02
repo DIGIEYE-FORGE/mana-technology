@@ -6,21 +6,19 @@ import { OverviewButton } from "../overview-button";
 export function MainProjectUpBar() {
   return (
     <div className="group sticky top-0 z-10 flex h-up-bar w-full shrink-0 items-center justify-between gap-4 border-b px-6 backdrop-blur">
-      <div className="flex items-center gap-2">
-        <Link
-          to="/"
-          className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-        >
-          <Button variant="ghost">
-            <MoveLeftIcon className="size-6" />
-          </Button>
-        </Link>
-        <img src="/logo.svg" alt="logo" />
-      </div>
+      <Link
+        to="/"
+        className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+      >
+        <Button variant="ghost">
+          <MoveLeftIcon className="size-6" />
+        </Button>
+      </Link>
+      <img src="/logo.svg" className="absolute left-20" alt="logo" />
       <div className="relative flex items-center gap-2 text-2xl font-medium">
         <span className="h-full py-3">Tizert Mine</span>
 
-        <OverviewButton className="absolute right-1/2 top-1/2 flex translate-x-1/2 items-center gap-2 whitespace-nowrap border opacity-0 backdrop-blur-sm transition-[top,opacity] group-hover:top-full group-hover:opacity-100">
+        <OverviewButton className="absolute right-1/2 top-full flex translate-x-1/2 translate-y-2 items-center gap-2 whitespace-nowrap border">
           <FilePieChart size={20} />
           Project Overview
         </OverviewButton>
