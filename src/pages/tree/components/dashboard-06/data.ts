@@ -1,6 +1,6 @@
 export const widgetsData = {
   0: {
-    title: "Tonnage Transporté",
+    title: "Tonnage Transporté (t)",
     attributes: {
       telemetries: [
         {
@@ -13,7 +13,7 @@ export const widgetsData = {
     }
   },
   1: {
-    title: "Performance Engin",
+    title: "Performance Engins",
     attributes: {
       image: "/machine-06.png",
       name: "Transport ad45",

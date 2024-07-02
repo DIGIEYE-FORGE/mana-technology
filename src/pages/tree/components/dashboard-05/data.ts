@@ -13,7 +13,7 @@ export const widgetsData = {
     }
   },
   1: {
-    title: "Dispo et Utilisation",
+    title: "Performance Engins",
     attributes: {
       image: "/machine-05.png",
       name: "boltec m10",

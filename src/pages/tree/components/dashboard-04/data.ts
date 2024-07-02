@@ -1,6 +1,6 @@
 export const widgetsData = {
   0: {
-    title: "Tonnage Débalyé",
+    title: "Tonnage Déblayé (t)",
     attributes: {
       telemetries: [
         {
@@ -13,7 +13,7 @@ export const widgetsData = {
     }
   },
   1: {
-    title: "Dispo et Utilisation",
+    title: "Performance Engins",
     attributes: {
       image: "/machine-04.png",
       name: "Déblayage R1700",

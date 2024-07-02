@@ -59,7 +59,7 @@ export const homePageWidgets: Widget[] = [
   },
   {
     type: "barChart",
-    title: "Production Journalière",
+    title: "Production Journalière (t)",
     className:
       "col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-5",
     attributes: {
@@ -84,7 +84,7 @@ export const homePageWidgets: Widget[] = [
   },
   {
     type: "barChart",
-    title: "Stérile / Minerai",
+    title: "Stérile / Minerai (t)",
     className:
       "col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-5",
     attributes: {
@@ -136,7 +136,7 @@ export const homePageWidgets: Widget[] = [
   },
   {
     type: "barChart",
-    title: "Production par fosse",
+    title: "Production par fosse (t)",
     className:
       "col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-4",
     attributes: {
@@ -161,7 +161,7 @@ export const homePageWidgets: Widget[] = [
   },
   {
     type: "lineChart",
-    title: "Production cumulée par qualité",
+    title: "Production cumulée par qualité (t)",
     className:
       "col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-4",
     attributes: {
@@ -243,7 +243,7 @@ export const homePageWidgets: Widget[] = [
   },
   {
     type: "multiProgress",
-    title: "Disponibilité Engine GMC",
+    title: "Disponibilité Engins GMC",
     className:
       "col-span-full row-span-6 flex flex-col gap-3 p-4 2xl:col-span-3",
     attributes: {

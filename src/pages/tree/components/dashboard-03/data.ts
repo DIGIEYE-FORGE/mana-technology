@@ -1,6 +1,6 @@
 export const widgetsData = {
   0: {
-    title: "Nombre de tire par jour",
+    title: "Nombre de tirs par jour",
     attributes: {
       stacked: false,
       telemetries: [
@@ -20,7 +20,7 @@ export const widgetsData = {
     }
   },
   1: {
-    title: "Performance Engin",
+    title: "Performance Engins",
     attributes: {
       image: "/machine-03.png",
       name: "Jumbo M20",
@@ -41,7 +41,7 @@ export const widgetsData = {
     },
   },
   2: {
-    title: "Consommation spécifique explosif",
+    title: "Consommation spécifique explosif (kg)",
     attributes: {
       stacked: false,
       telemetries: [
@@ -90,9 +90,15 @@ export const widgetsData = {
       stacked: false,
       telemetries: [
         {
-          name: "UG_METRES_PLANIFIE",
+          name: "UG_FORATION_TIRS_TEMPS_DE_CHARGEMENT_EXPLOSIF-min",
           color: "#FFDC8C",
           label: "Chargement explosif",
+          serial: "DABF7PAT2G4BAG21",
+        },
+        {
+          name: "UG_FORATION_TIRS_TIR_DELAI_GAZ_ET_LAVAGE-min",
+          color: "#FFF",
+          label: "Tir, délai Gaz et lavage",
           serial: "DABF7PAT2G4BAG21",
         },
       ],
@@ -103,10 +109,10 @@ export const widgetsData = {
     attributes: {
       telemetries: [
         {
-          name: "EST_REALISE_FORATION",
+          name: "UG_TAUX_ARRACHEMENT_ARRACHEMENT",
           color: "#CCCCCC",
           label: "Aller",
-          serial: "U9XQMQ1DXYT7LJIP",
+          serial: "DABF7PAT2G4BAG21",
         },
       ],
     },

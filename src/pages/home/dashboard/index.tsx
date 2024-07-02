@@ -10,7 +10,7 @@ export default function HomeDashboard() {
     <div className="grid min-h-full w-full grid-flow-dense grid-cols-3 gap-6 md:grid-cols-6 xl:auto-rows-[17rem] xl:grid-cols-9 2xl:auto-rows-[19rem]">
       <Card className="col-span-3 flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
-          Évolution Production Cumulée
+          Évolution Production Cumulée (t)
         </h1>
         <div className="flex-1">
           <LineChartWidget
@@ -37,7 +37,7 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-3 flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
-          Production Journalière
+          Production Journalière (t)
         </h1>
         <div className="flex-1">
           <BarChartWidget
@@ -57,7 +57,7 @@ export default function HomeDashboard() {
         </div>
       </Card>
       <Card className="col-span-3 flex flex-col p-4">
-        <h1 className="text-center text-lg font-semibold">Stérile / Minerai</h1>
+        <h1 className="text-center text-lg font-semibold">Stérile / Minerai (t)</h1>
         <div className="flex-1">
           <BarChartWidget
             attributes={{
@@ -111,7 +111,7 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-3 flex flex-col p-4 xl:col-span-3 2xl:col-span-4">
         <h1 className="text-center text-lg font-semibold">
-          Production par qualité
+          Production par qualité (t)
         </h1>
         <div className="flex-1">
           <ProgressMultiple
@@ -170,7 +170,7 @@ export default function HomeDashboard() {
         <img src="/est.png" alt="Logo" className="h-full w-full object-cover" />
       </Card>
       <Card className="col-span-full flex flex-col p-4 xl:col-span-6">
-        <h3 className="text-center text-lg font-semibold">Suivi des Tires</h3>
+        <h3 className="text-center text-lg font-semibold">Suivi des Tirs</h3>
         <TableWidget
           className="h-1 flex-1"
           attributes={{
@@ -190,11 +190,11 @@ export default function HomeDashboard() {
                 telemetryName: "ZONE DE TIRE",
               },
               {
-                displayName: "Tonnage Roche Abattu Minerai",
+                displayName: "Tonnage Roche Abattu Minerai (t)",
                 telemetryName: "TONNAE_MINERAI_ABATTU",
               },
               {
-                displayName: "Tonnage Roche Abattu Stérile",
+                displayName: "Tonnage Roche Abattu Stérile (t)",
                 telemetryName: "TONNAE_STERILE_ABATTU",
               },
               {
