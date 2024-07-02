@@ -179,7 +179,7 @@ const data = [
       ["22 kV line"]: "52 Km",
       ["Electrical substation"]: "60/22 kV",
     },
-    background: "url(/shape1.png)",
+    background: "url(/vector.png)",
     position: {
       top: "6%",
       left: "1%",
@@ -195,7 +195,7 @@ const data = [
       ["Product"]: "Copper Silver concentrate",
       ["Concentrate production capacity"]: "120 Ktonnes per year",
     },
-    background: "url(/shape1.png)",
+    background: "url(/vector.png)",
     position: {
       bottom: "40%",
       left: "40%",
@@ -226,7 +226,7 @@ const data = [
       ["Pumping station's number"]: "8 PS /1350m",
       ["Origine"]: "Treated waste water",
     },
-    background: "url(/shape1.png)",
+    background: "url(/vector.png)",
     position: {
       bottom: "0%",
       left: "20%",
