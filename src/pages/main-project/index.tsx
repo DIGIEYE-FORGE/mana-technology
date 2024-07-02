@@ -114,7 +114,7 @@ export default function MainProjectPage() {
         top: "14%",
         right: "28%",
       },
-      background: "url(/dashboard.svg)",
+      background: "url(/screen1.png)",
       positionModel: {
         side: "left",
         align: "end",
@@ -432,7 +432,7 @@ export default function MainProjectPage() {
                         ...item.position,
                         cursor: "pointer",
                         background: `${item.background}`,
-                        backgroundSize: "contain",
+                        backgroundSize: "100% 100%",
                         backgroundRepeat: "no-repeat",
                       }}
                     ></div>
