@@ -43,7 +43,7 @@ function MainProjectUpBar() {
             <MoveLeftIcon className="size-6" />
           </Button>
         </Link>
-        <div className="relative top-3 text-lg font-bold">
+        <div className="relative top-3 text-2xl font-medium">
           Tizert Mine Project Overvue
         </div>
         <Link
