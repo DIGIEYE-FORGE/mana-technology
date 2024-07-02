@@ -310,7 +310,13 @@ export default function MainProjectPage() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [hovered] = useState("");
 
-  const [showInfo, setShowInfo] = useState<string[]>([]);
+  const [showInfo, setShowInfo] = useState<string[]>([
+    "Electrical power line",
+    "Process plant",
+    "Pipeline",
+    "Process plant",
+    "Underground Mine",
+  ]);
   return (
     <main
       className="relative flex flex-col gap-2 pb-6 2xl:overflow-hidden"
