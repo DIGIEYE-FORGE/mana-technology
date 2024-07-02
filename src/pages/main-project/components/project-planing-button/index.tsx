@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { DialogClose } from "@radix-ui/react-dialog";
 import { MoveLeft, MoveRight, XIcon } from "lucide-react";
 import { useState } from "react";
+import HseButton from "../hse-button";
 
 const tabs = [
   {
@@ -11,7 +12,7 @@ const tabs = [
     subTabs: [
       {
         title: "master plant",
-        image: "/Timeline.svg",
+        image: "/timeline.svg",
       },
     ],
   },
@@ -65,6 +66,15 @@ const tabs = [
       {
         title: "cost",
         image: "/cost.svg",
+      },
+    ],
+  },
+  {
+    title: "HSE",
+    subTabs: [
+      {
+        title: "hse",
+        image: "",
       },
     ],
   },
@@ -146,11 +156,17 @@ function ProjectPlaningButton() {
             </div>
           </div>
           <div className="mb-8 ml-16 mr-8 h-1 flex-1">
-            <img
-              src={tabs[activeTab].subTabs[activeSubTab].image}
-              alt={tabs[activeTab].subTabs[activeSubTab].title}
-              className="h-full w-full"
-            />
+            {tabs[activeTab].subTabs[activeSubTab].title === "hse" ? (
+              <div className="h-full w-full">
+                <HseButton />
+              </div>
+            ) : (
+              <img
+                src={tabs[activeTab].subTabs[activeSubTab].image}
+                alt={tabs[activeTab].subTabs[activeSubTab].title}
+                className="h-full w-full"
+              />
+            )}
           </div>
         </div>
       </DialogContent>

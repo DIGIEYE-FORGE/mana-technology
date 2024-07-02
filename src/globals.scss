@@ -213,3 +213,13 @@ button:disabled {
   opacity: 0.5;
   filter: grayscale(0.5);
 }
+
+.flip-countdown-card-sec * {
+  color: #78a5c0 !important;
+  &::after {
+    color: #78a5c0 !important;
+  }
+  &::before {
+    color: #78a5c0 !important;
+  }
+}

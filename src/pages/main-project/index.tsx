@@ -20,47 +20,40 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import HseButton from "./components/hse-button";
 import FlipCountdown from "@rumess/react-flip-countdown";
+import React from "react";
+
 function MainProjectUpBar() {
   return (
-    <div className="group sticky top-0 z-10 flex h-up-bar w-full shrink-0 items-center gap-4 border-b px-6 backdrop-blur">
-      <Link
-        to="/"
-        className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-      >
-        <Button variant="ghost">
-          <MoveLeftIcon className="size-6" />
-        </Button>
-      </Link>
-      <Link
-        to="/underground"
-        className="ml-auto opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-      >
-        <Button variant="ghost">
-          <MoveRightIcon className="size-6" />
-        </Button>
-      </Link>
-      <div
-        className="absolute right-1/2 h-full w-96"
-        style={{
-          perspective: "100px",
-          transform: "translateX(50%) rotateX(20deg)",
-        }}
-      >
-        <div
-          className="grid place-content-center border-2 bg-[#182c5d] outline outline-4 outline-[#182c5d]"
-          style={{
-            borderTop: "none",
-            borderRadius: "0 0 1rem 1rem",
-            height: "150%",
-            transform: "rotateX(-10deg)",
-            transformOrigin: "0 0",
-            perspective: "100px",
-          }}
+    <div
+      style={{
+        backgroundImage: "url(/main-project-upbar.svg)",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "50% 0",
+        backgroundSize: "500% 100%",
+      }}
+      className="sticky top-0 z-10 flex h-[5rem] w-full shrink-0 backdrop-blur"
+    >
+      <div className="group relative flex h-[60%] w-full shrink-0 items-center justify-between gap-4 px-6">
+        <Link
+          to="/"
+          className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
         >
-          <h1 className="text-2xl font-bold">Tizert Mine Project Overvue</h1>
+          <Button variant="ghost">
+            <MoveLeftIcon className="size-6" />
+          </Button>
+        </Link>
+        <div className="relative top-3 text-2xl font-medium">
+          Tizert Mine Project Overvue
         </div>
+        <Link
+          to="/underground"
+          className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        >
+          <Button variant="ghost">
+            <MoveRightIcon className="size-6" />
+          </Button>
+        </Link>
       </div>
     </div>
   );
@@ -80,15 +73,15 @@ export default function MainProjectPage() {
   const magazine = [
     {
       name: "EST",
-      bottom: "45%",
-      right: "25%",
+      bottom: "50%",
+      right: "27%",
       type: "image",
       image: "/screen1.png",
     },
     {
       name: "SUD",
-      bottom: "15%",
-      right: "15%",
+      bottom: "18%",
+      right: "13%",
       type: "image",
       image: "/screen2.png",
     },
@@ -101,7 +94,7 @@ export default function MainProjectPage() {
     {
       name: "ELECTRICAL LINE",
       bottom: "40%",
-      left: "8%",
+      left: "7%",
       type: "information",
     },
     {
@@ -118,8 +111,8 @@ export default function MainProjectPage() {
       to: "/op-est",
       image: "/screen1.png",
       position: {
-        top: "22%",
-        right: "25%",
+        top: "14%",
+        right: "28%",
       },
       background: "url(/dashboard.svg)",
       positionModel: {
@@ -150,7 +143,7 @@ export default function MainProjectPage() {
       to: "/op-sud",
       position: {
         bottom: "35%",
-        right: "15%",
+        right: "19%",
       },
       positionModel: {
         side: "left",
@@ -165,13 +158,13 @@ export default function MainProjectPage() {
       image: "/screen1.png",
       position: {
         bottom: "35%",
-        right: "19%",
+        right: "23%",
       },
       url: "/sud_vd.mp4",
       positionModel: {
         side: "left",
-        align: "end",
-        sideOffset: 20,
+        align: "start",
+        sideOffset: -100,
       },
       background: "url(/video.svg)",
     },
@@ -180,26 +173,26 @@ export default function MainProjectPage() {
       type: "video",
       image: "/screen1.png",
       position: {
-        top: "22%",
-        right: "29%",
+        top: "14%",
+        right: "32%",
       },
       url: "/est_vd.mp4",
       positionModel: {
         side: "left",
-        align: "end",
-        sideOffset: 20,
+        align: "start",
+        sideOffset: -200,
       },
       background: "url(/video.svg)",
     },
     {
-      title: "plant",
-      type: "video",
-      image: "/video.png",
+      title: "Electrical power line",
+      type: "image",
+      image: "/ElectricalPowerLine.png",
       position: {
         top: "40%",
-        left: "4%",
+        left: "2.5%",
       },
-      url: "/est_video.mp4",
+      url: "/ElectricalPowerLine.png",
       positionModel: {
         side: "left",
         align: "end",
@@ -239,6 +232,22 @@ export default function MainProjectPage() {
       },
     },
     {
+      title: "Pipe Line",
+      type: "image",
+      image: "/PIPELINE.png",
+      position: {
+        bottom: "24%",
+        left: "9.5%",
+      },
+      url: "/PIPELINE.png",
+      positionModel: {
+        side: "left",
+        align: "end",
+        sideOffset: 20,
+      },
+      background: "url(/video.svg)",
+    },
+    {
       type: "information",
       title: "Pipeline",
       attribute: {
@@ -250,7 +259,7 @@ export default function MainProjectPage() {
       background: "url(/shape1.png)",
       position: {
         bottom: "0%",
-        left: "22%",
+        left: "20%",
       },
     },
     {
@@ -279,8 +288,8 @@ export default function MainProjectPage() {
       },
       background: "url(/vector.png)",
       position: {
-        bottom: "-10%",
-        right: "9%",
+        bottom: "-18%",
+        right: "2%",
       },
     },
   ];
@@ -301,14 +310,6 @@ export default function MainProjectPage() {
   const [, setLoading] = useState(true);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [hovered] = useState("");
-
-  // if (loading) {
-  //   return (
-  //     <div className="flex h-full w-full items-center justify-center">
-  //       <Loader />
-  //     </div>
-  //   );
-  // }
   return (
     <main
       className="relative flex flex-col gap-2 pb-6 2xl:overflow-hidden"
@@ -319,18 +320,6 @@ export default function MainProjectPage() {
     >
       <main className="relative mx-auto max-h-[1200px] w-full max-w-[1920px]">
         <MainProjectUpBar />
-        {/* <div className="absolute inset-x-0 top-24 z-[9999] flex justify-center gap-4 py-2">
-          <div
-            className="aspect-video h-12 rounded bg-yellow-500"
-            onMouseEnter={() => setHovered("yellow001")}
-            onMouseLeave={() => setHovered("")}
-          ></div>
-          <div
-            className="aspect-video h-12 rounded bg-blue-500"
-            onMouseEnter={() => setHovered("blue001")}
-            onMouseLeave={() => setHovered("")}
-          ></div>
-        </div> */}
         <div className="absolute bottom-4 right-4 z-10 flex w-[18.5rem] flex-col gap-2">
           <h4 className="text-center text-lg font-semibold">
             1 <sup>st</sup> copper concentrate
@@ -363,7 +352,7 @@ export default function MainProjectPage() {
                 }}
               >
                 <div
-                  className="absolute bottom-20 right-1/2 z-10 translate-x-1/2 whitespace-nowrap px-2 py-0.5 font-bold"
+                  className="absolute bottom-20 right-1/2 z-10 translate-x-1/2 whitespace-nowrap px-2 py-0.5 text-xs font-bold 2xl:text-base"
                   style={{
                     backgroundImage:
                       "linear-gradient(to right, transparent, #002FBE, transparent)",
@@ -391,13 +380,15 @@ export default function MainProjectPage() {
               </div>
             ))}
             {data.map((item, index) =>
-              item.type !== "link" && item.type !== "video" ? (
+              item.type !== "link" &&
+              item.type !== "video" &&
+              item.type != "image" ? (
                 <div
                   key={index}
                   className={cn(`absolute`, {
-                    "h-fit max-h-[9rem] w-fit max-w-[18rem]":
+                    "h-fit w-fit max-w-[18rem] 2xl:max-w-[22rem]":
                       item.type === "information",
-                    "h-fit max-h-[10rem] w-fit max-w-[17rem]":
+                    "h-fit w-fit max-w-[17rem] 2xl:max-w-[22rem]":
                       item.type === "identification",
                   })}
                   style={{
@@ -410,34 +401,33 @@ export default function MainProjectPage() {
                 >
                   {(item.type === "information" ||
                     item.type === "identification") && (
-                    <div className="flex flex-col py-2 pl-4 pr-2">
-                      <h1 className="text-lg font-bold text-[#FFE473]">
+                    <div className="grid grid-cols-[fit-content,1fr] gap-1 p-3 pr-6">
+                      <h1 className="col-span-2 text-lg font-bold text-[#FFE473]">
                         {item.title}
                       </h1>
                       {Object.entries(item?.attribute || {}).map(
                         ([key, value], index) => (
-                          <div
-                            key={index}
-                            className="flex items-center gap-4 [&>*]:text-xs"
-                          >
-                            <span className="w-[7rem] truncate text-xs font-medium">
+                          <React.Fragment key={index}>
+                            <span className="text-xs font-medium 3xl:text-base">
                               {key}
                             </span>
-                            <span className="text-xs text-[#A4D3FF]">
+                            <span className="text-xs text-[#A4D3FF] 3xl:text-sm">
                               {value}
                             </span>
-                          </div>
+                          </React.Fragment>
                         ),
                       )}
                     </div>
                   )}
                 </div>
-              ) : item.type === "video" ? (
+              ) : item.type === "video" || item.type === "image" ? (
                 <Popover key={index}>
                   <PopoverTrigger asChild>
                     <div
                       key={index}
-                      className={cn(`absolute h-[50px] w-[50px]`)}
+                      className={cn(
+                        `absolute h-[40px] w-[40px] xl:h-[45px] xl:w-[45px] 2xl:h-[64px] 2xl:w-[67px]`,
+                      )}
                       style={{
                         ...item.position,
                         cursor: "pointer",
@@ -468,7 +458,7 @@ export default function MainProjectPage() {
                         <Button
                           variant="ghost"
                           size="icon"
-                          className="absolute right-6 top-5 text-white"
+                          className="absolute right-4 top-4 text-white"
                         >
                           <XIcon size={24} />
                         </Button>
@@ -477,13 +467,19 @@ export default function MainProjectPage() {
                         <div className="ml-auto flex h-14 w-[64%] shrink-0 items-center px-6 text-2xl font-semibold">
                           {item?.title}
                         </div>
-                        {item?.type === "video" && item?.url && (
+                        {item?.type === "video" && item?.url ? (
                           <video
                             className="aspect-video w-full object-contain opacity-90"
                             controls
                             src={item.url}
                           />
-                        )}
+                        ) : item?.type === "image" && item?.url ? (
+                          <img
+                            className="aspect-video w-full object-contain"
+                            src={item.url}
+                            alt={item.title}
+                          />
+                        ) : null}
                       </div>
                     </div>
                   </PopoverContent>
@@ -494,11 +490,9 @@ export default function MainProjectPage() {
                   <Link key={index} to={item?.to}>
                     <div
                       key={index}
-                      className="absolute"
+                      className="absolute h-[40px] w-[40px] xl:h-[45px] xl:w-[45px] 2xl:h-[64px] 2xl:w-[67px]"
                       style={{
                         ...item.position,
-                        width: "50px",
-                        height: "50px",
                         cursor: "pointer",
                         background: `${item.background}`,
                         backgroundSize: "contain",
@@ -564,29 +558,131 @@ export default function MainProjectPage() {
               <OrbitControls enableRotate rotateSpeed={1} zoomToCursor />
             </Canvas>
             <div
-              className="absolute bottom-[18%] left-[1%] h-[12rem] w-[22rem]"
+              className="absolute bottom-[18%] left-[1%] w-[22rem] backdrop-blur"
               style={{
                 backgroundImage: "url(/vector.png)",
                 backgroundSize: "100% 100%",
                 backgroundRepeat: "no-repeat",
               }}
             >
-              <div className="flex flex-col p-4">
-                <h1 className="text-lg font-bold text-[#FFE473]">
+              <div className="grid grid-cols-[min-content,1fr] gap-1 p-3 pr-4">
+                <h1 className="col-span-2 text-lg font-bold text-[#FFE473]">
                   {tree?.titile}
                 </h1>
                 {Object.entries(tree?.attribute || {}).map(
                   ([key, value], index) => (
-                    <div key={index} className="flex gap-2 text-xs">
-                      <span className="w-[11rem] truncate font-medium">
+                    <React.Fragment key={index}>
+                      <span className="whitespace-nowrap text-xs font-medium">
                         {key}
                       </span>
-                      <span className="text-[#A4D3FF]">{value}</span>
-                    </div>
+                      <span className="text-xs text-[#A4D3FF]">{value}</span>
+                    </React.Fragment>
                   ),
                 )}
               </div>
             </div>
+            <div
+              className={cn(
+                "absolute left-[55%] top-[15%]",
+                "size-[6rem] cursor-pointer",
+              )}
+            >
+              <div
+                className="absolute bottom-20 right-1/2 z-10 translate-x-1/2 whitespace-nowrap px-1 py-0.5 text-xs font-bold 2xl:text-base"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(to right, transparent, #002FBE, transparent)",
+                  border: "10px solid",
+                  borderImageSlice: 1,
+                  borderWidth: "1px",
+                  borderImageSource:
+                    "linear-gradient(to right, transparent, white, transparent)",
+                }}
+              >
+                Underground Mine
+              </div>
+              <div className="machine-highlight absolute bottom-0 aspect-square w-full">
+                <div className="circle circle-3 relative h-full w-full">
+                  <Circle3 className="rotate h-full w-full duration-1000" />
+                </div>
+                <div className="circle circle-2 relative h-full w-full">
+                  <Circle2 className="rotate h-full w-full duration-1000" />
+                </div>
+                <div className="circle circle-1 relative h-full w-full">
+                  <Circle1 className="rotate h-full w-full duration-1000" />
+                </div>
+                <Light className="absolute bottom-[40%] right-1/2 w-full translate-x-1/2" />
+              </div>
+            </div>
+            <Link to={`/underground`}>
+              <div
+                className="absolute h-[40px] w-[40px] xl:h-[45px] xl:w-[45px] 2xl:h-[64px] 2xl:w-[67px]"
+                style={{
+                  top: "12%",
+                  left: "49%",
+                  cursor: "pointer",
+                  background: "url(/dashboard.svg)",
+                  backgroundSize: "contain",
+                  backgroundRepeat: "no-repeat",
+                }}
+              ></div>
+            </Link>
+            <Popover>
+              <PopoverTrigger asChild>
+                <div
+                  className={cn(
+                    `absolute h-[40px] w-[40px] xl:h-[45px] xl:w-[45px] 2xl:h-[64px] 2xl:w-[67px]`,
+                  )}
+                  style={{
+                    cursor: "pointer",
+                    top: "12%",
+                    left: "44.8%",
+                    background: `url(/video.svg)`,
+                    backgroundSize: "contain",
+                    backgroundRepeat: "no-repeat",
+                  }}
+                ></div>
+              </PopoverTrigger>
+              <PopoverContent
+                side={"right"}
+                align={"center"}
+                sideOffset={-450}
+                className="dark w-fit border-none bg-transparent p-0 backdrop-blur"
+                style={{
+                  clipPath:
+                    "polygon(0% 18.5%, 2.8% 13.5%, 34% 13.5%, 36.2% 9.3%, 36.2% 0%, 100% 0%, 100% 99.6%, 1.6% 99.6%, 1.6% 67%, 0% 64%)",
+                }}
+              >
+                <div
+                  className="relative z-10 aspect-[1.7] h-[35rem] w-[50rem] lg:h-[40rem] lg:w-[60rem] 2xl:h-[46rem] 2xl:w-[70rem]"
+                  style={{
+                    backgroundImage: "url(/card-bg.png)",
+                    backgroundSize: "100% 100%",
+                  }}
+                >
+                  <PopoverClose asChild>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="absolute right-4 top-4 text-white"
+                    >
+                      <XIcon size={24} />
+                    </Button>
+                  </PopoverClose>
+                  <div className="flex h-full flex-col gap-[3.5rem] pb-7 pl-11 pr-6 pt-2">
+                    <div className="ml-auto flex h-14 w-[64%] shrink-0 items-center px-6 text-2xl font-semibold">
+                      Underground Mine
+                    </div>
+
+                    <video
+                      className="aspect-video w-full object-contain opacity-90"
+                      controls
+                      src={"Underground.mp4"}
+                    />
+                  </div>
+                </div>
+              </PopoverContent>
+            </Popover>
           </div>
         </div>
       </main>
