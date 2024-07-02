@@ -245,7 +245,7 @@ export default function MainProjectPage() {
         ["Pipe length"]: "146 km ",
         ["Pipe diameter"]: "400 mm ",
         ["Pumping station's number"]: "8 PS /1350m",
-        ["Origine"]: "Treated waste water (STEP Agadir)",
+        ["Origine"]: "Treated waste water",
       },
       background: "url(/shape1.png)",
       position: {
@@ -257,9 +257,9 @@ export default function MainProjectPage() {
       type: "identification",
       title: "EST",
       attribute: {
-        ["Mineral reserves"]: "4,5 Mtonnes @0,8 % Cu et 27 g/t Ag ",
-        ["Waste tonnage"]: "39 Mtonnes ",
-        ["Rock production capacity "]: "1,2 Mtonnes rock per month",
+        ["Mineral reserves"]: "4,5 Mtn @0,8 % Cu et 27 g/t Ag ",
+        ["Waste tonnage"]: "39 Mtn ",
+        ["Rock production capacity "]: "1,2 Mtn rock per month",
         ["Life of mine "]: "4 years ",
       },
       background: "url(/vector.png)",
@@ -343,8 +343,8 @@ export default function MainProjectPage() {
             endAt={"2025-05-14 00:00:00"}
           />
         </div>
-        <div className="absolute top-[55%] z-[10] flex w-[25rem] flex-col gap-4 px-[4rem]">
-          <HseButton />
+        <div className="absolute top-[55%] z-[10] flex w-[18rem] flex-col gap-4 px-[4rem]">
+          {/* <HseButton /> */}
           <ProjectPlaningButton />
         </div>
         <div className="flex h-full w-full flex-col gap-4">
@@ -357,7 +357,7 @@ export default function MainProjectPage() {
             {magazine.map((item, index) => (
               <div
                 key={index}
-                className={cn("absolute", "h-[4rem] w-[8rem] cursor-pointer")}
+                className={cn("absolute", "size-[6rem] cursor-pointer")}
                 style={{
                   ...item,
                 }}
@@ -376,7 +376,7 @@ export default function MainProjectPage() {
                 >
                   {item.name}
                 </div>
-                <div className="machine-highlight absolute bottom-0 aspect-square size-[8rem] w-full">
+                <div className="machine-highlight absolute bottom-0 aspect-square w-full">
                   <div className="circle circle-3 relative h-full w-full">
                     <Circle3 className="rotate h-full w-full duration-1000" />
                   </div>
@@ -394,21 +394,14 @@ export default function MainProjectPage() {
               item.type !== "link" && item.type !== "video" ? (
                 <div
                   key={index}
-                  className="absolute"
+                  className={cn(`absolute`, {
+                    "h-fit max-h-[9rem] w-fit max-w-[18rem]":
+                      item.type === "information",
+                    "h-fit max-h-[10rem] w-fit max-w-[17rem]":
+                      item.type === "identification",
+                  })}
                   style={{
                     ...item.position,
-                    width:
-                      item.type === "link" || item.type === "video"
-                        ? "67px"
-                        : item.type === "information"
-                          ? "17rem"
-                          : "22rem",
-                    height:
-                      item.type === "link" || item.type === "video"
-                        ? "64px"
-                        : item.type === "information"
-                          ? "10rem"
-                          : "10rem",
                     cursor: item.type === "video" ? "pointer" : "default",
                     background: `${item.background}`,
                     backgroundSize: "100% 100%",
@@ -417,13 +410,16 @@ export default function MainProjectPage() {
                 >
                   {(item.type === "information" ||
                     item.type === "identification") && (
-                    <div className="flex flex-col p-4">
+                    <div className="flex flex-col py-2 pl-4 pr-2">
                       <h1 className="text-lg font-bold text-[#FFE473]">
                         {item.title}
                       </h1>
                       {Object.entries(item?.attribute || {}).map(
                         ([key, value], index) => (
-                          <div key={index} className="flex items-center gap-4">
+                          <div
+                            key={index}
+                            className="flex items-center gap-4 [&>*]:text-xs"
+                          >
                             <span className="w-[7rem] truncate text-xs font-medium">
                               {key}
                             </span>
@@ -441,11 +437,9 @@ export default function MainProjectPage() {
                   <PopoverTrigger asChild>
                     <div
                       key={index}
-                      className="absolute"
+                      className={cn(`absolute h-[50px] w-[50px]`)}
                       style={{
                         ...item.position,
-                        width: "67px",
-                        height: "64px",
                         cursor: "pointer",
                         background: `${item.background}`,
                         backgroundSize: "contain",
@@ -464,7 +458,7 @@ export default function MainProjectPage() {
                     }}
                   >
                     <div
-                      className="relative z-10 aspect-[1.7] h-[46rem] w-[70rem]"
+                      className="relative z-10 aspect-[1.7] h-[35rem] w-[50rem] lg:h-[40rem] lg:w-[60rem] 2xl:h-[46rem] 2xl:w-[70rem]"
                       style={{
                         backgroundImage: "url(/card-bg.png)",
                         backgroundSize: "100% 100%",
@@ -503,8 +497,8 @@ export default function MainProjectPage() {
                       className="absolute"
                       style={{
                         ...item.position,
-                        width: "67px",
-                        height: "64px",
+                        width: "50px",
+                        height: "50px",
                         cursor: "pointer",
                         background: `${item.background}`,
                         backgroundSize: "contain",
@@ -570,7 +564,7 @@ export default function MainProjectPage() {
               <OrbitControls enableRotate rotateSpeed={1} zoomToCursor />
             </Canvas>
             <div
-              className="absolute bottom-[18%] left-[1%] h-[15rem] w-[24rem]"
+              className="absolute bottom-[18%] left-[1%] h-[12rem] w-[22rem]"
               style={{
                 backgroundImage: "url(/vector.png)",
                 backgroundSize: "100% 100%",
@@ -583,8 +577,8 @@ export default function MainProjectPage() {
                 </h1>
                 {Object.entries(tree?.attribute || {}).map(
                   ([key, value], index) => (
-                    <div key={index} className="flex gap-2 text-sm">
-                      <span className="w-[13rem] truncate font-medium">
+                    <div key={index} className="flex gap-2 text-xs">
+                      <span className="w-[11rem] truncate font-medium">
                         {key}
                       </span>
                       <span className="text-[#A4D3FF]">{value}</span>
