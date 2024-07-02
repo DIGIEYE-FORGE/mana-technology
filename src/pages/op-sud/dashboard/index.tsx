@@ -266,7 +266,7 @@ export default function HomeDashboard() {
           />
         </div>
       </Card>
-      <Card className="col-span-full row-span-3 flex flex-col gap-3 p-4 2xl:col-span-3">
+      <Card className="col-span-3 row-span-3 flex flex-col gap-3 p-4 lg:col-span-6 2xl:col-span-3">
         <h3 className="text-center text-lg font-semibold">
           Disponibilité Engine CADEX
         </h3>
@@ -361,7 +361,7 @@ export default function HomeDashboard() {
           }}
         />
       </Card>
-      <Card className="col-span-full row-span-3 flex flex-col gap-3 p-4 2xl:col-span-3">
+      <Card className="col-span-3 row-span-3 flex flex-col gap-3 p-4 lg:col-span-6 2xl:col-span-3">
         <h3 className="text-center text-lg font-semibold">Comment</h3>
       </Card>
     </main>
