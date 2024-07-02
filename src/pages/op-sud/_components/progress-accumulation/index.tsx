@@ -112,8 +112,8 @@ export function ProgressAccumulation({ attributes }: Widget) {
   const strokeWidth = 20;
   return (
     <Fragment>
-      <div className="relative h-1 flex-1 p-8">
-        <div className="absolute bottom-8 right-1/2 flex -translate-y-1/4 translate-x-1/2 flex-col items-center gap-1">
+      <div className="relative h-1 flex-1 p-2">
+        <div className="absolute bottom-4 right-1/2 flex -translate-y-1/4 translate-x-1/2 flex-col items-center">
           <span className="text-3xl font-bold">
             {((progress / finalTarget) * 100).toFixed(2)} %
           </span>
