@@ -122,7 +122,7 @@ function DashboardPage3() {
         Photo
       </Card>
       <Card className="col-span-5 flex flex-col p-4">
-        <h3 className="text-center text-lg font-semibold">Suivi des Tires</h3>
+        <h3 className="text-center text-lg font-semibold">Suivi des Tirs</h3>
         <TableWidget
           className="h-1 flex-1"
           attributes={{

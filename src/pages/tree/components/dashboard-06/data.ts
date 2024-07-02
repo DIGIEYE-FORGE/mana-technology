@@ -1,6 +1,6 @@
 export const widgetsData = {
   0: {
-    title: "Tonnage Transporté",
+    title: "Tonnage Transporté (t)",
     attributes: {
       telemetries: [
         {
@@ -13,7 +13,7 @@ export const widgetsData = {
     }
   },
   1: {
-    title: "Performance Engin",
+    title: "Performance Engins",
     attributes: {
       image: "/machine-06.png",
       name: "Transport ad45",
@@ -53,7 +53,7 @@ export const widgetsData = {
     },
   },
   3: {
-    title: "Performance engins",
+    title: "Disponibilité",
     attributes: {
       telemetries: [
         {
@@ -72,7 +72,7 @@ export const widgetsData = {
     },
   },
   4: {
-    title: "Temps de Transport",
+    title: "Utilisation",
     attributes: {
       telemetries: [
         {
@@ -85,7 +85,20 @@ export const widgetsData = {
     },
   },
   5: {
-    title: "Temps trajet",
+    title: "Temps de Transport (h)",
+    attributes: {
+      telemetries: [
+        {
+          name: "UG_METRES_PLANIFIE",
+          color: "#FF5AF1",
+          label: "Chargement explosif",
+          serial: "DABF7PAT2G4BAG21",
+        },
+      ],
+    },
+  },
+  6: {
+    title: "Temps trajet (h)",
     attributes: {
       telemetries: [
         {

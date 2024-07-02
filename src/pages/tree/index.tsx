@@ -204,7 +204,7 @@ function TreePage() {
             // color1="#96CFFE"
             url={
               `${env.VITE_LOCAL_MODELS === "true" ? "/ignore/" : "https://storage.googleapis.com/nextronic/"}` +
-              "mine021.glb"
+              "mine026.glb"
             }
             ref={modelRef}
             onLoad={() => setLoading(false)}

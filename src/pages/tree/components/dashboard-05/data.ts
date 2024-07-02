@@ -13,7 +13,7 @@ export const widgetsData = {
     }
   },
   1: {
-    title: "Dispo et Utilisation",
+    title: "Performance Engins",
     attributes: {
       image: "/machine-05.png",
       name: "boltec m10",
@@ -47,7 +47,7 @@ export const widgetsData = {
     },
   },
   3: {
-    title: "Performance engins",
+    title: "Disponibilité",
     attributes: {
       telemetries: [
         {
@@ -60,7 +60,20 @@ export const widgetsData = {
     },
   },
   4: {
-    title: "Temps de soutennement",
+    title: "Utilisation",
+    attributes: {
+      telemetries: [
+        {
+          name: "UG_METRES_PLANIFIE",
+          color: "#FFDC8C",
+          label: "Prévus",
+          serial: "DABF7PAT2G4BAG21",
+        },
+      ],
+    },
+  },
+  5: {
+    title: "Temps de soutènement (h)",
     attributes: {
       telemetries: [
         {
@@ -72,7 +85,7 @@ export const widgetsData = {
       ],
     },
   },
-  5: {
+  6: {
     title: "Disponibilité",
     attributes: {
       telemetries: [

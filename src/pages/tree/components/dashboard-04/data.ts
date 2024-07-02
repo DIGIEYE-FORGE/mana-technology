@@ -1,6 +1,6 @@
 export const widgetsData = {
   0: {
-    title: "Tonnage Débalyé",
+    title: "Tonnage Déblayé (t)",
     attributes: {
       telemetries: [
         {
@@ -13,7 +13,7 @@ export const widgetsData = {
     }
   },
   1: {
-    title: "Dispo et Utilisation",
+    title: "Performance Engins",
     attributes: {
       image: "/machine-04.png",
       name: "Déblayage R1700",
@@ -53,7 +53,7 @@ export const widgetsData = {
     },
   },
   3: {
-    title: "Performance engins",
+    title: "Disponibilité",
     attributes: {
       telemetries: [
         {
@@ -72,7 +72,28 @@ export const widgetsData = {
     },
   },
   4: {
-    title: "Temps de Déblayage",
+    title: "Utilisation",
+    attributes: {
+      telemetries: [
+        {
+          name: "UG_METRES_PLANIFIE",
+          color: "#FF5AF1",
+          label: "R1700 01",
+          serial: "DABF7PAT2G4BAG21",
+        },
+        {
+          name: "UG_METRES_REALISE_TOTAL",
+          color: "#FFDC8C",
+          label: "R1700 02",
+          serial: "DABF7PAT2G4BAG21",
+        },
+      ],
+    },
+  },
+
+  
+  5: {
+    title: "Temps de Déblayage (h)",
     attributes: {
       telemetries: [
         {
@@ -84,8 +105,8 @@ export const widgetsData = {
       ],
     },
   },
-  5: {
-    title: "Temps trajet",
+  6: {
+    title: "Temps trajet (h)",
     attributes: {
       telemetries: [
         {
@@ -103,8 +124,8 @@ export const widgetsData = {
       ],
     },
   },
-  6: {
-    title: "Distance Trajet",
+  7: {
+    title: "Distance Trajet (m)",
     attributes: {
       telemetries: [
         {

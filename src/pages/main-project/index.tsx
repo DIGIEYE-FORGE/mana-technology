@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { MoveLeftIcon, MoveRightIcon, XIcon } from "lucide-react";
+import { XIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Circle1 from "@/assets/circle-1.svg?react";
 import Circle2 from "@/assets/circle-2.svg?react";
@@ -22,278 +22,277 @@ import {
 } from "@/components/ui/popover";
 import FlipCountdown from "@rumess/react-flip-countdown";
 import React from "react";
+import { MainProjectUpBar } from "./components/up-bar";
 
-function MainProjectUpBar() {
-  return (
-    <div
-      style={{
-        backgroundImage: "url(/main-project-upbar.svg)",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "50% 0",
-        backgroundSize: "500% 100%",
-      }}
-      className="sticky top-0 z-10 flex h-[5rem] w-full shrink-0 backdrop-blur"
-    >
-      <div className="group relative flex h-[60%] w-full shrink-0 items-center justify-between gap-4 px-6">
-        <Link
-          to="/"
-          className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-        >
-          <Button variant="ghost">
-            <MoveLeftIcon className="size-6" />
-          </Button>
-        </Link>
-        <div className="relative top-3 text-2xl font-medium">
-          Tizert Mine Project Overvue
-        </div>
-        <Link
-          to="/underground"
-          className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-        >
-          <Button variant="ghost">
-            <MoveRightIcon className="size-6" />
-          </Button>
-        </Link>
-      </div>
-    </div>
-  );
-}
-
-export function RotatingModel({ modelRef }: { modelRef: any }) {
+export function RotatingModel({
+  modelRef,
+  isRotating,
+}: {
+  modelRef: any;
+  isRotating?: boolean;
+}) {
   useFrame(() => {
     if (modelRef.current) {
-      modelRef.current.rotation.y += 0.002; // Adjust rotation speed as needed
+      modelRef.current.rotation.y += isRotating ? 0.002 : 0;
     }
   });
 
-  return null; // This component doesn't render anything visible
+  return null;
 }
 
-export default function MainProjectPage() {
-  const magazine = [
-    {
-      name: "EST",
-      bottom: "50%",
-      right: "27%",
-      type: "image",
-      image: "/screen1.png",
+const magazine = [
+  {
+    name: "EST",
+    bottom: "50%",
+    right: "27%",
+    type: "image",
+    image: "/screen1.png",
+    click: "Pit EST",
+  },
+  {
+    name: "SUD",
+    bottom: "18%",
+    right: "20%",
+    type: "image",
+    image: "/screen2.png",
+    click: "Pit SUD",
+  },
+  {
+    name: "OPEN PIT",
+    bottom: "30%",
+    right: "12%",
+    type: "image",
+    image: "/screen2.png",
+  },
+  {
+    name: "PLANT",
+    bottom: "10%",
+    left: "42%",
+    type: "information",
+    click: "Process plant",
+  },
+  {
+    name: "ELECTRICAL LINE",
+    bottom: "40%",
+    left: "7%",
+    type: "information",
+    click: "Electrical power line",
+  },
+  {
+    name: "PIPELINE",
+    bottom: "20%",
+    left: "14%",
+    type: "information",
+    click: "Pipeline",
+  },
+];
+
+const data = [
+  {
+    type: "link",
+    to: "/op-est",
+    image: "/screen1.svg",
+    position: {
+      top: "14%",
+      right: "28%",
     },
-    {
-      name: "SUD",
-      bottom: "18%",
-      right: "13%",
-      type: "image",
-      image: "/screen2.png",
+    background: "url(/screen1.svg)",
+    positionModel: {
+      side: "left",
+      align: "end",
+      sideOffset: 20,
     },
-    {
-      name: "PLANT",
-      bottom: "10%",
-      left: "42%",
-      type: "information",
+  },
+  {
+    type: "link",
+    image: "/screen1.svg",
+    to: "/",
+    position: {
+      bottom: "43%",
+      right: "8%",
     },
-    {
-      name: "ELECTRICAL LINE",
+    positionModel: {
+      side: "left",
+      align: "end",
+      sideOffset: 20,
+    },
+    background: "url(/screen2.svg)",
+  },
+  {
+    title: "Underground Mine",
+    type: "video",
+    image: "/screen1.png",
+    position: {
+      bottom: "27%",
+      left: "48%",
+    },
+    url: "Underground.mp4",
+    background: "url(/video.svg)",
+    positionModel: {
+      side: "top",
+      align: "center",
+      sideOffset: -300,
+    },
+  },
+  {
+    type: "link",
+    image: "screen1.svg",
+    to: "/op-sud",
+    position: {
+      bottom: "35%",
+      right: "19%",
+    },
+    positionModel: {
+      side: "left",
+      align: "end",
+      sideOffset: 20,
+    },
+    background: "url(/screen1.svg)",
+  },
+  {
+    title: "Pit SUD",
+    type: "video",
+    image: "/screen1.png",
+    position: {
+      bottom: "35%",
+      right: "23%",
+    },
+    url: "/sud_vd.mp4",
+    positionModel: {
+      side: "left",
+      align: "start",
+      sideOffset: -100,
+    },
+    background: "url(/video.svg)",
+  },
+  {
+    title: " Pit EST",
+    type: "video",
+    image: "/screen1.png",
+    position: {
+      top: "14%",
+      right: "32%",
+    },
+    url: "/est_vd.mp4",
+    positionModel: {
+      side: "left",
+      align: "start",
+      sideOffset: -200,
+    },
+    background: "url(/video.svg)",
+  },
+  {
+    title: "Electrical power line",
+    type: "image",
+    image: "/ElectricalPowerLine.png",
+    position: {
+      top: "40%",
+      left: "2.5%",
+    },
+    url: "/ElectricalPowerLine.png",
+    positionModel: {
+      side: "left",
+      align: "end",
+      sideOffset: 20,
+    },
+    background: "url(/video.svg)",
+  },
+
+  {
+    type: "information",
+    title: "Electrical power line",
+    attribute: {
+      ["60 kV line"]: "72 Km",
+      ["22 kV line"]: "52 Km",
+      ["Electrical substation"]: "60/22 kV",
+    },
+    background: "url(/vector.png)",
+    position: {
+      top: "6%",
+      left: "1%",
+    },
+  },
+
+  {
+    type: "information",
+    title: "Process plant",
+    attribute: {
+      Capacity: "3,6 mtpa",
+      ["Processing method"]: "Flotation",
+      ["Product"]: "Copper Silver concentrate",
+      ["Concentrate production capacity"]: "120 Ktonnes per year",
+    },
+    background: "url(/vector.png)",
+    position: {
       bottom: "40%",
-      left: "7%",
-      type: "information",
+      left: "40%",
     },
-    {
-      name: "PIPELINE",
-      bottom: "20%",
-      left: "14%",
-      type: "information",
+  },
+  {
+    title: "Pipe Line",
+    type: "image",
+    image: "/PIPELINE.png",
+    position: {
+      bottom: "24%",
+      left: "9.5%",
     },
-  ];
+    url: "/PIPELINE.png",
+    positionModel: {
+      side: "left",
+      align: "end",
+      sideOffset: 20,
+    },
+    background: "url(/video.svg)",
+  },
+  {
+    type: "information",
+    title: "Pipeline",
+    attribute: {
+      ["Pipe length"]: "146 km ",
+      ["Pipe diameter"]: "400 mm ",
+      ["Pumping station's number"]: "8 PS /1350m",
+      ["Origine"]: "Treated waste water",
+    },
+    background: "url(/vector.png)",
+    position: {
+      bottom: "0%",
+      left: "20%",
+    },
+  },
+  {
+    type: "identification",
+    title: "Pit EST",
+    attribute: {
+      ["Mineral reserves"]: "4,5 Mt @0,8 % Cu et 27 g/t Ag ",
+      ["Waste tonnage"]: "39 Mt ",
+      ["Rock production capacity "]: "1,2 Mt rock per month",
+      ["Life of mine "]: "4 years ",
+    },
+    background: "url(/vector.png)",
+    position: {
+      top: "3%",
+      right: "8%",
+    },
+  },
+  {
+    type: "identification",
+    title: "Pit SUD",
+    attribute: {
+      ["Mineral reserves"]: "3,1 Mt @ 0,9 % Cu et 16 g/t Ag",
+      ["Waste tonnage"]: "23 Mt ",
+      ["Rock production capacity "]: "0,9 Mt rock per month",
+      ["Life of mine "]: "3 years ",
+    },
+    background: "url(/vector.png)",
+    position: {
+      bottom: "-18%",
+      right: "2%",
+    },
+  },
+];
 
-  const data = [
-    {
-      type: "link",
-      to: "/op-est",
-      image: "/screen1.png",
-      position: {
-        top: "14%",
-        right: "28%",
-      },
-      background: "url(/dashboard.svg)",
-      positionModel: {
-        side: "left",
-        align: "end",
-        sideOffset: 20,
-      },
-    },
-    {
-      title: "Underground Mine",
-      type: "video",
-      image: "/screen1.png",
-      position: {
-        bottom: "27%",
-        left: "48%",
-      },
-      url: "Underground.mp4",
-      background: "url(/video.svg)",
-      positionModel: {
-        side: "top",
-        align: "center",
-        sideOffset: -300,
-      },
-    },
-    {
-      type: "link",
-      image: "/screen2.png",
-      to: "/op-sud",
-      position: {
-        bottom: "35%",
-        right: "19%",
-      },
-      positionModel: {
-        side: "left",
-        align: "end",
-        sideOffset: 20,
-      },
-      background: "url(/dashboard.svg)",
-    },
-    {
-      title: "Pit SUD",
-      type: "video",
-      image: "/screen1.png",
-      position: {
-        bottom: "35%",
-        right: "23%",
-      },
-      url: "/sud_vd.mp4",
-      positionModel: {
-        side: "left",
-        align: "start",
-        sideOffset: -100,
-      },
-      background: "url(/video.svg)",
-    },
-    {
-      title: " Pit EST",
-      type: "video",
-      image: "/screen1.png",
-      position: {
-        top: "14%",
-        right: "32%",
-      },
-      url: "/est_vd.mp4",
-      positionModel: {
-        side: "left",
-        align: "start",
-        sideOffset: -200,
-      },
-      background: "url(/video.svg)",
-    },
-    {
-      title: "Electrical power line",
-      type: "image",
-      image: "/ElectricalPowerLine.png",
-      position: {
-        top: "40%",
-        left: "2.5%",
-      },
-      url: "/ElectricalPowerLine.png",
-      positionModel: {
-        side: "left",
-        align: "end",
-        sideOffset: 20,
-      },
-      background: "url(/video.svg)",
-    },
-
-    {
-      type: "information",
-      title: "Electrical power line",
-      attribute: {
-        ["60 kV line"]: "70 Km",
-        ["22 kV line"]: "39 Km",
-        ["Electrical substation"]: "60/22 kV",
-      },
-      background: "url(/shape1.png)",
-      position: {
-        top: "6%",
-        left: "1%",
-      },
-    },
-
-    {
-      type: "information",
-      title: "Process plant",
-      attribute: {
-        Capacity: "3,6 mtpa",
-        ["Processing method"]: "Flotation",
-        ["Product"]: "Copper Silver concentrate",
-        ["Concentrate production capacity"]: "120 Ktonnes per year",
-      },
-      background: "url(/shape1.png)",
-      position: {
-        bottom: "40%",
-        left: "40%",
-      },
-    },
-    {
-      title: "Pipe Line",
-      type: "image",
-      image: "/PIPELINE.png",
-      position: {
-        bottom: "24%",
-        left: "9.5%",
-      },
-      url: "/PIPELINE.png",
-      positionModel: {
-        side: "left",
-        align: "end",
-        sideOffset: 20,
-      },
-      background: "url(/video.svg)",
-    },
-    {
-      type: "information",
-      title: "Pipeline",
-      attribute: {
-        ["Pipe length"]: "146 km ",
-        ["Pipe diameter"]: "400 mm ",
-        ["Pumping station's number"]: "8 PS /1350m",
-        ["Origine"]: "Treated waste water",
-      },
-      background: "url(/shape1.png)",
-      position: {
-        bottom: "0%",
-        left: "20%",
-      },
-    },
-    {
-      type: "identification",
-      title: "Pit EST",
-      attribute: {
-        ["Mineral reserves"]: "4,5 Mt @0,8 % Cu et 27 g/t Ag ",
-        ["Waste tonnage"]: "39 Mt ",
-        ["Rock production capacity "]: "1,2 Mt rock per month",
-        ["Life of mine "]: "4 years ",
-      },
-      background: "url(/vector.png)",
-      position: {
-        top: "10%",
-        right: "3%",
-      },
-    },
-    {
-      type: "identification",
-      title: "Pit SUD",
-      attribute: {
-        ["Mineral reserves"]: "3,1 Mt @ 0,9 % Cu et 16 g/t Ag",
-        ["Waste tonnage"]: "23 Mt ",
-        ["Rock production capacity "]: "0,9 Mt rock per month",
-        ["Life of mine "]: "3 years ",
-      },
-      background: "url(/vector.png)",
-      position: {
-        bottom: "-18%",
-        right: "2%",
-      },
-    },
-  ];
-
+export default function MainProjectPage() {
+  const [isRotating, setIsRotating] = useState(true);
   const tree = {
     titile: "Underground Mine",
     attribute: {
@@ -310,6 +309,8 @@ export default function MainProjectPage() {
   const [, setLoading] = useState(true);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [hovered] = useState("");
+
+  const [showInfo, setShowInfo] = useState<string[]>([]);
   return (
     <main
       className="relative flex flex-col gap-2 pb-6 2xl:overflow-hidden"
@@ -332,7 +333,7 @@ export default function MainProjectPage() {
             endAt={"2025-05-14 00:00:00"}
           />
         </div>
-        <div className="absolute top-[55%] z-[10] flex w-[18rem] flex-col gap-4 px-[4rem]">
+        <div className="absolute top-[55%] z-[10] flex flex-col gap-4 px-[2.5rem]">
           {/* <HseButton /> */}
           <ProjectPlaningButton />
         </div>
@@ -365,7 +366,18 @@ export default function MainProjectPage() {
                 >
                   {item.name}
                 </div>
-                <div className="machine-highlight absolute bottom-0 aspect-square w-full">
+                <div
+                  className="machine-highlight absolute bottom-0 aspect-square w-full"
+                  onClick={() => {
+                    if (item.click) {
+                      if (showInfo.includes(item?.click)) {
+                        setShowInfo(showInfo.filter((i) => i !== item.click));
+                      } else {
+                        setShowInfo([...showInfo, item.click]);
+                      }
+                    }
+                  }}
+                >
                   <div className="circle circle-3 relative h-full w-full">
                     <Circle3 className="rotate h-full w-full duration-1000" />
                   </div>
@@ -401,7 +413,16 @@ export default function MainProjectPage() {
                 >
                   {(item.type === "information" ||
                     item.type === "identification") && (
-                    <div className="grid grid-cols-[fit-content,1fr] gap-1 p-3 pr-6">
+                    <div
+                      className={cn(
+                        "grid grid-cols-[fit-content,1fr] gap-1 p-3 pr-6",
+                        {
+                          hidden:
+                            item?.title &&
+                            !showInfo.includes(item?.title as never),
+                        },
+                      )}
+                    >
                       <h1 className="col-span-2 text-lg font-bold text-[#FFE473]">
                         {item.title}
                       </h1>
@@ -432,7 +453,7 @@ export default function MainProjectPage() {
                         ...item.position,
                         cursor: "pointer",
                         background: `${item.background}`,
-                        backgroundSize: "contain",
+                        backgroundSize: "100% 100%",
                         backgroundRepeat: "no-repeat",
                       }}
                     ></div>
@@ -529,6 +550,7 @@ export default function MainProjectPage() {
               onCreated={({ gl }) => {
                 gl.shadowMap.enabled = true;
               }}
+              onClick={() => setIsRotating(!isRotating)}
             >
               <ambientLight intensity={0.5} />
               <directionalLight
@@ -548,17 +570,22 @@ export default function MainProjectPage() {
                   hovered={hovered}
                   url={
                     `${env.VITE_LOCAL_MODELS === "true" ? "/public/ignore/" : "https://storage.googleapis.com/nextronic/"}` +
-                    "mine021.glb"
+                    "mine026.glb"
                   }
                   ref={modelRef}
                   onLoad={() => setLoading(false)}
                 />
               </Suspense>
-              <RotatingModel modelRef={modelRef} />
+              <RotatingModel modelRef={modelRef} isRotating={isRotating} />
               <OrbitControls enableRotate rotateSpeed={1} zoomToCursor />
             </Canvas>
             <div
-              className="absolute bottom-[18%] left-[1%] w-[22rem] backdrop-blur"
+              className={cn(
+                "absolute bottom-[18%] left-[1%] w-[22rem] backdrop-blur",
+                {
+                  hidden: !showInfo.includes("Underground Mine"),
+                },
+              )}
               style={{
                 backgroundImage: "url(/vector.png)",
                 backgroundSize: "100% 100%",
@@ -601,7 +628,18 @@ export default function MainProjectPage() {
               >
                 Underground Mine
               </div>
-              <div className="machine-highlight absolute bottom-0 aspect-square w-full">
+              <div
+                className="machine-highlight absolute bottom-0 aspect-square w-full"
+                onClick={() => {
+                  if (showInfo.includes(`Underground Mine`)) {
+                    setShowInfo(
+                      showInfo.filter((i) => i !== "Underground Mine"),
+                    );
+                  } else {
+                    setShowInfo([...showInfo, "Underground Mine"]);
+                  }
+                }}
+              >
                 <div className="circle circle-3 relative h-full w-full">
                   <Circle3 className="rotate h-full w-full duration-1000" />
                 </div>
@@ -621,7 +659,7 @@ export default function MainProjectPage() {
                   top: "12%",
                   left: "49%",
                   cursor: "pointer",
-                  background: "url(/dashboard.svg)",
+                  background: "url(/screen4.svg)",
                   backgroundSize: "contain",
                   backgroundRepeat: "no-repeat",
                 }}

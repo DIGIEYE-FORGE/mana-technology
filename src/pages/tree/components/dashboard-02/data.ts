@@ -1,13 +1,13 @@
 export const widgetsData = {
   0: {
-    title: "Schema de tir",
+    title: "Schéma de tir",
     attributes: {
       image1: "/dashboard-02.01.jpeg",
       image2: "/dashboard-02.02.jpeg",
     },
   },
   1: {
-    title: "Dispo et Utilisation",
+    title: "Performance Engins",
     attributes: {
       image: "/machine-02.png",
       name: "Jumbo M20",
@@ -28,12 +28,13 @@ export const widgetsData = {
     },
   },
   2: {
-    title: "Vitesse de penetration",
+    title: "Nombre de trous forés",
     attributes: {
       telemetries: [
         {
           area: false,
-          name: "UG_FORATION_TIRS_VITESSE_DE_PENETRATION-min_par_m",
+          // name: "UG_FORATION_TIRS_VITESSE_DE_PENETRATION-min_par_m", 
+          name: "UG_FORATION_TIRS_SCHEMA_DE_TIR", 
           color: "#cda943",
           label: "Objectif ML/J",
           serial: "DABF7PAT2G4BAG21",
@@ -70,7 +71,7 @@ export const widgetsData = {
     },
   },
   5: {
-    title: "Temps de foration",
+    title: "Temps de foration (min)",
     attributes: {
       telemetries: [
         {
@@ -83,11 +84,11 @@ export const widgetsData = {
     },
   },
   6: {
-    title: "Temps de Perdu entre temp",
+    title: "Longueur foration par tir (m/tir)",
     attributes: {
       telemetries: [
         {
-          name: "UG_FORATION_TIRS_TEMPS_PERDU_ENTRE_TROUmin",
+          name: "UG_FORATION_TIRS_LONGEUR_FORATION_PAR_TIR-m_par_tir",
           color: "#18a5c1",
           label: "Utilisation",
           serial: "DABF7PAT2G4BAG21",

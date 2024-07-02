@@ -10,7 +10,7 @@ function DashboardPage3() {
     <div className="grid h-full w-full grid-flow-dense auto-rows-[17rem] grid-cols-3 gap-6 md:grid-cols-6 xl:grid-cols-9 2xl:auto-rows-[19rem]">
       <Card className="col-span-3 flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
-          Évolution Production Cumulée
+          Évolution Production Cumulée (t)
         </h1>
         <div className="flex-1">
           <LineChartWidget
@@ -37,7 +37,7 @@ function DashboardPage3() {
       </Card>
       <Card className="col-span-3 flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
-          Production Journalière
+          Production Journalière (t)
         </h1>
         <div className="flex-1">
           <BarChartWidget
@@ -58,7 +58,7 @@ function DashboardPage3() {
         </div>
       </Card>
       <Card className="col-span-3 flex flex-col p-4">
-        <h1 className="text-center text-lg font-semibold">Stérile / Minerai</h1>
+        <h1 className="text-center text-lg font-semibold">Stérile / Minerai (t)</h1>
         <div className="flex-1">
           <BarChartWidget
             // title="Daily Production BreakUp"
@@ -113,7 +113,7 @@ function DashboardPage3() {
       </Card>
       <Card className="col-span-3 flex flex-col p-4 xl:col-span-4">
         <h1 className="text-center text-lg font-semibold">
-          Production par qualité
+          Production par qualité (t)
         </h1>
         <div className="flex-1">
           <ProgressMultiple
@@ -177,7 +177,7 @@ function DashboardPage3() {
         />
       </Card>
       <Card className="col-span-6 flex flex-col p-4">
-        <h3 className="text-center text-lg font-semibold">Suivi des Tires</h3>
+        <h3 className="text-center text-lg font-semibold">Suivi des Tirs</h3>
         <TableWidget
           className="h-1 flex-1"
           attributes={{
@@ -197,11 +197,11 @@ function DashboardPage3() {
                 telemetryName: "ZONE DE TIRE",
               },
               {
-                displayName: "Tonnage Roche Abattu Minerai",
+                displayName: "Tonnage Roche Abattu Minerai (t)",
                 telemetryName: "TONNAE_MINERAI_ABATTU",
               },
               {
-                displayName: "Tonnage Roche Abattu Stérile",
+                displayName: "Tonnage Roche Abattu Stérile (t)",
                 telemetryName: "TONNAE_STERILE_ABATTU",
               },
               {

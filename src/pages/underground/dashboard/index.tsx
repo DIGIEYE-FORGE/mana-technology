@@ -18,7 +18,7 @@ export default function UndergroundDashboardPage() {
     <div className="grid h-fit w-full auto-rows-[17rem] grid-cols-3 gap-6 md:grid-cols-6 xl:grid-cols-9 2xl:auto-rows-[19rem] [&>*]:col-span-3">
       <Card className="flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
-          Avancement cumulatif annuel
+          Avancement cumulatif annuel (m)
         </h1>
         <div className="w-full text-center text-xs text-gray-400">
           Piloting Work - S-curve for Planned % Vs Actual %
@@ -76,7 +76,7 @@ export default function UndergroundDashboardPage() {
       </Card>
       <Card className="flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
-          Avancement Cumulé :
+          Avancement Cumulé (m):
           <span className="text-md text-gray-400"> Réalisé vs Planifié</span>
         </h1>
         <div className="w-full text-center text-xs text-gray-400"></div>
@@ -109,7 +109,7 @@ export default function UndergroundDashboardPage() {
       </Card>
       <Card className="flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
-          Arrachement (m) journalier
+          Avancement journalier (m/j)
         </h1>
         <div className="w-full text-center text-xs text-gray-400"></div>
         <div className="flex-1">
@@ -142,7 +142,7 @@ export default function UndergroundDashboardPage() {
       </Card>
       <Card className="flex flex-col items-center gap-1 p-4">
         <h1 className="text-center text-lg font-semibold">
-          Dashboard ventillation
+          Dashboard ventilation
         </h1>
         <div className="w-full flex-1">
           <Ventillation
@@ -238,7 +238,7 @@ export default function UndergroundDashboardPage() {
 
       <Card className="flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
-          Nombre Tir{" "}
+          Underground{" "}
           <span className="text-gray-500">(planifié vs réalisé)</span>
         </h1>
         <div className="w-full text-center text-xs text-gray-400"></div>
@@ -327,7 +327,7 @@ export default function UndergroundDashboardPage() {
       </Card>
       <Card className="relative flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
-          Développement du cycle
+          Cycle de développement (h)
         </h1>
         <div className="h-1 flex-1">
           <D3DonutChart
@@ -401,7 +401,7 @@ export default function UndergroundDashboardPage() {
       </Card>
       <Card className="flex flex-col gap-1 p-4">
         <h1 className="text-center text-lg font-semibold">
-          Temps Moyen de cycle
+          Temps Moyen de cycle (h)
         </h1>
         <div className="h-1 flex-1">
           <LineChartWidget
@@ -422,7 +422,7 @@ export default function UndergroundDashboardPage() {
       </Card>
       <Card className="flex flex-col gap-2 px-6 pt-4">
         <h3 className="text-center text-lg font-semibold">
-          Disponibilité et utilisation des engins
+          Disponibilité et utilisation des Engins
         </h3>
         <div className="h-1 flex-1 overflow-y-auto">
           <Engins

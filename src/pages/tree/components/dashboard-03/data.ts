@@ -1,6 +1,6 @@
 export const widgetsData = {
   0: {
-    title: "Nombre de tire par jour",
+    title: "Nombre de tirs par jour",
     attributes: {
       stacked: false,
       telemetries: [
@@ -20,7 +20,7 @@ export const widgetsData = {
     }
   },
   1: {
-    title: "Performance Engin",
+    title: "Performance Engins",
     attributes: {
       image: "/machine-03.png",
       name: "Jumbo M20",
@@ -41,7 +41,7 @@ export const widgetsData = {
     },
   },
   2: {
-    title: "Consommation spécifique explosif",
+    title: "Consommation spécifique explosif (kg)",
     attributes: {
       stacked: false,
       telemetries: [
@@ -55,7 +55,7 @@ export const widgetsData = {
     },
   },
   3: {
-    title: "Performance engins",
+    title: "Disponibilité",
     attributes: {
       stacked: false,
       telemetries: [
@@ -70,28 +70,49 @@ export const widgetsData = {
     },
   },
   4: {
-    title: "Temps de chargement explosif et moyenne",
+    title: "Utilisation",
     attributes: {
       stacked: false,
       telemetries: [
         {
           name: "UG_METRES_PLANIFIE",
           color: "#FFDC8C",
-          label: "Chargement explosif",
+          label: "Chargeur d'explosif titan 1000 BAC2X350",
           serial: "DABF7PAT2G4BAG21",
+          type: "bar",
         },
       ],
     },
   },
   5: {
-    title: "Arrchament %",
+    title: "Temps de chargement explosif (min)",
+    attributes: {
+      stacked: false,
+      telemetries: [
+        {
+          name: "UG_FORATION_TIRS_TEMPS_DE_CHARGEMENT_EXPLOSIF-min",
+          color: "#FFDC8C",
+          label: "Chargement explosif",
+          serial: "DABF7PAT2G4BAG21",
+        },
+        {
+          name: "UG_FORATION_TIRS_TIR_DELAI_GAZ_ET_LAVAGE-min",
+          color: "#FFF",
+          label: "Tir, délai Gaz et lavage",
+          serial: "DABF7PAT2G4BAG21",
+        },
+      ],
+    },
+  },
+  6: {
+    title: "Arrachement %",
     attributes: {
       telemetries: [
         {
-          name: "EST_REALISE_FORATION",
+          name: "UG_TAUX_ARRACHEMENT_ARRACHEMENT",
           color: "#CCCCCC",
           label: "Aller",
-          serial: "U9XQMQ1DXYT7LJIP",
+          serial: "DABF7PAT2G4BAG21",
         },
       ],
     },
