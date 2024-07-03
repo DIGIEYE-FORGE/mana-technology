@@ -5,6 +5,7 @@ import { useAppContext } from "@/Context";
 
 import useSWR from "swr";
 import Loader from "@/components/loader";
+import { addMinutes } from "date-fns";
 
 type Props = Widget & {
   children?: ReactNode;
@@ -39,8 +40,8 @@ export const MoteurCard = (props: Props) => {
                 where: {
                   serial,
                   createdAt: {
-                    $gt: new Date(dateRange?.from as Date),
-                    $lte: dateRange?.to && new Date(dateRange?.to as Date),
+                    $gt: addMinutes(new Date(), -3),
+                    $lte: new Date(),
                   },
                 },
               },
