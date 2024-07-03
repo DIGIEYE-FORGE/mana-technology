@@ -49,13 +49,16 @@ export default function Telemetry({
   telemetry: {
     name: string;
     serial: string;
+    value?: JsonValue;
   };
+
   displayFormat?: TableDisplayForma;
 }) {
   const { backendApi } = useAppContext();
   const { data, isLoading, error } = useSWR(
     `telemetry?${JSON.stringify({ telemetry })}`,
     async () => {
+      if (telemetry.value !== undefined) return { value: telemetry.value };
       const res = await backendApi.findMany<LastTelemetry>("lasttelemetry", {
         where: {
           name: telemetry.name,

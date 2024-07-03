@@ -20,39 +20,37 @@ export default function HomeDashboard() {
               stacked: true,
               telemetries: [
                 {
-                  name: "CUMUL_REAL_TOT_SUD",
+                  name: "CUMUL_PLANIF_TOT",
                   unit: "T",
                   color: "#FF5AF1",
-                  label: "Fosse Sud Réalisé (monsuel)",
+                  label: "Planifié (monsuel)",
                   serial: "0AS9Y1JCHRS26P9D",
                   type: "bar",
                 },
                 {
-                  name: "CUMUL_REAL_TOT_EST",
+                  name: "CUMUL_REAL_TOT",
                   unit: "T",
                   color: "#FFDC8C",
-                  label: "Fosse Est Réalisé (monsuel)",
+                  label: "Réalisé (monsuel)",
                   serial: "0AS9Y1JCHRS26P9D",
                   type: "bar",
                 },
                 {
-                  name: "CUMUL_REAL_TOT_TOT_SUD",
+                  name: "CUMUL_PLANIF_TOT_TOT",
                   unit: "T",
                   color: "#B98EFF",
-                  label: "Fosse Sud Réalisé (Cumulé)",
+                  label: "Planifié (Cumulé)",
                   serial: "0AS9Y1JCHRS26P9D",
                   type: "line",
                 },
                 {
-                  name: "CUMUL_REAL_TOT_TOT_EST",
+                  name: "CUMUL_REAL_TOT_TOT",
                   unit: "T",
                   color: "#78F6EA",
-                  label: "Fosse Est Réalisé (Cumulé)",
+                  label: "Réalisé (Cumulé)",
                   serial: "0AS9Y1JCHRS26P9D",
                   type: "line",
                 },
-              
-
               ],
             }}
           />

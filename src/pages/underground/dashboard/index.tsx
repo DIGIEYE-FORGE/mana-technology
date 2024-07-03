@@ -410,155 +410,134 @@ export default function UndergroundDashboardPage() {
             attribute={[
               {
                 label: "BOLTEC M10",
-                icon: "/m10.png",
+                icon: "/iconesEngin/Bottec M10 _2.png",
                 utilisationTelemetry: "UG_BOLTEC_M10_TU",
                 disponibilliteTelemetry: "UG_BOLTEC_M10_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
                 label: "CHARGEUR D'EXPLOSIF TITAN BAC2X350",
-                icon: "/titan.png",
-                utilisationTelemetry:
-                  "UG_CHARG_EXP_TITAN_BAC2X350_TU",
-                disponibilliteTelemetry:
-                  "UG_CHARG_EXP_TITAN_BAC2X350_TD",
+                icon: "iconesEngin/titan_MUV5_et_MUV1-removebg-preview.png",
+                utilisationTelemetry: "UG_CHARG_EXP_TITAN_BAC2X350_TU",
+                disponibilliteTelemetry: "UG_CHARG_EXP_TITAN_BAC2X350_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
                 label: "CHARGEUSE CAT R1700 14T N°1",
-                icon: "/chargeuse.png",
-                utilisationTelemetry:
-                  "UG_CHARG_CAT_R1700_14T_1_TU",
-                disponibilliteTelemetry:
-                  "UG_CHARG_CAT_R1700_14T_1_TD",
+                icon: "iconesEngin/Chargeur_CAT_R1700-removebg-preview.png",
+                utilisationTelemetry: "UG_CHARG_CAT_R1700_14T_1_TU",
+                disponibilliteTelemetry: "UG_CHARG_CAT_R1700_14T_1_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
                 label: "CHARGEUSE CAT R1700 14T N°2",
-                icon: "/chargeuse.png",
-                utilisationTelemetry:
-                  "UG_CHARG_CAT_R1700_14T_2_TU",
-                disponibilliteTelemetry:
-                  "UG_CHARG_CAT_R1700_14T_2_TD",
+                icon: "iconesEngin/Chargeur_CAT_R1700-removebg-preview.png",
+                utilisationTelemetry: "UG_CHARG_CAT_R1700_14T_2_TU",
+                disponibilliteTelemetry: "UG_CHARG_CAT_R1700_14T_2_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
                 label: "CHARIOT ELEVATEUR",
-                icon: "/truck.svg",
+                icon: "iconesEngin/chariot elevateur.svg",
                 utilisationTelemetry: "UG_CHARIOT_ELEVATEUR_TU",
                 disponibilliteTelemetry: "UG_CHARIOT_ELEVATEUR_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
                 label: "CHARGEUSE CAT R1700 14T N°2",
-                icon: "/truck.svg",
-                utilisationTelemetry:
-                  "UG_COMP_ATLAS_COP_1_TU",
-                disponibilliteTelemetry:
-                  "UG_COMP_ATLAS_COP_1_TD",
+                icon: "iconesEngin/Chargeur_CAT_R1700-removebg-preview.png",
+                utilisationTelemetry: "UG_COMP_ATLAS_COP_1_TU",
+                disponibilliteTelemetry: "UG_COMP_ATLAS_COP_1_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
                 label: "COMPRESSEUR ATLAS COPCO XAVS600 PACE SQE N°1",
-                icon: "/truck.svg",
-                utilisationTelemetry:
-                  "UG_COMP_ATLAS_COP_2_TU",
-                disponibilliteTelemetry:
-                  "UG_COMP_ATLAS_COP_2_TD",
+                icon: "iconesEngin/compressor.svg",
+                utilisationTelemetry: "UG_COMP_ATLAS_COP_2_TU",
+                disponibilliteTelemetry: "UG_COMP_ATLAS_COP_2_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
                 label: "COMPRESSEUR ATLAS COPCO XAVS600 PACE SQE N°2",
-                icon: "/truck.svg",
-                utilisationTelemetry:
-                  "UG_DUMP_CAT_1_TU",
-                disponibilliteTelemetry:
-                  "UG_DUMP_CAT_1_TD",
+                icon: "iconesEngin/compressor.svg",
+                utilisationTelemetry: "UG_DUMP_CAT_1_TU",
+                disponibilliteTelemetry: "UG_DUMP_CAT_1_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
                 label: "DUMPER CAT AD 45T N°1",
-                icon: "/truck.svg",
+                icon: "iconesEngin/Dumper_CAT_AD45-removebg-preview.png",
                 utilisationTelemetry: "UG_DUMP_CAT_2_TU",
                 disponibilliteTelemetry: "UG_DUMP_CAT_2_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
                 label: "DUMPER CAT AD 45T N°2",
-                icon: "/truck.svg",
+                icon: "iconesEngin/Dumper_CAT_AD45-removebg-preview.png",
                 utilisationTelemetry: "UG_ELEC_1_TU",
                 disponibilliteTelemetry: "UG_ELEC_1_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
                 label: "GROUPE ELECTROGENE DEUTZ DPS 450 N°1",
-                icon: "/truck.svg",
-                utilisationTelemetry:
-                  "UG_ELEC_2_TU",
-                disponibilliteTelemetry:
-                  "UG_ELEC_2_TD",
+                icon: "truck.svg",
+                utilisationTelemetry: "UG_ELEC_2_TU",
+                disponibilliteTelemetry: "UG_ELEC_2_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
 
               {
                 label: "GROUPE ELECTROGENE DEUTZ DPS 450 N°3",
-                icon: "/truck.svg",
-                utilisationTelemetry:
-                  "UG_ELEC_3_TU",
-                disponibilliteTelemetry:
-                  "UG_ELEC_3_TD",
+                icon: "iconesEngin/Groupe_électrogène_DEUTZ-removebg-preview.png",
+                utilisationTelemetry: "UG_ELEC_3_TU",
+                disponibilliteTelemetry: "UG_ELEC_3_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
                 label: "MECANISE TIZERT JUMBO EPIROC T1D N°1",
-                icon: "/truck.svg",
-                utilisationTelemetry:
-                  "UG_MEC_JUM_1_TU",
-                disponibilliteTelemetry:
-                  "UG_MEC_JUM_1_TD",
+                icon: "iconesEngin/Epiroc_Jumbo_M20-removebg-preview.png",
+                utilisationTelemetry: "UG_MEC_JUM_1_TU",
+                disponibilliteTelemetry: "UG_MEC_JUM_1_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
                 label: "MECANISE TIZERT JUMBO M20",
-                icon: "/truck.svg",
-                utilisationTelemetry:
-                  "UG_MEC_JUM_M20_TU",
+                icon: "iconesEngin/Epiroc_Jumbo_M20-removebg-preview.png",
+                utilisationTelemetry: "UG_MEC_JUM_M20_TU",
                 disponibilliteTelemetry: "UG_MEC_JUM_M20_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
                 label: "PLATEFORME A TABLE ELEVATRICE TITAN BMP2X3				",
-                icon: "/truck.svg",
-                utilisationTelemetry:
-                  "UG_PLAT_TU",
-                disponibilliteTelemetry:
-                  "UG_PLAT_TD",
+                icon: "iconesEngin/Table_elevatrice-removebg-preview.png",
+                utilisationTelemetry: "UG_PLAT_TU",
+                disponibilliteTelemetry: "UG_PLAT_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
                 label: "SIMBA",
-                icon: "/truck.svg",
+                icon: "truck.svg",
                 utilisationTelemetry: "UG_SIMBA_TU",
                 disponibilliteTelemetry: "UG_SIMBA_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
                 label: "TRACTEUR",
-                icon: "/truck.svg",
+                icon: "truck.svg",
                 utilisationTelemetry: "UG_TRAC_TU",
                 disponibilliteTelemetry: "UG_TRAC_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
                 label: "VEHICULE  MUV11",
-                icon: "/truck.svg",
+                icon: "/iconesEngin/titan_MUV5_et_MUV1-removebg-preview.png",
                 utilisationTelemetry: "UG_MUV11_TU",
                 disponibilliteTelemetry: "UG_MUV11_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
                 label: "VEHICULE  MUV5",
-                icon: "/truck.svg",
+                icon: "iconesEngin/titan_MUV5_et_MUV1-removebg-preview.png",
                 utilisationTelemetry: "UG_MUV5_TU",
                 disponibilliteTelemetry: "UG_MUV5_TD",
                 serial: "1ET8MCQDVOPFLVBX",

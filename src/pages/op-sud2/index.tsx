@@ -10,6 +10,48 @@ function DashboardPage3() {
     <div className="grid h-full w-full grid-flow-dense auto-rows-[17rem] grid-cols-3 gap-6 lg:grid-cols-6 xl:grid-cols-9 2xl:auto-rows-[19rem]">
       <Card className="col-span-3 flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
+          Stérile / Minerai (t)
+        </h1>
+        <div className="flex-1">
+          <BarChartWidget
+            // title="Daily Production BreakUp"
+            attributes={{
+              telemetries: [
+                {
+                  name: "SUD2_PLANIFIE_MINERAI",
+                  unit: "T",
+                  color: "#FE22EB",
+                  label: "Minerai Planifié",
+                  serial: "C6XPYU0D920L1M07",
+                },
+                {
+                  name: "SUD2_REALISE_MIENRAI",
+                  unit: "T",
+                  color: "#FEC33A",
+                  label: "Minerai Realisé",
+                  serial: "C6XPYU0D920L1M07",
+                },
+                {
+                  name: "SUD2_PLANIFIE_STERILE",
+                  unit: "T",
+                  color: "#B98EFF",
+                  label: "Stérile Planifié",
+                  serial: "C6XPYU0D920L1M07",
+                },
+                {
+                  name: "SUD2_REALISE_STERILE",
+                  unit: "T",
+                  color: "#78F6EA",
+                  label: "Stérile Realisé",
+                  serial: "C6XPYU0D920L1M07",
+                },
+              ],
+            }}
+          />
+        </div>
+      </Card>
+      <Card className="col-span-3 flex flex-col p-4">
+        <h1 className="text-center text-lg font-semibold">
           Évolution Production Cumulée (t)
         </h1>
         <div className="flex-1">
@@ -57,48 +99,7 @@ function DashboardPage3() {
           />
         </div>
       </Card>
-      <Card className="col-span-3 flex flex-col p-4">
-        <h1 className="text-center text-lg font-semibold">
-          Stérile / Minerai (t)
-        </h1>
-        <div className="flex-1">
-          <BarChartWidget
-            // title="Daily Production BreakUp"
-            attributes={{
-              telemetries: [
-                {
-                  name: "SUD2_PLANIFIE_MINERAI",
-                  unit: "T",
-                  color: "#FE22EB",
-                  label: "Minerai Planifié",
-                  serial: "C6XPYU0D920L1M07",
-                },
-                {
-                  name: "SUD2_REALISE_MIENRAI",
-                  unit: "T",
-                  color: "#FEC33A",
-                  label: "Minerai Realisé",
-                  serial: "C6XPYU0D920L1M07",
-                },
-                {
-                  name: "SUD2_PLANIFIE_STERILE",
-                  unit: "T",
-                  color: "#B98EFF",
-                  label: "Stérile Planifié",
-                  serial: "C6XPYU0D920L1M07",
-                },
-                {
-                  name: "SUD2_REALISE_STERILE",
-                  unit: "T",
-                  color: "#78F6EA",
-                  label: "Stérile Realisé",
-                  serial: "C6XPYU0D920L1M07",
-                },
-              ],
-            }}
-          />
-        </div>
-      </Card>
+
       <Card className="col-span-3 flex flex-col p-4 2xl:col-span-2">
         <h1 className="text-center text-lg font-semibold">
           Évolution de la Production vs Planifié
