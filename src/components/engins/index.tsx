@@ -14,7 +14,7 @@ interface EnginsProps {
 }
 
 function Engins({ attribute }: EnginsProps) {
-  const { backendApi, dateRange } = useAppContext();
+  const { backendApi } = useAppContext();
 
   const { data, isLoading, error } = useSWR(
     `enginsTelemetry${JSON.stringify(attribute)}`,
