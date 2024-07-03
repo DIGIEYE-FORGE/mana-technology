@@ -14,43 +14,45 @@ export default function HomeDashboard() {
         <h1 className="text-center text-lg font-semibold">
           Avancement Cumulé annuel (m)
         </h1>
-        <div className="flex-1">
+        <div className="h-1 flex-1">
           <BarLineWidget
-            yAxis="one"
             attributes={{
+              stacked: true,
               telemetries: [
                 {
-                  name: "CUMUL_PLANIF_TOT_EST",
+                  name: "CUMUL_REAL_TOT_SUD",
                   unit: "T",
-                  color: "#FE22EB",
-                  label: "Minerai Planifié (Cumulé)",
-                  serial: "81F0EDVVQMTO1BWF",
-                  type: "line",
-                },
-                {
-                  name: "CUMUL_PLANIF_TOT_SUD",
-                  unit: "T",
-                  color: "#B98EFF",
-                  label: "Minerai Réalisé (Cumulé)",
-                  serial: "81F0EDVVQMTO1BWF",
-                  type: "line",
+                  color: "#FF5AF1",
+                  label: "Fosse Sud Réalisé (monsuel)",
+                  serial: "0AS9Y1JCHRS26P9D",
+                  type: "bar",
                 },
                 {
                   name: "CUMUL_REAL_TOT_EST",
                   unit: "T",
-                  color: "#FEC33A",
-                  label: "Stérile Planifié (Cumulé)",
-                  serial: "81F0EDVVQMTO1BWF",
+                  color: "#FFDC8C",
+                  label: "Fosse Est Réalisé (monsuel)",
+                  serial: "0AS9Y1JCHRS26P9D",
+                  type: "bar",
+                },
+                {
+                  name: "CUMUL_REAL_TOT_TOT_SUD",
+                  unit: "T",
+                  color: "#B98EFF",
+                  label: "Fosse Sud Réalisé (Cumulé)",
+                  serial: "0AS9Y1JCHRS26P9D",
                   type: "line",
                 },
                 {
-                  name: "CUMUL_REAL_TOT_SUD",
+                  name: "CUMUL_REAL_TOT_TOT_EST",
                   unit: "T",
                   color: "#78F6EA",
-                  label: "Stérile Réalisé (Cumulé)",
-                  serial: "81F0EDVVQMTO1BWF",
+                  label: "Fosse Est Réalisé (Cumulé)",
+                  serial: "0AS9Y1JCHRS26P9D",
                   type: "line",
                 },
+              
+
               ],
             }}
           />
