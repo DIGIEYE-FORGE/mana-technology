@@ -79,6 +79,7 @@ export type Widget = {
   yAxis?: "one" | "multiple";
   stacked?: boolean;
   ciel?: boolean;
+  correction?: number;
 };
 
 export type ChartTelemetry = {

@@ -12,7 +12,11 @@ import Chart from "react-apexcharts";
 import Loader from "@/components/loader";
 type Props = Widget;
 
-export default function BarLineWidget({ ciel = true, ...props }: Props) {
+export default function BarLineWidget({
+  ciel = true,
+  correction = 1,
+  ...props
+}: Props) {
   const { backendApi } = useAppContext();
 
   const telemetries = (props.attributes?.telemetries ||
@@ -54,9 +58,10 @@ export default function BarLineWidget({ ciel = true, ...props }: Props) {
           type: telemetries[index].type,
           data: item.map((item) => ({
             x: new Date(item.createdAt),
-            y: Number(
-              Number(flatten(item)[telemetries[index].name]).toFixed(2),
-            ),
+            y:
+              Number(
+                Number(flatten(item)[telemetries[index].name]).toFixed(2),
+              ) * correction,
           })),
         })),
       ];

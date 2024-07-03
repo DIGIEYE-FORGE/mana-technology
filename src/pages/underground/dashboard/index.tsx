@@ -288,6 +288,7 @@ export default function UndergroundDashboardPage() {
         <div className="flex-1">
           <BarLineWidget
             ciel={false}
+            correction={100}
             moyenne={["UG_METRES_PLANIFIE", "UG_METRES_REALISE_TOTAL"]}
             yAxis="one"
             attributes={{
