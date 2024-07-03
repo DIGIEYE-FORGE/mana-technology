@@ -59,8 +59,8 @@ const magazine = [
   },
   {
     name: "OPEN PIT",
-    bottom: "30%",
-    right: "12%",
+    top: "32%",
+    right: "17%",
     type: "image",
     image: "/screen2.png",
   },
@@ -108,8 +108,8 @@ const data = [
     image: "/screen1.svg",
     to: "/",
     position: {
-      bottom: "43%",
-      right: "8%",
+      top: "32%",
+      right: "13%",
     },
     positionModel: {
       side: "left",
@@ -310,7 +310,13 @@ export default function MainProjectPage() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [hovered] = useState("");
 
-  const [showInfo, setShowInfo] = useState<string[]>([]);
+  const [showInfo, setShowInfo] = useState<string[]>([
+    "Electrical power line",
+    "Process plant",
+    "Pipeline",
+    "Process plant",
+    "Underground Mine",
+  ]);
   return (
     <main
       className="relative flex flex-col gap-2 pb-6 2xl:overflow-hidden"
