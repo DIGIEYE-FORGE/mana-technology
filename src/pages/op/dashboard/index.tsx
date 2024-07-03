@@ -5,10 +5,56 @@ import LineChartWidget from "@/components/line-chart-widget";
 import BarChartWidget from "@/components/bar-chart-widget";
 import MultiProgressWidget from "@/components/multi-progress-widget";
 import ProgressMultiple from "@/components/progress-multiple";
+import BarLineWidget from "@/components/bar-line-widget";
 
 export default function HomeDashboard() {
   return (
     <main className="grid w-full grid-flow-dense auto-rows-[80px] grid-cols-3 gap-3 md:grid-cols-6 lg:grid-cols-12 lg:gap-4 xl:grid-cols-[repeat(15,minmax(0,1fr))] 2xl:auto-rows-[92px]">
+      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
+        <h1 className="text-center text-lg font-semibold">
+          Avancement Cumulé annuel (m)
+        </h1>
+        <div className="flex-1">
+          <BarLineWidget
+            attributes={{
+              telemetries: [
+                {
+                  name: "CUMUL_PLANIF_TOT_EST",
+                  unit: "T",
+                  color: "#FE22EB",
+                  label: "Minerai Planifié (Cumulé)",
+                  serial: "81F0EDVVQMTO1BWF",
+                  type: "line",
+                },
+                {
+                  name: "CUMUL_PLANIF_TOT_SUD",
+                  unit: "T",
+                  color: "#B98EFF",
+                  label: "Minerai Réalisé (Cumulé)",
+                  serial: "81F0EDVVQMTO1BWF",
+                  type: "line",
+                },
+                {
+                  name: "CUMUL_REAL_TOT_EST",
+                  unit: "T",
+                  color: "#FEC33A",
+                  label: "Stérile Planifié (Cumulé)",
+                  serial: "81F0EDVVQMTO1BWF",
+                  type: "line",
+                },
+                {
+                  name: "CUMUL_REAL_TOT_SUD",
+                  unit: "T",
+                  color: "#78F6EA",
+                  label: "Stérile Réalisé (Cumulé)",
+                  serial: "81F0EDVVQMTO1BWF",
+                  type: "line",
+                },
+              ],
+            }}
+          />
+        </div>
+      </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
           Évolution Production Roche Cumulée (t)
@@ -38,6 +84,49 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
+          Production Journalière (t)
+        </h1>
+        <div className="flex-1">
+          <BarChartWidget
+            attributes={{
+              stacked: false,
+              telemetries: [
+                {
+                  name: "PLANIFIE_ROCHE",
+                  unit: "T",
+                  color: "#78F6EA",
+                  label: "Planifié",
+                  serial: "TIRSIL71OBOT4UB4",
+                },
+                {
+                  name: "REALISE_ROCHE",
+                  unit: "T",
+                  color: "#B98EFF",
+                  label: "Réalisé",
+                  serial: "TIRSIL71OBOT4UB4",
+                },
+              ],
+            }}
+          />
+        </div>
+      </Card>
+
+      <Card className="col-span-full row-span-3 flex flex-col px-2 py-6 lg:col-span-6 xl:col-span-4">
+        <h1 className="text-center text-base font-semibold 2xl:text-lg">
+          Évolution de la Production vs Planifié
+        </h1>
+        <ProgressAccumulation
+          attributes={{
+            serial: "TIRSIL71OBOT4UB4",
+            progressColor: "#FF5AF1",
+            currentTargetColor: "#727DC6",
+            progressTelemetryName: "REALISE_ROCHE_CUMUL",
+            accumulationTelemetryName: "PLANIFIE_ROCHE_CUMUL",
+          }}
+        />
+      </Card>
+      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-4">
+        <h1 className="text-center text-lg font-semibold">
           Production Roche par Fosse (t)
         </h1>
         <div className="flex-1">
@@ -59,88 +148,6 @@ export default function HomeDashboard() {
                   color: "#B98EFF",
                   label: "Sud",
                   serial: "C6XPYU0D920L1M07",
-                },
-              ],
-            }}
-          />
-        </div>
-      </Card>
-      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
-        <h1 className="text-center text-lg font-semibold">Stérile / Minerai (t)</h1>
-        <div className="flex-1">
-          <BarChartWidget
-            // title="Daily Production BreakUp"
-            attributes={{
-              telemetries: [
-                {
-                  name: "PLANIFIE_MINERAI",
-                  unit: "T",
-                  color: "#FE22EB",
-                  label: "Minerai Planifié",
-                  serial: "TIRSIL71OBOT4UB4",
-                },
-                {
-                  name: "REALISE_MINERAI",
-                  unit: "T",
-                  color: "#B98EFF",
-                  label: "Minerai Réalisé",
-                  serial: "TIRSIL71OBOT4UB4",
-                },
-                {
-                  name: "PLANIFIE_STERILE",
-                  unit: "T",
-                  color: "#FEC33A",
-                  label: "Stérile Planifié",
-                  serial: "TIRSIL71OBOT4UB4",
-                },
-                {
-                  name: "REALISE_STERILE",
-                  unit: "T",
-                  color: "#78F6EA",
-                  label: "Stérile Réalisé",
-                  serial: "TIRSIL71OBOT4UB4",
-                },
-              ],
-            }}
-          />
-        </div>
-      </Card>
-      <Card className="col-span-full row-span-3 flex flex-col px-2 py-6 lg:col-span-6 xl:col-span-4">
-        <h1 className="text-center text-base font-semibold 2xl:text-lg">
-          Évolution de la Production vs Planifié 
-        </h1>
-        <ProgressAccumulation
-          attributes={{
-            serial: "TIRSIL71OBOT4UB4",
-            progressColor: "#FF5AF1",
-            currentTargetColor: "#727DC6",
-            progressTelemetryName: "REALISE_ROCHE_CUMUL",
-            accumulationTelemetryName: "PLANIFIE_ROCHE_CUMUL",
-          }}
-        />
-      </Card>
-      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-4">
-        <h1 className="text-center text-lg font-semibold">
-          Production Journalière (t)
-        </h1>
-        <div className="flex-1">
-          <BarChartWidget
-            attributes={{
-              stacked: false,
-              telemetries: [
-                {
-                  name: "PLANIFIE_ROCHE",
-                  unit: "T",
-                  color: "#78F6EA",
-                  label: "Planifié",
-                  serial: "TIRSIL71OBOT4UB4",
-                },
-                {
-                  name: "REALISE_ROCHE",
-                  unit: "T",
-                  color: "#B98EFF",
-                  label: "Réalisé",
-                  serial: "TIRSIL71OBOT4UB4",
                 },
               ],
             }}
