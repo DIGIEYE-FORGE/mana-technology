@@ -25,7 +25,7 @@ export const widgetsData = {
         {
           name: "HSE_OBS_Total",
           color: "#25A18E",
-          label: "Quasi-accidents & observations",
+          label: "Observation",
           serial: "U9XQMQ1DXYT7LJIP",
           value: 5075,
         },
