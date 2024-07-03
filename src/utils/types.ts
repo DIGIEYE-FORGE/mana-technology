@@ -5,6 +5,7 @@ export type JsonValue =
   | number
   | boolean
   | null
+  | Date
   | JsonValue[]
   | JsonObject;
 export type JsonObject = { [key: string]: JsonValue };
@@ -90,6 +91,7 @@ export type ChartTelemetry = {
   color?: string;
   area?: boolean;
   data?: { x: Date; y: number }[];
+  value?: number;
 };
 
 export type ChartsWidgetData = {
