@@ -1,4 +1,4 @@
-import { add, addDays } from "date-fns";
+import { addDays } from "date-fns";
 
 export const widgetsData = {
   0: {
