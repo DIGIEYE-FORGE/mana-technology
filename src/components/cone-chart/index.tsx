@@ -14,22 +14,26 @@ interface ConeProps extends HTMLMotionProps<"div"> {
 }
 
 const Cone = ({ data, style, children, ...props }: ConeProps) => {
-  const sum = data.reduce((acc, curr) => acc + curr.value, 0);
-  const cum = data.reduce((acc, curr, index) => {
-    acc.push(index === 0 ? curr.value : acc[index - 1] + curr.value);
-    return acc;
-  }, [] as number[]);
+  // const sum = data.reduce((acc, curr) => acc + curr.value, 0);
+  // const cum = data.reduce((acc, curr, index) => {
+  //   acc.push(index === 0 ? curr.value : acc[index - 1] + curr.value);
+  //   return acc;
+  // }, [] as number[]);
 
   const gdF = 0.15;
   const colors2 = data.map((item, index) => {
-    const start = index === 0 ? 0 : (cum[index - 1] / sum) * 100;
-    const end = (cum[index] / sum) * 100;
+    // const start = index === 0 ? 0 : (cum[index - 1] / sum) * 100;
+    // const end = (cum[index] / sum) * 100;
+    const start = (index / data.length) * 100;
+    const end = ((index + 1) / data.length) * 100;
     const color = Color(item.color);
     return `${color} ${start}% , ${color.darken(gdF)} ${end}%`;
   });
   const colors1 = data.map((item, index) => {
-    const start = index === 0 ? 0 : (cum[index - 1] / sum) * 100;
-    const end = (cum[index] / sum) * 100;
+    // const start = index === 0 ? 0 : (cum[index - 1] / sum) * 100;
+    // const end = (cum[index] / sum) * 100;
+    const start = (index / data.length) * 100;
+    const end = ((index + 1) / data.length) * 100;
     const color = Color(item.color);
     return `${color.darken(gdF)} ${start}% , ${color.darken(2 * gdF)} ${end}%`;
   });
@@ -86,7 +90,7 @@ export function ConeChart({
     return await Promise.all(
       attributes.map(async (device) => {
         const { name, label, color, serial, value } = device;
-        if (value) return { name: label, color, value };
+        if (value !== undefined) return { name: label, color, value };
         const res = await backendApi.findMany<{
           name: string;
           value: number;
@@ -138,14 +142,14 @@ export function ConeChart({
       name: attributes[index].label,
     };
   });
-  const cum = data.reduce((acc, curr, index) => {
-    acc.push(index === 0 ? curr.value : acc[index - 1] + curr.value);
-    return acc;
-  }, [] as number[]);
-  const cumAvg = data.reduce((acc, curr, index) => {
-    acc.push(index === 0 ? curr.value / 2 : cum[index - 1] + curr.value / 2);
-    return acc;
-  }, [] as number[]);
+  // const cum = data.reduce((acc, curr, index) => {
+  //   acc.push(index === 0 ? curr.value : acc[index - 1] + curr.value);
+  //   return acc;
+  // }, [] as number[]);
+  // const cumAvg = data.reduce((acc, curr, index) => {
+  //   acc.push(index === 0 ? curr.value / 2 : cum[index - 1] + curr.value / 2);
+  //   return acc;
+  // }, [] as number[]);
   const sum = data.reduce((acc, curr) => acc + curr.value, 0);
   return (
     <div className={cn("flex w-full flex-col justify-between", className)}>
@@ -161,21 +165,22 @@ export function ConeChart({
             return (
               <div
                 style={{
-                  bottom: `${(cumAvg[index] / sum) * 100}%`,
+                  // bottom: `${(cumAvg[index] / sum) * 100}%`,
+                  bottom: `${((index + 0.5) / data.length) * 100}%`,
                 }}
                 key={index}
                 className="absolute left-1/2 flex w-full translate-y-1/2 items-center gap-3 rounded"
               >
                 <div className="h-1 w-1/2 shrink-0 rounded bg-[#DBDBDB]"></div>
                 <div
-                  className="flex shrink-0 flex-col overflow-hidden"
+                  className="flex shrink-0 gap-2 overflow-hidden"
                   style={{ width: legendWidth }}
                 >
-                  <span className="w-full truncate whitespace-nowrap text-base">
-                    {item.name}
-                  </span>
                   <span className="text-base font-bold text-[#FAAC18]">
                     {item.value}
+                  </span>
+                  <span className="w-full truncate whitespace-nowrap text-base">
+                    {item.name}
                   </span>
                 </div>
               </div>
