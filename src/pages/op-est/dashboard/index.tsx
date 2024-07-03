@@ -11,62 +11,8 @@ export default function HomeDashboard() {
     <main className="grid w-full grid-flow-dense auto-rows-[76px] grid-cols-3 gap-3 md:grid-cols-6 lg:grid-cols-12 lg:gap-4 xl:grid-cols-[repeat(15,minmax(0,1fr))] 2xl:auto-rows-[92px]">
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
-          Évolution Production Cumulée (t)
+          Avancement Cumulé annuel (m)
         </h1>
-        <div className="flex-1">
-          <LineChartWidget
-            attributes={{
-              telemetries: [
-                {
-                  area: false,
-                  name: "EST_PLANIFIE_ROCHE_CUMUL",
-                  color: "#78F6EA",
-                  label: "Cumulative planifié",
-                  serial: "U9XQMQ1DXYT7LJIP",
-                },
-                {
-                  area: true,
-                  name: "EST_REALISE_ROCHE_CUMUL_Ton",
-                  color: "#B98EFF",
-                  label: "Cumulative realisé",
-                  serial: "U9XQMQ1DXYT7LJIP",
-                },
-              ],
-            }}
-          />
-        </div>
-      </Card>
-      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
-        <h1 className="text-center text-lg font-semibold">
-          Production par fosse (t)
-        </h1>
-        <div className="flex-1">
-          <BarChartWidget
-            moyenne={["EST11_REALISE_ROCHE", "EST12_REALISE_ROCHE"]}
-            attributes={{
-              stacked: true,
-              telemetries: [
-                {
-                  name: "EST11_REALISE_ROCHE",
-                  unit: "T",
-                  color: "#78F6EA",
-                  label: "Est 11",
-                  serial: "U9XQMQ1DXYT7LJIP",
-                },
-                {
-                  name: "EST12_REALISE_ROCHE",
-                  unit: "T",
-                  color: "#B98EFF",
-                  label: "Est 12",
-                  serial: "U9XQMQ1DXYT7LJIP",
-                },
-              ],
-            }}
-          />
-        </div>
-      </Card>
-      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
-        <h1 className="text-center text-lg font-semibold">Stérile / Minerai (t)</h1>
         <div className="flex-1">
           <BarChartWidget
             // title="Daily Production BreakUp"
@@ -105,21 +51,34 @@ export default function HomeDashboard() {
           />
         </div>
       </Card>
-      <Card className="col-span-full row-span-3 flex flex-col px-2 py-6 lg:col-span-6 xl:col-span-4">
-        <h1 className="text-center text-base font-semibold 2xl:text-lg">
-          Évolution de la Production vs Planifié
+      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
+        <h1 className="text-center text-lg font-semibold">
+          Évolution Production Cumulée (t)
         </h1>
-        <ProgressAccumulation
-          attributes={{
-            serial: "U9XQMQ1DXYT7LJIP",
-            progressColor: "#FF5AF1",
-            currentTargetColor: "#727DC6",
-            progressTelemetryName: "EST_REALISE_ROCHE_CUMUL_Ton",
-            accumulationTelemetryName: "EST_PLANIFIE_ROCHE_CUMUL",
-          }}
-        />
+        <div className="flex-1">
+          <LineChartWidget
+            attributes={{
+              telemetries: [
+                {
+                  area: false,
+                  name: "EST_PLANIFIE_ROCHE_CUMUL",
+                  color: "#78F6EA",
+                  label: "Cumulative planifié",
+                  serial: "U9XQMQ1DXYT7LJIP",
+                },
+                {
+                  area: true,
+                  name: "EST_REALISE_ROCHE_CUMUL_Ton",
+                  color: "#B98EFF",
+                  label: "Cumulative realisé",
+                  serial: "U9XQMQ1DXYT7LJIP",
+                },
+              ],
+            }}
+          />
+        </div>
       </Card>
-      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-4">
+      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
           Production Journalière (t)
         </h1>
@@ -140,6 +99,50 @@ export default function HomeDashboard() {
                   unit: "T",
                   color: "#B98EFF",
                   label: "Realisé",
+                  serial: "U9XQMQ1DXYT7LJIP",
+                },
+              ],
+            }}
+          />
+        </div>
+      </Card>
+
+      <Card className="col-span-full row-span-3 flex flex-col px-2 py-6 lg:col-span-6 xl:col-span-4">
+        <h1 className="text-center text-base font-semibold 2xl:text-lg">
+          Évolution de la Production vs Planifié
+        </h1>
+        <ProgressAccumulation
+          attributes={{
+            serial: "U9XQMQ1DXYT7LJIP",
+            progressColor: "#FF5AF1",
+            currentTargetColor: "#727DC6",
+            progressTelemetryName: "EST_REALISE_ROCHE_CUMUL_Ton",
+            accumulationTelemetryName: "EST_PLANIFIE_ROCHE_CUMUL",
+          }}
+        />
+      </Card>
+      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-4">
+        <h1 className="text-center text-lg font-semibold">
+          Production Journalière (t)
+        </h1>
+        <div className="flex-1">
+          <BarChartWidget
+            moyenne={["EST11_REALISE_ROCHE", "EST12_REALISE_ROCHE"]}
+            attributes={{
+              stacked: true,
+              telemetries: [
+                {
+                  name: "EST11_REALISE_ROCHE",
+                  unit: "T",
+                  color: "#78F6EA",
+                  label: "Est 11",
+                  serial: "U9XQMQ1DXYT7LJIP",
+                },
+                {
+                  name: "EST12_REALISE_ROCHE",
+                  unit: "T",
+                  color: "#B98EFF",
+                  label: "Est 12",
                   serial: "U9XQMQ1DXYT7LJIP",
                 },
               ],
