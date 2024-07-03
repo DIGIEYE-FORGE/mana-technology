@@ -225,8 +225,8 @@ const data = [
     },
     background: "url(/vector.png)",
     position: {
-      top: "4%",
-      right: "3%",
+      top: "45%",
+      right: "0%",
     },
   },
   //////////
@@ -287,7 +287,7 @@ const data = [
     },
     background: "url(/vector.png)",
     position: {
-      top: "3%",
+      top: "1%",
       right: "8%",
     },
   },
@@ -303,7 +303,7 @@ const data = [
     background: "url(/vector.png)",
     position: {
       bottom: "-18%",
-      right: "2%",
+      right: "20%",
     },
   },
 ];
