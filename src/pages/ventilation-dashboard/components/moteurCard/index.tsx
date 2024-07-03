@@ -32,16 +32,11 @@ export const MoteurCard = (props: Props) => {
               {
                 pagination: {
                   page: 1,
-                  perPage: 10_00,
+                  perPage: 20,
                 },
-
                 select: [name],
                 where: {
                   serial,
-                  createdAt: {
-                    $gt: new Date(dateRange?.from as Date),
-                    $lte: dateRange?.to && new Date(dateRange?.to as Date),
-                  },
                 },
               },
             );
@@ -85,7 +80,6 @@ export const MoteurCard = (props: Props) => {
       </main>
     );
   }
-  // console.log(data);
 
   const finalData = data?.[0]?.data || [];
   const yaxisMax = Math.max(...finalData.map((item) => item.y)) + 50;
@@ -117,7 +111,6 @@ export const MoteurCard = (props: Props) => {
         },
         xaxis: {
           type: "datetime",
-          max: dateRange?.to ? new Date(dateRange?.to).getTime() : undefined,
           axisBorder: { show: false },
           axisTicks: { show: false },
           labels: {
