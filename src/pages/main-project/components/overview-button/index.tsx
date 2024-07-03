@@ -2,34 +2,35 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { DialogClose } from "@radix-ui/react-dialog";
-import { MoveLeft, MoveRight, XIcon } from "lucide-react";
+import { FilePieChartIcon, MoveLeft, MoveRight, XIcon } from "lucide-react";
 import { useState } from "react";
+import ProjectPlaningButton from "../project-planing-button";
 
 const tabs = [
   {
-    title: "Evolution réserves",
+    title: "Mineral resources estimation ",
     subTabs: [
       {
-        title: "Evolution réserves",
-        image: "/overview-001.svg",
-      },
-    ],
-  },
-  {
-    title: "Exploration Evolution since 2011",
-    subTabs: [
-      {
-        title: "Exploration Evolution since 2011",
+        title: "Mineral resources estimation ",
         image: "/overview-002.svg",
       },
     ],
   },
   {
-    title: "title 3",
+    title: "Reserve Evolution",
     subTabs: [
       {
-        title: "sub title 3",
+        title: "Reserve Evolution",
         image: "/overview-001.svg",
+      },
+    ],
+  },
+  {
+    title: "Key Metrics",
+    subTabs: [
+      {
+        title: "Key Metrics",
+        image: "/overview-003.svg",
       },
     ],
   },
@@ -85,7 +86,7 @@ export function OverviewButton({ className, ...props }: OverviewButtonProps) {
           </DialogClose>
         </div>
         <div
-          className="mx-auto flex h-1 max-h-[920px] w-full max-w-[1920px] flex-1 flex-col gap-4"
+          className="relative mx-auto flex h-1 max-h-[920px] w-full max-w-[1920px] flex-1 flex-col gap-4"
           style={{
             backgroundImage: "url(/public/dashboard-frame.png)",
             backgroundRepeat: "no-repeat",
@@ -119,17 +120,15 @@ export function OverviewButton({ className, ...props }: OverviewButtonProps) {
             </div>
           </div>
           <div className="mb-8 ml-16 mr-8 h-1 flex-1">
-            {tabs[activeTab].subTabs[activeSubTab].title === "hse" ? (
-              <div className="h-full w-full">
-                <HseButton />
-              </div>
-            ) : (
-              <img
-                src={tabs[activeTab].subTabs[activeSubTab].image}
-                alt={tabs[activeTab].subTabs[activeSubTab].title}
-                className="h-full w-full"
-              />
-            )}
+            <img
+              src={tabs[activeTab].subTabs[activeSubTab].image}
+              alt={tabs[activeTab].subTabs[activeSubTab].title}
+              className="h-full w-full"
+            />
+            <ProjectPlaningButton className="hover absolute bottom-8 right-8 flex items-center gap-2 rounded-lg border border-blue-300/30 bg-blue-300/10 px-3 py-1.5 text-lg font-semibold capitalize text-blue-300 backdrop-blur hover:brightness-110 active:brightness-90">
+              <FilePieChartIcon size={20} />
+              <span>project planing</span>
+            </ProjectPlaningButton>
           </div>
         </div>
       </DialogContent>

@@ -5,7 +5,6 @@ import { useAppContext } from "@/Context";
 
 import useSWR from "swr";
 import Loader from "@/components/loader";
-import { addMinutes } from "date-fns";
 
 type Props = Widget & {
   children?: ReactNode;

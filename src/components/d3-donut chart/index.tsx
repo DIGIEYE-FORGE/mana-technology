@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useRef } from "react";
-import * as d3 from "d3";
+// import { useEffect, useRef } from "react";
+// import * as d3 from "d3";
 import { useAppContext } from "@/Context";
 import useSWR from "swr";
 import Loader from "../loader";
@@ -218,46 +218,11 @@ export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
           ))}
         </div>
       </div>
-      <div className="col-span-6 flex h-full w-full flex-1 items-center justify-center">
+      <div className="col-span-6 flex w-full flex-1 items-end justify-end pt-6">
         <Chart
           options={{
             chart: {
-              type: "pie",
-              toolbar: { show: false },
-              zoom: { enabled: false },
-              selection: { enabled: false },
-              dropShadow: { enabled: false },
-              sparkline: { enabled: true },
-            },
-            grid: {},
-            labels: ["Team A", "Team B", "Team C", "Team D", "Team E"],
-            colors: data.map((d) => d.color),
-            plotOptions: {
-              pie: {
-                dataLabels: {
-                  offset: -5,
-                },
-              },
-            },
-            dataLabels: {
-              formatter(val, opts) {
-                const name = opts.w.globals.labels[opts.seriesIndex];
-                return [name, val.toFixed(1) + "%"];
-              },
-            },
-            legend: {
-              show: false,
-            },
-          }}
-          series={data.sort((a, b) => b.value - a.value).map((d) => d.value)}
-          width="100%"
-          height="100%"
-          type="pie"
-        />
-        {/* <Chart
-          options={{
-            chart: {
-              type: "polarArea",
+              type: "donut",
               toolbar: { show: false },
               zoom: { enabled: false },
               selection: { enabled: false },
@@ -274,32 +239,39 @@ export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
             },
             labels: data.map((d) => d.name),
             colors: data.map((d) => d.color),
-            fill: {
-              opacity: 1,
-            },
-            stroke: {
-              width: 1,
-              colors: data.map((d) => d.color),
-            },
-            yaxis: {
-              show: false,
+            dataLabels: {
+              enabled: true,
+              formatter: function (val) {
+                return Number(val).toFixed(2) + "%";
+              },
+              style: {
+                fontSize: "0.7rem",
+                colors: ["#fff"],
+              },
             },
             plotOptions: {
-              polarArea: {
-                rings: {
-                  strokeWidth: 0,
+              pie: {
+                donut: {
+                  size: "40%",
                 },
-                spokes: {
-                  strokeWidth: 0,
+                dataLabels: {
+                  offset: -5,
                 },
               },
             },
+            legend: {
+              show: false,
+            },
+            stroke: {
+              show: false,
+              width: 0,
+            },
           }}
           series={data.sort((a, b) => b.value - a.value).map((d) => d.value)}
-          width="120%"
-          height="120%"
-          type="polarArea"
-        /> */}
+          width="100%"
+          height="130%"
+          type="donut"
+        />
       </div>
     </div>
   );

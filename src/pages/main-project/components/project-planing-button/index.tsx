@@ -51,7 +51,7 @@ const tabs = [
     title: "risk",
     subTabs: [
       {
-        title: "Need updated chart  from Reminex ",
+        title: "risk",
         image: "/risk.svg",
       },
       {
@@ -61,11 +61,15 @@ const tabs = [
     ],
   },
   {
-    title: "cost",
+    title: "cost report",
     subTabs: [
       {
-        title: "cost",
-        image: "/cost.svg",
+        title: "cost report",
+        image: "/cost1.svg",
+      },
+      {
+        title: "Earned Value Management",
+        image: "/cost2.svg",
       },
     ],
   },
@@ -80,13 +84,19 @@ const tabs = [
   },
 ];
 
-function ProjectPlaningButton() {
+interface ProjectPlaningButtonProps
+  extends React.HTMLAttributes<HTMLButtonElement> {}
+
+function ProjectPlaningButton({
+  className,
+  ...props
+}: ProjectPlaningButtonProps) {
   const [activeTab, setActiveTab] = useState(0);
   const [activeSubTab, setActiveSubTab] = useState(0);
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <button className="btn-3d h-fit">Integrated Project Planning</button>
+        <button className={cn("", className)} {...props} />
       </DialogTrigger>
       <DialogContent
         showCloseButton={false}
