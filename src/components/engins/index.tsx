@@ -38,14 +38,7 @@ function Engins({ attribute }: EnginsProps) {
               select: [utilisationTelemetry],
               where: {
                 serial,
-                // createdAt: dateRange && {
-                //   $gt: new Date(dateRange?.from as Date),
-                //   $lte: dateRange?.to && new Date(dateRange.to as Date),
-                // },
               },
-              // orderBy: {
-              //   createdAt: "desc",
-              // },
             },
           );
 
@@ -81,8 +74,8 @@ function Engins({ attribute }: EnginsProps) {
           return {
             label,
             icon,
-            value: Number(sum1),
-            value2: Number(sum2),
+            value: (Number(sum1) / res1?.results.length) * 100,
+            value2: (Number(sum2) / res2?.results.length) * 100,
           };
         }),
       );
