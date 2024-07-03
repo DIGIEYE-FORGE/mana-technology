@@ -123,7 +123,7 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-4">
         <h1 className="text-center text-lg font-semibold">
-          Production Journalière (t)
+          Production par fosse (t)
         </h1>
         <div className="flex-1">
           <BarChartWidget
