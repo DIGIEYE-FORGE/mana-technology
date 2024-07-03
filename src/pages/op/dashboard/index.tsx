@@ -16,6 +16,7 @@ export default function HomeDashboard() {
         </h1>
         <div className="flex-1">
           <BarLineWidget
+            yAxis="one"
             attributes={{
               telemetries: [
                 {
