@@ -27,6 +27,7 @@ export const widgetsData = {
           color: "#25A18E",
           label: "Quasi-accidents & observations",
           serial: "U9XQMQ1DXYT7LJIP",
+          value: 20000,
         },
         {
           name: "EST_REALISE_ROCHE_CUMUL_Ton",
