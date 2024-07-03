@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 
 const VentilationDashboard = () => {
   return (
-    <main className="debug grid h-full w-full grid-flow-dense auto-rows-[9rem] grid-cols-[repeat(16,minmax(0,1fr))] gap-4 [&>*]:p-4">
+    <main className="grid h-full w-full grid-flow-dense auto-rows-[9rem] grid-cols-[repeat(16,minmax(0,1fr))] gap-4 [&>*]:p-4">
       {data.map((item, index) => (
         <Card key={index} className={item.cardClassNames}>
           <h1 className="text-center text-lg font-semibold">{item.title}</h1>

@@ -2,6 +2,7 @@ import { useAppContext } from "@/Context";
 import { Progress } from "@/components/ui/progress";
 import useSWR from "swr";
 import Loader from "../loader";
+import { HistoryType } from "@/utils";
 interface EnginsProps {
   attribute: {
     label: string;
@@ -13,7 +14,7 @@ interface EnginsProps {
 }
 
 function Engins({ attribute }: EnginsProps) {
-  const { backendApi } = useAppContext();
+  const { backendApi, dateRange } = useAppContext();
 
   const { data, isLoading, error } = useSWR(
     `enginsTelemetry${JSON.stringify(attribute)}`,
@@ -27,45 +28,61 @@ function Engins({ attribute }: EnginsProps) {
             disponibilliteTelemetry,
             serial,
           } = engin;
-          const res1 = await backendApi.findMany<{
-            name: string;
-            value: number;
-          }>("lasttelemetry", {
-            where: {
-              name: utilisationTelemetry,
-              device: { serial },
+          const res1 = await backendApi.findMany<HistoryType>(
+            "/dpc-history/api/history",
+            {
+              pagination: {
+                page: 1,
+                perPage: 10_000,
+              },
+              select: [utilisationTelemetry],
+              where: {
+                serial,
+                // createdAt: dateRange && {
+                //   $gt: new Date(dateRange?.from as Date),
+                //   $lte: dateRange?.to && new Date(dateRange.to as Date),
+                // },
+              },
+              // orderBy: {
+              //   createdAt: "desc",
+              // },
             },
-            select: { name: true, value: true },
-            orderBy: {
-              createdAt: "desc",
+          );
+
+          const res2 = await backendApi.findMany<HistoryType>(
+            "/dpc-history/api/history",
+            {
+              pagination: {
+                page: 1,
+                perPage: 10_000,
+              },
+              select: [disponibilliteTelemetry],
+              where: {
+                serial,
+                // createdAt: dateRange && {
+                //   $gt: new Date(dateRange?.from as Date),
+                //   $lte: dateRange?.to && new Date(dateRange.to as Date),
+                // },
+              },
+              // orderBy: {
+              //   createdAt: "desc",
+              // },
             },
-            pagination: {
-              page: 1,
-              perPage: 1,
-            },
-          });
-          const res2 = await backendApi.findMany<{
-            name: string;
-            value: number;
-          }>("lasttelemetry", {
-            where: {
-              name: disponibilliteTelemetry,
-              device: { serial },
-            },
-            select: { name: true, value: true },
-            orderBy: {
-              createdAt: "desc",
-            },
-            pagination: {
-              page: 1,
-              perPage: 1,
-            },
-          });
+          );
+
+          const sum1 = (res1?.results || [])?.reduce(
+            (acc, item) => acc + Number(item?.[utilisationTelemetry]),
+            0,
+          );
+          const sum2 = (res2.results || [])?.reduce(
+            (acc, item) => acc + Number(item?.[disponibilliteTelemetry]),
+            0,
+          );
           return {
             label,
             icon,
-            value: res1?.results?.[0]?.value || 0,
-            value2: res2?.results?.[0]?.value || 0,
+            value: Number(sum1),
+            value2: Number(sum2),
           };
         }),
       );
@@ -126,20 +143,20 @@ function Engins({ attribute }: EnginsProps) {
               />
               <div className="absolute left-2 top-[10%]">
                 <span className="font-bold text-[#2B50C0]">
-                  {engin?.value || 0}%
+                  {Number(engin?.value || 0)?.toFixed(2) || 0}%
                 </span>
               </div>
             </div>
             <div className="relative h-[2rem] flex-1">
               <Progress
                 key={index}
-                value={engin?.value2 || 0}
+                value={Number(engin?.value2) || 0}
                 className="h-full w-full rounded-lg bg-[#2B50C0]/30"
                 color="#D2DDFF"
               />
               <div className="absolute left-2 top-[10%]">
                 <span className="font-bold text-[#2B50C0]">
-                  {engin.value2}%
+                  {Number(engin.value2 || 0)?.toFixed(2)}%
                 </span>
               </div>
             </div>
