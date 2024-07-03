@@ -88,7 +88,7 @@ export function OverviewButton({ className, ...props }: OverviewButtonProps) {
         <div
           className="relative mx-auto flex h-1 max-h-[920px] w-full max-w-[1920px] flex-1 flex-col gap-4"
           style={{
-            backgroundImage: "url(/public/dashboard-frame.png)",
+            backgroundImage: "url(/dashboard-frame.png)",
             backgroundRepeat: "no-repeat",
             backgroundSize: "100% 100%",
           }}
