@@ -61,7 +61,7 @@ const tabs = [
     ],
   },
   {
-    title: "cost report",
+    title: "cost ",
     subTabs: [
       {
         title: "cost report",

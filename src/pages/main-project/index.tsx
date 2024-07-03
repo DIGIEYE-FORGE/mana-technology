@@ -218,9 +218,10 @@ const data = [
     type: "information",
     title: "OPEN PIT",
     attribute: {
-      ["60 kV line"]: "72 Km",
-      ["22 kV line"]: "52 Km",
-      ["Electrical substation"]: "60/22 kV",
+      ["Mineral reserves"]: "7,6 Mt @0,85% Cu & 23 g/t Ag ",
+      ["Waste tonnage"]: "61.8 Mt ",
+      ["Rock production capacity "]: "69.5 Mt",
+      ["Life of mine "]: "4 years ",
     },
     background: "url(/vector.png)",
     position: {
@@ -245,7 +246,7 @@ const data = [
     },
   },
   {
-    title: "Pipe Line",
+    title: "Pipeline",
     type: "image",
     image: "/PIPELINE.png",
     position: {
