@@ -332,6 +332,7 @@ export default function MainProjectPage() {
     "Pipeline",
     "Process plant",
     "Underground Mine",
+    "OPEN PIT",
   ]);
   return (
     <main
