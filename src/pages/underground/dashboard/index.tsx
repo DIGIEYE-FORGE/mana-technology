@@ -240,6 +240,7 @@ export default function UndergroundDashboardPage() {
         <div className="w-full text-center text-xs text-gray-400"></div>
         <div className="flex-1">
           <BarLineWidget
+            ciel={false}
             dateRange={dateRange}
             attributes={{
               stacked: true,
@@ -286,6 +287,7 @@ export default function UndergroundDashboardPage() {
         <h1 className="text-center text-lg font-semibold">Arrachement (%)</h1>
         <div className="flex-1">
           <BarLineWidget
+            ciel={false}
             moyenne={["UG_METRES_PLANIFIE", "UG_METRES_REALISE_TOTAL"]}
             yAxis="one"
             attributes={{
