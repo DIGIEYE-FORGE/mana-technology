@@ -14,7 +14,7 @@ interface EnginsProps {
 }
 
 function Engins({ attribute }: EnginsProps) {
-  const { backendApi, dateRange } = useAppContext();
+  const { backendApi } = useAppContext();
 
   const { data, isLoading, error } = useSWR(
     `enginsTelemetry${JSON.stringify(attribute)}`,
@@ -124,7 +124,7 @@ function Engins({ attribute }: EnginsProps) {
               <img
                 src={engin.icon}
                 alt={engin?.label}
-                className="size-[3rem]"
+                className="size-[3rem] object-contain"
               />
             </div>
             <div className="relative h-[2rem] flex-1">

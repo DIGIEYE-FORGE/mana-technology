@@ -4,7 +4,6 @@ import { Card } from "@/components/card";
 // import { ConeChart } from "@/components/cone-chart";
 import { D3DonutChart } from "@/components/d3-donut chart";
 import Engins from "@/components/engins";
-import { GroupedHorizontalBarChart } from "@/components/grouped-horizontal-bar-chart";
 import LineChartWidget from "@/components/line-chart-widget";
 import LinesWidget from "@/components/lines-chart-widget";
 import { Button } from "@/components/ui/button";
@@ -348,8 +347,7 @@ export default function UndergroundDashboardPage() {
               },
               {
                 nameTelemetry: "UG_FORATION_TIRS_TIR_DELAI_GAZ_ET_LAVAGE-min",
-                nameLabelTelemetry:
-                  "Purge et Souflage",
+                nameLabelTelemetry: "Purge et Souflage",
                 bfsTelemetry:
                   "UG_TAUX_ARRACHEMENT_TEMPS_DE_PURGE_ET_SOUFLAGE_BFS",
                 bfsLabelTelemetry: "Purge et Souflage",
@@ -409,7 +407,7 @@ export default function UndergroundDashboardPage() {
             attribute={[
               {
                 label: "BOLTEC M10",
-                icon: "/truck.svg",
+                icon: "/m10.svg",
                 utilisationTelemetry: "BOLTEC_M10_TAUX_D'UTILISATION",
                 disponibilliteTelemetry: "BOLTEC_M10_PERC_DISPO",
                 serial: "Y1UMITGTHATVAUQI",
