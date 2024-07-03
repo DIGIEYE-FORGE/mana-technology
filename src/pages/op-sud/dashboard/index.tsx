@@ -11,62 +11,8 @@ export default function HomeDashboard() {
     <main className="grid w-full grid-flow-dense auto-rows-[80px] grid-cols-3 gap-3 md:grid-cols-6 lg:grid-cols-12 lg:gap-4 xl:grid-cols-[repeat(15,minmax(0,1fr))] 2xl:auto-rows-[92px]">
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
-          Évolution Production Cumulée (t)
+          Stérile / Minerai (t)
         </h1>
-        <div className="flex-1">
-          <LineChartWidget
-            attributes={{
-              telemetries: [
-                {
-                  area: false,
-                  name: "SUD_PLANIFIE_ROCHE_CUMUL",
-                  color: "#78F6EA",
-                  label: "Cumulatif Planifié",
-                  serial: "C6XPYU0D920L1M07",
-                },
-                {
-                  area: true,
-                  name: "SUD_REALISE_ROCHE_CUMUL",
-                  color: "#B98EFF",
-                  label: "Cumulatif Realisé",
-                  serial: "C6XPYU0D920L1M07",
-                },
-              ],
-            }}
-          />
-        </div>
-      </Card>
-      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
-        <h1 className="text-center text-lg font-semibold">
-          Production par fosse (t)
-        </h1>
-        <div className="flex-1">
-          <BarChartWidget
-            moyenne={["SUD2_REALISE_ROCHE", "SUD4_REALISE_ROCHE"]}
-            attributes={{
-              stacked: true,
-              telemetries: [
-                {
-                  name: "SUD2_REALISE_ROCHE",
-                  unit: "T",
-                  color: "#78F6EA",
-                  label: "Sud 2",
-                  serial: "C6XPYU0D920L1M07",
-                },
-                {
-                  name: "SUD4_REALISE_ROCHE",
-                  unit: "T",
-                  color: "#B98EFF",
-                  label: "Sud 4",
-                  serial: "C6XPYU0D920L1M07",
-                },
-              ],
-            }}
-          />
-        </div>
-      </Card>
-      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
-        <h1 className="text-center text-lg font-semibold">Stérile / Minerai (t)</h1>
         <div className="flex-1">
           <BarChartWidget
             // title="Daily Production BreakUp"
@@ -105,21 +51,34 @@ export default function HomeDashboard() {
           />
         </div>
       </Card>
-      <Card className="col-span-full row-span-3 flex flex-col p-4 lg:col-span-6 xl:col-span-4">
-        <h1 className="text-center text-base font-semibold 2xl:text-lg">
-          Évolution de la Production vs Planifié
+      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
+        <h1 className="text-center text-lg font-semibold">
+          Évolution Production Cumulée (t)
         </h1>
-        <ProgressAccumulation
-          attributes={{
-            serial: "C6XPYU0D920L1M07",
-            progressColor: "#FF5AF1",
-            currentTargetColor: "#727DC6",
-            progressTelemetryName: "SUD_REALISE_ROCHE_CUMUL",
-            accumulationTelemetryName: "SUD_PLANIFIE_ROCHE_CUMUL",
-          }}
-        />
+        <div className="flex-1">
+          <LineChartWidget
+            attributes={{
+              telemetries: [
+                {
+                  area: false,
+                  name: "SUD_PLANIFIE_ROCHE_CUMUL",
+                  color: "#78F6EA",
+                  label: "Cumulatif Planifié",
+                  serial: "C6XPYU0D920L1M07",
+                },
+                {
+                  area: true,
+                  name: "SUD_REALISE_ROCHE_CUMUL",
+                  color: "#B98EFF",
+                  label: "Cumulatif Realisé",
+                  serial: "C6XPYU0D920L1M07",
+                },
+              ],
+            }}
+          />
+        </div>
       </Card>
-      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-4">
+      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
           Production Journalière (t)
         </h1>
@@ -140,6 +99,50 @@ export default function HomeDashboard() {
                   unit: "T",
                   color: "#B98EFF",
                   label: "Realisé",
+                  serial: "C6XPYU0D920L1M07",
+                },
+              ],
+            }}
+          />
+        </div>
+      </Card>
+
+      <Card className="col-span-full row-span-3 flex flex-col p-4 lg:col-span-6 xl:col-span-4">
+        <h1 className="text-center text-base font-semibold 2xl:text-lg">
+          Évolution de la Production vs Planifié
+        </h1>
+        <ProgressAccumulation
+          attributes={{
+            serial: "C6XPYU0D920L1M07",
+            progressColor: "#FF5AF1",
+            currentTargetColor: "#727DC6",
+            progressTelemetryName: "SUD_REALISE_ROCHE_CUMUL",
+            accumulationTelemetryName: "SUD_PLANIFIE_ROCHE_CUMUL",
+          }}
+        />
+      </Card>
+      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-4">
+        <h1 className="text-center text-lg font-semibold">
+          Production par fosse (t)
+        </h1>
+        <div className="flex-1">
+          <BarChartWidget
+            moyenne={["SUD2_REALISE_ROCHE", "SUD4_REALISE_ROCHE"]}
+            attributes={{
+              stacked: true,
+              telemetries: [
+                {
+                  name: "SUD2_REALISE_ROCHE",
+                  unit: "T",
+                  color: "#78F6EA",
+                  label: "Sud 2",
+                  serial: "C6XPYU0D920L1M07",
+                },
+                {
+                  name: "SUD4_REALISE_ROCHE",
+                  unit: "T",
+                  color: "#B98EFF",
+                  label: "Sud 4",
                   serial: "C6XPYU0D920L1M07",
                 },
               ],

@@ -10,6 +10,47 @@ export default function HomeDashboard() {
     <div className="grid min-h-full w-full grid-flow-dense grid-cols-3 gap-6 md:grid-cols-6 xl:auto-rows-[17rem] xl:grid-cols-9 2xl:auto-rows-[19rem]">
       <Card className="col-span-3 flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
+          Stérile / Minerai (t)
+        </h1>
+        <div className="flex-1">
+          <BarChartWidget
+            attributes={{
+              telemetries: [
+                {
+                  name: "EST_PLANIFIE_MINERAI",
+                  unit: "T",
+                  color: "#FE22EB",
+                  label: "Minerai Planifié",
+                  serial: "U9XQMQ1DXYT7LJIP",
+                },
+                {
+                  name: "EST_PLANIFIE_STERILE",
+                  unit: "T",
+                  color: "#B98EFF",
+                  label: "Minerai Realisé",
+                  serial: "U9XQMQ1DXYT7LJIP",
+                },
+                {
+                  name: "EST_REALISE_MIENRAI",
+                  unit: "T",
+                  color: "#FEC33A",
+                  label: "Stérile Planifié",
+                  serial: "U9XQMQ1DXYT7LJIP",
+                },
+                {
+                  name: "EST_REALISE_STERILE",
+                  unit: "T",
+                  color: "#78F6EA",
+                  label: "Stérile Realisé",
+                  serial: "U9XQMQ1DXYT7LJIP",
+                },
+              ],
+            }}
+          />
+        </div>
+      </Card>
+      <Card className="col-span-3 flex flex-col p-4">
+        <h1 className="text-center text-lg font-semibold">
           Évolution Production Cumulée (t)
         </h1>
         <div className="flex-1">
@@ -56,47 +97,7 @@ export default function HomeDashboard() {
           />
         </div>
       </Card>
-      <Card className="col-span-3 flex flex-col p-4">
-        <h1 className="text-center text-lg font-semibold">
-          Stérile / Minerai (t)
-        </h1>
-        <div className="flex-1">
-          <BarChartWidget
-            attributes={{
-              telemetries: [
-                {
-                  name: "EST_PLANIFIE_MINERAI",
-                  unit: "T",
-                  color: "#FE22EB",
-                  label: "Minerai Planifié",
-                  serial: "U9XQMQ1DXYT7LJIP",
-                },
-                {
-                  name: "EST_PLANIFIE_STERILE",
-                  unit: "T",
-                  color: "#B98EFF",
-                  label: "Minerai Realisé",
-                  serial: "U9XQMQ1DXYT7LJIP",
-                },
-                {
-                  name: "EST_REALISE_MIENRAI",
-                  unit: "T",
-                  color: "#FEC33A",
-                  label: "Stérile Planifié",
-                  serial: "U9XQMQ1DXYT7LJIP",
-                },
-                {
-                  name: "EST_REALISE_STERILE",
-                  unit: "T",
-                  color: "#78F6EA",
-                  label: "Stérile Realisé",
-                  serial: "U9XQMQ1DXYT7LJIP",
-                },
-              ],
-            }}
-          />
-        </div>
-      </Card>
+
       <Card className="col-span-3 flex flex-col p-4 xl:col-span-3 2xl:col-span-2">
         <h1 className="text-center text-lg font-semibold">
           Évolution de la Production vs Planifié
