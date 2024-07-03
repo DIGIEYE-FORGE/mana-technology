@@ -25,7 +25,7 @@ export default function DevPage() {
 
     viewer.current = pannellum.viewer(id, {
       default: {
-        firstScene: "scene6",
+        firstScene: "scene1",
         autoLoad: true,
       },
       scenes: pannellumScenes,

@@ -63,6 +63,7 @@ const magazine = [
     right: "17%",
     type: "image",
     image: "/screen2.png",
+    click: "OPEN PIT",
   },
   {
     name: "PLANT",
@@ -212,7 +213,22 @@ const data = [
       left: "1%",
     },
   },
-
+  ///////// open pit
+  {
+    type: "information",
+    title: "OPEN PIT",
+    attribute: {
+      ["60 kV line"]: "72 Km",
+      ["22 kV line"]: "52 Km",
+      ["Electrical substation"]: "60/22 kV",
+    },
+    background: "url(/vector.png)",
+    position: {
+      top: "4%",
+      right: "3%",
+    },
+  },
+  //////////
   {
     type: "information",
     title: "Process plant",

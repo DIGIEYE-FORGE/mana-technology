@@ -146,39 +146,39 @@ export default function UndergroundDashboardPage() {
               {
                 telemetryName: "s=plc1_DB_Conso2_KWHTotale",
                 labelTelemetry: "Energie1",
-                serial: "GQKOD91C6LNG9UGM",
+                serial: "0TKJJWS26V62QV15",
                 randomValue: 104,
                 unit: "kWh",
               },
               {
                 telemetryName: "s=plc1_DB_Conso2_KWHTotale",
                 labelTelemetry: "Energie2",
-                serial: "GQKOD91C6LNG9UGM",
+                serial: "0TKJJWS26V62QV15",
                 randomValue: 106,
                 unit: "kWh",
               },
               {
                 telemetryName: "s=Ventil1_Q",
                 labelTelemetry: "Ventilateur N°1",
-                serial: "GQKOD91C6LNG9UGM",
+                serial: "0TKJJWS26V62QV15",
                 randomValue: 0,
               },
               {
                 telemetryName: "s=Ventil2_Q",
                 labelTelemetry: "Ventilateur N°2",
-                serial: "GQKOD91C6LNG9UGM",
+                serial: "0TKJJWS26V62QV15",
                 randomValue: 230,
               },
               {
                 telemetryName: "s=plc1_DB_Conso1_HcpTotalMarche",
                 labelTelemetry: "Marche1",
-                serial: "GQKOD91C6LNG9UGM",
+                serial: "0TKJJWS26V62QV15",
                 randomValue: 230,
               },
               {
                 telemetryName: "s=plc1_DB_Conso1_HcpTotalMarche",
                 labelTelemetry: "Marche2",
-                serial: "GQKOD91C6LNG9UGM",
+                serial: "0TKJJWS26V62QV15",
                 randomValue: 230,
               },
               {
@@ -186,7 +186,7 @@ export default function UndergroundDashboardPage() {
                 randomValue: 19.6,
                 unit: "%",
                 labelTelemetry: "Oxygène",
-                serial: "GQKOD91C6LNG9UGM",
+                serial: "0TKJJWS26V62QV15",
                 icon: "co2.svg",
               },
               {
@@ -194,7 +194,7 @@ export default function UndergroundDashboardPage() {
                 randomValue: 1,
                 unit: "ppm",
                 labelTelemetry: "co2",
-                serial: "GQKOD91C6LNG9UGM",
+                serial: "0TKJJWS26V62QV15",
                 icon: "co2.svg",
               },
               {
@@ -202,7 +202,7 @@ export default function UndergroundDashboardPage() {
                 randomValue: 0.5,
                 unit: "ppm",
                 labelTelemetry: "no2",
-                serial: "GQKOD91C6LNG9UGM",
+                serial: "0TKJJWS26V62QV15",
                 icon: "co2.svg",
               },
               {
@@ -210,7 +210,7 @@ export default function UndergroundDashboardPage() {
                 randomValue: 22.2,
                 unit: "°C",
                 labelTelemetry: "T. Sèche",
-                serial: "GQKOD91C6LNG9UGM",
+                serial: "0TKJJWS26V62QV15",
                 icon: "seche.svg",
               },
               {
@@ -218,7 +218,7 @@ export default function UndergroundDashboardPage() {
                 randomValue: 21.9,
                 unit: "°C",
                 labelTelemetry: "T. Humide",
-                serial: "GQKOD91C6LNG9UGM",
+                serial: "0TKJJWS26V62QV15",
                 icon: "vites.svg",
               },
             ]}
@@ -321,47 +321,46 @@ export default function UndergroundDashboardPage() {
               },
               {
                 nameTelemetry: "UG_FORATION_TIRS_TEMPS_DE_FORATION-min",
-                nameLabelTelemetry: "Temps de foration",
+                nameLabelTelemetry: "Foration",
                 bfsTelemetry: "UG_TAUX_ARRACHEMENT_TEMPS_DE_FORATION_BFS",
-                bfsLabelTelemetry: "T. foration",
+                bfsLabelTelemetry: "Foration",
                 color: "#F2A104",
                 serial: "Y1UMITGTHATVAUQI",
               },
               {
                 nameTelemetry:
                   "UG_FORATION_TIRS_TEMPS_DE_CHARGEMENT_EXPLOSIF-min",
-                nameLabelTelemetry: "Temps de chargement explosif",
+                nameLabelTelemetry: "Ch. explosif",
                 bfsTelemetry:
                   "UG_TAUX_ARRACHEMENT_TEMPS_DE_CHARGEMENT_EXPLOSIF_BFS",
-                bfsLabelTelemetry: "T. chargement explosif",
+                bfsLabelTelemetry: "Ch. explosif",
                 color: "#F25C05",
                 serial: "Y1UMITGTHATVAUQI",
               },
               {
                 nameTelemetry: "UG_FORATION_TIRS_PREPARATION-min",
-                nameLabelTelemetry: "Temps de déblayage",
-                bfsTelemetry: "UG_FORATION_TIRS_PREPARATION-min",
-                bfsLabelTelemetry: "T. déblayage",
+                nameLabelTelemetry: "Déblayage",
+                bfsTelemetry: "UG_TAUX_ARRACHEMENT_TEMPS_DE_FORATION_BFS",
+                bfsLabelTelemetry: "Déblayage",
                 color: "#F20574",
                 serial: "Y1UMITGTHATVAUQI",
               },
               {
                 nameTelemetry: "UG_FORATION_TIRS_TIR_DELAI_GAZ_ET_LAVAGE-min",
-                nameLabelTelemetry:
-                  "Temps retour après le tir et le lavage du front",
+                nameLabelTelemetry: "Purge et Souflage",
                 bfsTelemetry:
                   "UG_TAUX_ARRACHEMENT_TEMPS_DE_PURGE_ET_SOUFLAGE_BFS",
-                bfsLabelTelemetry: "T. Purge et Souflage",
+                bfsLabelTelemetry: "Purge et Souflage",
                 color: "#05F2C7",
                 serial: "Y1UMITGTHATVAUQI",
               },
               {
                 nameTelemetry:
                   "UG_SOUTENEMENT_TEMPS_DE_MISE_EN_PLACE_SOUTENEMENT-min",
-                nameLabelTelemetry: "Temps de mise en place Souténement",
+                nameLabelTelemetry: "Souténement",
                 bfsTelemetry:
                   "UG_TAUX_ARRACHEMENT_TEMPS_DE_MISE_EN_PLACE_SOUTENEMENT_BFS",
-                bfsLabelTelemetry: "T. Mise en place Souténement",
+                bfsLabelTelemetry: "Souténement",
                 color: "#009AB6",
                 serial: "Y1UMITGTHATVAUQI",
               },
@@ -399,7 +398,7 @@ export default function UndergroundDashboardPage() {
           />
         </div>
       </Card>
-      <Card className="flex flex-col gap-2 px-6 pt-4">
+      <Card className="col-span-full flex flex-col gap-2 px-6 pt-4">
         <h3 className="text-center text-lg font-semibold">
           Disponibilité et utilisation des Engins
         </h3>
