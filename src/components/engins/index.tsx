@@ -10,6 +10,7 @@ interface EnginsProps {
     utilisationTelemetry: string;
     disponibilliteTelemetry: string;
     serial: string;
+    icon2?: string;
   }[];
 }
 
@@ -117,7 +118,7 @@ function Engins({ attribute }: EnginsProps) {
       <div className="flex min-h-[14rem] flex-col overflow-auto">
         {(data || [])?.map((engin, index) => (
           <div key={index} className="flex flex-1 flex-wrap items-center gap-4">
-            <div className="flex w-[25%] min-w-[3rem] items-center gap-2">
+            <div className="item flex w-[30%] items-center justify-between gap-2">
               <span className="text-sm font-bold text-white">
                 {engin.label}
               </span>

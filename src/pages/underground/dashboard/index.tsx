@@ -407,14 +407,14 @@ export default function UndergroundDashboardPage() {
             attribute={[
               {
                 label: "BOLTEC M10",
-                icon: "/m10.svg",
+                icon: "/m10.png",
                 utilisationTelemetry: "BOLTEC_M10_TAUX_D'UTILISATION",
                 disponibilliteTelemetry: "BOLTEC_M10_PERC_DISPO",
                 serial: "Y1UMITGTHATVAUQI",
               },
               {
                 label: "CHARGEUR D'EXPLOSIF TITAN BAC2X350",
-                icon: "/truck.svg",
+                icon: "/titan.png",
                 utilisationTelemetry:
                   "CHARGEUR_D'EXPLOSIF_TITAN_BAC2X350_TAUX_D'UTILISATION",
                 disponibilliteTelemetry:
@@ -423,7 +423,7 @@ export default function UndergroundDashboardPage() {
               },
               {
                 label: "CHARGEUSE CAT R1700 14T N°1",
-                icon: "/truck.svg",
+                icon: "/chargeuse.png",
                 utilisationTelemetry:
                   "CHARGEUSE_CAT_R1700_14T_N1_TAUX_D'UTILISATION",
                 disponibilliteTelemetry:
@@ -432,7 +432,7 @@ export default function UndergroundDashboardPage() {
               },
               {
                 label: "CHARGEUSE CAT R1700 14T N°2",
-                icon: "/truck.svg",
+                icon: "/chargeuse.png",
                 utilisationTelemetry:
                   "CHARGEUSE_CAT_R1700_14T_N2_TAUX_D'UTILISATION",
                 disponibilliteTelemetry:
