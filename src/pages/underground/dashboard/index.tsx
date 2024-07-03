@@ -4,7 +4,6 @@ import { Card } from "@/components/card";
 // import { ConeChart } from "@/components/cone-chart";
 import { D3DonutChart } from "@/components/d3-donut chart";
 import Engins from "@/components/engins";
-import { GroupedHorizontalBarChart } from "@/components/grouped-horizontal-bar-chart";
 import LineChartWidget from "@/components/line-chart-widget";
 import LinesWidget from "@/components/lines-chart-widget";
 import { Button } from "@/components/ui/button";
@@ -73,7 +72,7 @@ export default function UndergroundDashboardPage() {
       </Card>
       <Card className="flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
-           Avancement Cumulé monsuel (m):
+          Avancement Cumulé monsuel (m):
           <span className="text-md text-gray-400"> Réalisé vs Planifié</span>
         </h1>
         <div className="w-full text-center text-xs text-gray-400"></div>
@@ -235,7 +234,7 @@ export default function UndergroundDashboardPage() {
 
       <Card className="flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
-          Nombre de Tir {" "}
+          Nombre de Tir{" "}
           <span className="text-gray-500">(planifié vs réalisé)</span>
         </h1>
         <div className="w-full text-center text-xs text-gray-400"></div>
@@ -284,11 +283,9 @@ export default function UndergroundDashboardPage() {
         </div>
       </Card>
       <Card className="flex flex-col gap-4 p-4">
-        <h1 className="text-center text-lg font-semibold">
-          Arrachement (%)
-        </h1>
+        <h1 className="text-center text-lg font-semibold">Arrachement (%)</h1>
         <div className="flex-1">
-        <BarLineWidget
+          <BarLineWidget
             moyenne={["UG_METRES_PLANIFIE", "UG_METRES_REALISE_TOTAL"]}
             yAxis="one"
             attributes={{
@@ -302,7 +299,6 @@ export default function UndergroundDashboardPage() {
                   serial: "Y1UMITGTHATVAUQI",
                   type: "bar",
                 },
-
               ],
             }}
           />
