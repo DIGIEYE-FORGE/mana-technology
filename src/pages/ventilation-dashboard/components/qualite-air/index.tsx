@@ -16,6 +16,7 @@ export const QualitAir = ({ title, attributes }: QualitAirProps) => {
   return (
     <div className="flex flex-col items-center justify-center">
       <h5 className="text-sm font-semibold">{title}</h5>
+
       <CircularProgressChart
         interval={5000}
         telemetry={{ name, serial }}

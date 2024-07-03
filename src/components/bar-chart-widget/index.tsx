@@ -185,7 +185,6 @@ export default function BarChartWidget(props: Props) {
           labels: {
             show: true,
             formatter: function (value) {
-              // return value.toFixed(2);
               return Math.ceil(value) + " ";
             },
             style: {

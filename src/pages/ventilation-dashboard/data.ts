@@ -249,7 +249,7 @@ export const qualitédair = {
         attributes: {
           telemetries: [
             {
-              name: "s=Plc2_O2",
+              name: "s=Plc2_O²",
               label: "Disponibilité",
               serial: "0TKJJWS26V62QV15",
               color: "#cda943",
@@ -277,7 +277,7 @@ export const qualitédair = {
         attributes: {
           telemetries: [
             {
-              name: "s=Plc2_No2",
+              name: "s=Plc2_NO²",
               label: "Disponibilité",
               serial: "0TKJJWS26V62QV15",
               color: "#cda943",
@@ -329,7 +329,7 @@ export const qualitédair = {
         attributes: {
           telemetries: [
             {
-              name: "s=Plc3_O2",
+              name: "s=Plc3_O²",
               label: "Disponibilité",
               serial: "0TKJJWS26V62QV15",
               color: "#cda943",
@@ -357,7 +357,7 @@ export const qualitédair = {
         attributes: {
           telemetries: [
             {
-              name: "s=Plc3_No2",
+              name: "s=Plc3_NO²",
               label: "Disponibilité",
               serial: "0TKJJWS26V62QV15",
               color: "#cda943",

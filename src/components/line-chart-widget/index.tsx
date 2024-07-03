@@ -189,7 +189,9 @@ export default function LineChartWidget({
           labels: {
             show: true,
             formatter: function (value) {
-              return value < 2 ? value.toFixed(1) : Math.ceil(value).toString() + (telemetries[0].unit || "") ;
+              return value < 2
+                ? value.toFixed(1)
+                : Math.ceil(value).toString() + (telemetries[0].unit || "");
             },
             style: {
               fontSize: "12px",

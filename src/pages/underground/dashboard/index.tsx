@@ -418,28 +418,22 @@ export default function UndergroundDashboardPage() {
               {
                 label: "CHARGEUR D'EXPLOSIF TITAN BAC2X350",
                 icon: "/titan.png",
-                utilisationTelemetry:
-                  "UG_CHARG_EXP_TITAN_BAC2X350_TU",
-                disponibilliteTelemetry:
-                  "UG_CHARG_EXP_TITAN_BAC2X350_TD",
+                utilisationTelemetry: "UG_CHARG_EXP_TITAN_BAC2X350_TU",
+                disponibilliteTelemetry: "UG_CHARG_EXP_TITAN_BAC2X350_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
                 label: "CHARGEUSE CAT R1700 14T N°1",
                 icon: "/chargeuse.png",
-                utilisationTelemetry:
-                  "UG_CHARG_CAT_R1700_14T_1_TU",
-                disponibilliteTelemetry:
-                  "UG_CHARG_CAT_R1700_14T_1_TD",
+                utilisationTelemetry: "UG_CHARG_CAT_R1700_14T_1_TU",
+                disponibilliteTelemetry: "UG_CHARG_CAT_R1700_14T_1_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
                 label: "CHARGEUSE CAT R1700 14T N°2",
                 icon: "/chargeuse.png",
-                utilisationTelemetry:
-                  "UG_CHARG_CAT_R1700_14T_2_TU",
-                disponibilliteTelemetry:
-                  "UG_CHARG_CAT_R1700_14T_2_TD",
+                utilisationTelemetry: "UG_CHARG_CAT_R1700_14T_2_TU",
+                disponibilliteTelemetry: "UG_CHARG_CAT_R1700_14T_2_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
@@ -452,28 +446,22 @@ export default function UndergroundDashboardPage() {
               {
                 label: "CHARGEUSE CAT R1700 14T N°2",
                 icon: "/truck.svg",
-                utilisationTelemetry:
-                  "UG_COMP_ATLAS_COP_1_TU",
-                disponibilliteTelemetry:
-                  "UG_COMP_ATLAS_COP_1_TD",
+                utilisationTelemetry: "UG_COMP_ATLAS_COP_1_TU",
+                disponibilliteTelemetry: "UG_COMP_ATLAS_COP_1_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
                 label: "COMPRESSEUR ATLAS COPCO XAVS600 PACE SQE N°1",
                 icon: "/truck.svg",
-                utilisationTelemetry:
-                  "UG_COMP_ATLAS_COP_2_TU",
-                disponibilliteTelemetry:
-                  "UG_COMP_ATLAS_COP_2_TD",
+                utilisationTelemetry: "UG_COMP_ATLAS_COP_2_TU",
+                disponibilliteTelemetry: "UG_COMP_ATLAS_COP_2_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
                 label: "COMPRESSEUR ATLAS COPCO XAVS600 PACE SQE N°2",
                 icon: "/truck.svg",
-                utilisationTelemetry:
-                  "UG_DUMP_CAT_1_TU",
-                disponibilliteTelemetry:
-                  "UG_DUMP_CAT_1_TD",
+                utilisationTelemetry: "UG_DUMP_CAT_1_TU",
+                disponibilliteTelemetry: "UG_DUMP_CAT_1_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
@@ -493,46 +481,37 @@ export default function UndergroundDashboardPage() {
               {
                 label: "GROUPE ELECTROGENE DEUTZ DPS 450 N°1",
                 icon: "/truck.svg",
-                utilisationTelemetry:
-                  "UG_ELEC_2_TU",
-                disponibilliteTelemetry:
-                  "UG_ELEC_2_TD",
+                utilisationTelemetry: "UG_ELEC_2_TU",
+                disponibilliteTelemetry: "UG_ELEC_2_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
 
               {
                 label: "GROUPE ELECTROGENE DEUTZ DPS 450 N°3",
                 icon: "/truck.svg",
-                utilisationTelemetry:
-                  "UG_ELEC_3_TU",
-                disponibilliteTelemetry:
-                  "UG_ELEC_3_TD",
+                utilisationTelemetry: "UG_ELEC_3_TU",
+                disponibilliteTelemetry: "UG_ELEC_3_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
                 label: "MECANISE TIZERT JUMBO EPIROC T1D N°1",
                 icon: "/truck.svg",
-                utilisationTelemetry:
-                  "UG_MEC_JUM_1_TU",
-                disponibilliteTelemetry:
-                  "UG_MEC_JUM_1_TD",
+                utilisationTelemetry: "UG_MEC_JUM_1_TU",
+                disponibilliteTelemetry: "UG_MEC_JUM_1_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
                 label: "MECANISE TIZERT JUMBO M20",
                 icon: "/truck.svg",
-                utilisationTelemetry:
-                  "UG_MEC_JUM_M20_TU",
+                utilisationTelemetry: "UG_MEC_JUM_M20_TU",
                 disponibilliteTelemetry: "UG_MEC_JUM_M20_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
                 label: "PLATEFORME A TABLE ELEVATRICE TITAN BMP2X3				",
                 icon: "/truck.svg",
-                utilisationTelemetry:
-                  "UG_PLAT_TU",
-                disponibilliteTelemetry:
-                  "UG_PLAT_TD",
+                utilisationTelemetry: "UG_PLAT_TU",
+                disponibilliteTelemetry: "UG_PLAT_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
