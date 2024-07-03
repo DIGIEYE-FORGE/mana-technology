@@ -26,7 +26,8 @@ export default function BarChartWidget(props: Props) {
     async () => {
       if (!dateRange?.from || telemetries.length === 0) return [];
       const res = await Promise.all(
-        telemetries.map(async ({ serial, name }) => {
+        telemetries.map(async ({ serial, name }, idx) => {
+          if (telemetries[idx].data) return [];
           const { results } = await backendApi.findMany<HistoryType>(
             "/dpc-history/api/history",
             {
@@ -51,10 +52,14 @@ export default function BarChartWidget(props: Props) {
         name: telemetries[index].label || telemetries[index].name,
         type: "bar",
         nameTelemetry: telemetries[index].name,
-        data: item.map((item) => ({
-          x: new Date(item.createdAt),
-          y: Number(Number(flatten(item)[telemetries[index].name]).toFixed(2)),
-        })),
+        data:
+          telemetries[index].data ||
+          item.map((item) => ({
+            x: new Date(item.createdAt),
+            y: Number(
+              Number(flatten(item)[telemetries[index].name]).toFixed(2),
+            ),
+          })),
       }));
       if (props.moyenne) {
         const res2 = [];

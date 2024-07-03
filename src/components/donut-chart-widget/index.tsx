@@ -12,6 +12,7 @@ export default function DonutChartWidget(props: Props) {
   const telemetries = (props.attributes?.telemetries || []) as ChartTelemetry[];
 
   const getTelemetry = async (telemetry: ChartTelemetry) => {
+    if (telemetry.value) return telemetry.value;
     const { serial, name } = telemetry;
     const newName = name.split(".")[0];
     const results = await backendApi.findMany<LastTelemetry>("lastTelemetry", {
@@ -74,7 +75,7 @@ export default function DonutChartWidget(props: Props) {
           position: "right",
           formatter: function (name, opts) {
             const value = opts.w.globals.series[opts.seriesIndex] as number;
-            return name + " " + value.toFixed(0) + "%";
+            return name + " " + value.toFixed(0);
           },
         },
         colors: telemetries.map((t) => t.color || "#000"),

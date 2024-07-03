@@ -24,8 +24,7 @@ export default function LineChartWidget({
 }: Props) {
   const { backendApi, dateRange } = useAppContext();
 
-  const telemetries = (props.attributes?.telemetries ||
-    []) as unknown as ChartTelemetry[];
+  const telemetries = (props.attributes?.telemetries || []) as ChartTelemetry[];
 
   const { data, isLoading, error } = useSWR(
     `histories?${

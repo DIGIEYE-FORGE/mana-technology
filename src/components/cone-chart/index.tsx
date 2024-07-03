@@ -63,6 +63,7 @@ interface ConChartProps
     label: string;
     serial: string;
     color: string;
+    value?: number;
   }[];
   coneClassName?: string;
   progressClassName?: string;
@@ -84,7 +85,8 @@ export function ConeChart({
     if (!attributes?.length) return [];
     return await Promise.all(
       attributes.map(async (device) => {
-        const { name, label, color, serial } = device;
+        const { name, label, color, serial, value } = device;
+        if (value) return { name: label, color, value };
         const res = await backendApi.findMany<{
           name: string;
           value: number;

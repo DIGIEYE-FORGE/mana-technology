@@ -51,8 +51,6 @@ export default function HomeDashboard() {
                   serial: "0AS9Y1JCHRS26P9D",
                   type: "line",
                 },
-              
-
               ],
             }}
           />
