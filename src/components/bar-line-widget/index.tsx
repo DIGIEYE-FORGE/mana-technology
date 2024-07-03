@@ -12,7 +12,7 @@ import Chart from "react-apexcharts";
 import Loader from "@/components/loader";
 type Props = Widget;
 
-export default function BarLineWidget(props: Props) {
+export default function BarLineWidget({ ciel = true, ...props }: Props) {
   const { backendApi } = useAppContext();
 
   const telemetries = (props.attributes?.telemetries ||
@@ -172,7 +172,12 @@ export default function BarLineWidget(props: Props) {
                 },
                 labels: {
                   formatter: function (value) {
-                    return Math.ceil(value) + " ";
+                    return ciel
+                      ? Math.ceil(value) + " "
+                      : typeof value === "number" &&
+                          value.toString().includes(".")
+                        ? value.toFixed(2) + " "
+                        : value + " ";
                   },
                 },
               }
@@ -193,7 +198,12 @@ export default function BarLineWidget(props: Props) {
 
                   labels: {
                     formatter: function (value) {
-                      return Math.ceil(value) + " ";
+                      return ciel
+                        ? Math.ceil(value) + " "
+                        : typeof value === "number" &&
+                            value.toString().includes(".")
+                          ? value.toFixed(2) + " "
+                          : value + " ";
                     },
                   },
                 },
@@ -212,7 +222,12 @@ export default function BarLineWidget(props: Props) {
                   },
                   labels: {
                     formatter: function (value) {
-                      return Math.ceil(value) + " ";
+                      return ciel
+                        ? Math.ceil(value) + " "
+                        : typeof value === "number" &&
+                            value.toString().includes(".")
+                          ? value.toFixed(2) + " "
+                          : value + " ";
                     },
                   },
                   title: {

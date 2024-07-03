@@ -240,6 +240,7 @@ export default function UndergroundDashboardPage() {
         <div className="w-full text-center text-xs text-gray-400"></div>
         <div className="flex-1">
           <BarLineWidget
+            ciel={false}
             dateRange={dateRange}
             attributes={{
               stacked: true,
@@ -286,6 +287,7 @@ export default function UndergroundDashboardPage() {
         <h1 className="text-center text-lg font-semibold">Arrachement (%)</h1>
         <div className="flex-1">
           <BarLineWidget
+            ciel={false}
             moyenne={["UG_METRES_PLANIFIE", "UG_METRES_REALISE_TOTAL"]}
             yAxis="one"
             attributes={{
@@ -407,14 +409,14 @@ export default function UndergroundDashboardPage() {
             attribute={[
               {
                 label: "BOLTEC M10",
-                icon: "/truck.svg",
+                icon: "/m10.png",
                 utilisationTelemetry: "BOLTEC_M10_TAUX_D'UTILISATION",
                 disponibilliteTelemetry: "BOLTEC_M10_PERC_DISPO",
                 serial: "Y1UMITGTHATVAUQI",
               },
               {
                 label: "CHARGEUR D'EXPLOSIF TITAN BAC2X350",
-                icon: "/truck.svg",
+                icon: "/titan.png",
                 utilisationTelemetry:
                   "CHARGEUR_D'EXPLOSIF_TITAN_BAC2X350_TAUX_D'UTILISATION",
                 disponibilliteTelemetry:
@@ -423,7 +425,7 @@ export default function UndergroundDashboardPage() {
               },
               {
                 label: "CHARGEUSE CAT R1700 14T N°1",
-                icon: "/truck.svg",
+                icon: "/chargeuse.png",
                 utilisationTelemetry:
                   "CHARGEUSE_CAT_R1700_14T_N1_TAUX_D'UTILISATION",
                 disponibilliteTelemetry:
@@ -432,7 +434,7 @@ export default function UndergroundDashboardPage() {
               },
               {
                 label: "CHARGEUSE CAT R1700 14T N°2",
-                icon: "/truck.svg",
+                icon: "/chargeuse.png",
                 utilisationTelemetry:
                   "CHARGEUSE_CAT_R1700_14T_N2_TAUX_D'UTILISATION",
                 disponibilliteTelemetry:

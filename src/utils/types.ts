@@ -78,6 +78,7 @@ export type Widget = {
   moyenne?: "combined" | string[];
   yAxis?: "one" | "multiple";
   stacked?: boolean;
+  ciel?: boolean;
 };
 
 export type ChartTelemetry = {
