@@ -226,7 +226,7 @@ const data = [
     background: "url(/vector.png)",
     position: {
       top: "45%",
-      right: "0%",
+      right: "1%",
     },
   },
   //////////
