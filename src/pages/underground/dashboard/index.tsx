@@ -407,7 +407,7 @@ export default function UndergroundDashboardPage() {
             attribute={[
               {
                 label: "BOLTEC M10",
-                icon: "/truck.svg",
+                icon: "/m10.svg",
                 utilisationTelemetry: "BOLTEC_M10_TAUX_D'UTILISATION",
                 disponibilliteTelemetry: "BOLTEC_M10_PERC_DISPO",
                 serial: "Y1UMITGTHATVAUQI",

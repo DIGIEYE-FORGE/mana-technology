@@ -124,7 +124,7 @@ function Engins({ attribute }: EnginsProps) {
               <img
                 src={engin.icon}
                 alt={engin?.label}
-                className="size-[3rem]"
+                className="size-[3rem] object-contain"
               />
             </div>
             <div className="relative h-[2rem] flex-1">
