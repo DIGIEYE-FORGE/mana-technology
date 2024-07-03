@@ -81,6 +81,8 @@ export type Widget = {
   stacked?: boolean;
   ciel?: boolean;
   correction?: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  fakeData?: any;
 };
 
 export type ChartTelemetry = {
