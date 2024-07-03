@@ -58,7 +58,9 @@ function DashboardPage3() {
         </div>
       </Card>
       <Card className="col-span-3 flex flex-col p-4">
-        <h1 className="text-center text-lg font-semibold">Stérile / Minerai (t)</h1>
+        <h1 className="text-center text-lg font-semibold">
+          Stérile / Minerai (t)
+        </h1>
         <div className="flex-1">
           <BarChartWidget
             // title="Daily Production BreakUp"
@@ -171,7 +173,7 @@ function DashboardPage3() {
       </Card>
       <Card className="col-span-3 flex items-center justify-center text-3xl font-bold xl:row-span-2 2xl:col-span-3">
         <img
-          src="/picture1.png"
+          src="/sud2.png"
           alt="machine"
           className="h-full w-full object-contain"
         />

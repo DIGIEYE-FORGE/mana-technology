@@ -57,7 +57,9 @@ export default function HomeDashboard() {
         </div>
       </Card>
       <Card className="col-span-3 flex flex-col p-4">
-        <h1 className="text-center text-lg font-semibold">Stérile / Minerai (t)</h1>
+        <h1 className="text-center text-lg font-semibold">
+          Stérile / Minerai (t)
+        </h1>
         <div className="flex-1">
           <BarChartWidget
             attributes={{
@@ -167,7 +169,11 @@ export default function HomeDashboard() {
         </div>
       </Card>
       <Card className="col-span-3 flex items-center justify-center overflow-hidden text-3xl font-bold xl:row-span-2">
-        <img src="/est.png" alt="Logo" className="h-full w-full object-cover" />
+        <img
+          src="/est11.jpeg"
+          alt="Logo"
+          className="h-full w-full object-cover"
+        />
       </Card>
       <Card className="col-span-full flex flex-col p-4 xl:col-span-6">
         <h3 className="text-center text-lg font-semibold">Suivi des Tirs</h3>
