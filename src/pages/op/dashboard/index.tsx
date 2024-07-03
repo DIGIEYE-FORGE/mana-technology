@@ -6,7 +6,6 @@ import BarChartWidget from "@/components/bar-chart-widget";
 import MultiProgressWidget from "@/components/multi-progress-widget";
 import ProgressMultiple from "@/components/progress-multiple";
 import BarLineWidget from "@/components/bar-line-widget";
-import { addDays } from "date-fns";
 
 export default function HomeDashboard() {
   return (
