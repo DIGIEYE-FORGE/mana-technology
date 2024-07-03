@@ -120,14 +120,14 @@ const data = [
     background: "url(/screen2.svg)",
   },
   {
-    title: "Underground Mine",
-    type: "video",
-    image: "/screen1.png",
+    title: "Plant",
+    type: "image",
+    image: "/usins1.png",
     position: {
       bottom: "27%",
       left: "48%",
     },
-    url: "Underground.mp4",
+    url: "usins1.png",
     background: "url(/video.svg)",
     positionModel: {
       side: "top",
