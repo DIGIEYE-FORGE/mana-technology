@@ -28,6 +28,12 @@ function UndergroundBar() {
           />
         </Button>
       </Link>
+      <div className="flex gap-4">
+        <img src="/logo.svg" alt="logo" />
+        <span className="h-3/4 border-l py-3 pl-4 text-2xl">
+          Performance Underground
+        </span>
+      </div>
       <DatePickerWithRange
         className="hidden lg:block"
         date={dateRange}

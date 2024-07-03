@@ -99,7 +99,12 @@ function HomeUpBar() {
   return (
     <div className="group sticky left-6 top-0 z-10 flex h-up-bar w-[calc(10)] shrink-0 items-center gap-4 rounded-[0_0_0_24px] border-b border-l px-6 backdrop-blur">
       <Link to="/">
-        <Logo className="h-7 w-40" />
+        <div className="flex gap-4">
+          <img src="/logo.svg" alt="logo" />
+          <span className="h-3/4 border-l py-3 pl-4 text-2xl">
+            Performance Open-Pit
+          </span>
+        </div>
       </Link>
       <DatePickerWithRange
         className="hidden lg:block"
