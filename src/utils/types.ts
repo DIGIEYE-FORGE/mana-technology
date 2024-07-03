@@ -89,8 +89,8 @@ export type ChartTelemetry = {
   unit?: string;
   color?: string;
   area?: boolean;
+  data?: { x: Date; y: number }[];
 };
-
 
 export type ChartsWidgetData = {
   serial: string;
@@ -101,7 +101,7 @@ export type ChartsWidgetData = {
   area?: boolean;
   type: "line" | "bar";
   yAxis?: "one" | "multiple";
-}
+};
 
 export type LastTelemetry = {
   id: string;
@@ -111,7 +111,9 @@ export type LastTelemetry = {
   createdAt: Date;
 };
 
-export type TDateRange = {
-  from: Date;
-  to?: Date;
-}  | undefined;
+export type TDateRange =
+  | {
+      from: Date;
+      to?: Date;
+    }
+  | undefined;
