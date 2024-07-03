@@ -14,15 +14,14 @@ export function MainProjectUpBar() {
           <MoveLeftIcon className="size-6" />
         </Button>
       </Link>
-      <img src="/logo.svg" className="absolute left-24" alt="logo" />
-      <div className="relative flex items-center gap-2 font-medium">
-        <span className="h-full py-3 text-2xl">Tizert Mine</span>
-
-        <OverviewButton className="absolute right-1/2 top-full flex translate-x-1/2 translate-y-2 items-center gap-2 whitespace-nowrap border text-lg font-semibold">
-          <FilePieChart size={20} />
-          Project Overview
-        </OverviewButton>
+      <div className="absolute left-24 flex gap-4">
+        <img src="/logo.svg" alt="logo" />
+        <span className="h-3/4 border-l py-3 pl-4 text-2xl">Tizert Mine</span>
       </div>
+      <OverviewButton className="absolute right-1/2 top-full flex translate-x-1/2 translate-y-2 items-center gap-2 whitespace-nowrap border text-lg font-semibold">
+        <FilePieChart size={20} />
+        Project Overview
+      </OverviewButton>
       <Link
         to="/underground"
         className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
