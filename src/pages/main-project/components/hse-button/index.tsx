@@ -9,7 +9,7 @@ import { ConeChart } from "@/components/cone-chart";
 export default function HseButton() {
   return (
     <div
-      className="mx-auto grid h-full w-full max-w-[1920px] auto-rows-[8rem] grid-cols-12 gap-4 overflow-auto p-4"
+      className="mx-auto grid h-full w-full max-w-[1920px] auto-rows-[6rem] grid-cols-12 gap-4 overflow-auto"
       style={{
         backgroundRepeat: "no-repeat",
         backgroundSize: "100% 100%",
