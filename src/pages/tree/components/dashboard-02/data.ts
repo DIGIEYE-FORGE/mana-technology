@@ -13,13 +13,13 @@ export const widgetsData = {
       name: "Jumbo M20",
       telemetries: [
         {
-          name: "MECANISE_TIZERT_JUMBO_M20_PERC_DISPO",
+          name: "UG_MEC_JUM_M20_TD",
           label: "Disponibilité",
           serial: "DABF7PAT2G4BAG21",
           color: "#cda943",
         },
         {
-          name: "MECANISE_TIZERT_JUMBO_M20_TAUX_D'UTILISATION",
+          name: "UG_MEC_JUM_M20_TU",
           label: "Utilisation",
           serial: "DABF7PAT2G4BAG21",
           color: "#18a5c1",
@@ -48,7 +48,7 @@ export const widgetsData = {
       telemetries: [
         {
           area: false,
-          name: "MECANISE_TIZERT_JUMBO_M20_PERC_DISPO",
+          name: "UG_MEC_JUM_M20_TD",
           color: "#cda943",
           label: "Objectif ML/J",
           serial: "DABF7PAT2G4BAG21",
@@ -62,7 +62,7 @@ export const widgetsData = {
       telemetries: [
         {
           area: false,
-          name: "MECANISE_TIZERT_JUMBO_M20_TAUX_D'UTILISATION",
+          name: "UG_MEC_JUM_M20_TU",
           color: "#18a5c1",
           label: "Objectif ML/J",
           serial: "DABF7PAT2G4BAG21",
@@ -77,8 +77,16 @@ export const widgetsData = {
         {
           name: "UG_FORATION_TIRS_TEMPS_DE_FORATION-min",
           color: "#18a5c1",
-          label: "Utilisation",
+          label: "Temps de foration",
           serial: "DABF7PAT2G4BAG21",
+          type: "bar"
+        },
+        {
+          name: "UG_TAUX_ARRACHEMENT_TEMPS_DE_FORATION_BFS",
+          color: "#cda943",
+          label: "BFS",
+          serial: "DABF7PAT2G4BAG21",
+          type: "line"
         },
       ],
     },

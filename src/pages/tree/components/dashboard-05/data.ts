@@ -4,7 +4,7 @@ export const widgetsData = {
     attributes: {
       telemetries: [
         {
-          name: "UG_METRES_PLANIFIE",
+          name: "UG_SOUTENEMENT_SPLET_SET_1.8m-unite_par_tir",
           color: "#25A18E",
           label: "Est 11",
           serial: "DABF7PAT2G4BAG21",
@@ -19,26 +19,26 @@ export const widgetsData = {
       name: "boltec m10",
       telemetries: [
         {
-          name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+          name: "UG_BOLTEC_M10_TD",
           label: "Disponibilité",
-          serial: "U9XQMQ1DXYT7LJIP",
+          serial: "DABF7PAT2G4BAG21",
           color: "#cda943",
         },
         {
-          name: "GMC_FOREUSE_EPRIROC_T45_02_DISPO",
+          name: "UG_BOLTEC_M10_TU",
           label: "Utilisation",
-          serial: "U9XQMQ1DXYT7LJIP",
+          serial: "DABF7PAT2G4BAG21",
           color: "#18a5c1",
         },
       ],
     },
   },
   2: {
-    title: "Consommation Grillage",
+    title: "Consommation Grillage (m2)",
     attributes: {
       telemetries: [
         {
-          name: "UG_METRES_PLANIFIE",
+          name: "UG_SOUTENEMENT_GRILLAGE-m_carre",
           color: "#FF5AF1",
           label: "AD45",
           serial: "DABF7PAT2G4BAG21",
@@ -51,7 +51,7 @@ export const widgetsData = {
     attributes: {
       telemetries: [
         {
-          name: "UG_METRES_PLANIFIE",
+          name: "UG_BOLTEC_M10_TD",
           color: "#FFDC8C",
           label: "Prévus",
           serial: "DABF7PAT2G4BAG21",
@@ -64,7 +64,7 @@ export const widgetsData = {
     attributes: {
       telemetries: [
         {
-          name: "UG_METRES_PLANIFIE",
+          name: "UG_BOLTEC_M10_TU",
           color: "#FFDC8C",
           label: "Prévus",
           serial: "DABF7PAT2G4BAG21",
@@ -73,28 +73,14 @@ export const widgetsData = {
     },
   },
   5: {
-    title: "Temps de soutènement (h)",
+    title: "Temps de soutènement (min)",
     attributes: {
       telemetries: [
         {
-          name: "UG_METRES_PLANIFIE",
+          name: "UG_SOUTENEMENT_TEMPS_DE_MISE_EN_PLACE_SOUTENEMENT-min",
           color: "#FFDC8C",
-          label: "Chargement explosif",
+          label: "temps de soutènement",
           serial: "DABF7PAT2G4BAG21",
-        },
-      ],
-    },
-  },
-  6: {
-    title: "Disponibilité",
-    attributes: {
-      telemetries: [
-        {
-          area: true,
-          name: "EST_REALISE_FORATION",
-          color: "#78F6EA",
-          label: "Realisé ML/J",
-          serial: "U9XQMQ1DXYT7LJIP",
         },
       ],
     },

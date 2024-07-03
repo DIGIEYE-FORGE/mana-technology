@@ -4,7 +4,6 @@ import LineChartWidget from "@/components/line-chart-widget";
 import { widgetsData } from "./data";
 import { CircularProgressChart } from "@/components/circular-progress-chart";
 import MachineFrame from "@/assets/machine-frame.svg?react";
-import BarLineWidget from "@/components/bar-line-widget";
 
 export const Dashboard4 = () => {
   return (
@@ -67,7 +66,7 @@ export const Dashboard4 = () => {
           {widgetsData[3].title}
         </h1>
         <div className="h-1 flex-1">
-          <BarLineWidget attributes={widgetsData[3].attributes} />
+          <LineChartWidget attributes={widgetsData[3].attributes} correction={100}/>
         </div>
       </Card>
       <Card className="col-span-1 flex flex-col p-2">
@@ -75,7 +74,7 @@ export const Dashboard4 = () => {
           {widgetsData[4].title}
         </h1>
         <div className="h-1 flex-1">
-          <BarLineWidget attributes={widgetsData[4].attributes} />
+          <LineChartWidget attributes={widgetsData[4].attributes} correction={100}/>
         </div>
       </Card>
       <Card className="col-span-2 flex flex-col p-2">
@@ -99,7 +98,7 @@ export const Dashboard4 = () => {
           {widgetsData[7].title}
         </h1>
         <div className="h-1 flex-1">
-          <LineChartWidget attributes={widgetsData[7].attributes} />
+          <BarChartWidget attributes={widgetsData[7].attributes} />
         </div>
       </Card>
     </main>

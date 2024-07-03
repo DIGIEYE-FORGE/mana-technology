@@ -20,6 +20,7 @@ type Props = Widget & {
 export default function LineChartWidget({
   legendPosition = "bottom",
   selectionDate = true,
+  correction = 1,
   ...props
 }: Props) {
   const { backendApi, dateRange } = useAppContext();
@@ -70,7 +71,7 @@ export default function LineChartWidget({
         color: telemetries[index].color || getRandomColor(),
         data: item.map((item) => ({
           x: new Date(item.createdAt),
-          y: Number(Number(flatten(item)[telemetries[index].name]).toFixed(2)),
+          y: Number(Number(flatten(item)[telemetries[index].name]).toFixed(2)) * correction,
         })),
       }));
       if (props.moyenne) {

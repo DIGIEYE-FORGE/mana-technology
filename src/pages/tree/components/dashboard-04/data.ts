@@ -1,13 +1,13 @@
 export const widgetsData = {
   0: {
-    title: "Tonnage Déblayé (t)",
+    title: "Tonnage Déblayé (t/poste)",
     attributes: {
       telemetries: [
         {
-          name: "UG_METRES_PLANIFIE",
+          name: "UG_DEBLAYAGE_TONNE_DE_STERILE_PAR_POSTE-tonne_par_poste",
           color: "#25A18E",
           label: "Est 11",
-          serial: "DABF7PAT2G4BAG21",
+          serial: "Y1UMITGTHATVAUQI",
         },
       ],
     }
@@ -19,15 +19,15 @@ export const widgetsData = {
       name: "Déblayage R1700",
       telemetries: [
         {
-          name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+          name: "UG_CHARG_CAT_R1700_14T_1_TD",
           label: "Disponibilité",
-          serial: "U9XQMQ1DXYT7LJIP",
+          serial: "1ET8MCQDVOPFLVBX",
           color: "#cda943",
         },
         {
-          name: "GMC_FOREUSE_EPRIROC_T45_02_DISPO",
+          name: "UG_CHARG_CAT_R1700_14T_1_TU",
           label: "Utilisation",
-          serial: "U9XQMQ1DXYT7LJIP",
+          serial: "1ET8MCQDVOPFLVBX",
           color: "#18a5c1",
         },
       ],
@@ -38,16 +38,16 @@ export const widgetsData = {
     attributes: {
       telemetries: [
         {
-          name: "UG_METRES_PLANIFIE",
+          name: "UG_DEBLAYAGE_PERFORMANCES_DEBLAYAGE_AVEC_LHD_R1700-tonne_par_heure",
           color: "#FF5AF1",
           label: "t/h",
-          serial: "DABF7PAT2G4BAG21",
+          serial: "Y1UMITGTHATVAUQI",
         },
         {
-          name: "UG_METRES_REALISE_TOTAL",
+          name: "", //TODO calculable UG_DEBLAYAGE_PERFORMANCES_DEBLAYAGE_AVEC_LHD_R1700-tonne_par_heure / UG_DEBLAYAGE_DISTANCE-m
           color: "#FFDC8C",
           label: "t/h/ml",
-          serial: "DABF7PAT2G4BAG21",
+          serial: "Y1UMITGTHATVAUQI",
         },
       ],
     },
@@ -57,16 +57,16 @@ export const widgetsData = {
     attributes: {
       telemetries: [
         {
-          name: "UG_METRES_PLANIFIE",
+          name: "UG_CHARG_CAT_R1700_14T_1_TD",
           color: "#FF5AF1",
           label: "R1700 01",
-          serial: "DABF7PAT2G4BAG21",
+          serial: "1ET8MCQDVOPFLVBX",
         },
         {
-          name: "UG_METRES_REALISE_TOTAL",
+          name: "UG_CHARG_CAT_R1700_14T_2_TD",
           color: "#FFDC8C",
           label: "R1700 02",
-          serial: "DABF7PAT2G4BAG21",
+          serial: "1ET8MCQDVOPFLVBX",
         },
       ],
     },
@@ -76,16 +76,16 @@ export const widgetsData = {
     attributes: {
       telemetries: [
         {
-          name: "UG_METRES_PLANIFIE",
+          name: "UG_CHARG_CAT_R1700_14T_1_TU",
           color: "#FF5AF1",
           label: "R1700 01",
-          serial: "DABF7PAT2G4BAG21",
+          serial: "1ET8MCQDVOPFLVBX",
         },
         {
-          name: "UG_METRES_REALISE_TOTAL",
+          name: "UG_CHARG_CAT_R1700_14T_2_TU",
           color: "#FFDC8C",
           label: "R1700 02",
-          serial: "DABF7PAT2G4BAG21",
+          serial: "1ET8MCQDVOPFLVBX",
         },
       ],
     },
@@ -93,32 +93,26 @@ export const widgetsData = {
 
   
   5: {
-    title: "Temps de Déblayage (h)",
+    title: "Temps de Déblayage (min)",
     attributes: {
       telemetries: [
         {
-          name: "UG_METRES_PLANIFIE",
+          name: "UG_DEBLAYAGE_TEMPS_DE_DEBLAYAGE-min",
           color: "#FF5AF1",
-          label: "Chargement explosif",
+          label: "temps de Déblayage",
           serial: "DABF7PAT2G4BAG21",
         },
       ],
     },
   },
   6: {
-    title: "Temps trajet (h)",
+    title: "Temps trajet (min)",
     attributes: {
       telemetries: [
         {
-          name: "EST_REALISE_FORATION",
+          name: "UG_DEBLAYAGE_TEMPS_TRAJET_ALLER_RETOUR-min",
           color: "#CCCCCC",
-          label: "Aller",
-          serial: "U9XQMQ1DXYT7LJIP",
-        },
-        {
-          name: "UG_METRES_PLANIFIE",
-          color: "#25A18E",
-          label: "Retour",
+          label: "Aller-Retour",
           serial: "DABF7PAT2G4BAG21",
         },
       ],
@@ -129,15 +123,9 @@ export const widgetsData = {
     attributes: {
       telemetries: [
         {
-          name: "EST_REALISE_FORATION",
-          color: "#CCCCCC",
-          label: "Aller",
-          serial: "U9XQMQ1DXYT7LJIP",
-        },
-        {
-          name: "UG_METRES_PLANIFIE",
-          color: "#25A18E",
-          label: "Retour",
+          name: "UG_DEBLAYAGE_DISTANCE-m",
+          color: "#FF5AF1",
+          label: "Aller-retour",
           serial: "DABF7PAT2G4BAG21",
         },
       ],

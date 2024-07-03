@@ -66,7 +66,7 @@ export const Dashboard3 = () => {
           {widgetsData[3].title}
         </h3>
         <div className="h-1 flex-1">
-          <LineChartWidget attributes={widgetsData[3].attributes} />
+          <LineChartWidget attributes={widgetsData[3].attributes} correction={100}/>
         </div>
       </Card>
       <Card className="col-span-1 flex flex-col p-2">
@@ -74,7 +74,7 @@ export const Dashboard3 = () => {
           {widgetsData[4].title}
         </h3>
         <div className="h-1 flex-1">
-          <LineChartWidget attributes={widgetsData[4].attributes} />
+          <LineChartWidget attributes={widgetsData[4].attributes} correction={100} />
         </div>
       </Card>
       <Card className="col-span-2 flex flex-col p-2">

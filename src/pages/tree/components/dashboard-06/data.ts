@@ -4,7 +4,7 @@ export const widgetsData = {
     attributes: {
       telemetries: [
         {
-          name: "UG_METRES_PLANIFIE",
+          name: "UG_TONNAGE_TRANSPORTE_TON",
           color: "#25A18E",
           label: "Est 11",
           serial: "DABF7PAT2G4BAG21",
@@ -19,34 +19,28 @@ export const widgetsData = {
       name: "Transport ad45",
       telemetries: [
         {
-          name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+          name: "UG_DUMP_CAT_1_TD",
           label: "Disponibilité",
-          serial: "U9XQMQ1DXYT7LJIP",
+          serial: "DABF7PAT2G4BAG21",
           color: "#cda943",
         },
         {
-          name: "GMC_FOREUSE_EPRIROC_T45_02_DISPO",
+          name: "UG_DUMP_CAT_1_TU",
           label: "Utilisation",
-          serial: "U9XQMQ1DXYT7LJIP",
+          serial: "DABF7PAT2G4BAG21",
           color: "#18a5c1",
         },
       ],
     },
   },
   2: {
-    title: "Performance Transport",
+    title: "Performance Transport (t/h)",
     attributes: {
       telemetries: [
         {
-          name: "UG_METRES_PLANIFIE",
+          name: "UG_ROULAGE_PERFORMANCES_ROULAGE_AVEC_AD45-tonne_par_heure",
           color: "#FF5AF1",
-          label: "AD45",
-          serial: "DABF7PAT2G4BAG21",
-        },
-        {
-          name: "UG_METRES_REALISE_TOTAL",
-          color: "#FFDC8C",
-          label: "Performances Roulage",
+          label: "Performance Transport",
           serial: "DABF7PAT2G4BAG21",
         },
       ],
@@ -57,13 +51,13 @@ export const widgetsData = {
     attributes: {
       telemetries: [
         {
-          name: "UG_METRES_PLANIFIE",
+          name: "UG_DUMP_CAT_1_TD",
           color: "#FF5AF1",
           label: "AD45 01",
           serial: "DABF7PAT2G4BAG21",
         },
         {
-          name: "UG_METRES_REALISE_TOTAL",
+          name: "UG_DUMP_CAT_2_TD",
           color: "#FFDC8C",
           label: "AD45 02",
           serial: "DABF7PAT2G4BAG21",
@@ -76,20 +70,26 @@ export const widgetsData = {
     attributes: {
       telemetries: [
         {
-          name: "UG_METRES_PLANIFIE",
+          name: "UG_DUMP_CAT_1_TU",
           color: "#FF5AF1",
-          label: "Chargement explosif",
+          label: "AD45 01",
+          serial: "DABF7PAT2G4BAG21",
+        },
+        {
+          name: "UG_DUMP_CAT_2_TU",
+          color: "#FFDC8C",
+          label: "AD45 02",
           serial: "DABF7PAT2G4BAG21",
         },
       ],
     },
   },
   5: {
-    title: "Temps de Transport (h)",
+    title: "Temps de Transport (min)",
     attributes: {
       telemetries: [
         {
-          name: "UG_METRES_PLANIFIE",
+          name: "UG_ROULAGE_TEMPS_DE_TRANSPORT-min",
           color: "#FF5AF1",
           label: "Chargement explosif",
           serial: "DABF7PAT2G4BAG21",
@@ -98,19 +98,13 @@ export const widgetsData = {
     },
   },
   6: {
-    title: "Temps trajet (h)",
+    title: "Temps trajet (min)",
     attributes: {
       telemetries: [
         {
-          name: "EST_REALISE_FORATION",
-          color: "#CCCCCC",
-          label: "Aller",
-          serial: "U9XQMQ1DXYT7LJIP",
-        },
-        {
-          name: "UG_METRES_PLANIFIE",
-          color: "#25A18E",
-          label: "Retour",
+          name: "UG_ROULAGE_TEMPS_TRAJET_ALLER_RETOUR-min",
+          color: "#FFDC8C",
+          label: "Aller-Retour",
           serial: "DABF7PAT2G4BAG21",
         },
       ],

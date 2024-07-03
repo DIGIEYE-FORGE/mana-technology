@@ -5,16 +5,16 @@ export const widgetsData = {
       stacked: false,
       telemetries: [
         {
-          name: "EST_REALISE_FORATION",
+          name: "UG_TIR_PLANIFIE",
           color: "#25A18E",
           label: "Prévue",
-          serial: "U9XQMQ1DXYT7LJIP",
+          serial: "Y1UMITGTHATVAUQI",
         },
         {
-          name: "UG_METRES_PLANIFIE",
+          name: "UG_TIR_REALISE",
           color: "#cda943",
           label: "réalisé",
-          serial: "DABF7PAT2G4BAG21",
+          serial: "Y1UMITGTHATVAUQI",
         },
       ],
     }
@@ -23,33 +23,33 @@ export const widgetsData = {
     title: "Performance Engins",
     attributes: {
       image: "/machine-03.png",
-      name: "Jumbo M20",
+      name: "TITAN BAC2X350",
       telemetries: [
         {
-          name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
+          name: "UG_CHARG_EXP_TITAN_BAC2X350_TD",
           label: "Disponibilité",
-          serial: "U9XQMQ1DXYT7LJIP",
+          serial: "1ET8MCQDVOPFLVBX",
           color: "#cda943",
         },
         {
-          name: "GMC_FOREUSE_EPRIROC_T45_02_DISPO",
+          name: "UG_CHARG_EXP_TITAN_BAC2X350_TU",
           label: "Utilisation",
-          serial: "U9XQMQ1DXYT7LJIP",
+          serial: "1ET8MCQDVOPFLVBX",
           color: "#18a5c1",
         },
       ],
     },
   },
   2: {
-    title: "Consommation spécifique explosif (kg)",
+    title: "Consommation spécifique explosif (kg/t)",
     attributes: {
       stacked: false,
       telemetries: [
         {
-          name: "UG_METRES_PLANIFIE",
+          name: "UG_CONSOMMATION_SPECIFIQUE_EXPLOSIF-kg-per-tone",
           color: "#FF5AF1",
           label: "AD45",
-          serial: "DABF7PAT2G4BAG21",
+          serial: "Y1UMITGTHATVAUQI",
         },
       ],
     },
@@ -60,10 +60,10 @@ export const widgetsData = {
       stacked: false,
       telemetries: [
         {
-          name: "UG_METRES_PLANIFIE",
+          name: "UG_CHARG_EXP_TITAN_BAC2X350_TD",
           color: "#FFDC8C",
           label: "Chargeur d'explosif titan 1000 BAC2X350",
-          serial: "DABF7PAT2G4BAG21",
+          serial: "1ET8MCQDVOPFLVBX",
           type: "bar",
         },
       ],
@@ -75,10 +75,10 @@ export const widgetsData = {
       stacked: false,
       telemetries: [
         {
-          name: "UG_METRES_PLANIFIE",
+          name: "UG_CHARG_EXP_TITAN_BAC2X350_TU",
           color: "#FFDC8C",
           label: "Chargeur d'explosif titan 1000 BAC2X350",
-          serial: "DABF7PAT2G4BAG21",
+          serial: "1ET8MCQDVOPFLVBX",
           type: "bar",
         },
       ],
@@ -93,13 +93,13 @@ export const widgetsData = {
           name: "UG_FORATION_TIRS_TEMPS_DE_CHARGEMENT_EXPLOSIF-min",
           color: "#FFDC8C",
           label: "Chargement explosif",
-          serial: "DABF7PAT2G4BAG21",
+          serial: "Y1UMITGTHATVAUQI",
         },
         {
           name: "UG_FORATION_TIRS_TIR_DELAI_GAZ_ET_LAVAGE-min",
           color: "#FFF",
           label: "Tir, délai Gaz et lavage",
-          serial: "DABF7PAT2G4BAG21",
+          serial: "Y1UMITGTHATVAUQI",
         },
       ],
     },
@@ -112,7 +112,7 @@ export const widgetsData = {
           name: "UG_TAUX_ARRACHEMENT_ARRACHEMENT",
           color: "#CCCCCC",
           label: "Aller",
-          serial: "DABF7PAT2G4BAG21",
+          serial: "Y1UMITGTHATVAUQI",
         },
       ],
     },
