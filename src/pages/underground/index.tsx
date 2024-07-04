@@ -34,9 +34,7 @@ function UndergroundBar() {
           alt="logo"
           className="border-r pr-4 max-sm:hidden"
         />
-        <span className="py-3 text-lg font-semibold">
-          Performance Underground
-        </span>
+        <span className="py-3 text-lg font-bold">Performance Underground</span>
       </div>
       <DatePickerWithRange
         className="hidden lg:block"
