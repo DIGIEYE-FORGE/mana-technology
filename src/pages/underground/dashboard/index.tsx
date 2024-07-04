@@ -5,7 +5,6 @@ import { Card } from "@/components/card";
 import { D3DonutChart } from "@/components/d3-donut chart";
 import Engins from "@/components/engins";
 import LineChartWidget from "@/components/line-chart-widget";
-import LinesWidget from "@/components/lines-chart-widget";
 import { Button } from "@/components/ui/button";
 import Ventillation from "@/components/ventillation";
 import { ChevronsDown } from "lucide-react";
@@ -232,9 +231,7 @@ export default function UndergroundDashboardPage() {
       </Card>
 
       <Card className="flex flex-col p-4">
-        <h1 className="text-center text-lg font-semibold">
-          Nombre de Tirs{" "}
-        </h1>
+        <h1 className="text-center text-lg font-semibold">Nombre de Tirs </h1>
         <div className="w-full text-center text-xs text-gray-400"></div>
         <div className="flex-1">
           <BarLineWidget
