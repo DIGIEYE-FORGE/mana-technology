@@ -128,7 +128,7 @@ export const homePageWidgets: Widget[] = [
   },
   {
     type: "barChart",
-    title: "Production par fosse (t)",
+    title: "Production Roche par Fosse (t)",
     className: "col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-4",
     attributes: {
       stacked: false,
