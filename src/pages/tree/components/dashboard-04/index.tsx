@@ -39,7 +39,13 @@ export const Dashboard4 = () => {
         <div className="h-1 flex-1">
           <LineChartWidget
             attributes={widgetsData[3].attributes}
-            correction={100}
+            correction={widgetsData[3].attributes.telemetries.reduce(
+              (acc: Record<string, number>, item) => {
+                acc[item.name] = 100;
+                return acc;
+              },
+              {},
+            )}
           />
         </div>
       </Card>
@@ -50,7 +56,13 @@ export const Dashboard4 = () => {
         <div className="h-1 flex-1">
           <LineChartWidget
             attributes={widgetsData[4].attributes}
-            correction={100}
+            correction={widgetsData[4].attributes.telemetries.reduce(
+              (acc: Record<string, number>, item) => {
+                acc[item.name] = 100;
+                return acc;
+              },
+              {},
+            )}
           />
         </div>
       </Card>

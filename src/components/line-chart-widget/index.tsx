@@ -30,7 +30,7 @@ type Props = Widget & {
 export default function LineChartWidget({
   legendPosition = "bottom",
   selectionDate = true,
-  correction = 1,
+  correction,
   ...props
 }: Props) {
   const { backendApi, dateRange } = useAppContext();
@@ -80,7 +80,7 @@ export default function LineChartWidget({
         } else if (name) {
           for (let i = 0; i < item.length; i++) {
             const x = new Date(item[i].createdAt);
-            let y = Number(flatten(item[i])[name]) * correction;
+            let y = Number(flatten(item[i])[name]) * (correction?.[name] || 1);
             if (telemetries[index].accumulated && i > 0) y += newData[i - 1].y;
             newData.push({ x, y });
           }
@@ -88,8 +88,10 @@ export default function LineChartWidget({
           const [name1, name2] = calculated.names;
           for (let i = 0; i < item.length; i++) {
             const x = new Date(item[i].createdAt);
-            let y1 = Number(flatten(item[i])[name1]) * correction;
-            let y2 = Number(flatten(item[i])[name2]) * correction;
+            let y1 =
+              Number(flatten(item[i])[name1]) * (correction?.[name1] || 1);
+            let y2 =
+              Number(flatten(item[i])[name2]) * (correction?.[name2] || 1);
             if (telemetries[index].accumulated && i > 0) {
               y1 += newData[i - 1].y;
               y2 += newData[i - 1].y;

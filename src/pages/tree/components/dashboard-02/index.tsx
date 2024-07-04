@@ -55,7 +55,13 @@ export const Dashboard2 = () => {
         <div className="relative h-1 flex-1 -translate-y-4">
           <LineChartWidget
             attributes={widgetsData[3].attributes}
-            correction={100}
+            correction={widgetsData[3].attributes.telemetries.reduce(
+              (acc: Record<string, number>, item) => {
+                acc[item.name] = 100;
+                return acc;
+              },
+              {},
+            )}
           />
         </div>
       </Card>
@@ -66,7 +72,13 @@ export const Dashboard2 = () => {
         <div className="relative h-1 flex-1 -translate-y-4">
           <LineChartWidget
             attributes={widgetsData[4].attributes}
-            correction={100}
+            correction={widgetsData[4].attributes.telemetries.reduce(
+              (acc: Record<string, number>, item) => {
+                acc[item.name] = 100;
+                return acc;
+              },
+              {},
+            )}
           />
         </div>
       </Card>
@@ -74,10 +86,12 @@ export const Dashboard2 = () => {
         <h4 className="pt-2 text-center text-lg font-semibold">
           {widgetsData[5]?.title}
         </h4>
-        <div className="relative h-1 flex-1 -translate-y-4">
+        <div className="debug relative h-1 flex-1 -translate-y-4">
           <BarLineWidget
             yAxis="one"
-            
+            correction={{
+              UG_TAUX_ARRACHEMENT_TEMPS_DE_FORATION_BFS: 60,
+            }}
             attributes={{
               stacked: true,
               telemetries: [
