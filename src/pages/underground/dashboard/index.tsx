@@ -144,14 +144,14 @@ export default function UndergroundDashboardPage() {
           <Ventillation
             attribute={[
               {
-                telemetryName: "s=plc1_DB_Conso2_KWHTotale",
+                telemetryName: "s=plc1_DB_Conso1_kWhTotale",
                 labelTelemetry: "Energie1",
                 serial: "0TKJJWS26V62QV15",
                 randomValue: 104,
                 unit: "kWh",
               },
               {
-                telemetryName: "s=plc1_DB_Conso2_KWHTotale",
+                telemetryName: "s=plc1_DB_Conso2_kWhTotale",
                 labelTelemetry: "Energie2",
                 serial: "0TKJJWS26V62QV15",
                 randomValue: 106,
@@ -176,7 +176,7 @@ export default function UndergroundDashboardPage() {
                 randomValue: 230,
               },
               {
-                telemetryName: "s=plc1_DB_Conso1_HcpTotalMarche",
+                telemetryName: "s=plc1_DB_Conso2_HcpTotalMarche",
                 labelTelemetry: "Marche2",
                 serial: "0TKJJWS26V62QV15",
                 randomValue: 230,
