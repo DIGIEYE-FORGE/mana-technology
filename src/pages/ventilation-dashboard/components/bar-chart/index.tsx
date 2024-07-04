@@ -23,6 +23,13 @@ export const BarChart = ({ attributes, disabled = false }: QualitAirProps) => {
     `telemetryDonutChartProps${JSON.stringify(attributes)}`,
     async () => {
       if (!attributes.telemetries?.length) return [];
+      if (disabled) {
+        return attributes.telemetries.map((device) => ({
+          color: device.color,
+          name: device.label,
+          value: 0,
+        }));
+      }
       const res1 = await Promise.all(
         attributes.telemetries.map(async (device) => {
           const { name, color, serial, label } = device;
@@ -92,18 +99,18 @@ export const BarChart = ({ attributes, disabled = false }: QualitAirProps) => {
         plotOptions: {
           bar: {
             horizontal: false,
-            columnWidth: "50%",
+            columnWidth: "40%",
             // endingShape: "flat",
           },
         },
         dataLabels: {
           enabled: true, // Enable data labels
           formatter: function (val) {
-            return disabled ? "" : Number(val).toFixed(1) + "°C";
+            return Number(val).toFixed(1) + "°C";
           },
-          offsetY: 30,
+          offsetY: 50,
           style: {
-            fontSize: "12px",
+            fontSize: "14px",
             colors: ["#fff"],
           },
         },
@@ -119,7 +126,7 @@ export const BarChart = ({ attributes, disabled = false }: QualitAirProps) => {
           axisTicks: { show: false },
           labels: {
             style: {
-              fontSize: "7px",
+              fontSize: "12px",
               fontFamily: "Helvetica, Arial, sans-serif",
               fontWeight: 600,
               cssClass: "apexcharts-xaxis-label",
@@ -178,7 +185,7 @@ export const BarChart = ({ attributes, disabled = false }: QualitAirProps) => {
         },
       ]}
       type="bar"
-      height="80%"
+      height="100%"
     />
   );
 };

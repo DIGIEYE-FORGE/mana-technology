@@ -1,6 +1,6 @@
 
-export const data = [
-  {
+export const data = {
+  0: {
     title: "Moteur 1",
     cardType: "MoteurGroup",
     cardClassNames: "col-span-3 row-span-3 flex flex-col gap-1",
@@ -59,7 +59,7 @@ export const data = [
       },
     ]
   },
-  {
+  1: {
     title: "Moteur 2",
     cardType: "MoteurGroup",
     cardClassNames: "col-span-3 row-span-3 flex flex-col gap-1",
@@ -118,7 +118,7 @@ export const data = [
       },
     ]
   },
-  {
+  2: {
     title: "Moteur 4",
     cardType: "MoteurGroup",
     cardClassNames: "col-span-3 row-span-3 flex flex-col gap-1",
@@ -177,7 +177,7 @@ export const data = [
       },
     ]
   },
-  {
+  3: {
     title: "Moteur 5",
     cardType: "MoteurGroup",
     cardClassNames: "col-span-3 row-span-3 flex flex-col gap-1",
@@ -236,8 +236,7 @@ export const data = [
       },
     ]
   },
-
-]
+}
 
 
 export const qualitédair = {
@@ -491,10 +490,12 @@ export const ventilation = {
       {
         serial: "0TKJJWS26V62QV15",
         name: "=plc1_DB_Conso2_kWhTotale",
+        label: "v1"
       },
       {
         serial: "0TKJJWS26V62QV15",
         name: "=plc1_DB_Conso1_kWhTotale",
+        label: "v2"
       }
     ]
   },

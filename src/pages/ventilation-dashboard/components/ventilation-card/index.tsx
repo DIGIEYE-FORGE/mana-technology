@@ -10,6 +10,7 @@ interface VentilationCardProps {
   telemetry: {
     name: string;
     serial: string;
+    label?: string;
   }[];
   interval?: number;
   disabled?: boolean;
@@ -68,17 +69,23 @@ export const VentilationCard = ({
       </div>
     );
   return (
-    <div className={cn(`flex flex-col items-center justify-center gap-3`, {})}>
-      <h1 className="text-center text-xl font-semibold">{title}</h1>
-      <div className="flex h-1 w-full flex-1 flex-col items-center justify-center gap-1">
+    <div className="flex h-full w-full flex-col items-center justify-center gap-1">
+      <h1 className="text-center text-xs font-extrabold">{title}</h1>
+      <div className="flex h-1 w-full flex-1 flex-col items-center justify-center">
         {(data || [])?.map((d, i) => {
           return (
             <div
               key={i}
-              className={cn("flex items-center gap-3 text-3xl font-semibold", {
-                "text-5xl": data?.length === 1,
+              className={cn("flex items-center gap-1 text-xl font-semibold", {
+                "text-2xl": data?.length === 1,
               })}
             >
+              {telemetry[i].label && (
+                <span className="pr-1 font-semibold">
+                  {telemetry[i].label}
+                  {": "}
+                </span>
+              )}
               <span>
                 {typeof d.value === "number" ? d.value.toFixed(2) : "0"}
               </span>
