@@ -1,18 +1,19 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { MoveLeftIcon } from "lucide-react";
+import { Minimize, MoveLeftIcon, Shrink } from "lucide-react";
 import { useAppContext } from "@/Context";
 import { DatePickerWithRange } from "@/components/calander";
 import { TDateRange } from "@/utils";
 import { cn } from "@/lib/utils";
+import React from "react";
 
 function UndergroundBar() {
-  const { dateRange, setDateRange } = useAppContext();
+  const { dateRange, setDateRange, setFullScreen, fullScreen } =
+    useAppContext();
   const { pathname } = useLocation();
 
   const parentPath = pathname.split("/").slice(0, -1).join("/");
-
   return (
     <div className="group sticky top-0 z-10 flex h-up-bar w-[calc(10)] shrink-0 items-center gap-4 rounded-[0_0_24px_0] border-b border-r px-4 backdrop-blur sm:px-6">
       <Link
@@ -43,6 +44,17 @@ function UndergroundBar() {
           setDateRange(date as TDateRange);
         }}
       />
+
+      <Button
+        onClick={() => {
+          setFullScreen(!fullScreen);
+        }}
+        className="ml-auto opacity-0 transition-opacity duration-500 hover:opacity-100"
+        size={"icon"}
+        variant={"ghost"}
+      >
+        {fullScreen ? <Shrink size={24} /> : <Minimize size={24} />}
+      </Button>
     </div>
   );
 }

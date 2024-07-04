@@ -15,6 +15,7 @@ function App() {
   const [user, setUser] = useState<User | null | undefined>(undefined);
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const [fullScreen, setFullScreen] = useState(false);
   const [accessToken, setAccessToken] = useLocalStorage(
     "accessToken",
     z.string().default(""),
@@ -64,6 +65,16 @@ function App() {
     }
   }, []);
 
+  useEffect(() => {
+    if (fullScreen) {
+      document.documentElement.requestFullscreen().catch((e) => {
+        console.error(e);
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  }, [fullScreen]);
+
   if (isLoading || user === undefined) {
     return (
       <div className="flex min-h-[100svh] w-full items-center justify-center bg-black/20">
@@ -83,6 +94,8 @@ function App() {
         setUser,
         backendApi,
         dateRange,
+        fullScreen,
+        setFullScreen,
         setDateRange,
       }}
     >
