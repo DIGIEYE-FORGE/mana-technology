@@ -12,46 +12,44 @@ export default function HomeDashboard() {
     <main className="grid w-full grid-flow-dense auto-rows-[76px] grid-cols-3 gap-3 md:grid-cols-6 lg:grid-cols-12 lg:gap-4 xl:grid-cols-[repeat(15,minmax(0,1fr))] 2xl:auto-rows-[92px]">
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
-          {/* Avancement Cumulé annuel (m) */}
-          Avancement Cumulé annuel (m)
+        Production Roche Cumulée annuelle (t)
         </h1>
-        <div className="flex-1">
+        <div className="h-1 flex-1">
           <BarLineWidget
             attributes={{
               stacked: true,
               telemetries: [
                 {
-                  name: "EST_PLANIFIE_MINERAI",
+                  name: "CUMUL_PLANIF_TOT",
                   unit: "T",
-                  color: "#FE22EB",
-                  label: "Minerai Planifié",
-                  serial: "U9XQMQ1DXYT7LJIP",
+                  color: "#FF5AF1",
+                  label: "Planifié (monsuel)",
+                  serial: "0AS9Y1JCHRS26P9D",
                   type: "bar",
                 },
                 {
-                  name: "EST_REALISE_MINERAI",
+                  name: "CUMUL_REAL_TOT",
+                  unit: "T",
+                  color: "#FFDC8C",
+                  label: "Réalisé (monsuel)",
+                  serial: "0AS9Y1JCHRS26P9D",
+                  type: "bar",
+                },
+                {
+                  name: "CUMUL_PLANIF_TOT_TOT",
                   unit: "T",
                   color: "#B98EFF",
-                  label: "Minerai Realisé",
-                  serial: "U9XQMQ1DXYT7LJIP",
+                  label: "Planifié (Cumulé)",
+                  serial: "0AS9Y1JCHRS26P9D",
                   type: "line",
                 },
                 {
-                  name: "EST_PLANIFIE_STERILE",
-                  unit: "T",
-                  color: "#FEC33A",
-                  label: "Stérile Planifié",
-                  serial: "U9XQMQ1DXYT7LJIP",
-                  type: "bar",
-                },
-                {
-                  name: "EST_REALISE_STERILE",
+                  name: "CUMUL_REAL_TOT_TOT",
                   unit: "T",
                   color: "#78F6EA",
-                  label: "Stérile Realisé",
-                  serial: "U9XQMQ1DXYT7LJIP",
+                  label: "Réalisé (Cumulé)",
+                  serial: "0AS9Y1JCHRS26P9D",
                   type: "line",
-                  accumulated: true,
                 },
               ],
             }}
@@ -60,7 +58,7 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
-          Évolution Production Cumulée (t)
+          Production Roche Cumulée monsuelle (t)
         </h1>
         <div className="flex-1">
           <LineChartWidget
@@ -254,7 +252,7 @@ export default function HomeDashboard() {
         />
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-4">
-        <h1 className="text-center text-lg font-semibold">Foration (ml)</h1>
+        <h1 className="text-center text-lg font-semibold">Foration (ml/J)</h1>
         <div className="flex-1">
           <LineChartWidget
             moyenne={["EST_REALISE_FORATION", "EST_PLANIFIE_FORATION"]}

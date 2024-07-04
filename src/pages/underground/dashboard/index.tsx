@@ -17,7 +17,7 @@ export default function UndergroundDashboardPage() {
     <div className="grid h-fit w-full auto-rows-[17rem] grid-cols-3 gap-6 md:grid-cols-6 xl:grid-cols-9 2xl:auto-rows-[19rem] [&>*]:col-span-3">
       <Card className="flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
-          Avancement Cumulé annuel (m)
+          Avancement Cumulé annuel (ml)
         </h1>
         <div className="h-1 flex-1">
           <BarLineWidget
@@ -29,7 +29,7 @@ export default function UndergroundDashboardPage() {
                   unit: "T",
                   color: "#FF5AF1",
                   label: "Forecast (Mensuel)",
-                  serial: "GHZIN57J7EOVXGOC",
+                  serial: "9OS67R6BCQXPPVLO",
                   type: "bar",
                 },
                 {
@@ -37,7 +37,7 @@ export default function UndergroundDashboardPage() {
                   unit: "T",
                   color: "#FFDC8C",
                   label: "Réalisé",
-                  serial: "GHZIN57J7EOVXGOC",
+                  serial: "9OS67R6BCQXPPVLO",
                   type: "bar",
                 },
                 {
@@ -45,7 +45,7 @@ export default function UndergroundDashboardPage() {
                   unit: "T",
                   color: "#78F6EA",
                   label: "Planifié (Cumulé) - Offre initiale",
-                  serial: "GHZIN57J7EOVXGOC",
+                  serial: "9OS67R6BCQXPPVLO",
                   type: "line",
                 },
                 {
@@ -53,7 +53,7 @@ export default function UndergroundDashboardPage() {
                   unit: "T",
                   color: "#B98EFF",
                   label: "Réalisé (Cumulé)",
-                  serial: "GHZIN57J7EOVXGOC",
+                  serial: "9OS67R6BCQXPPVLO",
                   type: "line",
                 },
                 {
@@ -62,7 +62,7 @@ export default function UndergroundDashboardPage() {
 
                   color: "#fab006",
                   label: "Forecast (Cumulé)",
-                  serial: "GHZIN57J7EOVXGOC",
+                  serial: "9OS67R6BCQXPPVLO",
                   type: "line",
                 },
               ],
@@ -72,31 +72,30 @@ export default function UndergroundDashboardPage() {
       </Card>
       <Card className="flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
-          Avancement Cumulé monsuel (m):
-          <span className="text-md text-gray-400"> Réalisé vs Planifié</span>
+          Avancement Cumulé mensuel (ml)
         </h1>
         <div className="w-full text-center text-xs text-gray-400"></div>
         <div className="flex-1">
-          <LinesWidget
+          <LineChartWidget
             yAxis="one"
             attributes={{
               stacked: true,
               telemetries: [
                 {
-                  name: "UG_METRES_PLANIFIE_CUMULE",
-                  unit: "T",
+                  name: "UG_METRES_PLANIFIE",
                   color: "#78F6EA",
                   label: "Planifié",
-                  serial: "GHZIN57J7EOVXGOC",
+                  serial: "WF5CW7A4T9R9VU9F",
                   type: "line",
+                  accumulated: true,
                 },
                 {
-                  name: "UG_METRES_REALISE_CUMULE",
-                  unit: "T",
+                  name: "UG_METRES_REALISE_TOTAL",
                   color: "#B98EFF",
                   label: "Réalisé",
-                  serial: "GHZIN57J7EOVXGOC",
+                  serial: "WF5CW7A4T9R9VU9F",
                   type: "line",
+                  accumulated: true,
                 },
               ],
             }}
@@ -105,7 +104,7 @@ export default function UndergroundDashboardPage() {
       </Card>
       <Card className="flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
-          Avancement journalier (m/j)
+          Avancement journalier (ml/j)
         </h1>
         <div className="w-full text-center text-xs text-gray-400"></div>
         <div className="flex-1">
@@ -119,8 +118,8 @@ export default function UndergroundDashboardPage() {
                   name: "UG_METRES_PLANIFIE",
                   unit: "T",
                   color: "#78F6EA",
-                  label: "Prévus",
-                  serial: "GHZIN57J7EOVXGOC",
+                  label: "Planifié",
+                  serial: "WF5CW7A4T9R9VU9F",
                   type: "bar",
                 },
                 {
@@ -128,7 +127,7 @@ export default function UndergroundDashboardPage() {
                   unit: "T",
                   color: "#B98EFF",
                   label: "Réalisé",
-                  serial: "GHZIN57J7EOVXGOC",
+                  serial: "WF5CW7A4T9R9VU9F",
                   type: "bar",
                 },
               ],
@@ -234,8 +233,7 @@ export default function UndergroundDashboardPage() {
 
       <Card className="flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
-          Nombre de Tir{" "}
-          <span className="text-gray-500">(planifié vs réalisé)</span>
+          Nombre de Tirs{" "}
         </h1>
         <div className="w-full text-center text-xs text-gray-400"></div>
         <div className="flex-1">
@@ -249,16 +247,16 @@ export default function UndergroundDashboardPage() {
                   name: "UG_TIR_REALISE",
                   unit: "T",
                   color: "#FFDC8C",
-                  label: "Tirs Réalisés",
-                  serial: "GHZIN57J7EOVXGOC",
+                  label: "Réalisé",
+                  serial: "WF5CW7A4T9R9VU9F",
                   type: "bar",
                 },
                 {
                   name: "UG_TIR_PLANIFIE",
                   unit: "T",
                   color: "#78F6EA",
-                  label: "Tirs Prévues",
-                  serial: "GHZIN57J7EOVXGOC",
+                  label: "Planifié",
+                  serial: "WF5CW7A4T9R9VU9F",
                   type: "bar",
                 },
                 {
@@ -266,16 +264,16 @@ export default function UndergroundDashboardPage() {
                   unit: "T",
 
                   color: "#B98EFF",
-                  label: "Tirs Prévues Cumulée",
-                  serial: "GHZIN57J7EOVXGOC",
+                  label: "Planifié (Cumulé)",
+                  serial: "WF5CW7A4T9R9VU9F",
                   type: "line",
                 },
                 {
                   name: "UG_TIR_REALISE_CUMULE",
                   unit: "T",
                   color: "#FF5AF1",
-                  label: "Tirs Réalisés Cumulée",
-                  serial: "GHZIN57J7EOVXGOC",
+                  label: "Réalisé (Cumulé)",
+                  serial: "WF5CW7A4T9R9VU9F",
                   type: "line",
                 },
               ],
@@ -416,21 +414,21 @@ export default function UndergroundDashboardPage() {
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
-                label: "CHARGEUR D'EXPLOSIF TITAN BAC2X350",
+                label: "TITAN BAC2X350",
                 icon: "iconesEngin/titan_MUV5_et_MUV1-removebg-preview.png",
                 utilisationTelemetry: "UG_CHARG_EXP_TITAN_BAC2X350_TU",
                 disponibilliteTelemetry: "UG_CHARG_EXP_TITAN_BAC2X350_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
-                label: "CHARGEUSE CAT R1700 14T N°1",
+                label: "R1700 - 01",
                 icon: "iconesEngin/Chargeur_CAT_R1700-removebg-preview.png",
                 utilisationTelemetry: "UG_CHARG_CAT_R1700_14T_1_TU",
                 disponibilliteTelemetry: "UG_CHARG_CAT_R1700_14T_1_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
-                label: "CHARGEUSE CAT R1700 14T N°2",
+                label: "R1700 - 02",
                 icon: "iconesEngin/Chargeur_CAT_R1700-removebg-preview.png",
                 utilisationTelemetry: "UG_CHARG_CAT_R1700_14T_2_TU",
                 disponibilliteTelemetry: "UG_CHARG_CAT_R1700_14T_2_TD",
@@ -444,71 +442,70 @@ export default function UndergroundDashboardPage() {
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
-                label: "CHARGEUSE CAT R1700 14T N°2",
+                label: "COMPRESSEUR SQE 01",
                 icon: "iconesEngin/Chargeur_CAT_R1700-removebg-preview.png",
                 utilisationTelemetry: "UG_COMP_ATLAS_COP_1_TU",
                 disponibilliteTelemetry: "UG_COMP_ATLAS_COP_1_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
-                label: "COMPRESSEUR ATLAS COPCO XAVS600 PACE SQE N°1",
+                label: "COMPRESSEUR SQE 02",
                 icon: "iconesEngin/compressor.svg",
                 utilisationTelemetry: "UG_COMP_ATLAS_COP_2_TU",
                 disponibilliteTelemetry: "UG_COMP_ATLAS_COP_2_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
-                label: "COMPRESSEUR ATLAS COPCO XAVS600 PACE SQE N°2",
+                label: "CAT AD 45T 01",
                 icon: "iconesEngin/compressor.svg",
                 utilisationTelemetry: "UG_DUMP_CAT_1_TU",
                 disponibilliteTelemetry: "UG_DUMP_CAT_1_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
-                label: "DUMPER CAT AD 45T N°1",
+                label: "CAT AD 45T 02",
                 icon: "iconesEngin/Dumper_CAT_AD45-removebg-preview.png",
                 utilisationTelemetry: "UG_DUMP_CAT_2_TU",
                 disponibilliteTelemetry: "UG_DUMP_CAT_2_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
-                label: "DUMPER CAT AD 45T N°2",
+                label: "DEUTZ DPS 450 01",
                 icon: "iconesEngin/Dumper_CAT_AD45-removebg-preview.png",
                 utilisationTelemetry: "UG_ELEC_1_TU",
                 disponibilliteTelemetry: "UG_ELEC_1_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
-                label: "GROUPE ELECTROGENE DEUTZ DPS 450 N°1",
+                label: "DEUTZ DPS 450 02",
                 icon: "truck.svg",
                 utilisationTelemetry: "UG_ELEC_2_TU",
                 disponibilliteTelemetry: "UG_ELEC_2_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
-
               {
-                label: "GROUPE ELECTROGENE DEUTZ DPS 450 N°3",
+                label: "DEUTZ DPS 450 03",
                 icon: "iconesEngin/Groupe_électrogène_DEUTZ-removebg-preview.png",
                 utilisationTelemetry: "UG_ELEC_3_TU",
                 disponibilliteTelemetry: "UG_ELEC_3_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
-                label: "MECANISE TIZERT JUMBO EPIROC T1D N°1",
+                label: "JUMBO T1D 01",
                 icon: "iconesEngin/Epiroc_Jumbo_M20-removebg-preview.png",
                 utilisationTelemetry: "UG_MEC_JUM_1_TU",
                 disponibilliteTelemetry: "UG_MEC_JUM_1_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
-                label: "MECANISE TIZERT JUMBO M20",
+                label: "JUMBO M20",
                 icon: "iconesEngin/Epiroc_Jumbo_M20-removebg-preview.png",
                 utilisationTelemetry: "UG_MEC_JUM_M20_TU",
                 disponibilliteTelemetry: "UG_MEC_JUM_M20_TD",
                 serial: "1ET8MCQDVOPFLVBX",
               },
               {
-                label: "PLATEFORME A TABLE ELEVATRICE TITAN BMP2X3				",
+                label: "TITAN BMP2X3",
                 icon: "iconesEngin/Table_elevatrice-removebg-preview.png",
                 utilisationTelemetry: "UG_PLAT_TU",
                 disponibilliteTelemetry: "UG_PLAT_TD",
