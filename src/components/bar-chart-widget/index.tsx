@@ -36,6 +36,7 @@ export default function BarChartWidget(props: Props) {
                 perPage: 10_00,
               },
               select: [name],
+              orderBy: "createdAt:asc",
               where: {
                 serial,
                 createdAt: {
@@ -48,19 +49,26 @@ export default function BarChartWidget(props: Props) {
           return results;
         }),
       );
-      const res1 = res.map((item, index) => ({
-        name: telemetries[index].label || telemetries[index].name,
-        type: "bar",
-        nameTelemetry: telemetries[index].name,
-        data:
-          telemetries[index].data ||
-          item.map((item) => ({
-            x: new Date(item.createdAt),
-            y: Number(
-              Number(flatten(item)[telemetries[index].name]).toFixed(2),
-            ),
-          })),
-      }));
+      const res1 = res.map((item, index) => {
+        const newData: { x: Date; y: number }[] = [];
+        if (telemetries[index].data === undefined) {
+          for (let i = 0; i < item.length; i++) {
+            const x = new Date(item[i].createdAt);
+            let y = Number(flatten(item[i])[telemetries[index].name]);
+            if (telemetries[index].accumulated && i > 0) {
+              y += newData[i - 1].y;
+              console.log({ x, y });
+            }
+            newData.push({ x, y });
+          }
+        }
+        return {
+          name: telemetries[index].label || telemetries[index].name,
+          type: "bar",
+          nameTelemetry: telemetries[index].name,
+          data: telemetries[index].data || newData,
+        };
+      });
       if (props.moyenne) {
         const res2 = [];
         if (props.moyenne === "combined") {
@@ -181,12 +189,13 @@ export default function BarChartWidget(props: Props) {
         yaxis: {
           min: 0,
           tickAmount: 4,
-          max:
-            Math.max(
-              ...(data || []).flatMap((item) =>
-                item.data.map((item) => item.y),
+          max: stacked
+            ? undefined
+            : Math.max(
+                ...(data || []).flatMap((item) =>
+                  item.data.map((item) => item.y),
+                ),
               ),
-            ) * (stacked ? data?.length || 1 : 1),
           labels: {
             show: true,
             formatter: function (value) {

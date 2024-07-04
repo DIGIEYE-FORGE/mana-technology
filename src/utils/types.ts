@@ -44,7 +44,7 @@ export type FindManyParams = {
     perPage: number;
   };
   where?: Record<string, unknown>;
-  orderBy?: Record<string, "desc" | "asc"> | string;
+  orderBy?: Record<string, string> | string;
   include?: Record<string, unknown>;
   select?: Record<string, unknown> | string[];
 };
@@ -93,6 +93,7 @@ export type ChartTelemetry = {
   color?: string;
   area?: boolean;
   data?: { x: Date; y: number }[];
+  accumulated?: boolean;
   value?: number;
 };
 

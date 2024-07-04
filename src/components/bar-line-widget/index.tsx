@@ -191,7 +191,7 @@ export default function BarLineWidget({
                 }
               : [
                   {
-                    seriesName: data?.[0].name,
+                    seriesName: [data?.[0]?.name, data?.[1]?.name],
                     axisTicks: {
                       show: true,
                     },
@@ -215,10 +215,10 @@ export default function BarLineWidget({
                       },
                     },
                   },
-                  {
-                    seriesName: data?.[1]?.name,
-                    show: false,
-                  },
+                  // {
+                  //   seriesName: data?.[1]?.name,
+                  //   show: false, // Hide second y-axis
+                  // },
                   {
                     opposite: true,
                     seriesName: data?.[2]?.name,
