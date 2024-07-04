@@ -29,7 +29,7 @@ export default function UndergroundDashboardPage() {
                   unit: "T",
                   color: "#FF5AF1",
                   label: "Forecast (Mensuel)",
-                  serial: "DABF7PAT2G4BAG21",
+                  serial: "GHZIN57J7EOVXGOC",
                   type: "bar",
                 },
                 {
@@ -37,7 +37,7 @@ export default function UndergroundDashboardPage() {
                   unit: "T",
                   color: "#FFDC8C",
                   label: "Réalisé",
-                  serial: "DABF7PAT2G4BAG21",
+                  serial: "GHZIN57J7EOVXGOC",
                   type: "bar",
                 },
                 {
@@ -45,7 +45,7 @@ export default function UndergroundDashboardPage() {
                   unit: "T",
                   color: "#78F6EA",
                   label: "Planifié (Cumulé) - Offre initiale",
-                  serial: "DABF7PAT2G4BAG21",
+                  serial: "GHZIN57J7EOVXGOC",
                   type: "line",
                 },
                 {
@@ -53,7 +53,7 @@ export default function UndergroundDashboardPage() {
                   unit: "T",
                   color: "#B98EFF",
                   label: "Réalisé (Cumulé)",
-                  serial: "DABF7PAT2G4BAG21",
+                  serial: "GHZIN57J7EOVXGOC",
                   type: "line",
                 },
                 {
@@ -62,7 +62,7 @@ export default function UndergroundDashboardPage() {
 
                   color: "#fab006",
                   label: "Forecast (Cumulé)",
-                  serial: "DABF7PAT2G4BAG21",
+                  serial: "GHZIN57J7EOVXGOC",
                   type: "line",
                 },
               ],
@@ -87,7 +87,7 @@ export default function UndergroundDashboardPage() {
                   unit: "T",
                   color: "#78F6EA",
                   label: "Planifié",
-                  serial: "DABF7PAT2G4BAG21",
+                  serial: "GHZIN57J7EOVXGOC",
                   type: "line",
                 },
                 {
@@ -95,7 +95,7 @@ export default function UndergroundDashboardPage() {
                   unit: "T",
                   color: "#B98EFF",
                   label: "Réalisé",
-                  serial: "DABF7PAT2G4BAG21",
+                  serial: "GHZIN57J7EOVXGOC",
                   type: "line",
                 },
               ],
@@ -120,7 +120,7 @@ export default function UndergroundDashboardPage() {
                   unit: "T",
                   color: "#78F6EA",
                   label: "Prévus",
-                  serial: "DABF7PAT2G4BAG21",
+                  serial: "GHZIN57J7EOVXGOC",
                   type: "bar",
                 },
                 {
@@ -128,7 +128,7 @@ export default function UndergroundDashboardPage() {
                   unit: "T",
                   color: "#B98EFF",
                   label: "Réalisé",
-                  serial: "DABF7PAT2G4BAG21",
+                  serial: "GHZIN57J7EOVXGOC",
                   type: "bar",
                 },
               ],
@@ -250,7 +250,7 @@ export default function UndergroundDashboardPage() {
                   unit: "T",
                   color: "#FFDC8C",
                   label: "Tirs Réalisés",
-                  serial: "DABF7PAT2G4BAG21",
+                  serial: "GHZIN57J7EOVXGOC",
                   type: "bar",
                 },
                 {
@@ -258,7 +258,7 @@ export default function UndergroundDashboardPage() {
                   unit: "T",
                   color: "#78F6EA",
                   label: "Tirs Prévues",
-                  serial: "DABF7PAT2G4BAG21",
+                  serial: "GHZIN57J7EOVXGOC",
                   type: "bar",
                 },
                 {
@@ -267,7 +267,7 @@ export default function UndergroundDashboardPage() {
 
                   color: "#B98EFF",
                   label: "Tirs Prévues Cumulée",
-                  serial: "DABF7PAT2G4BAG21",
+                  serial: "GHZIN57J7EOVXGOC",
                   type: "line",
                 },
                 {
@@ -275,7 +275,7 @@ export default function UndergroundDashboardPage() {
                   unit: "T",
                   color: "#FF5AF1",
                   label: "Tirs Réalisés Cumulée",
-                  serial: "DABF7PAT2G4BAG21",
+                  serial: "GHZIN57J7EOVXGOC",
                   type: "line",
                 },
               ],
