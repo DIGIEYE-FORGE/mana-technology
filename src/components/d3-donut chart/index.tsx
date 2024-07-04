@@ -1,6 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// import { useEffect, useRef } from "react";
-// import * as d3 from "d3";
 import { useAppContext } from "@/Context";
 import useSWR from "swr";
 import Loader from "../loader";
@@ -17,15 +15,15 @@ interface D3DonutChartProps {
     serial: string;
   }[];
 }
+
 export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
   const { backendApi, dateRange } = useAppContext();
   const { data, isLoading, error } = useSWR(
-    `telemetryDonutChartProps${JSON.stringify(attribute)}`,
+    `telemetryDonutChartProps${JSON.stringify(attribute)}${dateRange?.from}${dateRange?.to}`,
     async () => {
       if (!attribute?.length) return [];
       const res1 = await Promise.all(
         attribute.map(async (device) => {
-          // const { name, label, color, serial } = device;
           const {
             bfsLabelTelemetry,
             bfsTelemetry,
@@ -89,90 +87,6 @@ export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
       return res1;
     },
   );
-
-  // const drawChart = (data: any) => {
-  //   if (!data) return;
-  //   const width = 100;
-  //   const height = 100;
-  //   const radius = Math.min(width, height) / 4;
-
-  //   const svg = d3
-  //     .select(ref.current)
-  //     .attr("width", "100%")
-  //     .attr("height", "100%")
-  //     .append("g")
-  //     .attr("transform", `translate(${width / 2}, ${height / 2})`);
-
-  //   const pie = d3
-  //     .pie()
-  //     .value((d: any) => d.value)
-  //     .sort(null);
-
-  //   const arc = d3
-  //     .arc()
-  //     .innerRadius(radius * 0.3)
-  //     .outerRadius(radius * 0.8);
-
-  //   const outerArc = d3
-  //     .arc()
-  //     .innerRadius(radius * 0.9)
-  //     .outerRadius(radius * 0.9);
-
-  //   svg
-  //     .selectAll("polyline")
-  //     .data(pie(data as any))
-  //     .enter()
-  //     .append("polyline")
-  //     .attr("points", function (d: any) {
-  //       const pos = outerArc.centroid(d);
-  //       pos[0] = radius * 0.95 * (midAngle(d) < Math.PI ? 1 : -1);
-  //       return [arc.centroid(d), outerArc.centroid(d), pos];
-  //     } as any)
-  //     .style("fill", "none")
-  //     .style("stroke", "#FFFFFF")
-  //     .style("stroke-width", "0.02rem");
-
-  //   svg
-  //     .selectAll("path")
-  //     .data(pie(data as any))
-  //     .enter()
-  //     .append("path")
-  //     .attr("d", arc as any)
-  //     .attr("fill", (d: any) => d?.data?.color);
-
-  //   svg
-  //     .selectAll("text")
-  //     .data(pie(data as any))
-  //     .enter()
-  //     .append("text")
-  //     .text((d: any) => {
-  //       const test: string = d?.data?.name || "";
-  //       const wrapedText = test?.slice(0, 10) + "...";
-  //       console.log(wrapedText);
-  //       return wrapedText;
-  //     })
-  //     .attr("transform", function (d) {
-  //       const pos = outerArc.centroid(d as any);
-  //       pos[0] = radius * (midAngle(d) < Math.PI ? 1 : -1);
-  //       return `translate(${pos})`;
-  //     })
-  //     .style("text-anchor", function (d) {
-  //       return midAngle(d) < Math.PI ? "start" : "end";
-  //     })
-  //     .style("fill", "#FFFFFF")
-  //     .style("font-size", "0.28rem")
-  //     .style("dominant-baseline", "auto");
-
-  //   function midAngle(d: any) {
-  //     return d.startAngle + (d.endAngle - d.startAngle) / 2;
-  //   }
-  // };
-
-  // const ref = useRef(null);
-  // useEffect(() => {
-  //   if (!data) return;
-  //   drawChart(data);
-  // }, [data, ref]);
 
   if (isLoading)
     return (
@@ -241,8 +155,9 @@ export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
             colors: data.map((d) => d.color),
             dataLabels: {
               enabled: true,
-              formatter: function (val) {
-                return Number(val).toFixed(2) + "%";
+              formatter: function (val, opts) {
+                val;
+                return `${opts.w.config.series[opts.seriesIndex].toFixed(2)}`;
               },
               style: {
                 fontSize: "0.7rem",
@@ -266,8 +181,15 @@ export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
               show: false,
               width: 0,
             },
+            tooltip: {
+              y: {
+                formatter: function (val) {
+                  return val.toFixed(2);
+                },
+              },
+            },
           }}
-          series={data.map((d) => d.value)}
+          series={data.map((d) => d.value / 60)}
           width="100%"
           height="130%"
           type="donut"
