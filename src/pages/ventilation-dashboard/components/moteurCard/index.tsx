@@ -81,8 +81,8 @@ export const MoteurCard = (props: Props) => {
     );
   }
 
-  const finalData = data?.[0]?.data || [];
-  const yaxisMax = Math.max(...finalData.map((item) => item.y)) + 50;
+  // const finalData = data?.[0]?.data || [];
+  // const yaxisMax = Math.max(...finalData.map((item) => item.y)) + 50;
 
   return (
     <ReactApexChart
@@ -126,7 +126,7 @@ export const MoteurCard = (props: Props) => {
         },
         yaxis: {
           min: 0,
-          max: yaxisMax,
+          // max: 10,
           tickAmount: 1,
           labels: {
             show: true,
@@ -137,7 +137,7 @@ export const MoteurCard = (props: Props) => {
               cssClass: "apexcharts-yaxis-label",
             },
             formatter(value) {
-              return value.toFixed(0);
+              return value.toFixed(2);
             },
           },
         },

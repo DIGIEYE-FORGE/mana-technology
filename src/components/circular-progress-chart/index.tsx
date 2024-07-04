@@ -56,11 +56,12 @@ export const CircularProgressChart = ({
   const progress = data as number;
   let legend = "";
   if (unit === "%") {
-    legend = `${progress.toFixed(2)}%`;
-  } else if (unit === "m/s") {
-    legend = `${progress.toFixed(1)} m/s`;
+    legend = `${progress?.toFixed(2)}%`;
   } else {
-    legend = `${progress.toFixed(0)} ${unit}`;
+    legend = `${progress?.toFixed(1)} m/s`;
   }
+  // else {
+  //   legend = `${progress?.toFixed(0)} ${unit}`;
+  // }
   return <CircularProgress progress={progress} {...props} legend={legend} />;
 };
