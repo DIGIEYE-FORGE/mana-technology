@@ -140,7 +140,7 @@ function TreePage() {
                   }}
                 >
                   <div
-                    className="relative z-10 aspect-[1.7] h-[46rem] w-[70rem]"
+                    className="relative z-10 aspect-[1.7] h-[46rem] w-[80rem]"
                     style={{
                       backgroundImage: "url(/card-bg.png)",
                       backgroundSize: "100% 100%",
