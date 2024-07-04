@@ -59,15 +59,17 @@ function DashboardPage3() {
             attributes={{
               telemetries: [
                 {
+                  accumulated: true,
                   area: false,
-                  name: "SUD4_PLANIFIE_ROCHE_CUMUL",
+                  name: "SUD4_PLANIFIE_ROCHE",
                   color: "#78F6EA",
                   label: "Cumulatif Planifié",
                   serial: "C6XPYU0D920L1M07",
                 },
                 {
+                  accumulated: true,
                   area: true,
-                  name: "SUD4_REALISE_ROCHE_CUMUL",
+                  name: "SUD4_REALISE_ROCHE",
                   color: "#B98EFF",
                   label: "Cumulatif Realisé",
                   serial: "C6XPYU0D920L1M07",

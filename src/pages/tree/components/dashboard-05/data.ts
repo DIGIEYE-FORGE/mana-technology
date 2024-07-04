@@ -7,10 +7,10 @@ export const widgetsData = {
           name: "UG_SOUTENEMENT_SPLET_SET_1.8m-unite_par_tir",
           color: "#25A18E",
           label: "Est 11",
-          serial: "DABF7PAT2G4BAG21",
+          serial: "GHZIN57J7EOVXGOC",
         },
       ],
-    }
+    },
   },
   1: {
     title: "Performance Engins",
@@ -33,7 +33,7 @@ export const widgetsData = {
           },
         ],
       },
-    ]
+    ],
   },
   2: {
     title: "Consommation Grillage (m2)",
@@ -43,7 +43,7 @@ export const widgetsData = {
           name: "UG_SOUTENEMENT_GRILLAGE-m_carre",
           color: "#FF5AF1",
           label: "AD45",
-          serial: "DABF7PAT2G4BAG21",
+          serial: "GHZIN57J7EOVXGOC",
         },
       ],
     },
@@ -56,7 +56,7 @@ export const widgetsData = {
           name: "UG_BOLTEC_M10_TD",
           color: "#FFDC8C",
           label: "Prévus",
-          serial: "DABF7PAT2G4BAG21",
+          serial: "GHZIN57J7EOVXGOC",
         },
       ],
     },
@@ -69,7 +69,7 @@ export const widgetsData = {
           name: "UG_BOLTEC_M10_TU",
           color: "#FFDC8C",
           label: "Prévus",
-          serial: "DABF7PAT2G4BAG21",
+          serial: "GHZIN57J7EOVXGOC",
         },
       ],
     },
@@ -82,10 +82,9 @@ export const widgetsData = {
           name: "UG_SOUTENEMENT_TEMPS_DE_MISE_EN_PLACE_SOUTENEMENT-min",
           color: "#FFDC8C",
           label: "temps de soutènement",
-          serial: "DABF7PAT2G4BAG21",
+          serial: "GHZIN57J7EOVXGOC",
         },
       ],
     },
   },
-
 };

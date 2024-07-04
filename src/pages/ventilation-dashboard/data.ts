@@ -249,7 +249,7 @@ export const qualitédair = {
         attributes: {
           telemetries: [
             {
-              name: "s=Plc2_O²",
+              name: "s=Plc2_O2",
               label: "Disponibilité",
               serial: "0TKJJWS26V62QV15",
               color: "#cda943",
@@ -277,7 +277,7 @@ export const qualitédair = {
         attributes: {
           telemetries: [
             {
-              name: "s=Plc2_NO²",
+              name: "s=Plc2_NO2",
               label: "Disponibilité",
               serial: "0TKJJWS26V62QV15",
               color: "#cda943",
@@ -305,13 +305,13 @@ export const qualitédair = {
         attributes: {
           telemetries: [
             {
-              name: "s=Plc2_T°H",
+              name: "s=Plc2_ToH",
               label: "Température Humide",
               serial: "0TKJJWS26V62QV15",
               color: "#fff",
             },
             {
-              name: "s=Plc2_T°S",
+              name: "s=Plc2_ToS",
               label: "Température Sèche",
               serial: "0TKJJWS26V62QV15",
               color: "#cda943",
@@ -329,7 +329,7 @@ export const qualitédair = {
         attributes: {
           telemetries: [
             {
-              name: "s=Plc3_O²",
+              name: "s=Plc3_O2",
               label: "Disponibilité",
               serial: "0TKJJWS26V62QV15",
               color: "#cda943",
@@ -357,7 +357,7 @@ export const qualitédair = {
         attributes: {
           telemetries: [
             {
-              name: "s=Plc3_NO²",
+              name: "s=Plc3_NO2",
               label: "Disponibilité",
               serial: "0TKJJWS26V62QV15",
               color: "#cda943",
@@ -385,13 +385,13 @@ export const qualitédair = {
         attributes: {
           telemetries: [
             {
-              name: "s=Plc3_T°H",
+              name: "s=Plc3_ToH",
               label: "Température Humide",
               serial: "0TKJJWS26V62QV15",
               color: "#fff",
             },
             {
-              name: "s=Plc3_T°S",
+              name: "s=Plc3_ToS",
               label: "Température Sèche",
               serial: "0TKJJWS26V62QV15",
               color: "#cda943",
@@ -490,11 +490,11 @@ export const ventilation = {
     telemetry: [
       {
         serial: "0TKJJWS26V62QV15",
-        name: "=plc1_DB_Conso2_kWhTotale",
+        name: "s=plc1_DB_Conso2_kWhTotale",
       },
       {
         serial: "0TKJJWS26V62QV15",
-        name: "=plc1_DB_Conso1_kWhTotale",
+        name: "s=plc1_DB_Conso1_kWhTotale",
       }
     ]
   },
@@ -503,7 +503,7 @@ export const ventilation = {
     unit: "Kw",
     telemetry: [{
       serial: "0TKJJWS26V62QV15",
-      name: "s=plc1_DB_Tag_ΣPwDiesel",
+      name: "s=plc1_DB_Tag_PwDiesel",
     }]
   },
   2: {
@@ -511,7 +511,7 @@ export const ventilation = {
     unit: "",
     telemetry: [{
       serial: "0TKJJWS26V62QV15",
-      name: "s=plc1_DB_Tag_NbVéhicule",
+      name: "s=plc1_DB_Tag_NbVehicule",
     }]
   },
 }

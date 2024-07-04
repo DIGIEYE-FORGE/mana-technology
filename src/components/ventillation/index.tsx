@@ -63,12 +63,12 @@ function Ventillation({ attribute }: VentillationProps) {
           return {
             name: labelTelemetry,
             value:
-              (res?.results[0]?.value !== undefined &&
-              res?.results[0]?.value !== null
-                ? Number(res?.results[0]?.value).toFixed(2)
-                : randomValue ?? "--") +
+              (Number(res?.results[0]?.value) || randomValue || 0)
+                .toFixed(2)
+                .replace(".", ",") +
               "" +
               (unit || ""),
+
             icon,
           };
         }),
@@ -118,12 +118,13 @@ function Ventillation({ attribute }: VentillationProps) {
                 {data?.find((item) => item?.name === "Ventilateur N°1")
                   ?.value ?? "--"}
               </span>
-              <span className="space-x-2">RPM</span>
+              <span className="space-x-2">m3/s</span>
             </h3>
             <div className="flex gap-2 text-sm">
               <span>H.marche</span>
               <span className="text-[#FAAC18]/80">
-                {data?.find((item) => item?.name === "Marche1")?.value ?? "--"}
+                {data?.find((item) => item?.name === "Marche1")?.value ?? "--"}{" "}
+                {" H"}
               </span>
             </div>
           </div>
@@ -137,12 +138,13 @@ function Ventillation({ attribute }: VentillationProps) {
                 {data?.find((item) => item?.name === "Ventilateur N°2")
                   ?.value ?? "--"}
               </span>
-              <span className="space-x-2">RPM</span>
+              <span className="space-x-2">m3/s</span>
             </h3>
             <div className="flex gap-2 text-sm">
               <span>H.marche</span>
               <span className="text-[#FAAC18]/80">
-                {data?.find((item) => item?.name === "Marche1")?.value ?? "--"}
+                {data?.find((item) => item?.name === "Marche2")?.value ?? "--"}
+                {"  H"}
               </span>
             </div>
           </div>
