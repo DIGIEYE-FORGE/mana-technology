@@ -5,18 +5,20 @@ import LineChartWidget from "@/components/line-chart-widget";
 import BarChartWidget from "@/components/bar-chart-widget";
 import MultiProgressWidget from "@/components/multi-progress-widget";
 import ProgressMultiple from "@/components/progress-multiple";
+import BarLineWidget from "@/components/bar-line-widget";
 
 export default function HomeDashboard() {
   return (
     <main className="grid w-full grid-flow-dense auto-rows-[76px] grid-cols-3 gap-3 md:grid-cols-6 lg:grid-cols-12 lg:gap-4 xl:grid-cols-[repeat(15,minmax(0,1fr))] 2xl:auto-rows-[92px]">
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
+          {/* Avancement Cumulé annuel (m) */}
           Avancement Cumulé annuel (m)
         </h1>
         <div className="flex-1">
-          <BarChartWidget
-            // title="Daily Production BreakUp"
+          <BarLineWidget
             attributes={{
+              stacked: true,
               telemetries: [
                 {
                   name: "EST_PLANIFIE_MINERAI",
@@ -24,6 +26,7 @@ export default function HomeDashboard() {
                   color: "#FE22EB",
                   label: "Minerai Planifié",
                   serial: "U9XQMQ1DXYT7LJIP",
+                  type: "bar",
                 },
                 {
                   name: "EST_REALISE_MINERAI",
@@ -31,6 +34,7 @@ export default function HomeDashboard() {
                   color: "#B98EFF",
                   label: "Minerai Realisé",
                   serial: "U9XQMQ1DXYT7LJIP",
+                  type: "line",
                 },
                 {
                   name: "EST_PLANIFIE_STERILE",
@@ -38,6 +42,7 @@ export default function HomeDashboard() {
                   color: "#FEC33A",
                   label: "Stérile Planifié",
                   serial: "U9XQMQ1DXYT7LJIP",
+                  type: "bar",
                 },
                 {
                   name: "EST_REALISE_STERILE",
@@ -45,6 +50,8 @@ export default function HomeDashboard() {
                   color: "#78F6EA",
                   label: "Stérile Realisé",
                   serial: "U9XQMQ1DXYT7LJIP",
+                  type: "line",
+                  accumulated: true,
                 },
               ],
             }}
