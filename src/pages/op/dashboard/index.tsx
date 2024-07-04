@@ -58,7 +58,7 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
-          Production Roche Cumulée monsuelle (t)
+          Production Roche Cumulée mensuelle (t)
         </h1>
         <div className="flex-1">
           <LineChartWidget
@@ -68,7 +68,7 @@ export default function HomeDashboard() {
                   area: false,
                   name: "PLANIFIE_ROCHE",
                   color: "#78F6EA",
-                  label: "Cumulative Planifié",
+                  label: "Planifié (Cumulé)",
                   serial: "TIRSIL71OBOT4UB4",
                   accumulated: true,
                 },
@@ -76,7 +76,7 @@ export default function HomeDashboard() {
                   area: true,
                   name: "REALISE_ROCHE",
                   color: "#B98EFF",
-                  label: "Cumulative Réalisé",
+                  label: "Réalisé (Cumulé)",
                   serial: "TIRSIL71OBOT4UB4",
                   accumulated: true,
                 },

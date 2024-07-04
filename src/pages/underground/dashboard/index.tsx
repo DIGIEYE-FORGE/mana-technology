@@ -118,7 +118,7 @@ export default function UndergroundDashboardPage() {
                   name: "UG_METRES_PLANIFIE",
                   unit: "T",
                   color: "#78F6EA",
-                  label: "Prévus",
+                  label: "Planifié",
                   serial: "WF5CW7A4T9R9VU9F",
                   type: "bar",
                 },
