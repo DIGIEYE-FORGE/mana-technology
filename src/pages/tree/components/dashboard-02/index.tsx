@@ -4,6 +4,7 @@ import MachineFrame from "@/assets/machine-frame.svg?react";
 import { CircularProgressChart } from "@/components/circular-progress-chart";
 import LineChartWidget from "@/components/line-chart-widget";
 import BarChartWidget from "@/components/bar-chart-widget";
+import BarLineWidget from "@/components/bar-line-widget";
 
 export const Dashboard2 = () => {
   return (
@@ -83,7 +84,10 @@ export const Dashboard2 = () => {
           {widgetsData[3]?.title}
         </h4>
         <div className="relative h-1 flex-1 -translate-y-4">
-          <LineChartWidget attributes={widgetsData[3].attributes} correction={100} />
+          <LineChartWidget
+            attributes={widgetsData[3].attributes}
+            correction={100}
+          />
         </div>
       </Card>
       <Card className="flex flex-col">
@@ -91,15 +95,47 @@ export const Dashboard2 = () => {
           {widgetsData[4]?.title}
         </h4>
         <div className="relative h-1 flex-1 -translate-y-4">
-          <LineChartWidget attributes={widgetsData[4].attributes} correction={100} />
+          <LineChartWidget
+            attributes={widgetsData[4].attributes}
+            correction={100}
+          />
         </div>
       </Card>
-      <Card className="col-span-2 flex flex-col">
+      <Card className="debug debug col-span-2 flex flex-col">
         <h4 className="pt-2 text-center text-lg font-semibold">
           {widgetsData[5]?.title}
         </h4>
         <div className="relative h-1 flex-1 -translate-y-4">
-          <BarChartWidget attributes={widgetsData[5].attributes} />
+          <BarLineWidget
+            attributes={{
+              stacked: true,
+              telemetries: [
+                {
+                  name: "UG_FORATION_TIRS_TEMPS_DE_FORATION-min",
+                  color: "#18a5c1",
+                  label: "Temps de foration",
+                  serial: "DABF7PAT2G4BAG21",
+                  type: "bar",
+                },
+                {
+                  name: "UG_TAUX_ARRACHEMENT_TEMPS_DE_FORATION_BFS",
+                  color: "#cda943",
+                  label: "BFS",
+                  serial: "DABF7PAT2G4BAG21",
+                  type: "bar",
+                },
+              ],
+            }}
+          />
+          {/* // attributes={{
+            //   stacked: true,
+            //   telemetries: [
+           
+          
+            //   ],
+            // }}
+            //  attributes={widgetsData[5].attributes}
+          /> */}
         </div>
       </Card>
       <Card className="col-span-2 flex flex-col">
