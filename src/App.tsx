@@ -24,8 +24,7 @@ function App() {
     z.string().default(""),
   );
   const [dateRange, setDateRange] = useState<TDateRange>({
-    // from: first day of the current month
-    from: new Date(new Date().setDate(1)),
+    from: new Date(new Date("2024-06-01").setHours(0, 0, 0, 0)),
     to: new Date(new Date().setHours(23, 59, 59, 999)),
   });
   const backendApi = useMemo(

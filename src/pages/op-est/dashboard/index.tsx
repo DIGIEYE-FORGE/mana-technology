@@ -65,6 +65,7 @@ export default function HomeDashboard() {
                   color: "#78F6EA",
                   label: "Cumulative planifié",
                   serial: "U9XQMQ1DXYT7LJIP",
+                  accumulated: true,
                 },
                 {
                   area: true,
