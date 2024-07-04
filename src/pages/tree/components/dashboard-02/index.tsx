@@ -101,12 +101,13 @@ export const Dashboard2 = () => {
           />
         </div>
       </Card>
-      <Card className="debug debug col-span-2 flex flex-col">
+      <Card className="col-span-2 flex flex-col">
         <h4 className="pt-2 text-center text-lg font-semibold">
           {widgetsData[5]?.title}
         </h4>
         <div className="relative h-1 flex-1 -translate-y-4">
           <BarLineWidget
+            yAxis="one"
             attributes={{
               stacked: true,
               telemetries: [
@@ -115,27 +116,18 @@ export const Dashboard2 = () => {
                   color: "#18a5c1",
                   label: "Temps de foration",
                   serial: "DABF7PAT2G4BAG21",
-                  type: "bar",
+                  type: "line",
                 },
                 {
                   name: "UG_TAUX_ARRACHEMENT_TEMPS_DE_FORATION_BFS",
                   color: "#cda943",
                   label: "BFS",
                   serial: "DABF7PAT2G4BAG21",
-                  type: "bar",
+                  type: "line",
                 },
               ],
             }}
           />
-          {/* // attributes={{
-            //   stacked: true,
-            //   telemetries: [
-           
-          
-            //   ],
-            // }}
-            //  attributes={widgetsData[5].attributes}
-          /> */}
         </div>
       </Card>
       <Card className="col-span-2 flex flex-col">
