@@ -267,7 +267,7 @@ export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
               width: 0,
             },
           }}
-          series={data.sort((a, b) => b.value - a.value).map((d) => d.value)}
+          series={data.map((d) => d.value)}
           width="100%"
           height="130%"
           type="donut"

@@ -1,15 +1,25 @@
-import {
-  ChartTelemetry,
-  HistoryType,
-  Widget,
-  flatten,
-  getRandomColor,
-} from "@/utils";
+import { HistoryType, Widget, flatten, getRandomColor } from "@/utils";
 import useSWR from "swr";
 import { useAppContext } from "@/Context";
 import Chart from "react-apexcharts";
 import Loader from "@/components/loader";
-import { ReactNode } from "react";
+import { ReactNode, useId } from "react";
+
+export type ChartTelemetry = {
+  serial: string;
+  name?: string;
+  calculated?: {
+    names: [string, string];
+    operation: "addition" | "subtraction" | "multiplication" | "division";
+  };
+  label?: string;
+  unit?: string;
+  color?: string;
+  area?: boolean;
+  data?: { x: Date; y: number }[];
+  accumulated?: boolean;
+  value?: number;
+};
 
 type Props = Widget & {
   legendPosition?: "top" | "bottom" | "left" | "right" | "none";
@@ -24,33 +34,28 @@ export default function LineChartWidget({
   ...props
 }: Props) {
   const { backendApi, dateRange } = useAppContext();
+  const id = useId();
 
   const telemetries = (props.attributes?.telemetries || []) as ChartTelemetry[];
 
   const { data, isLoading, error } = useSWR(
     `histories?${
       selectionDate
-        ? JSON.stringify({
-            telemetries,
-            dateRange,
-          })
-        : JSON.stringify({
-            telemetries,
-          })
+        ? JSON.stringify({ telemetries, dateRange })
+        : JSON.stringify({ telemetries })
     }`,
     async () => {
       if (!dateRange?.from || telemetries.length === 0) return [];
       const res = await Promise.all(
-        telemetries.map(async ({ serial, name }, idx) => {
+        telemetries.map(async ({ serial, name, calculated }, idx) => {
           if (telemetries[idx].data) return [];
+          if (!name && !calculated) return [];
+
           const { results } = await backendApi.findMany<HistoryType>(
             "/dpc-history/api/history",
             {
-              pagination: {
-                page: 1,
-                perPage: 10_00,
-              },
-              select: [name],
+              pagination: { page: 1, perPage: 10_00 },
+              select: name ? [name] : calculated?.names,
               orderBy: "createdAt:asc",
               where: {
                 serial,
@@ -68,14 +73,41 @@ export default function LineChartWidget({
       );
       const res1 = res.map((item, index) => {
         const newData: { x: Date; y: number }[] = [];
-        if (telemetries[index].data === undefined) {
+        const { calculated, name } = telemetries[index];
+
+        if (telemetries[index].data) {
+          // do nothing
+        } else if (name) {
           for (let i = 0; i < item.length; i++) {
             const x = new Date(item[i].createdAt);
-            let y =
-              Number(flatten(item[i])[telemetries[index].name]) * correction;
+            let y = Number(flatten(item[i])[name]) * correction;
+            if (telemetries[index].accumulated && i > 0) y += newData[i - 1].y;
+            newData.push({ x, y });
+          }
+        } else if (calculated) {
+          const [name1, name2] = calculated.names;
+          for (let i = 0; i < item.length; i++) {
+            const x = new Date(item[i].createdAt);
+            let y1 = Number(flatten(item[i])[name1]) * correction;
+            let y2 = Number(flatten(item[i])[name2]) * correction;
             if (telemetries[index].accumulated && i > 0) {
-              y += newData[i - 1].y;
-              console.log({ x, y });
+              y1 += newData[i - 1].y;
+              y2 += newData[i - 1].y;
+            }
+            let y = 0;
+            switch (calculated.operation) {
+              case "addition":
+                y = y1 + y2;
+                break;
+              case "subtraction":
+                y = y1 - y2;
+                break;
+              case "multiplication":
+                y = y1 * y2;
+                break;
+              case "division":
+                y = y1 / y2;
+                break;
             }
             newData.push({ x, y });
           }
@@ -85,7 +117,7 @@ export default function LineChartWidget({
           name: telemetries[index].label || telemetries[index].name,
           type: telemetries[index].area ? "area" : "line",
           nameTelemetry: telemetries[index].name,
-          color: telemetries[index].color || getRandomColor(),
+          color: telemetries[index].color,
           data: telemetries[index].data || newData,
         };
       });
@@ -117,6 +149,8 @@ export default function LineChartWidget({
         name: item.name,
         type: item.type,
         data: item.data,
+        color: item.color || getRandomColor(),
+        sorted: true,
       }));
     },
   );
@@ -137,6 +171,7 @@ export default function LineChartWidget({
     <Chart
       options={{
         theme: { mode: "dark" },
+
         tooltip: {
           shared: true,
           hideEmptySeries: false,
@@ -147,6 +182,7 @@ export default function LineChartWidget({
           yaxis: { lines: { show: true } },
         },
         chart: {
+          id,
           type: "bar",
           background: "transparent",
           toolbar: { show: false },

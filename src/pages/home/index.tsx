@@ -97,11 +97,15 @@ function HomeUpBar() {
   const { dateRange, setDateRange } = useAppContext();
   const { pathname } = useLocation();
   return (
-    <div className="group sticky left-6 top-0 z-10 flex h-up-bar w-[calc(10)] shrink-0 items-center gap-4 rounded-[0_0_0_24px] border-b border-l px-6 backdrop-blur">
+    <div className="group sticky left-6 top-0 z-10 flex h-up-bar w-[calc(10)] shrink-0 items-center gap-4 rounded-[0_0_0_24px] border-b border-l px-4 backdrop-blur sm:px-6">
       <Link to="/">
         <div className="flex gap-4">
-          <img src="/logo.svg" alt="logo" />
-          <span className="h-3/4 border-l py-3 pl-4 text-2xl">
+          <img
+            src="/logo.svg"
+            alt="logo"
+            className="border-r pr-4 max-sm:hidden"
+          />
+          <span className="font- h-3/4 py-3 text-lg font-bold">
             Performance Open-Pit
           </span>
         </div>

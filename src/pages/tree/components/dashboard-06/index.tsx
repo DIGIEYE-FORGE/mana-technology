@@ -2,8 +2,7 @@ import BarChartWidget from "@/components/bar-chart-widget";
 import { Card } from "@/components/card";
 import LineChartWidget from "@/components/line-chart-widget";
 import { widgetsData } from "./data";
-import { CircularProgressChart } from "@/components/circular-progress-chart";
-import MachineFrame from "@/assets/machine-frame.svg?react";
+import { PerformanceEngins } from "../performance-engins";
 
 export const Dashboard6 = () => {
   return (
@@ -17,41 +16,13 @@ export const Dashboard6 = () => {
         </div>
       </Card>
       <Card className="col-span-2 flex flex-col p-2">
-        <h4 className="py-2 text-center text-lg font-semibold">
-          {widgetsData[1]?.title}
-        </h4>
-        <div className="flex h-1 flex-1 items-center justify-evenly">
-          <div className="flex flex-col items-center gap-1">
-            <div className="relative aspect-square h-20">
-              <MachineFrame className="h-full w-full" />
-              <div className="absolute bottom-2 right-3 z-10 w-32">
-                <img
-                  src={widgetsData[1].attributes.image}
-                  alt="image"
-                  className="object-contain"
-                />
-              </div>
-            </div>
-            <div className="text-center text-sm font-semibold">
-              {widgetsData[1].attributes.name}
-            </div>
-          </div>
-          {widgetsData[1].attributes.telemetries.map((telemetry, index) => {
-            const { color, label, ...rest } = telemetry;
-            return (
-              <div key={index} className="flex flex-col gap-2">
-                <div className="aspect-square h-20">
-                  <CircularProgressChart
-                    telemetry={rest}
-                    color={color}
-                    className="h-full w-full text-sm font-bold"
-                  />
-                </div>
-                <div className="text-center text-sm font-semibold">{label}</div>
-              </div>
-            );
-          })}
-        </div>
+        <PerformanceEngins
+          image={widgetsData[1].image}
+          title={widgetsData[1].title}
+          attributes={widgetsData[1].attributes}
+          imageClassName="absolute bottom-2 right-3 z-10 w-32"
+          engineName={widgetsData[1].engineName}
+        />
       </Card>
       <Card className="col-span-2 flex flex-col p-2">
         <h1 className="text-center text-lg font-semibold">
@@ -66,7 +37,10 @@ export const Dashboard6 = () => {
           {widgetsData[3].title}
         </h3>
         <div className="h-1 flex-1">
-          <LineChartWidget attributes={widgetsData[3].attributes} correction={100}/>
+          <LineChartWidget
+            attributes={widgetsData[3].attributes}
+            correction={100}
+          />
         </div>
       </Card>
       <Card className="col-span-1 flex flex-col p-2">
@@ -74,7 +48,10 @@ export const Dashboard6 = () => {
           {widgetsData[4].title}
         </h3>
         <div className="h-1 flex-1">
-          <LineChartWidget attributes={widgetsData[4].attributes} correction={100}/>
+          <LineChartWidget
+            attributes={widgetsData[4].attributes}
+            correction={100}
+          />
         </div>
       </Card>
 

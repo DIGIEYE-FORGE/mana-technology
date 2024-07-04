@@ -16,7 +16,9 @@ export function MainProjectUpBar() {
       </Link>
       <div className="absolute left-24 flex gap-4">
         <img src="/logo.svg" alt="logo" />
-        <span className="h-3/4 border-l py-3 pl-4 text-2xl">Tizert Mine</span>
+        <span className="h-3/4 border-l py-3 pl-4 text-xl font-bold">
+          Tizert Mine
+        </span>
       </div>
       <OverviewButton className="absolute right-1/2 top-full flex translate-x-1/2 translate-y-2 items-center gap-2 whitespace-nowrap border text-lg font-semibold">
         <FilePieChart size={20} />
