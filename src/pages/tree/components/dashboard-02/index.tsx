@@ -4,6 +4,7 @@ import MachineFrame from "@/assets/machine-frame.svg?react";
 import { CircularProgressChart } from "@/components/circular-progress-chart";
 import LineChartWidget from "@/components/line-chart-widget";
 import BarChartWidget from "@/components/bar-chart-widget";
+import BarLineWidget from "@/components/bar-line-widget";
 
 export const Dashboard2 = () => {
   return (
@@ -83,7 +84,10 @@ export const Dashboard2 = () => {
           {widgetsData[3]?.title}
         </h4>
         <div className="relative h-1 flex-1 -translate-y-4">
-          <LineChartWidget attributes={widgetsData[3].attributes} correction={100} />
+          <LineChartWidget
+            attributes={widgetsData[3].attributes}
+            correction={100}
+          />
         </div>
       </Card>
       <Card className="flex flex-col">
@@ -91,7 +95,10 @@ export const Dashboard2 = () => {
           {widgetsData[4]?.title}
         </h4>
         <div className="relative h-1 flex-1 -translate-y-4">
-          <LineChartWidget attributes={widgetsData[4].attributes} correction={100} />
+          <LineChartWidget
+            attributes={widgetsData[4].attributes}
+            correction={100}
+          />
         </div>
       </Card>
       <Card className="col-span-2 flex flex-col">
@@ -99,7 +106,28 @@ export const Dashboard2 = () => {
           {widgetsData[5]?.title}
         </h4>
         <div className="relative h-1 flex-1 -translate-y-4">
-          <BarChartWidget attributes={widgetsData[5].attributes} />
+          <BarLineWidget
+            yAxis="one"
+            attributes={{
+              stacked: true,
+              telemetries: [
+                {
+                  name: "UG_FORATION_TIRS_TEMPS_DE_FORATION-min",
+                  color: "#18a5c1",
+                  label: "Temps de foration",
+                  serial: "DABF7PAT2G4BAG21",
+                  type: "line",
+                },
+                {
+                  name: "UG_TAUX_ARRACHEMENT_TEMPS_DE_FORATION_BFS",
+                  color: "#cda943",
+                  label: "BFS",
+                  serial: "DABF7PAT2G4BAG21",
+                  type: "line",
+                },
+              ],
+            }}
+          />
         </div>
       </Card>
       <Card className="col-span-2 flex flex-col">

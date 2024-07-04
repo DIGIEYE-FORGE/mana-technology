@@ -10,6 +10,7 @@ import useSWR from "swr";
 import { useAppContext } from "@/Context";
 import Chart from "react-apexcharts";
 import Loader from "@/components/loader";
+import { Fragment } from "react/jsx-runtime";
 type Props = Widget;
 
 export default function BarLineWidget({
@@ -129,143 +130,146 @@ export default function BarLineWidget({
     );
 
   return (
-    <Chart
-      options={{
-        theme: { mode: "dark" },
-        tooltip: { cssClass: "text-black" },
-        chart: {
-          type: "line",
-          background: "transparent",
-          toolbar: { show: false },
-          animations: { enabled: true },
-          zoom: { enabled: false },
-          selection: { enabled: false },
-          dropShadow: { enabled: false },
-          stacked: props.stacked || false,
-        },
-        dataLabels: { enabled: false },
+    <Fragment>
+      {/* {JSON.stringify(data)} */}
+      <Chart
+        options={{
+          theme: { mode: "dark" },
+          tooltip: { cssClass: "text-black" },
+          chart: {
+            type: "line",
+            background: "transparent",
+            toolbar: { show: false },
+            animations: { enabled: true },
+            zoom: { enabled: false },
+            selection: { enabled: false },
+            dropShadow: { enabled: false },
+            stacked: props.stacked || false,
+          },
+          dataLabels: { enabled: false },
 
-        stroke: {
-          width: (data || []).map((item) =>
-            item.type === "line" || item.type === "area" ? 2.5 : 0,
-          ),
-          curve: "smooth",
-        },
-        xaxis: {
-          type: "datetime",
-          max: props.dateRange?.to?.getTime(),
-          axisBorder: { show: false },
-          axisTicks: { show: false },
-          labels: {
-            show: true,
-            style: {
-              fontSize: "12px",
-              fontFamily: "Helvetica, Arial, sans-serif",
-              fontWeight: 400,
-              cssClass: "apexcharts-xaxis-label",
+          stroke: {
+            width: (data || []).map((item) =>
+              item.type === "line" || item.type === "area" ? 2.5 : 0,
+            ),
+            curve: "smooth",
+          },
+          xaxis: {
+            type: "datetime",
+            max: props.dateRange?.to?.getTime(),
+            axisBorder: { show: false },
+            axisTicks: { show: false },
+            labels: {
+              show: true,
+              style: {
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-xaxis-label",
+              },
             },
           },
-        },
-        yaxis:
-          props.yAxis === "one"
-            ? {
-                axisTicks: {
-                  show: true,
-                },
-                axisBorder: {
-                  show: true,
-                },
-                labels: {
-                  formatter: function (value) {
-                    return ciel
-                      ? Math.ceil(value) + " "
-                      : typeof value === "number" &&
-                          value.toString().includes(".")
-                        ? value.toFixed(2) + " "
-                        : value + " ";
-                  },
-                },
-              }
-            : [
-                {
-                  seriesName: data?.[0].name,
+          yaxis:
+            props.yAxis === "one"
+              ? {
                   axisTicks: {
                     show: true,
                   },
                   axisBorder: {
                     show: true,
                   },
-                  title: {
-                    style: {
-                      color: "#008FFB",
+                  labels: {
+                    formatter: function (value) {
+                      return ciel
+                        ? Math.ceil(value) + " "
+                        : typeof value === "number" &&
+                            value.toString().includes(".")
+                          ? value.toFixed(2) + " "
+                          : value + " ";
                     },
                   },
+                }
+              : [
+                  {
+                    seriesName: data?.[0].name,
+                    axisTicks: {
+                      show: true,
+                    },
+                    axisBorder: {
+                      show: true,
+                    },
+                    title: {
+                      style: {
+                        color: "#008FFB",
+                      },
+                    },
 
-                  labels: {
-                    formatter: function (value) {
-                      return ciel
-                        ? Math.ceil(value) + " "
-                        : typeof value === "number" &&
-                            value.toString().includes(".")
-                          ? value.toFixed(2) + " "
-                          : value + " ";
+                    labels: {
+                      formatter: function (value) {
+                        return ciel
+                          ? Math.ceil(value) + " "
+                          : typeof value === "number" &&
+                              value.toString().includes(".")
+                            ? value.toFixed(2) + " "
+                            : value + " ";
+                      },
                     },
                   },
-                },
-                {
-                  seriesName: data?.[1].name,
-                  show: false,
-                },
-                {
-                  opposite: true,
-                  seriesName: data?.[2]?.name,
-                  axisTicks: {
-                    show: true,
+                  {
+                    seriesName: data?.[1]?.name,
+                    show: false,
                   },
-                  axisBorder: {
-                    show: true,
-                  },
-                  labels: {
-                    formatter: function (value) {
-                      return ciel
-                        ? Math.ceil(value) + " "
-                        : typeof value === "number" &&
-                            value.toString().includes(".")
-                          ? value.toFixed(2) + " "
-                          : value + " ";
+                  {
+                    opposite: true,
+                    seriesName: data?.[2]?.name,
+                    axisTicks: {
+                      show: true,
+                    },
+                    axisBorder: {
+                      show: true,
+                    },
+                    labels: {
+                      formatter: function (value) {
+                        return ciel
+                          ? Math.ceil(value) + " "
+                          : typeof value === "number" &&
+                              value.toString().includes(".")
+                            ? value.toFixed(2) + " "
+                            : value + " ";
+                      },
+                    },
+                    title: {
+                      style: {
+                        color: "#FEB019",
+                      },
                     },
                   },
-                  title: {
-                    style: {
-                      color: "#FEB019",
-                    },
-                  },
-                },
-              ],
-        grid: {
-          borderColor: "#797979",
-          xaxis: { lines: { show: false } },
-          yaxis: { lines: { show: true } },
-        },
-        colors: telemetries.map((item) => item.color),
-        plotOptions: {
-          bar: {
-            horizontal: false,
-            borderRadius: 2,
-            borderRadiusApplication: "end",
-            borderRadiusWhenStacked: "all",
+                ],
+          grid: {
+            borderColor: "#797979",
+            xaxis: { lines: { show: false } },
+            yaxis: { lines: { show: true } },
           },
-        },
-        legend: {
-          position: "bottom",
-          markers: { width: 26, height: 12, radius: 8 },
-          fontWeight: 600,
-          fontSize: "12px",
-        },
-      }}
-      series={data as any}
-      width={"100%"}
-      height={"100%"}
-    />
+          colors: telemetries.map((item) => item.color),
+          plotOptions: {
+            bar: {
+              horizontal: false,
+              borderRadius: 2,
+              borderRadiusApplication: "end",
+              borderRadiusWhenStacked: "all",
+            },
+          },
+          legend: {
+            position: "bottom",
+            markers: { width: 26, height: 12, radius: 8 },
+            fontWeight: 600,
+            fontSize: "12px",
+          },
+        }}
+        series={data as any}
+        width={"100%"}
+        height={"100%"}
+      />
+    </Fragment>
   );
 }
