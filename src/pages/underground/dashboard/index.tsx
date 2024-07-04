@@ -402,6 +402,7 @@ export default function UndergroundDashboardPage() {
         </h3>
         <div className="h-1 flex-1 overflow-y-auto">
           <Engins
+            selectedWithDate={true}
             attribute={[
               {
                 label: "BOLTEC M10",

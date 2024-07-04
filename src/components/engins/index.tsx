@@ -4,6 +4,7 @@ import useSWR from "swr";
 import Loader from "../loader";
 import { HistoryType } from "@/utils";
 interface EnginsProps {
+  selectedWithDate?: boolean;
   attribute: {
     label: string;
     icon: string;
@@ -14,11 +15,11 @@ interface EnginsProps {
   }[];
 }
 
-function Engins({ attribute }: EnginsProps) {
-  const { backendApi } = useAppContext();
+function Engins({ attribute, selectedWithDate = false }: EnginsProps) {
+  const { backendApi, dateRange } = useAppContext();
 
   const { data, isLoading, error } = useSWR(
-    `enginsTelemetry${JSON.stringify(attribute)}`,
+    `enginsTelemetry${JSON.stringify(attribute)}${selectedWithDate ? JSON.stringify(dateRange) : ""}`,
     async () => {
       const res = await Promise.all(
         attribute.map(async (engin) => {
@@ -39,6 +40,10 @@ function Engins({ attribute }: EnginsProps) {
               select: [utilisationTelemetry],
               where: {
                 serial,
+                createdAt: {
+                  $gt: new Date(dateRange?.from as Date),
+                  $lte: dateRange?.to && new Date(dateRange.to as Date),
+                },
               },
             },
           );
@@ -53,14 +58,11 @@ function Engins({ attribute }: EnginsProps) {
               select: [disponibilliteTelemetry],
               where: {
                 serial,
-                // createdAt: dateRange && {
-                //   $gt: new Date(dateRange?.from as Date),
-                //   $lte: dateRange?.to && new Date(dateRange.to as Date),
-                // },
+                createdAt: {
+                  $gt: new Date(dateRange?.from as Date),
+                  $lte: dateRange?.to && new Date(dateRange.to as Date),
+                },
               },
-              // orderBy: {
-              //   createdAt: "desc",
-              // },
             },
           );
 
