@@ -110,6 +110,7 @@ export default function UndergroundDashboardPage() {
           <BarLineWidget
             moyenne={["UG_METRES_PLANIFIE", "UG_METRES_REALISE_TOTAL"]}
             yAxis="one"
+            dateRange={dateRange}
             attributes={{
               stacked: true,
               telemetries: [
@@ -282,6 +283,7 @@ export default function UndergroundDashboardPage() {
         <h1 className="text-center text-lg font-semibold">Arrachement (%)</h1>
         <div className="flex-1">
           <BarLineWidget
+            dateRange={dateRange}
             ciel={false}
             correction={100}
             moyenne={["UG_METRES_PLANIFIE", "UG_METRES_REALISE_TOTAL"]}
