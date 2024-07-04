@@ -86,7 +86,7 @@ export const Dashboard2 = () => {
         <h4 className="pt-2 text-center text-lg font-semibold">
           {widgetsData[5]?.title}
         </h4>
-        <div className="debug relative h-1 flex-1 -translate-y-4">
+        <div className="relative h-1 flex-1 -translate-y-4">
           <BarLineWidget
             yAxis="one"
             correction={{

@@ -4,7 +4,13 @@ import { DatePickerWithRange } from "@/components/calander";
 import { useAppContext } from "@/Context";
 import { TDateRange } from "@/utils";
 import { Button } from "@/components/ui/button";
-import { Check, ChevronDown, MoveRightIcon } from "lucide-react";
+import {
+  Check,
+  ChevronDown,
+  Minimize,
+  MoveRightIcon,
+  Shrink,
+} from "lucide-react";
 import { Popover, PopoverContent } from "@/components/ui/popover";
 import { PopoverTrigger } from "@radix-ui/react-popover";
 import { redirect } from "react-router-dom";
@@ -94,7 +100,8 @@ export const RoutLink = ({
 };
 
 function HomeUpBar() {
-  const { dateRange, setDateRange } = useAppContext();
+  const { dateRange, setDateRange, setFullScreen, fullScreen } =
+    useAppContext();
   const { pathname } = useLocation();
   return (
     <div className="group sticky left-6 top-0 z-10 flex h-up-bar w-[calc(10)] shrink-0 items-center gap-4 rounded-[0_0_0_24px] border-b border-l px-4 backdrop-blur sm:px-6">
@@ -132,14 +139,26 @@ function HomeUpBar() {
           ))}
         </PopoverContent>
       </Popover>
-      <Link
-        to="/main-project"
-        className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-      >
-        <Button variant="ghost">
-          <MoveRightIcon className="size-6" />
+      <div className="flex gap-2">
+        <Button
+          onClick={() => {
+            setFullScreen(!fullScreen);
+          }}
+          className="ml-auto opacity-0 transition-opacity duration-500 hover:opacity-100"
+          size={"icon"}
+          variant={"ghost"}
+        >
+          {fullScreen ? <Shrink size={24} /> : <Minimize size={24} />}
         </Button>
-      </Link>
+        <Link
+          to="/main-project"
+          className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        >
+          <Button variant="ghost">
+            <MoveRightIcon className="size-6" />
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 }
