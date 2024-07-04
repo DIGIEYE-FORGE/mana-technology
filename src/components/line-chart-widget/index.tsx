@@ -71,7 +71,8 @@ export default function LineChartWidget({
         if (telemetries[index].data === undefined) {
           for (let i = 0; i < item.length; i++) {
             const x = new Date(item[i].createdAt);
-            let y = Number(flatten(item[i])[telemetries[index].name]);
+            let y =
+              Number(flatten(item[i])[telemetries[index].name]) * correction;
             if (telemetries[index].accumulated && i > 0) {
               y += newData[i - 1].y;
               console.log({ x, y });
