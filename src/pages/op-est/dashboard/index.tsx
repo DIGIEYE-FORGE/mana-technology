@@ -45,6 +45,7 @@ export default function HomeDashboard() {
                   color: "#78F6EA",
                   label: "Stérile Realisé",
                   serial: "U9XQMQ1DXYT7LJIP",
+                  accumulated: true,
                 },
               ],
             }}
