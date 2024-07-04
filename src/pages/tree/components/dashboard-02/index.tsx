@@ -4,14 +4,20 @@ import LineChartWidget from "@/components/line-chart-widget";
 import BarChartWidget from "@/components/bar-chart-widget";
 import BarLineWidget from "@/components/bar-line-widget";
 import { PerformanceEngins } from "../performance-engins";
+import ModelVideo from "./video-model";
 
 export const Dashboard2 = () => {
   return (
     <main className="grid max-h-full auto-rows-[11.5rem] grid-cols-4 gap-4">
-      <Card className="col-span-2 flex flex-col p-2">
-        <span className="py-2 text-center text-lg font-semibold">
-          {widgetsData[0]?.title}
-        </span>
+      <Card className="relative col-span-2 flex flex-col gap-2 p-2">
+        <div className="flex">
+          <div className="flex-1 text-center font-semibold">
+            {widgetsData[0]?.title}
+          </div>
+          <div className="absolute top-0 z-[999]">
+            <ModelVideo />
+          </div>
+        </div>
         <div className="flex h-1 flex-1 gap-12 px-8">
           <div
             className="flex-1 rounded-lg"
