@@ -77,6 +77,7 @@ export const Dashboard2 = () => {
         <div className="relative h-1 flex-1 -translate-y-4">
           <BarLineWidget
             yAxis="one"
+            
             attributes={{
               stacked: true,
               telemetries: [

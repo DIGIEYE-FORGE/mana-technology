@@ -192,7 +192,7 @@ export default function UndergroundDashboardPage() {
                 telemetryName: "s=Plc2_CO",
                 randomValue: 1,
                 unit: "ppm",
-                labelTelemetry: "co2",
+                labelTelemetry: "CO",
                 serial: "0TKJJWS26V62QV15",
                 icon: "co2.svg",
               },
@@ -200,7 +200,7 @@ export default function UndergroundDashboardPage() {
                 telemetryName: "s=Plc2_NO²",
                 randomValue: 0.5,
                 unit: "ppm",
-                labelTelemetry: "no2",
+                labelTelemetry: "NO2",
                 serial: "0TKJJWS26V62QV15",
                 icon: "co2.svg",
               },
@@ -400,7 +400,7 @@ export default function UndergroundDashboardPage() {
       </Card>
       <Card className="col-span-full flex flex-col gap-2 px-6 pt-4">
         <h3 className="text-center text-lg font-semibold">
-          Disponibilité et utilisation des Engins
+        Performance Engins
         </h3>
         <div className="h-1 flex-1 overflow-y-auto">
           <Engins
