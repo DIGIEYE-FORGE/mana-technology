@@ -16,9 +16,9 @@ export function convertParams(params?: FindManyParams) {
     take: pagination?.perPage,
     skip: pagination && (pagination.page - 1) * pagination.perPage,
     where: where && stringify(where),
-    orderBy: orderBy && stringify(orderBy),
     include: include && stringify(include),
     select: select && stringify(select),
+    orderBy: orderBy && stringify(orderBy),
   };
 }
 
