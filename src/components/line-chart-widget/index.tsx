@@ -30,13 +30,8 @@ export default function LineChartWidget({
   const { data, isLoading, error } = useSWR(
     `histories?${
       selectionDate
-        ? JSON.stringify({
-            telemetries,
-            dateRange,
-          })
-        : JSON.stringify({
-            telemetries,
-          })
+        ? JSON.stringify({ telemetries, dateRange })
+        : JSON.stringify({ telemetries })
     }`,
     async () => {
       if (!dateRange?.from || telemetries.length === 0) return [];
@@ -46,10 +41,7 @@ export default function LineChartWidget({
           const { results } = await backendApi.findMany<HistoryType>(
             "/dpc-history/api/history",
             {
-              pagination: {
-                page: 1,
-                perPage: 10_00,
-              },
+              pagination: { page: 1, perPage: 10_00 },
               select: [name],
               orderBy: "createdAt:asc",
               where: {
@@ -73,10 +65,7 @@ export default function LineChartWidget({
             const x = new Date(item[i].createdAt);
             let y =
               Number(flatten(item[i])[telemetries[index].name]) * correction;
-            if (telemetries[index].accumulated && i > 0) {
-              y += newData[i - 1].y;
-              console.log({ x, y });
-            }
+            if (telemetries[index].accumulated && i > 0) y += newData[i - 1].y;
             newData.push({ x, y });
           }
         }
