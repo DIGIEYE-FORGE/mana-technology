@@ -593,7 +593,7 @@ export default function MainProjectPage() {
                 <Model
                   hovered={hovered}
                   url={
-                    `${env.VITE_LOCAL_MODELS === "true" ? "/public/ignore/" : "https://storage.googleapis.com/nextronic/"}` +
+                    `${env.VITE_LOCAL_MODELS === "true" ? "/ignore/" : "https://storage.googleapis.com/nextronic/"}` +
                     "mine026.glb"
                   }
                   ref={modelRef}
