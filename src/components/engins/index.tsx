@@ -115,17 +115,17 @@ function Engins({ attribute }: EnginsProps) {
         <h3 className="w-[35%]">Utilisation</h3>
         <h3 className="w-[40%]">Disponibillité</h3>
       </div>
-      <div className="flex min-h-[14rem] flex-col overflow-auto">
+      <div className="flex min-h-[14rem] flex-col gap-2 overflow-auto">
         {(data || [])?.map((engin, index) => (
           <div key={index} className="flex flex-1 flex-wrap items-center gap-4">
-            <div className="item flex w-[30%] items-center justify-between gap-2">
-              <span className="text-sm font-bold text-white">
+            <div className="item flex shrink-0 items-center justify-between gap-2">
+              <span className="w-[7rem] shrink-0 text-sm font-bold text-white">
                 {engin.label}
               </span>
               <img
                 src={engin.icon}
                 alt={engin?.label}
-                className="size-[3rem] rounded-lg"
+                className="w-[4rem] rounded-lg"
               />
             </div>
             <div className="relative h-[2rem] flex-1">
