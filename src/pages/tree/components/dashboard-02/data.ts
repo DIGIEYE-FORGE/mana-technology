@@ -86,7 +86,7 @@ export const widgetsData = {
           color: "#cda943",
           label: "BFS",
           serial: "DABF7PAT2G4BAG21",
-          type: "line"
+          type: "bar"
         },
       ],
     },
