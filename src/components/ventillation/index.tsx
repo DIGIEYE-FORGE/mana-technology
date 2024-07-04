@@ -2,13 +2,17 @@ import { useAppContext } from "@/Context";
 import useSWR from "swr";
 import Loader from "../loader";
 
+const floatOrDecimal = (value: number) => {
+  return value % 1 === 0 ? value : value.toFixed(2);
+};
+
 interface VentillationProps {
   attribute: {
     telemetryName: string;
     serial: string;
     labelTelemetry:
       | "Oxygène"
-      | "co2"
+      | "co"
       | "no2"
       | "Energie"
       | "T. Sèche"
@@ -63,8 +67,12 @@ function Ventillation({ attribute }: VentillationProps) {
           return {
             name: labelTelemetry,
             value:
-              (Number(res?.results[0]?.value) || randomValue || 0)
-                .toFixed(2)
+              (
+                floatOrDecimal(Number(res?.results[0]?.value)) ||
+                randomValue ||
+                0
+              )
+                .toString()
                 .replace(".", ",") +
               "" +
               (unit || ""),

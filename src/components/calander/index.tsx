@@ -40,6 +40,7 @@ export function DatePickerWithRange({
             defaultMonth={date?.from}
             selected={date}
             onSelect={(date: any) => {
+              console.log({ date });
               setDate(date);
               onChange?.(date || undefined);
             }}

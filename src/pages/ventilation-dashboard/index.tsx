@@ -72,7 +72,7 @@ const VentilationDashboard = () => {
               <QualitAir {...qualitédair[2].children[2]} />
               <div className="col-span-2">
                 <BarChart
-                  attributes={qualitédair[0].children[4].attributes}
+                  attributes={qualitédair[2].children[4].attributes}
                   disabled={true}
                 />
               </div>

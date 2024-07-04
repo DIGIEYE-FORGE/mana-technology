@@ -181,7 +181,7 @@ export default function UndergroundDashboardPage() {
                 randomValue: 230,
               },
               {
-                telemetryName: "s=Plc2_O²",
+                telemetryName: "s=Plc2_O2",
                 randomValue: 19.6,
                 unit: "%",
                 labelTelemetry: "Oxygène",
@@ -197,7 +197,7 @@ export default function UndergroundDashboardPage() {
                 icon: "co2.svg",
               },
               {
-                telemetryName: "s=Plc2_NO²",
+                telemetryName: "s=Plc2_NO2",
                 randomValue: 0.5,
                 unit: "ppm",
                 labelTelemetry: "NO2",
@@ -205,7 +205,7 @@ export default function UndergroundDashboardPage() {
                 icon: "co2.svg",
               },
               {
-                telemetryName: "s=Plc2_T°S",
+                telemetryName: "s=Plc2_ToS",
                 randomValue: 22.2,
                 unit: "°C",
                 labelTelemetry: "T. Sèche",
@@ -213,7 +213,7 @@ export default function UndergroundDashboardPage() {
                 icon: "seche.svg",
               },
               {
-                telemetryName: "s=Plc2_T°H",
+                telemetryName: "s=Plc2_ToH",
                 randomValue: 21.9,
                 unit: "°C",
                 labelTelemetry: "T. Humide",
@@ -404,6 +404,7 @@ export default function UndergroundDashboardPage() {
         </h3>
         <div className="h-1 flex-1 overflow-y-auto">
           <Engins
+            selectedWithDate={true}
             attribute={[
               {
                 label: "BOLTEC M10",

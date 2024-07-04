@@ -15,20 +15,7 @@ function Calendar({
   classNames,
   showOutsideDays = true,
   ...props
-}: any) {
-  const handleDateChange = (range: { from?: Date; to?: Date } | undefined) => {
-    console.log("i am here");
-    if (range?.from && range?.to && props.onSelect) {
-      props.onSelect({
-        from: new Date(range.from.setHours(0, 0, 0, 0)),
-        to: new Date(range.to.setHours(23, 59, 59, 999)),
-      });
-      props.selected = {
-        from: new Date(range.from.setHours(0, 0, 0, 0)),
-        to: new Date(range.to.setHours(23, 59, 59, 999)),
-      };
-    }
-  };
+}: CalendarProps) {
   return (
     <div>
       <DayPicker
@@ -77,9 +64,7 @@ function Calendar({
             <ChevronRight className="h-4 w-4" {...props} />
           ),
         }}
-        ////// setDate
         {...props}
-        onSelect={handleDateChange} //
       />
 
       {showOutsideDays && (
@@ -96,9 +81,9 @@ function Calendar({
               )
             }
             setDate={(date) => {
-              props.onSelect({
+              (props as any)?.onSelect({
+                ...(props?.selected as any),
                 from: date,
-                to: (props?.selected as any)?.to,
               });
             }}
             key={"1"}
@@ -115,8 +100,8 @@ function Calendar({
               )
             }
             setDate={(date) => {
-              props.onSelect({
-                from: (props?.selected as any)?.from,
+              (props as any)?.onSelect({
+                ...(props?.selected as any),
                 to: date,
               });
             }}
