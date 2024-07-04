@@ -181,12 +181,13 @@ export default function BarChartWidget(props: Props) {
         yaxis: {
           min: 0,
           tickAmount: 4,
-          max:
-            Math.max(
-              ...(data || []).flatMap((item) =>
-                item.data.map((item) => item.y),
+          max: stacked
+            ? undefined
+            : Math.max(
+                ...(data || []).flatMap((item) =>
+                  item.data.map((item) => item.y),
+                ),
               ),
-            ) * (stacked ? data?.length || 1 : 1),
           labels: {
             show: true,
             formatter: function (value) {
