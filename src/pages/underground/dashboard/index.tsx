@@ -77,6 +77,7 @@ export default function UndergroundDashboardPage() {
         <div className="flex-1">
           <LineChartWidget
             yAxis="one"
+            selectionDate={true}
             attributes={{
               stacked: true,
               telemetries: [
@@ -285,8 +286,10 @@ export default function UndergroundDashboardPage() {
           <BarLineWidget
             dateRange={dateRange}
             ciel={false}
-            correction={100}
-            moyenne={["UG_METRES_PLANIFIE", "UG_METRES_REALISE_TOTAL"]}
+            correction={{
+              UG_TAUX_ARRACHEMENT_ARRACHEMENT: 100,
+            }}
+            // moyenne={["UG_METRES_PLANIFIE", "UG_METRES_REALISE_TOTAL"]}
             yAxis="one"
             attributes={{
               stacked: true,
