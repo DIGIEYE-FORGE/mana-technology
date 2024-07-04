@@ -21,24 +21,26 @@ export const widgetsData = {
   },
   1: {
     title: "Performance Engins",
-    attributes: {
-      image: "/machine-03.png",
-      name: "TITAN BAC2X350",
-      telemetries: [
-        {
-          name: "UG_CHARG_EXP_TITAN_BAC2X350_TD",
-          label: "Disponibilité",
-          serial: "1ET8MCQDVOPFLVBX",
-          color: "#cda943",
-        },
-        {
-          name: "UG_CHARG_EXP_TITAN_BAC2X350_TU",
-          label: "Utilisation",
-          serial: "1ET8MCQDVOPFLVBX",
-          color: "#18a5c1",
-        },
-      ],
-    },
+    image: "/machine-03.png",
+    attributes: [
+      {
+        name: "TITAN BAC2X350",
+        telemetries: [
+          {
+            name: "UG_CHARG_EXP_TITAN_BAC2X350_TD",
+            label: "Disponibilité",
+            serial: "1ET8MCQDVOPFLVBX",
+            color: "#cda943",
+          },
+          {
+            name: "UG_CHARG_EXP_TITAN_BAC2X350_TU",
+            label: "Utilisation",
+            serial: "1ET8MCQDVOPFLVBX",
+            color: "#18a5c1",
+          },
+        ],
+      },
+    ]
   },
   2: {
     title: "Consommation spécifique explosif (kg/t)",

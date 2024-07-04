@@ -14,24 +14,44 @@ export const widgetsData = {
   },
   1: {
     title: "Performance Engins",
-    attributes: {
-      image: "/machine-04.png",
-      name: "Déblayage R1700",
-      telemetries: [
-        {
-          name: "UG_CHARG_CAT_R1700_14T_1_TD",
-          label: "Disponibilité",
-          serial: "1ET8MCQDVOPFLVBX",
-          color: "#cda943",
-        },
-        {
-          name: "UG_CHARG_CAT_R1700_14T_1_TU",
-          label: "Utilisation",
-          serial: "1ET8MCQDVOPFLVBX",
-          color: "#18a5c1",
-        },
-      ],
-    },
+    image: "/machine-04.png",
+    engineName: "Déblayage R1700",
+    attributes: [
+      {
+        name: "Déblayage R1700 01",
+        telemetries: [
+          {
+            name: "UG_CHARG_CAT_R1700_14T_1_TD",
+            label: "Disponibilité",
+            serial: "1ET8MCQDVOPFLVBX",
+            color: "#cda943",
+          },
+          {
+            name: "UG_CHARG_CAT_R1700_14T_1_TU",
+            label: "Utilisation",
+            serial: "1ET8MCQDVOPFLVBX",
+            color: "#18a5c1",
+          },
+        ],
+      },
+      {
+        name: "Déblayage R1700 02",
+        telemetries: [
+          {
+            name: "UG_CHARG_CAT_R1700_14T_2_TD",
+            label: "Disponibilité",
+            serial: "1ET8MCQDVOPFLVBX",
+            color: "#cda943",
+          },
+          {
+            name: "UG_CHARG_CAT_R1700_14T_2_TU",
+            label: "Utilisation",
+            serial: "1ET8MCQDVOPFLVBX",
+            color: "#18a5c1",
+          },
+        ],
+      },
+    ]
   },
   2: {
     title: "Performance Déblayage",
@@ -91,7 +111,7 @@ export const widgetsData = {
     },
   },
 
-  
+
   5: {
     title: "Temps de Déblayage (min)",
     attributes: {
