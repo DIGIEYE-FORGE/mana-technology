@@ -180,7 +180,7 @@ export default function UndergroundDashboardPage() {
                 randomValue: 230,
               },
               {
-                telemetryName: "s=Plc2_O²",
+                telemetryName: "s=Plc2_O2",
                 randomValue: 19.6,
                 unit: "%",
                 labelTelemetry: "Oxygène",
@@ -191,12 +191,12 @@ export default function UndergroundDashboardPage() {
                 telemetryName: "s=Plc2_CO",
                 randomValue: 1,
                 unit: "ppm",
-                labelTelemetry: "co2",
+                labelTelemetry: "co",
                 serial: "0TKJJWS26V62QV15",
                 icon: "co2.svg",
               },
               {
-                telemetryName: "s=Plc2_NO²",
+                telemetryName: "s=Plc2_NO2",
                 randomValue: 0.5,
                 unit: "ppm",
                 labelTelemetry: "no2",
@@ -204,7 +204,7 @@ export default function UndergroundDashboardPage() {
                 icon: "co2.svg",
               },
               {
-                telemetryName: "s=Plc2_T°S",
+                telemetryName: "s=Plc2_ToS",
                 randomValue: 22.2,
                 unit: "°C",
                 labelTelemetry: "T. Sèche",
@@ -212,7 +212,7 @@ export default function UndergroundDashboardPage() {
                 icon: "seche.svg",
               },
               {
-                telemetryName: "s=Plc2_T°H",
+                telemetryName: "s=Plc2_ToH",
                 randomValue: 21.9,
                 unit: "°C",
                 labelTelemetry: "T. Humide",
