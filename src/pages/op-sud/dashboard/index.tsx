@@ -108,14 +108,16 @@ export default function HomeDashboard() {
               telemetries: [
                 {
                   area: false,
-                  name: "SUD_PLANIFIE_ROCHE_CUMUL",
+                  name: "SUD_PLANIFIE_ROCHE",
                   color: "#78F6EA",
                   label: "Cumulatif Planifié",
                   serial: "C6XPYU0D920L1M07",
+                  accumulated: true,
                 },
                 {
+                  accumulated: true,
                   area: true,
-                  name: "SUD_REALISE_ROCHE_CUMUL",
+                  name: "SUD_REALISE_ROCHE",
                   color: "#B98EFF",
                   label: "Cumulatif Realisé",
                   serial: "C6XPYU0D920L1M07",

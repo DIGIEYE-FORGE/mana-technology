@@ -68,7 +68,7 @@ export default function HomeDashboard() {
               telemetries: [
                 {
                   area: false,
-                  name: "EST_PLANIFIE_ROCHE_CUMUL",
+                  name: "EST_PLANIFIE_ROCHE",
                   color: "#78F6EA",
                   label: "Cumulative planifié",
                   serial: "U9XQMQ1DXYT7LJIP",
@@ -76,10 +76,11 @@ export default function HomeDashboard() {
                 },
                 {
                   area: true,
-                  name: "EST_REALISE_ROCHE_CUMUL_Ton",
+                  name: "EST_REALISE_ROCHE_Ton",
                   color: "#B98EFF",
                   label: "Cumulative realisé",
                   serial: "U9XQMQ1DXYT7LJIP",
+                  accumulated: true,
                 },
               ],
             }}
