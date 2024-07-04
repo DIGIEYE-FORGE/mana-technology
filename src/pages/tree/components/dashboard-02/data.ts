@@ -7,7 +7,7 @@ export const widgetsData = {
     },
   },
   1: {
-    title: "Performance Engins",
+    title: "Performance Engin",
     image: "/machine-02.png",
     attributes: [
       {
@@ -16,13 +16,13 @@ export const widgetsData = {
           {
             name: "UG_MEC_JUM_M20_TD",
             label: "Disponibilité",
-            serial: "DABF7PAT2G4BAG21",
+            serial: "8S287JIOCLP38N38",
             color: "#cda943",
           },
           {
             name: "UG_MEC_JUM_M20_TU",
             label: "Utilisation",
-            serial: "DABF7PAT2G4BAG21",
+            serial: "8S287JIOCLP38N38",
             color: "#18a5c1",
           },
         ],
@@ -52,8 +52,8 @@ export const widgetsData = {
           area: false,
           name: "UG_MEC_JUM_M20_TD",
           color: "#cda943",
-          label: "Objectif ML/J",
-          serial: "GHZIN57J7EOVXGOC",
+          label: "Disponibilité",
+          serial: "8S287JIOCLP38N38",
         },
       ],
     },
@@ -66,8 +66,8 @@ export const widgetsData = {
           area: false,
           name: "UG_MEC_JUM_M20_TU",
           color: "#18a5c1",
-          label: "Objectif ML/J",
-          serial: "GHZIN57J7EOVXGOC",
+          label: "Utilisation",
+          serial: "8S287JIOCLP38N38",
         },
       ],
     },
@@ -94,7 +94,7 @@ export const widgetsData = {
     },
   },
   6: {
-    title: "Longueur foration par tir (m/tir)",
+    title: "Longueur foration (m)",
     attributes: {
       telemetries: [
         {
