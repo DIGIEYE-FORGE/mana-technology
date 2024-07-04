@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from "react";
 import { CalendarIcon } from "@radix-ui/react-icons";
 import { DateRange } from "react-day-picker";
@@ -27,18 +28,6 @@ export function DatePickerWithRange({
         <PopoverTrigger asChild>
           <Button id="date" variant={"ghost"} size={"icon"}>
             <CalendarIcon className="size-6" />
-            {/* {date?.from ? (
-              date.to ? (
-                <>
-                  {format(date.from, "LLL dd, y")} -{" "}
-                  {format(date.to, "LLL dd, y")}
-                </>
-              ) : (
-                format(date.from, "LLL dd, y")
-              )
-            ) : (
-              <span>Pick a date</span>
-            )} */}
           </Button>
         </PopoverTrigger>
         <PopoverContent
@@ -50,7 +39,7 @@ export function DatePickerWithRange({
             mode="range"
             defaultMonth={date?.from}
             selected={date}
-            onSelect={(date) => {
+            onSelect={(date: any) => {
               setDate(date);
               onChange?.(date || undefined);
             }}
