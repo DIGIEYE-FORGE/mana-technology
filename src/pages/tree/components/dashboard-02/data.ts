@@ -8,24 +8,26 @@ export const widgetsData = {
   },
   1: {
     title: "Performance Engins",
-    attributes: {
-      image: "/machine-02.png",
-      name: "Jumbo M20",
-      telemetries: [
-        {
-          name: "UG_MEC_JUM_M20_TD",
-          label: "Disponibilité",
-          serial: "DABF7PAT2G4BAG21",
-          color: "#cda943",
-        },
-        {
-          name: "UG_MEC_JUM_M20_TU",
-          label: "Utilisation",
-          serial: "DABF7PAT2G4BAG21",
-          color: "#18a5c1",
-        },
-      ],
-    },
+    image: "/machine-02.png",
+    attributes: [
+      {
+        name: "Jumbo M20",
+        telemetries: [
+          {
+            name: "UG_MEC_JUM_M20_TD",
+            label: "Disponibilité",
+            serial: "DABF7PAT2G4BAG21",
+            color: "#cda943",
+          },
+          {
+            name: "UG_MEC_JUM_M20_TU",
+            label: "Utilisation",
+            serial: "DABF7PAT2G4BAG21",
+            color: "#18a5c1",
+          },
+        ],
+      },
+    ]
   },
   2: {
     title: "Nombre de trous forés",
@@ -34,7 +36,7 @@ export const widgetsData = {
         {
           area: false,
           // name: "UG_FORATION_TIRS_VITESSE_DE_PENETRATION-min_par_m", 
-          name: "UG_FORATION_TIRS_SCHEMA_DE_TIR", 
+          name: "UG_FORATION_TIRS_SCHEMA_DE_TIR",
           color: "#cda943",
           label: "Objectif ML/J",
           serial: "DABF7PAT2G4BAG21",

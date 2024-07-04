@@ -14,24 +14,26 @@ export const widgetsData = {
   },
   1: {
     title: "Performance Engins",
-    attributes: {
-      image: "/machine-05.png",
-      name: "boltec m10",
-      telemetries: [
-        {
-          name: "UG_BOLTEC_M10_TD",
-          label: "Disponibilité",
-          serial: "DABF7PAT2G4BAG21",
-          color: "#cda943",
-        },
-        {
-          name: "UG_BOLTEC_M10_TU",
-          label: "Utilisation",
-          serial: "DABF7PAT2G4BAG21",
-          color: "#18a5c1",
-        },
-      ],
-    },
+    image: "/machine-05.png",
+    attributes: [
+      {
+        name: "boltec m10",
+        telemetries: [
+          {
+            name: "UG_BOLTEC_M10_TD",
+            label: "Disponibilité",
+            serial: "DABF7PAT2G4BAG21",
+            color: "#cda943",
+          },
+          {
+            name: "UG_BOLTEC_M10_TU",
+            label: "Utilisation",
+            serial: "DABF7PAT2G4BAG21",
+            color: "#18a5c1",
+          },
+        ],
+      },
+    ]
   },
   2: {
     title: "Consommation Grillage (m2)",

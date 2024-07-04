@@ -14,24 +14,44 @@ export const widgetsData = {
   },
   1: {
     title: "Performance Engins",
-    attributes: {
-      image: "/machine-06.png",
-      name: "Transport ad45",
-      telemetries: [
-        {
-          name: "UG_DUMP_CAT_1_TD",
-          label: "Disponibilité",
-          serial: "DABF7PAT2G4BAG21",
-          color: "#cda943",
-        },
-        {
-          name: "UG_DUMP_CAT_1_TU",
-          label: "Utilisation",
-          serial: "DABF7PAT2G4BAG21",
-          color: "#18a5c1",
-        },
-      ],
-    },
+    image: "/machine-06.png",
+    engineName: "Transport ad45",
+    attributes: [
+      {
+        name: "Transport ad45 01",
+        telemetries: [
+          {
+            name: "UG_DUMP_CAT_1_TD",
+            label: "Disponibilité",
+            serial: "DABF7PAT2G4BAG21",
+            color: "#cda943",
+          },
+          {
+            name: "UG_DUMP_CAT_1_TU",
+            label: "Utilisation",
+            serial: "DABF7PAT2G4BAG21",
+            color: "#18a5c1",
+          },
+        ],
+      },
+      {
+        name: "Transport ad45 02",
+        telemetries: [
+          {
+            name: "UG_DUMP_CAT_2_TD",
+            label: "Disponibilité",
+            serial: "DABF7PAT2G4BAG21",
+            color: "#cda943",
+          },
+          {
+            name: "UG_DUMP_CAT_2_TU",
+            label: "Utilisation",
+            serial: "DABF7PAT2G4BAG21",
+            color: "#18a5c1",
+          },
+        ],
+      },
+    ]
   },
   2: {
     title: "Performance Transport (t/h)",
