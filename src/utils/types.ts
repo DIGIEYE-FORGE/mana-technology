@@ -122,3 +122,5 @@ export type TDateRange =
       to?: Date;
     }
   | undefined;
+
+export type NonEmptyArray<T> = [T, ...T[]];
