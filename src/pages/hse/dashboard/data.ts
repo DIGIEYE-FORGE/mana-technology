@@ -24,32 +24,28 @@ export const widgetsData = {
     attributes: {
       telemetries: [
         {
-          name: "HSE_OBS_Total",
+          name: "HSE_NMO_Total",
           color: "#25A18E",
           label: "Observation",
-          serial: "U9XQMQ1DXYT7LJIP",
-          value: 5075,
+          serial: "TATC8YPVCLHULUAF",
         },
         {
           name: "HSE_MTC_Total",
           color: "#FFCA05",
           label: "MTC",
-          serial: "U9XQMQ1DXYT7LJIP",
-          value: 13,
+          serial: "TATC8YPVCLHULUAF",
         },
         {
           name: "HSE_LTI_total",
           color: "#903E92",
           label: "LTI",
-          serial: "U9XQMQ1DXYT7LJIP",
-          value: 2,
+          serial: "TATC8YPVCLHULUAF",
         },
         {
           name: "HSE_FAT_Total",
           color: "#ff0000",
           label: "FAT",
-          serial: "U9XQMQ1DXYT7LJIP",
-          value: 0,
+          serial: "TATC8YPVCLHULUAF",
         },
       ],
       progressTelemetries: [
