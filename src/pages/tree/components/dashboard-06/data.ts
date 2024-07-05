@@ -6,7 +6,7 @@ export const widgetsData = {
         {
           name: "UG_TONNAGE_TRANSPORTE_TON",
           color: "#25A18E",
-          label: "Est 11",
+          label: "Tonnage Transporté ",
           serial: "GHZIN57J7EOVXGOC",
         },
       ],
@@ -15,7 +15,7 @@ export const widgetsData = {
   1: {
     title: "Performance Engins",
     image: "/machine-06.png",
-    engineName: "Transport ad45",
+    engineName: "Transport AD45",
     attributes: [
       {
         name: "Transport ad45 01",
@@ -107,13 +107,13 @@ export const widgetsData = {
     },
   },
   5: {
-    title: "Temps de Transport (min)",
+    title: "Temps de Transport (h)",
     attributes: {
       telemetries: [
         {
           name: "UG_ROULAGE_TEMPS_DE_TRANSPORT-min",
           color: "#FF5AF1",
-          label: "Chargement explosif",
+          label: "Temps de Transport",
           serial: "GHZIN57J7EOVXGOC",
         },
       ],

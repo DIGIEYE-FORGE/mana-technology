@@ -6,7 +6,7 @@ export const widgetsData = {
         {
           name: "UG_DEBLAYAGE_TONNE_DE_STERILE_PAR_POSTE-tonne_par_poste",
           color: "#25A18E",
-          label: "Est 11",
+          label: "Tonnage Déblayé",
           serial: "Y1UMITGTHATVAUQI",
         },
       ],

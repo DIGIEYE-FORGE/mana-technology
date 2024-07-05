@@ -19,7 +19,7 @@ export type ProgressAccumulationWidgetData = {
 
 function lastOfMonth(date: Date): Date {
   console.log(lastDayOfMonth(date));
-  
+
   return lastDayOfMonth(date);
 }
 
@@ -61,7 +61,10 @@ export function ProgressAccumulation({ attributes }: Widget) {
           pagination: { page: 1, perPage: 1 },
           select: [accumulationTelemetryName],
           orderBy: "createdAt:desc",
-          where: { serial, createdAt: { $lte: lastOfMonth(dateRange?.to  || new Date()) } },
+          where: {
+            serial,
+            createdAt: { $lte: lastOfMonth(dateRange?.to || new Date()) },
+          },
         });
       if (endOfMountResult.length === 0) return null;
       const { results: currentProgressResults } =
@@ -176,7 +179,7 @@ export function ProgressAccumulation({ attributes }: Widget) {
                 strokeDashoffset: 0,
               }}
             />
-            {progress >= currentTarget && (
+            {progress && progress >= currentTarget && (
               <motion.path
                 d="M10 74C10 39.7583 37.7583 12 72 12C106.242 12 134 39.7583 134 74"
                 stroke={progressColor}
@@ -207,7 +210,7 @@ export function ProgressAccumulation({ attributes }: Widget) {
                   100 - (currentTarget / finalTarget || 0) * 100,
               }}
             />
-            {progress < currentTarget && (
+            {progress && progress < currentTarget && (
               <motion.path
                 d="M10 74C10 39.7583 37.7583 12 72 12C106.242 12 134 39.7583 134 74"
                 stroke={progressColor}

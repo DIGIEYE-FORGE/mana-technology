@@ -12,7 +12,7 @@ export const Dashboard3 = () => {
           {widgetsData[0].title}
         </h3>
         <div className="h-1 flex-1">
-          <LineChartWidget attributes={widgetsData[0].attributes} />
+          <BarChartWidget attributes={widgetsData[0].attributes} />
         </div>
       </Card>
       <Card className="col-span-2 flex flex-col p-2">
@@ -80,7 +80,9 @@ export const Dashboard3 = () => {
           {widgetsData[6].title}
         </h1>
         <div className="h-1 flex-1">
-          <LineChartWidget attributes={widgetsData[6].attributes} />
+          <BarChartWidget correction={{
+              UG_TAUX_ARRACHEMENT_ARRACHEMENT: 100,
+            }} attributes={widgetsData[6].attributes} />
         </div>
       </Card>
     </main>
