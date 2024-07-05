@@ -22,6 +22,7 @@ import UndergroundDashboardPage from "@/pages/underground/dashboard";
 import VentilationDashboard from "@/pages/ventilation-dashboard";
 import HomeDashboard from "@/pages/home/dashboard";
 import HsePage from "@/pages/hse";
+import HseDashboard from "@/pages/hse/dashboard";
 
 const routes: RouteObject[] = [
   {
@@ -84,6 +85,12 @@ const routes: RouteObject[] = [
       {
         path: "hse",
         element: <HsePage />,
+        children: [
+          {
+            path: "",
+            element: <HseDashboard />,
+          },
+        ],
       },
       {
         path: "dashboard",
