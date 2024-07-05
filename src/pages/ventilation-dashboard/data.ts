@@ -273,7 +273,7 @@ export const qualitédair = {
               label: "Disponibilité",
               serial: "0TKJJWS26V62QV15",
               color: "#C99E3E",
-              unit: "",
+              unit: "%",
               max:20,
             }
           ]
@@ -377,7 +377,7 @@ export const qualitédair = {
               label: "Disponibilité",
               serial: "0TKJJWS26V62QV15",
               color: "#C99E3E",
-              unit: "",
+              unit: "%",
             }
           ]
         }

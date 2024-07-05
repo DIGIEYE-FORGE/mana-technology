@@ -11,7 +11,7 @@ const VentilationDashboard = () => {
   return (
     <main className="grid h-full w-full grid-flow-dense auto-rows-[5.8rem] grid-cols-[repeat(18,minmax(0,1fr))] gap-4 [&>*]:p-4">
       <div className="col-span-6 row-span-5 flex flex-col gap-1 !p-0">
-        <h1 className="pl-2 text-left text-2xl font-bold">Ventilateur 1</h1>
+        <h1 className="pl-2 text-center text-2xl font-bold">Ventilateur 1</h1>
         <div className="grid auto-rows-[5.35rem] grid-cols-2 gap-4">
           <Card className="row-span-5 flex flex-col p-4">
             <h1 className="text-center text-lg font-semibold">
@@ -82,7 +82,7 @@ const VentilationDashboard = () => {
         </Card>
       </div>
       <div className="col-span-6 row-span-5 flex flex-col gap-1 !p-0">
-        <h1 className="pl-2 text-left text-2xl font-bold">Ventilateur 2</h1>
+        <h1 className="pl-2 text-center text-2xl font-bold">Ventilateur 2</h1>
         <div className="grid auto-rows-[5.35rem] grid-cols-2 gap-4">
           <Card className="row-span-5 flex flex-col p-4">
             <h1 className="text-center text-lg font-semibold">
