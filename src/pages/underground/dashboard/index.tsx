@@ -28,7 +28,7 @@ export default function UndergroundDashboardPage() {
                   unit: "T",
                   color: "#FF5AF1",
                   label: "Forecast (Mensuel)",
-                  serial: "9OS67R6BCQXPPVLO",
+                  serial: "HTCBJYTZC333HN7C",
                   type: "bar",
                 },
                 {
@@ -36,7 +36,7 @@ export default function UndergroundDashboardPage() {
                   unit: "T",
                   color: "#FFDC8C",
                   label: "Réalisé",
-                  serial: "9OS67R6BCQXPPVLO",
+                  serial: "HTCBJYTZC333HN7C",
                   type: "bar",
                 },
                 {
@@ -44,7 +44,7 @@ export default function UndergroundDashboardPage() {
                   unit: "T",
                   color: "#78F6EA",
                   label: "Planifié (Cumulé) - Offre initiale",
-                  serial: "9OS67R6BCQXPPVLO",
+                  serial: "HTCBJYTZC333HN7C",
                   type: "line",
                 },
                 {
@@ -52,7 +52,7 @@ export default function UndergroundDashboardPage() {
                   unit: "T",
                   color: "#B98EFF",
                   label: "Réalisé (Cumulé)",
-                  serial: "9OS67R6BCQXPPVLO",
+                  serial: "HTCBJYTZC333HN7C",
                   type: "line",
                 },
                 {
@@ -61,7 +61,7 @@ export default function UndergroundDashboardPage() {
 
                   color: "#fab006",
                   label: "Forecast (Cumulé)",
-                  serial: "9OS67R6BCQXPPVLO",
+                  serial: "HTCBJYTZC333HN7C",
                   type: "line",
                 },
               ],
@@ -239,7 +239,7 @@ export default function UndergroundDashboardPage() {
           <BarLineWidget
             ciel={false}
             dateRange={dateRange}
-            enableTooltip={false}
+            hideTooltip
             attributes={{
               stacked: true,
               telemetries: [
@@ -394,7 +394,7 @@ export default function UndergroundDashboardPage() {
                   area: true,
                   name: "UG_SUIVI_TEMPS_MOYEN_CYCLE",
                   color: "#78F6EA",
-                  label: "Realisé ML/J",
+                  label: "Realisé",
                   serial: "Y1UMITGTHATVAUQI",
                 },
               ],
