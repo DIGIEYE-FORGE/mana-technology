@@ -1,35 +1,27 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import useSWR from "swr";
-import { CircularProgressProps } from "../circular-progress";
 import { useAppContext } from "@/Context";
 import Loader from "../loader";
 import { LastTelemetry } from "@/utils";
-import { CircularProgress } from "../multi-stops-circular-progress";
 import { cn } from "@/lib/utils";
+import { ProgressCircle, ProgressCircleProps } from "../progress-circle";
 
-export interface CircularProgressChartProps
-  extends Omit<CircularProgressProps, "progress" | "legend"> {
+export interface ProgressCirclePropsChartProps
+  extends Omit<ProgressCircleProps, "progress" | "legend"> {
   telemetry: {
     serial: string;
     name: string;
   };
-  unit?: string;
-  interval?: number;
-  stops: {
-    color: string;
-    offset: number;
-  }[];
   className?: string;
+  interval?: number;
 }
 
-export const CircularProgressChart = ({
+export const ProgressCirclePropsChart = ({
   telemetry,
   interval,
-  unit = "%",
-  stops,
   className,
   ...props
-}: CircularProgressChartProps) => {
+}: ProgressCirclePropsChartProps) => {
   const { backendApi } = useAppContext();
   const { data, isLoading, error } = useSWR(
     `telemetry?${telemetry.name})}`,
@@ -64,20 +56,11 @@ export const CircularProgressChart = ({
     );
 
   const progress = data as number;
-  let legend = "";
-  if (unit === "%") {
-    legend = `${progress?.toFixed(2)}%`;
-  } else {
-    legend = `${progress?.toFixed(1)} ${unit}`;
-  }
   return (
-    <CircularProgress
+    <ProgressCircle
       {...props}
       className={cn("size-28 text-lg", className)}
-      rounded={false}
       progress={progress}
-      legend={legend}
-      stops={stops as any}
     />
   );
 };

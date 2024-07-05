@@ -45,12 +45,14 @@ const Formatter = ({
 export default function Telemetry({
   telemetry,
   displayFormat,
+  correction,
 }: {
   telemetry: {
     name: string;
     serial: string;
     value?: JsonValue;
   };
+  correction?: number;
 
   displayFormat?: TableDisplayForma;
 }) {
@@ -69,8 +71,12 @@ export default function Telemetry({
     },
   );
 
+  let value = data?.value ?? 0;
+
+  if (typeof value === "number" && correction) value = value * correction;
+
   if (isLoading) return <Loader />;
   if (error) return "Something went wrong.";
   if (!data) return "No data";
-  return <Formatter value={data?.value} displayFormat={displayFormat} />;
+  return <Formatter value={value} displayFormat={displayFormat} />;
 }
