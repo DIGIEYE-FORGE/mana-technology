@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import useSWR from "swr";
-import { CircularProgress, CircularProgressProps } from "../circular-progress";
+import { CircularProgressProps } from "../circular-progress";
 import { useAppContext } from "@/Context";
 import Loader from "../loader";
 import { LastTelemetry } from "@/utils";
+import { CircularProgress } from "../multi-stops-circular-progress";
 
 export interface CircularProgressChartProps
   extends Omit<CircularProgressProps, "progress" | "legend"> {
@@ -12,14 +14,17 @@ export interface CircularProgressChartProps
   };
   unit?: string;
   interval?: number;
-  max?: number;
+  stops: {
+    color: string;
+    offset: number;
+  }[];
 }
 
 export const CircularProgressChart = ({
   telemetry,
   interval,
   unit = "%",
-  max = 100,
+  stops,
   ...props
 }: CircularProgressChartProps) => {
   const { backendApi } = useAppContext();
@@ -64,10 +69,12 @@ export const CircularProgressChart = ({
   }
   return (
     <CircularProgress
-      progress={(progress / max) * 100}
       {...props}
+      className="size-28 text-lg"
+      rounded={false}
+      progress={progress}
       legend={legend}
-      unit={unit}
+      stops={stops as any}
     />
   );
 };

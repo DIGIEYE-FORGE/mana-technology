@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 const VentilationDashboard = () => {
   return (
     <main className="grid h-full w-full grid-flow-dense auto-rows-[5.8rem] grid-cols-[repeat(18,minmax(0,1fr))] gap-4 [&>*]:p-4">
-      <div className="debug col-span-6 row-span-5 flex flex-col gap-1 !p-0">
+      <div className="col-span-6 row-span-5 flex flex-col gap-1 !p-0">
         <h1 className="pl-2 text-left text-lg font-semibold">Ventilateur 1</h1>
         <div className="grid auto-rows-[5.35rem] grid-cols-2 gap-4">
           <Card className="row-span-5 flex flex-col p-4">
@@ -142,7 +142,10 @@ const VentilationDashboard = () => {
               <QualitAir {...qualitédair[0].children[2]} />
               <QualitAir {...qualitédair[0].children[3]} />
               <div className="col-span-full">
-                <BarChart attributes={qualitédair[0].children[4].attributes} />
+                <BarChart
+                  attributes={qualitédair[0].children[4].attributes}
+                  max={35}
+                />
               </div>
             </div>
           </div>
@@ -156,7 +159,10 @@ const VentilationDashboard = () => {
               <QualitAir {...qualitédair[1].children[2]} />
               <QualitAir {...qualitédair[1].children[3]} />
               <div className="col-span-full">
-                <BarChart attributes={qualitédair[1].children[4].attributes} />
+                <BarChart
+                  attributes={qualitédair[1].children[4].attributes}
+                  max={35}
+                />
               </div>
             </div>
           </div>
@@ -173,6 +179,7 @@ const VentilationDashboard = () => {
                 <BarChart
                   attributes={qualitédair[2].children[4].attributes}
                   disabled={true}
+                  max={35}
                 />
               </div>
             </div>

@@ -249,6 +249,11 @@ export const qualitédair = {
     children: {
       0: {
         title: "O2",
+        stops:[
+            { color: "red", offset: 16 },
+            { color: "yellow", offset: 19 },
+            { color: "green", offset: 20},
+        ],
         attributes: {
           telemetries: [
             {
@@ -260,10 +265,15 @@ export const qualitédair = {
               max:20,
             }
           ]
-        }
+        },
       },
       1: {
         title: "CO",
+        stops:[
+          { color: "red", offset: 100 },
+          { color: "yellow", offset: 20 },
+          { color: "green", offset: 15},
+      ],
         attributes: {
           telemetries: [
             {
@@ -279,6 +289,11 @@ export const qualitédair = {
       },
       2: {
         title: "NO2",
+        stops:[
+          { color: "red", offset: 3 },
+          { color: "yellow", offset: 2 },
+          { color: "green", offset: 1.5},
+      ],
         attributes: {
           telemetries: [
             {
@@ -294,6 +309,11 @@ export const qualitédair = {
       },
       3: {
         title: "Vitesse air",
+        stops:[
+          { color: "red", offset: 0.1 },
+          { color: "yellow", offset: 0.3 },
+          { color: "green", offset: 0.5},
+      ],
         attributes: {
           telemetries: [
             {
@@ -333,6 +353,11 @@ export const qualitédair = {
     children: {
       0: {
         title: "O2",
+        stops:[
+          { color: "red", offset: 16 },
+          { color: "yellow", offset: 19 },
+          { color: "green", offset: 20},
+      ],
         attributes: {
           telemetries: [
             {
@@ -347,6 +372,11 @@ export const qualitédair = {
       },
       1: {
         title: "CO",
+        stops:[
+          { color: "red", offset: 100 },
+          { color: "yellow", offset: 20 },
+          { color: "green", offset: 15},
+      ],
         attributes: {
           telemetries: [
             {
@@ -361,6 +391,11 @@ export const qualitédair = {
       },
       2: {
         title: "NO2",
+        stops:[
+          { color: "red", offset: 3 },
+          { color: "yellow", offset: 2 },
+          { color: "green", offset: 1.5},
+      ],
         attributes: {
           telemetries: [
             {
@@ -375,6 +410,11 @@ export const qualitédair = {
       },
       3: {
         title: "Vitesse air",
+        stops:[
+          { color: "red", offset: 0.1 },
+          { color: "yellow", offset: 0.3 },
+          { color: "green", offset: 0.5},
+        ],
         attributes: {
           telemetries: [
             {
@@ -413,6 +453,11 @@ export const qualitédair = {
     children: {
       0: {
         title: "O2",
+        stops:[
+          { color: "red", offset: 16 },
+          { color: "yellow", offset: 19 },
+          { color: "green", offset: 20},
+      ],
         attributes: {
           telemetries: [
             {
@@ -427,6 +472,11 @@ export const qualitédair = {
       },
       1: {
         title: "CO",
+        stops:[
+          { color: "red", offset: 3 },
+          { color: "yellow", offset: 2 },
+          { color: "green", offset: 1.5},
+      ],
         attributes: {
           telemetries: [
             {
@@ -441,6 +491,11 @@ export const qualitédair = {
       },
       2: {
         title: "NO2",
+        stops:[
+          { color: "red", offset: 3 },
+          { color: "yellow", offset: 2 },
+          { color: "green", offset: 1.5},
+      ],
         attributes: {
           telemetries: [
             {
@@ -455,6 +510,11 @@ export const qualitédair = {
       },
       3: {
         title: "Vitesse air",
+        stops:[
+          { color: "red", offset: 0.1 },
+          { color: "yellow", offset: 0.3 },
+          { color: "green", offset: 0.5},
+        ],
         attributes: {
           telemetries: [
             {
