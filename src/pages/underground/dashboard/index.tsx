@@ -321,7 +321,7 @@ export default function UndergroundDashboardPage() {
                 bfsTelemetry: "UG_TAUX_ARRACHEMENT_PREPARATION_BFS",
                 bfsLabelTelemetry: "Préparation",
                 color: "#F2E205",
-                serial: "Y1UMITGTHATVAUQI",
+                serial: "34FH0TN9QL2JXCP2",
               },
               {
                 nameTelemetry: "UG_FORATION_TIRS_TEMPS_DE_FORATION-min",
@@ -329,7 +329,7 @@ export default function UndergroundDashboardPage() {
                 bfsTelemetry: "UG_TAUX_ARRACHEMENT_TEMPS_DE_FORATION_BFS",
                 bfsLabelTelemetry: "Foration",
                 color: "#F2A104",
-                serial: "Y1UMITGTHATVAUQI",
+                serial: "34FH0TN9QL2JXCP2",
               },
               {
                 nameTelemetry:
@@ -339,15 +339,15 @@ export default function UndergroundDashboardPage() {
                   "UG_TAUX_ARRACHEMENT_TEMPS_DE_CHARGEMENT_EXPLOSIF_BFS",
                 bfsLabelTelemetry: "Ch. explosif",
                 color: "#F25C05",
-                serial: "Y1UMITGTHATVAUQI",
+                serial: "34FH0TN9QL2JXCP2",
               },
               {
-                nameTelemetry: "UG_FORATION_TIRS_PREPARATION-min",
+                nameTelemetry: "UG_DEBLAYAGE_TEMPS_DE_DEBLAYAGE-min",
                 nameLabelTelemetry: "Déblayage",
                 bfsTelemetry: "UG_TAUX_ARRACHEMENT_TEMPS_DE_FORATION_BFS",
                 bfsLabelTelemetry: "Déblayage",
                 color: "#F20574",
-                serial: "Y1UMITGTHATVAUQI",
+                serial: "34FH0TN9QL2JXCP2",
               },
               {
                 nameTelemetry: "UG_FORATION_TIRS_TIR_DELAI_GAZ_ET_LAVAGE-min",
@@ -356,7 +356,7 @@ export default function UndergroundDashboardPage() {
                   "UG_TAUX_ARRACHEMENT_TEMPS_DE_PURGE_ET_SOUFLAGE_BFS",
                 bfsLabelTelemetry: "Purge et Souflage",
                 color: "#05F2C7",
-                serial: "Y1UMITGTHATVAUQI",
+                serial: "34FH0TN9QL2JXCP2",
               },
               {
                 nameTelemetry:
@@ -366,7 +366,7 @@ export default function UndergroundDashboardPage() {
                   "UG_TAUX_ARRACHEMENT_TEMPS_DE_MISE_EN_PLACE_SOUTENEMENT_BFS",
                 bfsLabelTelemetry: "Souténement",
                 color: "#009AB6",
-                serial: "Y1UMITGTHATVAUQI",
+                serial: "34FH0TN9QL2JXCP2",
               },
             ]}
           />
