@@ -66,12 +66,12 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (fullScreen) {
-      document.documentElement.requestFullscreen().catch((e) => {
+    if (fullScreen && document?.documentElement?.requestFullscreen) {
+      document?.documentElement?.requestFullscreen().catch((e) => {
         console.error(e);
       });
-    } else {
-      document.exitFullscreen();
+    } else if (!fullScreen && document?.exitFullscreen) {
+      document?.exitFullscreen();
     }
   }, [fullScreen]);
 
