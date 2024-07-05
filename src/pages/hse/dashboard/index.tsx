@@ -15,7 +15,7 @@ export default function HseDashboard() {
         backgroundSize: "100% 100%",
       }}
     >
-      <Card className="col-span-3 flex flex-col items-center justify-center gap-2 p-2">
+      <Card className="col-span-3 flex flex-col items-center justify-center gap-2 !rounded p-2">
         <h3 className="text-lg font-semibold">{widgetsData[0].title}</h3>
         <div className="text-4xl font-bold">
           <Telemetry
@@ -28,7 +28,7 @@ export default function HseDashboard() {
           />
         </div>
       </Card>
-      <Card className="col-span-3 flex flex-col items-center justify-center gap-2 p-2">
+      <Card className="col-span-3 flex flex-col items-center justify-center gap-2 !rounded p-2">
         <h3 className="text-lg font-semibold">{widgetsData[1].title}</h3>
         <div className="text-4xl font-bold">
           <Telemetry
@@ -40,7 +40,7 @@ export default function HseDashboard() {
           />
         </div>
       </Card>
-      <Card className="col-span-3 flex flex-col items-center justify-center gap-2 p-2">
+      <Card className="col-span-3 flex flex-col items-center justify-center gap-2 !rounded p-2">
         <h3 className="text-lg font-semibold">{widgetsData[2].title}</h3>
         <div className="text-4xl font-bold">
           <Telemetry
@@ -52,7 +52,7 @@ export default function HseDashboard() {
           />
         </div>
       </Card>
-      <Card className="col-span-3 grid place-content-center p-6">
+      <Card className="col-span-3 grid place-content-center !rounded p-6">
         <img
           src="/security-respect.svg"
           className="size-[6.5rem]"
