@@ -20,6 +20,7 @@ export const widgetsData = {
     label: "Disponibilité",
     serial: "XEXX5PDMNHBWUN7Q",
     value: 90.5,
+    correction: 100,
   },
   3: {
     title: "HSE Project Indicators",
