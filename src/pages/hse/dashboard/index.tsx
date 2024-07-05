@@ -1,7 +1,6 @@
 import { Card } from "@/components/card";
 import Telemetry from "@/components/telemetry";
 import { widgetsData } from "./data";
-import LineChartWidget from "@/components/line-chart-widget";
 import BarChartWidget from "@/components/bar-chart-widget";
 import DonutChartWidget from "@/components/donut-chart-widget";
 import { ConeChart } from "@/components/cone-chart";
@@ -50,12 +49,12 @@ export default function HseDashboard() {
             }}
             displayFormat="float"
             correction={widgetsData[2].correction}
-          />{" "}
+          />{" "} %
         </div>
       </Card>
       <Card className="col-span-3 grid place-content-center !rounded p-6">
         <img
-          src="/security-respect.svg"
+          src="/security.jpeg"
           className="size-[6.5rem]"
           alt="security = respect"
         />
