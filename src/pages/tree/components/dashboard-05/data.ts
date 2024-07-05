@@ -6,7 +6,7 @@ export const widgetsData = {
         {
           name: "UG_SOUTENEMENT_SPLET_SET_1.8m-unite_par_tir",
           color: "#25A18E",
-          label: "Est 11",
+          label: "Consommation des boulons",
           serial: "GHZIN57J7EOVXGOC",
         },
       ],
@@ -17,7 +17,27 @@ export const widgetsData = {
     image: "/machine-05.png",
     attributes: [
       {
-        name: "boltec m10",
+        name: "TITAN BMP2X3",
+        image: "/machine-03.png",
+        iconClassName: "absolute bottom-2 right-3 z-10 w-32",
+        telemetries: [
+          {
+            name: "UG_PLAT_TD",
+            label: "Disponibilité",
+            serial: "8S287JIOCLP38N38",
+            color: "#cda943",
+          },
+          {
+            name: "UG_PLAT_TU",
+            label: "Utilisation",
+            serial: "8S287JIOCLP38N38",
+            color: "#18a5c1",
+          },
+        ],
+      },
+      {
+        name: "Boltec m10",
+        image: "/machine-05.png",
         telemetries: [
           {
             name: "UG_BOLTEC_M10_TD",
@@ -54,9 +74,15 @@ export const widgetsData = {
       telemetries: [
         {
           name: "UG_BOLTEC_M10_TD",
-          color: "#FFDC8C",
-          label: "Prévus",
+          color: "#FF5AF1",
+          label: "Boltec m10",
           serial: "8S287JIOCLP38N38",
+        },
+        {
+          name: "UG_PLAT_TD",
+          label: "TITAN BMP2X3",
+          serial: "8S287JIOCLP38N38",
+          color: "#FFDC8C",
         },
       ],
     },
@@ -67,9 +93,15 @@ export const widgetsData = {
       telemetries: [
         {
           name: "UG_BOLTEC_M10_TU",
-          color: "#FFDC8C",
-          label: "Prévus",
+          color: "#FF5AF1",
+          label: "Boltec m10",
           serial: "8S287JIOCLP38N38",
+        },
+        {
+          name: "UG_PLAT_TU",
+          label: "TITAN BMP2X3",
+          serial: "8S287JIOCLP38N38",
+          color: "#FFDC8C",
         },
       ],
     },

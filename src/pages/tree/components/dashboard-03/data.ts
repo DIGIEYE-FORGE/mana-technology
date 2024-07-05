@@ -7,7 +7,7 @@ export const widgetsData = {
         {
           name: "UG_TIR_PLANIFIE",
           color: "#25A18E",
-          label: "Prévue",
+          label: "Prévu",
           serial: "Y1UMITGTHATVAUQI",
         },
         {
@@ -17,13 +17,14 @@ export const widgetsData = {
           serial: "Y1UMITGTHATVAUQI",
         },
       ],
-    }
+    },
   },
   1: {
     title: "Performance Engins",
     image: "/machine-03.png",
     attributes: [
       {
+        image: "/machine-03.png",
         name: "TITAN BAC2X350",
         telemetries: [
           {
@@ -40,7 +41,7 @@ export const widgetsData = {
           },
         ],
       },
-    ]
+    ],
   },
   2: {
     title: "Consommation spécifique explosif (kg/t)",
@@ -50,7 +51,7 @@ export const widgetsData = {
         {
           name: "UG_CONSOMMATION_SPECIFIQUE_EXPLOSIF-kg-per-tone",
           color: "#FF5AF1",
-          label: "AD45",
+          label: "Consommation spécifique explosif",
           serial: "Y1UMITGTHATVAUQI",
         },
       ],
@@ -113,11 +114,10 @@ export const widgetsData = {
         {
           name: "UG_TAUX_ARRACHEMENT_ARRACHEMENT",
           color: "#CCCCCC",
-          label: "Aller",
+          label: "Arrachement",
           serial: "Y1UMITGTHATVAUQI",
         },
       ],
     },
   },
-
 };

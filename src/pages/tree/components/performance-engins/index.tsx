@@ -9,6 +9,8 @@ import { cn } from "@/lib/utils";
 interface PerformanceEnginsData {
   attributes: {
     name: string;
+    image: string;
+    iconClassName?: string;
     telemetries: {
       name: string;
       label: string;
@@ -16,14 +18,12 @@ interface PerformanceEnginsData {
       color: string;
     }[];
   }[];
-  image: string;
   title: string;
   imageClassName?: string;
 }
 
 export const PerformanceEngins = ({
   attributes,
-  image,
   title,
   imageClassName = "",
 }: PerformanceEnginsData) => {
@@ -48,10 +48,16 @@ export const PerformanceEngins = ({
                   <div
                     className={cn(
                       "absolute bottom-0 right-4 z-10 w-[5.7rem]",
-                      imageClassName,
+                      attributes[activeTab].iconClassName
+                        ? attributes[activeTab].iconClassName
+                        : imageClassName,
                     )}
                   >
-                    <img src={image} alt="image" className="object-contain" />
+                    <img
+                      src={attributes[activeTab].image}
+                      alt="image"
+                      className="object-contain"
+                    />
                   </div>
                 </div>
                 <div className="text-center text-sm font-semibold">

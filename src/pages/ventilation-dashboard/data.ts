@@ -22,7 +22,7 @@ export const data = {
       {
         title: "Vitesse (RPM)",
         color: "#FED41E",
-        max:1482,
+        max:2000,
         attributes: {
           telemetries: [
             {
@@ -36,7 +36,7 @@ export const data = {
       {
         title: "Température (°C)",
         color: "#FF5AF1",
-        max:130,
+        max:120,
         attributes: {
           telemetries: [
             {
@@ -50,7 +50,7 @@ export const data = {
       {
         title: "Vibration (mm/s)",
         color: "#78F6EA",
-        max:8,
+        max:5,
         attributes: {
           telemetries: [
             {
@@ -85,7 +85,7 @@ export const data = {
       {
         title: "Vitesse (RPM)",
         color: "#FED41E",
-        max:1482,
+        max:2000,
         attributes: {
           telemetries: [
             {
@@ -99,7 +99,7 @@ export const data = {
       {
         title: "Température (°C)",
         color: "#FF5AF1",
-        max:130,
+        max:120,
         attributes: {
           telemetries: [
             {
@@ -113,7 +113,7 @@ export const data = {
       {
         title: "Vibration (mm/s)",
         color: "#78F6EA",
-        max:8,
+        max:5,
         attributes: {
           telemetries: [
             {
@@ -127,7 +127,7 @@ export const data = {
     ]
   },
   2: {
-    title: "Moteur 4",
+    title: "Moteur 1",
     cardType: "MoteurGroup",
     cardClassNames: "col-span-3 row-span-3 flex flex-col gap-1",
     children: [
@@ -147,7 +147,7 @@ export const data = {
       },
       {
         title: "Vitesse (RPM)",
-        max:1482,
+        max:2000,
         color: "#FED41E",
         attributes: {
           telemetries: [
@@ -162,7 +162,7 @@ export const data = {
       {
         title: "Température (°C)",
         color: "#FF5AF1",
-        max:130,
+        max:120,
         attributes: {
           telemetries: [
             {
@@ -176,7 +176,7 @@ export const data = {
       {
         title: "Vibration (mm/s)",
         color: "#78F6EA",
-        max:8,
+        max:5,
         attributes: {
           telemetries: [
             {
@@ -190,7 +190,7 @@ export const data = {
     ]
   },
   3: {
-    title: "Moteur 5",
+    title: "Moteur 2",
     cardType: "MoteurGroup",
     cardClassNames: "col-span-3 row-span-3 flex flex-col gap-1",
     children: [
@@ -210,7 +210,7 @@ export const data = {
       },
       {
         title: "Vitesse (RPM)",
-        max:1482,
+        max:2000,
         color: "#FED41E",
         attributes: {
           telemetries: [
@@ -225,7 +225,7 @@ export const data = {
       {
         title: "Température (°C)",
         color: "#FF5AF1",
-        max:130,
+        max:120,
         attributes: {
           telemetries: [
             {
@@ -239,7 +239,7 @@ export const data = {
       {
         title: "Vibration (mm/s)",
         color: "#78F6EA",
-        max:8,
+        max:5,
         attributes: {
           telemetries: [
             {
@@ -564,8 +564,8 @@ export const qualitédair = {
 
 export const ventilation = {
   0: {
-    title: "Energie Total (KWH)",
-    unit: "KWH",
+    title: "Energie Total (Kwh)",
+    unit: "Kwh",
     telemetry: [
       {
         serial: "0TKJJWS26V62QV15",

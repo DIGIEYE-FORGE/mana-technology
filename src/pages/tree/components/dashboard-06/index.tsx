@@ -17,7 +17,6 @@ export const Dashboard6 = () => {
       </Card>
       <Card className="col-span-2 flex flex-col p-2">
         <PerformanceEngins
-          image={widgetsData[1].image}
           title={widgetsData[1].title}
           attributes={widgetsData[1].attributes}
           imageClassName="absolute bottom-2 right-3 z-10 w-32"

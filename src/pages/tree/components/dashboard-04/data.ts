@@ -6,7 +6,7 @@ export const widgetsData = {
         {
           name: "UG_DEBLAYAGE_TONNE_DE_STERILE_PAR_POSTE-tonne_par_poste",
           color: "#25A18E",
-          label: "Est 11",
+          label: "Tonnage Déblayé",
           serial: "Y1UMITGTHATVAUQI",
         },
       ],
@@ -19,6 +19,7 @@ export const widgetsData = {
     attributes: [
       {
         name: "Déblayage R1700 01",
+        image: "/machine-04.png",
         telemetries: [
           {
             name: "UG_CHARG_CAT_R1700_14T_1_TD",
@@ -36,6 +37,7 @@ export const widgetsData = {
       },
       {
         name: "Déblayage R1700 02",
+        image: "/machine-04.png",
         telemetries: [
           {
             name: "UG_CHARG_CAT_R1700_14T_2_TD",

@@ -41,7 +41,6 @@ export const Dashboard2 = () => {
       </Card>
       <Card className="relative col-span-2 flex flex-col p-2">
         <PerformanceEngins
-          image={widgetsData[1].image}
           title={widgetsData[1].title}
           attributes={widgetsData[1].attributes}
         />
@@ -51,7 +50,7 @@ export const Dashboard2 = () => {
           {widgetsData[2]?.title}
         </h4>
         <div className="relative h-1 flex-1 -translate-y-4">
-          <LineChartWidget attributes={widgetsData[2].attributes} />
+          <BarChartWidget attributes={widgetsData[2].attributes} />
         </div>
       </Card>
       <Card className="flex flex-col">
