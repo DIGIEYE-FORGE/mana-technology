@@ -44,7 +44,9 @@ export const Dashboard3 = () => {
                 return acc;
               },
               {},
+              
             )}
+            max={100}
           />
         </div>
       </Card>
@@ -62,6 +64,7 @@ export const Dashboard3 = () => {
               },
               {},
             )}
+            max={100}
           />
         </div>
       </Card>

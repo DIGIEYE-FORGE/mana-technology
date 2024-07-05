@@ -45,6 +45,7 @@ export const Dashboard6 = () => {
               },
               {},
             )}
+            max={100}
           />
         </div>
       </Card>
@@ -62,6 +63,7 @@ export const Dashboard6 = () => {
               },
               {},
             )}
+            max={100}
           />
         </div>
       </Card>

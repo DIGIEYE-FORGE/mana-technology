@@ -25,12 +25,14 @@ type Props = Widget & {
   legendPosition?: "top" | "bottom" | "left" | "right" | "none";
   children?: ReactNode;
   selectionDate?: boolean;
+  max?: number;
 };
 
 export default function LineChartWidget({
   legendPosition = "bottom",
   selectionDate = true,
   correction,
+  max,
   ...props
 }: Props) {
   const { backendApi, dateRange } = useAppContext();
@@ -237,6 +239,7 @@ export default function LineChartWidget({
         yaxis: {
           min: 0,
           // tickAmount: 4,
+          max,
           tooltip: {
             enabled: false,
           },
