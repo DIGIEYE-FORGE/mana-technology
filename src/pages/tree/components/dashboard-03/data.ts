@@ -24,6 +24,7 @@ export const widgetsData = {
     image: "/machine-03.png",
     attributes: [
       {
+        image: "/machine-03.png",
         name: "TITAN BAC2X350",
         telemetries: [
           {

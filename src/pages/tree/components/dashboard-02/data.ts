@@ -12,6 +12,7 @@ export const widgetsData = {
     attributes: [
       {
         name: "Jumbo M20",
+        image: "/machine-02.png",
         telemetries: [
           {
             name: "UG_MEC_JUM_M20_TD",
