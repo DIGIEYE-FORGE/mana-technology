@@ -13,16 +13,16 @@ import { useAppContext } from "@/Context";
 export function MainProjectUpBar() {
   const { fullScreen, setFullScreen } = useAppContext();
   return (
-    <div className="group sticky top-0 z-10 flex h-up-bar w-full shrink-0 items-center justify-between gap-4 border-b px-6 backdrop-blur">
+    <div className="group sticky top-0 z-10 flex h-up-bar w-full shrink-0 items-center justify-between gap-2 border-b px-6 backdrop-blur md:gap-4">
       <Link
         to="/"
         className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
       >
-        <Button variant="ghost">
-          <MoveLeftIcon className="size-6" />
+        <Button variant="ghost" size={"icon"}>
+          <MoveLeftIcon size={24} className="size-6" />
         </Button>
       </Link>
-      <div className="absolute left-24 flex gap-4">
+      <div className="flex gap-4">
         <img src="/logo.svg" alt="logo" />
         <span className="h-3/4 border-l py-3 pl-4 text-xl font-bold">
           Tizert Mine
@@ -32,26 +32,24 @@ export function MainProjectUpBar() {
         <FilePieChart size={20} />
         Project Overview
       </OverviewButton>
-      <div className="flex gap-2">
-        <Button
-          onClick={() => {
-            setFullScreen(!fullScreen);
-          }}
-          className="ml-auto opacity-0 transition-opacity duration-500 hover:opacity-100"
-          size={"icon"}
-          variant={"ghost"}
-        >
-          {fullScreen ? <Shrink size={24} /> : <Minimize size={24} />}
+      <Button
+        onClick={() => {
+          setFullScreen(!fullScreen);
+        }}
+        className="ml-auto opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        size={"icon"}
+        variant={"ghost"}
+      >
+        {fullScreen ? <Shrink size={24} /> : <Minimize size={24} />}
+      </Button>
+      <Link
+        to="/underground"
+        className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+      >
+        <Button variant="ghost" size={"icon"}>
+          <MoveRightIcon size={24} className="size-6" />
         </Button>
-        <Link
-          to="/underground"
-          className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-        >
-          <Button variant="ghost">
-            <MoveRightIcon className="size-6" />
-          </Button>
-        </Link>
-      </div>
+      </Link>
     </div>
   );
 }
