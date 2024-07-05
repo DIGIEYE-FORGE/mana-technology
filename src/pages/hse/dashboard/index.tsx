@@ -4,7 +4,6 @@ import { widgetsData } from "./data";
 import BarChartWidget from "@/components/bar-chart-widget";
 import DonutChartWidget from "@/components/donut-chart-widget";
 import { ConeChart } from "@/components/cone-chart";
-import { CircularProgressChart } from "@/components/circular-progress-chart";
 import { WeeklyLineChart } from "@/components/weekly-line-chart";
 import { ProgressCirclePropsChart } from "@/components/progress-circle-chart";
 

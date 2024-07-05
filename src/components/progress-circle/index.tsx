@@ -11,6 +11,9 @@ export interface ProgressCircleProps
   color?: string;
   progress: number;
   unit?: string;
+  backgroundColor?: string;
+  gradientStartColor?: string;
+  gradientEndColor?: string;
 }
 
 export function ProgressCircle({
