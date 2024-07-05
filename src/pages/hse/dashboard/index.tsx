@@ -6,6 +6,7 @@ import BarChartWidget from "@/components/bar-chart-widget";
 import DonutChartWidget from "@/components/donut-chart-widget";
 import { ConeChart } from "@/components/cone-chart";
 import { CircularProgressChart } from "@/components/circular-progress-chart";
+import { WeeklyLineChart } from "@/components/weekly-line-chart";
 
 export default function HseDashboard() {
   return (
@@ -98,7 +99,7 @@ export default function HseDashboard() {
           {widgetsData[4].title}
         </h3>
         <div className="h-1 flex-1">
-          <LineChartWidget attributes={widgetsData[4].attributes} />
+          <WeeklyLineChart {...widgetsData[4].attributes} />
         </div>
       </Card>
       <Card className="col-span-4 row-span-3 flex flex-col p-6">
