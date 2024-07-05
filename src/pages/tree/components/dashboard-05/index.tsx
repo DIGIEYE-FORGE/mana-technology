@@ -36,13 +36,7 @@ export const Dashboard5 = () => {
         <div className="h-1 flex-1">
           <LineChartWidget
             attributes={widgetsData[3].attributes}
-            correction={widgetsData[3].attributes.telemetries.reduce(
-              (acc: Record<string, number>, item) => {
-                acc[item.name] = 100;
-                return acc;
-              },
-              {},
-            )}
+
             max={100}
           />
         </div>
@@ -63,13 +57,7 @@ export const Dashboard5 = () => {
         <div className="h-1 flex-1">
           <LineChartWidget
             attributes={widgetsData[4].attributes}
-            correction={widgetsData[4].attributes.telemetries.reduce(
-              (acc: Record<string, number>, item) => {
-                acc[item.name] = 100;
-                return acc;
-              },
-              {},
-            )}
+
             max={100}
           />
         </div>

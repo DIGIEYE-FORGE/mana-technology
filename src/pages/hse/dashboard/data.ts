@@ -4,54 +4,48 @@ export const widgetsData = {
     title: "Effectif Projet",
     telemetryName: "HSE_MP_Total",
     label: "Disponibilité",
-    serial: "XEXX5PDMNHBWUN7Q",
-    value: 105,
+    serial: "TATC8YPVCLHULUAF",
   },
   1: {
     title: "Cumul des heures travaillées",
     telemetryName: "HSE_MH_Total",
     label: "Disponibilité",
-    serial: "XEXX5PDMNHBWUN7Q",
-    value: 2607521.5,
+    serial: "TATC8YPVCLHULUAF",
   },
   2: {
     title: "Taux de clôture",
     telemetryName: "HSE_TC_Global",
     label: "Disponibilité",
-    serial: "XEXX5PDMNHBWUN7Q",
-    value: 90.5,
+    serial: "TATC8YPVCLHULUAF",
+    correction: 100,
   },
   3: {
     title: "HSE Project Indicators",
     attributes: {
       telemetries: [
         {
-          name: "HSE_OBS_Total",
+          name: "HSE_NMO_Total",
           color: "#25A18E",
           label: "Observation",
-          serial: "U9XQMQ1DXYT7LJIP",
-          value: 5075,
+          serial: "TATC8YPVCLHULUAF",
         },
         {
           name: "HSE_MTC_Total",
           color: "#FFCA05",
           label: "MTC",
-          serial: "U9XQMQ1DXYT7LJIP",
-          value: 13,
+          serial: "TATC8YPVCLHULUAF",
         },
         {
           name: "HSE_LTI_total",
           color: "#903E92",
           label: "LTI",
-          serial: "U9XQMQ1DXYT7LJIP",
-          value: 2,
+          serial: "TATC8YPVCLHULUAF",
         },
         {
           name: "HSE_FAT_Total",
           color: "#ff0000",
           label: "FAT",
-          serial: "U9XQMQ1DXYT7LJIP",
-          value: 0,
+          serial: "TATC8YPVCLHULUAF",
         },
       ],
       progressTelemetries: [
@@ -79,96 +73,19 @@ export const widgetsData = {
   4: {
     title: "Évolution Heures Travaillées",
     attributes: {
-      telemetries: [
-        {
-          area: false,
-          name: "HSE_MH_Total",
-          color: "#78F6EA",
-          label: "Heures Travaillées",
-          serial: "XEXX5PDMNHBWUN7Q",
-          // data: [
-          //   {
-          //     x: addDays(new Date(), -7),
-          //     y: 100,
-          //   },
-          //   {
-          //     x: addDays(new Date(), -6),
-          //     y: 105,
-          //   },
-          //   {
-          //     x: addDays(new Date(), -5),
-          //     y: 110,
-          //   },
-          //   {
-          //     x: addDays(new Date(), -4),
-          //     y: 115,
-          //   },
-          //   {
-          //     x: addDays(new Date(), -3),
-          //     y: 120,
-          //   },
-          //   {
-          //     x: addDays(new Date(), -2),
-          //     y: 125,
-          //   },
-          //   {
-          //     x: addDays(new Date(), -1),
-          //     y: 130,
-          //   },
-          //   {
-          //     x: new Date(),
-          //     y: 135,
-          //   },
-          // ]
-        },
-      ],
+      serial: "LWGUT0FXIZ5ALOND",
+      telemetryName: "HSE_MH_Total",
+      color: "#78F6EA",
+      label: "Évolution Heures Travaillées",
     },
   },
   5: {
     title: "Évolution Effectif",
     attributes: {
-      telemetries: [
-        {
-          name: "HSE_MP_Total",
-          color: "#FF5AF1",
-          label: "Fréquence",
-          serial: "XEXX5PDMNHBWUN7Q",
-          // data: [
-          //   {
-          //     x: addDays(new Date(), -7),
-          //     y: 100,
-          //   },
-          //   {
-          //     x: addDays(new Date(), -6),
-          //     y: 105,
-          //   },
-          //   {
-          //     x: addDays(new Date(), -5),
-          //     y: 110,
-          //   },
-          //   {
-          //     x: addDays(new Date(), -4),
-          //     y: 115,
-          //   },
-          //   {
-          //     x: addDays(new Date(), -3),
-          //     y: 120,
-          //   },
-          //   {
-          //     x: addDays(new Date(), -2),
-          //     y: 125,
-          //   },
-          //   {
-          //     x: addDays(new Date(), -1),
-          //     y: 130,
-          //   },
-          //   {
-          //     x: new Date(),
-          //     y: 135,
-          //   },
-          // ]
-        },
-      ],
+      serial: "LWGUT0FXIZ5ALOND",
+      telemetryName: "HSE_MP_Total",
+      color: "#FF5AF1",
+      label: "Évolution Heures Travaillées",
     },
   },
   6: {
@@ -179,19 +96,19 @@ export const widgetsData = {
           name: "HSE_Injury_Total",
           color: "#25A18E",
           label: "Injury",
-          serial: "XEXX5PDMNHBWUN7Q",
+          serial: "TATC8YPVCLHULUAF",
         },
         {
-          name: "HSE_ASSET DAMAGE_Total",
+          name: "HSE_ASSETDAMAGE_Total",
           color: "#FF5AF1",
           label: "Asset Damage",
-          serial: "XEXX5PDMNHBWUN7Q",
+          serial: "TATC8YPVCLHULUAF",
         },
         {
           name: "HSE_ENVI_Total",
           color: "#D2DDFF",
           label: "Environment",
-          serial: "XEXX5PDMNHBWUN7Q",
+          serial: "TATC8YPVCLHULUAF",
         },
       ],
     },
@@ -231,25 +148,25 @@ export const widgetsData = {
           name: "HSE_Incident_ONS",
           color: "#D2DDFF",
           label: "ONS",
-          serial: "XEXX5PDMNHBWUN7Q",
+          serial: "LWGUT0FXIZ5ALOND",
         },
         {
           name: "HSE_Incident_OFS",
           color: "#25A18E",
           label: "OFS",
-          serial: "XEXX5PDMNHBWUN7Q",
+          serial: "LWGUT0FXIZ5ALOND",
         },
         {
           name: "HSE_Incident_UG",
           color: "#F650A0",
           label: "ug",
-          serial: "XEXX5PDMNHBWUN7Q",
+          serial: "LWGUT0FXIZ5ALOND",
         },
         {
           name: "HSE_Incident_OP",
           color: "#FF5AF1",
           label: "OP",
-          serial: "XEXX5PDMNHBWUN7Q",
+          serial: "LWGUT0FXIZ5ALOND",
         },
       ],
     },

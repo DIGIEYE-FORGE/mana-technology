@@ -59,7 +59,7 @@ export const AverageCircularProgressChart = ({
       );
       const sum = res.reduce((acc, curr) => acc + curr.sum, 0);
       const total = res.reduce((acc, curr) => acc + curr.total, 0);
-      return (sum / total) * 100;
+      return (sum / total);
     },
     {
       refreshInterval: interval || undefined,

@@ -1,12 +1,11 @@
 import { Card } from "@/components/card";
 import Telemetry from "@/components/telemetry";
 import { widgetsData } from "./data";
-import LineChartWidget from "@/components/line-chart-widget";
 import BarChartWidget from "@/components/bar-chart-widget";
 import DonutChartWidget from "@/components/donut-chart-widget";
 import { ConeChart } from "@/components/cone-chart";
-import { CircularProgressChart } from "@/components/circular-progress-chart";
-import { CircularProgress } from "@/components/circular-progress";
+import { WeeklyLineChart } from "@/components/weekly-line-chart";
+import { ProgressCirclePropsChart } from "@/components/progress-circle-chart";
 
 export default function HseDashboard() {
   return (
@@ -21,7 +20,7 @@ export default function HseDashboard() {
         <h3 className="text-lg font-semibold">{widgetsData[0].title}</h3>
         <div className="text-4xl font-bold">
           <Telemetry
-            displayFormat="float"
+            displayFormat="integer"
             telemetry={{
               name: widgetsData[0].telemetryName,
               serial: widgetsData[0].serial,
@@ -48,12 +47,14 @@ export default function HseDashboard() {
               name: widgetsData[2].telemetryName,
               serial: widgetsData[2].serial,
             }}
-          />
+            displayFormat="float"
+            correction={widgetsData[2].correction}
+          />{" "} %
         </div>
       </Card>
       <Card className="col-span-3 grid place-content-center !rounded p-6">
         <img
-          src="/security-respect.svg"
+          src="/security.jpeg"
           className="size-[6.5rem]"
           alt="security = respect"
         />
@@ -69,19 +70,11 @@ export default function HseDashboard() {
           {widgetsData[3].attributes.progressTelemetries.map(
             (telemetry, index) => (
               <div className="flex flex-col">
-                <CircularProgressChart
-                  className="size-24 text-lg"
+                <ProgressCirclePropsChart
+                  className="size-24 text-base font-semibold"
                   key={index}
-                  telemetry={{
-                    name: telemetry.name,
-                    serial: telemetry.serial,
-                  }}
-                  stops={[
-                    {
-                      color: telemetry.color,
-                      offset: 100,
-                    },
-                  ]}
+                  telemetry={telemetry}
+                  color={telemetry.color}
                 />
                 <span className="text-center text-sm font-semibold">
                   {telemetry.label}
@@ -93,10 +86,10 @@ export default function HseDashboard() {
       </Card>
       <Card className="col-span-4 row-span-3 flex flex-col p-6">
         <h3 className="text-center text-lg font-semibold">
-          {widgetsData[4].title}
+          {widgetsData[8].title}
         </h3>
         <div className="h-1 flex-1">
-          <LineChartWidget attributes={widgetsData[4].attributes} />
+          <BarChartWidget attributes={widgetsData[8].attributes} />
         </div>
       </Card>
       <Card className="col-span-4 row-span-3 flex flex-col p-6">
@@ -104,7 +97,7 @@ export default function HseDashboard() {
           {widgetsData[5].title}
         </h3>
         <div className="h-1 flex-1">
-          <LineChartWidget attributes={widgetsData[5].attributes} />
+          <WeeklyLineChart {...widgetsData[5].attributes} />
         </div>
       </Card>
       <Card className="col-span-4 row-span-3 flex flex-col gap-8 p-6">
@@ -125,10 +118,11 @@ export default function HseDashboard() {
       </Card>
       <Card className="col-span-4 row-span-3 flex flex-col p-6">
         <h3 className="text-center text-lg font-semibold">
-          {widgetsData[8].title}
+          {widgetsData[4].title}
         </h3>
         <div className="h-1 flex-1">
-          <BarChartWidget attributes={widgetsData[8].attributes} />
+          {/* <LineChartWidget attributes={widgetsData[4].attributes} /> */}
+          <WeeklyLineChart {...widgetsData[4].attributes} />
         </div>
       </Card>
     </div>
