@@ -6,6 +6,7 @@ import DonutChartWidget from "@/components/donut-chart-widget";
 import { ConeChart } from "@/components/cone-chart";
 import { CircularProgressChart } from "@/components/circular-progress-chart";
 import { WeeklyLineChart } from "@/components/weekly-line-chart";
+import { ProgressCirclePropsChart } from "@/components/progress-circle-chart";
 
 export default function HseDashboard() {
   return (
@@ -70,19 +71,11 @@ export default function HseDashboard() {
           {widgetsData[3].attributes.progressTelemetries.map(
             (telemetry, index) => (
               <div className="flex flex-col">
-                <CircularProgressChart
-                  className="size-24 text-lg"
+                <ProgressCirclePropsChart
+                  className="size-24 text-base font-semibold"
                   key={index}
-                  telemetry={{
-                    name: telemetry.name,
-                    serial: telemetry.serial,
-                  }}
-                  stops={[
-                    {
-                      color: telemetry.color,
-                      offset: 100,
-                    },
-                  ]}
+                  telemetry={telemetry}
+                  color={telemetry.color}
                 />
                 <span className="text-center text-sm font-semibold">
                   {telemetry.label}
