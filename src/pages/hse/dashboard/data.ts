@@ -51,6 +51,26 @@ export const widgetsData = {
           value: 0,
         },
       ],
+      progressTelemetries: [
+        {
+          name: "HSE_MTCF_Global",
+          color: "#f6d300",
+          serial: "TATC8YPVCLHULUAF",
+          label: "MTCF",
+        },
+        {
+          name: "HSE_LTIF_Global",
+          color: "#93469d",
+          serial: "TATC8YPVCLHULUAF",
+          label: "LTIF",
+        },
+        {
+          name: "HSE_FATIF_Global",
+          color: "#db1c31",
+          serial: "TATC8YPVCLHULUAF",
+          label: "FATIF",
+        },
+      ],
     },
   },
   4: {
@@ -196,7 +216,6 @@ export const widgetsData = {
           label: "Injury",
           serial: "XEXX5PDMNHBWUN7Q",
         },
-        
       ],
     },
   },

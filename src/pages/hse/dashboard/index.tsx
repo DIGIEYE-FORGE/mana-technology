@@ -5,6 +5,8 @@ import LineChartWidget from "@/components/line-chart-widget";
 import BarChartWidget from "@/components/bar-chart-widget";
 import DonutChartWidget from "@/components/donut-chart-widget";
 import { ConeChart } from "@/components/cone-chart";
+import { CircularProgressChart } from "@/components/circular-progress-chart";
+import { CircularProgress } from "@/components/circular-progress";
 
 export default function HseDashboard() {
   return (
@@ -15,7 +17,7 @@ export default function HseDashboard() {
         backgroundSize: "100% 100%",
       }}
     >
-      <Card className="col-span-3 flex flex-col items-center justify-center gap-2 p-2">
+      <Card className="col-span-3 flex flex-col items-center justify-center gap-2 !rounded p-2">
         <h3 className="text-lg font-semibold">{widgetsData[0].title}</h3>
         <div className="text-4xl font-bold">
           <Telemetry
@@ -27,7 +29,7 @@ export default function HseDashboard() {
           />
         </div>
       </Card>
-      <Card className="col-span-3 flex flex-col items-center justify-center gap-2 p-2">
+      <Card className="col-span-3 flex flex-col items-center justify-center gap-2 !rounded p-2">
         <h3 className="text-lg font-semibold">{widgetsData[1].title}</h3>
         <div className="text-4xl font-bold">
           <Telemetry
@@ -38,7 +40,7 @@ export default function HseDashboard() {
           />
         </div>
       </Card>
-      <Card className="col-span-3 flex flex-col items-center justify-center gap-2 p-2">
+      <Card className="col-span-3 flex flex-col items-center justify-center gap-2 !rounded p-2">
         <h3 className="text-lg font-semibold">{widgetsData[2].title}</h3>
         <div className="text-4xl font-bold">
           <Telemetry
@@ -49,24 +51,44 @@ export default function HseDashboard() {
           />
         </div>
       </Card>
-      <Card className="col-span-3 grid place-content-center p-6">
+      <Card className="col-span-3 grid place-content-center !rounded p-6">
         <img
           src="/security-respect.svg"
           className="size-[6.5rem]"
           alt="security = respect"
         />
       </Card>
-      <Card className="col-span-4 row-span-3 flex flex-col gap-4 p-6">
-        {/* <h3 className="text-center text-lg font-semibold">
-              {widgetsData[2].title}
-            </h3> */}
-        <div className="h-1 flex-1">
-          <ConeChart
-            className="h-full gap-4"
-            legendWidth={240}
-            coneClassName="px-12"
-            attributes={widgetsData[3].attributes.telemetries}
-          />
+      <Card className="col-span-4 row-span-3 flex flex-col gap-2 p-6">
+        <ConeChart
+          className="h-1 flex-1 gap-4"
+          legendWidth={160}
+          coneClassName="px-12"
+          attributes={widgetsData[3].attributes.telemetries}
+        />
+        <div className="flex items-center justify-evenly gap-2">
+          {widgetsData[3].attributes.progressTelemetries.map(
+            (telemetry, index) => (
+              <div className="flex flex-col">
+                <CircularProgressChart
+                  className="size-24 text-lg"
+                  key={index}
+                  telemetry={{
+                    name: telemetry.name,
+                    serial: telemetry.serial,
+                  }}
+                  stops={[
+                    {
+                      color: telemetry.color,
+                      offset: 100,
+                    },
+                  ]}
+                />
+                <span className="text-center text-sm font-semibold">
+                  {telemetry.label}
+                </span>
+              </div>
+            ),
+          )}
         </div>
       </Card>
       <Card className="col-span-4 row-span-3 flex flex-col p-6">
