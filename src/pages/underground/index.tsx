@@ -14,12 +14,12 @@ function UndergroundBar() {
 
   const parentPath = pathname.split("/").slice(0, -1).join("/");
   return (
-    <div className="group sticky top-0 z-10 flex h-up-bar w-[calc(10)] shrink-0 items-center gap-4 rounded-[0_0_24px_0] border-b border-r px-4 backdrop-blur sm:px-6">
+    <div className="group sticky top-0 z-10 flex h-up-bar w-[calc(10)] shrink-0 items-center gap-2 rounded-[0_0_24px_0] border-b border-r px-4 backdrop-blur sm:px-6 md:gap-4">
       <Link
         to={parentPath || "/main-project"}
         className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
       >
-        <Button variant="ghost">
+        <Button variant="ghost" size={"icon"}>
           <MoveLeftIcon
             size={24}
             className={cn("transition-transform duration-500", {
