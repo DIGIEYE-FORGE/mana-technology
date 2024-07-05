@@ -1,5 +1,3 @@
-import { addDays } from "date-fns";
-
 export const widgetsData = {
   0: {
     // title: "Chiffre effectif (Cost Value)",
@@ -17,8 +15,8 @@ export const widgetsData = {
     value: 2607521.5,
   },
   2: {
-    title: "Taux do clôture",
-    telemetryName: "MECANISE_TIZERT_JUMBO_M20_PERC_DISPO",
+    title: "Taux de clôture",
+    telemetryName: "HSE_TC_Global",
     label: "Disponibilité",
     serial: "XEXX5PDMNHBWUN7Q",
     value: 90.5,
@@ -33,13 +31,6 @@ export const widgetsData = {
           label: "Observation",
           serial: "U9XQMQ1DXYT7LJIP",
           value: 5075,
-        },
-        {
-          name: "HSE_NEAR MISS_Total",
-          color: "#F650A0",
-          label: "Near Miss",
-          serial: "U9XQMQ1DXYT7LJIP",
-          value: 20,
         },
         {
           name: "HSE_MTC_Total",
@@ -66,7 +57,7 @@ export const widgetsData = {
     },
   },
   4: {
-    title: "Évolution Heures Travaillées (par semaine)",
+    title: "Évolution Heures Travaillées",
     attributes: {
       telemetries: [
         {
@@ -75,46 +66,46 @@ export const widgetsData = {
           color: "#78F6EA",
           label: "Heures Travaillées",
           serial: "XEXX5PDMNHBWUN7Q",
-          data: [
-            {
-              x: addDays(new Date(), -7),
-              y: 100,
-            },
-            {
-              x: addDays(new Date(), -6),
-              y: 105,
-            },
-            {
-              x: addDays(new Date(), -5),
-              y: 110,
-            },
-            {
-              x: addDays(new Date(), -4),
-              y: 115,
-            },
-            {
-              x: addDays(new Date(), -3),
-              y: 120,
-            },
-            {
-              x: addDays(new Date(), -2),
-              y: 125,
-            },
-            {
-              x: addDays(new Date(), -1),
-              y: 130,
-            },
-            {
-              x: new Date(),
-              y: 135,
-            },
-          ]
+          // data: [
+          //   {
+          //     x: addDays(new Date(), -7),
+          //     y: 100,
+          //   },
+          //   {
+          //     x: addDays(new Date(), -6),
+          //     y: 105,
+          //   },
+          //   {
+          //     x: addDays(new Date(), -5),
+          //     y: 110,
+          //   },
+          //   {
+          //     x: addDays(new Date(), -4),
+          //     y: 115,
+          //   },
+          //   {
+          //     x: addDays(new Date(), -3),
+          //     y: 120,
+          //   },
+          //   {
+          //     x: addDays(new Date(), -2),
+          //     y: 125,
+          //   },
+          //   {
+          //     x: addDays(new Date(), -1),
+          //     y: 130,
+          //   },
+          //   {
+          //     x: new Date(),
+          //     y: 135,
+          //   },
+          // ]
         },
       ],
     },
   },
   5: {
-    title: "Évolution Effectif (par semaine)",
+    title: "Évolution Effectif",
     attributes: {
       telemetries: [
         {
@@ -122,40 +113,40 @@ export const widgetsData = {
           color: "#FF5AF1",
           label: "Fréquence",
           serial: "XEXX5PDMNHBWUN7Q",
-          data: [
-            {
-              x: addDays(new Date(), -7),
-              y: 100,
-            },
-            {
-              x: addDays(new Date(), -6),
-              y: 105,
-            },
-            {
-              x: addDays(new Date(), -5),
-              y: 110,
-            },
-            {
-              x: addDays(new Date(), -4),
-              y: 115,
-            },
-            {
-              x: addDays(new Date(), -3),
-              y: 120,
-            },
-            {
-              x: addDays(new Date(), -2),
-              y: 125,
-            },
-            {
-              x: addDays(new Date(), -1),
-              y: 130,
-            },
-            {
-              x: new Date(),
-              y: 135,
-            },
-          ]
+          // data: [
+          //   {
+          //     x: addDays(new Date(), -7),
+          //     y: 100,
+          //   },
+          //   {
+          //     x: addDays(new Date(), -6),
+          //     y: 105,
+          //   },
+          //   {
+          //     x: addDays(new Date(), -5),
+          //     y: 110,
+          //   },
+          //   {
+          //     x: addDays(new Date(), -4),
+          //     y: 115,
+          //   },
+          //   {
+          //     x: addDays(new Date(), -3),
+          //     y: 120,
+          //   },
+          //   {
+          //     x: addDays(new Date(), -2),
+          //     y: 125,
+          //   },
+          //   {
+          //     x: addDays(new Date(), -1),
+          //     y: 130,
+          //   },
+          //   {
+          //     x: new Date(),
+          //     y: 135,
+          //   },
+          // ]
         },
       ],
     },
@@ -165,25 +156,22 @@ export const widgetsData = {
     attributes: {
       telemetries: [
         {
-          name: "EST_REALISE_ROCHE_CUMUL_Ton",
+          name: "HSE_Injury_Total",
           color: "#25A18E",
           label: "Injury",
-          serial: "U9XQMQ1DXYT7LJIP",
-          value: 12,
+          serial: "XEXX5PDMNHBWUN7Q",
         },
         {
-          name: "EST_REALISE_ROCHE_CUMUL_Ton",
+          name: "HSE_ASSET DAMAGE_Total",
           color: "#FF5AF1",
           label: "Asset Damage",
-          serial: "U9XQMQ1DXYT7LJIP",
-          value: 37,
+          serial: "XEXX5PDMNHBWUN7Q",
         },
         {
-          name: "EST_REALISE_ROCHE_CUMUL_Ton",
+          name: "HSE_ENVI_Total",
           color: "#D2DDFF",
           label: "Environment",
-          serial: "U9XQMQ1DXYT7LJIP",
-          value: 6,
+          serial: "XEXX5PDMNHBWUN7Q",
         },
       ],
     },
@@ -198,81 +186,20 @@ export const widgetsData = {
           color: "#FF5AF1",
           label: "Asset",
           serial: "XEXX5PDMNHBWUN7Q",
-          data: [
-            {
-              x: addDays(new Date(), -7),
-              y: 100,
-            },
-            {
-              x: addDays(new Date(), -6),
-              y: 105,
-            },
-            {
-              x: addDays(new Date(), -5),
-              y: 110,
-            },
-            {
-              x: addDays(new Date(), -4),
-              y: 115,
-            },
-            {
-              x: addDays(new Date(), -3),
-              y: 120,
-            },
-            {
-              x: addDays(new Date(), -2),
-              y: 125,
-            },
-            {
-              x: addDays(new Date(), -1),
-              y: 130,
-            },
-            {
-              x: new Date(),
-              y: 135,
-            },
-          ]
         },
         {
           name: "HSE_ENVI_Total",
           color: "#D2DDFF",
           label: "Environment",
           serial: "XEXX5PDMNHBWUN7Q",
-          data: [
-            {
-              x: addDays(new Date(), -7),
-              y: 100,
-            },
-            {
-              x: addDays(new Date(), -6),
-              y: 105,
-            },
-            {
-              x: addDays(new Date(), -5),
-              y: 110,
-            },
-            {
-              x: addDays(new Date(), -4),
-              y: 115,
-            },
-            {
-              x: addDays(new Date(), -3),
-              y: 120,
-            },
-            {
-              x: addDays(new Date(), -2),
-              y: 125,
-            },
-            {
-              x: addDays(new Date(), -1),
-              y: 130,
-            },
-            {
-              x: new Date(),
-              y: 135,
-            },
-          ]
         },
+        {
+          name: "HSE_Injury_Total",
+          color: "#25A18E",
+          label: "Injury",
+          serial: "XEXX5PDMNHBWUN7Q",
+        },
+        
       ],
     },
   },
@@ -283,203 +210,27 @@ export const widgetsData = {
       telemetries: [
         {
           name: "HSE_Incident_ONS",
-          color: "#25A18E",
+          color: "#D2DDFF",
           label: "ONS",
           serial: "XEXX5PDMNHBWUN7Q",
-          data: [
-            {
-              x: addDays(new Date(), -7),
-              y: 100,
-            },
-            {
-              x: addDays(new Date(), -6),
-              y: 105,
-            },
-            {
-              x: addDays(new Date(), -5),
-              y: 110,
-            },
-            {
-              x: addDays(new Date(), -4),
-              y: 115,
-            },
-            {
-              x: addDays(new Date(), -3),
-              y: 120,
-            },
-            {
-              x: addDays(new Date(), -2),
-              y: 125,
-            },
-            {
-              x: addDays(new Date(), -1),
-              y: 130,
-            },
-            {
-              x: new Date(),
-              y: 135,
-            },
-          ]
         },
         {
           name: "HSE_Incident_OFS",
           color: "#25A18E",
           label: "OFS",
           serial: "XEXX5PDMNHBWUN7Q",
-          data: [
-            {
-              x: addDays(new Date(), -7),
-              y: 100,
-            },
-            {
-              x: addDays(new Date(), -6),
-              y: 105,
-            },
-            {
-              x: addDays(new Date(), -5),
-              y: 110,
-            },
-            {
-              x: addDays(new Date(), -4),
-              y: 115,
-            },
-            {
-              x: addDays(new Date(), -3),
-              y: 120,
-            },
-            {
-              x: addDays(new Date(), -2),
-              y: 125,
-            },
-            {
-              x: addDays(new Date(), -1),
-              y: 130,
-            },
-            {
-              x: new Date(),
-              y: 135,
-            },
-          ]
         },
         {
           name: "HSE_Incident_UG",
-          color: "#25A18E",
+          color: "#F650A0",
           label: "ug",
           serial: "XEXX5PDMNHBWUN7Q",
-          data: [
-            {
-              x: addDays(new Date(), -7),
-              y: 100,
-            },
-            {
-              x: addDays(new Date(), -6),
-              y: 105,
-            },
-            {
-              x: addDays(new Date(), -5),
-              y: 110,
-            },
-            {
-              x: addDays(new Date(), -4),
-              y: 115,
-            },
-            {
-              x: addDays(new Date(), -3),
-              y: 120,
-            },
-            {
-              x: addDays(new Date(), -2),
-              y: 125,
-            },
-            {
-              x: addDays(new Date(), -1),
-              y: 130,
-            },
-            {
-              x: new Date(),
-              y: 135,
-            },
-          ]
         },
         {
           name: "HSE_Incident_OP",
-          color: "#25A18E",
+          color: "#FF5AF1",
           label: "OP",
           serial: "XEXX5PDMNHBWUN7Q",
-          data: [
-            {
-              x: addDays(new Date(), -7),
-              y: 100,
-            },
-            {
-              x: addDays(new Date(), -6),
-              y: 105,
-            },
-            {
-              x: addDays(new Date(), -5),
-              y: 110,
-            },
-            {
-              x: addDays(new Date(), -4),
-              y: 115,
-            },
-            {
-              x: addDays(new Date(), -3),
-              y: 120,
-            },
-            {
-              x: addDays(new Date(), -2),
-              y: 125,
-            },
-            {
-              x: addDays(new Date(), -1),
-              y: 130,
-            },
-            {
-              x: new Date(),
-              y: 135,
-            },
-          ]
-        },
-        {
-          name: "HSE_Incident_OP",
-          color: "#25A18E",
-          label: "OP",
-          serial: "XEXX5PDMNHBWUN7Q",
-          data: [
-            {
-              x: addDays(new Date(), -7),
-              y: 100,
-            },
-            {
-              x: addDays(new Date(), -6),
-              y: 105,
-            },
-            {
-              x: addDays(new Date(), -5),
-              y: 110,
-            },
-            {
-              x: addDays(new Date(), -4),
-              y: 115,
-            },
-            {
-              x: addDays(new Date(), -3),
-              y: 120,
-            },
-            {
-              x: addDays(new Date(), -2),
-              y: 125,
-            },
-            {
-              x: addDays(new Date(), -1),
-              y: 130,
-            },
-            {
-              x: new Date(),
-              y: 135,
-            },
-          ]
         },
       ],
     },
