@@ -3,9 +3,12 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Minimize, MoveLeftIcon, MoveRightIcon, Shrink } from "lucide-react";
 import { useAppContext } from "@/Context";
+import { DatePickerWithRange } from "@/components/calander";
+import { TDateRange } from "@/utils";
 
 function UndergroundBar() {
-  const { fullScreen, setFullScreen } = useAppContext();
+  const { fullScreen, setFullScreen, dateRange, setDateRange } =
+    useAppContext();
   return (
     <div className="group sticky top-0 z-10 flex h-up-bar w-full shrink-0 items-center justify-between gap-2 border-b px-6 backdrop-blur md:gap-4">
       <Link
@@ -22,6 +25,13 @@ function UndergroundBar() {
           Underground
         </span>
       </div>
+      <DatePickerWithRange
+        className="hidden lg:block"
+        date={dateRange}
+        onChange={(date) => {
+          setDateRange(date as TDateRange);
+        }}
+      />
       <Button
         onClick={() => {
           setFullScreen(!fullScreen);

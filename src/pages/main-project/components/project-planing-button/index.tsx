@@ -78,10 +78,12 @@ const tabs = [
       {
         title: "Vision ESG",
         image: "/esg-01.svg",
+        subtitle: "Stratégie ESG pour une performance durable",
       },
       {
         title: "Vision ESG",
         image: "/esg-04.svg",
+        subtitle: "Project design",
       },
       {
         title: "ESG actions",
@@ -90,6 +92,7 @@ const tabs = [
       {
         title: "ESG tizert",
         image: "/esg-03.svg",
+        subtitle: "Projets potentiels planifiés",
       },
       {
         title: "Project Gouvernance",
@@ -181,19 +184,24 @@ function ProjectPlaningButton({
                 {tabs[activeTab].subTabs[activeSubTab].title}
               </span>
             </div>
-            <div className="mr-4 mt-5 flex w-[62%] items-center px-6">
+            <div className="mr-4 mt-5 flex w-[62%] items-center justify-end gap-4 px-6">
               {activeSubTab > 0 && (
                 <Button
                   variant={"ghost"}
+                  className="mr-auto"
+                  size={"icon"}
                   onClick={() => setActiveSubTab(activeSubTab - 1)}
                 >
                   <MoveLeft className="h-6 w-6" />
                 </Button>
               )}
+              <span className="text-lg font-semibold">
+                {tabs[activeTab].subTabs[activeSubTab].subtitle}
+              </span>
               {activeSubTab < tabs[activeTab].subTabs.length - 1 && (
                 <Button
                   variant={"ghost"}
-                  className="ml-auto"
+                  size={"icon"}
                   onClick={() => setActiveSubTab(activeSubTab + 1)}
                 >
                   <MoveRight className="h-6 w-6" />
