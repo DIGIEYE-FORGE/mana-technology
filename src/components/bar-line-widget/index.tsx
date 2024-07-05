@@ -11,7 +11,9 @@ import { useAppContext } from "@/Context";
 import Chart from "react-apexcharts";
 import Loader from "@/components/loader";
 import { Fragment } from "react/jsx-runtime";
-type Props = Widget;
+type Props = Widget & {
+  hideTooltip?: boolean;
+};
 
 export default function BarLineWidget({
   ciel = true,
@@ -136,7 +138,7 @@ export default function BarLineWidget({
       <Chart
         options={{
           theme: { mode: "dark" },
-          tooltip: { cssClass: "text-black" },
+          tooltip: { cssClass: "text-black", enabled: !props.hideTooltip },
           chart: {
             type: "line",
             background: "transparent",

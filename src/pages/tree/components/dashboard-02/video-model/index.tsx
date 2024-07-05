@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { Video } from "lucide-react";
+import { DialogClose } from "@radix-ui/react-dialog";
+import { Video, XIcon } from "lucide-react";
 function ModelVideo() {
   return (
     <Dialog>
@@ -13,7 +14,19 @@ function ModelVideo() {
           <Video />
         </Button>
       </DialogTrigger>
-      <DialogContent className="h-[60%] w-[1000px] max-w-full">
+      <DialogContent
+        showCloseButton={false}
+        className="aspect-video max-w-6xl rounded-3xl border-none p-0"
+      >
+        <DialogClose asChild>
+          <Button
+            className="absolute right-2 top-2 z-10 text-foreground opacity-50"
+            size={"icon"}
+            variant={"ghost"}
+          >
+            <XIcon />
+          </Button>
+        </DialogClose>
         <video
           src="/video_01.mp4"
           className="aspect-video w-full rounded-lg object-contain"

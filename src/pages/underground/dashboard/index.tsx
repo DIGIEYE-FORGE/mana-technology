@@ -239,6 +239,7 @@ export default function UndergroundDashboardPage() {
           <BarLineWidget
             ciel={false}
             dateRange={dateRange}
+            hideTooltip
             attributes={{
               stacked: true,
               telemetries: [
