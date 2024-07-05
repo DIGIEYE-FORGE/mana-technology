@@ -80,7 +80,7 @@ export const widgetsData = {
       serial: "LWGUT0FXIZ5ALOND",
       telemetryName: "HSE_MH_Total",
       color: "#78F6EA",
-      label: "Heures Travaillées",
+      label: "Évolution Heures Travaillées",
     },
   },
   5: {
@@ -89,7 +89,7 @@ export const widgetsData = {
       serial: "LWGUT0FXIZ5ALOND",
       telemetryName: "HSE_MP_Total",
       color: "#FF5AF1",
-      label: "Fréquence",
+      label: "Évolution Heures Travaillées",
     },
   },
   6: {
