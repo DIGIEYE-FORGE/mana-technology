@@ -6,7 +6,7 @@ export const widgetsData = {
         {
           name: "UG_SOUTENEMENT_SPLET_SET_1.8m-unite_par_tir",
           color: "#25A18E",
-          label: "Est 11",
+          label: "Consommation des boulons",
           serial: "GHZIN57J7EOVXGOC",
         },
       ],

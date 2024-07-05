@@ -51,7 +51,7 @@ export const Dashboard2 = () => {
           {widgetsData[2]?.title}
         </h4>
         <div className="relative h-1 flex-1 -translate-y-4">
-          <LineChartWidget attributes={widgetsData[2].attributes} />
+          <BarChartWidget attributes={widgetsData[2].attributes} />
         </div>
       </Card>
       <Card className="flex flex-col">

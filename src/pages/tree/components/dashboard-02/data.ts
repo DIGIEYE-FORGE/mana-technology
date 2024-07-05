@@ -38,7 +38,7 @@ export const widgetsData = {
           // name: "UG_FORATION_TIRS_VITESSE_DE_PENETRATION-min_par_m",
           name: "UG_FORATION_TIRS_SCHEMA_DE_TIR",
           color: "#cda943",
-          label: "Objectif ML/J",
+          label: "Nombre de trous forés",
           serial: "GHZIN57J7EOVXGOC",
         },
       ],
@@ -94,13 +94,13 @@ export const widgetsData = {
     },
   },
   6: {
-    title: "Longueur foration (m)",
+    title: "Longueur forée (m)",
     attributes: {
       telemetries: [
         {
           name: "UG_FORATION_TIRS_LONGEUR_FORATION_PAR_TIR-m_par_tir",
           color: "#18a5c1",
-          label: "Utilisation",
+          label: "Longueur forée",
           serial: "GHZIN57J7EOVXGOC",
         },
       ],
