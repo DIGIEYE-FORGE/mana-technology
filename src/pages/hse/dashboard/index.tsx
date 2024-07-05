@@ -21,7 +21,7 @@ export default function HseDashboard() {
         <h3 className="text-lg font-semibold">{widgetsData[0].title}</h3>
         <div className="text-4xl font-bold">
           <Telemetry
-            displayFormat="float"
+            displayFormat="integer"
             telemetry={{
               name: widgetsData[0].telemetryName,
               serial: widgetsData[0].serial,
@@ -51,7 +51,6 @@ export default function HseDashboard() {
             displayFormat="float"
             correction={widgetsData[2].correction}
           />{" "}
-          %
         </div>
       </Card>
       <Card className="col-span-3 grid place-content-center !rounded p-6">
@@ -96,10 +95,10 @@ export default function HseDashboard() {
       </Card>
       <Card className="col-span-4 row-span-3 flex flex-col p-6">
         <h3 className="text-center text-lg font-semibold">
-          {widgetsData[4].title}
+          {widgetsData[8].title}
         </h3>
         <div className="h-1 flex-1">
-          <WeeklyLineChart {...widgetsData[4].attributes} />
+          <BarChartWidget attributes={widgetsData[8].attributes} />
         </div>
       </Card>
       <Card className="col-span-4 row-span-3 flex flex-col p-6">
@@ -128,10 +127,10 @@ export default function HseDashboard() {
       </Card>
       <Card className="col-span-4 row-span-3 flex flex-col p-6">
         <h3 className="text-center text-lg font-semibold">
-          {widgetsData[8].title}
+          {widgetsData[4].title}
         </h3>
         <div className="h-1 flex-1">
-          <BarChartWidget attributes={widgetsData[8].attributes} />
+          <LineChartWidget attributes={widgetsData[4].attributes} />
         </div>
       </Card>
     </div>
