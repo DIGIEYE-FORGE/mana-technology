@@ -104,7 +104,7 @@ function HomeUpBar() {
     useAppContext();
   const { pathname } = useLocation();
   return (
-    <div className="group sticky left-6 top-0 z-10 flex h-up-bar w-[calc(10)] shrink-0 items-center gap-4 rounded-[0_0_0_24px] border-b border-l px-4 backdrop-blur sm:px-6">
+    <div className="group sticky left-6 top-0 z-10 flex h-up-bar w-[calc(10)] shrink-0 items-center gap-2 rounded-[0_0_0_24px] border-b border-l px-4 backdrop-blur sm:px-6 md:gap-4">
       <Link to="/">
         <div className="flex gap-4">
           <img
@@ -139,26 +139,24 @@ function HomeUpBar() {
           ))}
         </PopoverContent>
       </Popover>
-      <div className="flex gap-2">
-        <Button
-          onClick={() => {
-            setFullScreen(!fullScreen);
-          }}
-          className="ml-auto opacity-0 transition-opacity duration-500 hover:opacity-100"
-          size={"icon"}
-          variant={"ghost"}
-        >
-          {fullScreen ? <Shrink size={24} /> : <Minimize size={24} />}
+      <Button
+        onClick={() => {
+          setFullScreen(!fullScreen);
+        }}
+        className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        size={"icon"}
+        variant={"ghost"}
+      >
+        {fullScreen ? <Shrink size={24} /> : <Minimize size={24} />}
+      </Button>
+      <Link
+        to="/main-project"
+        className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+      >
+        <Button size="icon" variant="ghost">
+          <MoveRightIcon size={24} className="size-6" />
         </Button>
-        <Link
-          to="/main-project"
-          className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-        >
-          <Button variant="ghost">
-            <MoveRightIcon className="size-6" />
-          </Button>
-        </Link>
-      </div>
+      </Link>
     </div>
   );
 }
