@@ -15,9 +15,14 @@ interface QualitAirProps {
   };
   interval?: number;
   disabled?: boolean;
+  max?: number;
 }
 
-export const BarChart = ({ attributes, disabled = false }: QualitAirProps) => {
+export const BarChart = ({
+  attributes,
+  max,
+  disabled = false,
+}: QualitAirProps) => {
   const { backendApi } = useAppContext();
   const { data, isLoading, error } = useSWR(
     `telemetryDonutChartProps${JSON.stringify(attributes)}`,
@@ -81,7 +86,6 @@ export const BarChart = ({ attributes, disabled = false }: QualitAirProps) => {
       </div>
     );
 
-  console.log(data);
   return (
     <Chart
       options={{
@@ -135,7 +139,7 @@ export const BarChart = ({ attributes, disabled = false }: QualitAirProps) => {
         },
         yaxis: {
           min: 0,
-          max: data.reduce((acc, curr) => Math.max(acc, curr.value), 0) + 10,
+          max: max,
           tickAmount: 1,
           axisBorder: { show: false },
           axisTicks: { show: false },

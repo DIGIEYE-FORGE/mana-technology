@@ -21,7 +21,6 @@ export const Dashboard6 = () => {
           title={widgetsData[1].title}
           attributes={widgetsData[1].attributes}
           imageClassName="absolute bottom-2 right-3 z-10 w-32"
-          engineName={widgetsData[1].engineName}
         />
       </Card>
       <Card className="col-span-2 flex flex-col p-2">

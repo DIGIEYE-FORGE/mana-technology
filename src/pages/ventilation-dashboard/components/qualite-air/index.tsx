@@ -2,6 +2,10 @@ import { CircularProgressChart } from "@/components/circular-progress-chart";
 
 interface QualitAirProps {
   title: string;
+  stops: {
+    color: string;
+    offset: number;
+  }[];
   attributes: {
     telemetries: {
       name: string;
@@ -11,7 +15,7 @@ interface QualitAirProps {
     }[];
   };
 }
-export const QualitAir = ({ title, attributes }: QualitAirProps) => {
+export const QualitAir = ({ title, attributes, stops }: QualitAirProps) => {
   const { name, serial, color, unit } = attributes.telemetries[0];
   return (
     <div className="flex flex-col items-center justify-center">
@@ -23,6 +27,7 @@ export const QualitAir = ({ title, attributes }: QualitAirProps) => {
         color={color}
         className="size-[5.5rem]"
         unit={unit}
+        stops={stops}
       />
     </div>
   );

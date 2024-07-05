@@ -11,9 +11,7 @@ const VentilationDashboard = () => {
   return (
     <main className="grid h-full w-full grid-flow-dense auto-rows-[5.8rem] grid-cols-[repeat(18,minmax(0,1fr))] gap-4 [&>*]:p-4">
       <div className="col-span-6 row-span-5 flex flex-col gap-1 !p-0">
-        <h1 className="pl-2 text-left text-lg font-semibold">
-          {data[0].title}
-        </h1>
+        <h1 className="pl-2 text-left text-2xl font-bold">Ventilateur 1</h1>
         <div className="grid auto-rows-[5.35rem] grid-cols-2 gap-4">
           <Card className="row-span-5 flex flex-col p-4">
             <h1 className="text-center text-lg font-semibold">
@@ -32,6 +30,7 @@ const VentilationDashboard = () => {
                     color={child.color}
                     attributes={child.attributes}
                     interval={5000}
+                    max={child?.max}
                   />
                 </div>
               ))}
@@ -54,6 +53,7 @@ const VentilationDashboard = () => {
                     color={child.color}
                     attributes={child.attributes}
                     interval={5000}
+                    max={child?.max}
                   />
                 </div>
               ))}
@@ -82,9 +82,7 @@ const VentilationDashboard = () => {
         </Card>
       </div>
       <div className="col-span-6 row-span-5 flex flex-col gap-1 !p-0">
-        <h1 className="pl-2 text-left text-lg font-semibold">
-          {data[0].title}
-        </h1>
+        <h1 className="pl-2 text-left text-2xl font-bold">Ventilateur 2</h1>
         <div className="grid auto-rows-[5.35rem] grid-cols-2 gap-4">
           <Card className="row-span-5 flex flex-col p-4">
             <h1 className="text-center text-lg font-semibold">
@@ -103,6 +101,7 @@ const VentilationDashboard = () => {
                     color={child.color}
                     attributes={child.attributes}
                     interval={5000}
+                    max={child?.max}
                   />
                 </div>
               ))}
@@ -125,6 +124,7 @@ const VentilationDashboard = () => {
                     color={child.color}
                     attributes={child.attributes}
                     interval={5000}
+                    max={child?.max}
                   />
                 </div>
               ))}
@@ -145,11 +145,14 @@ const VentilationDashboard = () => {
               <QualitAir {...qualitédair[0].children[2]} />
               <QualitAir {...qualitédair[0].children[3]} />
               <div className="col-span-full">
-                <BarChart attributes={qualitédair[0].children[4].attributes} />
+                <BarChart
+                  attributes={qualitédair[0].children[4].attributes}
+                  max={35}
+                />
               </div>
             </div>
           </div>
-          <div className="card relative flex flex-1 flex-col gap-1 bg-card/10 px-2 py-3">
+          <div className="card relative flex flex-1 cursor-not-allowed flex-col gap-1 bg-card/10 px-2 py-3 opacity-50">
             <h4 className="text-center text-lg font-semibold">
               {qualitédair[1].title}
             </h4>
@@ -159,7 +162,11 @@ const VentilationDashboard = () => {
               <QualitAir {...qualitédair[1].children[2]} />
               <QualitAir {...qualitédair[1].children[3]} />
               <div className="col-span-full">
-                <BarChart attributes={qualitédair[1].children[4].attributes} />
+                <BarChart
+                  attributes={qualitédair[1].children[4].attributes}
+                  max={35}
+                  disabled={true}
+                />
               </div>
             </div>
           </div>
@@ -176,6 +183,7 @@ const VentilationDashboard = () => {
                 <BarChart
                   attributes={qualitédair[2].children[4].attributes}
                   disabled={true}
+                  max={35}
                 />
               </div>
             </div>

@@ -1,6 +1,4 @@
-import { Card } from "@/components/card";
 import { cn } from "@/lib/utils";
-import { NonEmptyArray } from "@/utils";
 import Color from "color";
 import { motion } from "framer-motion";
 
@@ -10,10 +8,10 @@ export interface CircularProgressProps
     "children" | "viewBox" | "color"
   > {
   progress: number;
-  stops: NonEmptyArray<{
+  stops: {
     color: string;
     offset: number;
-  }>;
+  }[];
   strokeWidth?: number;
   gradientCoefficient?: number;
   unit?: string;
@@ -99,24 +97,24 @@ export function CircularProgress({
   );
 }
 
-function IselDevPage() {
-  const progress = 20;
-  return (
-    <main className="grid h-full place-content-center">
-      <Card className="grid aspect-square w-[30rem] flex-col place-content-center gap-4 p-6">
-        <CircularProgress
-          className="size-72 text-6xl"
-          progress={progress}
-          legend={`${progress} %`}
-          stops={[
-            { color: "blue", offset: 10 },
-            { color: "green", offset: 30 },
-            { color: "red", offset: 50 },
-          ]}
-        />
-      </Card>
-    </main>
-  );
-}
+// function IselDevPage() {
+//   const progress = 10;
+//   return (
+//     <main className="grid h-full place-content-center">
+//       <Card className="grid aspect-square w-[30rem] flex-col place-content-center gap-4 p-6">
+//         <CircularProgress
+//           className="size-72 text-6xl"
+//           progress={progress}
+//           legend={`${progress} %`}
+//           stops={[
+//             { color: "blue", offset: 10 },
+//             { color: "green", offset: 30 },
+//             { color: "red", offset: 50 },
+//           ]}
+//         />
+//       </Card>
+//     </main>
+//   );
+// }
 
-export default IselDevPage;
+// export default IselDevPage;
