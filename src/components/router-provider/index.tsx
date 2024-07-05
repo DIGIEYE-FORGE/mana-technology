@@ -21,6 +21,7 @@ import OpSud4 from "@/pages/op-sud4";
 import UndergroundDashboardPage from "@/pages/underground/dashboard";
 import VentilationDashboard from "@/pages/ventilation-dashboard";
 import HomeDashboard from "@/pages/home/dashboard";
+import HsePage from "@/pages/hse";
 
 const routes: RouteObject[] = [
   {
@@ -79,6 +80,10 @@ const routes: RouteObject[] = [
             element: <VentilationDashboard />,
           },
         ],
+      },
+      {
+        path: "hse",
+        element: <HsePage />,
       },
       {
         path: "dashboard",
