@@ -4,7 +4,6 @@ import { cn } from "@/lib/utils";
 import { DialogClose } from "@radix-ui/react-dialog";
 import { MoveLeft, MoveRight, XIcon } from "lucide-react";
 import { useState } from "react";
-import HseButton from "../hse-button";
 
 const tabs = [
   {
@@ -77,37 +76,37 @@ const tabs = [
     title: "esg ",
     subTabs: [
       {
-        title: "cost report",
+        title: "Vision ESG",
         image: "/esg-01.svg",
       },
       {
-        title: "Earned Value Management",
-        image: "/esg-02.svg",
-      },
-      {
-        title: "Earned Value Management",
-        image: "/esg-03.svg",
-      },
-      {
-        title: "Earned Value Management",
+        title: "Vision ESG",
         image: "/esg-04.svg",
       },
       {
-        title: "Earned Value Management",
-        image: "/esg-05.svg",
-      },
-      {
-        title: "Earned Value Management",
-        image: "/esg-06.svg",
-      },
-      {
-        title: "Earned Value Management",
-        image: "/esg-07.svg",
-      },
-      {
-        title: "Earned Value Management",
+        title: "ESG actions",
         image: "/esg-08.png",
       },
+      {
+        title: "ESG tizert",
+        image: "/esg-03.svg",
+      },
+      {
+        title: "Project Gouvernance",
+        image: "/esg-06.svg",
+      },
+      // {
+      //   title: "Earned Value Management",
+      //   image: "/esg-06.svg",
+      // },
+      // {
+      //   title: "Earned Value Management",
+      //   image: "/esg-07.svg",
+      // },
+      // {
+      //   title: "Earned Value Management",
+      //   image: "/esg-08.png",
+      // },
     ],
   },
   // {
@@ -202,11 +201,11 @@ function ProjectPlaningButton({
               )}
             </div>
           </div>
-          <div className="mb-8 ml-16 mr-8 h-1 flex-1">
+          <div className="mb-8 ml-16 mr-8 flex h-1 flex-1 justify-center">
             <img
               src={tabs[activeTab].subTabs[activeSubTab].image}
               alt={tabs[activeTab].subTabs[activeSubTab].title}
-              className="h-full w-full"
+              className="h-full"
             />
           </div>
         </div>
