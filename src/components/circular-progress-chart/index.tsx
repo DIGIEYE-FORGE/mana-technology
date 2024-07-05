@@ -12,12 +12,14 @@ export interface CircularProgressChartProps
   };
   unit?: string;
   interval?: number;
+  max?: number;
 }
 
 export const CircularProgressChart = ({
   telemetry,
   interval,
   unit = "%",
+  max = 100,
   ...props
 }: CircularProgressChartProps) => {
   const { backendApi } = useAppContext();
@@ -60,5 +62,12 @@ export const CircularProgressChart = ({
   } else {
     legend = `${progress?.toFixed(1)} ${unit}`;
   }
-  return <CircularProgress progress={progress} {...props} legend={legend} />;
+  return (
+    <CircularProgress
+      progress={(progress / max) * 100}
+      {...props}
+      legend={legend}
+      unit={unit}
+    />
+  );
 };

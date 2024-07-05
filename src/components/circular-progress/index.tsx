@@ -54,7 +54,7 @@ export function CircularProgress({
           animate={{
             strokeDashoffset: 150 - progress,
           }}
-          strokeLinecap="round"
+          // strokeLinecap="round"
         />
         <defs>
           <linearGradient

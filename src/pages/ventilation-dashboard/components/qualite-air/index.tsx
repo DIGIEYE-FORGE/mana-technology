@@ -12,7 +12,7 @@ interface QualitAirProps {
   };
 }
 export const QualitAir = ({ title, attributes }: QualitAirProps) => {
-  const { name, serial, color, unit } = attributes.telemetries[0];
+  const { name, serial, color, unit, max } = attributes.telemetries[0];
   return (
     <div className="flex flex-col items-center justify-center">
       <h5 className="text-sm font-semibold">{title}</h5>
@@ -23,6 +23,7 @@ export const QualitAir = ({ title, attributes }: QualitAirProps) => {
         color={color}
         className="size-[5.5rem]"
         unit={unit}
+        max={max}
       />
     </div>
   );

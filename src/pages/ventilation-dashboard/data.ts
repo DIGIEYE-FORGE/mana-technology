@@ -6,8 +6,9 @@ export const data = {
     cardClassNames: "col-span-3 row-span-3 flex flex-col gap-1",
     children: [
       {
-        title: "Kw",
+        title: "Puissance (KW)",
         color: "#FF5AF1",
+        max:55,
         attributes: {
           telemetries: [
             {
@@ -19,8 +20,9 @@ export const data = {
         }
       },
       {
-        title: "Speed",
+        title: "Vitesse (RPM)",
         color: "#FED41E",
+        max:1482,
         attributes: {
           telemetries: [
             {
@@ -32,8 +34,9 @@ export const data = {
         }
       },
       {
-        title: "Température",
+        title: "Température (°C)",
         color: "#FF5AF1",
+        max:130,
         attributes: {
           telemetries: [
             {
@@ -45,8 +48,9 @@ export const data = {
         }
       },
       {
-        title: "Vibration",
+        title: "Vibration (mm/s)",
         color: "#78F6EA",
+        max:8,
         attributes: {
           telemetries: [
             {
@@ -65,7 +69,7 @@ export const data = {
     cardClassNames: "col-span-3 row-span-3 flex flex-col gap-1",
     children: [
       {
-        title: "Kw",
+        title: "Puissance (KW)",
         color: "#FF5AF1",
         attributes: {
           telemetries: [
@@ -78,7 +82,7 @@ export const data = {
         }
       },
       {
-        title: "Speed",
+        title: "Vitesse (RPM)",
         color: "#FED41E",
         attributes: {
           telemetries: [
@@ -91,7 +95,7 @@ export const data = {
         }
       },
       {
-        title: "Température",
+        title: "Température (°C)",
         color: "#FF5AF1",
         attributes: {
           telemetries: [
@@ -104,7 +108,7 @@ export const data = {
         }
       },
       {
-        title: "Vibration",
+        title: "Vibration (mm/s)",
         color: "#78F6EA",
         attributes: {
           telemetries: [
@@ -124,7 +128,7 @@ export const data = {
     cardClassNames: "col-span-3 row-span-3 flex flex-col gap-1",
     children: [
       {
-        title: "Kw",
+        title: "Puissance (KW)",
         color: "#FF5AF1",
         attributes: {
           telemetries: [
@@ -137,7 +141,7 @@ export const data = {
         }
       },
       {
-        title: "Speed",
+        title: "Vitesse (RPM)",
         color: "#FED41E",
         attributes: {
           telemetries: [
@@ -150,7 +154,7 @@ export const data = {
         }
       },
       {
-        title: "Température",
+        title: "Température (°C)",
         color: "#FF5AF1",
         attributes: {
           telemetries: [
@@ -163,7 +167,7 @@ export const data = {
         }
       },
       {
-        title: "Vibration",
+        title: "Vibration (mm/s)",
         color: "#78F6EA",
         attributes: {
           telemetries: [
@@ -183,7 +187,7 @@ export const data = {
     cardClassNames: "col-span-3 row-span-3 flex flex-col gap-1",
     children: [
       {
-        title: "Kw",
+        title: "Puissance (KW)",
         color: "#FF5AF1",
         attributes: {
           telemetries: [
@@ -196,7 +200,7 @@ export const data = {
         }
       },
       {
-        title: "Speed",
+        title: "Vitesse (RPM)",
         color: "#FED41E",
         attributes: {
           telemetries: [
@@ -209,7 +213,7 @@ export const data = {
         }
       },
       {
-        title: "Température",
+        title: "Température (°C)",
         color: "#FF5AF1",
         attributes: {
           telemetries: [
@@ -222,7 +226,7 @@ export const data = {
         }
       },
       {
-        title: "Vibration",
+        title: "Vibration (mm/s)",
         color: "#78F6EA",
         attributes: {
           telemetries: [
@@ -252,7 +256,8 @@ export const qualitédair = {
               label: "Disponibilité",
               serial: "0TKJJWS26V62QV15",
               color: "#C99E3E",
-              unit: "%",
+              unit: "",
+              max:20,
             }
           ]
         }
@@ -267,6 +272,7 @@ export const qualitédair = {
               serial: "0TKJJWS26V62QV15",
               color: "#007D82",
               unit: "ppm",
+              max:100,
             }
           ]
         }
@@ -281,6 +287,7 @@ export const qualitédair = {
               serial: "0TKJJWS26V62QV15",
               color: "#F650A0",
               unit: "ppm",
+              max:3,
             },
           ]
         }
@@ -295,6 +302,7 @@ export const qualitédair = {
               serial: "0TKJJWS26V62QV15",
               color: "#7A0BC0",
               unit: "m/s",
+              max:0.5,
             },
           ]
         }
@@ -332,7 +340,7 @@ export const qualitédair = {
               label: "Disponibilité",
               serial: "0TKJJWS26V62QV15",
               color: "#C99E3E",
-              unit: "%",
+              unit: "",
             }
           ]
         }
@@ -484,8 +492,8 @@ export const qualitédair = {
 
 export const ventilation = {
   0: {
-    title: "Puissance Totale KW",
-    unit: "Kw",
+    title: "Energie Total (KWH)",
+    unit: "KWH",
     telemetry: [
       {
         serial: "0TKJJWS26V62QV15",
