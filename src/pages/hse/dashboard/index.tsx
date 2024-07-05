@@ -47,7 +47,10 @@ export default function HseDashboard() {
               name: widgetsData[2].telemetryName,
               serial: widgetsData[2].serial,
             }}
-          />
+            displayFormat="float"
+            correction={widgetsData[2].correction}
+          />{" "}
+          %
         </div>
       </Card>
       <Card className="col-span-3 grid place-content-center !rounded p-6">
