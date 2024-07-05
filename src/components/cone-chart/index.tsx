@@ -1,5 +1,4 @@
 import { useAppContext } from "@/Context";
-import { ProgressCircle } from "@/components/progress-circle";
 import { cn } from "@/lib/utils";
 import Color from "color";
 import { HTMLMotionProps, motion } from "framer-motion";
@@ -14,24 +13,14 @@ interface ConeProps extends HTMLMotionProps<"div"> {
 }
 
 const Cone = ({ data, style, children, ...props }: ConeProps) => {
-  // const sum = data.reduce((acc, curr) => acc + curr.value, 0);
-  // const cum = data.reduce((acc, curr, index) => {
-  //   acc.push(index === 0 ? curr.value : acc[index - 1] + curr.value);
-  //   return acc;
-  // }, [] as number[]);
-
   const gdF = 0.15;
   const colors2 = data.map((item, index) => {
-    // const start = index === 0 ? 0 : (cum[index - 1] / sum) * 100;
-    // const end = (cum[index] / sum) * 100;
     const start = (index / data.length) * 100;
     const end = ((index + 1) / data.length) * 100;
     const color = Color(item.color);
     return `${color} ${start}% , ${color.darken(gdF)} ${end}%`;
   });
   const colors1 = data.map((item, index) => {
-    // const start = index === 0 ? 0 : (cum[index - 1] / sum) * 100;
-    // const end = (cum[index] / sum) * 100;
     const start = (index / data.length) * 100;
     const end = ((index + 1) / data.length) * 100;
     const color = Color(item.color);
@@ -46,7 +35,6 @@ const Cone = ({ data, style, children, ...props }: ConeProps) => {
       }}
       style={{
         clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)",
-        // overflow: "hidden",
         backgroundImage: `linear-gradient(to top, ${colors1.join(",")}), linear-gradient(to top, ${colors2.join(",")})`,
         backgroundSize: "50% 100% , 100% 100%",
         backgroundRepeat: "no-repeat",
@@ -78,7 +66,6 @@ export function ConeChart({
   attributes,
   legendWidth = 200,
   coneClassName,
-  progressClassName,
 }: ConChartProps) {
   const { backendApi } = useAppContext();
   const {
@@ -142,15 +129,6 @@ export function ConeChart({
       name: attributes[index].label,
     };
   });
-  // const cum = data.reduce((acc, curr, index) => {
-  //   acc.push(index === 0 ? curr.value : acc[index - 1] + curr.value);
-  //   return acc;
-  // }, [] as number[]);
-  // const cumAvg = data.reduce((acc, curr, index) => {
-  //   acc.push(index === 0 ? curr.value / 2 : cum[index - 1] + curr.value / 2);
-  //   return acc;
-  // }, [] as number[]);
-  const sum = data.reduce((acc, curr) => acc + curr.value, 0);
   return (
     <div className={cn("flex w-full flex-col justify-between", className)}>
       <div className={cn("relative h-full w-full flex-1", coneClassName)}>
@@ -165,7 +143,6 @@ export function ConeChart({
             return (
               <div
                 style={{
-                  // bottom: `${(cumAvg[index] / sum) * 100}%`,
                   bottom: `${((index + 0.5) / data.length) * 100}%`,
                 }}
                 key={index}
@@ -187,25 +164,6 @@ export function ConeChart({
             );
           })}
         </div>
-      </div>
-      <div
-        className={cn(
-          "flex flex-wrap items-center justify-evenly",
-          progressClassName,
-        )}
-      >
-        {data.map((item, index) => {
-          return (
-            <ProgressCircle
-              key={index}
-              className="font-ex size-24 text-xs"
-              progress={(item.value / sum) * 100}
-              backgroundColor={Color(item.color).alpha(0.1).hex()}
-              gradientEndColor={Color(item.color).darken(0.2).hex()}
-              gradientStartColor={Color(item.color).lighten(0.2).hex()}
-            />
-          );
-        })}
       </div>
     </div>
   );
