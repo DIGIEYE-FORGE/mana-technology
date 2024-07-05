@@ -5,6 +5,7 @@ import { HistoryType, Widget } from "@/utils";
 import { MotionConfig, motion } from "framer-motion";
 import { Fragment } from "react/jsx-runtime";
 import useSWR from "swr";
+import { lastDayOfMonth } from "date-fns";
 
 export type ProgressAccumulationWidgetData = {
   serial?: string;
@@ -16,8 +17,10 @@ export type ProgressAccumulationWidgetData = {
   unit?: string;
 };
 
-function lastOfMonth(): Date {
-  return new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0);
+function lastOfMonth(date: Date): Date {
+  console.log(lastDayOfMonth(date));
+  
+  return lastDayOfMonth(date);
 }
 
 export function ProgressAccumulation({ attributes }: Widget) {
@@ -58,7 +61,7 @@ export function ProgressAccumulation({ attributes }: Widget) {
           pagination: { page: 1, perPage: 1 },
           select: [accumulationTelemetryName],
           orderBy: "createdAt:desc",
-          where: { serial, createdAt: { $lte: lastOfMonth() } },
+          where: { serial, createdAt: { $lte: lastOfMonth(dateRange?.to  || new Date()) } },
         });
       if (endOfMountResult.length === 0) return null;
       const { results: currentProgressResults } =

@@ -1,9 +1,17 @@
 import { Button } from "@/components/ui/button";
-import { FilePieChart, MoveLeftIcon, MoveRightIcon } from "lucide-react";
+import {
+  FilePieChart,
+  Minimize,
+  MoveLeftIcon,
+  MoveRightIcon,
+  Shrink,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { OverviewButton } from "../overview-button";
+import { useAppContext } from "@/Context";
 
 export function MainProjectUpBar() {
+  const { fullScreen, setFullScreen } = useAppContext();
   return (
     <div className="group sticky top-0 z-10 flex h-up-bar w-full shrink-0 items-center justify-between gap-4 border-b px-6 backdrop-blur">
       <Link
@@ -24,14 +32,26 @@ export function MainProjectUpBar() {
         <FilePieChart size={20} />
         Project Overview
       </OverviewButton>
-      <Link
-        to="/underground"
-        className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-      >
-        <Button variant="ghost">
-          <MoveRightIcon className="size-6" />
+      <div className="flex gap-2">
+        <Button
+          onClick={() => {
+            setFullScreen(!fullScreen);
+          }}
+          className="ml-auto opacity-0 transition-opacity duration-500 hover:opacity-100"
+          size={"icon"}
+          variant={"ghost"}
+        >
+          {fullScreen ? <Shrink size={24} /> : <Minimize size={24} />}
         </Button>
-      </Link>
+        <Link
+          to="/underground"
+          className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        >
+          <Button variant="ghost">
+            <MoveRightIcon className="size-6" />
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 }

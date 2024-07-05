@@ -2,17 +2,24 @@ import { useAppContext } from "@/Context";
 import useSWR from "swr";
 import Loader from "../loader";
 
+const floatOrDecimal = (value: number) => {
+  return value % 1 === 0 ? value : value.toFixed(2);
+};
+
 interface VentillationProps {
   attribute: {
     telemetryName: string;
     serial: string;
     labelTelemetry:
       | "Oxygène"
-      | "co2"
+      | "co"
       | "no2"
       | "Energie"
       | "T. Sèche"
       | "T. Humide"
+      | "CO2"
+      | "CO"
+      | "NO2"
       | "Vitesse de l’air"
       | "Energie1"
       | "Energie2"
@@ -63,12 +70,16 @@ function Ventillation({ attribute }: VentillationProps) {
           return {
             name: labelTelemetry,
             value:
-              (res?.results[0]?.value !== undefined &&
-              res?.results[0]?.value !== null
-                ? Number(res?.results[0]?.value).toFixed(2)
-                : randomValue ?? "--") +
+              (
+                floatOrDecimal(Number(res?.results[0]?.value)) ||
+                randomValue ||
+                0
+              )
+                .toString()
+                .replace(".", ",") +
               "" +
               (unit || ""),
+
             icon,
           };
         }),
@@ -118,12 +129,13 @@ function Ventillation({ attribute }: VentillationProps) {
                 {data?.find((item) => item?.name === "Ventilateur N°1")
                   ?.value ?? "--"}
               </span>
-              <span className="space-x-2">RPM</span>
+              <span className="space-x-2">m3/s</span>
             </h3>
             <div className="flex gap-2 text-sm">
               <span>H.marche</span>
               <span className="text-[#FAAC18]/80">
-                {data?.find((item) => item?.name === "Marche1")?.value ?? "--"}
+                {data?.find((item) => item?.name === "Marche1")?.value ?? "--"}{" "}
+                {" H"}
               </span>
             </div>
           </div>
@@ -137,12 +149,13 @@ function Ventillation({ attribute }: VentillationProps) {
                 {data?.find((item) => item?.name === "Ventilateur N°2")
                   ?.value ?? "--"}
               </span>
-              <span className="space-x-2">RPM</span>
+              <span className="space-x-2">m3/s</span>
             </h3>
             <div className="flex gap-2 text-sm">
               <span>H.marche</span>
               <span className="text-[#FAAC18]/80">
-                {data?.find((item) => item?.name === "Marche1")?.value ?? "--"}
+                {data?.find((item) => item?.name === "Marche2")?.value ?? "--"}
+                {"  H"}
               </span>
             </div>
           </div>

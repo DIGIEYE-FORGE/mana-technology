@@ -80,7 +80,7 @@ export type Widget = {
   yAxis?: "one" | "multiple";
   stacked?: boolean;
   ciel?: boolean;
-  correction?: number;
+  correction?: Record<string, number>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   fakeData?: any;
 };

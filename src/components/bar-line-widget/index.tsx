@@ -15,7 +15,7 @@ type Props = Widget;
 
 export default function BarLineWidget({
   ciel = true,
-  correction = 1,
+  correction,
   ...props
 }: Props) {
   const { backendApi } = useAppContext();
@@ -26,6 +26,7 @@ export default function BarLineWidget({
   const { data, isLoading, error } = useSWR(
     `histories?${JSON.stringify({
       telemetries,
+      dateRange: props.dateRange,
     })}`,
     async () => {
       if (telemetries.length === 0) return [];
@@ -62,7 +63,7 @@ export default function BarLineWidget({
             y:
               Number(
                 Number(flatten(item)[telemetries[index].name]).toFixed(2),
-              ) * correction,
+              ) * (correction?.[telemetries[index].name] || 1),
           })),
         })),
       ];
@@ -191,7 +192,7 @@ export default function BarLineWidget({
                 }
               : [
                   {
-                    seriesName: [data?.[0]?.name, data?.[1]?.name],
+                    seriesName: [data?.[0]?.name, data?.[1]?.name] as any,
                     axisTicks: {
                       show: true,
                     },
@@ -215,10 +216,7 @@ export default function BarLineWidget({
                       },
                     },
                   },
-                  // {
-                  //   seriesName: data?.[1]?.name,
-                  //   show: false, // Hide second y-axis
-                  // },
+
                   {
                     opposite: true,
                     seriesName: data?.[2]?.name,

@@ -12,7 +12,7 @@ export default function HomeDashboard() {
     <main className="grid w-full grid-flow-dense auto-rows-[80px] grid-cols-3 gap-3 md:grid-cols-6 lg:grid-cols-12 lg:gap-4 xl:grid-cols-[repeat(15,minmax(0,1fr))] 2xl:auto-rows-[92px]">
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
-          Avancement Cumulé annuel (m)
+        Production Roche Cumulée annuelle (t)
         </h1>
         <div className="h-1 flex-1">
           <BarLineWidget
@@ -58,7 +58,7 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
-          Évolution Production Roche Cumulée (t)
+          Production Roche Cumulée mensuelle (t)
         </h1>
         <div className="flex-1">
           <LineChartWidget
@@ -66,17 +66,19 @@ export default function HomeDashboard() {
               telemetries: [
                 {
                   area: false,
-                  name: "PLANIFIE_ROCHE_CUMUL",
+                  name: "PLANIFIE_ROCHE",
                   color: "#78F6EA",
-                  label: "Cumulative Planifié",
+                  label: "Planifié (Cumulé)",
                   serial: "TIRSIL71OBOT4UB4",
+                  accumulated: true,
                 },
                 {
                   area: true,
-                  name: "REALISE_ROCHE_CUMUL",
+                  name: "REALISE_ROCHE",
                   color: "#B98EFF",
-                  label: "Cumulative Réalisé",
+                  label: "Réalisé (Cumulé)",
                   serial: "TIRSIL71OBOT4UB4",
+                  accumulated: true,
                 },
               ],
             }}
@@ -254,7 +256,7 @@ export default function HomeDashboard() {
         />
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-4">
-        <h1 className="text-center text-lg font-semibold">Foration (ml)</h1>
+        <h1 className="text-center text-lg font-semibold">Foration (ml/J)</h1>
         <div className="flex-1">
           <LineChartWidget
             moyenne={"combined"}
@@ -264,14 +266,14 @@ export default function HomeDashboard() {
                   area: false,
                   name: "PLANIFIE_FORATION",
                   color: "#78F6EA",
-                  label: "Objectif ML/J",
+                  label: "Planifié",
                   serial: "TIRSIL71OBOT4UB4",
                 },
                 {
                   area: true,
                   name: "REALISE_FORATION",
                   color: "#B98EFF",
-                  label: "Réalisé ML/J",
+                  label: "Réalisé",
                   serial: "TIRSIL71OBOT4UB4",
                 },
               ],

@@ -10,7 +10,7 @@ export const widgetsData = {
           serial: "Y1UMITGTHATVAUQI",
         },
       ],
-    }
+    },
   },
   1: {
     title: "Performance Engins",
@@ -51,7 +51,7 @@ export const widgetsData = {
           },
         ],
       },
-    ]
+    ],
   },
   2: {
     title: "Performance Déblayage",
@@ -111,7 +111,6 @@ export const widgetsData = {
     },
   },
 
-
   5: {
     title: "Temps de Déblayage (min)",
     attributes: {
@@ -120,7 +119,7 @@ export const widgetsData = {
           name: "UG_DEBLAYAGE_TEMPS_DE_DEBLAYAGE-min",
           color: "#FF5AF1",
           label: "temps de Déblayage",
-          serial: "DABF7PAT2G4BAG21",
+          serial: "GHZIN57J7EOVXGOC",
         },
       ],
     },
@@ -133,7 +132,7 @@ export const widgetsData = {
           name: "UG_DEBLAYAGE_TEMPS_TRAJET_ALLER_RETOUR-min",
           color: "#CCCCCC",
           label: "Aller-Retour",
-          serial: "DABF7PAT2G4BAG21",
+          serial: "GHZIN57J7EOVXGOC",
         },
       ],
     },
@@ -146,7 +145,7 @@ export const widgetsData = {
           name: "UG_DEBLAYAGE_DISTANCE-m",
           color: "#FF5AF1",
           label: "Aller-retour",
-          serial: "DABF7PAT2G4BAG21",
+          serial: "GHZIN57J7EOVXGOC",
         },
       ],
     },

@@ -11,96 +11,54 @@ export default function HomeDashboard() {
   return (
     <main className="grid w-full grid-flow-dense auto-rows-[80px] grid-cols-3 gap-3 md:grid-cols-6 lg:grid-cols-12 lg:gap-4 xl:grid-cols-[repeat(15,minmax(0,1fr))] 2xl:auto-rows-[92px]">
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
-        {" "}
         <h1 className="text-center text-lg font-semibold">
-          {/* Avancement Cumulé annuel (m) */}
-          Avancement Cumulé annuel (m)
+        Production Roche Cumulée annuelle (t)
         </h1>
-        <div className="flex-1">
+        <div className="h-1 flex-1">
           <BarLineWidget
             attributes={{
               stacked: true,
               telemetries: [
                 {
-                  name: "SUD_PLANIFIE_MINERAI",
+                  name: "CUMUL_PLANIF_TOT",
                   unit: "T",
-                  color: "#FE22EB",
-                  label: "Minerai Planifié",
-                  serial: "C6XPYU0D920L1M07",
+                  color: "#FF5AF1",
+                  label: "Planifié (monsuel)",
+                  serial: "0AS9Y1JCHRS26P9D",
                   type: "bar",
                 },
                 {
-                  name: "SUD_PLANIFIE_STERILE",
+                  name: "CUMUL_REAL_TOT",
+                  unit: "T",
+                  color: "#FFDC8C",
+                  label: "Réalisé (monsuel)",
+                  serial: "0AS9Y1JCHRS26P9D",
+                  type: "bar",
+                },
+                {
+                  name: "CUMUL_PLANIF_TOT_TOT",
                   unit: "T",
                   color: "#B98EFF",
-                  label: "Minerai Realisé",
-                  serial: "C6XPYU0D920L1M07",
+                  label: "Planifié (Cumulé)",
+                  serial: "0AS9Y1JCHRS26P9D",
                   type: "line",
                 },
                 {
-                  name: "SUD_REALISE_MIENRAI",
-                  unit: "T",
-                  color: "#FEC33A",
-                  label: "Stérile Planifié",
-                  serial: "C6XPYU0D920L1M07",
-                  type: "bar",
-                },
-                {
-                  name: "SUD_REALISE_STERILE",
+                  name: "CUMUL_REAL_TOT_TOT",
                   unit: "T",
                   color: "#78F6EA",
-                  label: "Stérile Realisé",
-                  serial: "C6XPYU0D920L1M07",
+                  label: "Réalisé (Cumulé)",
+                  serial: "0AS9Y1JCHRS26P9D",
                   type: "line",
                 },
               ],
             }}
           />
-
-          {/* <h1 className="text-center text-lg font-semibold">
-          Stérile / Minerai (t)
-        </h1>
-        <div className="flex-1">
-          <BarChartWidget
-            // title="Daily Production BreakUp"
-            attributes={{
-              telemetries: [
-                {
-                  name: "SUD_PLANIFIE_MINERAI",
-                  unit: "T",
-                  color: "#FE22EB",
-                  label: "Minerai Planifié",
-                  serial: "C6XPYU0D920L1M07",
-                },
-                {
-                  name: "SUD_REALISE_MIENRAI",
-                  unit: "T",
-                  color: "#FEC33A",
-                  label: "Minerai Realisé",
-                  serial: "C6XPYU0D920L1M07",
-                },
-                {
-                  name: "SUD_PLANIFIE_STERILE",
-                  unit: "T",
-                  color: "#B98EFF",
-                  label: "Stérile Planifié",
-                  serial: "C6XPYU0D920L1M07",
-                },
-                {
-                  name: "SUD_REALISE_STERILE",
-                  unit: "T",
-                  color: "#78F6EA",
-                  label: "Stérile Realisé",
-                  serial: "C6XPYU0D920L1M07",
-                },
-              ],
-            }}
-          /> */}
         </div>
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
-          Évolution Production Cumulée (t)
+          Production Roche Cumulée monsuelle (t)
         </h1>
         <div className="flex-1">
           <LineChartWidget
@@ -108,14 +66,16 @@ export default function HomeDashboard() {
               telemetries: [
                 {
                   area: false,
-                  name: "SUD_PLANIFIE_ROCHE_CUMUL",
+                  name: "SUD_PLANIFIE_ROCHE",
                   color: "#78F6EA",
                   label: "Cumulatif Planifié",
                   serial: "C6XPYU0D920L1M07",
+                  accumulated: true,
                 },
                 {
+                  accumulated: true,
                   area: true,
-                  name: "SUD_REALISE_ROCHE_CUMUL",
+                  name: "SUD_REALISE_ROCHE",
                   color: "#B98EFF",
                   label: "Cumulatif Realisé",
                   serial: "C6XPYU0D920L1M07",
@@ -153,7 +113,6 @@ export default function HomeDashboard() {
           />
         </div>
       </Card>
-
       <Card className="col-span-full row-span-3 flex flex-col p-4 lg:col-span-6 xl:col-span-4">
         <h1 className="text-center text-base font-semibold 2xl:text-lg">
           Évolution de la Production vs Planifié
@@ -199,7 +158,7 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-4">
         <h1 className="text-center text-lg font-semibold">
-          Production cumulée par qualité (t)
+          Production par qualité (t)
         </h1>
         <div className="flex-1">
           <ProgressMultiple
@@ -292,7 +251,7 @@ export default function HomeDashboard() {
         />
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-4">
-        <h1 className="text-center text-lg font-semibold">Foration (ml)</h1>
+        <h1 className="text-center text-lg font-semibold">Foration (ml/J)</h1>
         <div className="flex-1">
           <LineChartWidget
             attributes={{

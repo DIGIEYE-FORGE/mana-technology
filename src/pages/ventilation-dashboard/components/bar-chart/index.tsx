@@ -53,7 +53,7 @@ export const BarChart = ({ attributes, disabled = false }: QualitAirProps) => {
           return {
             color: color,
             name: label,
-            value: res.results[0]?.value,
+            value: res.results[0]?.value || 0,
           };
         }),
       );
