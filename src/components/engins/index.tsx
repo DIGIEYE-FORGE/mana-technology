@@ -77,8 +77,8 @@ function Engins({ attribute, selectedWithDate = false }: EnginsProps) {
           return {
             label,
             icon,
-            value: (Number(sum1) / res1?.results.length) * 100,
-            value2: (Number(sum2) / res2?.results.length) * 100,
+            value: (Number(sum1) / res1?.results.length) ,
+            value2: (Number(sum2) / res2?.results.length),
           };
         }),
       );
