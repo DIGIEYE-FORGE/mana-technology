@@ -23,7 +23,6 @@ export default function HseDashboard() {
             telemetry={{
               name: widgetsData[0].telemetryName,
               serial: widgetsData[0].serial,
-              value: 11,
             }}
           />
         </div>
@@ -35,7 +34,6 @@ export default function HseDashboard() {
             telemetry={{
               name: widgetsData[1].telemetryName,
               serial: widgetsData[1].serial,
-              value: 30,
             }}
           />
         </div>
@@ -47,7 +45,6 @@ export default function HseDashboard() {
             telemetry={{
               name: widgetsData[2].telemetryName,
               serial: widgetsData[2].serial,
-              value: 45,
             }}
           />
         </div>
