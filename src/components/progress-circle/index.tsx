@@ -1,24 +1,23 @@
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import React from "react";
+import Color from "color";
 
-interface ProgressCircleProps
+export interface ProgressCircleProps
   extends Omit<
     React.HTMLAttributes<SVGAElement>,
     "children" | "viewBox" | "color"
   > {
-  gradientStartColor?: string;
-  gradientEndColor?: string;
-  backgroundColor?: string;
+  color?: string;
   progress: number;
+  unit?: string;
 }
 
 export function ProgressCircle({
-  backgroundColor = "red",
-  gradientStartColor = "red",
-  gradientEndColor = "blue",
+  color = "red",
   className,
   progress,
+  unit = "%",
 }: ProgressCircleProps) {
   return (
     <div className={cn("relative size-32 text-sm font-semibold", className)}>
@@ -32,8 +31,8 @@ export function ProgressCircle({
           stroke="currentColor"
           opacity={0.1}
         />
-        <circle cx="50" cy="50" r="40" fill={backgroundColor} opacity={0.2} />
-        <circle cx="50" cy="50" r="30" fill={backgroundColor} />
+        <circle cx="50" cy="50" r="40" fill={color} opacity={0.2} />
+        <circle cx="50" cy="50" r="30" fill={Color(color).darken(0.2).hex()} />
         <circle
           cx="50"
           cy="50"
@@ -52,7 +51,7 @@ export function ProgressCircle({
           r="36"
           fill="none"
           strokeWidth="3"
-          stroke={`url(#${gradientStartColor}-${gradientEndColor})`}
+          stroke={`url(#gradient-${color})`}
           pathLength={100}
           strokeDasharray={150}
           initial={{
@@ -74,7 +73,7 @@ export function ProgressCircle({
           fill="none"
           strokeWidth="6"
           opacity={0.66}
-          stroke={`url(#${gradientStartColor}-${gradientEndColor})`}
+          stroke={`url(#gradient-${color})`}
           style={{
             filter: "url(#dropshadow)",
           }}
@@ -90,15 +89,15 @@ export function ProgressCircle({
         />
         <defs>
           <linearGradient
-            id={`${gradientStartColor}-${gradientEndColor}`}
+            id={`gradient-${color}`}
             x1="20"
             y1="50"
             x2="80"
             y2="50"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stopColor={gradientEndColor} />
-            <stop offset="1" stopColor={gradientStartColor} />
+            <stop stopColor={Color(color).darken(0.2).hex()} />
+            <stop offset="1" stopColor={Color(color).lighten(0.2).hex()} />
           </linearGradient>
         </defs>
         <filter id="dropshadow" x="-2" y="-2" width="200" height="200">
@@ -106,7 +105,7 @@ export function ProgressCircle({
         </filter>
       </svg>
       <span className="absolute bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2 whitespace-nowrap">
-        {progress.toFixed(2) + " %"}
+        {progress.toFixed(2) + " " + unit}
       </span>
     </div>
   );
