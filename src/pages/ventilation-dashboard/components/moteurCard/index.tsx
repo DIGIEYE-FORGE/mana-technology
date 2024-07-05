@@ -39,12 +39,12 @@ export const MoteurCard = (props: Props) => {
                 where: {
                   serial,
                 },
+                orderBy: "createdAt:desc",
               },
             );
             return results;
           },
           {
-            // i need the interval 5 s
             interval: props.interval || undefined,
           },
         ),
@@ -81,9 +81,6 @@ export const MoteurCard = (props: Props) => {
       </main>
     );
   }
-
-  // const finalData = data?.[0]?.data || [];
-  // const yaxisMax = Math.max(...finalData.map((item) => item.y)) + 50;
 
   return (
     <ReactApexChart

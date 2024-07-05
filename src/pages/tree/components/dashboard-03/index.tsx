@@ -43,7 +43,6 @@ export const Dashboard3 = () => {
                 return acc;
               },
               {},
-              
             )}
             max={100}
           />
@@ -83,9 +82,12 @@ export const Dashboard3 = () => {
           {widgetsData[6].title}
         </h1>
         <div className="h-1 flex-1">
-          <BarChartWidget correction={{
+          <BarChartWidget
+            correction={{
               UG_TAUX_ARRACHEMENT_ARRACHEMENT: 100,
-            }} attributes={widgetsData[6].attributes} />
+            }}
+            attributes={widgetsData[6].attributes}
+          />
         </div>
       </Card>
     </main>

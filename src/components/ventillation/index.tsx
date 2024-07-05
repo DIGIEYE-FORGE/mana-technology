@@ -60,7 +60,7 @@ function Ventillation({ attribute }: VentillationProps) {
             },
             select: { name: true, value: true },
             orderBy: {
-              createdAt: "desc",
+              updatedAt: "desc",
             },
             pagination: {
               page: 1,
