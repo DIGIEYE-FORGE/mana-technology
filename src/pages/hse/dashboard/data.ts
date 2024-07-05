@@ -74,7 +74,7 @@ export const widgetsData = {
       ],
     },
   },
-  8: {
+  4: {
     title: "Évolution Heures Travaillées",
     attributes: {
       telemetries: [
@@ -220,7 +220,7 @@ export const widgetsData = {
       ],
     },
   },
-  4: {
+  8: {
     title: "Incidents par Zone",
     attributes: {
       stacked: true,

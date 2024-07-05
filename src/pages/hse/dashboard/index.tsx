@@ -94,10 +94,10 @@ export default function HseDashboard() {
       </Card>
       <Card className="col-span-4 row-span-3 flex flex-col p-6">
         <h3 className="text-center text-lg font-semibold">
-          {widgetsData[4].title}
+          {widgetsData[8].title}
         </h3>
         <div className="h-1 flex-1">
-          <LineChartWidget attributes={widgetsData[4].attributes} />
+          <BarChartWidget attributes={widgetsData[8].attributes} />
         </div>
       </Card>
       <Card className="col-span-4 row-span-3 flex flex-col p-6">
@@ -124,12 +124,12 @@ export default function HseDashboard() {
           <BarChartWidget attributes={widgetsData[7].attributes} />
         </div>
       </Card>
-      <Card className="col-span-4 row-span-3 flex flex-col p-6">
+       <Card className="col-span-4 row-span-3 flex flex-col p-6">
         <h3 className="text-center text-lg font-semibold">
-          {widgetsData[8].title}
+          {widgetsData[4].title}
         </h3>
         <div className="h-1 flex-1">
-          <BarChartWidget attributes={widgetsData[8].attributes} />
+          <LineChartWidget attributes={widgetsData[4].attributes} />
         </div>
       </Card>
     </div>
