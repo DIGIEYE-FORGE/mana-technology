@@ -73,96 +73,19 @@ export const widgetsData = {
   4: {
     title: "Évolution Heures Travaillées",
     attributes: {
-      telemetries: [
-        {
-          area: false,
-          name: "HSE_MH_Total",
-          color: "#78F6EA",
-          label: "Heures Travaillées",
-          serial: "LWGUT0FXIZ5ALOND",
-          // data: [
-          //   {
-          //     x: addDays(new Date(), -7),
-          //     y: 100,
-          //   },
-          //   {
-          //     x: addDays(new Date(), -6),
-          //     y: 105,
-          //   },
-          //   {
-          //     x: addDays(new Date(), -5),
-          //     y: 110,
-          //   },
-          //   {
-          //     x: addDays(new Date(), -4),
-          //     y: 115,
-          //   },
-          //   {
-          //     x: addDays(new Date(), -3),
-          //     y: 120,
-          //   },
-          //   {
-          //     x: addDays(new Date(), -2),
-          //     y: 125,
-          //   },
-          //   {
-          //     x: addDays(new Date(), -1),
-          //     y: 130,
-          //   },
-          //   {
-          //     x: new Date(),
-          //     y: 135,
-          //   },
-          // ]
-        },
-      ],
+      serial: "LWGUT0FXIZ5ALOND",
+      telemetryName: "HSE_MH_Total",
+      color: "#78F6EA",
+      label: "Heures Travaillées",
     },
   },
   5: {
     title: "Évolution Effectif",
     attributes: {
-      telemetries: [
-        {
-          name: "HSE_MP_Total",
-          color: "#FF5AF1",
-          label: "Fréquence",
-          serial: "LWGUT0FXIZ5ALOND",
-          // data: [
-          //   {
-          //     x: addDays(new Date(), -7),
-          //     y: 100,
-          //   },
-          //   {
-          //     x: addDays(new Date(), -6),
-          //     y: 105,
-          //   },
-          //   {
-          //     x: addDays(new Date(), -5),
-          //     y: 110,
-          //   },
-          //   {
-          //     x: addDays(new Date(), -4),
-          //     y: 115,
-          //   },
-          //   {
-          //     x: addDays(new Date(), -3),
-          //     y: 120,
-          //   },
-          //   {
-          //     x: addDays(new Date(), -2),
-          //     y: 125,
-          //   },
-          //   {
-          //     x: addDays(new Date(), -1),
-          //     y: 130,
-          //   },
-          //   {
-          //     x: new Date(),
-          //     y: 135,
-          //   },
-          // ]
-        },
-      ],
+      serial: "LWGUT0FXIZ5ALOND",
+      telemetryName: "HSE_MP_Total",
+      color: "#FF5AF1",
+      label: "Fréquence",
     },
   },
   6: {
