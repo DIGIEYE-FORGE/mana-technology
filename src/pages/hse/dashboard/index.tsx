@@ -106,7 +106,7 @@ export default function HseDashboard() {
           {widgetsData[5].title}
         </h3>
         <div className="h-1 flex-1">
-          <LineChartWidget attributes={widgetsData[5].attributes} />
+          <WeeklyLineChart {...widgetsData[5].attributes} />
         </div>
       </Card>
       <Card className="col-span-4 row-span-3 flex flex-col gap-8 p-6">
@@ -130,7 +130,8 @@ export default function HseDashboard() {
           {widgetsData[4].title}
         </h3>
         <div className="h-1 flex-1">
-          <LineChartWidget attributes={widgetsData[4].attributes} />
+          {/* <LineChartWidget attributes={widgetsData[4].attributes} /> */}
+          <WeeklyLineChart {...widgetsData[4].attributes} />
         </div>
       </Card>
     </div>

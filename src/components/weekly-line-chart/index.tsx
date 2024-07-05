@@ -19,26 +19,42 @@ export function WeeklyLineChart({
   weekNumberTelemetryName = "WeekNumber",
 }: WeeklyLineChartProps) {
   const { backendApi, dateRange } = useAppContext();
-  const { data, isLoading, error } = useSWR(`weekly-histories`, async () => {
-    const { results } = await backendApi.findMany<HistoryType>(
-      "/dpc-history/api/history",
-      {
-        pagination: { page: 1, perPage: 10_00 },
-        select: [weekNumberTelemetryName, telemetryName],
-        where: {
-          serial,
-          createdAt: {
-            $gt: new Date(dateRange?.from as Date),
-            $lte: dateRange?.to && new Date(dateRange?.to as Date),
+  const { data, isLoading, error } = useSWR(
+    `weekly-histories` +
+      JSON.stringify({
+        serial,
+        telemetryName,
+        weekNumberTelemetryName,
+        dateRange,
+      }),
+    async () => {
+      const { results } = await backendApi.findMany<HistoryType>(
+        `/dpc-history/api/history`,
+        {
+          pagination: { page: 1, perPage: 10_00 },
+          select: [weekNumberTelemetryName, telemetryName],
+          where: {
+            serial,
+            createdAt: {
+              $gt: new Date(dateRange?.from as Date),
+              $lte: dateRange?.to && new Date(dateRange?.to as Date),
+            },
           },
         },
-      },
-    );
-    return {
-      categories: results.map((result) => result.WeekNumber) as string[],
-      data: results.map((result) => result.HSE_MH_Total) as number[],
-    };
-  });
+      );
+      const sortedResults = results.sort((a, b) => {
+        const weekA = a[weekNumberTelemetryName] as string;
+        const weekB = b[weekNumberTelemetryName] as string;
+        return weekA.localeCompare(weekB);
+      });
+      return {
+        categories: sortedResults.map(
+          (result) => result.WeekNumber,
+        ) as string[],
+        data: sortedResults.map((result) => result[telemetryName]) as number[],
+      };
+    },
+  );
   if (isLoading)
     return (
       <main className="grid place-content-center">
