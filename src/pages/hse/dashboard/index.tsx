@@ -20,7 +20,7 @@ export default function HseDashboard() {
         <h3 className="text-lg font-semibold">{widgetsData[0].title}</h3>
         <div className="text-4xl font-bold">
           <Telemetry
-            displayFormat="float"
+            displayFormat="integer"
             telemetry={{
               name: widgetsData[0].telemetryName,
               serial: widgetsData[0].serial,
@@ -50,7 +50,6 @@ export default function HseDashboard() {
             displayFormat="float"
             correction={widgetsData[2].correction}
           />{" "}
-          %
         </div>
       </Card>
       <Card className="col-span-3 grid place-content-center !rounded p-6">
