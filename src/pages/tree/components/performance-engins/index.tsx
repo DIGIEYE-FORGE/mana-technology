@@ -18,7 +18,6 @@ interface PerformanceEnginsData {
   }[];
   image: string;
   title: string;
-  engineName?: string;
   imageClassName?: string;
 }
 
@@ -26,7 +25,6 @@ export const PerformanceEngins = ({
   attributes,
   image,
   title,
-  engineName = "",
   imageClassName = "",
 }: PerformanceEnginsData) => {
   const [activeTab, setActiveTab] = useState(0);
@@ -38,50 +36,13 @@ export const PerformanceEngins = ({
         value={activeTab}
         className="flex h-full w-full items-center"
       >
-        {attributes.length > 1 && (
-          <div className="flex h-full w-full flex-1 items-center justify-evenly">
-            <div className="flex flex-col items-center gap-1">
-              <div className="relative aspect-square h-20">
-                <MachineFrame className="h-full w-full" />
-                <div
-                  className={cn(
-                    "absolute bottom-0 right-4 z-10 w-24",
-                    imageClassName,
-                  )}
-                >
-                  <img src={image} alt="image" className="object-contain" />
-                </div>
-              </div>
-              <div className="text-center text-sm font-semibold">
-                {engineName}
-              </div>
-            </div>
-            {attributes[0].telemetries.map((telemetry, index) => {
-              const { color, label, ...rest } = telemetry;
-              return (
-                <div key={index} className="flex flex-col gap-2">
-                  <div className="aspect-square h-20">
-                    <AverageCircularProgressChart
-                      telemetries={attributes.map(
-                        (el) => el.telemetries[index],
-                      )}
-                      color={color}
-                      {...rest}
-                    />
-                  </div>
-                  <div className="text-center text-sm font-semibold">
-                    {label}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        )}
-
         {attributes.map((el, index) => {
           return (
-            <div className="flex h-full w-full flex-1 items-center justify-evenly">
-              <div key={index} className="flex flex-col items-center gap-1">
+            <div
+              key={index}
+              className="flex h-full w-full flex-1 items-center justify-evenly"
+            >
+              <div className="flex flex-col items-center gap-1">
                 <div className="relative aspect-square h-20">
                   <MachineFrame className="h-full w-full" />
                   <div
@@ -94,7 +55,7 @@ export const PerformanceEngins = ({
                   </div>
                 </div>
                 <div className="text-center text-sm font-semibold">
-                  {attributes[activeTab === 0 ? 0 : activeTab - 1].name}
+                  {attributes[activeTab].name}
                 </div>
               </div>
 
@@ -128,8 +89,7 @@ export const PerformanceEngins = ({
           <MoveLeft className="size-5" />
         </Button>
       )}
-      {activeTab <
-        (attributes.length > 1 ? attributes.length : attributes.length - 1) && (
+      {activeTab < attributes.length - 1 && (
         <Button
           variant={"ghost"}
           onClick={() => setActiveTab((prev) => prev + 1)}
