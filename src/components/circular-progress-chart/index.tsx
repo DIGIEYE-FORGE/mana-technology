@@ -5,6 +5,7 @@ import { useAppContext } from "@/Context";
 import Loader from "../loader";
 import { LastTelemetry } from "@/utils";
 import { CircularProgress } from "../multi-stops-circular-progress";
+import { cn } from "@/lib/utils";
 
 export interface CircularProgressChartProps
   extends Omit<CircularProgressProps, "progress" | "legend"> {
@@ -18,6 +19,7 @@ export interface CircularProgressChartProps
     color: string;
     offset: number;
   }[];
+  className?: string;
 }
 
 export const CircularProgressChart = ({
@@ -25,6 +27,7 @@ export const CircularProgressChart = ({
   interval,
   unit = "%",
   stops,
+  className,
   ...props
 }: CircularProgressChartProps) => {
   const { backendApi } = useAppContext();
@@ -70,7 +73,7 @@ export const CircularProgressChart = ({
   return (
     <CircularProgress
       {...props}
-      className="size-28 text-lg"
+      className={cn("size-28 text-lg", className)}
       rounded={false}
       progress={progress}
       legend={legend}
