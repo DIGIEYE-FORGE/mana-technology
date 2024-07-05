@@ -71,6 +71,7 @@ export const data = {
       {
         title: "Puissance (KW)",
         color: "#FF5AF1",
+        max:55,
         attributes: {
           telemetries: [
             {
@@ -84,6 +85,7 @@ export const data = {
       {
         title: "Vitesse (RPM)",
         color: "#FED41E",
+        max:1482,
         attributes: {
           telemetries: [
             {
@@ -97,6 +99,7 @@ export const data = {
       {
         title: "Température (°C)",
         color: "#FF5AF1",
+        max:130,
         attributes: {
           telemetries: [
             {
@@ -110,6 +113,7 @@ export const data = {
       {
         title: "Vibration (mm/s)",
         color: "#78F6EA",
+        max:8,
         attributes: {
           telemetries: [
             {
@@ -129,6 +133,7 @@ export const data = {
     children: [
       {
         title: "Puissance (KW)",
+        max:55,
         color: "#FF5AF1",
         attributes: {
           telemetries: [
@@ -142,6 +147,7 @@ export const data = {
       },
       {
         title: "Vitesse (RPM)",
+        max:1482,
         color: "#FED41E",
         attributes: {
           telemetries: [
@@ -156,6 +162,7 @@ export const data = {
       {
         title: "Température (°C)",
         color: "#FF5AF1",
+        max:130,
         attributes: {
           telemetries: [
             {
@@ -169,6 +176,7 @@ export const data = {
       {
         title: "Vibration (mm/s)",
         color: "#78F6EA",
+        max:8,
         attributes: {
           telemetries: [
             {
@@ -188,6 +196,7 @@ export const data = {
     children: [
       {
         title: "Puissance (KW)",
+        max:55,
         color: "#FF5AF1",
         attributes: {
           telemetries: [
@@ -201,6 +210,7 @@ export const data = {
       },
       {
         title: "Vitesse (RPM)",
+        max:1482,
         color: "#FED41E",
         attributes: {
           telemetries: [
@@ -215,6 +225,7 @@ export const data = {
       {
         title: "Température (°C)",
         color: "#FF5AF1",
+        max:130,
         attributes: {
           telemetries: [
             {
@@ -228,6 +239,7 @@ export const data = {
       {
         title: "Vibration (mm/s)",
         color: "#78F6EA",
+        max:8,
         attributes: {
           telemetries: [
             {

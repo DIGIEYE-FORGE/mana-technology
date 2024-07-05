@@ -53,6 +53,7 @@ const VentilationDashboard = () => {
                     color={child.color}
                     attributes={child.attributes}
                     interval={5000}
+                    max={child?.max}
                   />
                 </div>
               ))}
@@ -100,6 +101,7 @@ const VentilationDashboard = () => {
                     color={child.color}
                     attributes={child.attributes}
                     interval={5000}
+                    max={child?.max}
                   />
                 </div>
               ))}
@@ -122,6 +124,7 @@ const VentilationDashboard = () => {
                     color={child.color}
                     attributes={child.attributes}
                     interval={5000}
+                    max={child?.max}
                   />
                 </div>
               ))}
