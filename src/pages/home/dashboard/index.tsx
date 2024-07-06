@@ -24,14 +24,14 @@ export default function HomeDashboard() {
                   serial: "U9XQMQ1DXYT7LJIP",
                 },
                 {
-                  name: "EST_PLANIFIE_STERILE",
+                  name: "EST_REALISE_MIENRAI",
                   unit: "T",
                   color: "#B98EFF",
                   label: "Minerai Realisé",
                   serial: "U9XQMQ1DXYT7LJIP",
                 },
                 {
-                  name: "EST_REALISE_MIENRAI",
+                  name: "EST_PLANIFIE_STERILE",
                   unit: "T",
                   color: "#FEC33A",
                   label: "Stérile Planifié",

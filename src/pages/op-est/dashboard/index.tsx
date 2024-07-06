@@ -12,7 +12,7 @@ export default function HomeDashboard() {
     <main className="grid w-full grid-flow-dense auto-rows-[76px] grid-cols-3 gap-3 md:grid-cols-6 lg:grid-cols-12 lg:gap-4 xl:grid-cols-[repeat(15,minmax(0,1fr))] 2xl:auto-rows-[92px]">
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
-        Production Roche Cumulée annuelle (t)
+          Production Roche Cumulée annuelle (t)
         </h1>
         <div className="h-1 flex-1">
           <BarLineWidget
@@ -58,7 +58,7 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
-          Production Roche Cumulée monsuelle (t)
+          Production Roche Cumulée mensuelle​ (t)
         </h1>
         <div className="flex-1">
           <LineChartWidget
@@ -259,17 +259,17 @@ export default function HomeDashboard() {
             attributes={{
               telemetries: [
                 {
-                  area: true,
-                  name: "EST_REALISE_FORATION",
-                  color: "#B98EFF",
-                  label: "Realisé ML/J",
-                  serial: "U9XQMQ1DXYT7LJIP",
-                },
-                {
                   area: false,
                   name: "EST_PLANIFIE_FORATION",
                   color: "#78F6EA",
-                  label: "Objectif ML/J",
+                  label: "Planifié",
+                  serial: "U9XQMQ1DXYT7LJIP",
+                },
+                {
+                  area: true,
+                  name: "EST_REALISE_FORATION",
+                  color: "#B98EFF",
+                  label: "Réalise",
                   serial: "U9XQMQ1DXYT7LJIP",
                 },
               ],

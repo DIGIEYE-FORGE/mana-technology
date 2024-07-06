@@ -222,20 +222,20 @@ export function ProgressAccumulation({ attributes }: Widget) {
           </MotionConfig>
         </svg>
       </div>
-      <div className="relative flex flex-wrap justify-center gap-x-4 text-xs font-medium">
+      <div className="relative flex flex-wrap justify-center gap-x-4 gap-y-1 px-1 text-xs font-medium">
         <div className="flex items-center gap-1">
           <span
             className="h-[12px] w-[26px] rounded-full"
             style={{ backgroundColor: finalTargetColor }}
           ></span>
-          <span>Objectif final: {finalTarget}</span>
+          <span>Objectif final: {finalTarget.toFixed(2)}</span>
         </div>
         <div className="flex items-center gap-1">
           <span
             className="h-[12px] w-[26px] rounded-full"
             style={{ backgroundColor: currentTargetColor }}
           ></span>
-          <span>Cible a date: {currentTarget}</span>
+          <span>Cible a date: {currentTarget.toFixed(2)}</span>
         </div>
         <div className="flex items-center gap-1">
           <span
@@ -243,7 +243,7 @@ export function ProgressAccumulation({ attributes }: Widget) {
             style={{ backgroundColor: progressColor }}
           ></span>
           <div className="flex items-center gap-2">
-            <span>Progrès: {progress}</span>
+            <span>Progrès: {progress.toFixed(2)}</span>
           </div>
         </div>
       </div>

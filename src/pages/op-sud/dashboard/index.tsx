@@ -12,7 +12,7 @@ export default function HomeDashboard() {
     <main className="grid w-full grid-flow-dense auto-rows-[80px] grid-cols-3 gap-3 md:grid-cols-6 lg:grid-cols-12 lg:gap-4 xl:grid-cols-[repeat(15,minmax(0,1fr))] 2xl:auto-rows-[92px]">
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
-        Production Roche Cumulée annuelle (t)
+          Production Roche Cumulée annuelle (t)
         </h1>
         <div className="h-1 flex-1">
           <BarLineWidget
@@ -58,7 +58,7 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
-          Production Roche Cumulée monsuelle (t)
+          Production Roche Cumulée mensuelle​ (t)
         </h1>
         <div className="flex-1">
           <LineChartWidget
