@@ -65,7 +65,7 @@ export const widgetsData = {
         {
           name: "UG_CHARG_EXP_TITAN_BAC2X350_TD",
           color: "#FFDC8C",
-          label: "Chargeur d'explosif titan 1000 BAC2X350",
+          label: "Disponibilité",
           serial: "8S287JI0CLP38N38",
           type: "bar",
         },
@@ -80,7 +80,7 @@ export const widgetsData = {
         {
           name: "UG_CHARG_EXP_TITAN_BAC2X350_TU",
           color: "#FFDC8C",
-          label: "Chargeur d'explosif titan 1000 BAC2X350",
+          label: "Utilisation",
           serial: "8S287JI0CLP38N38",
           type: "bar",
         },

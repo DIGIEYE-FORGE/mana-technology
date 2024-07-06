@@ -146,7 +146,7 @@ export const widgetsData = {
         {
           name: "UG_DEBLAYAGE_DISTANCE-m",
           color: "#FF5AF1",
-          label: "Aller-retour",
+          label: "Distance Trajet",
           serial: "GHZIN57J7EOVXGOC",
         },
       ],

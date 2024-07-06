@@ -24,8 +24,8 @@ export function MainProjectUpBar() {
       </Link>
       <div className="flex gap-4">
         <img src="/logo.svg" alt="logo" />
-        <span className="h-3/4 border-l py-3 pl-4 text-xl font-bold">
-          Tizert Mine
+        <span className="font-ethnocentric h-3/4 border-l py-3 pl-4 text-xl font-bold">
+          Tizert Project Digital Twin
         </span>
       </div>
       <OverviewButton className="absolute right-1/2 top-full flex translate-x-1/2 translate-y-2 items-center gap-2 whitespace-nowrap border text-lg font-semibold">
