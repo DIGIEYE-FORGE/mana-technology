@@ -358,10 +358,6 @@ export default function MainProjectPage() {
             endAt={"2025-05-14 00:00:00"}
           />
         </div>
-        <div className="absolute top-[55%] z-[10] flex flex-col gap-4 px-[2.5rem]">
-          {/* <HseButton /> */}
-          <ProjectPlaningButton />
-        </div>
         <div className="flex h-full w-full flex-col gap-4">
           <div className="max-h-1/2 relative flex items-center justify-center">
             <img
