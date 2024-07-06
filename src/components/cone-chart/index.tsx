@@ -98,7 +98,7 @@ export function ConeChart({
         return {
           color: color,
           name: label,
-          value: res.results?.[0]?.value,
+          value: res?.results?.[0]?.value || 0,
         };
       }),
     );
@@ -156,7 +156,7 @@ export function ConeChart({
                   <span className="text-base font-bold text-[#FAAC18]">
                     {item.value}
                   </span>
-                  <span className="w-full truncate whitespace-nowrap text-base">
+                  <span className="w-full  whitespace-nowrap text-base">
                     {item.name}
                   </span>
                 </div>

@@ -49,7 +49,8 @@ export default function HseDashboard() {
             }}
             displayFormat="float"
             correction={widgetsData[2].correction}
-          />{" "} %
+          />{" "}
+          %
         </div>
       </Card>
       <Card className="col-span-3 grid place-content-center !rounded p-6">
@@ -62,7 +63,7 @@ export default function HseDashboard() {
       <Card className="col-span-4 row-span-3 flex flex-col gap-2 p-6">
         <ConeChart
           className="h-1 flex-1 gap-4"
-          legendWidth={160}
+          legendWidth={180}
           coneClassName="px-12"
           attributes={widgetsData[3].attributes.telemetries}
         />
