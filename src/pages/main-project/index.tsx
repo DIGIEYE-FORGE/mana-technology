@@ -346,8 +346,8 @@ export default function MainProjectPage() {
     >
       <main className="relative mx-auto max-h-[1200px] w-full max-w-[1920px]">
         <MainProjectUpBar />
-        <div className="absolute bottom-4 right-4 z-10 flex w-[19rem] -translate-x-1/4 -translate-y-1/2 scale-150 flex-col gap-2">
-          <h4 className="text-center text-lg font-semibold">
+        <div className="absolute bottom-60 right-4 z-10 flex w-[19rem] -translate-x-1/4 -translate-y-1/2 scale-150 flex-col gap-2">
+          <h4 className="text-center text-lg font-semibold text-orange-300">
             1 <sup>st</sup> copper concentrate
           </h4>
           <FlipCountdown
