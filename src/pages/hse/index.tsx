@@ -15,7 +15,7 @@ function HseBar() {
   const parentPath = pathname.split("/").slice(0, -1).join("/");
   return (
     <div className="group sticky top-0 z-10 flex h-up-bar w-[calc(10)] shrink-0 items-center justify-end gap-2 rounded-[0_0_24px_0] border-b border-r px-4 backdrop-blur sm:px-6">
-      <div className="flex gap-4">
+      <div className="flex gap-4 pr-2">
         <img
           src="/logo.svg"
           alt="logo"
