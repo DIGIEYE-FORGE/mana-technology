@@ -7,29 +7,47 @@ import { useState } from "react";
 
 const tabs = [
   {
-    title: "Mineral resources estimation ",
+    title: "Tizert Geology",
     subTabs: [
       {
-        title: "Mineral resources estimation ",
-        image: "/overview-002.svg",
+        title: "Tizert Geology",
+        image: "/geology.svg",
       },
     ],
   },
   {
-    title: "Reserve Evolution",
+    title: "History",
     subTabs: [
       {
         title: "Reserve Evolution",
-        image: "/overview-001.svg",
+        image: "/history.svg",
       },
     ],
   },
   {
-    title: "Key Metrics",
+    title: "Reserve evolution",
+    subTabs: [
+      {
+        title: "Reserve evolution",
+        image: "/evolution.svg",
+      },
+    ],
+  },
+  {
+    title: "Keys Metrics",
     subTabs: [
       {
         title: "Key Metrics",
-        image: "/overview-003.svg",
+        image: "/keys.svg",
+      },
+    ],
+  },
+  {
+    title: "Eco-responsible",
+    subTabs: [
+      {
+        title: "Eco-responsible",
+        image: "/eco.svg",
       },
     ],
   },
