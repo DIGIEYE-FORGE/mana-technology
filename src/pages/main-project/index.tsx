@@ -68,7 +68,7 @@ const magazine = [
   {
     name: "PLANT",
     bottom: "10%",
-    left: "42%",
+    left: "45%",
     type: "information",
     click: "Process plant",
   },
@@ -124,8 +124,8 @@ const data = [
     type: "image",
     image: "/usins1.png",
     position: {
-      bottom: "27%",
-      left: "48%",
+      bottom: "50%",
+      left: "s=plc1_DB_Tag_+PwDiesel",
     },
     url: "usins1.png",
     background: "url(/video.svg)",
@@ -241,8 +241,8 @@ const data = [
     },
     background: "url(/vector.png)",
     position: {
-      bottom: "40%",
-      left: "40%",
+      bottom: "48%",
+      left: "28%",
     },
   },
   {
