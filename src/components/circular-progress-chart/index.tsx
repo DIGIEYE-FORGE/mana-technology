@@ -73,7 +73,7 @@ export const CircularProgressChart = ({
   return (
     <CircularProgress
       {...props}
-      className={cn("size-28 text-lg", className)}
+      className={cn("text-md size-sm", className)}
       rounded={false}
       progress={progress}
       legend={legend}
