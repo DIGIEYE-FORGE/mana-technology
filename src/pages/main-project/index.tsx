@@ -183,6 +183,23 @@ const data = [
     },
     background: "url(/video.svg)",
   },
+  //// update url video open pit
+  {
+    title: " Open Pit",
+    type: "video",
+    image: "/screen1.png",
+    position: {
+      top: "34%",
+      right: "9%",
+    },
+    url: "/est_vd.mp4",
+    positionModel: {
+      side: "left",
+      align: "start",
+      sideOffset: -200,
+    },
+    background: "url(/video.svg)",
+  },
   {
     title: "Electrical power line",
     type: "image",
