@@ -5,40 +5,13 @@ import { DialogClose } from "@radix-ui/react-dialog";
 import { MoveLeft, MoveRight, XIcon } from "lucide-react";
 import { useState } from "react";
 
-// const subTabs = [
-//   {
-//     title: "Vision ESG",
-//     image: "/esg-01.svg",
-//     subtitle: "Stratégie ESG pour une performance durable",
-//   },
-//   {
-//     title: "Vision ESG",
-//     image: "/esg-04.svg",
-//     subtitle: "Project design",
-//   },
-//   {
-//     title: "ESG actions",
-//     image: "/esg-08.png",
-//   },
-//   {
-//     title: "ESG tizert",
-//     image: "/esg-03.svg",
-//     subtitle: "Projets potentiels planifiés",
-//   },
-//   {
-//     title: "Project Gouvernance",
-//     image: "/esg-06.svg",
-//   },
-// ];
-
 const tabs = [
   {
     title: "Vision ESG",
     subTabs: [
       {
-        title: "Vision ESG",
         image: "/esg-01.svg",
-        subtitle: "Stratégie ESG pour une performance durable",
+        title: "Stratégie ESG pour une performance durable",
       },
     ],
   },
@@ -46,9 +19,8 @@ const tabs = [
     title: "Vision ESG",
     subTabs: [
       {
-        title: "Vision ESG",
         image: "/esg-04.svg",
-        subtitle: "Project design",
+        title: "Project design",
       },
     ],
   },
@@ -65,9 +37,8 @@ const tabs = [
     title: "ESG tizert",
     subTabs: [
       {
-        title: "ESG tizert",
         image: "/esg-03.svg",
-        subtitle: "Projets potentiels planifiés",
+        title: "Projets potentiels planifiés",
       },
     ],
   },
@@ -150,9 +121,6 @@ export function EsgButton({ className, ...props }: EsgButtonProps) {
                   <MoveLeft className="h-6 w-6" />
                 </Button>
               )}
-              <span className="text-lg font-semibold">
-                {tabs[activeTab].subTabs[activeSubTab].subtitle}
-              </span>
               {activeSubTab < tabs[activeTab].subTabs.length - 1 && (
                 <Button
                   variant={"ghost"}

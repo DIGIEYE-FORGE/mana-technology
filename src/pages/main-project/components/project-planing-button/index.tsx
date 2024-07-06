@@ -145,9 +145,6 @@ function ProjectPlaningButton({
                   <MoveLeft className="h-6 w-6" />
                 </Button>
               )}
-              <span className="text-lg font-semibold">
-                {tabs[activeTab].subTabs[activeSubTab].subtitle}
-              </span>
               {activeSubTab < tabs[activeTab].subTabs.length - 1 && (
                 <Button
                   variant={"ghost"}

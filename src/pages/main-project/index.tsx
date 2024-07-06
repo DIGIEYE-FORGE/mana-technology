@@ -13,7 +13,6 @@ import Model from "@/components/models";
 import { env } from "@/utils/env";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import ProjectPlaningButton from "./components/project-planing-button";
 import {
   Popover,
   PopoverClose,
