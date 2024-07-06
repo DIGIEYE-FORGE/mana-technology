@@ -18,7 +18,7 @@ export const widgetsData = {
     engineName: "Transport AD45",
     attributes: [
       {
-        name: "Transport ad45 01",
+        name: "Transport AD45 01",
         image: "/machine-06.png",
         telemetries: [
           {

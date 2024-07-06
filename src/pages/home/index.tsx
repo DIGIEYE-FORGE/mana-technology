@@ -104,7 +104,7 @@ function HomeUpBar() {
     useAppContext();
   const { pathname } = useLocation();
   return (
-    <div className="group sticky left-6 top-0 z-10 flex h-up-bar w-[calc(10)] shrink-0 items-center gap-2 rounded-[0_0_0_24px] border-b border-l px-4 backdrop-blur sm:px-6 md:gap-4">
+    <div className="group sticky left-6 top-0 z-10 flex h-up-bar w-[calc(10)] shrink-0 items-center gap-2 rounded-[0_0_0_24px] border-l px-4 backdrop-blur sm:px-6 md:gap-4">
       <Link to="/">
         <div className="flex gap-4">
           <img

@@ -259,11 +259,10 @@ export default function HomeDashboard() {
         <h1 className="text-center text-lg font-semibold">Foration (ml/J)</h1>
         <div className="flex-1">
           <LineChartWidget
-            moyenne={"combined"}
             attributes={{
               telemetries: [
                 {
-                  area: false,
+                  area: true,
                   name: "PLANIFIE_FORATION",
                   color: "#78F6EA",
                   label: "Planifié",
