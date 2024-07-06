@@ -63,7 +63,7 @@ const magazine = [
     right: "17%",
     type: "image",
     image: "/screen2.png",
-    click: "OPEN PIT",
+    click: "Open Pit",
   },
   {
     name: "PLANT",
@@ -216,11 +216,11 @@ const data = [
   ///////// open pit
   {
     type: "information",
-    title: "OPEN PIT",
+    title: "Open Pit",
     attribute: {
       ["Mineral reserves"]: "7,6 Mt @0,85% Cu & 23 g/t Ag ",
       ["Waste tonnage"]: "61.8 Mt ",
-      ["Rock production capacity "]: "69.5 Mt",
+      ["Rock production "]: "69.5 Mt",
       ["Life of mine "]: "4 years ",
     },
     background: "url(/vector.png)",
@@ -237,7 +237,7 @@ const data = [
       Capacity: "3,6 mtpa",
       ["Processing method"]: "Flotation",
       ["Product"]: "Copper Silver concentrate",
-      ["Concentrate production capacity"]: "120 Ktonnes per year",
+      ["Production capacity"]: "120 Ktonnes per year",
     },
     background: "url(/vector.png)",
     position: {
@@ -267,7 +267,7 @@ const data = [
     attribute: {
       ["Pipe length"]: "146 km ",
       ["Pipe diameter"]: "400 mm ",
-      ["Pumping station's number"]: "8 PS /1350m",
+      ["Pumping station's"]: "8 PS /1350m",
       ["Origine"]: "Treated waste water",
     },
     background: "url(/vector.png)",
@@ -282,7 +282,7 @@ const data = [
     attribute: {
       ["Mineral reserves"]: "4,5 Mt @0,8 % Cu et 27 g/t Ag ",
       ["Waste tonnage"]: "39 Mt ",
-      ["Rock production capacity "]: "1,2 Mt rock per month",
+      ["Rock production "]: "1,2 Mt rock per month",
       ["Life of mine "]: "4 years ",
     },
     background: "url(/vector.png)",
@@ -297,7 +297,7 @@ const data = [
     attribute: {
       ["Mineral reserves"]: "3,1 Mt @ 0,9 % Cu et 16 g/t Ag",
       ["Waste tonnage"]: "23 Mt ",
-      ["Rock production capacity "]: "0,9 Mt rock per month",
+      ["Rock production "]: "0,9 Mt rock per month",
       ["Life of mine "]: "3 years ",
     },
     background: "url(/vector.png)",
@@ -333,7 +333,7 @@ export default function MainProjectPage() {
     "Pipeline",
     "Process plant",
     "Underground Mine",
-    "OPEN PIT",
+    "Open Pit",
   ]);
   return (
     <main
@@ -650,7 +650,7 @@ export default function MainProjectPage() {
                     "linear-gradient(to right, transparent, white, transparent)",
                 }}
               >
-                Underground Mine
+                UNDERGROUND MINE
               </div>
               <div
                 className="machine-highlight absolute bottom-0 aspect-square w-full"

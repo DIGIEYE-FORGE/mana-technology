@@ -14,14 +14,7 @@ export function MainProjectUpBar() {
   const { fullScreen, setFullScreen } = useAppContext();
   return (
     <div className="group sticky top-0 z-10 flex h-up-bar w-full shrink-0 items-center justify-between gap-2 border-b px-6 backdrop-blur md:gap-4">
-      <Link
-        to="/"
-        className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-      >
-        <Button variant="ghost" size={"icon"}>
-          <MoveLeftIcon size={24} className="size-6" />
-        </Button>
-      </Link>
+      
       <div className="flex gap-4">
         <img src="/logo.svg" alt="logo" />
         <span className="font-ethnocentric h-3/4 border-l py-3 pl-4 text-xl font-bold">
@@ -32,6 +25,7 @@ export function MainProjectUpBar() {
         <FilePieChart size={20} />
         Project Overview
       </OverviewButton>
+      
       <Button
         onClick={() => {
           setFullScreen(!fullScreen);
@@ -42,6 +36,14 @@ export function MainProjectUpBar() {
       >
         {fullScreen ? <Shrink size={24} /> : <Minimize size={24} />}
       </Button>
+      <Link
+        to="/"
+        className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+      >
+        <Button variant="ghost" size={"icon"}>
+          <MoveLeftIcon size={24} className="size-6" />
+        </Button>
+      </Link>
       <Link
         to="/underground"
         className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
