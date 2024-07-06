@@ -98,7 +98,7 @@ export function ConeChart({
         return {
           color: color,
           name: label,
-          value: res.results?.[0]?.value,
+          value: res?.results?.[0]?.value || 0,
         };
       }),
     );

@@ -239,7 +239,6 @@ export default function UndergroundDashboardPage() {
           <BarLineWidget
             ciel={false}
             dateRange={dateRange}
-            hideTooltip
             attributes={{
               stacked: true,
               telemetries: [
@@ -349,9 +348,9 @@ export default function UndergroundDashboardPage() {
               {
                 nameTelemetry: "UG_FORATION_TIRS_TIR_DELAI_GAZ_ET_LAVAGE-min",
                 nameLabelTelemetry: "Purge et Souflage",
-                bfsTelemetry:
-                  "UG_TAUX_ARRACHEMENT_TEMPS_DE_PURGE_ET_SOUFLAGE_BFS",
-                bfsLabelTelemetry: "Purge et Souflage",
+                // bfsTelemetry:
+                //   "UG_TAUX_ARRACHEMENT_TEMPS_DE_PURGE_ET_SOUFLAGE_BFS",
+                // bfsLabelTelemetry: "Purge et Souflage",
                 color: "#05F2C7",
                 serial: "GHZIN57J7EOVXG0C",
               },
@@ -409,84 +408,84 @@ export default function UndergroundDashboardPage() {
             attribute={[
               {
                 label: "BOLTEC M10",
-                icon: "/iconesEngin/Bottec M10 _2.png",
+                icon: "JUMBO M20.png",
                 utilisationTelemetry: "UG_BOLTEC_M10_TU",
                 disponibilliteTelemetry: "UG_BOLTEC_M10_TD",
                 serial: "8S287JI0CLP38N38",
               },
               {
                 label: "TITAN BAC2X350",
-                icon: "iconesEngin/titan_MUV5_et_MUV1-removebg-preview.png",
+                icon: "JUMBO T1.png",
                 utilisationTelemetry: "UG_CHARG_EXP_TITAN_BAC2X350_TU",
                 disponibilliteTelemetry: "UG_CHARG_EXP_TITAN_BAC2X350_TD",
                 serial: "8S287JI0CLP38N38",
               },
               {
                 label: "R1700 - 01",
-                icon: "iconesEngin/Chargeur_CAT_R1700-removebg-preview.png",
+                icon: "R17000.png",
                 utilisationTelemetry: "UG_CHARG_CAT_R1700_14T_1_TU",
                 disponibilliteTelemetry: "UG_CHARG_CAT_R1700_14T_1_TD",
                 serial: "8S287JI0CLP38N38",
               },
               {
                 label: "R1700 - 02",
-                icon: "iconesEngin/Chargeur_CAT_R1700-removebg-preview.png",
+                icon: "R17000.png",
                 utilisationTelemetry: "UG_CHARG_CAT_R1700_14T_2_TU",
                 disponibilliteTelemetry: "UG_CHARG_CAT_R1700_14T_2_TD",
                 serial: "8S287JI0CLP38N38",
               },
               {
                 label: "CHARIOT ELEVATEUR",
-                icon: "iconesEngin/chariot elevateur.svg",
+                icon: "chariot-elevateur.png",
                 utilisationTelemetry: "UG_CHARIOT_ELEVATEUR_TU",
                 disponibilliteTelemetry: "UG_CHARIOT_ELEVATEUR_TD",
                 serial: "8S287JI0CLP38N38",
               },
               {
                 label: "COMPRESSEUR SQE 01",
-                icon: "iconesEngin/Chargeur_CAT_R1700-removebg-preview.png",
+                icon: "DEUTZ DPS 450.png",
                 utilisationTelemetry: "UG_COMP_ATLAS_COP_1_TU",
                 disponibilliteTelemetry: "UG_COMP_ATLAS_COP_1_TD",
                 serial: "8S287JI0CLP38N38",
               },
               {
                 label: "COMPRESSEUR SQE 02",
-                icon: "iconesEngin/compressor.svg",
+                icon: "DEUTZ DPS 450.png",
                 utilisationTelemetry: "UG_COMP_ATLAS_COP_2_TU",
                 disponibilliteTelemetry: "UG_COMP_ATLAS_COP_2_TD",
                 serial: "8S287JI0CLP38N38",
               },
               {
                 label: "CAT AD 45T 01",
-                icon: "iconesEngin/compressor.svg",
+                icon: "machine-06.png",
                 utilisationTelemetry: "UG_DUMP_CAT_1_TU",
                 disponibilliteTelemetry: "UG_DUMP_CAT_1_TD",
                 serial: "8S287JI0CLP38N38",
               },
               {
                 label: "CAT AD 45T 02",
-                icon: "iconesEngin/Dumper_CAT_AD45-removebg-preview.png",
+                icon: "machine-06.png",
                 utilisationTelemetry: "UG_DUMP_CAT_2_TU",
                 disponibilliteTelemetry: "UG_DUMP_CAT_2_TD",
                 serial: "8S287JI0CLP38N38",
               },
               {
                 label: "DEUTZ DPS 450 01",
-                icon: "iconesEngin/Dumper_CAT_AD45-removebg-preview.png",
+                icon: "DEUTZ DPS 450.png",
                 utilisationTelemetry: "UG_ELEC_1_TU",
                 disponibilliteTelemetry: "UG_ELEC_1_TD",
                 serial: "8S287JI0CLP38N38",
               },
               {
                 label: "DEUTZ DPS 450 02",
-                icon: "truck.svg",
+                icon: "DEUTZ DPS 450.png",
                 utilisationTelemetry: "UG_ELEC_2_TU",
                 disponibilliteTelemetry: "UG_ELEC_2_TD",
                 serial: "8S287JI0CLP38N38",
               },
               {
                 label: "DEUTZ DPS 450 03",
-                icon: "iconesEngin/Groupe_électrogène_DEUTZ-removebg-preview.png",
+                icon: "DEUTZ DPS 450.png",
                 utilisationTelemetry: "UG_ELEC_3_TU",
                 disponibilliteTelemetry: "UG_ELEC_3_TD",
                 serial: "8S287JI0CLP38N38",
@@ -507,21 +506,21 @@ export default function UndergroundDashboardPage() {
               },
               {
                 label: "TITAN BMP2X3",
-                icon: "iconesEngin/Table_elevatrice-removebg-preview.png",
+                icon: "ANFO3000.png",
                 utilisationTelemetry: "UG_PLAT_TU",
                 disponibilliteTelemetry: "UG_PLAT_TD",
                 serial: "8S287JI0CLP38N38",
               },
               {
                 label: "SIMBA",
-                icon: "truck.svg",
+                icon: "SIMBA S7.png",
                 utilisationTelemetry: "UG_SIMBA_TU",
                 disponibilliteTelemetry: "UG_SIMBA_TD",
                 serial: "8S287JI0CLP38N38",
               },
               {
                 label: "TRACTEUR",
-                icon: "truck.svg",
+                icon: "tractor.png",
                 utilisationTelemetry: "UG_TRAC_TU",
                 disponibilliteTelemetry: "UG_TRAC_TD",
                 serial: "8S287JI0CLP38N38",
