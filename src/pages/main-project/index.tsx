@@ -95,7 +95,7 @@ const data = [
     image: "/screen1.svg",
     position: {
       top: "14%",
-      right: "28%",
+      right: "26%",
     },
     background: "url(/screen1.svg)",
     positionModel: {
@@ -109,7 +109,7 @@ const data = [
     image: "/screen1.svg",
     to: "/",
     position: {
-      top: "32%",
+      top: "34%",
       right: "13%",
     },
     positionModel: {
@@ -125,7 +125,7 @@ const data = [
     image: "/usins1.png",
     position: {
       top: "17%",
-      left: "43%",
+      left: "46%",
     },
     url: "usins1.png",
     background: "url(/video.svg)",
@@ -173,7 +173,7 @@ const data = [
     image: "/screen1.png",
     position: {
       top: "14%",
-      right: "32%",
+      right: "30%",
     },
     url: "/est_vd.mp4",
     positionModel: {
@@ -189,7 +189,7 @@ const data = [
     image: "/ElectricalPowerLine.png",
     position: {
       top: "40%",
-      left: "2.5%",
+      left: "2%",
     },
     url: "/ElectricalPowerLine.png",
     positionModel: {
@@ -243,7 +243,7 @@ const data = [
     background: "url(/vector.png)",
     position: {
       top: "1%",
-      left: "20%",
+      left: "26%",
     },
   },
   {
@@ -681,8 +681,8 @@ export default function MainProjectPage() {
               <div
                 className="absolute h-[40px] w-[40px] xl:h-[45px] xl:w-[45px] 2xl:h-[64px] 2xl:w-[67px]"
                 style={{
-                  top: "12%",
-                  left: "49%",
+                  top: "0%",
+                  left: "60%",
                   cursor: "pointer",
                   background: "url(/screen4.svg)",
                   backgroundSize: "contain",
@@ -694,8 +694,8 @@ export default function MainProjectPage() {
               <div
                 className="absolute h-[40px] w-[40px] xl:h-[45px] xl:w-[45px] 2xl:h-[64px] 2xl:w-[67px]"
                 style={{
-                  top: "12%",
-                  left: "41%",
+                  top: "0%",
+                  left: "56%",
                   cursor: "pointer",
                   background: "url(/tree.svg)",
                   backgroundSize: "contain",
@@ -711,8 +711,8 @@ export default function MainProjectPage() {
                   )}
                   style={{
                     cursor: "pointer",
-                    top: "12%",
-                    left: "44.8%",
+                    top: "0%",
+                    left: "52%",
                     background: `url(/video.svg)`,
                     backgroundSize: "contain",
                     backgroundRepeat: "no-repeat",
