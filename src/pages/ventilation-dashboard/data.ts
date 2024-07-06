@@ -584,7 +584,7 @@ export const ventilation = {
     unit: "Kw",
     telemetry: [{
       serial: "0TKJJWS26V62QV15",
-      name: "s=plc1_DB_Tag_PwDiesel",
+      name: "s=plc1_DB_Tag_+PwDiesel",
     }]
   },
   2: {
