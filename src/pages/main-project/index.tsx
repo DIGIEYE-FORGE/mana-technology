@@ -108,7 +108,7 @@ const data = [
     image: "/screen1.svg",
     to: "/",
     position: {
-      top: "34%",
+      top: "45%",
       right: "13%",
     },
     positionModel: {
@@ -139,8 +139,8 @@ const data = [
     image: "screen1.svg",
     to: "/op-sud",
     position: {
-      bottom: "30%",
-      right: "2%",
+      bottom: "20%",
+      right: "12%",
     },
     positionModel: {
       side: "left",
@@ -155,8 +155,8 @@ const data = [
     type: "video",
     image: "/screen1.png",
     position: {
-      bottom: "30%",
-      right: "6%",
+      bottom: "20%",
+      right: "16%",
     },
     url: "/sud_vd.mp4",
     positionModel: {
@@ -188,7 +188,7 @@ const data = [
     type: "video",
     image: "/screen1.png",
     position: {
-      top: "34%",
+      top: "45%",
       right: "9%",
     },
     url: "/est_vd.mp4",
@@ -235,14 +235,14 @@ const data = [
     type: "information",
     title: "Open Pit",
     attribute: {
-      ["Mineral reserves"]: "7,6 Mt @0,85% Cu & 23 g/t Ag ",
+      ["Mineral reserves"]: "7,6 Mt @0,85% Cu & 23 ",
       ["Waste tonnage"]: "61.8 Mt ",
       ["Rock production "]: "69.5 Mt",
       ["Life of mine "]: "4 years ",
     },
     background: "url(/vector.png)",
     position: {
-      bottom: "-12%",
+      top: "8%",
       right: "0.5%",
     },
   },
@@ -304,8 +304,8 @@ const data = [
     },
     background: "url(/vector.png)",
     position: {
-      top: "1%",
-      right: "8%",
+      top: "30%",
+      right: "32%",
     },
   },
   {
@@ -319,8 +319,8 @@ const data = [
     },
     background: "url(/vector.png)",
     position: {
-      bottom: "-18%",
-      right: "20%",
+      bottom: "-15%",
+      right: "14%",
     },
   },
 ];
@@ -362,7 +362,7 @@ export default function MainProjectPage() {
     >
       <main className="relative mx-auto max-h-[1200px] w-full max-w-[1920px]">
         <MainProjectUpBar />
-        <div className="absolute bottom-60 right-4 z-10 flex w-[19rem] -translate-x-1/4 -translate-y-1/2 scale-150 flex-col gap-2">
+        <div className="absolute bottom-36 right-4 z-10 flex w-[19rem] -translate-x-1/4 -translate-y-1/2 scale-150 flex-col gap-2">
           <h4 className="text-center text-lg font-semibold text-orange-300">
             1 <sup>st</sup> copper concentrate
           </h4>
