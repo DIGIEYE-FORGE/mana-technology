@@ -10,7 +10,7 @@ const tabs = [
     title: "timeline",
     subTabs: [
       {
-        title: "master plant",
+        title: "",
         image: "/timeline.svg",
       },
     ],
@@ -19,7 +19,7 @@ const tabs = [
     title: "Progress",
     subTabs: [
       {
-        title: "Performance Indicators",
+        title: "",
         image: "/usins.png",
       },
     ],
@@ -28,7 +28,7 @@ const tabs = [
     title: "S-curve",
     subTabs: [
       {
-        title: "project progress",
+        title: "",
         image: "/progress.svg",
       },
     ],
@@ -37,7 +37,7 @@ const tabs = [
     title: "planning",
     subTabs: [
       {
-        title: "planning",
+        title: "",
         image: "/planning1.svg",
       },
       {

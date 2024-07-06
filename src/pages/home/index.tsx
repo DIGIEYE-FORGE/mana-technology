@@ -111,7 +111,7 @@ function HomeUpBar() {
           alt="logo"
           className="border-r pr-4 max-sm:hidden"
         />
-        <span className="h-3/4 py-3 font-ethnocentric text-xl font-bold">
+        <span className="h-3/4 py-3 text-lg font-bold">
           Performance Open-Pit
         </span>
       </div>
