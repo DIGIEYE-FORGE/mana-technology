@@ -150,6 +150,7 @@ const data = [
     },
     background: "url(/screen1.svg)",
   },
+
   {
     title: "Pit SUD",
     type: "video",
@@ -684,6 +685,19 @@ export default function MainProjectPage() {
                   left: "49%",
                   cursor: "pointer",
                   background: "url(/screen4.svg)",
+                  backgroundSize: "contain",
+                  backgroundRepeat: "no-repeat",
+                }}
+              ></div>
+            </Link>
+            <Link to={`/underground/tree`}>
+              <div
+                className="absolute h-[40px] w-[40px] xl:h-[45px] xl:w-[45px] 2xl:h-[64px] 2xl:w-[67px]"
+                style={{
+                  top: "12%",
+                  left: "41%",
+                  cursor: "pointer",
+                  background: "url(/tree.svg)",
                   backgroundSize: "contain",
                   backgroundRepeat: "no-repeat",
                 }}
