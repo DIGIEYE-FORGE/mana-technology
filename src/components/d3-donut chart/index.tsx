@@ -7,8 +7,8 @@ import Chart from "react-apexcharts";
 
 interface D3DonutChartProps {
   attribute: {
-    bfsLabelTelemetry: string;
-    bfsTelemetry: string;
+    bfsLabelTelemetry?: string;
+    bfsTelemetry?: string;
     color: string;
     nameLabelTelemetry: string;
     nameTelemetry: string;
@@ -58,29 +58,32 @@ export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
           if (sum) {
             avg = sum / resWithouyAvg.results?.length;
           }
-          const res2 = await backendApi.findMany<{
-            name: string;
-            value: number;
-          }>("lasttelemetry", {
-            where: {
-              name: bfsTelemetry,
-              device: { serial },
-            },
-            select: { name: true, value: true },
-            orderBy: {
-              createdAt: "desc",
-            },
-            pagination: {
-              page: 1,
-              perPage: 1,
-            },
-          });
+          let res2;
+          if (bfsTelemetry) {
+            res2 = await backendApi.findMany<{
+              name: string;
+              value: number;
+            }>("lasttelemetry", {
+              where: {
+                name: bfsTelemetry,
+                device: { serial },
+              },
+              select: { name: true, value: true },
+              orderBy: {
+                createdAt: "desc",
+              },
+              pagination: {
+                page: 1,
+                perPage: 1,
+              },
+            });
+          }
           return {
             color: color,
             name: nameLabelTelemetry,
             value: avg,
-            valueBfs: res2?.results[0]?.value || 0,
-            bfsLabel: bfsLabelTelemetry,
+            valueBfs: (res2 as any)?.results[0]?.value || undefined,
+            bfsLabel: res2 && bfsLabelTelemetry,
           };
         }),
       );
@@ -114,22 +117,27 @@ export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
         <h3 className="text-center font-semibold">BFS</h3>
         <div className="my-1 h-[0.05rem] w-full bg-[#6981C0]"></div>
         <div className="flex h-full w-full flex-col">
-          {(data || []).map((d, i) => (
-            <div key={i} className="grid grid-cols-10 items-center gap-2 py-1">
-              <span
-                className="col-span-2 h-3 rounded-md"
-                style={{
-                  backgroundColor: d.color,
-                }}
-              ></span>
-              <span className="col-span-7 line-clamp-1 text-xs font-semibold">
-                {d?.bfsLabel || ""}
-              </span>
-              <span className="col-span-1 text-xs font-semibold">
-                {(d?.valueBfs || 0).toFixed(2)}
-              </span>
-            </div>
-          ))}
+          {(data || [])
+            .filter((d) => d.valueBfs !== undefined)
+            .map((d, i) => (
+              <div
+                key={i}
+                className="grid grid-cols-10 items-center gap-2 py-1"
+              >
+                <span
+                  className="col-span-2 h-3 rounded-md"
+                  style={{
+                    backgroundColor: d.color,
+                  }}
+                ></span>
+                <span className="col-span-7 line-clamp-1 text-xs font-semibold">
+                  {d?.bfsLabel || ""}
+                </span>
+                <span className="col-span-1 text-xs font-semibold">
+                  {(d?.valueBfs || 0).toFixed(2)}
+                </span>
+              </div>
+            ))}
         </div>
       </div>
       <div className="col-span-6 flex w-full flex-1 items-end justify-end pt-6">

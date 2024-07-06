@@ -132,7 +132,7 @@ const data = [
     positionModel: {
       side: "top",
       align: "center",
-      sideOffset: -300,
+      sideOffset: -100,
     },
   },
   {
