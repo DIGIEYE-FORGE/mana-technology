@@ -104,19 +104,17 @@ function HomeUpBar() {
     useAppContext();
   const { pathname } = useLocation();
   return (
-    <div className="group sticky left-6 top-0 z-10 flex h-up-bar w-[calc(10)] shrink-0 items-center gap-2 rounded-[0_0_0_24px] border-l px-4 backdrop-blur sm:px-6 md:gap-4">
-      <Link to="/">
-        <div className="flex gap-4">
-          <img
-            src="/logo.svg"
-            alt="logo"
-            className="border-r pr-4 max-sm:hidden"
-          />
-          <span className="font-ethnocentric h-3/4 py-3 text-xl font-bold">
-            Performance Open-Pit
-          </span>
-        </div>
-      </Link>
+    <div className="group sticky left-6 top-0 z-10 flex h-up-bar w-[calc(10)] shrink-0 items-center gap-2 rounded-[0_0_0_24px] border-b border-l px-4 backdrop-blur sm:px-6">
+      <div className="flex gap-4">
+        <img
+          src="/logo.svg"
+          alt="logo"
+          className="border-r pr-4 max-sm:hidden"
+        />
+        <span className="h-3/4 py-3 font-ethnocentric text-xl font-bold">
+          Performance Open-Pit
+        </span>
+      </div>
       <DatePickerWithRange
         className="hidden lg:block"
         date={dateRange}
@@ -143,16 +141,12 @@ function HomeUpBar() {
         onClick={() => {
           setFullScreen(!fullScreen);
         }}
-        className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
         size={"icon"}
         variant={"ghost"}
       >
         {fullScreen ? <Shrink size={24} /> : <Minimize size={24} />}
       </Button>
-      <Link
-        to="/main-project"
-        className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-      >
+      <Link to="/main-project">
         <Button size="icon" variant="ghost">
           <MoveRightIcon size={24} className="size-6" />
         </Button>
