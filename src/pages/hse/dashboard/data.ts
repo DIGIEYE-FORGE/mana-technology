@@ -26,7 +26,7 @@ export const widgetsData = {
         {
           name: "HSE_NMO_Total",
           color: "#25A18E",
-          label: "Observation",
+          label: "Observation +NM",
           serial: "TATC8YPVCLHULUAF",
         },
         {
@@ -65,7 +65,7 @@ export const widgetsData = {
           name: "HSE_FATIF_Global",
           color: "#db1c31",
           serial: "TATC8YPVCLHULUAF",
-          label: "FATIF",
+          label: "FATF",
         },
       ],
     },

@@ -62,7 +62,7 @@ export const widgetsData = {
         {
           name: "UG_SOUTENEMENT_GRILLAGE-m_carre",
           color: "#FF5AF1",
-          label: "AD45",
+          label: "Consommation Grillage",
           serial: "GHZIN57J7EOVXGOC",
         },
       ],

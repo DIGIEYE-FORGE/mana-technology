@@ -93,6 +93,11 @@ export function WeeklyLineChart({
           xaxis: { lines: { show: false } },
           yaxis: { lines: { show: true } },
         },
+        yaxis:{
+          labels:{
+            formatter: (value) => value.toFixed(0)
+          }
+        },
         xaxis: {
           categories: data?.categories,
         },

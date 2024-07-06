@@ -67,7 +67,7 @@ const magazine = [
   },
   {
     name: "PLANT",
-    bottom: "10%",
+    top: "35%",
     left: "45%",
     type: "information",
     click: "Process plant",
@@ -124,8 +124,8 @@ const data = [
     type: "image",
     image: "/usins1.png",
     position: {
-      bottom: "50%",
-      left: "s=plc1_DB_Tag_+PwDiesel",
+      top: "17%",
+      left: "43%",
     },
     url: "usins1.png",
     background: "url(/video.svg)",
@@ -140,8 +140,8 @@ const data = [
     image: "screen1.svg",
     to: "/op-sud",
     position: {
-      bottom: "35%",
-      right: "19%",
+      bottom: "30%",
+      right: "2%",
     },
     positionModel: {
       side: "left",
@@ -155,8 +155,8 @@ const data = [
     type: "video",
     image: "/screen1.png",
     position: {
-      bottom: "35%",
-      right: "23%",
+      bottom: "30%",
+      right: "6%",
     },
     url: "/sud_vd.mp4",
     positionModel: {
@@ -225,7 +225,7 @@ const data = [
     },
     background: "url(/vector.png)",
     position: {
-      top: "45%",
+      bottom: "-12%",
       right: "0.5%",
     },
   },
@@ -241,8 +241,8 @@ const data = [
     },
     background: "url(/vector.png)",
     position: {
-      bottom: "48%",
-      left: "28%",
+      top: "1%",
+      left: "20%",
     },
   },
   {
@@ -272,8 +272,8 @@ const data = [
     },
     background: "url(/vector.png)",
     position: {
-      bottom: "0%",
-      left: "20%",
+      bottom: "-15%",
+      left: "10%",
     },
   },
   {
@@ -345,7 +345,7 @@ export default function MainProjectPage() {
     >
       <main className="relative mx-auto max-h-[1200px] w-full max-w-[1920px]">
         <MainProjectUpBar />
-        <div className="absolute bottom-4 right-4 z-10 flex w-[18.5rem] flex-col gap-2">
+        <div className="absolute bottom-4 right-4 z-10 flex w-[19rem] -translate-x-1/4 -translate-y-1/2 scale-150 flex-col gap-2">
           <h4 className="text-center text-lg font-semibold">
             1 <sup>st</sup> copper concentrate
           </h4>
