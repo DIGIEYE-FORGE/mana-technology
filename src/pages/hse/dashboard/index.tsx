@@ -49,7 +49,8 @@ export default function HseDashboard() {
             }}
             displayFormat="float"
             correction={widgetsData[2].correction}
-          />{" "} %
+          />{" "}
+          %
         </div>
       </Card>
       <Card className="col-span-3 grid place-content-center !rounded p-6">
