@@ -86,6 +86,9 @@ function Ventillation({ attribute }: VentillationProps) {
       );
       return res1;
     },
+    {
+      refreshInterval: 60_000,
+    },
   );
 
   if (isLoading)
