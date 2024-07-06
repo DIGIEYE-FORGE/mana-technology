@@ -13,7 +13,6 @@ import Model from "@/components/models";
 import { env } from "@/utils/env";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import ProjectPlaningButton from "./components/project-planing-button";
 import {
   Popover,
   PopoverClose,
@@ -63,7 +62,7 @@ const magazine = [
     right: "17%",
     type: "image",
     image: "/screen2.png",
-    click: "OPEN PIT",
+    click: "Open Pit",
   },
   {
     name: "PLANT",
@@ -95,7 +94,7 @@ const data = [
     image: "/screen1.svg",
     position: {
       top: "14%",
-      right: "28%",
+      right: "26%",
     },
     background: "url(/screen1.svg)",
     positionModel: {
@@ -109,7 +108,7 @@ const data = [
     image: "/screen1.svg",
     to: "/",
     position: {
-      top: "32%",
+      top: "45%",
       right: "13%",
     },
     positionModel: {
@@ -125,7 +124,7 @@ const data = [
     image: "/usins1.png",
     position: {
       top: "17%",
-      left: "43%",
+      left: "46%",
     },
     url: "usins1.png",
     background: "url(/video.svg)",
@@ -140,8 +139,8 @@ const data = [
     image: "screen1.svg",
     to: "/op-sud",
     position: {
-      bottom: "30%",
-      right: "2%",
+      bottom: "20%",
+      right: "12%",
     },
     positionModel: {
       side: "left",
@@ -156,8 +155,8 @@ const data = [
     type: "video",
     image: "/screen1.png",
     position: {
-      bottom: "30%",
-      right: "6%",
+      bottom: "20%",
+      right: "16%",
     },
     url: "/sud_vd.mp4",
     positionModel: {
@@ -173,7 +172,24 @@ const data = [
     image: "/screen1.png",
     position: {
       top: "14%",
-      right: "32%",
+      right: "30%",
+    },
+    url: "/est_vd.mp4",
+    positionModel: {
+      side: "left",
+      align: "start",
+      sideOffset: -200,
+    },
+    background: "url(/video.svg)",
+  },
+  //// update url video open pit
+  {
+    title: " Open Pit",
+    type: "video",
+    image: "/screen1.png",
+    position: {
+      top: "45%",
+      right: "9%",
     },
     url: "/est_vd.mp4",
     positionModel: {
@@ -189,7 +205,7 @@ const data = [
     image: "/ElectricalPowerLine.png",
     position: {
       top: "40%",
-      left: "2.5%",
+      left: "2%",
     },
     url: "/ElectricalPowerLine.png",
     positionModel: {
@@ -217,16 +233,16 @@ const data = [
   ///////// open pit
   {
     type: "information",
-    title: "OPEN PIT",
+    title: "Open Pit",
     attribute: {
-      ["Mineral reserves"]: "7,6 Mt @0,85% Cu & 23 g/t Ag ",
+      ["Mineral reserves"]: "7,6 Mt @0,85% Cu & 23 ",
       ["Waste tonnage"]: "61.8 Mt ",
-      ["Rock production capacity "]: "69.5 Mt",
+      ["Rock production "]: "69.5 Mt",
       ["Life of mine "]: "4 years ",
     },
     background: "url(/vector.png)",
     position: {
-      bottom: "-12%",
+      top: "8%",
       right: "0.5%",
     },
   },
@@ -238,12 +254,12 @@ const data = [
       Capacity: "3,6 mtpa",
       ["Processing method"]: "Flotation",
       ["Product"]: "Copper Silver concentrate",
-      ["Concentrate production capacity"]: "120 Ktonnes per year",
+      ["Production capacity"]: "120 Ktonnes per year",
     },
     background: "url(/vector.png)",
     position: {
       top: "1%",
-      left: "20%",
+      left: "26%",
     },
   },
   {
@@ -268,7 +284,7 @@ const data = [
     attribute: {
       ["Pipe length"]: "146 km ",
       ["Pipe diameter"]: "400 mm ",
-      ["Pumping station's number"]: "8 PS /1350m",
+      ["Pumping station's"]: "8 PS /1350m",
       ["Origine"]: "Treated waste water",
     },
     background: "url(/vector.png)",
@@ -283,13 +299,13 @@ const data = [
     attribute: {
       ["Mineral reserves"]: "4,5 Mt @0,8 % Cu et 27 g/t Ag ",
       ["Waste tonnage"]: "39 Mt ",
-      ["Rock production capacity "]: "1,2 Mt rock per month",
+      ["Rock production "]: "1,2 Mt rock per month",
       ["Life of mine "]: "4 years ",
     },
     background: "url(/vector.png)",
     position: {
-      top: "1%",
-      right: "8%",
+      top: "30%",
+      right: "32%",
     },
   },
   {
@@ -298,13 +314,13 @@ const data = [
     attribute: {
       ["Mineral reserves"]: "3,1 Mt @ 0,9 % Cu et 16 g/t Ag",
       ["Waste tonnage"]: "23 Mt ",
-      ["Rock production capacity "]: "0,9 Mt rock per month",
+      ["Rock production "]: "0,9 Mt rock per month",
       ["Life of mine "]: "3 years ",
     },
     background: "url(/vector.png)",
     position: {
-      bottom: "-18%",
-      right: "20%",
+      bottom: "-15%",
+      right: "14%",
     },
   },
 ];
@@ -334,7 +350,7 @@ export default function MainProjectPage() {
     "Pipeline",
     "Process plant",
     "Underground Mine",
-    "OPEN PIT",
+    "Open Pit",
   ]);
   return (
     <main
@@ -346,8 +362,8 @@ export default function MainProjectPage() {
     >
       <main className="relative mx-auto max-h-[1200px] w-full max-w-[1920px]">
         <MainProjectUpBar />
-        <div className="absolute bottom-4 right-4 z-10 flex w-[19rem] -translate-x-1/4 -translate-y-1/2 scale-150 flex-col gap-2">
-          <h4 className="text-center text-lg font-semibold">
+        <div className="absolute bottom-36 right-4 z-10 flex w-[19rem] -translate-x-1/4 -translate-y-1/2 scale-150 flex-col gap-2">
+          <h4 className="text-center text-lg font-semibold text-orange-300">
             1 <sup>st</sup> copper concentrate
           </h4>
           <FlipCountdown
@@ -357,10 +373,6 @@ export default function MainProjectPage() {
             theme="dark"
             endAt={"2025-05-14 00:00:00"}
           />
-        </div>
-        <div className="absolute top-[55%] z-[10] flex flex-col gap-4 px-[2.5rem]">
-          {/* <HseButton /> */}
-          <ProjectPlaningButton />
         </div>
         <div className="flex h-full w-full flex-col gap-4">
           <div className="max-h-1/2 relative flex items-center justify-center">
@@ -651,7 +663,7 @@ export default function MainProjectPage() {
                     "linear-gradient(to right, transparent, white, transparent)",
                 }}
               >
-                Underground Mine
+                UNDERGROUND MINE
               </div>
               <div
                 className="machine-highlight absolute bottom-0 aspect-square w-full"
@@ -681,8 +693,8 @@ export default function MainProjectPage() {
               <div
                 className="absolute h-[40px] w-[40px] xl:h-[45px] xl:w-[45px] 2xl:h-[64px] 2xl:w-[67px]"
                 style={{
-                  top: "12%",
-                  left: "49%",
+                  top: "0%",
+                  left: "60%",
                   cursor: "pointer",
                   background: "url(/screen4.svg)",
                   backgroundSize: "contain",
@@ -694,8 +706,8 @@ export default function MainProjectPage() {
               <div
                 className="absolute h-[40px] w-[40px] xl:h-[45px] xl:w-[45px] 2xl:h-[64px] 2xl:w-[67px]"
                 style={{
-                  top: "12%",
-                  left: "41%",
+                  top: "0%",
+                  left: "56%",
                   cursor: "pointer",
                   background: "url(/tree.svg)",
                   backgroundSize: "contain",
@@ -711,8 +723,8 @@ export default function MainProjectPage() {
                   )}
                   style={{
                     cursor: "pointer",
-                    top: "12%",
-                    left: "44.8%",
+                    top: "0%",
+                    left: "52%",
                     background: `url(/video.svg)`,
                     backgroundSize: "contain",
                     backgroundRepeat: "no-repeat",

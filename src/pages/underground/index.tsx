@@ -13,28 +13,15 @@ function UndergroundBar() {
   const { pathname } = useLocation();
   const parentPath = pathname.split("/").slice(0, -1).join("/");
   return (
-    <div className="group sticky top-0 z-10 flex h-up-bar w-full shrink-0 items-center justify-between gap-2 border-b px-6 backdrop-blur md:gap-4">
-      <Link
-        to={parentPath || "/main-project"}
-        className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-      >
-        <Button variant="ghost" size={"icon"}>
-          <MoveLeftIcon
-            size={24}
-            className={cn("transition-transform duration-500", {
-              "rotate-90": parentPath,
-            })}
-          />
-        </Button>
-      </Link>
-      <div className="flex gap-4">
+    <div className="group sticky top-0 z-10 flex h-up-bar w-full shrink-0 items-center justify-end gap-2 border-b px-6 backdrop-blur">
+      <div className="flex gap-4 pr-2">
         <img src="/logo.svg" alt="logo" />
         <span className="h-3/4 border-l py-3 pl-4 text-xl font-bold">
           Underground
         </span>
       </div>
       <DatePickerWithRange
-        className="hidden lg:block"
+        className="mr-auto hidden lg:block"
         date={dateRange}
         onChange={(date) => {
           setDateRange(date as TDateRange);
@@ -44,16 +31,22 @@ function UndergroundBar() {
         onClick={() => {
           setFullScreen(!fullScreen);
         }}
-        className="ml-auto opacity-0 transition-opacity duration-500 group-hover:opacity-100"
         size={"icon"}
         variant={"ghost"}
       >
         {fullScreen ? <Shrink size={24} /> : <Minimize size={24} />}
       </Button>
-      <Link
-        to="/hse"
-        className="opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-      >
+      <Link to={parentPath || "/main-project"}>
+        <Button variant="ghost" size={"icon"}>
+          <MoveLeftIcon
+            size={24}
+            className={cn("transition-transform duration-500", {
+              "rotate-90": parentPath,
+            })}
+          />
+        </Button>
+      </Link>
+      <Link to="/hse">
         <Button variant="ghost" size={"icon"}>
           <MoveRightIcon size={24} className="size-6" />
         </Button>

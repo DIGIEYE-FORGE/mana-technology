@@ -7,50 +7,68 @@ import { useState } from "react";
 
 const tabs = [
   {
-    title: "Mineral resources estimation ",
+    title: "Vision ESG",
     subTabs: [
       {
-        title: "Mineral resources estimation ",
-        image: "/overview-002.svg",
+        image: "/esg-01.svg",
+        title: "Stratégie ESG pour une performance durable",
       },
     ],
   },
   {
-    title: "Reserve Evolution",
+    title: "Vision ESG",
     subTabs: [
       {
-        title: "Reserve Evolution",
-        image: "/overview-001.svg",
+        image: "/esg-04.svg",
+        title: "Project design",
       },
     ],
   },
   {
-    title: "Key Metrics",
+    title: "ESG actions",
     subTabs: [
       {
-        title: "Key Metrics",
-        image: "/overview-003.svg",
+        title: "ESG actions",
+        image: "/esg-08.png",
+      },
+    ],
+  },
+  {
+    title: "ESG tizert",
+    subTabs: [
+      {
+        image: "/esg-03.svg",
+        title: "Projets potentiels planifiés",
+      },
+    ],
+  },
+  {
+    title: "Project Gouvernance",
+    subTabs: [
+      {
+        title: "Project Gouvernance",
+        image: "/esg-06.svg",
       },
     ],
   },
 ];
 
-interface OverviewButtonProps extends ButtonProps {}
+interface EsgButtonProps extends ButtonProps {}
 
-export function OverviewButton({ className, ...props }: OverviewButtonProps) {
+export function EsgButton({ className, ...props }: EsgButtonProps) {
   const [activeTab, setActiveTab] = useState(0);
   const [activeSubTab, setActiveSubTab] = useState(0);
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className={cn("", className)} {...props} />
+        <Button className={cn("", className)} {...props}></Button>
       </DialogTrigger>
       <DialogContent
         showCloseButton={false}
         className="max dark bottom-0 top-[4rem] flex w-[100%] max-w-none translate-y-0 flex-col rounded-none border-none bg-card/10 p-4 text-foreground backdrop-blur-xl"
         overlayClassName="bg-transparent"
       >
-        <div className="relative mx-auto flex w-full max-w-[1920px] gap-2">
+        <div className="mx-auto flex w-full max-w-[1920px] gap-2">
           {tabs.map((tab, index) => (
             <button
               key={index}
@@ -79,7 +97,7 @@ export function OverviewButton({ className, ...props }: OverviewButtonProps) {
           </DialogClose>
         </div>
         <div
-          className="relative mx-auto flex h-1 max-h-[920px] w-full max-w-[1920px] flex-1 flex-col gap-4"
+          className="mx-auto flex h-1 max-h-[920px] w-full max-w-[1920px] flex-1 flex-col gap-4"
           style={{
             backgroundImage: "url(/dashboard-frame.png)",
             backgroundRepeat: "no-repeat",
@@ -92,10 +110,12 @@ export function OverviewButton({ className, ...props }: OverviewButtonProps) {
                 {tabs[activeTab].subTabs[activeSubTab].title}
               </span>
             </div>
-            <div className="mr-4 mt-5 flex w-[62%] items-center px-6">
+            <div className="mr-4 mt-5 flex w-[62%] items-center justify-end gap-4 px-6">
               {activeSubTab > 0 && (
                 <Button
                   variant={"ghost"}
+                  className="mr-auto"
+                  size={"icon"}
                   onClick={() => setActiveSubTab(activeSubTab - 1)}
                 >
                   <MoveLeft className="h-6 w-6" />
@@ -104,7 +124,7 @@ export function OverviewButton({ className, ...props }: OverviewButtonProps) {
               {activeSubTab < tabs[activeTab].subTabs.length - 1 && (
                 <Button
                   variant={"ghost"}
-                  className="ml-auto"
+                  size={"icon"}
                   onClick={() => setActiveSubTab(activeSubTab + 1)}
                 >
                   <MoveRight className="h-6 w-6" />
@@ -112,11 +132,11 @@ export function OverviewButton({ className, ...props }: OverviewButtonProps) {
               )}
             </div>
           </div>
-          <div className="mb-8 ml-16 mr-8 h-1 flex-1">
+          <div className="mb-8 ml-16 mr-8 flex h-1 flex-1 justify-center">
             <img
               src={tabs[activeTab].subTabs[activeSubTab].image}
               alt={tabs[activeTab].subTabs[activeSubTab].title}
-              className="h-full w-full"
+              className="h-full"
             />
           </div>
         </div>

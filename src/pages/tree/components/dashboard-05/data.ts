@@ -36,7 +36,7 @@ export const widgetsData = {
         ],
       },
       {
-        name: "Boltec m10",
+        name: "Boltec M10",
         image: "/machine-05.png",
         telemetries: [
           {
@@ -75,7 +75,7 @@ export const widgetsData = {
         {
           name: "UG_BOLTEC_M10_TD",
           color: "#FF5AF1",
-          label: "Boltec m10",
+          label: "Boltec M10",
           serial: "8S287JI0CLP38N38",
         },
         {
@@ -94,7 +94,7 @@ export const widgetsData = {
         {
           name: "UG_BOLTEC_M10_TU",
           color: "#FF5AF1",
-          label: "Boltec m10",
+          label: "Boltec M10",
           serial: "8S287JI0CLP38N38",
         },
         {

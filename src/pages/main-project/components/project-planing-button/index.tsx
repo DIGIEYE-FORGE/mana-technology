@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button, ButtonProps } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { DialogClose } from "@radix-ui/react-dialog";
@@ -72,59 +72,9 @@ const tabs = [
       },
     ],
   },
-  {
-    title: "esg ",
-    subTabs: [
-      {
-        title: "Vision ESG",
-        image: "/esg-01.svg",
-        subtitle: "Stratégie ESG pour une performance durable",
-      },
-      {
-        title: "Vision ESG",
-        image: "/esg-04.svg",
-        subtitle: "Project design",
-      },
-      {
-        title: "ESG actions",
-        image: "/esg-08.png",
-      },
-      {
-        title: "ESG tizert",
-        image: "/esg-03.svg",
-        subtitle: "Projets potentiels planifiés",
-      },
-      {
-        title: "Project Gouvernance",
-        image: "/esg-06.svg",
-      },
-      // {
-      //   title: "Earned Value Management",
-      //   image: "/esg-06.svg",
-      // },
-      // {
-      //   title: "Earned Value Management",
-      //   image: "/esg-07.svg",
-      // },
-      // {
-      //   title: "Earned Value Management",
-      //   image: "/esg-08.png",
-      // },
-    ],
-  },
-  // {
-  //   title: "ESG",
-  //   subTabs: [
-  //     {
-  //       title: "hse",
-  //       image: "",
-  //     },
-  //   ],
-  // },
 ];
 
-interface ProjectPlaningButtonProps
-  extends React.HTMLAttributes<HTMLButtonElement> {}
+interface ProjectPlaningButtonProps extends ButtonProps {}
 
 function ProjectPlaningButton({
   className,
@@ -135,7 +85,7 @@ function ProjectPlaningButton({
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <button className={cn("", className)} {...props} />
+        <Button className={cn("", className)} {...props}></Button>
       </DialogTrigger>
       <DialogContent
         showCloseButton={false}
@@ -195,9 +145,6 @@ function ProjectPlaningButton({
                   <MoveLeft className="h-6 w-6" />
                 </Button>
               )}
-              <span className="text-lg font-semibold">
-                {tabs[activeTab].subTabs[activeSubTab].subtitle}
-              </span>
               {activeSubTab < tabs[activeTab].subTabs.length - 1 && (
                 <Button
                   variant={"ghost"}
