@@ -95,13 +95,25 @@ export default function MultiProgressWidget({ attributes }: Widget) {
                 <Progress
                   key={index}
                   style={{ height: "2rem" }}
-                  value={parseFloat(item?.value as string) || 0}
+                  value={
+                    Number(item?.value) > 0
+                      ? parseFloat(item?.value as string)
+                      : 0
+                  }
                   className="w-full rounded-lg"
                   color={telemetries.find((t) => t.name === item?.name)?.color}
                 />
 
-                <div className="absolute left-2 top-2 font-bold text-black">
-                  {item?.value as string}%
+                <div
+                  className="absolute bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2 text-lg font-bold text-white"
+                  style={{
+                    mixBlendMode: "difference",
+                  }}
+                >
+                  {Number(item?.value) > 0
+                    ? parseFloat(item?.value as string).toFixed(2)
+                    : 0}
+                  %
                 </div>
               </div>
             </div>
