@@ -57,6 +57,20 @@
   }
 }
 
+@font-face {
+  font-family: 'Ethnocentric';
+  src: url('/fonts/ethnocentric-rg.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Ethnocentric';
+  src: url('/fonts/ethnocentric-rg-it.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+}
+
 :root,
 body,
 main {
