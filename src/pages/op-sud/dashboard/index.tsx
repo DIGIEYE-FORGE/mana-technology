@@ -23,7 +23,7 @@ export default function HomeDashboard() {
                   name: "CUMUL_PLANIF_TOT",
                   unit: "T",
                   color: "#FF5AF1",
-                  label: "Planifié (monsuel)",
+                  label: "Planifié (mensuelle)",
                   serial: "0AS9Y1JCHRS26P9D",
                   type: "bar",
                 },
@@ -31,7 +31,7 @@ export default function HomeDashboard() {
                   name: "CUMUL_REAL_TOT",
                   unit: "T",
                   color: "#FFDC8C",
-                  label: "Réalisé (monsuel)",
+                  label: "Réalisé (mensuelle)",
                   serial: "0AS9Y1JCHRS26P9D",
                   type: "bar",
                 },
@@ -58,7 +58,7 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
         <h1 className="text-center text-lg font-semibold">
-          Production Roche Cumulée mensuelle​ (t)
+          Production Roche Cumulée du mois ​(t)
         </h1>
         <div className="flex-1">
           <LineChartWidget
@@ -257,17 +257,17 @@ export default function HomeDashboard() {
             attributes={{
               telemetries: [
                 {
-                  area: true,
-                  name: "SUD_REALISE_FORATION",
-                  color: "#B98EFF",
-                  label: "Realisé ML/J",
-                  serial: "C6XPYU0D920L1M07",
-                },
-                {
                   area: false,
                   name: "SUD_PLANIFIE_FORATION",
                   color: "#78F6EA",
-                  label: "Objectif ML/J",
+                  label: "Planifié",
+                  serial: "C6XPYU0D920L1M07",
+                },
+                {
+                  area: true,
+                  name: "SUD_REALISE_FORATION",
+                  color: "#B98EFF",
+                  label: "Realisé",
                   serial: "C6XPYU0D920L1M07",
                 },
               ],

@@ -26,7 +26,7 @@ export const widgetsData = {
         {
           name: "HSE_NMO_Total",
           color: "#25A18E",
-          label: "Observation+NM",
+          label: "Observation ​+ Near miss​",
           serial: "TATC8YPVCLHULUAF",
         },
         {

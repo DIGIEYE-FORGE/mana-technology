@@ -156,9 +156,7 @@ export function ConeChart({
                   <span className="text-base font-bold text-[#FAAC18]">
                     {item.value}
                   </span>
-                  <span className="w-full  whitespace-nowrap text-base">
-                    {item.name}
-                  </span>
+                  <span className="w-full text-base">{item.name}</span>
                 </div>
               </div>
             );
