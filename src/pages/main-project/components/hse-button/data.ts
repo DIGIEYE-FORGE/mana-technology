@@ -108,7 +108,7 @@ export const widgetsData = {
               x: new Date(),
               y: 135,
             },
-          ]
+          ],
         },
       ],
     },
@@ -155,7 +155,7 @@ export const widgetsData = {
               x: new Date(),
               y: 135,
             },
-          ]
+          ],
         },
       ],
     },
@@ -231,7 +231,7 @@ export const widgetsData = {
               x: new Date(),
               y: 135,
             },
-          ]
+          ],
         },
         {
           name: "HSE_ENVI_Total",
@@ -271,7 +271,7 @@ export const widgetsData = {
               x: new Date(),
               y: 135,
             },
-          ]
+          ],
         },
       ],
     },
@@ -319,7 +319,7 @@ export const widgetsData = {
               x: new Date(),
               y: 135,
             },
-          ]
+          ],
         },
         {
           name: "HSE_Incident_OFS",
@@ -359,7 +359,7 @@ export const widgetsData = {
               x: new Date(),
               y: 135,
             },
-          ]
+          ],
         },
         {
           name: "HSE_Incident_UG",
@@ -399,7 +399,7 @@ export const widgetsData = {
               x: new Date(),
               y: 135,
             },
-          ]
+          ],
         },
         {
           name: "HSE_Incident_OP",
@@ -439,7 +439,7 @@ export const widgetsData = {
               x: new Date(),
               y: 135,
             },
-          ]
+          ],
         },
         {
           name: "HSE_Incident_OP",
@@ -479,7 +479,7 @@ export const widgetsData = {
               x: new Date(),
               y: 135,
             },
-          ]
+          ],
         },
       ],
     },
