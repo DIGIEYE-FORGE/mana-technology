@@ -606,7 +606,7 @@ export default function MainProjectPage() {
                 <Model
                   hovered={hovered}
                   url={
-                    `${env.VITE_LOCAL_MODELS === "true" ? "/ignore/" : "https://storage.googleapis.com/nextronic/"}` +
+                    `${env.VITE_LOCAL_MODELS === "true" ? "/ignore/" : "https://managem.digieye.io/statics/"}` +
                     "mine026.glb"
                   }
                   ref={modelRef}
