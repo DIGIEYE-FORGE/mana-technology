@@ -102,7 +102,7 @@ export const widgetsData = {
           name: "UG_FORATION_TIRS_TIR_DELAI_GAZ_ET_LAVAGE-min",
           color: "#FFF",
           label: "Tir, délai Gaz et lavage",
-          serial: "WF5CW7A4T9R9VU9F",
+          serial: "GHZIN57J7EOVXG0C",
         },
       ],
     },

@@ -20,7 +20,7 @@ export function ProgressCircle({
   color = "red",
   className,
   progress,
-  unit = "%",
+  unit = "",
 }: ProgressCircleProps) {
   return (
     <div className={cn("relative size-32 text-sm font-semibold", className)}>

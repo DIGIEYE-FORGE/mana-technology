@@ -4,8 +4,8 @@ import { widgetsData } from "./data";
 import BarChartWidget from "@/components/bar-chart-widget";
 import DonutChartWidget from "@/components/donut-chart-widget";
 import { ConeChart } from "@/components/cone-chart";
-import { WeeklyLineChart } from "@/components/weekly-line-chart";
 import { ProgressCirclePropsChart } from "@/components/progress-circle-chart";
+import LineChartWidget from "@/components/line-chart-widget";
 
 export default function HseDashboard() {
   return (
@@ -32,6 +32,7 @@ export default function HseDashboard() {
         <h3 className="text-lg font-semibold">{widgetsData[1].title}</h3>
         <div className="text-4xl font-bold">
           <Telemetry
+          displayFormat="integer"
             telemetry={{
               name: widgetsData[1].telemetryName,
               serial: widgetsData[1].serial,
@@ -47,7 +48,7 @@ export default function HseDashboard() {
               name: widgetsData[2].telemetryName,
               serial: widgetsData[2].serial,
             }}
-            displayFormat="float"
+            displayFormat="integer"
             correction={widgetsData[2].correction}
           />{" "}
           %
@@ -56,7 +57,7 @@ export default function HseDashboard() {
       <Card className="col-span-3 grid place-content-center !rounded p-6">
         <img
           src="/security.jpeg"
-          className="size-[6.5rem]"
+          className="size-[6.5rem] rounded-lg border-2	border-slate-950	"
           alt="security = respect"
         />
       </Card>
@@ -98,7 +99,7 @@ export default function HseDashboard() {
           {widgetsData[5].title}
         </h3>
         <div className="h-1 flex-1">
-          <WeeklyLineChart {...widgetsData[5].attributes} />
+          <LineChartWidget attributes={widgetsData[5].attributes} />
         </div>
       </Card>
       <Card className="col-span-4 row-span-3 flex flex-col gap-8 p-6">
@@ -123,7 +124,7 @@ export default function HseDashboard() {
         </h3>
         <div className="h-1 flex-1">
           {/* <LineChartWidget attributes={widgetsData[4].attributes} /> */}
-          <WeeklyLineChart {...widgetsData[4].attributes} />
+          <LineChartWidget attributes={widgetsData[4].attributes} />
         </div>
       </Card>
     </div>

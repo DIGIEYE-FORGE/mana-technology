@@ -10,16 +10,16 @@ const tabs = [
     title: "Tizert Geology",
     subTabs: [
       {
-        title: "Tizert Geology",
+        title: "",
         image: "/geology.svg",
       },
     ],
   },
   {
-    title: "History",
+    title: "Project Evolution",
     subTabs: [
       {
-        title: "Reserve Evolution",
+        title: "",
         image: "/history.svg",
       },
     ],
@@ -28,7 +28,7 @@ const tabs = [
     title: "Reserve evolution",
     subTabs: [
       {
-        title: "Reserve evolution",
+        title: "",
         image: "/evolution.svg",
       },
     ],
@@ -37,7 +37,7 @@ const tabs = [
     title: "Keys Metrics",
     subTabs: [
       {
-        title: "Key Metrics",
+        title: "Project Design",
         image: "/keys.svg",
       },
     ],
@@ -46,7 +46,7 @@ const tabs = [
     title: "Eco-responsible",
     subTabs: [
       {
-        title: "Eco-responsible",
+        title: "Project Design",
         image: "/eco.svg",
       },
     ],
@@ -73,7 +73,7 @@ export function OverviewButton({ className, ...props }: OverviewButtonProps) {
             <button
               key={index}
               className={cn(
-                "custom-button flex flex-1 justify-center rounded-lg py-2 text-xl font-bold uppercase transition-colors hover:brightness-125",
+                "custom-button flex flex-1 justify-center rounded-lg py-2 text-lg uppercase transition-colors hover:brightness-125",
                 {
                   "bg-[#00A3FF]/50 hover:brightness-110": activeTab === index,
                 },

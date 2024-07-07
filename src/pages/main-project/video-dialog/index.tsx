@@ -19,7 +19,7 @@ function VideoDialog() {
             size={"icon"}
           >
             <Play className="h-6 w-6 text-[#dbd520]" />
-            <span>Show Video</span>
+            <span>Timelapse</span>
           </Button>
         </DialogTrigger>
         <DialogContent
@@ -27,9 +27,10 @@ function VideoDialog() {
           className="h-[90%] !min-w-[90vw] p-8"
         >
           <video
+            autoPlay
             className="h-full w-full"
             controls
-            src="https://www.youtube.com/watch?v=8JXvqWQ3tZo"
+            src="/ignore/timelapse.mp4"
           ></video>
           <DialogClose asChild>
             <Button

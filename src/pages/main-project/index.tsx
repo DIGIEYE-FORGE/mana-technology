@@ -119,8 +119,7 @@ const data = [
     },
     background: "url(/screen2.svg)",
   },
-
-  ////// update url video plant
+  //// video1
   {
     title: "Plant",
     type: "video",
@@ -129,7 +128,7 @@ const data = [
       top: "17%",
       left: "46%",
     },
-    url: "usins1.png",
+    url: "/ignore/3dvideo.mp4",
     background: "url(/video.svg)",
     positionModel: {
       side: "top",
@@ -531,6 +530,7 @@ export default function MainProjectPage() {
                         {item?.type === "video" && item?.url ? (
                           <div>
                             <video
+                              autoPlay
                               className="aspect-video w-full object-contain opacity-90"
                               controls
                               src={item.url}

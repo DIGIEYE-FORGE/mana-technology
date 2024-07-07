@@ -67,8 +67,17 @@ const tabs = [
         image: "/cost1.svg",
       },
       {
-        title: "Earned Value Management",
+        title: "Earned Value",
         image: "/cost2.svg",
+      },
+    ],
+  },
+  {
+    title: "Governance",
+    subTabs: [
+      {
+        title: "Project Governance",
+        image: "/siir.svg",
       },
     ],
   },
@@ -97,7 +106,7 @@ function ProjectPlaningButton({
             <button
               key={index}
               className={cn(
-                "custom-button flex flex-1 justify-center rounded-lg py-2 text-xl font-bold uppercase transition-colors hover:brightness-125",
+                "custom-button flex flex-1 justify-center rounded-lg py-2 text-lg  uppercase transition-colors hover:brightness-125",
                 {
                   "bg-[#00A3FF]/50 hover:brightness-110": activeTab === index,
                 },

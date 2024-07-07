@@ -30,8 +30,7 @@ export function CircularProgress({
 }: CircularProgressProps) {
   const sortedStops = stops.sort((a, b) => a.offset - b.offset);
   const max = sortedStops[sortedStops.length - 1].offset;
-  const color =
-    sortedStops.find((stop) => stop.offset >= progress)?.color || "#ffffffff";
+  const color = sortedStops.find((stop) => stop.offset >= progress)?.color;
 
   return (
     <div className={cn("relative size-32 text-sm font-semibold", className)}>
@@ -52,11 +51,13 @@ export function CircularProgress({
           r={50 - strokeWidth}
           fill="none"
           strokeWidth={strokeWidth}
-          stroke={`url(#gradient-${color})`}
+          stroke={color ? `url(#gradient-${color})` : "transparent"}
           pathLength={100}
           strokeDasharray={150}
           initial={{ strokeDashoffset: 150 }}
-          animate={{ strokeDashoffset: 150 - (progress / max) * 100 }}
+          animate={{
+            strokeDashoffset: 150 - Math.min(progress / max, 1) * 100,
+          }}
           strokeLinecap={rounded ? "round" : "butt"}
         />
         <defs>

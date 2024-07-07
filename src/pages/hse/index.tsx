@@ -21,7 +21,7 @@ function HseBar() {
           alt="logo"
           className="border-r pr-4 max-sm:hidden"
         />
-        <span className="py-3 text-lg font-bold">HSE</span>
+        <span className="py-3 text-lg font-bold">Safety</span>
       </div>
       <DatePickerWithRange
         className="mr-auto hidden lg:block"

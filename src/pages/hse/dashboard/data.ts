@@ -73,19 +73,27 @@ export const widgetsData = {
   4: {
     title: "Évolution Heures Travaillées",
     attributes: {
-      serial: "LWGUT0FXIZ5ALOND",
-      telemetryName: "HSE_MH_Total",
-      color: "#78F6EA",
-      label: "Évolution Heures Travaillées",
+      telemetries: [
+        {
+          serial: "LWGUT0FXIZ5ALOND",
+          name: "HSE_MH_Total",
+          color: "#78F6EA",
+          label: "Évolution Heures Travaillées",
+        },
+      ],
     },
   },
   5: {
     title: "Évolution Effectif",
     attributes: {
-      serial: "LWGUT0FXIZ5ALOND",
-      telemetryName: "HSE_MP_Total",
-      color: "#FF5AF1",
-      label: "Évolution Heures Travaillées",
+      telemetries: [
+        {
+          serial: "LWGUT0FXIZ5ALOND",
+          name: "HSE_MP_Total",
+          color: "#FF5AF1",
+          label: "Évolution Heures Travaillées",
+        },
+      ],
     },
   },
   6: {

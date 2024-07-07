@@ -357,10 +357,10 @@ export default function UndergroundDashboardPage() {
               {
                 nameTelemetry:
                   "UG_SOUTENEMENT_TEMPS_DE_MISE_EN_PLACE_SOUTENEMENT-min",
-                nameLabelTelemetry: "Souténement",
+                nameLabelTelemetry: "Soutènement",
                 bfsTelemetry:
                   "UG_TAUX_ARRACHEMENT_TEMPS_DE_MISE_EN_PLACE_SOUTENEMENT_BFS",
-                bfsLabelTelemetry: "Souténement",
+                bfsLabelTelemetry: "Soutènement",
                 color: "#009AB6",
                 serial: "GHZIN57J7EOVXG0C",
               },
@@ -390,7 +390,7 @@ export default function UndergroundDashboardPage() {
                   area: true,
                   name: "UG_SUIVI_TEMPS_MOYEN_CYCLE",
                   color: "#78F6EA",
-                  label: "Realisé",
+                  label: "Temps Moyen de cycle",
                   serial: "HTCBJYTZC333HN7C",
                 },
               ],

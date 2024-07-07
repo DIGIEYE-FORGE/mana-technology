@@ -324,7 +324,7 @@ export const qualitédair = {
         stops:[
           { color: "red", offset: 0.1 },
           { color: "yellow", offset: 0.3 },
-          { color: "green", offset: 0.5},
+          { color: "green", offset: 0.6},
       ],
         attributes: {
           telemetries: [
