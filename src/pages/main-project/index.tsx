@@ -693,7 +693,7 @@ export default function MainProjectPage() {
               <div
                 className="absolute h-[40px] w-[40px] xl:h-[45px] xl:w-[45px] 2xl:h-[64px] 2xl:w-[67px]"
                 style={{
-                  top: "0%",
+                  top: "-8%",
                   left: "60%",
                   cursor: "pointer",
                   background: "url(/screen4.svg)",
@@ -706,7 +706,7 @@ export default function MainProjectPage() {
               <div
                 className="absolute h-[40px] w-[40px] xl:h-[45px] xl:w-[45px] 2xl:h-[64px] 2xl:w-[67px]"
                 style={{
-                  top: "0%",
+                  top: "-8%",
                   left: "56%",
                   cursor: "pointer",
                   background: "url(/tree.svg)",
@@ -723,7 +723,7 @@ export default function MainProjectPage() {
                   )}
                   style={{
                     cursor: "pointer",
-                    top: "0%",
+                    top: "-8%",
                     left: "52%",
                     background: `url(/video.svg)`,
                     backgroundSize: "contain",
