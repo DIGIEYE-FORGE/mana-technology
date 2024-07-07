@@ -4,7 +4,7 @@ import {
   DialogContent,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { XIcon } from "lucide-react";
+import { Play, XIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
@@ -13,7 +13,14 @@ function VideoDialog() {
     <div>
       <Dialog>
         <DialogTrigger asChild>
-          <button className="absolute bottom-[12%] left-[50.5%] right-[0.5%] top-[79%]"></button>
+          <Button
+            className="flex h-full w-full gap-2 rounded-full"
+            variant={"ghost"}
+            size={"icon"}
+          >
+            <Play className="h-6 w-6 text-[#dbd520]" />
+            <span>Show Video</span>
+          </Button>
         </DialogTrigger>
         <DialogContent
           showCloseButton={false}

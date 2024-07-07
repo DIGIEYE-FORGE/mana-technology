@@ -119,9 +119,11 @@ const data = [
     },
     background: "url(/screen2.svg)",
   },
+
+  ////// update url video plant
   {
     title: "Plant",
-    type: "image",
+    type: "video",
     image: "/usins1.png",
     position: {
       top: "17%",
@@ -527,21 +529,25 @@ export default function MainProjectPage() {
                           {item?.title}
                         </div>
                         {item?.type === "video" && item?.url ? (
-                          <video
-                            className="aspect-video w-full object-contain opacity-90"
-                            controls
-                            src={item.url}
-                          />
-                        ) : item?.type === "image" && item?.url ? (
-                          <div className="relative aspect-video h-full w-full">
-                            <img
-                              className="h-full w-full object-contain"
+                          <div>
+                            <video
+                              className="aspect-video w-full object-contain opacity-90"
+                              controls
                               src={item.url}
-                              alt={item.title}
                             />
-                            {item.title === "Plant" && <VideoDialog />}
+                            <div className="absolute left-[38%] top-[12%] w-fit">
+                              <VideoDialog />
+                            </div>
                           </div>
-                        ) : null}
+                        ) : item?.type === "image" && item?.url ? (
+                          // <div className="relative aspect-video h-full w-full">
+                          <img
+                            className="h-full w-full object-contain"
+                            src={item.url}
+                            alt={item.title}
+                          />
+                        ) : // </div>
+                        null}
                       </div>
                     </div>
                   </PopoverContent>
