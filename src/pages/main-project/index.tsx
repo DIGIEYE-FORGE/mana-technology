@@ -22,6 +22,7 @@ import {
 import FlipCountdown from "@rumess/react-flip-countdown";
 import React from "react";
 import { MainProjectUpBar } from "./components/up-bar";
+import VideoDialog from "./video-dialog";
 
 export function RotatingModel({
   modelRef,
@@ -532,11 +533,14 @@ export default function MainProjectPage() {
                             src={item.url}
                           />
                         ) : item?.type === "image" && item?.url ? (
-                          <img
-                            className="aspect-video w-full object-contain"
-                            src={item.url}
-                            alt={item.title}
-                          />
+                          <div className="relative aspect-video h-full w-full">
+                            <img
+                              className="h-full w-full object-contain"
+                              src={item.url}
+                              alt={item.title}
+                            />
+                            {item.title === "Plant" && <VideoDialog />}
+                          </div>
                         ) : null}
                       </div>
                     </div>

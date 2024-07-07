@@ -30,7 +30,8 @@ export function CircularProgress({
 }: CircularProgressProps) {
   const sortedStops = stops.sort((a, b) => a.offset - b.offset);
   const max = sortedStops[sortedStops.length - 1].offset;
-  const color = sortedStops.find((stop) => stop.offset >= progress)?.color;
+  const color =
+    sortedStops.find((stop) => stop.offset >= progress)?.color || "#ffffffff";
 
   return (
     <div className={cn("relative size-32 text-sm font-semibold", className)}>
