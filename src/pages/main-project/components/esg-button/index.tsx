@@ -7,50 +7,42 @@ import { useState } from "react";
 
 const tabs = [
   {
-    title: "Vision ESG",
+    title: "Permitting",
     subTabs: [
       {
         image: "/esg-01.svg",
-        title: "Stratégie ESG pour une performance durable",
+        title: "Permitting",
       },
     ],
   },
   {
-    title: "Vision ESG",
+    title: "ESG Commitment",
     subTabs: [
       {
-        image: "/esg-04.svg",
-        title: "Project design",
+        image: "/esgcom.svg",
+        title: "ESG Commitment",
       },
     ],
   },
   {
-    title: "ESG actions",
+    title: "Actions",
     subTabs: [
       {
-        title: "ESG actions",
-        image: "/esg-08.png",
+        title: "Actions",
+        image: "/action.svg",
       },
     ],
   },
   {
-    title: "ESG tizert",
+    title: "Operations readiness",
     subTabs: [
       {
         image: "/esg-03.svg",
-        title: "Projets potentiels planifiés",
+        title: "Operations readiness",
       },
     ],
   },
-  {
-    title: "Project Gouvernance",
-    subTabs: [
-      {
-        title: "Project Gouvernance",
-        image: "/esg-06.svg",
-      },
-    ],
-  },
+  
 ];
 
 interface EsgButtonProps extends ButtonProps {}

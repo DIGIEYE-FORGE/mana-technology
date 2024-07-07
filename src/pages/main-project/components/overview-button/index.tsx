@@ -16,7 +16,7 @@ const tabs = [
     ],
   },
   {
-    title: "History",
+    title: "Project Evolution",
     subTabs: [
       {
         title: "Reserve Evolution",

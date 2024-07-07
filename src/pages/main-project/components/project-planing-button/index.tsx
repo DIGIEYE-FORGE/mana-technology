@@ -72,6 +72,15 @@ const tabs = [
       },
     ],
   },
+  {
+    title: "Governance",
+    subTabs: [
+      {
+        title: "Project Governance",
+        image: "/siir.svg",
+      },
+    ],
+  },
 ];
 
 interface ProjectPlaningButtonProps extends ButtonProps {}
