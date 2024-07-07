@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import { ReactNode } from "react";
 import { ChartTelemetry, HistoryType, Widget, flatten } from "@/utils";
