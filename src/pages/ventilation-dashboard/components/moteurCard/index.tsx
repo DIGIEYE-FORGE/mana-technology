@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useEffect, useRef, useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import { ReactNode } from "react";
 import { ChartTelemetry, HistoryType, Widget, flatten } from "@/utils";
 import { useAppContext } from "@/Context";
-
 import useSWR from "swr";
 import Loader from "@/components/loader";
 
@@ -15,56 +16,63 @@ type Props = Widget & {
 
 export const MoteurCard = (props: Props) => {
   const { backendApi, dateRange } = useAppContext();
-
   const telemetries = (props.attributes?.telemetries || []) as ChartTelemetry[];
+  const [chartData, setChartData] = useState([]);
+  const fetchInterval = props.interval || 10000; // Default to 10 seconds if no interval is provided
+
+  const fetcher = async () => {
+    if (!dateRange?.from || telemetries.length === 0) return [];
+    const res = await Promise.all(
+      telemetries.map(async ({ serial, name }) => {
+        const { results } = await backendApi.findMany<HistoryType>(
+          "/dpc-history/api/history",
+          {
+            pagination: {
+              page: 1,
+              perPage: 20,
+            },
+            select: [name],
+            where: {
+              serial,
+            },
+            orderBy: "createdAt:desc",
+          },
+        );
+        return results;
+      }),
+    );
+    return res.map((item, index) => {
+      const name = telemetries[index].name;
+      return {
+        name: telemetries[index].label || telemetries[index].name,
+        data: item.map((item) => ({
+          x: new Date(item.createdAt),
+          y: Number(flatten(item)[name]),
+        })),
+      };
+    });
+  };
 
   const { data, isLoading, error } = useSWR(
-    `histories?${JSON.stringify({
-      telemetries,
-      dateRange,
-    })}`,
-    async () => {
-      if (!dateRange?.from || telemetries.length === 0) return [];
-      const res = await Promise.all(
-        telemetries.map(
-          async ({ serial, name }) => {
-            const { results } = await backendApi.findMany<HistoryType>(
-              "/dpc-history/api/history",
-              {
-                pagination: {
-                  page: 1,
-                  perPage: 20,
-                },
-                select: [name],
-                where: {
-                  serial,
-                },
-                orderBy: "createdAt:desc",
-              },
-            );
-            return results;
-          },
-          {
-            interval: props.interval || undefined,
-          },
-        ),
-      );
-      return (
-        res.map((item, index) => {
-          const name = telemetries[index].name;
-          return {
-            name: telemetries[index].label || telemetries[index].name,
-            data: item.map((item) => {
-              return {
-                x: new Date(item.createdAt),
-                y: Number(flatten(item)[name]),
-              };
-            }),
-          };
-        }) || []
-      );
-    },
+    `histories?${JSON.stringify({ telemetries, dateRange })}`,
+    fetcher,
+    { refreshInterval: fetchInterval },
   );
+
+  useEffect(() => {
+    if (data) {
+      setChartData(data as any);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    const intervalId = setInterval(async () => {
+      const newData = await fetcher();
+      setChartData(newData as any);
+    }, fetchInterval);
+
+    return () => clearInterval(intervalId); // Clean up interval on component unmount
+  }, [fetchInterval]);
 
   if (isLoading) {
     return (
@@ -87,26 +95,29 @@ export const MoteurCard = (props: Props) => {
       options={{
         theme: { mode: "dark" },
         tooltip: { cssClass: "text-black" },
-        colors: [props.color], // Change the line color to match the image
+        colors: [props.color],
         grid: {
-          borderColor: "#797979", // Adjust grid color to be more visible against the dark background
-          xaxis: { lines: { show: false } }, // Hide x-axis grid lines
-          yaxis: { lines: { show: true } }, // Hide y-axis grid lines
-          padding: { top: -15 }, // Remove padding around the chart
+          borderColor: "#797979",
+          xaxis: { lines: { show: false } },
+          yaxis: { lines: { show: true } },
+          padding: { top: -15 },
         },
         chart: {
+          id: "realtime",
           background: "transparent",
           toolbar: { show: false },
-          animations: { enabled: true },
+          animations: {
+            enabled: true,
+            easing: "linear",
+            dynamicAnimation: { speed: 1000 },
+          },
           zoom: { enabled: false },
           selection: { enabled: false },
           dropShadow: { enabled: false },
         },
-        stroke: { width: 2, curve: "smooth" }, // Adjust the stroke width to match the image
+        stroke: { width: 2, curve: "smooth" },
         dataLabels: { enabled: false },
-        fill: {
-          type: "solid",
-        },
+        fill: { type: "solid" },
         xaxis: {
           type: "datetime",
           axisBorder: { show: false },
@@ -140,7 +151,7 @@ export const MoteurCard = (props: Props) => {
           },
         },
       }}
-      series={data || []}
+      series={chartData || []}
       type="line"
       height="100%"
     />

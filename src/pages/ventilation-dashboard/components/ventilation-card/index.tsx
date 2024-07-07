@@ -76,7 +76,7 @@ export const VentilationCard = ({
           return (
             <div
               key={i}
-              className={cn("flex items-center gap-1 text-xl font-semibold", {
+              className={cn("flex items-center gap-1 text-sm font-semibold", {
                 "text-2xl": data?.length === 1,
               })}
             >

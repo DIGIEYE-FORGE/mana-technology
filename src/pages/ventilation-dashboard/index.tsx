@@ -63,7 +63,7 @@ const VentilationDashboard = () => {
       </div>
       <div className="col-span-6 row-span-5 flex flex-col gap-4 !p-0 !pt-8">
         <div className="grid w-full grid-cols-3 gap-4">
-          <Card className="!rounded !px-2 !py-3">
+          <Card className="!rounded !px-2 !py-3 text-sm">
             <VentilationCard {...ventilation[0]} interval={5000} />
           </Card>
           <Card className="!rounded !px-2 !py-3">
