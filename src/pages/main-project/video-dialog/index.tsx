@@ -30,7 +30,7 @@ function VideoDialog() {
           autoPlay
             className="h-full w-full"
             controls
-            src="/ignore/3dvideo.mp4"
+            src="/ignore/timelapse.mp4"
           ></video>
           <DialogClose asChild>
             <Button

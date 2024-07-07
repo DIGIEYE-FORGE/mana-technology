@@ -20,7 +20,7 @@ export function MainProjectUpBar() {
         Project Overview
       </OverviewButton>
       <ProjectPlaningButton variant={"ghost"} className="gap-2">
-        <span>project planing</span>
+        <span>Project Planning</span>
       </ProjectPlaningButton>
       <EsgButton variant={"ghost"} className="gap-2">
         <span>ESG</span>

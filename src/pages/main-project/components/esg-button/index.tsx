@@ -10,8 +10,24 @@ const tabs = [
     title: "Permitting",
     subTabs: [
       {
-        image: "/esg-01.svg",
-        title: "Permitting",
+        image: "/Onsite.svg",
+        title: "On Site - Initial Situation",
+      },
+      {
+        image: "/Onsite2.svg",
+        title: "On Site - Exploration Phase",
+      },
+      {
+        image: "/Onsite3.svg",
+        title: "On Site - Operations Phase",
+      },
+      {
+        image: "/Onsite4.svg",
+        title: "On Site - Operation  Phase",
+      },
+      {
+        image: "/Onsite4.svg",
+        title: "Off Site",
       },
     ],
   },
@@ -37,8 +53,8 @@ const tabs = [
     title: "Operations readiness",
     subTabs: [
       {
-        image: "/esg-03.svg",
-        title: "Operations readiness",
+        image: "/readiness.svg",
+        title: "Commitment to excellence and growth",
       },
     ],
   },
@@ -65,7 +81,7 @@ export function EsgButton({ className, ...props }: EsgButtonProps) {
             <button
               key={index}
               className={cn(
-                "custom-button flex flex-1 justify-center rounded-lg py-2 text-xl font-bold uppercase transition-colors hover:brightness-125",
+                "custom-button flex flex-1 justify-center rounded-lg py-2 text-lg uppercase transition-colors hover:brightness-125",
                 {
                   "bg-[#00A3FF]/50 hover:brightness-110": activeTab === index,
                 },
