@@ -237,7 +237,7 @@ const data = [
     type: "information",
     title: "Open Pit",
     attribute: {
-      ["Mineral reserves"]: "7,6 Mt @0,85% Cu & 23 ",
+      ["Mineral reserves"]: "7,6 Mt @0,85% Cu & 23 g/t Ag",
       ["Waste tonnage"]: "61.8 Mt ",
       ["Rock production "]: "69.5 Mt",
       ["Life of mine "]: "4 years ",

@@ -1,9 +1,8 @@
-
 export const data = {
   0: {
     children: [
       {
-        title: "O2",
+        title: "O2 (%)",
         attributes: {
           telemetries: [
             {
@@ -17,12 +16,12 @@ export const data = {
               name: "s=Plc3_O2",
               serial: "0TKJJWS26V62QV15",
               label: "L500",
-            }
+            },
           ],
-        }
+        },
       },
       {
-        title: "CO",
+        title: "CO (ppm)",
         attributes: {
           telemetries: [
             {
@@ -36,12 +35,12 @@ export const data = {
               name: "s=Plc3_CO",
               serial: "0TKJJWS26V62QV15",
               label: "L500",
-            }
+            },
           ],
-        }
+        },
       },
       {
-        title: "NO2",
+        title: "NO2 (ppm)",
         attributes: {
           telemetries: [
             {
@@ -52,15 +51,15 @@ export const data = {
             },
             {
               color: "#FED41E",
-              name: "s=Plc2_NO2",
+              name: "s=Plc3_NO2",
               serial: "0TKJJWS26V62QV15",
               label: "L500",
-            }
+            },
           ],
-        }
+        },
       },
       {
-        title: "Vitesse de l’air",
+        title: "Vitesse de l’air (m/s)",
         attributes: {
           telemetries: [
             {
@@ -70,21 +69,20 @@ export const data = {
               label: "L100",
             },
             {
-              color: "#CCC",
+              color: "#F00",
               name: "s=Plc3_Vm/s",
               serial: "0TKJJWS26V62QV15",
               label: "L500",
-            }
-
+            },
           ],
-        }
+        },
       },
-    ]
+    ],
   },
   1: {
     children: [
       {
-        title: "Vitesse (RPM)",
+        title: "Vitesse (rpm)",
         attributes: {
           telemetries: [
             {
@@ -95,7 +93,7 @@ export const data = {
             },
             {
               color: "#FF5AF1",
-              name: "s=Var3_Vitesse",
+              name: "s=Var4_Vitesse",
               serial: "0TKJJWS26V62QV15",
               label: "M1 V2",
             },
@@ -106,18 +104,20 @@ export const data = {
               label: "M2 V1",
             },
             {
-              color: "#CCC",
-              name: "s=Var4_Vitesse",
+              color: "#F00",
+              name: "s=Var5_Vitesse",
               serial: "0TKJJWS26V62QV15",
               label: "M2 V2",
-            }
+            },
           ],
-        }
+        },
       },
       {
-        title: "Puissance (KW)",
+        title: "Puissance (kw)",
+        max: 60,
+        min: 0,
         attributes: {
-           telemetries: [
+          telemetries: [
             {
               color: "#FED41E",
               name: "s=Var1_Pw",
@@ -126,7 +126,7 @@ export const data = {
             },
             {
               color: "#FF5AF1",
-              name: "s=Var3_Pw",
+              name: "s=Var4_Pw",
               serial: "0TKJJWS26V62QV15",
               label: "M1 V2",
             },
@@ -137,13 +137,13 @@ export const data = {
               label: "M2 V1",
             },
             {
-              color: "#CCC",
-              name: "s=Var4_Pw",
+              color: "#F00",
+              name: "s=Var5_Pw",
               serial: "0TKJJWS26V62QV15",
               label: "M2 V2",
             },
           ],
-        }
+        },
       },
       {
         title: "Vibration (mm/s)",
@@ -157,7 +157,7 @@ export const data = {
             },
             {
               color: "#FF5AF1",
-              name: "s=Var3_VibDe",
+              name: "s=Var4_VibDe",
               serial: "0TKJJWS26V62QV15",
               label: "M1 V2",
             },
@@ -168,13 +168,13 @@ export const data = {
               label: "M2 V1",
             },
             {
-              color: "#CCC",
-              name: "s=Var4_VibDe",
+              color: "#F00",
+              name: "s=Var5_VibDe",
               serial: "0TKJJWS26V62QV15",
               label: "M2 V2",
             },
           ],
-        }
+        },
       },
       {
         title: "Température (°C)",
@@ -188,7 +188,7 @@ export const data = {
             },
             {
               color: "#FF5AF1",
-              name: "s=Pt100NdeM3",
+              name: "s=Pt100NdeM4",
               serial: "0TKJJWS26V62QV15",
               label: "M1 V2",
             },
@@ -199,15 +199,15 @@ export const data = {
               label: "M2 V1",
             },
             {
-              color: "#CCC",
-              name: "s=Pt100NdeM4",
+              color: "#F00",
+              name: "s=Pt100NdeM5",
               serial: "0TKJJWS26V62QV15",
               label: "M2 V2",
             },
           ],
-        }
+        },
       },
-    ]
+    ],
   },
   2: {
     children: [
@@ -231,21 +231,20 @@ export const data = {
               color: "#78F6EA",
               name: "s=Plc2_ToS",
               serial: "0TKJJWS26V62QV15",
-              label: "Sêche (L100)",
+              label: "Sèche (L100)",
             },
             {
-              color: "#CCC",
+              color: "#F00",
               name: "s=Plc3_ToS",
               serial: "0TKJJWS26V62QV15",
-              label: "Sêche (L%00)",
-            }
+              label: "Sèche (L500)",
+            },
           ],
-        }
+        },
       },
-    ]
+    ],
   },
-}
-
+};
 
 export const qualitédair = {
   0: {
@@ -266,12 +265,12 @@ export const qualitédair = {
               serial: "0TKJJWS26V62QV15",
               color: "#C99E3E",
               unit: "%",
-            }
-          ]
+            },
+          ],
         },
       },
       1: {
-        title: "CO",
+        title: "CO (ppm)",
         stops: [
           { color: "red", offset: 100 },
           { color: "yellow", offset: 20 },
@@ -285,12 +284,12 @@ export const qualitédair = {
               serial: "0TKJJWS26V62QV15",
               color: "#007D82",
               unit: "ppm",
-            }
-          ]
-        }
+            },
+          ],
+        },
       },
       2: {
-        title: "NO2",
+        title: "NO2 (ppm)",
         stops: [
           { color: "red", offset: 3 },
           { color: "yellow", offset: 2 },
@@ -305,8 +304,8 @@ export const qualitédair = {
               color: "#F650A0",
               unit: "ppm",
             },
-          ]
-        }
+          ],
+        },
       },
       3: {
         title: "Vitesse air",
@@ -324,11 +323,11 @@ export const qualitédair = {
               color: "#7A0BC0",
               unit: "m/s",
             },
-          ]
-        }
+          ],
+        },
       },
       4: {
-        title: "CO",
+        title: "CO (ppm)",
         attributes: {
           telemetries: [
             {
@@ -343,16 +342,16 @@ export const qualitédair = {
               serial: "0TKJJWS26V62QV15",
               color: "#cda943",
             },
-          ]
-        }
-      }
-    }
+          ],
+        },
+      },
+    },
   },
   1: {
     title: "Niveau 500",
     children: {
       0: {
-        title: "O2",
+        title: "O2 (%)",
         stops: [
           { color: "red", offset: 16 },
           { color: "yellow", offset: 19 },
@@ -366,12 +365,12 @@ export const qualitédair = {
               serial: "0TKJJWS26V62QV15",
               color: "#C99E3E",
               unit: "%",
-            }
-          ]
-        }
+            },
+          ],
+        },
       },
       1: {
-        title: "CO",
+        title: "CO (ppm)",
         stops: [
           { color: "red", offset: 100 },
           { color: "yellow", offset: 20 },
@@ -385,12 +384,12 @@ export const qualitédair = {
               serial: "0TKJJWS26V62QV15",
               color: "#007D82",
               unit: "ppm",
-            }
-          ]
-        }
+            },
+          ],
+        },
       },
       2: {
-        title: "NO2",
+        title: "NO2 (ppm)",
         stops: [
           { color: "red", offset: 3 },
           { color: "yellow", offset: 2 },
@@ -405,8 +404,8 @@ export const qualitédair = {
               color: "#F650A0",
               unit: "ppm",
             },
-          ]
-        }
+          ],
+        },
       },
       3: {
         title: "Vitesse air",
@@ -424,11 +423,11 @@ export const qualitédair = {
               color: "#7A0BC0",
               unit: "m/s",
             },
-          ]
-        }
+          ],
+        },
       },
       4: {
-        title: "CO",
+        title: "CO (ppm)",
         attributes: {
           telemetries: [
             {
@@ -443,16 +442,16 @@ export const qualitédair = {
               serial: "0TKJJWS26V62QV15",
               color: "#cda943",
             },
-          ]
-        }
-      }
-    }
+          ],
+        },
+      },
+    },
   },
   2: {
     title: "Niveau 1000",
     children: {
       0: {
-        title: "O2",
+        title: "O2 (%)",
         stops: [
           { color: "red", offset: 16 },
           { color: "yellow", offset: 19 },
@@ -466,12 +465,12 @@ export const qualitédair = {
               serial: "0TKJJWS26V62QV15",
               color: "#C99E3E",
               unit: "%",
-            }
-          ]
-        }
+            },
+          ],
+        },
       },
       1: {
-        title: "CO",
+        title: "CO (ppm)",
         stops: [
           { color: "red", offset: 3 },
           { color: "yellow", offset: 2 },
@@ -485,12 +484,12 @@ export const qualitédair = {
               serial: "0TKJJWS26V62QV15",
               color: "#007D82",
               unit: "ppm",
-            }
-          ]
-        }
+            },
+          ],
+        },
       },
       2: {
-        title: "NO2",
+        title: "NO2 (ppm)",
         stops: [
           { color: "red", offset: 3 },
           { color: "yellow", offset: 2 },
@@ -505,8 +504,8 @@ export const qualitédair = {
               color: "#F650A0",
               unit: "ppm",
             },
-          ]
-        }
+          ],
+        },
       },
       3: {
         title: "Vitesse air",
@@ -524,11 +523,11 @@ export const qualitédair = {
               color: "#7A0BC0",
               unit: "m/s",
             },
-          ]
-        }
+          ],
+        },
       },
       4: {
-        title: "CO",
+        title: "CO (ppm)",
         attributes: {
           telemetries: [
             {
@@ -543,48 +542,52 @@ export const qualitédair = {
               serial: "0TKJJWS26V62QV15",
               color: "#cda943",
             },
-          ]
-        }
-      }
-    }
-  }
-}
+          ],
+        },
+      },
+    },
+  },
+};
 
 export const ventilation = {
   0: {
-    title: "Energie Total (Kwh)",
+    title: "Energie (Kwh)",
     unit: "Kwh",
     telemetry: [
       {
         serial: "0TKJJWS26V62QV15",
-        name: "s=plc1_DB_Conso2_kWhTotale",
-        label: "v1",
+        name: "s=plc1_DB_Conso1_kWhTotale",
+        label: "V1",
         color: "#78F6EA",
       },
       {
         serial: "0TKJJWS26V62QV15",
-        name: "s=plc1_DB_Conso1_kWhTotale",
-        label: "v2",
+        name: "s=plc1_DB_Conso2_kWhTotale",
+        label: "V2",
         color: "#FF5AF1",
-      }
-    ]
+      },
+    ],
   },
   1: {
     title: "Puissance Thermique galerie",
     unit: "Kw",
-    telemetry: [{
-      serial: "0TKJJWS26V62QV15",
-      name: "s=plc1_DB_Tag_+PwDiesel",
-      color: "#FF5AF1",
-    }]
+    telemetry: [
+      {
+        serial: "0TKJJWS26V62QV15",
+        name: "s=plc1_DB_Tag_+PwDiesel",
+        color: "#FF5AF1",
+      },
+    ],
   },
   2: {
     title: "Nombre d’Engins Présents",
     unit: "",
-    telemetry: [{
-      serial: "0TKJJWS26V62QV15",
-      name: "s=plc1_DB_Tag_NbVehicule",
-      color: "#FF5AF1",
-    }]
+    telemetry: [
+      {
+        serial: "0TKJJWS26V62QV15",
+        name: "s=plc1_DB_Tag_NbVehicule",
+        color: "#FF5AF1",
+      },
+    ],
   },
-}
+};

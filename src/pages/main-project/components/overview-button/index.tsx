@@ -6,21 +6,22 @@ import { MoveLeft, MoveRight, XIcon } from "lucide-react";
 import { useState } from "react";
 
 const tabs = [
-  {
-    title: "Tizert Geology",
-    subTabs: [
-      {
-        title: "",
-        image: "/geology.svg",
-      },
-    ],
-  },
+  
   {
     title: "Project Evolution",
     subTabs: [
       {
         title: "",
         image: "/history.svg",
+      },
+    ],
+  },
+  {
+    title: "Tizert Geology",
+    subTabs: [
+      {
+        title: "",
+        image: "/geology.svg",
       },
     ],
   },
@@ -46,7 +47,7 @@ const tabs = [
     title: "Eco-responsible",
     subTabs: [
       {
-        title: "Project Design",
+        title: "",
         image: "/eco.svg",
       },
     ],

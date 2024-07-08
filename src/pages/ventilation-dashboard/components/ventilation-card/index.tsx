@@ -71,21 +71,21 @@ export const VentilationCard = ({
     );
   return (
     <div className="relative flex h-full w-full flex-col items-center justify-center gap-1">
-      <h1 className="text-center text-sm font-extrabold">{title}</h1>
-      <div className="flex h-1 w-full flex-1 flex-col items-center justify-center">
+      <h1 className="text-center text-sm">{title}</h1>
+      <div className="flex h-1 w-full flex-1  items-center justify-center">
         {(data || [])?.map((d, i) => {
           return (
             <div
               key={i}
-              className={cn("flex items-center gap-1 text-sm font-semibold")}
+              className={cn("flex items-center pl-4 gap-1 text-sm font-bold")}
             >
               {telemetry[i].label && (
-                <span className="pr-1 font-bold">
+                <span className="pr-1 font-bold text-yellow-300">
                   {telemetry[i].label}
                   {": "}
                 </span>
               )}
-              <span>
+              <span className="">
                 {typeof d.value === "number" ? d.value.toFixed(2) : "0"}
               </span>
               {unit && <span>{unit}</span>}

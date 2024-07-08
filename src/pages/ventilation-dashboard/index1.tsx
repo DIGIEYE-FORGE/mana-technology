@@ -11,6 +11,9 @@ const VentilationDashboard1 = () => {
   return (
     <div className="flex h-fit min-h-full w-full flex-wrap gap-8">
       <div className="flex w-1 min-w-[30rem] flex-1 flex-col gap-4">
+      <h1 className="text-lg font-semibold text-orange-300">
+      Qualité de l’air
+        </h1>
         {data[0].children.map((child, index) => (
           <Card key={index} className="flex h-[11rem] w-full flex-col">
             <h1 className="text-center text-lg font-semibold">{child.title}</h1>
@@ -19,6 +22,7 @@ const VentilationDashboard1 = () => {
                 attributes={child.attributes}
                 interval={5000}
                 max={child?.max}
+                min={child?.min}
               />
             </div>
           </Card>
@@ -31,13 +35,18 @@ const VentilationDashboard1 = () => {
                 attributes={child.attributes}
                 interval={5000}
                 max={child?.max}
+                min={child?.min}
               />
             </div>
           </Card>
         ))}
       </div>
       <div className="flex w-1 min-w-[30rem] flex-1 flex-col gap-4">
+      <h1 className="text-lg font-semibold text-orange-300">
+      Marche Ventilateurs
+        </h1>
         <div className="flex h-[11rem] justify-between gap-8">
+          
           <div className="flex flex-col gap-4">
             <div className="flex flex-1 gap-4">
               <Card className="!rounded !px-2 !py-3">
@@ -68,6 +77,7 @@ const VentilationDashboard1 = () => {
                 attributes={child.attributes}
                 interval={5000}
                 max={child?.max}
+                min={child?.min}
               />
             </div>
           </Card>

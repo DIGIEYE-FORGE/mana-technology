@@ -145,7 +145,7 @@ export default function HomePage() {
       </Card>
       <Card className="col-span-full row-span-8 p-4 xl:col-span-6">
         <h3 className="text-center text-lg font-semibold">
-          Disponibilité Engins CADEX DRIL
+          Disponibilité Engins pit SUD DRIL
         </h3>
         <TableWidget
           className="h-1 flex-1"

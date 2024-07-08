@@ -12,6 +12,7 @@ type Props = Widget & {
   children?: ReactNode;
   interval?: number;
   max?: number;
+  min?: number;
 };
 
 export const MoteurCard = (props: Props) => {
@@ -107,7 +108,7 @@ export const MoteurCard = (props: Props) => {
           background: "transparent",
           toolbar: { show: false },
           animations: {
-            enabled: true,
+            enabled: false,
             easing: "linear",
             dynamicAnimation: { speed: 1000 },
           },
@@ -136,6 +137,7 @@ export const MoteurCard = (props: Props) => {
         yaxis: {
           min: 0,
           max: props.max,
+          min: props.min,
           tickAmount: 1,
           labels: {
             show: true,

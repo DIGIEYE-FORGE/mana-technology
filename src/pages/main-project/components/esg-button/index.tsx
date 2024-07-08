@@ -7,6 +7,15 @@ import { useState } from "react";
 
 const tabs = [
   {
+    title: "ESG Commitment",
+    subTabs: [
+      {
+        image: "/esgcom.svg",
+        title: "ESG Commitment",
+      },
+    ],
+  },
+  {
     title: "Permitting",
     subTabs: [
       {
@@ -31,15 +40,7 @@ const tabs = [
       },
     ],
   },
-  {
-    title: "ESG Commitment",
-    subTabs: [
-      {
-        image: "/esgcom.svg",
-        title: "ESG Commitment",
-      },
-    ],
-  },
+ 
   {
     title: "Actions",
     subTabs: [
