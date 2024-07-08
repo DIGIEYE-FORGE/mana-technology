@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Suspense, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Loader3D } from "../tree";
 import Model from "@/components/models";
 import { env } from "@/utils/env";
@@ -32,7 +32,7 @@ export default function MobilePage() {
       <div className="relative flex h-1 min-h-[16rem] flex-1 items-center justify-center">
         <div className="relative">
           <img
-            className="max-h-full object-contain opacity-70"
+            className="object-contain opacity-70"
             src="/magazine2.png"
             alt="Magazine"
           />
@@ -229,8 +229,19 @@ function Location({ location }: { location: TLocation }) {
 
 export function UpBar() {
   const [fullScreen, setFullScreen] = useState(false);
+
+  useEffect(() => {
+    if (fullScreen && document?.documentElement?.requestFullscreen) {
+      document?.documentElement?.requestFullscreen().catch((e) => {
+        console.error(e);
+      });
+    } else if (!fullScreen && document?.exitFullscreen) {
+      document?.exitFullscreen();
+    }
+  }, [fullScreen]);
+
   return (
-    <div className="group sticky top-0 z-10 flex h-up-bar w-full shrink-0 items-center justify-end gap-2 border-b px-6 backdrop-blur">
+    <div className="group sticky top-0 z-[100] flex h-up-bar w-full shrink-0 items-center justify-end gap-2 border-b px-6 backdrop-blur">
       <div className="mr-auto flex gap-4">
         <img src="/logo.svg" alt="logo" className="max-w-[30%]" />
         <span className="h-3/4 text-balance border-l py-3 pl-4 font-ethnocentric text-[10px] font-bold lg:text-lg">

@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import { OverviewButton } from "../overview-button";
 import ProjectPlaningButton from "../project-planing-button";
 import { EsgButton } from "../esg-button";
-import { useState } from "react";
+import { useAppContext } from "@/Context";
 
 export function MainProjectUpBar() {
-  const [fullScreen, setFullScreen] = useState(false);
+  const { fullScreen, setFullScreen } = useAppContext();
   return (
     <div className="group sticky top-0 z-10 flex h-up-bar w-full shrink-0 items-center justify-end gap-2 border-b px-6 backdrop-blur">
       <div className="mr-auto flex gap-4">
