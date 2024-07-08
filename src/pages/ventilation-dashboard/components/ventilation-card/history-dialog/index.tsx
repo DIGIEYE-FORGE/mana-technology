@@ -10,7 +10,7 @@ import { History, XIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 import { useState } from "react";
-import { HistoryTable } from "./history-table";
+import { BarChart } from "./bar-chart";
 
 interface HistoryDialogProps {
   title: string;
@@ -18,6 +18,7 @@ interface HistoryDialogProps {
     name: string;
     serial: string;
     label?: string;
+    color?: string;
   }[];
   interval?: number;
   open?: boolean;
@@ -53,11 +54,13 @@ export const HistoryDialog = ({
             </Button>
           </DialogClose>
         </DialogHeader>
-        <HistoryTable
-          title={title}
-          telemetries={telemetries}
-          interval={interval}
-        />
+        <div className="h-96 w-full">
+          <BarChart
+            title={title}
+            telemetries={telemetries}
+            interval={interval}
+          />
+        </div>
       </DialogContent>
     </Dialog>
   );

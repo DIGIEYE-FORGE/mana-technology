@@ -4,17 +4,17 @@ export const data = {
     children: [
       {
         title: "O2",
-        max:25,
+        max: 25,
         attributes: {
           telemetries: [
             {
-              color:"#FF5AF1",
+              color: "#FF5AF1",
               name: "s=Var1_Pw",
               serial: "0TKJJWS26V62QV15",
               label: "Puissance (MT1)",
             },
             {
-             color:"#FF5AF1",
+              color: "#FF5AF1",
               name: "s=Var2_Pw",
               serial: "0TKJJWS26V62QV15",
               label: "Puissance (MT2)",
@@ -24,17 +24,17 @@ export const data = {
       },
       {
         title: "CO",
-        max:2000,
+        max: 2000,
         attributes: {
           telemetries: [
             {
-            color:"#FED41E",
+              color: "#FED41E",
               name: "s=Var1_Vitesse",
               serial: "0TKJJWS26V62QV15",
               label: "Vitesse (MT1)",
             },
             {
-              color:"#FED41E",
+              color: "#FED41E",
               name: "s=Var2_Vitesse",
               serial: "0TKJJWS26V62QV15",
               label: "Vitesse (MT2)",
@@ -44,17 +44,17 @@ export const data = {
       },
       {
         title: "NO2",
-        max:120,
+        max: 120,
         attributes: {
           telemetries: [
             {
-              color:"#FF5AF1",
+              color: "#FF5AF1",
               name: "s=Pt100NdeM1",
               serial: "0TKJJWS26V62QV15",
               label: "Température (MT1)",
             },
             {
-              color:"#FF5AF1",
+              color: "#FF5AF1",
               name: "s=Pt100NdeM2",
               serial: "0TKJJWS26V62QV15",
               label: "Température (MT2)",
@@ -64,17 +64,17 @@ export const data = {
       },
       {
         title: "Vitesse de l’air",
-        max:1,
+        max: 1,
         attributes: {
           telemetries: [
             {
-              color:"#78F6EA",
+              color: "#78F6EA",
               name: "s=Var1_VibDe",
               serial: "0TKJJWS26V62QV15",
               label: "Vibration (MT1)",
             },
             {
-              color:"#78F6EA",
+              color: "#78F6EA",
               name: "s=Var2_VibDe",
               serial: "0TKJJWS26V62QV15",
               label: "Vibration (MT2)",
@@ -89,17 +89,17 @@ export const data = {
     children: [
       {
         title: "Vitess (RPM)",
-        max:55,
+        max: 55,
         attributes: {
           telemetries: [
             {
-              color:"#FF5AF1",
+              color: "#FF5AF1",
               name: "s=Var4_Pw",
               serial: "0TKJJWS26V62QV15",
               label: "Puissance",
             },
             {
-              color:"#FF5AF1",
+              color: "#FF5AF1",
               name: "s=Var5_Pw",
               serial: "0TKJJWS26V62QV15",
               label: "Puissance",
@@ -109,17 +109,17 @@ export const data = {
       },
       {
         title: "Puissance (KW)",
-        max:2000,
+        max: 2000,
         attributes: {
           telemetries: [
             {
-              color:"#FED41E",
+              color: "#FED41E",
               name: "s=Var4_Vitesse",
               serial: "0TKJJWS26V62QV15",
               label: "Vitesse",
             },
             {
-              color:"#FED41E",
+              color: "#FED41E",
               name: "s=Var5_Vitesse",
               serial: "0TKJJWS26V62QV15",
               label: "Vitesse",
@@ -129,17 +129,17 @@ export const data = {
       },
       {
         title: "Vibration (mm/s)",
-        max:120,
+        max: 120,
         attributes: {
           telemetries: [
             {
-              color:"#FF5AF1",
+              color: "#FF5AF1",
               name: "s=Pt100NdeM4",
               serial: "0TKJJWS26V62QV15",
               label: "Température",
             },
             {
-              color:"#FF5AF1",
+              color: "#FF5AF1",
               name: "s=Pt100NdeM5",
               serial: "0TKJJWS26V62QV15",
               label: "Température",
@@ -149,7 +149,7 @@ export const data = {
       },
       {
         title: "Température (°C)",
-        max:5,
+        max: 5,
         attributes: {
           telemetries: [
             {
@@ -173,17 +173,17 @@ export const data = {
     children: [
       {
         title: "Température (°C)",
-        max:55,
+        max: 55,
         attributes: {
           telemetries: [
             {
-              color:"#FF5AF1",
+              color: "#FF5AF1",
               name: "s=Var1_Pw",
               serial: "0TKJJWS26V62QV15",
               label: "Puissance (MT1)",
             },
             {
-            color:"#FF5AF1",
+              color: "#FF5AF1",
               name: "s=Var2_Pw",
               serial: "0TKJJWS26V62QV15",
               label: "Puissance (MT2)",
@@ -191,7 +191,8 @@ export const data = {
           ],
         }
       },
-  ]},
+    ]
+  },
 }
 
 
@@ -201,10 +202,10 @@ export const qualitédair = {
     children: {
       0: {
         title: "O2",
-        stops:[
-            { color: "red", offset: 16 },
-            { color: "yellow", offset: 19 },
-            { color: "green", offset: 20},
+        stops: [
+          { color: "red", offset: 16 },
+          { color: "yellow", offset: 19 },
+          { color: "green", offset: 20 },
         ],
         attributes: {
           telemetries: [
@@ -214,18 +215,18 @@ export const qualitédair = {
               serial: "0TKJJWS26V62QV15",
               color: "#C99E3E",
               unit: "%",
-              max:20,
+              max: 20,
             }
           ]
         },
       },
       1: {
         title: "CO",
-        stops:[
+        stops: [
           { color: "red", offset: 100 },
           { color: "yellow", offset: 20 },
-          { color: "green", offset: 15},
-      ],
+          { color: "green", offset: 15 },
+        ],
         attributes: {
           telemetries: [
             {
@@ -234,18 +235,18 @@ export const qualitédair = {
               serial: "0TKJJWS26V62QV15",
               color: "#007D82",
               unit: "ppm",
-              max:100,
+              max: 100,
             }
           ]
         }
       },
       2: {
         title: "NO2",
-        stops:[
+        stops: [
           { color: "red", offset: 3 },
           { color: "yellow", offset: 2 },
-          { color: "green", offset: 1.5},
-      ],
+          { color: "green", offset: 1.5 },
+        ],
         attributes: {
           telemetries: [
             {
@@ -254,18 +255,18 @@ export const qualitédair = {
               serial: "0TKJJWS26V62QV15",
               color: "#F650A0",
               unit: "ppm",
-              max:3,
+              max: 3,
             },
           ]
         }
       },
       3: {
         title: "Vitesse air",
-        stops:[
+        stops: [
           { color: "red", offset: 0.1 },
           { color: "yellow", offset: 0.3 },
-          { color: "green", offset: 0.6},
-      ],
+          { color: "green", offset: 0.6 },
+        ],
         attributes: {
           telemetries: [
             {
@@ -274,7 +275,7 @@ export const qualitédair = {
               serial: "0TKJJWS26V62QV15",
               color: "#7A0BC0",
               unit: "m/s",
-              max:0.5,
+              max: 0.5,
             },
           ]
         }
@@ -305,11 +306,11 @@ export const qualitédair = {
     children: {
       0: {
         title: "O2",
-        stops:[
+        stops: [
           { color: "red", offset: 16 },
           { color: "yellow", offset: 19 },
-          { color: "green", offset: 20},
-      ],
+          { color: "green", offset: 20 },
+        ],
         attributes: {
           telemetries: [
             {
@@ -324,11 +325,11 @@ export const qualitédair = {
       },
       1: {
         title: "CO",
-        stops:[
+        stops: [
           { color: "red", offset: 100 },
           { color: "yellow", offset: 20 },
-          { color: "green", offset: 15},
-      ],
+          { color: "green", offset: 15 },
+        ],
         attributes: {
           telemetries: [
             {
@@ -343,11 +344,11 @@ export const qualitédair = {
       },
       2: {
         title: "NO2",
-        stops:[
+        stops: [
           { color: "red", offset: 3 },
           { color: "yellow", offset: 2 },
-          { color: "green", offset: 1.5},
-      ],
+          { color: "green", offset: 1.5 },
+        ],
         attributes: {
           telemetries: [
             {
@@ -362,10 +363,10 @@ export const qualitédair = {
       },
       3: {
         title: "Vitesse air",
-        stops:[
+        stops: [
           { color: "red", offset: 0.1 },
           { color: "yellow", offset: 0.3 },
-          { color: "green", offset: 0.5},
+          { color: "green", offset: 0.5 },
         ],
         attributes: {
           telemetries: [
@@ -405,11 +406,11 @@ export const qualitédair = {
     children: {
       0: {
         title: "O2",
-        stops:[
+        stops: [
           { color: "red", offset: 16 },
           { color: "yellow", offset: 19 },
-          { color: "green", offset: 20},
-      ],
+          { color: "green", offset: 20 },
+        ],
         attributes: {
           telemetries: [
             {
@@ -424,11 +425,11 @@ export const qualitédair = {
       },
       1: {
         title: "CO",
-        stops:[
+        stops: [
           { color: "red", offset: 3 },
           { color: "yellow", offset: 2 },
-          { color: "green", offset: 1.5},
-      ],
+          { color: "green", offset: 1.5 },
+        ],
         attributes: {
           telemetries: [
             {
@@ -443,11 +444,11 @@ export const qualitédair = {
       },
       2: {
         title: "NO2",
-        stops:[
+        stops: [
           { color: "red", offset: 3 },
           { color: "yellow", offset: 2 },
-          { color: "green", offset: 1.5},
-      ],
+          { color: "green", offset: 1.5 },
+        ],
         attributes: {
           telemetries: [
             {
@@ -462,10 +463,10 @@ export const qualitédair = {
       },
       3: {
         title: "Vitesse air",
-        stops:[
+        stops: [
           { color: "red", offset: 0.1 },
           { color: "yellow", offset: 0.3 },
-          { color: "green", offset: 0.5},
+          { color: "green", offset: 0.5 },
         ],
         attributes: {
           telemetries: [
@@ -510,12 +511,14 @@ export const ventilation = {
       {
         serial: "0TKJJWS26V62QV15",
         name: "s=plc1_DB_Conso2_kWhTotale",
-        label: "v1"
+        label: "v1",
+        color: "#78F6EA",
       },
       {
         serial: "0TKJJWS26V62QV15",
         name: "s=plc1_DB_Conso1_kWhTotale",
-        label: "v2"
+        label: "v2",
+        color: "#FF5AF1",
       }
     ]
   },
@@ -525,6 +528,7 @@ export const ventilation = {
     telemetry: [{
       serial: "0TKJJWS26V62QV15",
       name: "s=plc1_DB_Tag_+PwDiesel",
+      color: "#FF5AF1",
     }]
   },
   2: {
@@ -533,6 +537,7 @@ export const ventilation = {
     telemetry: [{
       serial: "0TKJJWS26V62QV15",
       name: "s=plc1_DB_Tag_NbVehicule",
+      color: "#FF5AF1",
     }]
   },
 }
