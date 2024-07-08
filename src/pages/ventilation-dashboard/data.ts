@@ -74,8 +74,8 @@ export const data = {
               label: "L100",
             },
             {
-              color: "#78F6EA",
-              name: "s=Plc2_Vm/s",
+              color: "#CCC",
+              name: "s=Plc3_Vm/s",
               serial: "0TKJJWS26V62QV15",
               label: "L500",
             }
