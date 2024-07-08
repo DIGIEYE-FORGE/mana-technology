@@ -128,7 +128,7 @@ const data = [
       top: "17%",
       left: "46%",
     },
-    url: "/3dvideo.mp4",
+    url: "/statics/3dvideo.mp4",
     background: "url(/video.svg)",
     positionModel: {
       side: "top",
@@ -193,7 +193,7 @@ const data = [
       top: "45%",
       right: "9%",
     },
-    url: "/est_vd.mp4",
+    url: "/statics/op.mp4",
     positionModel: {
       side: "left",
       align: "start",
@@ -536,9 +536,11 @@ export default function MainProjectPage() {
                               controls
                               src={item.url}
                             />
-                            <div className="absolute left-[38%] top-[12%] w-fit">
-                              <VideoDialog />
-                            </div>
+                            {item.title == "Plant" && (
+                              <div className="absolute left-[38%] top-[12%] w-fit">
+                                <VideoDialog />
+                              </div>
+                            )}
                           </div>
                         ) : item?.type === "image" && item?.url ? (
                           // <div className="relative aspect-video h-full w-full">

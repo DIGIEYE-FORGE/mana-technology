@@ -41,7 +41,6 @@ function Ventillation({ attribute }: VentillationProps) {
       if (!attribute?.length) return [];
       const res1 = await Promise.all(
         attribute.map(async (device) => {
-          // const { name, label, color, serial } = device;
           const {
             telemetryName,
             labelTelemetry,

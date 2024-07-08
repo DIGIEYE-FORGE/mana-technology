@@ -35,7 +35,7 @@ export const HistoryDialog = ({
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button
-          className="absolute -bottom-1 right-0 z-[99] h-5 bg-transparent p-0 text-white hover:bg-transparent"
+          className="absolute -bottom-3 -right-2 z-[99] h-5 bg-transparent p-0 text-white hover:bg-transparent"
           onClick={() => setOpen(true)}
         >
           <History className="size-[1.1rem]" />

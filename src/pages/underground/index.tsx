@@ -57,8 +57,8 @@ function UndergroundBar() {
 
 export default function UnderGroundPage() {
   return (
-    <main
-      className="h-fit min-h-full"
+    <div
+      className="h-[100svh] overflow-auto"
       style={{
         backgroundImage:
           "linear-gradient(to left, #061991b1 75%, transparent 100%)",
@@ -66,10 +66,10 @@ export default function UnderGroundPage() {
     >
       <main className="mx-auto flex max-w-[1920px] flex-col gap-6">
         <UndergroundBar />
-        <main className="px-6 pb-6">
+        <main className="!h-fit px-6 pb-6">
           <Outlet />
         </main>
       </main>
-    </main>
+    </div>
   );
 }

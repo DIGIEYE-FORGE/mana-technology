@@ -71,18 +71,16 @@ export const VentilationCard = ({
     );
   return (
     <div className="relative flex h-full w-full flex-col items-center justify-center gap-1">
-      <h1 className="text-center text-xs font-extrabold">{title}</h1>
+      <h1 className="text-center text-sm font-extrabold">{title}</h1>
       <div className="flex h-1 w-full flex-1 flex-col items-center justify-center">
         {(data || [])?.map((d, i) => {
           return (
             <div
               key={i}
-              className={cn("flex items-center gap-1 text-sm font-semibold", {
-                "text-xl": data?.length === 1,
-              })}
+              className={cn("flex items-center gap-1 text-sm font-semibold")}
             >
               {telemetry[i].label && (
-                <span className="pr-1 font-semibold">
+                <span className="pr-1 font-bold">
                   {telemetry[i].label}
                   {": "}
                 </span>
