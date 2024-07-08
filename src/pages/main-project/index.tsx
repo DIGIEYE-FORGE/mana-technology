@@ -719,7 +719,7 @@ export default function MainProjectPage() {
                   top: "-8%",
                   left: "56%",
                   cursor: "pointer",
-                  background: "url(/dashboard.svg)",
+                  background: "url(/dashboard_tree.svg)",
                   backgroundSize: "contain",
                   backgroundRepeat: "no-repeat",
                 }}
