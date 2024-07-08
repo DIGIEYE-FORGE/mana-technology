@@ -27,11 +27,7 @@ const VentilationDashboard1 = () => {
           <Card key={index} className="flex h-[11rem] w-full flex-col">
             <h1 className="text-center text-lg font-semibold">{child.title}</h1>
             <div className="h-1 flex-1">
-              <MoteurCard
-                attributes={child.attributes}
-                interval={5000}
-                max={child?.max}
-              />
+              <MoteurCard attributes={child.attributes} interval={5000} />
             </div>
           </Card>
         ))}
@@ -64,11 +60,7 @@ const VentilationDashboard1 = () => {
           <Card key={index} className="flex h-[11rem] w-full flex-col">
             <h1 className="text-center text-lg font-semibold">{child.title}</h1>
             <div className="h-1 flex-1">
-              <MoteurCard
-                attributes={child.attributes}
-                interval={5000}
-                max={child?.max}
-              />
+              <MoteurCard attributes={child.attributes} interval={5000} />
             </div>
           </Card>
         ))}

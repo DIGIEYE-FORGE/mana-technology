@@ -21,7 +21,7 @@ const VentilationDashboard = () => {
               <MoteurCard
                 attributes={child.attributes}
                 interval={5000}
-                max={child?.max}
+                max={child?.max || undefined}
               />
             </div>
           </div>
@@ -44,11 +44,7 @@ const VentilationDashboard = () => {
           >
             <h1 className="text-center text-lg font-semibold">{child.title}</h1>
             <div className="h-1 flex-1">
-              <MoteurCard
-                attributes={child.attributes}
-                interval={5000}
-                max={child?.max}
-              />
+              <MoteurCard attributes={child.attributes} interval={5000} />
             </div>
           </div>
         ))}
@@ -68,11 +64,7 @@ const VentilationDashboard = () => {
           >
             <h1 className="text-center text-lg font-semibold">{child.title}</h1>
             <div className="flex-1">
-              <MoteurCard
-                attributes={child.attributes}
-                interval={5000}
-                max={child?.max}
-              />
+              <MoteurCard attributes={child.attributes} interval={5000} />
             </div>
           </div>
         ))}

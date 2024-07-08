@@ -4,6 +4,7 @@ export const data = {
     children: [
       {
         title: "O2",
+        max:25,
         attributes: {
           telemetries: [
             {
@@ -61,6 +62,7 @@ export const data = {
       },
       {
         title: "Vitesse de l’air",
+        max:1,
         attributes: {
           telemetries: [
             {
