@@ -86,6 +86,9 @@ importers:
       framer-motion:
         specifier: ^11.2.10
         version: 11.2.11(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
       lucide-react:
         specifier: ^0.395.0
         version: 0.395.0(react@18.3.1)
@@ -147,6 +150,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.2.22
         version: 18.3.0
+      '@types/react-gauge-chart':
+        specifier: ^0.4.3
+        version: 0.4.3
       '@typescript-eslint/eslint-plugin':
         specifier: ^7.2.0
         version: 7.13.1(@typescript-eslint/parser@7.13.1(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)(typescript@5.4.5)
@@ -1297,6 +1303,9 @@ packages:
   '@types/react-dom@18.3.0':
     resolution: {integrity: sha512-EhwApuTmMBmXuFOikhQLIBUn6uFg81SwLMOAUgodJF14SOBOCMdU04gDoYi0WOJJHD144TL32z4yDqCW3dnkQg==}
 
+  '@types/react-gauge-chart@0.4.3':
+    resolution: {integrity: sha512-dKnH6V6KY8M10x9tKTyJFCtWHjaiIu4ot9xfOzrTy370FCneq0squ0TxErffdgXr76p05IOM1v5LQQLnp3BWwg==}
+
   '@types/react-reconciler@0.26.7':
     resolution: {integrity: sha512-mBDYl8x+oyPX/VBb3E638N0B7xG+SPk/EAMcVPeexqus/5aTpTphQi0curhhshOqRrc9t6OPoJfEUkbymse/lQ==}
 
@@ -2208,6 +2217,9 @@ packages:
 
   lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
+
+  lodash@4.17.21:
+    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
 
   logform@2.6.0:
     resolution: {integrity: sha512-1ulHeNPp6k/LD8H91o7VYFBng5i1BDE7HoKxVbZiGFidS1Rj65qcywLxX+pVfAPoQJEjRdvKcusKwOupHCVOVQ==}
@@ -4171,6 +4183,10 @@ snapshots:
     dependencies:
       '@types/react': 18.3.3
 
+  '@types/react-gauge-chart@0.4.3':
+    dependencies:
+      '@types/react': 18.3.3
+
   '@types/react-reconciler@0.26.7':
     dependencies:
       '@types/react': 18.3.3
@@ -5131,6 +5147,8 @@ snapshots:
       p-locate: 5.0.0
 
   lodash.merge@4.6.2: {}
+
+  lodash@4.17.21: {}
 
   logform@2.6.0:
     dependencies:

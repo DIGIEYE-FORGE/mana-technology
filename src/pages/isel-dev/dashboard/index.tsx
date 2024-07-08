@@ -5,11 +5,26 @@ import React from "react";
 import LineChartWidget from "@/components/line-chart-widget";
 import { JsonObject } from "@/utils";
 import BarChartWidget from "@/components/bar-chart-widget";
+import GaugeWidget from "@/components/gauge-widget";
 
 export default function Dashboard() {
   return (
-    <main className="grid auto-rows-[4.5rem] grid-cols-5 gap-4 p-6 [&>*]:p-4">
-      <Card className="col-span-3 row-span-3">1</Card>
+    <main className="mx-auto grid max-w-[1920px] auto-rows-[4.5rem] grid-cols-5 gap-4 p-6 [&>*]:p-4">
+      <Card className="col-span-3 row-span-3 flex flex-col gap-4">
+        <h3 className="text-center text-lg font-semibold capitalize">
+          {widgetData[0].title}
+        </h3>
+        <div className="flex h-1 flex-1 justify-evenly gap-4">
+          {widgetData[0].telemetries.map((telemetry, index) => {
+            return (
+              <div className="flex h-full flex-col" key={index}>
+                <h4 className="text-center font-semibold">{telemetry.label}</h4>
+                <GaugeWidget attributes={telemetry as unknown as JsonObject} />
+              </div>
+            );
+          })}
+        </div>
+      </Card>
       <Card className="row-span-3 grid grid-cols-[min-content,1fr] gap-4">
         <h3 className="col-span-2 text-center text-lg font-semibold">
           {widgetData[1].title}

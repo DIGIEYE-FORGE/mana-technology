@@ -1,6 +1,59 @@
 export const widgetData = [
   {
     title: "test",
+    telemetries: [
+      {
+        serial: "123456",
+        telemetryName: "test1",
+        label: "Test 1",
+        value: 25,
+        unit: "L",
+        stops: [
+          {
+            stop: 20,
+            color: "#78F6EA",
+          },
+          {
+            stop: 30,
+            color: "#B98EFF",
+          },
+        ],
+      },
+      {
+        serial: "123456",
+        telemetryName: "test2",
+        label: "Test 2",
+        value: 20,
+        unit: "%",
+        stops: [
+          {
+            stop: 20,
+            color: "#78F6EA",
+          },
+          {
+            stop: 30,
+            color: "#B98EFF",
+          },
+        ],
+      },
+      {
+        serial: "123456",
+        telemetryName: "test2",
+        label: "Test 2",
+        value: 10,
+        unit: "Kg",
+        stops: [
+          {
+            stop: 20,
+            color: "#78F6EA",
+          },
+          {
+            stop: 30,
+            color: "#B98EFF",
+          },
+        ],
+      },
+    ],
   },
   {
     title: "Consomation gasoil",
