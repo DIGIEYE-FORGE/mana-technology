@@ -219,7 +219,7 @@ export default function HomeDashboard() {
         <TableWidget
           className="h-1 flex-1"
           attributes={{
-            serial: "TIRSIL71OBOT4UB4",
+            serial: "IZMB8A9FHB43O68W",
             element: "telemetries",
             mappings: [
               {

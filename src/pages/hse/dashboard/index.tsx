@@ -49,7 +49,6 @@ export default function HseDashboard() {
               serial: widgetsData[2].serial,
             }}
             displayFormat="integer"
-            correction={widgetsData[2].correction}
           />{" "}
           %
         </div>
