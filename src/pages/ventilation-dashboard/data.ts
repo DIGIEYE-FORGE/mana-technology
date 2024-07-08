@@ -9,15 +9,15 @@ export const data = {
           telemetries: [
             {
               color: "#FF5AF1",
-              name: "s=Var1_Pw",
+              name: "s=Plc2_O2",
               serial: "0TKJJWS26V62QV15",
-              label: "Puissance (MT1)",
+              label: "L100",
             },
             {
-              color: "#FF5AF1",
-              name: "s=Var2_Pw",
+              color: "#FED41E",
+              name: "s=Plc3_O2",
               serial: "0TKJJWS26V62QV15",
-              label: "Puissance (MT2)",
+              label: "L500",
             }
           ],
         }
@@ -28,16 +28,16 @@ export const data = {
         attributes: {
           telemetries: [
             {
-              color: "#FED41E",
-              name: "s=Var1_Vitesse",
+              color: "#FF5AF1",
+              name: "s=Plc2_CO",
               serial: "0TKJJWS26V62QV15",
-              label: "Vitesse (MT1)",
+              label: "L100",
             },
             {
               color: "#FED41E",
-              name: "s=Var2_Vitesse",
+              name: "s=Plc3_CO",
               serial: "0TKJJWS26V62QV15",
-              label: "Vitesse (MT2)",
+              label: "L500",
             }
           ],
         }
@@ -49,15 +49,15 @@ export const data = {
           telemetries: [
             {
               color: "#FF5AF1",
-              name: "s=Pt100NdeM1",
+              name: "s=Plc2_NO2",
               serial: "0TKJJWS26V62QV15",
-              label: "Température (MT1)",
+              label: "L100",
             },
             {
-              color: "#FF5AF1",
-              name: "s=Pt100NdeM2",
+              color: "#FED41E",
+              name: "s=Plc2_NO2",
               serial: "0TKJJWS26V62QV15",
-              label: "Température (MT2)",
+              label: "L500",
             }
           ],
         }
@@ -69,15 +69,15 @@ export const data = {
           telemetries: [
             {
               color: "#78F6EA",
-              name: "s=Var1_VibDe",
+              name: "s=Plc2_Vm/s",
               serial: "0TKJJWS26V62QV15",
-              label: "Vibration (MT1)",
+              label: "L100",
             },
             {
               color: "#78F6EA",
-              name: "s=Var2_VibDe",
+              name: "s=Plc2_Vm/s",
               serial: "0TKJJWS26V62QV15",
-              label: "Vibration (MT2)",
+              label: "L500",
             }
 
           ],
@@ -88,21 +88,33 @@ export const data = {
   1: {
     children: [
       {
-        title: "Vitess (RPM)",
+        title: "Vitesse (RPM)",
         max: 55,
         attributes: {
           telemetries: [
             {
-              color: "#FF5AF1",
-              name: "s=Var4_Pw",
+              color: "#FED41E",
+              name: "s=Var1_Vitesse",
               serial: "0TKJJWS26V62QV15",
-              label: "Puissance",
+              label: "M1 V1",
             },
             {
               color: "#FF5AF1",
-              name: "s=Var5_Pw",
+              name: "s=Var3_Vitesse",
               serial: "0TKJJWS26V62QV15",
-              label: "Puissance",
+              label: "M1 V2",
+            },
+            {
+              color: "#78F6EA",
+              name: "s=Var2_Vitesse",
+              serial: "0TKJJWS26V62QV15",
+              label: "M2 V1",
+            },
+            {
+              color: "#CCC",
+              name: "s=Var4_Vitesse",
+              serial: "0TKJJWS26V62QV15",
+              label: "M2 V2",
             }
           ],
         }
@@ -133,7 +145,7 @@ export const data = {
         attributes: {
           telemetries: [
             {
-              color: "#FF5AF1",
+              color: "#FED41E",
               name: "s=Pt100NdeM4",
               serial: "0TKJJWS26V62QV15",
               label: "Température",
@@ -154,15 +166,27 @@ export const data = {
           telemetries: [
             {
               color: "#78F6EA",
-              name: "s=Var4_VibDe",
+              name: "s=Plc2_ToH",
               serial: "0TKJJWS26V62QV15",
-              label: "Vibration",
+              label: "Humide (L100)",
             },
             {
               color: "#78F6EA",
-              name: "s=Var5_VibDe",
+              name: "s=Plc3_ToH",
               serial: "0TKJJWS26V62QV15",
-              label: "Vibration",
+              label: "Humide (L500)",
+            },
+            {
+              color: "#78F6EA",
+              name: "s=Plc2_ToS",
+              serial: "0TKJJWS26V62QV15",
+              label: "Sêche (L100)",
+            },
+            {
+              color: "#78F6EA",
+              name: "s=Plc3_ToS",
+              serial: "0TKJJWS26V62QV15",
+              label: "Sêche (L500)",
             }
           ],
         }
@@ -177,16 +201,28 @@ export const data = {
         attributes: {
           telemetries: [
             {
-              color: "#FF5AF1",
-              name: "s=Var1_Pw",
+              color: "#FED41E",
+              name: "s=Plc2_ToH",
               serial: "0TKJJWS26V62QV15",
-              label: "Puissance (MT1)",
+              label: "Humide (L100)",
             },
             {
               color: "#FF5AF1",
-              name: "s=Var2_Pw",
+              name: "s=Plc3_ToH",
               serial: "0TKJJWS26V62QV15",
-              label: "Puissance (MT2)",
+              label: "Humide (L500)",
+            },
+            {
+              color: "#78F6EA",
+              name: "s=Plc2_ToS",
+              serial: "0TKJJWS26V62QV15",
+              label: "Sêche (L100)",
+            },
+            {
+              color: "#CCC",
+              name: "s=Plc3_ToS",
+              serial: "0TKJJWS26V62QV15",
+              label: "Sêche (L%00)",
             }
           ],
         }
