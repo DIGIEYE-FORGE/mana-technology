@@ -128,7 +128,7 @@ const data = [
       top: "17%",
       left: "46%",
     },
-    url: "/3dvideo.mp4",
+    url: "/public/3dvideo.mp4",
     background: "url(/video.svg)",
     positionModel: {
       side: "top",
@@ -193,7 +193,7 @@ const data = [
       top: "45%",
       right: "9%",
     },
-    url: "/est_vd.mp4",
+    url: "/public/op.mp4",
     positionModel: {
       side: "left",
       align: "start",
