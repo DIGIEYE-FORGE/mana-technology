@@ -22,28 +22,28 @@ function DashboardPage3() {
                   unit: "T",
                   color: "#FE22EB",
                   label: "Minerai Planifié",
-                  serial: "C6XPYU0D920L1M07",
+                  serial: "QXYIV05MSG7F079I",
                 },
                 {
                   name: "SUD4_REALISE_MIENRAI",
                   unit: "T",
                   color: "#FEC33A",
                   label: "Minerai Realisé",
-                  serial: "C6XPYU0D920L1M07",
+                  serial: "PI6PQ8SEZC4BWRP3",
                 },
                 {
                   name: "SUD4_PLANIFIE_STERILE",
                   unit: "T",
                   color: "#B98EFF",
                   label: "Stérile Planifié",
-                  serial: "C6XPYU0D920L1M07",
+                  serial: "HPIE60T9Z537QRHY",
                 },
                 {
                   name: "SUD4_REALISE_STERILE",
                   unit: "T",
                   color: "#78F6EA",
                   label: "Stérile Realisé",
-                  serial: "C6XPYU0D920L1M07",
+                  serial: "PI6PQ8SEZC4BWRP3",
                 },
               ],
             }}
@@ -64,7 +64,7 @@ function DashboardPage3() {
                   name: "SUD4_PLANIFIE_ROCHE",
                   color: "#78F6EA",
                   label: "Cumulatif Planifié",
-                  serial: "C6XPYU0D920L1M07",
+                  serial: "QXYIV05MSG7F079I",
                 },
                 {
                   accumulated: true,
@@ -72,7 +72,7 @@ function DashboardPage3() {
                   name: "SUD4_REALISE_ROCHE",
                   color: "#B98EFF",
                   label: "Cumulatif Realisé",
-                  serial: "C6XPYU0D920L1M07",
+                  serial: "PI6PQ8SEZC4BWRP3",
                 },
               ],
             }}
@@ -94,7 +94,7 @@ function DashboardPage3() {
                   unit: "T",
                   color: "#78F6EA",
                   label: "Production",
-                  serial: "C6XPYU0D920L1M07",
+                  serial: "PI6PQ8SEZC4BWRP3",
                 },
               ],
             }}
@@ -128,20 +128,20 @@ function DashboardPage3() {
                 telemetries: [
                   {
                     name: "SUD4_REALISEORE_HG_SULF",
-                    serial: "C6XPYU0D920L1M07",
+                    serial: "PI6PQ8SEZC4BWRP3",
                     label: "HG",
                     color: "#FFDC8C",
                     // showLabel: true, if you need to show label
                   },
                   {
                     name: "SUD4_REALISE_ORE_MG_SULF",
-                    serial: "C6XPYU0D920L1M07",
+                    serial: "PI6PQ8SEZC4BWRP3",
                     label: "MG",
                     color: "#42F5FF",
                   },
                   {
                     name: "SUD4_REALISE_ORE_LG_SULF",
-                    serial: "C6XPYU0D920L1M07",
+                    serial: "PI6PQ8SEZC4BWRP3",
                     label: "LG",
                     color: "#FFC8FF",
                   },
@@ -152,19 +152,19 @@ function DashboardPage3() {
                 telemetries: [
                   {
                     name: "SUD4_REALISE_ORE_HG_OXYD",
-                    serial: "C6XPYU0D920L1M07",
+                    serial: "PI6PQ8SEZC4BWRP3",
                     label: "HG",
                     color: "#FFDC8C",
                   },
                   {
                     name: "SUD4_REALISE_ORE_MG_OXYD",
-                    serial: "C6XPYU0D920L1M07",
+                    serial: "PI6PQ8SEZC4BWRP3",
                     label: "MG",
                     color: "#42F5FF",
                   },
                   {
                     name: "SUD4_REALISE_ORE_LG_OXYD",
-                    serial: "C6XPYU0D920L1M07",
+                    serial: "PI6PQ8SEZC4BWRP3",
                     label: "LG",
                     color: "#FFC8FF",
                   },

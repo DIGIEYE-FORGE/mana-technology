@@ -237,3 +237,30 @@ button:disabled {
     color: #78a5c0 !important;
   }
 }
+
+// backgroundImage:
+// "linear-gradient(to right, transparent, #002FBE, transparent)",
+// border: "10px solid",
+// borderImageSlice: 1,
+// borderWidth: "1px",
+// borderImageSource:
+// "linear-gradient(to right, transparent, white, transparent)",
+
+.gradient-border {
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    #002fbe,
+    transparent
+  );
+  border: 10px solid;
+  border-image-slice: 1;
+  border-width: 1px;
+  border-image-source: linear-gradient(
+    to right,
+    transparent,
+    white,
+    transparent
+  );
+  list-style: none;
+}

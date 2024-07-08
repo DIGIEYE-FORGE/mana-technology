@@ -23,6 +23,7 @@ import VentilationDashboard from "@/pages/ventilation-dashboard";
 import HomeDashboard from "@/pages/home/dashboard";
 import HsePage from "@/pages/hse";
 import HseDashboard from "@/pages/hse/dashboard";
+import MobilePage from "@/pages/mobile";
 
 const routes: RouteObject[] = [
   {
@@ -121,6 +122,10 @@ const routes: RouteObject[] = [
         element: <IselDevPage />,
       },
     ],
+  },
+  {
+    path: "mobile",
+    element: <MobilePage />,
   },
   { path: "*", element: <NotfoundPage /> },
 ];

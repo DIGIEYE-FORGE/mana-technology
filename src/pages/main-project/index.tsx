@@ -128,7 +128,7 @@ const data = [
       top: "17%",
       left: "46%",
     },
-    url: "/ignore/3dvideo.mp4",
+    url: "/statics/3dvideo.mp4",
     background: "url(/video.svg)",
     positionModel: {
       side: "top",
@@ -193,7 +193,7 @@ const data = [
       top: "45%",
       right: "9%",
     },
-    url: "/est_vd.mp4",
+    url: "/statics/op.mp4",
     positionModel: {
       side: "left",
       align: "start",
@@ -327,20 +327,21 @@ const data = [
   },
 ];
 
+const tree = {
+  titile: "Underground Mine",
+  attribute: {
+    ["Mineral reserves"]: "54 Mt @ 0,9 %Cu et 19 g/t Ag",
+    ["Mining methods"]: "R&P /LHOS",
+    ["Total development"]: "230 km lateral",
+    ["Daily production capacity"]: "10800 tpd from 2028",
+    ["Extraction method"]: "Belt conveyor",
+    ["Backfilling"]: "Paste backfilling",
+    ["Life of mine"]: "15 years",
+  },
+};
+
 export default function MainProjectPage() {
   const [isRotating, setIsRotating] = useState(true);
-  const tree = {
-    titile: "Underground Mine",
-    attribute: {
-      ["Mineral reserves"]: "54 Mt @ 0,9 %Cu et 19 g/t Ag",
-      ["Mining methods"]: "R&P /LHOS",
-      ["Total development"]: "230 km lateral",
-      ["Daily production capacity"]: "10800 tpd from 2028",
-      ["Extraction method"]: "Belt conveyor",
-      ["Backfilling"]: "Paste backfilling",
-      ["Life of mine"]: "15 years",
-    },
-  };
   const modelRef = useRef();
   const [, setLoading] = useState(true);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
