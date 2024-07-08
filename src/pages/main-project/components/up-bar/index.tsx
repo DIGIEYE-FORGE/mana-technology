@@ -2,12 +2,12 @@ import { Button } from "@/components/ui/button";
 import { Minimize, MoveLeftIcon, MoveRightIcon, Shrink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { OverviewButton } from "../overview-button";
-import { useAppContext } from "@/Context";
 import ProjectPlaningButton from "../project-planing-button";
 import { EsgButton } from "../esg-button";
+import { useState } from "react";
 
 export function MainProjectUpBar() {
-  const { fullScreen, setFullScreen } = useAppContext();
+  const [fullScreen, setFullScreen] = useState(false);
   return (
     <div className="group sticky top-0 z-10 flex h-up-bar w-full shrink-0 items-center justify-end gap-2 border-b px-6 backdrop-blur">
       <div className="mr-auto flex gap-4">
