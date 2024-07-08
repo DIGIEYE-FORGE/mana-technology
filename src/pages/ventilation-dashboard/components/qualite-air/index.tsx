@@ -25,7 +25,7 @@ export const QualitAir = ({ title, attributes, stops }: QualitAirProps) => {
         interval={5000}
         telemetry={{ name, serial }}
         color={color}
-        className="size-[5.5rem]"
+        className="size-[6rem]"
         unit={unit}
         stops={stops}
       />

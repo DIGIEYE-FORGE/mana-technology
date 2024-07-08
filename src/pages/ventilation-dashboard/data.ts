@@ -1,257 +1,197 @@
 
 export const data = {
   0: {
-    title: "Moteur 1",
-    cardType: "MoteurGroup",
-    cardClassNames: "col-span-3 row-span-3 flex flex-col gap-1",
     children: [
       {
-        title: "Puissance (KW)",
-        color: "#FF5AF1",
-        max:55,
+        title: "O2",
+        max:25,
         attributes: {
           telemetries: [
             {
+              color:"#FF5AF1",
               name: "s=Var1_Pw",
               serial: "0TKJJWS26V62QV15",
-              label: "Puissance",
+              label: "Puissance (MT1)",
             },
+            {
+             color:"#FF5AF1",
+              name: "s=Var2_Pw",
+              serial: "0TKJJWS26V62QV15",
+              label: "Puissance (MT2)",
+            }
           ],
         }
       },
       {
-        title: "Vitesse (RPM)",
-        color: "#FED41E",
+        title: "CO",
         max:2000,
         attributes: {
           telemetries: [
             {
+            color:"#FED41E",
               name: "s=Var1_Vitesse",
               serial: "0TKJJWS26V62QV15",
-              label: "Vitesse",
+              label: "Vitesse (MT1)",
             },
+            {
+              color:"#FED41E",
+              name: "s=Var2_Vitesse",
+              serial: "0TKJJWS26V62QV15",
+              label: "Vitesse (MT2)",
+            }
           ],
         }
       },
       {
-        title: "Température (°C)",
-        color: "#FF5AF1",
+        title: "NO2",
         max:120,
         attributes: {
           telemetries: [
             {
+              color:"#FF5AF1",
               name: "s=Pt100NdeM1",
               serial: "0TKJJWS26V62QV15",
-              label: "Température",
+              label: "Température (MT1)",
             },
+            {
+              color:"#FF5AF1",
+              name: "s=Pt100NdeM2",
+              serial: "0TKJJWS26V62QV15",
+              label: "Température (MT2)",
+            }
           ],
         }
       },
       {
-        title: "Vibration (mm/s)",
-        color: "#78F6EA",
-        max:5,
+        title: "Vitesse de l’air",
+        max:1,
         attributes: {
           telemetries: [
             {
+              color:"#78F6EA",
               name: "s=Var1_VibDe",
               serial: "0TKJJWS26V62QV15",
-              label: "Vibration",
+              label: "Vibration (MT1)",
             },
+            {
+              color:"#78F6EA",
+              name: "s=Var2_VibDe",
+              serial: "0TKJJWS26V62QV15",
+              label: "Vibration (MT2)",
+            }
+
           ],
         }
       },
     ]
   },
   1: {
-    title: "Moteur 2",
-    cardType: "MoteurGroup",
-    cardClassNames: "col-span-3 row-span-3 flex flex-col gap-1",
     children: [
       {
-        title: "Puissance (KW)",
-        color: "#FF5AF1",
+        title: "Vitess (RPM)",
         max:55,
         attributes: {
           telemetries: [
             {
-              name: "s=Var2_Pw",
+              color:"#FF5AF1",
+              name: "s=Var4_Pw",
               serial: "0TKJJWS26V62QV15",
               label: "Puissance",
             },
+            {
+              color:"#FF5AF1",
+              name: "s=Var5_Pw",
+              serial: "0TKJJWS26V62QV15",
+              label: "Puissance",
+            }
           ],
         }
       },
       {
-        title: "Vitesse (RPM)",
-        color: "#FED41E",
+        title: "Puissance (KW)",
         max:2000,
         attributes: {
           telemetries: [
             {
-              name: "s=Var2_Vitesse",
+              color:"#FED41E",
+              name: "s=Var4_Vitesse",
               serial: "0TKJJWS26V62QV15",
               label: "Vitesse",
             },
-          ],
-        }
-      },
-      {
-        title: "Température (°C)",
-        color: "#FF5AF1",
-        max:120,
-        attributes: {
-          telemetries: [
             {
-              name: "s=Pt100NdeM2",
+              color:"#FED41E",
+              name: "s=Var5_Vitesse",
               serial: "0TKJJWS26V62QV15",
-              label: "Température",
-            },
+              label: "Vitesse",
+            }
           ],
         }
       },
       {
         title: "Vibration (mm/s)",
-        color: "#78F6EA",
+        max:120,
+        attributes: {
+          telemetries: [
+            {
+              color:"#FF5AF1",
+              name: "s=Pt100NdeM4",
+              serial: "0TKJJWS26V62QV15",
+              label: "Température",
+            },
+            {
+              color:"#FF5AF1",
+              name: "s=Pt100NdeM5",
+              serial: "0TKJJWS26V62QV15",
+              label: "Température",
+            }
+          ],
+        }
+      },
+      {
+        title: "Température (°C)",
         max:5,
         attributes: {
           telemetries: [
             {
-              name: "s=Var2_VibDe",
+              color: "#78F6EA",
+              name: "s=Var4_VibDe",
               serial: "0TKJJWS26V62QV15",
               label: "Vibration",
             },
+            {
+              color: "#78F6EA",
+              name: "s=Var5_VibDe",
+              serial: "0TKJJWS26V62QV15",
+              label: "Vibration",
+            }
           ],
         }
       },
     ]
   },
   2: {
-    title: "Moteur 1",
-    cardType: "MoteurGroup",
-    cardClassNames: "col-span-3 row-span-3 flex flex-col gap-1",
     children: [
       {
-        title: "Puissance (KW)",
-        max:55,
-        color: "#FF5AF1",
-        attributes: {
-          telemetries: [
-            {
-              name: "s=Var4_Pw",
-              serial: "0TKJJWS26V62QV15",
-              label: "Puissance",
-            },
-          ],
-        }
-      },
-      {
-        title: "Vitesse (RPM)",
-        max:2000,
-        color: "#FED41E",
-        attributes: {
-          telemetries: [
-            {
-              name: "s=Var4_Vitesse",
-              serial: "0TKJJWS26V62QV15",
-              label: "Vitesse",
-            },
-          ],
-        }
-      },
-      {
         title: "Température (°C)",
-        color: "#FF5AF1",
-        max:120,
-        attributes: {
-          telemetries: [
-            {
-              name: "s=Pt100NdeM4",
-              serial: "0TKJJWS26V62QV15",
-              label: "Température",
-            },
-          ],
-        }
-      },
-      {
-        title: "Vibration (mm/s)",
-        color: "#78F6EA",
-        max:5,
-        attributes: {
-          telemetries: [
-            {
-              name: "s=Var4_VibDe",
-              serial: "0TKJJWS26V62QV15",
-              label: "Vibration",
-            },
-          ],
-        }
-      },
-    ]
-  },
-  3: {
-    title: "Moteur 2",
-    cardType: "MoteurGroup",
-    cardClassNames: "col-span-3 row-span-3 flex flex-col gap-1",
-    children: [
-      {
-        title: "Puissance (KW)",
         max:55,
-        color: "#FF5AF1",
         attributes: {
           telemetries: [
             {
-              name: "s=Var5_Pw",
+              color:"#FF5AF1",
+              name: "s=Var1_Pw",
               serial: "0TKJJWS26V62QV15",
-              label: "Puissance",
+              label: "Puissance (MT1)",
             },
-          ],
-        }
-      },
-      {
-        title: "Vitesse (RPM)",
-        max:2000,
-        color: "#FED41E",
-        attributes: {
-          telemetries: [
             {
-              name: "s=Var5_Vitesse",
+            color:"#FF5AF1",
+              name: "s=Var2_Pw",
               serial: "0TKJJWS26V62QV15",
-              label: "Vitesse",
-            },
+              label: "Puissance (MT2)",
+            }
           ],
         }
       },
-      {
-        title: "Température (°C)",
-        color: "#FF5AF1",
-        max:120,
-        attributes: {
-          telemetries: [
-            {
-              name: "s=Pt100NdeM5",
-              serial: "0TKJJWS26V62QV15",
-              label: "Température",
-            },
-          ],
-        }
-      },
-      {
-        title: "Vibration (mm/s)",
-        color: "#78F6EA",
-        max:5,
-        attributes: {
-          telemetries: [
-            {
-              name: "s=Var5_VibDe",
-              serial: "0TKJJWS26V62QV15",
-              label: "Vibration",
-            },
-          ],
-        }
-      },
-    ]
-  },
+  ]},
 }
 
 

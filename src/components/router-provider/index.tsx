@@ -24,6 +24,7 @@ import HomeDashboard from "@/pages/home/dashboard";
 import HsePage from "@/pages/hse";
 import HseDashboard from "@/pages/hse/dashboard";
 import MobilePage from "@/pages/mobile";
+import VentilationDashboard1 from "@/pages/ventilation-dashboard/index1";
 
 const routes: RouteObject[] = [
   {
@@ -80,6 +81,10 @@ const routes: RouteObject[] = [
           {
             path: "ventilation",
             element: <VentilationDashboard />,
+          },
+          {
+            path: "ventilation1",
+            element: <VentilationDashboard1 />,
           },
         ],
       },

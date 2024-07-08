@@ -2,21 +2,21 @@
 import { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import { ReactNode } from "react";
-import { ChartTelemetry, HistoryType, Widget, flatten } from "@/utils";
+import { HistoryType, Widget, flatten } from "@/utils";
+// ChartTelemetry
 import { useAppContext } from "@/Context";
 import useSWR from "swr";
 import Loader from "@/components/loader";
 
 type Props = Widget & {
   children?: ReactNode;
-  color: string;
   interval?: number;
   max?: number;
 };
 
 export const MoteurCard = (props: Props) => {
   const { backendApi, dateRange } = useAppContext();
-  const telemetries = (props.attributes?.telemetries || []) as ChartTelemetry[];
+  const telemetries = (props.attributes?.telemetries || []) as any[];
   const [chartData, setChartData] = useState([]);
   const fetchInterval = props.interval || 10000; // Default to 10 seconds if no interval is provided
 
@@ -35,7 +35,6 @@ export const MoteurCard = (props: Props) => {
             where: {
               serial,
             },
-            orderBy: "createdAt:desc",
           },
         );
         return results;
@@ -43,7 +42,9 @@ export const MoteurCard = (props: Props) => {
     );
     return res.map((item, index) => {
       const name = telemetries[index].name;
+      const color = telemetries[index].color;
       return {
+        color,
         name: telemetries[index].label || telemetries[index].name,
         data: item.map((item) => ({
           x: new Date(item.createdAt),
@@ -76,7 +77,7 @@ export const MoteurCard = (props: Props) => {
 
   if (isLoading) {
     return (
-      <main className="grid place-content-center">
+      <main className="flex h-full w-full items-center justify-center">
         <Loader />
       </main>
     );
@@ -95,7 +96,6 @@ export const MoteurCard = (props: Props) => {
       options={{
         theme: { mode: "dark" },
         tooltip: { cssClass: "text-black" },
-        colors: [props.color],
         grid: {
           borderColor: "#797979",
           xaxis: { lines: { show: false } },
@@ -153,7 +153,8 @@ export const MoteurCard = (props: Props) => {
       }}
       series={chartData || []}
       type="line"
-      height="100%"
+      height={"100%"}
+      width={"100%"}
     />
   );
 };

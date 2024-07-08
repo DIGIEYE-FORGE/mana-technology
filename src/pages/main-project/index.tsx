@@ -536,9 +536,11 @@ export default function MainProjectPage() {
                               controls
                               src={item.url}
                             />
-                            <div className="absolute left-[38%] top-[12%] w-fit">
-                              <VideoDialog />
-                            </div>
+                            {item.title == "Plant" && (
+                              <div className="absolute left-[38%] top-[12%] w-fit">
+                                <VideoDialog />
+                              </div>
+                            )}
                           </div>
                         ) : item?.type === "image" && item?.url ? (
                           // <div className="relative aspect-video h-full w-full">
