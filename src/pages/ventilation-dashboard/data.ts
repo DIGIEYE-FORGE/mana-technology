@@ -4,7 +4,6 @@ export const data = {
     children: [
       {
         title: "O2",
-        max: 25,
         attributes: {
           telemetries: [
             {
@@ -24,7 +23,6 @@ export const data = {
       },
       {
         title: "CO",
-        max: 2000,
         attributes: {
           telemetries: [
             {
@@ -44,7 +42,6 @@ export const data = {
       },
       {
         title: "NO2",
-        max: 120,
         attributes: {
           telemetries: [
             {
@@ -64,7 +61,6 @@ export const data = {
       },
       {
         title: "Vitesse de l’air",
-        max: 1,
         attributes: {
           telemetries: [
             {
@@ -89,7 +85,6 @@ export const data = {
     children: [
       {
         title: "Vitesse (RPM)",
-        max: 55,
         attributes: {
           telemetries: [
             {
@@ -121,73 +116,94 @@ export const data = {
       },
       {
         title: "Puissance (KW)",
-        max: 2000,
         attributes: {
-          telemetries: [
+           telemetries: [
             {
               color: "#FED41E",
-              name: "s=Var4_Vitesse",
+              name: "s=Var1_Pw",
               serial: "0TKJJWS26V62QV15",
-              label: "Vitesse",
+              label: "M1 V1",
             },
             {
-              color: "#FED41E",
-              name: "s=Var5_Vitesse",
+              color: "#FF5AF1",
+              name: "s=Var3_Pw",
               serial: "0TKJJWS26V62QV15",
-              label: "Vitesse",
-            }
+              label: "M1 V2",
+            },
+            {
+              color: "#78F6EA",
+              name: "s=Var2_Pw",
+              serial: "0TKJJWS26V62QV15",
+              label: "M2 V1",
+            },
+            {
+              color: "#CCC",
+              name: "s=Var4_Pw",
+              serial: "0TKJJWS26V62QV15",
+              label: "M2 V2",
+            },
           ],
         }
       },
       {
         title: "Vibration (mm/s)",
-        max: 120,
         attributes: {
           telemetries: [
             {
               color: "#FED41E",
-              name: "s=Pt100NdeM4",
+              name: "s=Var1_VibDe",
               serial: "0TKJJWS26V62QV15",
-              label: "Température",
+              label: "M1 V1",
             },
             {
               color: "#FF5AF1",
-              name: "s=Pt100NdeM5",
+              name: "s=Var3_VibDe",
               serial: "0TKJJWS26V62QV15",
-              label: "Température",
-            }
+              label: "M1 V2",
+            },
+            {
+              color: "#78F6EA",
+              name: "s=Var2_VibDe",
+              serial: "0TKJJWS26V62QV15",
+              label: "M2 V1",
+            },
+            {
+              color: "#CCC",
+              name: "s=Var4_VibDe",
+              serial: "0TKJJWS26V62QV15",
+              label: "M2 V2",
+            },
           ],
         }
       },
       {
         title: "Température (°C)",
-        max: 5,
         attributes: {
           telemetries: [
             {
-              color: "#78F6EA",
-              name: "s=Plc2_ToH",
+              color: "#FED41E",
+              name: "s=Pt100NdeM1",
               serial: "0TKJJWS26V62QV15",
-              label: "Humide (L100)",
+              label: "M1 V1",
+            },
+            {
+              color: "#FF5AF1",
+              name: "s=Pt100NdeM3",
+              serial: "0TKJJWS26V62QV15",
+              label: "M1 V2",
             },
             {
               color: "#78F6EA",
-              name: "s=Plc3_ToH",
+              name: "s=Pt100NdeM2",
               serial: "0TKJJWS26V62QV15",
-              label: "Humide (L500)",
+              label: "M2 V1",
             },
             {
-              color: "#78F6EA",
-              name: "s=Plc2_ToS",
+              color: "#CCC",
+              name: "s=Pt100NdeM4",
               serial: "0TKJJWS26V62QV15",
-              label: "Sêche (L100)",
+              label: "M2 V2",
             },
-            {
-              color: "#78F6EA",
-              name: "s=Plc3_ToS",
-              serial: "0TKJJWS26V62QV15",
-              label: "Sêche (L500)",
-            }
           ],
         }
       },
@@ -197,7 +213,6 @@ export const data = {
     children: [
       {
         title: "Température (°C)",
-        max: 55,
         attributes: {
           telemetries: [
             {
@@ -251,7 +266,6 @@ export const qualitédair = {
               serial: "0TKJJWS26V62QV15",
               color: "#C99E3E",
               unit: "%",
-              max: 20,
             }
           ]
         },
@@ -271,7 +285,6 @@ export const qualitédair = {
               serial: "0TKJJWS26V62QV15",
               color: "#007D82",
               unit: "ppm",
-              max: 100,
             }
           ]
         }
@@ -291,7 +304,6 @@ export const qualitédair = {
               serial: "0TKJJWS26V62QV15",
               color: "#F650A0",
               unit: "ppm",
-              max: 3,
             },
           ]
         }
@@ -311,7 +323,6 @@ export const qualitédair = {
               serial: "0TKJJWS26V62QV15",
               color: "#7A0BC0",
               unit: "m/s",
-              max: 0.5,
             },
           ]
         }
