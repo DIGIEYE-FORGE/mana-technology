@@ -21,13 +21,8 @@ export const locations: TLocation[] = [
     bottom: "50%",
     right: "6%",
     quickAccess: {
-      side: "top",
+      side: "right",
       items: [
-        {
-          type: "link",
-          thumb: "/screen1.svg",
-          url: "/",
-        },
         {
           type: "video",
           thumb: "/video.svg",
@@ -41,38 +36,28 @@ export const locations: TLocation[] = [
     bottom: "50%",
     right: "23%",
     quickAccess: {
-      side: "top",
+      side: "left",
       items: [
         {
           type: "video",
           thumb: "/video.svg",
           url: "/est_vd.mp4",
-        },
-        {
-          type: "link",
-          thumb: "/screen1.svg",
-          url: "/op-est",
         },
       ],
     },
   },
   {
     name: "SUD",
-    bottom: "19%",
+    bottom: "22%",
     right: "13%",
     quickAccess: {
-      side: "bottom",
+      side: "left",
       items: [
         {
           type: "video",
           thumb: "/video.svg",
           url: "/est_vd.mp4",
           title: "Pit SUD",
-        },
-        {
-          type: "link",
-          thumb: "/screen1.svg",
-          url: "/op-sud",
         },
       ],
     },
@@ -140,16 +125,6 @@ export const undergroundLocations: TLocation[] = [
           type: "video",
           thumb: "/video.svg",
           url: "/Underground.mp4",
-        },
-        {
-          type: "link",
-          thumb: "/dashboard_tree.svg",
-          url: "/underground/tree",
-        },
-        {
-          type: "link",
-          thumb: "/screen4.svg",
-          url: "/underground",
         },
       ],
     },
