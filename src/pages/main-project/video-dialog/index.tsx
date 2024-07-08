@@ -27,7 +27,7 @@ function VideoDialog() {
           className="h-[90%] !min-w-[90vw] p-8"
         >
           <video
-          autoPlay
+            autoPlay
             className="h-full w-full"
             controls
             src="/ignore/timelapse.mp4"

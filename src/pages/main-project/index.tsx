@@ -119,8 +119,6 @@ const data = [
     },
     background: "url(/screen2.svg)",
   },
-
-  ////// update url video plant
   //// video1
   {
     title: "Plant",

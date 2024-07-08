@@ -3,6 +3,7 @@ import { useAppContext } from "@/Context";
 import Loader from "@/components/loader";
 import { LastTelemetry } from "@/utils";
 import { cn } from "@/lib/utils";
+import { HistoryDialog } from "./history-dialog";
 
 interface VentilationCardProps {
   title: string;
@@ -69,7 +70,7 @@ export const VentilationCard = ({
       </div>
     );
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-1">
+    <div className="relative flex h-full w-full flex-col items-center justify-center gap-1">
       <h1 className="text-center text-xs font-extrabold">{title}</h1>
       <div className="flex h-1 w-full flex-1 flex-col items-center justify-center">
         {(data || [])?.map((d, i) => {
@@ -77,7 +78,7 @@ export const VentilationCard = ({
             <div
               key={i}
               className={cn("flex items-center gap-1 text-sm font-semibold", {
-                "text-2xl": data?.length === 1,
+                "text-xl": data?.length === 1,
               })}
             >
               {telemetry[i].label && (
@@ -94,6 +95,11 @@ export const VentilationCard = ({
           );
         })}
       </div>
+      <HistoryDialog
+        title={title}
+        telemetries={telemetry}
+        interval={interval}
+      />
     </div>
   );
 };
