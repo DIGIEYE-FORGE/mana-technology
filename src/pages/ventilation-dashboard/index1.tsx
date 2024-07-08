@@ -21,8 +21,6 @@ const VentilationDashboard1 = () => {
               <MoteurCard
                 attributes={child.attributes}
                 interval={5000}
-                max={child?.max}
-                min={child?.min}
               />
             </div>
           </Card>
@@ -34,8 +32,6 @@ const VentilationDashboard1 = () => {
               <MoteurCard
                 attributes={child.attributes}
                 interval={5000}
-                max={child?.max}
-                min={child?.min}
               />
             </div>
           </Card>
