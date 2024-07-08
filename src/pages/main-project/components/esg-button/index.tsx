@@ -26,7 +26,7 @@ const tabs = [
         title: "On Site - Operation  Phase",
       },
       {
-        image: "/Onsite4.svg",
+        image: "/offsite.svg",
         title: "Off Site",
       },
     ],
