@@ -7,6 +7,7 @@ import SwipeableTabs from "@/components/SwipeableTabs";
 import { cn } from "@/lib/utils";
 
 interface PerformanceEnginsData {
+  selectionDate?: boolean;
   attributes: {
     name: string;
     image: string;
@@ -25,6 +26,7 @@ interface PerformanceEnginsData {
 export const PerformanceEngins = ({
   attributes,
   title,
+  selectionDate = false,
   imageClassName = "",
 }: PerformanceEnginsData) => {
   const [activeTab, setActiveTab] = useState(0);
@@ -71,6 +73,7 @@ export const PerformanceEngins = ({
                   <div key={index} className="flex flex-col gap-2">
                     <div className="aspect-square h-20">
                       <AverageCircularProgressChart
+                        selectionDate={selectionDate}
                         telemetries={[rest]}
                         color={color}
                         {...rest}

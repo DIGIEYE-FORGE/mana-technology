@@ -436,7 +436,7 @@ export default function UndergroundDashboardPage() {
               },
               {
                 label: "CHARIOT ELEVATEUR",
-                icon: "chariot-elevateur.png",
+                icon: "Elévateur électrique.png",
                 utilisationTelemetry: "UG_CHARIOT_ELEVATEUR_TU",
                 disponibilliteTelemetry: "UG_CHARIOT_ELEVATEUR_TD",
                 serial: "8S287JI0CLP38N38",

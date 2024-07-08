@@ -27,7 +27,9 @@ export const AverageCircularProgressChart = ({
   const { backendApi, dateRange } = useAppContext();
 
   const { data, isLoading, error } = useSWR(
-    `telemetry?${telemetries.map((el) => el.name).join(",")}`,
+    `telemetry?${telemetries.map((el) => el.name).join(",")}${
+      selectionDate ? `&dateRange=${dateRange?.from},${dateRange?.to}` : ""
+    }`,
     async () => {
       const res = await Promise.all(
         telemetries.map(async (device) => {
@@ -59,7 +61,7 @@ export const AverageCircularProgressChart = ({
       );
       const sum = res.reduce((acc, curr) => acc + curr.sum, 0);
       const total = res.reduce((acc, curr) => acc + curr.total, 0);
-      return (sum / total);
+      return sum / total;
     },
     {
       refreshInterval: interval || undefined,
