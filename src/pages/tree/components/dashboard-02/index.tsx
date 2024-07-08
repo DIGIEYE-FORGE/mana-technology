@@ -41,6 +41,7 @@ export const Dashboard2 = () => {
       </Card>
       <Card className="relative col-span-2 flex flex-col p-2">
         <PerformanceEngins
+          selectionDate={true}
           title={widgetsData[1].title}
           attributes={widgetsData[1].attributes}
         />
@@ -58,10 +59,7 @@ export const Dashboard2 = () => {
           {widgetsData[3]?.title}
         </h4>
         <div className="relative h-1 flex-1 -translate-y-4">
-          <LineChartWidget
-            attributes={widgetsData[3].attributes}
-            max={100}
-          />
+          <LineChartWidget attributes={widgetsData[3].attributes} max={100} />
         </div>
       </Card>
       <Card className="flex flex-col">
@@ -69,10 +67,7 @@ export const Dashboard2 = () => {
           {widgetsData[4]?.title}
         </h4>
         <div className="relative h-1 flex-1 -translate-y-4">
-          <LineChartWidget
-            attributes={widgetsData[4].attributes}
-            max={100}
-          />
+          <LineChartWidget attributes={widgetsData[4].attributes} max={100} />
         </div>
       </Card>
       <Card className="col-span-2 flex flex-col">

@@ -17,6 +17,7 @@ export const Dashboard5 = () => {
       </Card>
       <Card className="col-span-2 flex flex-col p-2">
         <PerformanceEngins
+          selectionDate={true}
           title={widgetsData[1].title}
           attributes={widgetsData[1].attributes}
         />
@@ -34,11 +35,7 @@ export const Dashboard5 = () => {
           {widgetsData[3].title}
         </h3>
         <div className="h-1 flex-1">
-          <LineChartWidget
-            attributes={widgetsData[3].attributes}
-
-            max={100}
-          />
+          <LineChartWidget attributes={widgetsData[3].attributes} max={100} />
         </div>
       </Card>
 
@@ -55,11 +52,7 @@ export const Dashboard5 = () => {
           {widgetsData[4].title}
         </h3>
         <div className="h-1 flex-1">
-          <LineChartWidget
-            attributes={widgetsData[4].attributes}
-
-            max={100}
-          />
+          <LineChartWidget attributes={widgetsData[4].attributes} max={100} />
         </div>
       </Card>
     </main>

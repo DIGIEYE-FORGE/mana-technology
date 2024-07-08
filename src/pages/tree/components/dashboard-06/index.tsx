@@ -17,6 +17,7 @@ export const Dashboard6 = () => {
       </Card>
       <Card className="col-span-2 flex flex-col p-2">
         <PerformanceEngins
+          selectionDate={true}
           title={widgetsData[1].title}
           attributes={widgetsData[1].attributes}
           imageClassName="absolute bottom-2 right-3 z-10 w-32"
@@ -35,11 +36,7 @@ export const Dashboard6 = () => {
           {widgetsData[3].title}
         </h3>
         <div className="h-1 flex-1">
-          <LineChartWidget
-            attributes={widgetsData[3].attributes}
-
-            max={100}
-          />
+          <LineChartWidget attributes={widgetsData[3].attributes} max={100} />
         </div>
       </Card>
       <Card className="col-span-1 flex flex-col p-2">
@@ -47,11 +44,7 @@ export const Dashboard6 = () => {
           {widgetsData[4].title}
         </h3>
         <div className="h-1 flex-1">
-          <LineChartWidget
-            attributes={widgetsData[4].attributes}
-
-            max={100}
-          />
+          <LineChartWidget attributes={widgetsData[4].attributes} max={100} />
         </div>
       </Card>
 
