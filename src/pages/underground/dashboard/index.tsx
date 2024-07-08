@@ -224,7 +224,7 @@ export default function UndergroundDashboardPage() {
             ]}
           />
         </div>
-        <Link to="/underground/ventilation">
+        <Link to="/underground/ventilation1">
           <Button className="flex w-fit gap-2" size={"sm"} variant={"link"}>
             <ChevronsDown size={16} />
             <span>Voir plus</span>
