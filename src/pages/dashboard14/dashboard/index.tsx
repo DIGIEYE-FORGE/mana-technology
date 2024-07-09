@@ -3,7 +3,6 @@ import { widgetData } from "./data";
 import Telemetry from "@/components/telemetry";
 import LineChartWidget from "@/components/line-chart-widget";
 import { JsonObject } from "@/utils";
-import BarChartWidget from "@/components/bar-chart-widget";
 import GaugeWidget from "@/components/gauge-widget";
 
 export default function Dashboard() {
@@ -127,7 +126,7 @@ export default function Dashboard() {
           {widgetData[6].title}
         </h3>
         <div className="h-1 flex-1">
-          <BarChartWidget
+          <LineChartWidget
             attributes={widgetData[6].attributes as unknown as JsonObject}
           />
         </div>
