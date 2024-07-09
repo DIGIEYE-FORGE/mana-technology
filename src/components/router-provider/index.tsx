@@ -36,20 +36,20 @@ const routes: RouteObject[] = [
         element: <HomePage />,
         children: [
           {
-            path: "op-est11",
-            element: <HomeDashboard />,
-          },
-          {
-            path: "op-sud",
-            element: <OpSud />,
-          },
-          {
             path: "",
             element: <Op />,
           },
           {
             path: "/op-est",
             element: <OpEst />,
+          },
+          {
+            path: "op-est11",
+            element: <HomeDashboard />,
+          },
+          {
+            path: "op-sud",
+            element: <OpSud />,
           },
           {
             path: "op-sud2",
