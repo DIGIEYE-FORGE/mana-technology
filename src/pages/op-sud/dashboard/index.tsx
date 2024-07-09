@@ -15,12 +15,12 @@ export default function HomeDashboard() {
           Production Roche Cumulée annuelle (t)
         </h1>
         <div className="h-1 flex-1">
-          <BarLineWidget
+        <BarLineWidget
             attributes={{
               stacked: true,
               telemetries: [
                 {
-                  name: "CUMUL_PLANIF_TOT",
+                  name: "CUMUL_PLANIF_TOT_SUD",
                   unit: "T",
                   color: "#FF5AF1",
                   label: "Planifié (mensuelle)",
@@ -28,7 +28,7 @@ export default function HomeDashboard() {
                   type: "bar",
                 },
                 {
-                  name: "CUMUL_REAL_TOT",
+                  name: "CUMUL_REAL_TOT_SUD",
                   unit: "T",
                   color: "#FFDC8C",
                   label: "Réalisé (mensuelle)",
@@ -36,7 +36,7 @@ export default function HomeDashboard() {
                   type: "bar",
                 },
                 {
-                  name: "CUMUL_PLANIF_TOT_TOT",
+                  name: "CUMUL_PLANIF_TOT_TOT_SUD",
                   unit: "T",
                   color: "#B98EFF",
                   label: "Planifié (Cumulé)",
@@ -44,7 +44,7 @@ export default function HomeDashboard() {
                   type: "line",
                 },
                 {
-                  name: "CUMUL_REAL_TOT_TOT",
+                  name: "CUMUL_REAL_TOT_TOT_SUD",
                   unit: "T",
                   color: "#78F6EA",
                   label: "Réalisé (Cumulé)",
@@ -171,19 +171,19 @@ export default function HomeDashboard() {
                     name: "SUD_REALISE_ORE_HG_SULF",
                     serial: "PI6PQ8SEZC4BWRP3",
                     label: "HG",
-                    color: "#FFDC8C",
+                    color: "#bf212f",
                   },
                   {
                     name: "SUD_REALISE_ORE_MG_SULF",
                     serial: "PI6PQ8SEZC4BWRP3",
                     label: "MG",
-                    color: "#42F5FF",
+                    color: "#27b376",
                   },
                   {
                     name: "SUD_REALISE_ORE_LG_SULF",
                     serial: "PI6PQ8SEZC4BWRP3",
                     label: "LG",
-                    color: "#FFC8FF",
+                    color: "#3366ff",
                   },
                 ],
               },
@@ -194,19 +194,19 @@ export default function HomeDashboard() {
                     name: "SUD_REALISE_ORE_HG_OXYD",
                     serial: "PI6PQ8SEZC4BWRP3",
                     label: "HG",
-                    color: "#FFDC8C",
+                    color: "#bf212f",
                   },
                   {
                     name: "SUD_REALISE_ORE_MG_OXYD",
                     serial: "PI6PQ8SEZC4BWRP3",
                     label: "MG",
-                    color: "#42F5FF",
+                    color: "#27b376",
                   },
                   {
                     name: "SUD_REALISE_ORE_LG_OXYD",
                     serial: "PI6PQ8SEZC4BWRP3",
                     label: "LG",
-                    color: "#FFC8FF",
+                    color: "#3366ff",
                   },
                 ],
               },
