@@ -7,23 +7,16 @@ import { data, ventilation } from "./data";
 // import { QualitAir } from "./components/qualite-air";
 import { VentilationCard } from "./components/ventilation-card";
 import useSWR from "swr";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useAppContext } from "@/Context";
 import Loader from "@/components/loader";
 import { flatten } from "@/utils";
+import io from "socket.io-client";
 
 const VentilationDashboard1 = () => {
   const { dateRange, backendApi } = useAppContext();
   const [dataRealTime] = useState(true);
-  const [ChartData, setChartData] = useState<{
-    name: string;
-    color: string;
-    data: {
-      x: Date;
-      y: number;
-    }[];
-  } | null>(null);
-
+  const [socketData, setSocketData] = useState<any>(null);
   const fetcher = async () => {
     const res = await backendApi.findMany("/dpc-history/api/history", {
       pagination: {
@@ -43,7 +36,7 @@ const VentilationDashboard1 = () => {
     return res.results || [];
   };
 
-  const fetchInterval = 5000;
+  // const fetchInterval = 5000;
   const {
     data: res,
     isLoading,
@@ -51,24 +44,52 @@ const VentilationDashboard1 = () => {
   } = useSWR(
     `dataHistory${!dataRealTime ? `from=${dateRange?.from}&to=${dateRange?.to}` : ""}`,
     fetcher,
-    { refreshInterval: dataRealTime ? fetchInterval : undefined },
+    // { refreshInterval: dataRealTime ? fetchInterval : undefined },
   );
 
-  useEffect(() => {
-    if (res && !dataRealTime) {
-      setChartData(res as any);
+  const chartData = useMemo(() => {
+    if (res) {
+      return [...res, ...(socketData ? [socketData] : [])];
     }
-  }, [dataRealTime, res]);
+    return null;
+  }, [res, socketData]);
+  // useEffect(() => {
+  //   if (res) {
+  //     setChartData(res as any);
+  //   }
+  // }, [res]);
+
+  // useEffect(() => {
+  //   if ((!isLoading && !error) || !dataRealTime) return;
+  //   const intervalId = setInterval(async () => {
+  //     const newData = await fetcher();
+  //     setChartData(newData as any);
+  //   }, fetchInterval);
+
+  //   return () => clearInterval(intervalId); // Clean up interval on component unmount
+  // }, [fetchInterval]);
 
   useEffect(() => {
-    if ((!isLoading && !error) || !dataRealTime) return;
-    const intervalId = setInterval(async () => {
-      const newData = await fetcher();
-      setChartData(newData as any);
-    }, fetchInterval);
+    const socket = io("https://ws.managem.digieye.io", {
+      // transports: ["websocket"],
+    }); // Connect to your WebSocket server
+    socket.on("connect", () => {
+      console.log("Connected to WebSocket server");
+    });
 
-    return () => clearInterval(intervalId); // Clean up interval on component unmount
-  }, [fetchInterval]);
+    socket.on(`telemetry`, (newData: any) => {
+      setSocketData(newData);
+      console.log("New data received from WebSocket server", newData);
+    });
+
+    socket.on("disconnect", () => {
+      console.log("Disconnected from WebSocket server");
+    });
+
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
 
   if (isLoading)
     return (
@@ -101,7 +122,7 @@ const VentilationDashboard1 = () => {
                     name: telemetry.label || telemetry.name,
                     color: telemetry.color,
                     data:
-                      ((ChartData || []) as any)?.map(
+                      ((chartData || []) as any)?.map(
                         (item: Record<string, unknown>) => ({
                           x: new Date(item.createdAt as any),
                           y: Number(flatten(item)[telemetry.name]),
@@ -124,7 +145,7 @@ const VentilationDashboard1 = () => {
                     name: telemetry.label || telemetry.name,
                     color: telemetry.color,
                     data:
-                      ((ChartData || []) as any)?.map(
+                      ((chartData || []) as any)?.map(
                         (item: Record<string, unknown>) => ({
                           x: new Date(item.createdAt as any),
                           y: Number(flatten(item)[telemetry.name]),
@@ -145,14 +166,47 @@ const VentilationDashboard1 = () => {
           <div className="flex flex-col gap-4">
             <div className="flex flex-1 gap-4">
               <Card className="!rounded !px-2 !py-3">
-                <VentilationCard {...ventilation[1]} interval={5000} />
+                <VentilationCard
+                  {...ventilation[1]}
+                  interval={5000}
+                  data={ventilation[1].telemetry.map((t) => {
+                    return {
+                      label: "",
+                      value: chartData
+                        ? Number((chartData as any)?.[0][t.name])
+                        : 0,
+                    };
+                  })}
+                />
               </Card>
               <Card className="!rounded !px-2 !py-3">
-                <VentilationCard {...ventilation[2]} interval={5000} />
+                <VentilationCard
+                  {...ventilation[2]}
+                  interval={5000}
+                  data={ventilation[2].telemetry.map((t) => {
+                    return {
+                      label: "",
+                      value: chartData
+                        ? Number((chartData as any)?.[0][t.name])
+                        : 0,
+                    };
+                  })}
+                />
               </Card>
             </div>
             <Card className="flex-1 !rounded !px-2 !py-3">
-              <VentilationCard {...ventilation[0]} interval={5000} />
+              <VentilationCard
+                {...ventilation[0]}
+                interval={5000}
+                data={ventilation[0].telemetry.map((t) => {
+                  return {
+                    label: t.label,
+                    value: chartData
+                      ? Number((chartData as any)?.[0][t.name])
+                      : 0,
+                  };
+                })}
+              />
             </Card>
           </div>
 
@@ -177,7 +231,7 @@ const VentilationDashboard1 = () => {
                     name: telemetry.label || telemetry.name,
                     color: telemetry.color,
                     data:
-                      ((ChartData || []) as any)?.map(
+                      ((chartData || []) as any)?.map(
                         (item: Record<string, unknown>) => ({
                           x: new Date(item.createdAt as any),
                           y: Number(flatten(item)[telemetry.name]),

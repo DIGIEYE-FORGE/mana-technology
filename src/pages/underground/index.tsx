@@ -19,8 +19,8 @@ function UndergroundBar() {
         <span className="h-3/4 border-l py-3 pl-4 text-xl font-bold">
           {}
           {parentPath
-            ? pathname.split("/").at(-1) === "Cycle de développement"
-              ? "Tree"
+            ? pathname.split("/").at(-1) === "tree"
+              ? "Cycle de développement"
               : "ventilation"
             : "underground"}
         </span>
