@@ -194,7 +194,11 @@ export default function BarLineWidget({
                 }
               : [
                   {
-                    seriesName: [data?.[0]?.name, data?.[1]?.name] as any,
+                    seriesName:
+                      (data || [])?.length > 2
+                        ? ([data?.[0]?.name, data?.[1]?.name] as any)
+                        : data?.[0]?.name,
+                    // seriesName: [data?.[0]?.name, data?.[1]?.name] as any,
                     axisTicks: {
                       show: true,
                     },
@@ -221,7 +225,10 @@ export default function BarLineWidget({
 
                   {
                     opposite: true,
-                    seriesName: data?.[2]?.name,
+                    seriesName:
+                      (data || [])?.length > 2
+                        ? data?.[2]?.name
+                        : data?.[1]?.name,
                     axisTicks: {
                       show: true,
                     },

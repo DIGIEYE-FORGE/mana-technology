@@ -10,6 +10,13 @@ interface GaugeChartProps {
     count?: number;
     color?: string;
     fontSize?: pxSizeType;
+    offset?: number;
+  };
+  dataLabels?: {
+    show?: boolean;
+    color?: string;
+    fontSize?: pxSizeType;
+    formater?: (d: number) => string;
   };
   backgroundColor?: string;
   foregroundColor?: string;
@@ -26,32 +33,39 @@ const convertRemOrPxToNumber = (size: pxSizeType) => {
 export const D3GaugeChart = ({
   value,
   maxValue,
-  ticks = { count: 5, color: "#000", fontSize: "1rem" },
+  ticks = {},
+  dataLabels = {},
   backgroundColor = "#ddd",
   foregroundColor = "#ffab00",
 }: GaugeChartProps) => {
   const ref = useRef(null);
   const mounted = useRef(false);
-
+  const { count = 5, color = "#000", fontSize = "1rem", offset = 10 } = ticks;
+  const {
+    show = true,
+    formater = (d) => d.toString(),
+    color: dataLabelColor = "#fff",
+    fontSize: dataLabelFontSize = "1rem",
+  } = dataLabels;
   useEffect(() => {
     if (!mounted.current) {
       mounted.current = true;
       return;
     }
 
-    const tickSize = convertRemOrPxToNumber(ticks.fontSize as pxSizeType);
+    const tickSize = convertRemOrPxToNumber(fontSize as pxSizeType);
     console.log(tickSize);
 
     const margin = {
       top: 0,
       right: maxValue.toString().length * tickSize,
-      bottom: 10,
-      left: maxValue.toString().length * tickSize * 0.5,
+      bottom: 1,
+      left: maxValue.toString().length * tickSize,
     };
     console.log(maxValue.toString().length);
 
-    const width = 500 - margin.left - margin.right;
-    const height = 300 - margin.top - margin.bottom;
+    const width = 500;
+    const height = 300;
 
     d3.select(ref.current).select("svg").remove();
 
@@ -100,9 +114,8 @@ export const D3GaugeChart = ({
       .style("fill", foregroundColor)
       .attr("d", arc as any);
 
-    const labelsArray = Array.from(
-      { length: (ticks.count as number) + 1 },
-      (_, i) => Math.round((maxValue / (ticks.count as number)) * i),
+    const labelsArray = Array.from({ length: (count as number) + 1 }, (_, i) =>
+      Math.round((maxValue / (count as number)) * i),
     );
 
     // Draw the ticks
@@ -122,24 +135,33 @@ export const D3GaugeChart = ({
       .enter()
       .append("text")
       .attr("class", "tick-label")
-      .attr("x", (d) => (radius + 10) * Math.cos(d.angle - Math.PI / 2)) // Increase radius offset
-      .attr("y", (d) => (radius + 10) * Math.sin(d.angle - Math.PI / 2)) // Increase radius offset
+      .attr("x", (d) => (radius + offset) * Math.cos(d.angle - Math.PI / 2)) // Increase radius offset
+      .attr("y", (d, index) => {
+        if (index === 0 || index === labelsArray.length - 1)
+          return (
+            (radius + offset) * Math.sin(d.angle - Math.PI / 2) - tickSize / 2.8
+          );
+        return (radius + offset) * Math.sin(d.angle - Math.PI / 2);
+      }) // Increase radius offset
       .attr("dy", "0.35em")
       .attr("text-anchor", (d) =>
         d.angle === 0 ? "middle" : d.angle < 0 ? "end" : "start",
       )
-      .style("font-size", ticks.fontSize as string)
+      .style("font-size", fontSize as string)
       .text((d) => d.value)
-      .style("fill", ticks.color as string);
+      .style("fill", color as string);
 
     // Draw the center value
-    g.append("text")
-      .attr("text-anchor", "middle")
-      .attr("dy", "-1em")
-      .style("font-size", "2.5rem")
-      .style("fill", "#fff")
-      .text(value);
+    if (show) {
+      g.append("text")
+        .attr("text-anchor", "middle")
+        .attr("dy", "0.35em")
+        .style("font-size", dataLabelFontSize)
+        .style("fill", dataLabelColor)
+        .text(formater(value))
+        .attr("transform", `translate(0, ${(-radius / 2) * 0.8})`);
+    }
   }, [value, maxValue, ticks]);
 
-  return <div ref={ref} className="font-semibold" />;
+  return <div ref={ref} className="debug h-fit font-semibold" />;
 };
