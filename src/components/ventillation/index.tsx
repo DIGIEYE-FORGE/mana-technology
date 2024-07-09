@@ -1,6 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useAppContext } from "@/Context";
 import useSWR from "swr";
 import Loader from "../loader";
+import { io } from "socket.io-client";
+import { useState, useEffect, useMemo } from "react";
 
 const floatOrDecimal = (value: number) => {
   return value % 1 === 0 ? value : value.toFixed(2);
@@ -33,8 +36,30 @@ interface VentillationProps {
     unit?: "m/s" | "ppm" | "%" | "°C" | "RPM" | "kw" | "m3/h" | "kWh" | "m3";
   }[];
 }
+
 function Ventillation({ attribute }: VentillationProps) {
   const { backendApi } = useAppContext();
+  const [socketData, setSocketData] = useState<any>(null);
+
+  useEffect(() => {
+    const socket = io("https://ws.managem.digieye.io");
+    socket.on("connect", () => {
+      console.log("Connected to WebSocket server");
+    });
+
+    socket.on(`telemetry`, (newData: any) => {
+      setSocketData(newData);
+      console.log("New data received from WebSocket server", newData);
+    });
+
+    socket.on("disconnect", () => {
+      console.log("Disconnected from WebSocket server");
+    });
+
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
   const { data, isLoading, error } = useSWR(
     `telemetryDonutChartProps${JSON.stringify(attribute)}`,
     async () => {
@@ -85,10 +110,48 @@ function Ventillation({ attribute }: VentillationProps) {
       );
       return res1;
     },
-    {
-      refreshInterval: 60_000,
-    },
   );
+
+  useEffect(() => {
+    const socket = io("https://ws.managem.digieye.io");
+    socket.on("connect", () => {
+      console.log("Connected to WebSocket server");
+    });
+
+    socket.on(`telemetry`, (newData: any) => {
+      setSocketData(newData);
+      console.log("New data received from WebSocket server", newData);
+    });
+
+    socket.on("disconnect", () => {
+      console.log("Disconnected from WebSocket server");
+    });
+
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
+
+  const dataWithSocket = useMemo(() => {
+    if (!socketData) return data;
+    return attribute?.map((item) => {
+      const newData = socketData[item.telemetryName];
+      if (newData) {
+        return {
+          icon: item.icon,
+          name: item.labelTelemetry,
+          value:
+            (floatOrDecimal(Number(newData)) || item.randomValue || 0)
+              .toString()
+              .replace(".", ",") +
+            "" +
+            (item.unit || ""),
+        };
+      } else {
+        return data?.find((i) => i.name === item.labelTelemetry);
+      }
+    });
+  }, [data, socketData]);
 
   if (isLoading)
     return (
@@ -110,14 +173,16 @@ function Ventillation({ attribute }: VentillationProps) {
           <img src="/energy.svg" alt="" width={15} height={15} />
           Energie
           <span className="text-sm text-[#FAAC18]">
-            {data?.find((item) => item?.name === "Energie1")?.value ?? "--"}
+            {dataWithSocket?.find((item) => item?.name === "Energie1")?.value ??
+              "--"}
           </span>
         </div>
         <div className="flex items-center justify-center gap-2">
           <img src="/energy.svg" alt="" width={15} height={15} />
           Energie
           <span className="text-sm text-[#FAAC18]">
-            {data?.find((item) => item?.name === "Energie2")?.value ?? "--"}
+            {dataWithSocket?.find((item) => item?.name === "Energie2")?.value ??
+              "--"}
           </span>
         </div>
       </div>
@@ -128,15 +193,17 @@ function Ventillation({ attribute }: VentillationProps) {
             <h3 className="font-semibold">Ventilateur N°1</h3>
             <h3 className="flex gap-2 font-bold text-[#FAAC18]">
               <span>
-                {data?.find((item) => item?.name === "Ventilateur N°1")
-                  ?.value ?? "--"}
+                {dataWithSocket?.find(
+                  (item) => item?.name === "Ventilateur N°1",
+                )?.value ?? "--"}
               </span>
               <span className="space-x-2">m3/s</span>
             </h3>
             <div className="flex gap-2 text-sm">
               <span>H.marche</span>
               <span className="text-[#FAAC18]/80">
-                {data?.find((item) => item?.name === "Marche1")?.value ?? "--"}{" "}
+                {dataWithSocket?.find((item) => item?.name === "Marche1")
+                  ?.value ?? "--"}{" "}
                 {" H"}
               </span>
             </div>
@@ -148,15 +215,17 @@ function Ventillation({ attribute }: VentillationProps) {
             <h3 className="font-semibold">Ventilateur N°2</h3>
             <h3 className="flex gap-2 text-sm font-bold text-[#FAAC18]">
               <span>
-                {data?.find((item) => item?.name === "Ventilateur N°2")
-                  ?.value ?? "--"}
+                {dataWithSocket?.find(
+                  (item) => item?.name === "Ventilateur N°2",
+                )?.value ?? "--"}
               </span>
               <span className="space-x-2">m3/s</span>
             </h3>
             <div className="flex gap-2 text-sm">
               <span>H.marche</span>
               <span className="text-[#FAAC18]/80">
-                {data?.find((item) => item?.name === "Marche2")?.value ?? "--"}
+                {dataWithSocket?.find((item) => item?.name === "Marche2")
+                  ?.value ?? "--"}
                 {"  H"}
               </span>
             </div>
@@ -164,7 +233,7 @@ function Ventillation({ attribute }: VentillationProps) {
         </div>
       </div>
       <div className="flex w-full flex-wrap justify-between">
-        {data
+        {dataWithSocket
           ?.filter(
             (item) =>
               item?.name !== "Ventilateur N°1" &&
