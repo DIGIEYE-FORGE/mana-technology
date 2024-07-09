@@ -15,7 +15,7 @@ import io from "socket.io-client";
 
 const VentilationDashboard1 = () => {
   const { dateRange, backendApi } = useAppContext();
-  const [dataRealTime] = useState(true);
+  const [dataRealTime] = useState(false);
   const [socketData, setSocketData] = useState<any>(null);
   const fetcher = async () => {
     const res = await backendApi.findMany("/dpc-history/api/history", {
