@@ -13,6 +13,14 @@ export type TLocation = {
       url?: string;
     }[];
   };
+  info?: {
+    side: "top" | "bottom" | "left" | "right";
+    align?: "start" | "center" | "end";
+    title: string;
+    data: {
+      [key: string]: string;
+    };
+  };
 };
 
 export const locations: TLocation[] = [
@@ -29,6 +37,17 @@ export const locations: TLocation[] = [
           url: "/est_vd.mp4",
         },
       ],
+    },
+    info: {
+      side: "top",
+      align: "end",
+      title: "Open Pit",
+      data: {
+        "Mineral reserves": "7,6 Mt @0,85% Cu & 23 ",
+        "Waste tonnage": "61.8 Mt ",
+        "Rock production ": "69.5 Mt",
+        "Life of mine ": "4 years ",
+      },
     },
   },
   {

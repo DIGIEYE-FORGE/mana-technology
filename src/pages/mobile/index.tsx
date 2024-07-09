@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Suspense, useEffect, useRef, useState } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import { Loader3D } from "../tree";
 import Model from "@/components/models";
 import { env } from "@/utils/env";
@@ -126,7 +126,8 @@ function ThreeDModel({
 }
 
 function Location({ location }: { location: TLocation }) {
-  const { name, quickAccess, ...style } = location;
+  const { name, quickAccess, info, ...style } = location;
+  const [showInfo, setShowInfo] = useState(true);
   return (
     <div
       className="machine-highlight absolute z-10 size-[3rem] cursor-pointer md:size-[5rem]"
@@ -221,6 +222,31 @@ function Location({ location }: { location: TLocation }) {
               </div>
             );
           })}
+        </div>
+      )}
+      {info && showInfo && (
+        <div
+          className={cn(
+            "absolute right-0 grid w-[16rem] grid-cols-[min-content,1fr] gap-1 p-3 pr-6 text-xs",
+            {
+              "bottom-full max-sm:translate-y-1/4 max-sm:scale-50":
+                info.side === "top",
+              "right-0 translate-x-1/4": info.align === "end",
+            },
+          )}
+          style={{
+            background: "url(/vector.png)",
+            backgroundSize: "100% 100%",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          <h5 className="col-span-2 font-bold">{info.title}</h5>
+          {Object.entries(info.data).map(([key, value], index) => (
+            <React.Fragment key={index}>
+              <div className="whitespace-nowrap">{key}:</div>
+              <div>{value}</div>
+            </React.Fragment>
+          ))}
         </div>
       )}
     </div>

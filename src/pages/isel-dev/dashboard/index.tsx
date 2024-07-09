@@ -75,7 +75,7 @@ export default function Dashboard() {
       </Card>
       <Card className="col-span-2 row-span-8 flex flex-col">
         <h3 className="text-center text-lg font-semibold">
-          {widgetData[3].title}
+          {widgetData[4].title}
         </h3>
         <div className="h-1 flex-1">
           <BarChartWidget
@@ -85,7 +85,7 @@ export default function Dashboard() {
       </Card>
       <Card className="col-span-3 row-span-4 flex flex-col">
         <h3 className="text-center text-lg font-semibold">
-          {widgetData[3].title}
+          {widgetData[5].title}
         </h3>
         <div className="h-1 flex-1">
           <LineChartWidget

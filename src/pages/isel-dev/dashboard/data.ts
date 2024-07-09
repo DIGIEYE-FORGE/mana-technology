@@ -1,6 +1,6 @@
 export const widgetData = [
   {
-    title: "test",
+    title: "Title 1",
     telemetries: [
       {
         serial: "123456",
@@ -56,7 +56,7 @@ export const widgetData = [
     ],
   },
   {
-    title: "Consomation gasoil",
+    title: "Title 2",
     telemetries: [
       {
         serial: "123456",
@@ -77,7 +77,7 @@ export const widgetData = [
     ],
   },
   {
-    title: "Autres",
+    title: "Title 3",
     telemetries: [
       {
         serial: "123456",
@@ -114,7 +114,7 @@ export const widgetData = [
     ],
   },
   {
-    title: "Foration",
+    title: "Title 4",
     attributes: {
       telemetries: [
         {
@@ -135,7 +135,7 @@ export const widgetData = [
     },
   },
   {
-    title: "Foration",
+    title: "Title 5",
     attributes: {
       telemetries: [
         {
@@ -156,11 +156,11 @@ export const widgetData = [
     },
   },
   {
-    title: "Foration",
+    title: "Title 6",
     attributes: {
       telemetries: [
         {
-          area: true,
+          area: false,
           name: "EST_REALISE_FORATION",
           color: "#B98EFF",
           label: "Realisé ML/J",
