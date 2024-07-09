@@ -1,13 +1,13 @@
 export const widgetData = [
   {
-    title: "test",
+    title: "",
     telemetries: [
       {
         serial: "123456",
         telemetryName: "test1",
-        label: "Test 1",
+        label: "Vitesse",
         value: 25,
-        unit: "L",
+        unit: "km/h",
         stops: [
           {
             stop: 20,
@@ -22,8 +22,25 @@ export const widgetData = [
       {
         serial: "123456",
         telemetryName: "test2",
-        label: "Test 2",
+        label: "Tr/min",
         value: 20,
+        unit: "rpm",
+        stops: [
+          {
+            stop: 20,
+            color: "#78F6EA",
+          },
+          {
+            stop: 30,
+            color: "#B98EFF",
+          },
+        ],
+      },
+      {
+        serial: "123456",
+        telemetryName: "test2",
+        label: "Niveau gasoil",
+        value: 10,
         unit: "%",
         stops: [
           {
@@ -36,32 +53,24 @@ export const widgetData = [
           },
         ],
       },
-      {
-        serial: "123456",
-        telemetryName: "test2",
-        label: "Test 2",
-        value: 10,
-        unit: "Kg",
-        stops: [
-          {
-            stop: 20,
-            color: "#78F6EA",
-          },
-          {
-            stop: 30,
-            color: "#B98EFF",
-          },
-        ],
-      },
     ],
   },
   {
-    title: "Consomation gasoil",
+    title: "Pression pneus",
+
     telemetries: [
       {
         serial: "123456",
         name: "total",
-        label: "Total",
+        label: "AR gauche",
+        displayFormat: "integer",
+        value: 22977,
+        unit: "km",
+      },
+      {
+        serial: "123456",
+        name: "total",
+        label: "AR droit",
         displayFormat: "integer",
         value: 22977,
         unit: "L",
@@ -69,7 +78,7 @@ export const widgetData = [
       {
         serial: "123456",
         name: "ratio",
-        label: "Ratio",
+        label: "AV droit",
         value: 4.65,
         displayFormat: "float",
         unit: "L/h",
@@ -77,12 +86,12 @@ export const widgetData = [
     ],
   },
   {
-    title: "Autres",
+    title: "Chargement",
     telemetries: [
       {
         serial: "123456",
         name: "tonage-instantané",
-        label: "Tonage instantané",
+        label: "Etat de marche",
         value: 120,
         unit: "Kg",
         displayFormat: "integer",
@@ -90,23 +99,7 @@ export const widgetData = [
       {
         serial: "123456",
         name: "tonage-instantané",
-        label: "Tonage instantané",
-        value: 120,
-        unit: "Kg",
-        displayFormat: "integer",
-      },
-      {
-        serial: "123456",
-        name: "tonage-instantané",
-        label: "Tonage instantané",
-        value: 120,
-        unit: "Kg",
-        displayFormat: "integer",
-      },
-      {
-        serial: "123456",
-        name: "tonage-instantané",
-        label: "Tonage instantané",
+        label: "Frein stationnement",
         value: 120,
         unit: "Kg",
         displayFormat: "integer",
@@ -114,7 +107,7 @@ export const widgetData = [
     ],
   },
   {
-    title: "Foration",
+    title: "Temperatures",
     attributes: {
       telemetries: [
         {
@@ -135,32 +128,32 @@ export const widgetData = [
     },
   },
   {
-    title: "Foration",
+    title: "Temps de marche",
     attributes: {
       telemetries: [
         {
           name: "EST11_REALISE_ROCHE",
           unit: "T",
           color: "#78F6EA",
-          label: "Est 11",
+          label: "Tempd de marche",
           serial: "D5KP29KL463AZXWE",
         },
         {
           name: "EST11_REALISE_ROCHE",
           unit: "T",
           color: "#B98EFF",
-          label: "Est 12",
+          label: "Temps de marche à vide",
           serial: "D5KP29KL463AZXWE",
         },
       ],
     },
   },
   {
-    title: "Foration",
+    title: "Pressions",
     attributes: {
       telemetries: [
         {
-          area: true,
+          area: false,
           name: "EST_REALISE_FORATION",
           color: "#B98EFF",
           label: "Realisé ML/J",
@@ -175,5 +168,93 @@ export const widgetData = [
         },
       ],
     },
+  },
+  {
+    title: "Chargement",
+    telemetries: [
+      {
+        serial: "123456",
+        name: "tonage-instantané",
+        label: "Tonnage instantané",
+        value: 120,
+        unit: "Kg",
+        displayFormat: "integer",
+      },
+      {
+        serial: "123456",
+        name: "tonage-instantané",
+        label: "Frein stationnement",
+        value: 120,
+        unit: "Kg",
+        displayFormat: "integer",
+      },
+    ],
+  },
+  {
+    title: "Chargement",
+    telemetries: [
+      {
+        serial: "123456",
+        name: "tonage-instantané",
+        label: "Tonnage instantané",
+        value: 120,
+        unit: "t",
+        displayFormat: "integer",
+      },
+      {
+        serial: "123456",
+        name: "tonage-instantané",
+        label: "Facteur de chargement",
+        value: 120,
+        unit: "t",
+        displayFormat: "integer",
+      },
+      {
+        serial: "123456",
+        name: "tonage-instantané",
+        label: "Tonnage journalier ",
+        value: 120,
+        unit: "%",
+        displayFormat: "integer",
+      },
+    ],
+  },
+  {
+    title: "Pression pneus",
+
+    telemetries: [
+      {
+        serial: "123456",
+        name: "total",
+        label: "AR gauche",
+        displayFormat: "integer",
+        value: 22977,
+        unit: "kpa",
+      },
+      {
+        serial: "123456",
+        name: "total",
+        label: "AR droit",
+        displayFormat: "integer",
+        value: 22977,
+        unit: "kpa",
+      },
+      {
+        serial: "123456",
+        name: "ratio",
+        label: "AV droit",
+        value: 4.65,
+        displayFormat: "float",
+        unit: "kpa",
+      },
+      {
+        serial: "123456",
+        name: "ratio",
+        label: "AV gauche",
+        value: 4.65,
+        displayFormat: "float",
+        unit: "kpa",
+      },
+    ],
   },
 ] as const;

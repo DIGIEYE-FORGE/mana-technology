@@ -1,7 +1,7 @@
-import useSWR from "swr";
-import { useAppContext } from "@/Context";
-import Loader from "@/components/loader";
-import { LastTelemetry } from "@/utils";
+// import useSWR from "swr";
+// import { useAppContext } from "@/Context";
+// import Loader from "@/components/loader";
+// import { LastTelemetry } from "@/utils";
 import { cn } from "@/lib/utils";
 import { HistoryDialog } from "./history-dialog";
 
@@ -15,6 +15,10 @@ interface VentilationCardProps {
   }[];
   interval?: number;
   disabled?: boolean;
+  data: {
+    label: string;
+    value: number;
+  }[];
 }
 
 export const VentilationCard = ({
@@ -22,62 +26,63 @@ export const VentilationCard = ({
   unit = "",
   interval,
   telemetry,
+  data,
 }: VentilationCardProps) => {
-  const { backendApi } = useAppContext();
-  const { data, isLoading, error } = useSWR(
-    `telemetry?${JSON.stringify({ telemetry })}`,
-    async () => {
-      if (!telemetry?.length) return [];
-      const res1 = await Promise.all(
-        telemetry.map(async (device) => {
-          const { name, serial } = device;
-          const res = await backendApi.findMany<LastTelemetry>(
-            "lasttelemetry",
-            {
-              where: {
-                name,
-                device: { serial },
-              },
-              select: { name: true, value: true },
-              orderBy: {
-                createdAt: "desc",
-              },
-              pagination: {
-                page: 1,
-                perPage: 1,
-              },
-            },
-          );
-          return res.results[0] || 0;
-        }),
-      );
-      return res1 || [];
-    },
-    { refreshInterval: interval },
-  );
+  // const { backendApi } = useAppContext();
+  // const { data, isLoading, error } = useSWR(
+  //   `telemetry?${JSON.stringify({ telemetry })}`,
+  //   async () => {
+  //     if (!telemetry?.length) return [];
+  //     const res1 = await Promise.all(
+  //       telemetry.map(async (device) => {
+  //         const { name, serial } = device;
+  //         const res = await backendApi.findMany<LastTelemetry>(
+  //           "lasttelemetry",
+  //           {
+  //             where: {
+  //               name,
+  //               device: { serial },
+  //             },
+  //             select: { name: true, value: true },
+  //             orderBy: {
+  //               createdAt: "desc",
+  //             },
+  //             pagination: {
+  //               page: 1,
+  //               perPage: 1,
+  //             },
+  //           },
+  //         );
+  //         return res.results[0] || 0;
+  //       }),
+  //     );
+  //     return res1 || [];
+  //   },
+  //   { refreshInterval: interval },
+  // );
 
-  if (isLoading)
-    return (
-      <div className="grid h-full w-full place-content-center">
-        <Loader />
-      </div>
-    );
+  // if (isLoading)
+  //   return (
+  //     <div className="grid h-full w-full place-content-center">
+  //       <Loader />
+  //     </div>
+  //   );
 
-  if (error)
-    return (
-      <div className="grid h-full w-full place-content-center">
-        <h3>Something went wrong.</h3>
-      </div>
-    );
+  // if (error)
+  //   return (
+  //     <div className="grid h-full w-full place-content-center">
+  //       <h3>Something went wrong.</h3>
+  //     </div>
+  //   );
   return (
     <div className="relative flex h-full w-full flex-col items-center justify-center gap-1">
       <h1 className="text-center text-sm">{title}</h1>
-      <div className="flex h-1 w-full flex-1  items-center justify-center">
+      <div className="flex h-1 w-full flex-1 items-center justify-center">
         {(data || [])?.map((d, i) => {
           return (
             <div
               key={i}
-              className={cn("flex items-center pl-4 gap-1 text-sm font-bold")}
+              className={cn("flex items-center gap-1 pl-4 text-sm font-bold")}
             >
               {telemetry[i].label && (
                 <span className="pr-1 font-bold text-yellow-300">

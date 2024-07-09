@@ -3,8 +3,11 @@ import { Card } from "@/components/card";
 import LineChartWidget from "@/components/line-chart-widget";
 import { widgetsData } from "./data";
 import { PerformanceEngins } from "../performance-engins";
+import BarLineWidget from "@/components/bar-line-widget";
+import { useAppContext } from "@/Context";
 
 export const Dashboard4 = () => {
+  const { dateRange } = useAppContext();
   return (
     <main className="grid auto-rows-[11.5rem] grid-cols-4 gap-4">
       <Card className="col-span-2 flex flex-col p-2">
@@ -28,7 +31,7 @@ export const Dashboard4 = () => {
           {widgetsData[2].title}
         </h1>
         <div className="h-1 flex-1">
-          <LineChartWidget attributes={widgetsData[2].attributes} />
+          <BarLineWidget yAxis="multiple" attributes={widgetsData[2].attributes} dateRange={dateRange} />
         </div>
       </Card>
       <Card className="col-span-1 flex flex-col p-2">
