@@ -115,13 +115,46 @@ const VentilationDashboard = () => {
         ))}
       </Card>
       <Card>
-        <VentilationCard {...ventilation[0]} interval={5000} />
+        <VentilationCard
+          {...ventilation[0]}
+          interval={5000}
+          data={ventilation[0].telemetry.map((t) => {
+            return {
+              label: t.label,
+              value: ChartData
+                ? Number(flatten((ChartData as any)?.[0][t.name]))
+                : 0,
+            };
+          })}
+        />
       </Card>
       <Card>
-        <VentilationCard {...ventilation[1]} interval={5000} />
+        <VentilationCard
+          {...ventilation[1]}
+          interval={5000}
+          data={ventilation[1].telemetry.map((t) => {
+            return {
+              label: "",
+              value: ChartData
+                ? Number(flatten((ChartData as any)?.[0][t.name]))
+                : 0,
+            };
+          })}
+        />
       </Card>
       <Card>
-        <VentilationCard {...ventilation[2]} interval={5000} />
+        <VentilationCard
+          {...ventilation[2]}
+          interval={5000}
+          data={ventilation[2].telemetry.map((t) => {
+            return {
+              label: "",
+              value: ChartData
+                ? Number(flatten((ChartData as any)?.[0][t.name]))
+                : 0,
+            };
+          })}
+        />
       </Card>
       <Card className="col-span-3 row-span-7 flex flex-col justify-between gap-2">
         {data[1].children.map((child, index) => (
