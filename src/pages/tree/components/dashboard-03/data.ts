@@ -21,10 +21,10 @@ export const widgetsData = {
   },
   1: {
     title: "Performance Engins",
-    image: "/machine-03.png",
+    image: "/machine-07.png",
     attributes: [
       {
-        image: "/machine-03.png",
+        image: "/machine-07.png",
         name: "TITAN BAC2X350",
         telemetries: [
           {

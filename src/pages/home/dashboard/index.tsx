@@ -174,7 +174,7 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-3 flex items-center justify-center overflow-hidden text-3xl font-bold xl:row-span-2">
         <img
-          src="/est11.jpeg"
+          src="/est11.png"
           alt="Logo"
           className="h-full w-full object-cover"
         />

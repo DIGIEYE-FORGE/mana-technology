@@ -29,7 +29,7 @@ export const machines = [
   },
   {
     name: "Chargement Explosif & Tir",
-    image: "/machine-03.png",
+    image: "/machine-07.png",
     align: "center",
     sideOffset: -50,
     dashboard: {
