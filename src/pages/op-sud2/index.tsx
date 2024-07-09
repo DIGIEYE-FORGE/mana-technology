@@ -1,7 +1,7 @@
 import BarChartWidget from "@/components/bar-chart-widget";
 import { Card } from "@/components/card";
 import LineChartWidget from "@/components/line-chart-widget";
-import { ProgressAccumulation } from "../home/_components/progress-accumulation";
+import { ProgressAccumulation } from "@/components/progress-accumulation";
 import TableWidget from "@/components/table-widget";
 import ProgressMultiple from "@/components/progress-multiple";
 

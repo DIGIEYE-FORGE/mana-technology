@@ -1,11 +1,11 @@
 export const widgetData = [
   {
-    title: "Title 1",
+    title: "",
     telemetries: [
       {
         serial: "123456",
         telemetryName: "test1",
-        label: "Test 1",
+        label: "Vitesse",
         value: 25,
         unit: "L",
         stops: [
@@ -22,7 +22,7 @@ export const widgetData = [
       {
         serial: "123456",
         telemetryName: "test2",
-        label: "Test 2",
+        label: "Tr/min",
         value: 20,
         unit: "%",
         stops: [
@@ -39,7 +39,7 @@ export const widgetData = [
       {
         serial: "123456",
         telemetryName: "test2",
-        label: "Test 2",
+        label: "Niveau gasoil",
         value: 10,
         unit: "Kg",
         stops: [
@@ -114,7 +114,7 @@ export const widgetData = [
     ],
   },
   {
-    title: "Title 4",
+    title: "Temperatures",
     attributes: {
       telemetries: [
         {
@@ -156,7 +156,7 @@ export const widgetData = [
     },
   },
   {
-    title: "Title 6",
+    title: "Pressions",
     attributes: {
       telemetries: [
         {
