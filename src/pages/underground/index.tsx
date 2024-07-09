@@ -17,7 +17,7 @@ function UndergroundBar() {
       <div className="flex gap-4 pr-2">
         <img src="/logo.svg" alt="logo" />
         <span className="h-3/4 border-l py-3 pl-4 text-xl font-bold">
-          Underground
+          {parentPath ? "ventilation" : "underground"}
         </span>
       </div>
       <DatePickerWithRange

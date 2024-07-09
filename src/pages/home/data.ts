@@ -243,7 +243,7 @@ export const homePageWidgets: Widget[] = [
   },
   {
     type: "multiProgress",
-    title: "Disponibilité Engins GMC",
+    title: "Disponibilité Engins pit EST",
     className:
       "col-span-full row-span-6 flex flex-col gap-3 p-4 2xl:col-span-3",
     attributes: {
