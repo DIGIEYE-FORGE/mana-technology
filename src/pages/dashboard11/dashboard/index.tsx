@@ -4,7 +4,6 @@ import Telemetry from "@/components/telemetry";
 import LineChartWidget from "@/components/line-chart-widget";
 import { JsonObject } from "@/utils";
 import GaugeWidget from "@/components/gauge-widget";
-import BarLineWidget from "@/components/bar-line-widget";
 
 export default function Dashboard() {
   return (
