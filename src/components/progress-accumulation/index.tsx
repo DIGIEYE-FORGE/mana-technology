@@ -5,7 +5,7 @@ import { HistoryType, Widget } from "@/utils";
 import { MotionConfig, motion } from "framer-motion";
 import { Fragment } from "react/jsx-runtime";
 import useSWR from "swr";
-import { lastDayOfMonth } from "date-fns";
+import { addDays, isFirstDayOfMonth, lastDayOfMonth } from "date-fns";
 
 export type ProgressAccumulationWidgetData = {
   serial?: string;
@@ -17,10 +17,13 @@ export type ProgressAccumulationWidgetData = {
   unit?: string;
 };
 
-function lastOfMonth(date: Date): Date {
-  console.log(lastDayOfMonth(date));
-
-  return lastDayOfMonth(date);
+function lastOfMonth(date: Date) {
+  let lastDay = new Date(date);
+  if (isFirstDayOfMonth(lastDay)) {
+    lastDay = addDays(lastDay, -1);
+  } else lastDay = lastDayOfMonth(lastDay);
+  lastDay.setHours(23, 59, 59, 999);
+  return lastDay;
 }
 
 export function ProgressAccumulation({ attributes }: Widget) {
