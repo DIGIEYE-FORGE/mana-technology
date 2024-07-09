@@ -35,7 +35,7 @@ function ProgressData({ data, sum, className }: ProgressTo) {
         {data.map((telemetry, index) => {
           return (
             <div key={index} className="flex flex-col">
-              {telemetry.value.toFixed(2)}
+              {telemetry.value.toFixed(0)}
             </div>
           );
         })}
@@ -152,6 +152,8 @@ function ProgressMultiple({ attributes }: props) {
             <h3 className="font-semibold">{title}</h3>
             <ProgressData
               data={data[index].map((ele) => {
+                console.log(ele);
+                
                 return {
                   value: ele?.value || 0,
                   name: ele?.name || "",

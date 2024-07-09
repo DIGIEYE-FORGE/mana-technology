@@ -59,7 +59,7 @@ export const homePageWidgets: Widget[] = [
   },
   {
     type: "barChart",
-    title: "Production Journalière (t)",
+    title: "Production Roche Journalière (t)",
     className:
       "col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-5",
     attributes: {
@@ -104,7 +104,7 @@ export const homePageWidgets: Widget[] = [
           serial: "JZVATMKQ1A8DA2P1",
         },
         {
-          name: "EST_REALISE_MIENRAI",
+          name: "EST_REALISE_MINERAI",
           unit: "T",
           color: "#FEC33A",
           label: "MINERAI Realisé",
