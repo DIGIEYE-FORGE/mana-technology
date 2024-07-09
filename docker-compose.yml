@@ -7,13 +7,15 @@ networks:
   app-tier:
     driver: bridge  
 
-# volumes:
-#   redis_data:
-#     driver: local
-#   postgresql_data:
-#     driver: local
-#   mongodb_data:
-#     driver: local    
+volumes:
+  redis_data:
+    driver: local
+  postgresql_data:
+    driver: local
+  mongodb_data:
+    driver: local    
+  dpc_dm_api_data:
+    driver: local  
 
 services:
   mana-frontend: 
@@ -26,13 +28,15 @@ services:
     
   dpc-dm-api:
     container_name: dpc-dm-api
-    image: digieye/dpc-dm-api-prod:d069184
+    image: digieye/dpc-dm-api-prod:d6203e0
     restart: always
     networks:
       - db-tier
       - app-tier
     ports:
       - 3000:3000
+    volumes: 
+    - dpc_dm_api_data:/app/uploads  
     environment:
       - POSTGRESQL_USERNAME=digieye
       - POSTGRESQL_PASSWORD=cGFzc3dvcmQxMjMK
@@ -41,12 +45,12 @@ services:
       - DATABASE_URL=postgresql://digieye:cGFzc3dvcmQxMjMK@postgresql:5432/digieye?schema=public
       - REDIS_HOST=redis
       - REDIS_PORT=6379
-      - REDIS_PASSWORD=
+      - ACCESS_TOKEN_EXPIRATION_TIME=1200
       - JWT_SECRET_KEY=zDHcGFzc3dvcmQxMjMKZjWpNSwo
-      -	ACCESS_TOKEN_EXPIRATION_TIME=1200
       - PORT=3000
       - REFRESH_TOKEN_EXPIRATION_TIME=86400
       - NODE_ENV=production
+
 
   mana-mqtt-consumer:
     container_name: mana-mqtt-consumer
@@ -59,7 +63,6 @@ services:
       - 4000:4000
       - 4001:4001
     environment:      
-
       - MONGODB_DATABASE_URL=mongodb://digieye:cGFzc3dvcmQxMjMK@mongodb:27017/digieye?authSource=digieye
       - POSTGRES_DATABASE_URL=postgresql://digieye:cGFzc3dvcmQxMjMK@postgresql:5432/digieye?schema=public
       - PORT=4000
@@ -96,8 +99,8 @@ services:
       - POSTGRESQL_PASSWORD=cGFzc3dvcmQxMjMK
       - POSTGRESQL_DATABASE=digieye
       - POSTGRESQL_POSTGRES_PASSWORD=Y0dGemMzZHZjbVF4TWpNSwo
-    # volumes:
-    #   - 'postgresql_data:/bitnami/postgresql' 
+    volumes:
+      - 'postgresql_data:/bitnami/postgresql' 
       
   redis:
     image: bitnami/redis:7.0.15-debian-12-r18
@@ -110,8 +113,8 @@ services:
       - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
     ports:
       - '6379:6379'
-    # volumes:
-    #   - 'redis_data:/bitnami/redis/data'
+    volumes:
+      - 'redis_data:/bitnami/redis/data'
   mongodb:
     container_name: mongodb
     image: bitnami/mongodb:7.0.12-debian-12-r2
@@ -125,5 +128,5 @@ services:
       - MONGODB_USERNAME=digieye
       - MONGODB_PASSWORD=cGFzc3dvcmQxMjMK
       - MONGODB_DATABASE=digieye
-    # volumes:
-    #   - 'mongodb_data:/bitnami/mongodb'  
+    volumes:
+      - 'mongodb_data:/bitnami/mongodb'  
