@@ -14,7 +14,7 @@ export default function Dashboard() {
         <h3 className="text-center text-lg font-semibold capitalize">
           {widgetData[0].title}
         </h3>
-        <div className="flex h-1 flex-1 justify-evenly gap-4">
+        <div className="flex h-1 flex-1 justify-between gap-4">
           {widgetData[0].telemetries.map((telemetry, index) => {
             return (
               <div className="flex h-full flex-col" key={index}>
@@ -23,6 +23,22 @@ export default function Dashboard() {
               </div>
             );
           })}
+        </div>
+        <div className="flex justify-between px-12">
+        {widgetData[1].telemetries.map(
+          ({ unit, label, displayFormat, ...telemetry }, index) => (
+            <div key={index} className="flex gap-4">
+              <div className="whitespace-nowrap font-semibold">{label}</div>
+              <div className="flex gap-2">
+                <Telemetry
+                  telemetry={telemetry}
+                  displayFormat={displayFormat}
+                />
+                <span className="whitespace-nowrap">{unit}</span>
+              </div>
+            </div>
+          ),
+        )}
         </div>
       </Card>
       <Card className="row-span-3 grid grid-cols-[min-content,1fr] gap-4">
@@ -44,6 +60,7 @@ export default function Dashboard() {
           ),
         )}
       </Card>
+
       <Card className="row-span-3 grid grid-cols-[min-content,1fr] gap-4">
         <h3 className="col-span-2 text-center text-lg font-semibold">
           {widgetData[2].title}
@@ -73,7 +90,46 @@ export default function Dashboard() {
           />
         </div>
       </Card>
-      <Card className="col-span-2 row-span-8 flex flex-col">
+      <Card className="row-span-3 grid grid-cols-[min-content,1fr] gap-4">
+        <h3 className="col-span-2 text-center text-lg font-semibold">
+          {widgetData[1].title}
+        </h3>
+        {widgetData[1].telemetries.map(
+          ({ unit, label, displayFormat, ...telemetry }, index) => (
+            <React.Fragment key={index}>
+              <div className="whitespace-nowrap font-semibold">{label}</div>
+              <div className="flex gap-2">
+                <Telemetry
+                  telemetry={telemetry}
+                  displayFormat={displayFormat}
+                />
+                <span className="whitespace-nowrap">{unit}</span>
+              </div>
+            </React.Fragment>
+          ),
+        )}
+      </Card>
+
+      <Card className="row-span-3 grid grid-cols-[min-content,1fr] gap-4">
+        <h3 className="col-span-2 text-center text-lg font-semibold">
+          {widgetData[2].title}
+        </h3>
+        {widgetData[2].telemetries.map(
+          ({ unit, label, displayFormat, ...telemetry }, index) => (
+            <React.Fragment key={index}>
+              <div className="whitespace-nowrap font-semibold">{label}</div>
+              <div className="flex gap-2">
+                <Telemetry
+                  telemetry={telemetry}
+                  displayFormat={displayFormat}
+                />
+                <span className="whitespace-nowrap">{unit}</span>
+              </div>
+            </React.Fragment>
+          ),
+        )}
+      </Card>
+      <Card className="col-span-2 row-span-5 flex flex-col">
         <h3 className="text-center text-lg font-semibold">
           {widgetData[4].title}
         </h3>
