@@ -21,7 +21,6 @@ const VentilationDashboard = () => {
               <MoteurCard
                 attributes={child.attributes}
                 interval={5000}
-                max={child?.max || undefined}
               />
             </div>
           </div>
