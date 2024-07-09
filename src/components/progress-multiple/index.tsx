@@ -75,12 +75,12 @@ function ProgressData({ data, sum, className }: ProgressTo) {
 }
 
 function ProgressMultiple({ attributes }: props) {
-  const { backendApi } = useAppContext();
+  const { backendApi , dateRange} = useAppContext();
 
   const { data, isLoading, error } = useSWR(
-    `telemetries?${JSON.stringify({ attributes })}`,
+    `telemetries?${JSON.stringify({ attributes, dateRange })}`,
     async () => {
-      if (!attributes?.length) return [];
+      if (!dateRange?.from || !attributes?.length) return [];
       return await Promise.all(
         attributes.map(async (device) => {
           const { telemetries } = device;
@@ -97,6 +97,10 @@ function ProgressMultiple({ attributes }: props) {
                   select: [name],
                   where: {
                     serial,
+                    createdAt: {
+                      $gt: new Date(dateRange.from as Date),
+                      $lte: dateRange?.to && new Date(dateRange.to as Date),
+                    },
                   },
                 },
               );
@@ -104,7 +108,7 @@ function ProgressMultiple({ attributes }: props) {
                 results.reduce((acc, curr) => {
                   const val = typeof curr[name] === "number" ? curr[name] : 0;
                   return acc + Number(val);
-                }, 0) / results.length;
+                }, 0) ;
               return {
                 value: value,
                 name,

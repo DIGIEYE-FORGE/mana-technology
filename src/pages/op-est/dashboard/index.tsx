@@ -20,7 +20,7 @@ export default function Dashboard() {
               stacked: true,
               telemetries: [
                 {
-                  name: "CUMUL_PLANIF_TOT",
+                  name: "CUMUL_PLANIF_TOT_EST",
                   unit: "T",
                   color: "#FF5AF1",
                   label: "Planifié (mensuelle)",
@@ -28,7 +28,7 @@ export default function Dashboard() {
                   type: "bar",
                 },
                 {
-                  name: "CUMUL_REAL_TOT",
+                  name: "CUMUL_REAL_TOT_EST",
                   unit: "T",
                   color: "#FFDC8C",
                   label: "Réalisé (mensuelle)",
@@ -36,7 +36,7 @@ export default function Dashboard() {
                   type: "bar",
                 },
                 {
-                  name: "CUMUL_PLANIF_TOT_TOT",
+                  name: "CUMUL_PLANIF_TOT_TOT_EST",
                   unit: "T",
                   color: "#B98EFF",
                   label: "Planifié (Cumulé)",
@@ -44,7 +44,7 @@ export default function Dashboard() {
                   type: "line",
                 },
                 {
-                  name: "CUMUL_REAL_TOT_TOT",
+                  name: "CUMUL_REAL_TOT_TOT_EST",
                   unit: "T",
                   color: "#78F6EA",
                   label: "Réalisé (Cumulé)",
@@ -172,19 +172,19 @@ export default function Dashboard() {
                     name: "EST_REALISE_ORE_HG_SULF",
                     serial: "D5KP29KL463AZXWE",
                     label: "HG",
-                    color: "#FFDC8C",
+                    color: "#bf212f",
                   },
                   {
                     name: "EST_REALISE_ORE_MG_SULF",
                     serial: "D5KP29KL463AZXWE",
                     label: "MG",
-                    color: "#42F5FF",
+                    color: "#27b376",
                   },
                   {
                     name: "EST_REALISE_ORE_LG_SULF",
                     serial: "D5KP29KL463AZXWE",
                     label: "LG",
-                    color: "#FFC8FF",
+                    color: "#3366ff",
                   },
                 ],
               },
@@ -195,7 +195,7 @@ export default function Dashboard() {
                     name: "EST_REALISE_ORE_HG_OXYD",
                     serial: "D5KP29KL463AZXWE",
                     label: "HG",
-                    color: "#FFDC8C",
+                    color: "#bf212f",
                   },
                   {
                     name: "EST_REALISE_ORE_MG_OXYD",
@@ -207,7 +207,7 @@ export default function Dashboard() {
                     name: "EST_REALISE_ORE_LG_OXYD",
                     serial: "D5KP29KL463AZXWE",
                     label: "LG",
-                    color: "#FFC8FF",
+                    color: "#3366ff",
                   },
                 ],
               },

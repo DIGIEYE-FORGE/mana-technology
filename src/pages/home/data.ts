@@ -203,10 +203,7 @@ export const homePageWidgets: Widget[] = [
           displayName: "",
           telemetryName: "QUNTITE_EXPLOSIF_TIRE",
         },
-        {
-          displayName: "",
-          telemetryName: "ZONE DE TIRE",
-        },
+
         {
           displayName: "",
           telemetryName: "TONNAE_MINERAI_ABATTU",

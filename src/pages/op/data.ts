@@ -205,7 +205,7 @@ export const homePageWidgets: Widget[] = [
         },
         {
           displayName: "",
-          telemetryName: "ZONE DE TIRE",
+          telemetryName: "ZONEDETIRE",
         },
         {
           displayName: "",

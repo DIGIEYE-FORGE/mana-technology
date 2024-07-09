@@ -1,10 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Card } from "@/components/card";
 import { MoteurCard } from "./components/moteurCard";
-// import { BarChart } from "./components/bar-chart";
 import { data, ventilation } from "./data";
-// qualitédair
-// import { QualitAir } from "./components/qualite-air";
 import { VentilationCard } from "./components/ventilation-card";
 import useSWR from "swr";
 import { useEffect, useMemo, useState } from "react";
@@ -12,11 +9,12 @@ import { useAppContext } from "@/Context";
 import Loader from "@/components/loader";
 import { flatten } from "@/utils";
 import io from "socket.io-client";
-import { addHours } from "date-fns";
+import { Button } from "@/components/ui/button";
+import { Timer, TimerOff } from "lucide-react";
 
 const VentilationDashboard1 = () => {
   const { dateRange, backendApi } = useAppContext();
-  const [dataRealTime] = useState(true);
+  const [dataRealTime, setDataRealTime] = useState<boolean>(true);
   const [socketData, setSocketData] = useState<any[]>([]);
   const fetcher = async () => {
     const res = await backendApi.findMany("/dpc-history/api/history", {
@@ -48,13 +46,17 @@ const VentilationDashboard1 = () => {
   );
 
   const chartData = useMemo(() => {
+    if (!dataRealTime) {
+      return res;
+    }
     if (res) {
-      return [...res, ...socketData];
+      return [...socketData, ...res];
     }
     return null;
-  }, [res, socketData]);
+  }, [res, socketData, dataRealTime]);
 
   useEffect(() => {
+    if (!dataRealTime) return;
     const socket = io("https://ws.managem.digieye.io");
     socket.on("connect", () => {
       console.log("Connected to WebSocket server");
@@ -63,12 +65,12 @@ const VentilationDashboard1 = () => {
     socket.on(`telemetry`, (newData: any) => {
       setSocketData((prev: any) => {
         return [
-          ...prev,
           {
             ...newData,
-            date: addHours(new Date(), -1),
-            createdAt: addHours(new Date(), -1),
+            date: new Date(),
+            createdAt: new Date(),
           },
+          ...prev,
         ];
       });
       console.log("New data received from WebSocket server", newData);
@@ -81,7 +83,7 @@ const VentilationDashboard1 = () => {
     return () => {
       socket.disconnect();
     };
-  }, []);
+  }, [dataRealTime]);
 
   if (isLoading)
     return (
@@ -151,9 +153,30 @@ const VentilationDashboard1 = () => {
         ))}
       </div>
       <div className="flex w-1 min-w-[30rem] flex-1 flex-col gap-4">
-        <h1 className="text-lg font-semibold text-orange-300">
-          Marche Ventilateurs
-        </h1>
+        <div className="flex justify-between gap-4">
+          <h1 className="text-lg font-semibold text-orange-300">
+            Marche Ventilateurs
+          </h1>
+          <Button
+            className="h-[2rem]"
+            variant={"outline"}
+            onClick={() => {
+              setDataRealTime(!dataRealTime);
+            }}
+          >
+            {dataRealTime ? (
+              <div className="flex gap-2">
+                <span>Real Time</span>
+                <Timer className="text-green-500" />
+              </div>
+            ) : (
+              <div className="flex gap-2">
+                <span>History</span>
+                <TimerOff className="text-red-500" />
+              </div>
+            )}
+          </Button>
+        </div>
         <div className="flex h-[11rem] justify-between gap-8">
           <div className="flex flex-col gap-4">
             <div className="flex flex-1 gap-4">
