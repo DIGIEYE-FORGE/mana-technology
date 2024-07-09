@@ -135,7 +135,7 @@ export default function BarChartWidget(props: Props) {
     <Chart
       options={{
         theme: { mode: "dark" },
-        tooltip: { cssClass: "text-black" },
+        tooltip: { cssClass: "text-black",},
         legend: {
           position: "bottom",
           markers: { width: 26, height: 12, radius: 8 },
@@ -188,7 +188,7 @@ export default function BarChartWidget(props: Props) {
         },
         yaxis: {
           min: 0,
-          tickAmount: 4,
+          // tickAmount: 4,
           max: stacked
             ? undefined
             : Math.max(

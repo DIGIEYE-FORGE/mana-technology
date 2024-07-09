@@ -28,7 +28,7 @@ export const machines = [
     },
   },
   {
-    name: "Chargement Explosif & Tir (Engins)",
+    name: "Chargement Explosif & Tir",
     image: "/machine-03.png",
     align: "center",
     sideOffset: -50,

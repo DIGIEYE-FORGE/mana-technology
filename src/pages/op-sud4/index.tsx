@@ -108,7 +108,8 @@ function DashboardPage3() {
         </h1>
         <ProgressAccumulation
           attributes={{
-            serial: "C6XPYU0D920L1M07",
+            targetSerial: "QXYIV05MSG7F079I",
+            progressSerial:"PI6PQ8SEZC4BWRP3",
             progressColor: "#EBC94A",
             currentTargetColor: "#78F6EA",
             progressTelemetryName: "SUD4_REALISE_ROCHE_CUMUL",
@@ -196,10 +197,6 @@ function DashboardPage3() {
               {
                 displayName: "Quantité d'explosif tirée (kg)",
                 telemetryName: "QUNTITE_EXPLOSIF_TIRE",
-              },
-              {
-                displayName: "Zone de Tir",
-                telemetryName: "ZONE DE TIRE",
               },
               {
                 displayName: "Tonnage Roche Abattu Minerai (t)",

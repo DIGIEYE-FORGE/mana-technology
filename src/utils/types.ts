@@ -79,7 +79,7 @@ export type Widget = {
   moyenne?: "combined" | string[];
   yAxis?: "one" | "multiple";
   stacked?: boolean;
-  ciel?: boolean;
+  ceil?: boolean;
   correction?: Record<string, number>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   fakeData?: any;

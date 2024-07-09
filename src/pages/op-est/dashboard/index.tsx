@@ -120,7 +120,8 @@ export default function Dashboard() {
         </h1>
         <ProgressAccumulation
           attributes={{
-            serial: "U9XQMQ1DXYT7LJIP",
+            targetSerial: "JZVATMKQ1A8DA2P1",
+            progressSerial:"D5KP29KL463AZXWE",
             progressColor: "#FF5AF1",
             currentTargetColor: "#727DC6",
             progressTelemetryName: "EST_REALISE_ROCHE_CUMUL_Ton",

@@ -13,6 +13,7 @@ interface D3DonutChartProps {
     nameLabelTelemetry: string;
     nameTelemetry: string;
     serial: string;
+    bfsValue?: number;
   }[];
 }
 
@@ -31,6 +32,7 @@ export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
             nameLabelTelemetry,
             nameTelemetry,
             serial,
+            bfsValue
           } = device;
           const resWithouyAvg = await backendApi.findMany<HistoryType>(
             "/dpc-history/api/history",
@@ -82,7 +84,7 @@ export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
             color: color,
             name: nameLabelTelemetry,
             value: avg,
-            valueBfs: (res2 as any)?.results[0]?.value || undefined,
+            valueBfs: bfsValue ? bfsValue : (res2 as any)?.results[0]?.value || undefined,
             bfsLabel: res2 && bfsLabelTelemetry,
           };
         }),
