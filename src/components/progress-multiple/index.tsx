@@ -104,7 +104,7 @@ function ProgressMultiple({ attributes }: props) {
                   },
                 },
               );
-              const value = results.reduce((acc, curr) => {
+              const value = results?.reduce((acc, curr) => {
                 const val = typeof curr[name] === "number" ? curr[name] : 0;
                 return acc + Number(val);
               }, 0);
@@ -142,7 +142,7 @@ function ProgressMultiple({ attributes }: props) {
     <div className="flex flex-col gap-3 overflow-y-auto">
       {attributes.map((device, index) => {
         const { telemetries, title } = device;
-        const sum = data[index].reduce(
+        const sum = data[index]?.reduce(
           (acc, curr) => acc + curr?.value || 0,
           0,
         );
@@ -153,7 +153,7 @@ function ProgressMultiple({ attributes }: props) {
             <ProgressData
               data={data[index].map((ele) => {
                 console.log(ele);
-                
+
                 return {
                   value: ele?.value || 0,
                   name: ele?.name || "",

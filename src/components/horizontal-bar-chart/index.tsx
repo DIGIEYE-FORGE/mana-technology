@@ -19,10 +19,10 @@ export function HorizontalBarChart({
   className,
   ...props
 }: HorizontalBarChartProps) {
-  const max = groups.reduce((acc, group) => {
+  const max = groups?.reduce((acc, group) => {
     return Math.max(
       acc,
-      group.telemetries.reduce((acc, telemetry) => {
+      group.telemetries?.reduce((acc, telemetry) => {
         return Math.max(acc, telemetry.value);
       }, 0),
     );

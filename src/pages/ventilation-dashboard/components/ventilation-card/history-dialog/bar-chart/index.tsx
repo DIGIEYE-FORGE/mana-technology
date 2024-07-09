@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import useSWR from "swr";
 
 import { HistoryType, flatten } from "@/utils";
@@ -46,7 +47,7 @@ export const BarChart = ({ title, telemetries, interval }: BarChartProps) => {
     );
     return res.map((item, index) => {
       const name = telemetries[index].name;
-      const max = item.reduce((acc, item) => {
+      const max = item?.reduce((acc, item) => {
         const value = Number(flatten(item)[name]);
         return value > acc ? value : acc;
       }, 0);

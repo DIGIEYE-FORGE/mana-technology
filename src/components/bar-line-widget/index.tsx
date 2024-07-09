@@ -83,7 +83,7 @@ export default function BarLineWidget({
           const allData = res1.flatMap((item) =>
             item.data.map((item) => item.y),
           );
-          const moyenne = allData.reduce((a, b) => a + b, 0) / allData.length;
+          const moyenne = allData?.reduce((a, b) => a + b, 0) / allData.length;
           res2.push({
             name: "Moyenne",
             type: "line",
@@ -105,7 +105,7 @@ export default function BarLineWidget({
               const allDates = dataTelemetry?.data.map((item) => item.x);
               const allData = dataTelemetry?.data.map((item) => item.y);
               const moyenne =
-                allData.reduce((a, b) => a + b, 0) / allData.length;
+                allData?.reduce((a, b) => a + b, 0) / allData.length;
               res2.push({
                 name: (item.label || item.name) + " (Moyenne)",
                 type: "line",
