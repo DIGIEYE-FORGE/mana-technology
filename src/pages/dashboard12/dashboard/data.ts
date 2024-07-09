@@ -4,16 +4,16 @@ export const widgetData = [
     telemetries: [
       {
         serial: "3KFVTKPZQGLUCGIB",
-        telemetryName: "R1700_2_Engine Speed",
+        telemetryName: "R1700_2_Ground Speed",
         label: "Vitesse",
         unit: "km/h",
         stops: [
           {
-            stop: 900,
+            stop: 25,
             color: "#78F6EA",
           },
           {
-            stop: 1500,
+            stop: 40,
             color: "#B98EFF",
           },
         ],
@@ -29,16 +29,16 @@ export const widgetData = [
       },
       {
         serial: "3KFVTKPZQGLUCGIB",
-        telemetryName: "R1700_2_Ground Speed",
+        telemetryName: "R1700_2_Engine Speed",
         label: "Tr/min",
         unit: "rpm",
         stops: [
           {
-            stop: 20,
+            stop: 1800,
             color: "#78F6EA",
           },
           {
-            stop: 30,
+            stop: 2500,
             color: "#B98EFF",
           },
         ],
@@ -223,14 +223,14 @@ export const widgetData = [
         serial: "3KFVTKPZQGLUCGIB",
         name: "R1700_2_Engine Load Factor",
         label: "Facteur de chargement",
-        unit: "t",
+        unit: "%",
         displayFormat: "integer",
       },
       {
         serial: "3KFVTKPZQGLUCGIB",
         name: "R1700_2_Tonnage_journaliers",
         label: "Tonnage journalier ",
-        unit: "%",
+        unit: "t",
         displayFormat: "integer",
       },
     ],
@@ -243,7 +243,7 @@ export const widgetData = [
           name: "R1700_2_Total Operating Hours",
           unit: "h",
           color: "#78F6EA",
-          label: "Tempd de marche",
+          label: "Temps de marche",
           serial: "3KFVTKPZQGLUCGIB",
         },
         {
