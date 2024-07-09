@@ -9,11 +9,11 @@ export const widgetData = [
         unit: "km/h",
         stops: [
           {
-            stop: 20,
+            stop: 900,
             color: "#78F6EA",
           },
           {
-            stop: 30,
+            stop: 1500,
             color: "#B98EFF",
           },
         ],
@@ -51,11 +51,11 @@ export const widgetData = [
         unit: "%",
         stops: [
           {
-            stop: 20,
+            stop: 70,
             color: "#78F6EA",
           },
           {
-            stop: 30,
+            stop: 100,
             color: "#B98EFF",
           },
         ],
