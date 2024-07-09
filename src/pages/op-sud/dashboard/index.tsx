@@ -269,7 +269,7 @@ export default function HomeDashboard() {
                   name: "SUD_REALISE_FORATION",
                   color: "#B98EFF",
                   label: "Realisé",
-                  serial: "QXYIV05MSG7F079I",
+                  serial: "PI6PQ8SEZC4BWRP3",
                 },
               ],
             }}
