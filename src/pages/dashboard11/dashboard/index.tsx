@@ -14,59 +14,6 @@ export default function Dashboard() {
           {widgetData[0].title}
         </h3>
         <div className="flex h-1 flex-1 justify-between gap-4">
-          {/* <div className="flex h-full flex-col">
-            <h4 className="text-center font-semibold">
-              {widgetData[0].telemetries[0].label}
-            </h4>
-            <GaugeWidget
-              attributes={widgetData[0].telemetries[0] as unknown as JsonObject}
-            />
-            <div className="flex justify-center gap-2">
-              <Telemetry
-                telemetry={widgetData[0].telemetries[0]}
-                displayFormat={widgetData[1].telemetries[0].displayFormat}
-              />
-              <span className="whitespace-nowrap">
-                {widgetData[1].telemetries[0].unit}
-              </span>
-            </div>
-          </div>
-          <div className="flex h-full flex-col">
-            <h4 className="text-center font-semibold">
-              {widgetData[0].telemetries[1].label}
-            </h4>
-            <GaugeWidget
-              attributes={widgetData[0].telemetries[1] as unknown as JsonObject}
-            />
-          </div>
-          <div className="flex h-full flex-col">
-            <h4 className="text-center font-semibold">
-              {widgetData[0].telemetries[2].label}
-            </h4>
-            <GaugeWidget
-              attributes={widgetData[0].telemetries[2] as unknown as JsonObject}
-            />
-            <div className="flex justify-center gap-6">
-              <div className="flex justify-center gap-2">
-                <Telemetry
-                  telemetry={widgetData[1].telemetries[1]}
-                  displayFormat={widgetData[1].telemetries[1].displayFormat}
-                />
-                <span className="whitespace-nowrap">
-                  {widgetData[1].telemetries[1].unit}
-                </span>
-              </div>
-              <div className="flex justify-center gap-2">
-                <Telemetry
-                  telemetry={widgetData[1].telemetries[2]}
-                  displayFormat={widgetData[1].telemetries[2].displayFormat}
-                />
-                <span className="whitespace-nowrap">
-                  {widgetData[1].telemetries[2].unit}
-                </span>
-              </div>
-            </div>
-          </div> */}
           {widgetData[0].telemetries.map((telemetry, index) => {
             const { extraTelemetries, label, ...rest } = telemetry;
             return (
@@ -93,7 +40,6 @@ export default function Dashboard() {
           })}
         </div>
       </Card>
-
       <Card className="row-span-3 flex flex-col gap-2">
         <h3 className="text-center text-2xl font-semibold text-yellow-600">
           CAT R1700_01

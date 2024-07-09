@@ -25,7 +25,10 @@ import HsePage from "@/pages/hse";
 import HseDashboard from "@/pages/hse/dashboard";
 import MobilePage from "@/pages/mobile";
 import VentilationDashboard1 from "@/pages/ventilation-dashboard/index1";
-import Dashboard1Page from "@/pages/dashboard1";
+import Dashboard11Page from "@/pages/dashboard11";
+import Dashboard12Page from "@/pages/dashboard12";
+import Dashboard13Page from "@/pages/dashboard13";
+import Dashboard14Page from "@/pages/dashboard14";
 
 const routes: RouteObject[] = [
   {
@@ -128,8 +131,20 @@ const routes: RouteObject[] = [
         element: <IselDevPage />,
       },
       {
-        path: "dashboard1",
-        element: <Dashboard1Page />,
+        path: "dashboard11",
+        element: <Dashboard11Page />,
+      },
+      {
+        path: "dashboard12",
+        element: <Dashboard12Page />,
+      },
+      {
+        path: "dashboard13",
+        element: <Dashboard13Page />,
+      },
+      {
+        path: "dashboard14",
+        element: <Dashboard14Page />,
       },
     ],
   },

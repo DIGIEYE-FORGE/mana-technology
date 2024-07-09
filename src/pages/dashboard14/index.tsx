@@ -26,7 +26,7 @@ export function UpBar() {
   );
 }
 
-export default function Dashboard1Page() {
+export default function Dashboard14Page() {
   return (
     <main className="h-[100svh] overflow-auto">
       <UpBar />
