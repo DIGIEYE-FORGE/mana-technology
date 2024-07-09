@@ -82,12 +82,12 @@ export const widgetData = [
     image: "/machine-04.png",
   },
   {
-   telemetries: [
+    telemetries: [
       {
         serial: "Z4Z1PTA1YFUYXO4M",
         name: "AD45_2_Engine Running",
         label: "Etat de marche",
-        displayFormat: "boolean",
+        displayFormat: "onOff",
       },
       {
         serial: "Z4Z1PTA1YFUYXO4M",

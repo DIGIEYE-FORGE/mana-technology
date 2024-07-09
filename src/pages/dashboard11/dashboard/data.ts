@@ -82,12 +82,12 @@ export const widgetData = [
     image: "/machine-04.png",
   },
   {
-   telemetries: [
+    telemetries: [
       {
         serial: "L604RV7OPGGQGQ6R",
         name: "R1700_1_Engine Running",
         label: "Etat de marche",
-        displayFormat: "boolean",
+        displayFormat: "onoff",
       },
       {
         serial: "L604RV7OPGGQGQ6R",

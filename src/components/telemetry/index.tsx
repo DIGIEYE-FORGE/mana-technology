@@ -27,6 +27,7 @@ const Formatter = ({
   if (displayFormat === "boolean") return <>{value ? "true" : "false"}</>;
   if (displayFormat === "date")
     return <>{format(new Date(stringify(value)), "PP")}</>;
+  if (displayFormat === "onOff") return <>{value ? "ON" : "OFF"}</>;
   if (displayFormat === "image")
     return (
       <Avatar className="w-full rounded-none">
