@@ -29,7 +29,8 @@ export default function MobilePage() {
       }}
     >
       <UpBar />
-      <div className="relative flex h-1 min-h-[16rem] flex-1 items-center justify-center">
+      <div className="xl:h-[4rem]"></div>
+      <div className="relative mx-auto flex aspect-[3.2] h-[40%] min-h-[14rem] max-w-full items-center justify-center">
         <div className="relative">
           <img
             className="object-contain opacity-70"
@@ -127,11 +128,13 @@ function ThreeDModel({
 
 function Location({ location }: { location: TLocation }) {
   const { name, quickAccess, info, ...style } = location;
-  const [showInfo, setShowInfo] = useState(true);
+  const [showInfo, setShowInfo] = useState(window.innerWidth > 1024);
+
   return (
     <div
       className="machine-highlight absolute z-10 size-[3rem] cursor-pointer md:size-[5rem]"
       style={style}
+      onClick={() => setShowInfo(!showInfo)}
     >
       <div className="gradient-border absolute right-1/2 top-0 translate-x-1/2 whitespace-nowrap text-xs max-sm:scale-75 sm:text-sm md:text-base lg:text-lg">
         {name}
@@ -151,7 +154,7 @@ function Location({ location }: { location: TLocation }) {
           className={cn("absolute z-[20] flex gap-2", {
             "bottom-[110%]": quickAccess?.side === "top",
             "top-[110%]": quickAccess?.side === "bottom",
-            "left-[110%]": quickAccess?.side === "right",
+            "left-[105%]": quickAccess?.side === "right",
             "right-[110%]": quickAccess?.side === "left",
             "bottom-1/2 translate-y-1/2": ["right", "left"].includes(
               quickAccess?.side ?? "",
@@ -227,12 +230,8 @@ function Location({ location }: { location: TLocation }) {
       {info && showInfo && (
         <div
           className={cn(
-            "absolute right-0 grid w-[16rem] grid-cols-[min-content,1fr] gap-1 p-3 pr-6 text-xs",
-            {
-              "bottom-full max-sm:translate-y-1/4 max-sm:scale-50":
-                info.side === "top",
-              "right-0 translate-x-1/4": info.align === "end",
-            },
+            "absolute grid w-[8rem] grid-cols-[min-content,1fr] gap-x-2 p-3 pr-6 text-[6px] md:w-[14rem] md:gap-1 md:text-xs xl:w-[15rem]",
+            info.className,
           )}
           style={{
             background: "url(/vector.png)",

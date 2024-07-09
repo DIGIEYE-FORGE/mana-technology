@@ -16,7 +16,7 @@ type Props = Widget & {
 };
 
 export default function BarLineWidget({
-  ciel = true,
+  ceil = true,
   correction,
   ...props
 }: Props) {
@@ -62,7 +62,9 @@ export default function BarLineWidget({
           type: telemetries[index].type,
           data: item.map((item) => ({
             x: new Date(item.createdAt),
-            y:
+            y: ceil ? Math.ceil(Number(
+                Number(flatten(item)[telemetries[index].name]).toFixed(2),
+              ) * (correction?.[telemetries[index].name] || 1)) :
               Number(
                 Number(flatten(item)[telemetries[index].name]).toFixed(2),
               ) * (correction?.[telemetries[index].name] || 1),
@@ -183,7 +185,7 @@ export default function BarLineWidget({
                   },
                   labels: {
                     formatter: function (value) {
-                      return ciel
+                      return ceil
                         ? Math.ceil(value) + " "
                         : typeof value === "number" &&
                             value.toString().includes(".")
@@ -194,7 +196,11 @@ export default function BarLineWidget({
                 }
               : [
                   {
-                    seriesName: [data?.[0]?.name, data?.[1]?.name] as any,
+                    seriesName:
+                      (data || [])?.length > 2
+                        ? ([data?.[0]?.name, data?.[1]?.name] as any)
+                        : data?.[0]?.name,
+                    // seriesName: [data?.[0]?.name, data?.[1]?.name] as any,
                     axisTicks: {
                       show: true,
                     },
@@ -209,7 +215,7 @@ export default function BarLineWidget({
 
                     labels: {
                       formatter: function (value) {
-                        return ciel
+                        return ceil
                           ? Math.ceil(value) + " "
                           : typeof value === "number" &&
                               value.toString().includes(".")
@@ -221,7 +227,10 @@ export default function BarLineWidget({
 
                   {
                     opposite: true,
-                    seriesName: data?.[2]?.name,
+                    seriesName:
+                      (data || [])?.length > 2
+                        ? data?.[2]?.name
+                        : data?.[1]?.name,
                     axisTicks: {
                       show: true,
                     },
@@ -230,7 +239,7 @@ export default function BarLineWidget({
                     },
                     labels: {
                       formatter: function (value) {
-                        return ciel
+                        return ceil
                           ? Math.ceil(value) + " "
                           : typeof value === "number" &&
                               value.toString().includes(".")

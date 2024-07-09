@@ -106,7 +106,7 @@ export const Dashboard2 = () => {
           {widgetsData[6]?.title}
         </h4>
         <div className="relative h-1 flex-1 -translate-y-4">
-          <BarChartWidget attributes={widgetsData[6].attributes} />
+          <BarChartWidget ceil={true} attributes={widgetsData[6].attributes} />
         </div>
       </Card>
     </main>

@@ -39,14 +39,14 @@ export default function UndergroundDashboardPage() {
                   serial: "HTCBJYTZC333HN7C",
                   type: "bar",
                 },
-                {
-                  name: "UG_SUIVI_AVANCEMENT_PLANIFIE_CUMUL_OFFRE_INITIALE",
-                  unit: "T",
-                  color: "#78F6EA",
-                  label: "Planifié (Cumulé) - Offre initiale",
-                  serial: "HTCBJYTZC333HN7C",
-                  type: "line",
-                },
+                // {
+                //   name: "UG_SUIVI_AVANCEMENT_PLANIFIE_CUMUL_OFFRE_INITIALE",
+                //   unit: "T",
+                //   color: "#78F6EA",
+                //   label: "Planifié (Cumulé) - Offre initiale",
+                //   serial: "HTCBJYTZC333HN7C",
+                //   type: "line",
+                // },
                 {
                   name: "UG_SUIVI_ANNUEL_AVANCEMENT_REALISE_CUMUL",
                   unit: "T",
@@ -224,7 +224,7 @@ export default function UndergroundDashboardPage() {
             ]}
           />
         </div>
-        <Link to="/underground/ventilation">
+        <Link to="/underground/ventilation1">
           <Button className="flex w-fit gap-2" size={"sm"} variant={"link"}>
             <ChevronsDown size={16} />
             <span>Voir plus</span>
@@ -237,7 +237,7 @@ export default function UndergroundDashboardPage() {
         <div className="w-full text-center text-xs text-gray-400"></div>
         <div className="flex-1">
           <BarLineWidget
-            ciel={false}
+            ceil={false}
             dateRange={dateRange}
             attributes={{
               stacked: true,
@@ -285,7 +285,7 @@ export default function UndergroundDashboardPage() {
         <div className="flex-1">
           <BarLineWidget
             dateRange={dateRange}
-            ciel={false}
+            ceil={false}
             // moyenne={["UG_METRES_PLANIFIE", "UG_METRES_REALISE_TOTAL"]}
             yAxis="one"
             attributes={{

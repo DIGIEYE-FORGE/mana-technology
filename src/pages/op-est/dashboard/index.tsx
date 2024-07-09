@@ -1,5 +1,5 @@
 import { Card } from "@/components/card";
-import { ProgressAccumulation } from "../_components/progress-accumulation";
+import { ProgressAccumulation } from "@/components/progress-accumulation";
 import TableWidget from "@/components/table-widget";
 import LineChartWidget from "@/components/line-chart-widget";
 import BarChartWidget from "@/components/bar-chart-widget";
@@ -7,7 +7,7 @@ import MultiProgressWidget from "@/components/multi-progress-widget";
 import ProgressMultiple from "@/components/progress-multiple";
 import BarLineWidget from "@/components/bar-line-widget";
 
-export default function HomeDashboard() {
+export default function Dashboard() {
   return (
     <main className="grid w-full grid-flow-dense auto-rows-[76px] grid-cols-3 gap-3 md:grid-cols-6 lg:grid-cols-12 lg:gap-4 xl:grid-cols-[repeat(15,minmax(0,1fr))] 2xl:auto-rows-[92px]">
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-5">
