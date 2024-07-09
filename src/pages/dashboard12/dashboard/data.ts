@@ -94,7 +94,7 @@ export const widgetData = [
         name: "R1700_2_Parking Brake",
         label: "Frein stationnement",
         // unit: "Kg",
-        displayFormat: "text",
+        displayFormat: "string",
       },
     ],
   },

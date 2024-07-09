@@ -94,7 +94,7 @@ export const widgetData = [
         name: "AD45_1_Parking Brake",
         label: "Frein stationnement",
         // unit: "Kg",
-        displayFormat: "text",
+        displayFormat: "string",
       },
     ],
   },
