@@ -15,13 +15,13 @@ import io from "socket.io-client";
 
 const VentilationDashboard1 = () => {
   const { dateRange, backendApi } = useAppContext();
-  const [dataRealTime] = useState(false);
-  const [socketData, setSocketData] = useState<any>(null);
+  const [dataRealTime] = useState(true);
+  const [socketData, setSocketData] = useState<any>([]);
   const fetcher = async () => {
     const res = await backendApi.findMany("/dpc-history/api/history", {
       pagination: {
         page: 1,
-        perPage: dataRealTime ? 20 : 10_000,
+        perPage: dataRealTime ? 20 : 1500,
       },
       where: {
         serial: data.serial,
@@ -36,49 +36,31 @@ const VentilationDashboard1 = () => {
     return res.results || [];
   };
 
-  // const fetchInterval = 5000;
   const {
     data: res,
     isLoading,
     error,
   } = useSWR(
-    `dataHistory${!dataRealTime ? `from=${dateRange?.from}&to=${dateRange?.to}` : ""}`,
+    `dataHistory${!dataRealTime ? `from=${dateRange?.from}&to=${dateRange?.to}` : `from: ${dateRange?.from}, to: ${dateRange?.to}`}`,
     fetcher,
-    // { refreshInterval: dataRealTime ? fetchInterval : undefined },
   );
 
   const chartData = useMemo(() => {
     if (res) {
-      return [...res, ...(socketData ? [socketData] : [])];
+      return [...res, ...socketData];
     }
     return null;
   }, [res, socketData]);
-  // useEffect(() => {
-  //   if (res) {
-  //     setChartData(res as any);
-  //   }
-  // }, [res]);
-
-  // useEffect(() => {
-  //   if ((!isLoading && !error) || !dataRealTime) return;
-  //   const intervalId = setInterval(async () => {
-  //     const newData = await fetcher();
-  //     setChartData(newData as any);
-  //   }, fetchInterval);
-
-  //   return () => clearInterval(intervalId); // Clean up interval on component unmount
-  // }, [fetchInterval]);
-
   useEffect(() => {
-    const socket = io("https://ws.managem.digieye.io", {
-      // transports: ["websocket"],
-    }); // Connect to your WebSocket server
+    const socket = io("https://ws.managem.digieye.io");
     socket.on("connect", () => {
       console.log("Connected to WebSocket server");
     });
 
     socket.on(`telemetry`, (newData: any) => {
-      setSocketData(newData);
+      setSocketData((prev: any) => {
+        return [...prev, newData];
+      });
       console.log("New data received from WebSocket server", newData);
     });
 
