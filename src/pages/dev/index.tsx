@@ -42,14 +42,21 @@ export default function DevPage() {
     // </div>
     <div className="flex h-screen w-full flex-grow font-bold">
       <D3GaugeChart
-        value={50}
+        value={5}
         maxValue={100}
         backgroundColor="#ddd"
         foregroundColor="#ffab00"
         ticks={{
           count: 5,
           color: "#fff",
-          fontSize: "1rem",
+          fontSize: "0.8rem",
+          offset: 10,
+        }}
+        dataLabels={{
+          show: true,
+          color: "#fff",
+          fontSize: "8rem",
+          formater: (d) => d.toString(),
         }}
       />
     </div>
