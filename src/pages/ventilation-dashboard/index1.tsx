@@ -49,7 +49,7 @@ const VentilationDashboard1 = () => {
 
   const chartData = useMemo(() => {
     if (res) {
-      return [...res, ...socketData];
+      return [...socketData, ...res];
     }
     return null;
   }, [res, socketData]);
@@ -63,12 +63,12 @@ const VentilationDashboard1 = () => {
     socket.on(`telemetry`, (newData: any) => {
       setSocketData((prev: any) => {
         return [
-          ...prev,
           {
             ...newData,
-            date: addHours(new Date(), -1),
-            createdAt: addHours(new Date(), -1),
+            date: new Date(),
+            createdAt: new Date(),
           },
+          ...prev,
         ];
       });
       console.log("New data received from WebSocket server", newData);
