@@ -17,6 +17,24 @@ export const widgetsData = {
     image: "/machine-05.png",
     attributes: [
       {
+        name: "Boltec M10",
+        image: "/machine-05.png",
+        telemetries: [
+          {
+            name: "UG_BOLTEC_M10_TD",
+            label: "Disponibilité",
+            serial: "8S287JI0CLP38N38",
+            color: "#cda943",
+          },
+          {
+            name: "UG_BOLTEC_M10_TU",
+            label: "Utilisation",
+            serial: "8S287JI0CLP38N38",
+            color: "#18a5c1",
+          },
+        ],
+      },
+      {
         name: "TITAN BMP2X3",
         image: "/machine-03.png",
         iconClassName: "absolute bottom-2 right-3 z-10 w-32",
@@ -29,24 +47,6 @@ export const widgetsData = {
           },
           {
             name: "UG_PLAT_TU",
-            label: "Utilisation",
-            serial: "8S287JI0CLP38N38",
-            color: "#18a5c1",
-          },
-        ],
-      },
-      {
-        name: "Boltec M10",
-        image: "/machine-05.png",
-        telemetries: [
-          {
-            name: "UG_BOLTEC_M10_TD",
-            label: "Disponibilité",
-            serial: "8S287JI0CLP38N38",
-            color: "#cda943",
-          },
-          {
-            name: "UG_BOLTEC_M10_TU",
             label: "Utilisation",
             serial: "8S287JI0CLP38N38",
             color: "#18a5c1",

@@ -39,14 +39,14 @@ export default function UndergroundDashboardPage() {
                   serial: "HTCBJYTZC333HN7C",
                   type: "bar",
                 },
-                {
-                  name: "UG_SUIVI_AVANCEMENT_PLANIFIE_CUMUL_OFFRE_INITIALE",
-                  unit: "T",
-                  color: "#78F6EA",
-                  label: "Planifié (Cumulé) - Offre initiale",
-                  serial: "HTCBJYTZC333HN7C",
-                  type: "line",
-                },
+                // {
+                //   name: "UG_SUIVI_AVANCEMENT_PLANIFIE_CUMUL_OFFRE_INITIALE",
+                //   unit: "T",
+                //   color: "#78F6EA",
+                //   label: "Planifié (Cumulé) - Offre initiale",
+                //   serial: "HTCBJYTZC333HN7C",
+                //   type: "line",
+                // },
                 {
                   name: "UG_SUIVI_ANNUEL_AVANCEMENT_REALISE_CUMUL",
                   unit: "T",
@@ -237,7 +237,7 @@ export default function UndergroundDashboardPage() {
         <div className="w-full text-center text-xs text-gray-400"></div>
         <div className="flex-1">
           <BarLineWidget
-            ciel={false}
+            ceil={false}
             dateRange={dateRange}
             attributes={{
               stacked: true,
@@ -285,7 +285,7 @@ export default function UndergroundDashboardPage() {
         <div className="flex-1">
           <BarLineWidget
             dateRange={dateRange}
-            ciel={false}
+            ceil={false}
             // moyenne={["UG_METRES_PLANIFIE", "UG_METRES_REALISE_TOTAL"]}
             yAxis="one"
             attributes={{
@@ -295,7 +295,7 @@ export default function UndergroundDashboardPage() {
                   name: "UG_TAUX_ARRACHEMENT_ARRACHEMENT",
                   unit: "%",
                   color: "#78F6EA",
-                  label: "Arrachelment",
+                  label: "Arrachement",
                   serial: "GHZIN57J7EOVXG0C",
                   type: "bar",
                 },
@@ -318,6 +318,7 @@ export default function UndergroundDashboardPage() {
                 bfsLabelTelemetry: "Préparation",
                 color: "#F2E205",
                 serial: "GHZIN57J7EOVXG0C",
+                bfsValue: 1.9,
               },
               {
                 nameTelemetry: "UG_FORATION_TIRS_TEMPS_DE_FORATION-min",
@@ -326,6 +327,7 @@ export default function UndergroundDashboardPage() {
                 bfsLabelTelemetry: "Foration",
                 color: "#F2A104",
                 serial: "GHZIN57J7EOVXG0C",
+                bfsValue: 4.3,
               },
               {
                 nameTelemetry:
@@ -336,14 +338,16 @@ export default function UndergroundDashboardPage() {
                 bfsLabelTelemetry: "Ch. explosif",
                 color: "#F25C05",
                 serial: "GHZIN57J7EOVXG0C",
+                bfsValue: 2,
               },
               {
                 nameTelemetry: "UG_DEBLAYAGE_TEMPS_DE_DEBLAYAGE-min",
                 nameLabelTelemetry: "Déblayage",
-                bfsTelemetry: "UG_TAUX_ARRACHEMENT_TEMPS_DE_FORATION_BFS",
+                bfsTelemetry: "UG_TAUX_ARRACHEMENT_TEMPS_DE_DEBLAYAGE_BFS",
                 bfsLabelTelemetry: "Déblayage",
                 color: "#F20574",
                 serial: "GHZIN57J7EOVXG0C",
+                bfsValue: 3.9,
               },
               {
                 nameTelemetry: "UG_FORATION_TIRS_TIR_DELAI_GAZ_ET_LAVAGE-min",
@@ -363,6 +367,7 @@ export default function UndergroundDashboardPage() {
                 bfsLabelTelemetry: "Soutènement",
                 color: "#009AB6",
                 serial: "GHZIN57J7EOVXG0C",
+                bfsValue: 6.3,
               },
             ]}
           />

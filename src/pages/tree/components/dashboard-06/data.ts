@@ -6,7 +6,7 @@ export const widgetsData = {
         {
           name: "UG_TONNAGE_TRANSPORTE_TON",
           color: "#25A18E",
-          label: "Tonnage Transporté ",
+          label: "Tonnage Transporté",
           serial: "GHZIN57J7EOVXG0C",
         },
       ],
@@ -36,7 +36,7 @@ export const widgetsData = {
         ],
       },
       {
-        name: "Transport ad45 02",
+        name: "Transport AD45 02",
         image: "/machine-06.png",
         telemetries: [
           {
