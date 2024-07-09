@@ -27,6 +27,7 @@ const Formatter = ({
   if (displayFormat === "boolean") return <>{value ? "true" : "false"}</>;
   if (displayFormat === "date")
     return <>{format(new Date(stringify(value)), "PP")}</>;
+  if (displayFormat === "onOff") return <>{value ? "ON" : "OFF"}</>;
   if (displayFormat === "image")
     return (
       <Avatar className="w-full rounded-none">
@@ -77,6 +78,6 @@ export default function Telemetry({
 
   if (isLoading) return <Loader />;
   if (error) return "Something went wrong.";
-  if (!data) return "No data";
+  if (data === undefined || data === null) return "No data";
   return <Formatter value={value} displayFormat={displayFormat} />;
 }

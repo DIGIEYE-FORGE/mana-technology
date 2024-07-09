@@ -48,8 +48,8 @@ export default function GaugeWidget({ attributes }: Widget) {
       const { results } = await backendApi.findMany<LastTelemetry>(
         "lasttelemetry",
         {
-          where: { device: { serial, name: telemetryName } },
-          select: { lastTelemetries: { where: { name } } },
+          where: { device: { serial }, name: telemetryName },
+          // select: { lastTelemetries: { where: { name } } },
         },
       );
 
