@@ -7,4 +7,5 @@ export const tableDisplayFormats = [
   "time",
   "image",
   "json",
+  "onOff",
 ] as const;

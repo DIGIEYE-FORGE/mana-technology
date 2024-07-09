@@ -42,7 +42,7 @@ export default function Dashboard() {
       </Card>
       <Card className="row-span-3 flex flex-col gap-2">
         <h3 className="text-center text-2xl font-semibold text-yellow-600">
-          CAT R1700_01
+          CAT AD45_02
         </h3>
         <div className="h-1 flex-1">
           <img
@@ -55,7 +55,7 @@ export default function Dashboard() {
 
       <Card className="row-span-3 flex flex-col justify-evenly gap-8">
         {widgetData[2].telemetries.map(
-          ({ unit, label, displayFormat, ...telemetry }, index) => (
+          ({ label, displayFormat, ...telemetry }, index) => (
             <div className="flex flex-col items-center" key={index}>
               <div className="whitespace-nowrap text-xl font-semibold">
                 {label}
@@ -65,7 +65,6 @@ export default function Dashboard() {
                   telemetry={telemetry}
                   displayFormat={displayFormat}
                 />
-                <span className="whitespace-nowrap">{unit}</span>
               </div>
             </div>
           ),

@@ -2,21 +2,33 @@ import { Button } from "@/components/ui/button";
 import { Minimize, Shrink } from "lucide-react";
 import { useAppContext } from "@/Context";
 import Dashboard from "./dashboard";
+import { DatePickerWithRange } from "@/components/calander";
+import { TDateRange } from "@/utils";
 
 export function UpBar() {
-  const { fullScreen, setFullScreen } = useAppContext();
+  const { fullScreen, setFullScreen, dateRange, setDateRange } =
+    useAppContext();
   return (
-    <div className="group sticky top-0 z-10 flex h-up-bar w-full shrink-0 items-center justify-end gap-2 border-b px-6 backdrop-blur">
-      <div className="mr-auto flex gap-4">
+    <div className="group sticky top-0 z-10 flex h-up-bar w-full shrink-0 items-center justify-start gap-2 border-b px-6 backdrop-blur">
+      <div className="flex gap-4">
         <img src="/logo.svg" alt="logo" />
         <span className="h-3/4 border-l py-3 pl-4 font-ethnocentric text-lg font-bold">
-          New Dashboard
+          Dashboard 14
         </span>
       </div>
+      <DatePickerWithRange
+        className="hidden lg:block"
+        date={dateRange}
+        onChange={(date) => {
+          setDateRange(date as TDateRange);
+        }}
+      />
+
       <Button
         onClick={() => {
           setFullScreen(!fullScreen);
         }}
+        className="ml-auto"
         size={"icon"}
         variant={"ghost"}
       >
