@@ -27,7 +27,7 @@ export const BarChart = ({ title, telemetries, interval }: BarChartProps) => {
   const fetcher = async () => {
     if (!dateRange?.from || telemetries.length === 0) return [];
     const res = await Promise.all(
-      telemetries.map(async ({ serial, name }) => {
+      telemetries?.map(async ({ serial, name }) => {
         const { results } = await backendApi.findMany<HistoryType>(
           "/dpc-history/api/history",
           {
@@ -45,7 +45,7 @@ export const BarChart = ({ title, telemetries, interval }: BarChartProps) => {
         return results;
       }),
     );
-    return res.map((item, index) => {
+    return res?.map((item, index) => {
       const name = telemetries[index].name;
       const max = item?.reduce((acc, item) => {
         const value = Number(flatten(item)[name]);
@@ -55,7 +55,7 @@ export const BarChart = ({ title, telemetries, interval }: BarChartProps) => {
         name: telemetries[index].label
           ? title + " " + telemetries[index].label
           : title,
-        data: item.map((item) => ({
+        data: item?.map((item) => ({
           x: new Date(item.createdAt),
           y: Number(flatten(item)[name]),
         })),

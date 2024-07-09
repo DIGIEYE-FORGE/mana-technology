@@ -14,13 +14,13 @@ interface ConeProps extends HTMLMotionProps<"div"> {
 
 const Cone = ({ data, style, children, ...props }: ConeProps) => {
   const gdF = 0.15;
-  const colors2 = data.map((item, index) => {
-    const start = (index / data.length) * 100;
-    const end = ((index + 1) / data.length) * 100;
+  const colors2 = (data || [])?.map((item, index) => {
+    const start = (index / data?.length) * 100;
+    const end = ((index + 1) / data?.length) * 100;
     const color = Color(item.color);
     return `${color} ${start}% , ${color.darken(gdF)} ${end}%`;
   });
-  const colors1 = data.map((item, index) => {
+  const colors1 = data?.map((item, index) => {
     const start = (index / data.length) * 100;
     const end = ((index + 1) / data.length) * 100;
     const color = Color(item.color);

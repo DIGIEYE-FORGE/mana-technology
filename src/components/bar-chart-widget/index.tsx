@@ -26,7 +26,7 @@ export default function BarChartWidget(props: Props) {
     async () => {
       if (!dateRange?.from || telemetries.length === 0) return [];
       const res = await Promise.all(
-        telemetries.map(async ({ serial, name }, idx) => {
+        telemetries?.map(async ({ serial, name }, idx) => {
           if (telemetries[idx].data) return [];
           const { results } = await backendApi.findMany<HistoryType>(
             "/dpc-history/api/history",
@@ -49,7 +49,7 @@ export default function BarChartWidget(props: Props) {
           return results;
         }),
       );
-      const res1 = res.map((item, index) => {
+      const res1 = res?.map((item, index) => {
         const newData: { x: Date; y: number }[] = [];
         if (telemetries[index].data === undefined) {
           for (let i = 0; i < item.length; i++) {
@@ -73,17 +73,17 @@ export default function BarChartWidget(props: Props) {
         const res2 = [];
         if (props.moyenne === "combined") {
           const allDates = res1.flatMap((item) =>
-            item.data.map((item) => item.x),
+            item.data?.map((item) => item.x),
           );
           const allData = res1.flatMap((item) =>
-            item.data.map((item) => item.y),
+            item.data?.map((item) => item.y),
           );
           const moyenne = allData?.reduce((a, b) => a + b, 0) / allData.length;
           res2.push({
             name: "Moyenne",
             type: "line",
             color: getRandomColor(),
-            data: allDates.map((item) => ({
+            data: allDates?.map((item) => ({
               x: item,
               y: moyenne,
             })),
@@ -97,15 +97,15 @@ export default function BarChartWidget(props: Props) {
               (it) => it.nameTelemetry === item.name,
             );
             if (dataTelemetry) {
-              const allDates = dataTelemetry?.data.map((item) => item.x);
-              const allData = dataTelemetry?.data.map((item) => item.y);
+              const allDates = dataTelemetry?.data?.map((item) => item.x);
+              const allData = dataTelemetry?.data?.map((item) => item.y);
               const moyenne =
                 allData?.reduce((a, b) => a + b, 0) / allData.length;
               res2.push({
                 name: (item.label || item.name) + " (Moyenne)",
                 type: "line",
                 color: getRandomColor(),
-                data: allDates.map((item) => ({
+                data: allDates?.map((item) => ({
                   x: item,
                   y: moyenne,
                 })),
@@ -142,7 +142,7 @@ export default function BarChartWidget(props: Props) {
           fontWeight: 600,
           fontSize: "12px",
         },
-        colors: telemetries.map((item) => item.color),
+        colors: telemetries?.map((item) => item.color),
         plotOptions: {
           bar: {
             horizontal: false,
@@ -152,7 +152,7 @@ export default function BarChartWidget(props: Props) {
           },
         },
         stroke: {
-          width: (data || []).map((item) => (item.type === "line" ? 2.5 : 0)),
+          width: (data || [])?.map((item) => (item.type === "line" ? 2.5 : 0)),
           curve: "smooth",
         },
         grid: {
@@ -193,7 +193,7 @@ export default function BarChartWidget(props: Props) {
             ? undefined
             : Math.max(
                 ...(data || []).flatMap((item) =>
-                  item.data.map((item) => item.y),
+                  item?.data?.map((item) => item.y),
                 ),
               ),
           labels: {
