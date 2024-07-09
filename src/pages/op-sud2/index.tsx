@@ -108,7 +108,8 @@ function DashboardPage3() {
         </h1>
         <ProgressAccumulation
           attributes={{
-            serial: "C6XPYU0D920L1M07",
+            targetSerial: "QXYIV05MSG7F079I",
+            progressSerial:"PI6PQ8SEZC4BWRP3",
             progressColor: "#EBC94A",
             currentTargetColor: "#78F6EA",
             progressTelemetryName: "SUD2_REALISE_ROCHE_CUMUL",

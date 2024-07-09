@@ -106,7 +106,8 @@ export default function HomeDashboard() {
         </h1>
         <ProgressAccumulation
           attributes={{
-            serial: "U9XQMQ1DXYT7LJIP",
+            targetSerial: "JZVATMKQ1A8DA2P1",
+            progressSerial:"D5KP29KL463AZXWE",
             progressColor: "#EBC94A",
             currentTargetColor: "#78F6EA",
             progressTelemetryName: "EST_REALISE_ROCHE_CUMUL_Ton",
