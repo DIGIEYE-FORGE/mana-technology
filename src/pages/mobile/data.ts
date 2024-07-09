@@ -110,7 +110,7 @@ export const locations: TLocation[] = [
       data: {
         "Processing method": "Flotation",
         Product: "Copper Silver concentrate",
-        "Production capacity": "120 Ktonnes per year",
+        "Production capacity": "120 Kt per year",
       },
     },
   },

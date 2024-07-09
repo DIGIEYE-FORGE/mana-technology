@@ -15,7 +15,7 @@ export default function HomeDashboard() {
           Production Roche Cumulée annuelle (t)
         </h1>
         <div className="h-1 flex-1">
-        <BarLineWidget
+          <BarLineWidget
             attributes={{
               stacked: true,
               telemetries: [
@@ -120,7 +120,7 @@ export default function HomeDashboard() {
         <ProgressAccumulation
           attributes={{
             targetSerial: "QXYIV05MSG7F079I",
-            progressSerial:"PI6PQ8SEZC4BWRP3",
+            progressSerial: "PI6PQ8SEZC4BWRP3",
             progressColor: "#FF5AF1",
             currentTargetColor: "#727DC6",
             progressTelemetryName: "SUD_REALISE_ROCHE_CUMUL",
@@ -171,19 +171,19 @@ export default function HomeDashboard() {
                     name: "SUD_REALISE_ORE_HG_SULF",
                     serial: "PI6PQ8SEZC4BWRP3",
                     label: "HG",
-                    color: "#bf212f",
+                    color: "#FF5C5C",
                   },
                   {
                     name: "SUD_REALISE_ORE_MG_SULF",
                     serial: "PI6PQ8SEZC4BWRP3",
                     label: "MG",
-                    color: "#27b376",
+                    color: "#8AFF8A",
                   },
                   {
                     name: "SUD_REALISE_ORE_LG_SULF",
                     serial: "PI6PQ8SEZC4BWRP3",
                     label: "LG",
-                    color: "#3366ff",
+                    color: "#5C5CFF",
                   },
                 ],
               },
@@ -194,19 +194,19 @@ export default function HomeDashboard() {
                     name: "SUD_REALISE_ORE_HG_OXYD",
                     serial: "PI6PQ8SEZC4BWRP3",
                     label: "HG",
-                    color: "#bf212f",
+                    color: "#FF5C5C",
                   },
                   {
                     name: "SUD_REALISE_ORE_MG_OXYD",
                     serial: "PI6PQ8SEZC4BWRP3",
                     label: "MG",
-                    color: "#27b376",
+                    color: "#8AFF8A",
                   },
                   {
                     name: "SUD_REALISE_ORE_LG_OXYD",
                     serial: "PI6PQ8SEZC4BWRP3",
                     label: "LG",
-                    color: "#3366ff",
+                    color: "#5C5CFF",
                   },
                 ],
               },
