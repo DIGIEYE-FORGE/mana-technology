@@ -38,7 +38,7 @@ export const locations: TLocation[] = [
       ],
     },
     info: {
-      className: "bottom-full right-0 xl:w-[17.5rem] xl:translate-x-12",
+      className: "bottom-full right-0 xl:w-[14rem] xl:translate-x-12",
       title: "Open Pit",
       data: {
         "Mineral reserves": "7,6 Mt @0,85% Cu & 23 ",
@@ -63,7 +63,7 @@ export const locations: TLocation[] = [
       ],
     },
     info: {
-      className: "bottom-full right-0 xl:w-[20rem] gap-0 xl:text-sm",
+      className: "bottom-full right-0 xl:w-[16rem] gap-0 ",
       title: "Pit EST",
       data: {
         "Mineral reserves": "4,5 Mt @0,8 % Cu et 27 g/t Ag ",
@@ -185,7 +185,7 @@ export const undergroundLocations: TLocation[] = [
     },
     info: {
       className:
-        "right-[120%] bottom-1/2 translate-y-1/2 w-[10rem] sm:w-[12rem]  xl:w-[20rem]",
+        "right-[120%] xl:left-[120%] bottom-1/2 translate-y-1/2 w-[10rem] sm:w-[12rem]  xl:w-[20rem]",
       title: "Underground Mine",
       data: {
         "Mineral reserves": "54 Mt @ 0,9 %Cu et 19 g/t Ag",

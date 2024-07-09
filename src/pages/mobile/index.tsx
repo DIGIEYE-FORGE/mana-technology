@@ -230,7 +230,7 @@ function Location({ location }: { location: TLocation }) {
       {info && showInfo && (
         <div
           className={cn(
-            "absolute grid w-[8rem] grid-cols-[min-content,1fr] p-3 pr-6 text-[6px] md:w-[14rem] md:gap-1 md:text-xs xl:w-[16rem] xl:text-sm",
+            "absolute grid w-[8rem] grid-cols-[min-content,1fr] gap-x-2 p-3 pr-6 text-[6px] md:w-[14rem] md:gap-1 md:text-xs xl:w-[15rem]",
             info.className,
           )}
           style={{
