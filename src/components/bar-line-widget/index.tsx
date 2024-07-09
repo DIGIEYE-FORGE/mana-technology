@@ -62,12 +62,15 @@ export default function BarLineWidget({
           type: telemetries[index].type,
           data: item.map((item) => ({
             x: new Date(item.createdAt),
-            y: ceil ? Math.ceil(Number(
-                Number(flatten(item)[telemetries[index].name]).toFixed(2),
-              ) * (correction?.[telemetries[index].name] || 1)) :
-              Number(
-                Number(flatten(item)[telemetries[index].name]).toFixed(2),
-              ) * (correction?.[telemetries[index].name] || 1),
+            y: ceil
+              ? Math.ceil(
+                  Number(
+                    Number(flatten(item)[telemetries[index].name]).toFixed(2),
+                  ) * (correction?.[telemetries[index].name] || 1),
+                )
+              : Number(
+                  Number(flatten(item)[telemetries[index].name]).toFixed(2),
+                ) * (correction?.[telemetries[index].name] || 1),
           })),
         })),
       ];

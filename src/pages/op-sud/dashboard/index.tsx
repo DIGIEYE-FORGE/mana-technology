@@ -15,7 +15,7 @@ export default function HomeDashboard() {
           Production Roche Cumulée annuelle (t)
         </h1>
         <div className="h-1 flex-1">
-        <BarLineWidget
+          <BarLineWidget
             attributes={{
               stacked: true,
               telemetries: [
@@ -120,7 +120,7 @@ export default function HomeDashboard() {
         <ProgressAccumulation
           attributes={{
             targetSerial: "QXYIV05MSG7F079I",
-            progressSerial:"PI6PQ8SEZC4BWRP3",
+            progressSerial: "PI6PQ8SEZC4BWRP3",
             progressColor: "#FF5AF1",
             currentTargetColor: "#727DC6",
             progressTelemetryName: "SUD_REALISE_ROCHE_CUMUL",

@@ -75,7 +75,7 @@ function ProgressData({ data, sum, className }: ProgressTo) {
 }
 
 function ProgressMultiple({ attributes }: props) {
-  const { backendApi , dateRange} = useAppContext();
+  const { backendApi, dateRange } = useAppContext();
 
   const { data, isLoading, error } = useSWR(
     `telemetries?${JSON.stringify({ attributes, dateRange })}`,
@@ -104,11 +104,10 @@ function ProgressMultiple({ attributes }: props) {
                   },
                 },
               );
-              const value =
-                results.reduce((acc, curr) => {
-                  const val = typeof curr[name] === "number" ? curr[name] : 0;
-                  return acc + Number(val);
-                }, 0) ;
+              const value = results.reduce((acc, curr) => {
+                const val = typeof curr[name] === "number" ? curr[name] : 0;
+                return acc + Number(val);
+              }, 0);
               return {
                 value: value,
                 name,
@@ -140,7 +139,7 @@ function ProgressMultiple({ attributes }: props) {
       </div>
     );
   return (
-    <div className="flex flex-col gap-4 overflow-y-auto">
+    <div className="flex flex-col gap-3 overflow-y-auto">
       {attributes.map((device, index) => {
         const { telemetries, title } = device;
         const sum = data[index].reduce(
@@ -172,6 +171,28 @@ function ProgressMultiple({ attributes }: props) {
           </div>
         );
       })}
+
+      <div className="flex w-full justify-center gap-7">
+        {/* {data[index].map((ele, index) => {
+          return (
+            <div key={index} className="flex flex-col gap-1">
+              <span className="text-sm">{ele?.name}</span>
+            </div>
+          );
+        })} */}
+        <div className="flex items-center gap-1">
+          <span className="flex h-4 w-4 rounded-full bg-[#bf212f]"></span>
+          <span>HG</span>
+        </div>
+        <div className="flex items-center gap-1">
+          <span className="flex h-4 w-4 rounded-full bg-[#27b376]"></span>
+          <span>MG</span>
+        </div>
+        <div className="flex items-center gap-1">
+          <span className="flex h-4 w-4 rounded-full bg-[#3366ff]"></span>
+          <span>LG</span>
+        </div>
+      </div>
     </div>
   );
 }
