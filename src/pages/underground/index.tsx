@@ -21,8 +21,8 @@ function UndergroundBar() {
           {parentPath
             ? pathname.split("/").at(-1) === "tree"
               ? "Cycle de développement"
-              : "ventilation"
-            : "underground"}
+              : "VOD"
+            : "Performance Underground"}
         </span>
       </div>
       <DatePickerWithRange

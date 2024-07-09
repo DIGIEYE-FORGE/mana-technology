@@ -48,7 +48,7 @@ export const machines = [
     },
   },
   {
-    name: "Soutènement boltec M10",
+    name: "Soutènement Boltec M10",
     image: "/machine-05.png",
     align: "center",
     side: "right",
