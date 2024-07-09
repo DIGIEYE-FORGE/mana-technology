@@ -2,6 +2,7 @@ import { useAppContext } from "@/Context";
 import useSWR from "swr";
 import Loader from "../loader";
 import { cn } from "@/lib/utils";
+import { HistoryType } from "@/utils";
 
 interface props {
   attributes: {
@@ -83,26 +84,39 @@ function ProgressMultiple({ attributes }: props) {
       return await Promise.all(
         attributes.map(async (device) => {
           const { telemetries } = device;
-          return await Promise.all(
+          const res = await Promise.all(
             telemetries.map(async (telemetry) => {
               const { name, serial } = telemetry;
-              const res = await backendApi.findMany<{
-                name: string;
-                value: number;
-              }>("lasttelemetry", {
-                where: {
-                  name,
-                  device: { serial },
+              const { results } = await backendApi.findMany<HistoryType>(
+                "/dpc-history/api/history",
+                {
+                  pagination: {
+                    page: 1,
+                    perPage: 10_00,
+                  },
+                  select: [name],
+                  where: {
+                    serial,
+                  },
                 },
-                select: { name: true, value: true },
-              });
-              return res.results[0];
+              );
+              const value =
+                results.reduce((acc, curr) => {
+                  const val = typeof curr[name] === "number" ? curr[name] : 0;
+                  return acc + Number(val);
+                }, 0) / results.length;
+              return {
+                value: value,
+                name,
+              };
             }),
           );
+          return res;
         }),
       );
     },
   );
+
   if (isLoading)
     return (
       <div className="flex h-full w-full items-center justify-center">
@@ -136,14 +150,14 @@ function ProgressMultiple({ attributes }: props) {
             <ProgressData
               data={data[index].map((ele) => {
                 return {
-                  value: ele.value,
-                  name: ele.name,
-                  label: telemetries.find((tel) => tel.name === ele.name)
+                  value: ele?.value || 0,
+                  name: ele?.name || "",
+                  label: telemetries.find((tel) => tel?.name === ele?.name)
                     ?.showLabel
-                    ? telemetries.find((tel) => tel.name === ele.name)?.label
+                    ? telemetries.find((tel) => tel?.name === ele?.name)?.label
                     : "",
                   color:
-                    telemetries.find((tel) => tel.name === ele.name)?.color ||
+                    telemetries.find((tel) => tel?.name === ele?.name)?.color ||
                     "red",
                 };
               })}

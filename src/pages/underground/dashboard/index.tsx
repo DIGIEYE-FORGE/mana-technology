@@ -1,10 +1,10 @@
 import { useAppContext } from "@/Context";
 import BarLineWidget from "@/components/bar-line-widget";
 import { Card } from "@/components/card";
+// import { ConeChart } from "@/components/cone-chart";
 import { D3DonutChart } from "@/components/d3-donut chart";
 import Engins from "@/components/engins";
 import LineChartWidget from "@/components/line-chart-widget";
-import LinesWidget from "@/components/lines-chart-widget";
 import { Button } from "@/components/ui/button";
 import Ventillation from "@/components/ventillation";
 import { ChevronsDown } from "lucide-react";
@@ -13,14 +13,11 @@ import { Link } from "react-router-dom";
 export default function UndergroundDashboardPage() {
   const { dateRange } = useAppContext();
   return (
-    <div className="grid h-fit w-full grid-flow-dense auto-rows-[19rem] grid-cols-9 gap-6">
-      <Card className="col-span-5 flex flex-col p-4">
+    <div className="grid h-fit w-full auto-rows-[17rem] grid-cols-3 gap-6 md:grid-cols-6 xl:grid-cols-9 2xl:auto-rows-[19rem] [&>*]:col-span-3">
+      <Card className="flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
-          Avancement cumulatif annuel
+          Avancement Cumulé annuel (ml)
         </h1>
-        <div className="w-full text-center text-xs text-gray-400">
-          Piloting Work - S-curve for Planned % Vs Actual %
-        </div>
         <div className="h-1 flex-1">
           <BarLineWidget
             attributes={{
@@ -31,7 +28,7 @@ export default function UndergroundDashboardPage() {
                   unit: "T",
                   color: "#FF5AF1",
                   label: "Forecast (Mensuel)",
-                  serial: "DABF7PAT2G4BAG21",
+                  serial: "HTCBJYTZC333HN7C",
                   type: "bar",
                 },
                 {
@@ -39,23 +36,23 @@ export default function UndergroundDashboardPage() {
                   unit: "T",
                   color: "#FFDC8C",
                   label: "Réalisé",
-                  serial: "DABF7PAT2G4BAG21",
+                  serial: "HTCBJYTZC333HN7C",
                   type: "bar",
                 },
-                {
-                  name: "UG_SUIVI_AVANCEMENT_PLANIFIE_CUMUL_OFFRE_INITIALE",
-                  unit: "T",
-                  color: "#78F6EA",
-                  label: "Planifié (Cumulé) - Offre initiale",
-                  serial: "DABF7PAT2G4BAG21",
-                  type: "line",
-                },
+                // {
+                //   name: "UG_SUIVI_AVANCEMENT_PLANIFIE_CUMUL_OFFRE_INITIALE",
+                //   unit: "T",
+                //   color: "#78F6EA",
+                //   label: "Planifié (Cumulé) - Offre initiale",
+                //   serial: "HTCBJYTZC333HN7C",
+                //   type: "line",
+                // },
                 {
                   name: "UG_SUIVI_ANNUEL_AVANCEMENT_REALISE_CUMUL",
                   unit: "T",
                   color: "#B98EFF",
                   label: "Réalisé (Cumulé)",
-                  serial: "DABF7PAT2G4BAG21",
+                  serial: "HTCBJYTZC333HN7C",
                   type: "line",
                 },
                 {
@@ -64,7 +61,7 @@ export default function UndergroundDashboardPage() {
 
                   color: "#fab006",
                   label: "Forecast (Cumulé)",
-                  serial: "DABF7PAT2G4BAG21",
+                  serial: "HTCBJYTZC333HN7C",
                   type: "line",
                 },
               ],
@@ -72,63 +69,49 @@ export default function UndergroundDashboardPage() {
           />
         </div>
       </Card>
-      <Card className="col-span-4 flex flex-col p-4">
+      <Card className="flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
-          Avancement Cumulé :
-          <span className="text-md text-gray-400"> Réalisé vs Planifié</span>
+          Avancement Cumulé mensuel (ml)
         </h1>
         <div className="w-full text-center text-xs text-gray-400"></div>
         <div className="flex-1">
-          <LinesWidget
+          <LineChartWidget
+            yAxis="one"
+            selectionDate={true}
             attributes={{
               stacked: true,
               telemetries: [
                 {
-                  name: "UG_METRES_PLANIFIE_CUMULE",
-                  unit: "T",
+                  name: "UG_METRES_PLANIFIE",
                   color: "#78F6EA",
                   label: "Planifié",
-                  serial: "DABF7PAT2G4BAG21",
+                  serial: "WF5CW7A4T9R9VU9F",
                   type: "line",
+                  accumulated: true,
                 },
                 {
-                  name: "UG_METRES_REALISE_CUMULE",
-                  unit: "T",
+                  name: "UG_METRES_REALISE_TOTAL",
                   color: "#B98EFF",
                   label: "Réalisé",
-                  serial: "DABF7PAT2G4BAG21",
+                  serial: "WF5CW7A4T9R9VU9F",
                   type: "line",
+                  accumulated: true,
                 },
               ],
             }}
           />
         </div>
       </Card>
-
-      <Card className="col-span-3 flex flex-col items-center gap-1 p-4">
+      <Card className="flex flex-col p-4">
         <h1 className="text-center text-lg font-semibold">
-          Dashboard ventillation
-        </h1>
-        <div className="w-full flex-1">
-          <Ventillation />
-        </div>
-        <Link to="/underground/ventilation">
-          <Button className="flex w-fit gap-2" size={"sm"} variant={"link"}>
-            <ChevronsDown size={16} />
-            {/* <img src="plus.svg" alt="" width={20} height={20} /> */}
-            <span>Voir plus</span>
-          </Button>
-        </Link>
-      </Card>
-      <Card className="col-span-3 flex flex-col p-4">
-        <h1 className="text-center text-lg font-semibold">
-          Arrachement (m) journalier
+          Avancement journalier (ml/j)
         </h1>
         <div className="w-full text-center text-xs text-gray-400"></div>
         <div className="flex-1">
           <BarLineWidget
             moyenne={["UG_METRES_PLANIFIE", "UG_METRES_REALISE_TOTAL"]}
             yAxis="one"
+            dateRange={dateRange}
             attributes={{
               stacked: true,
               telemetries: [
@@ -136,8 +119,8 @@ export default function UndergroundDashboardPage() {
                   name: "UG_METRES_PLANIFIE",
                   unit: "T",
                   color: "#78F6EA",
-                  label: "Prévus",
-                  serial: "DABF7PAT2G4BAG21",
+                  label: "Planifié",
+                  serial: "WF5CW7A4T9R9VU9F",
                   type: "bar",
                 },
                 {
@@ -145,7 +128,7 @@ export default function UndergroundDashboardPage() {
                   unit: "T",
                   color: "#B98EFF",
                   label: "Réalisé",
-                  serial: "DABF7PAT2G4BAG21",
+                  serial: "WF5CW7A4T9R9VU9F",
                   type: "bar",
                 },
               ],
@@ -153,14 +136,108 @@ export default function UndergroundDashboardPage() {
           />
         </div>
       </Card>
-      <Card className="col-span-3 flex flex-col p-4">
+      <Card className="flex flex-col items-center gap-1 p-4">
         <h1 className="text-center text-lg font-semibold">
-          Nombre Tir{" "}
-          <span className="text-gray-500">(planifié vs réalisé)</span>
+          VOD
         </h1>
+        <div className="w-full flex-1">
+          <Ventillation
+            attribute={[
+              {
+                telemetryName: "s=plc1_DB_Conso1_kWhTotale",
+                labelTelemetry: "Energie1",
+                serial: "0TKJJWS26V62QV15",
+                randomValue: 104,
+                unit: "kWh",
+              },
+              {
+                telemetryName: "s=plc1_DB_Conso2_kWhTotale",
+                labelTelemetry: "Energie2",
+                serial: "0TKJJWS26V62QV15",
+                randomValue: 106,
+                unit: "kWh",
+              },
+              {
+                telemetryName: "s=Ventil1_Q",
+                labelTelemetry: "Ventilateur N°1",
+                serial: "0TKJJWS26V62QV15",
+                randomValue: 0,
+              },
+              {
+                telemetryName: "s=Ventil2_Q",
+                labelTelemetry: "Ventilateur N°2",
+                serial: "0TKJJWS26V62QV15",
+                randomValue: 230,
+              },
+              {
+                telemetryName: "s=plc1_DB_Conso1_HcpTotalMarche",
+                labelTelemetry: "Marche1",
+                serial: "0TKJJWS26V62QV15",
+                randomValue: 230,
+              },
+              {
+                telemetryName: "s=plc1_DB_Conso2_HcpTotalMarche",
+                labelTelemetry: "Marche2",
+                serial: "0TKJJWS26V62QV15",
+                randomValue: 230,
+              },
+              {
+                telemetryName: "s=Plc2_O2",
+                randomValue: 19.6,
+                unit: "%",
+                labelTelemetry: "Oxygène",
+                serial: "0TKJJWS26V62QV15",
+                icon: "co2.svg",
+              },
+              {
+                telemetryName: "s=Plc2_CO",
+                randomValue: 1,
+                unit: "ppm",
+                labelTelemetry: "CO",
+                serial: "0TKJJWS26V62QV15",
+                icon: "co2.svg",
+              },
+              {
+                telemetryName: "s=Plc2_NO2",
+                randomValue: 0.5,
+                unit: "ppm",
+                labelTelemetry: "NO2",
+                serial: "0TKJJWS26V62QV15",
+                icon: "co2.svg",
+              },
+              {
+                telemetryName: "s=Plc2_ToS",
+                randomValue: 22.2,
+                unit: "°C",
+                labelTelemetry: "T. Sèche",
+                serial: "0TKJJWS26V62QV15",
+                icon: "seche.svg",
+              },
+              {
+                telemetryName: "s=Plc2_ToH",
+                randomValue: 21.9,
+                unit: "°C",
+                labelTelemetry: "T. Humide",
+                serial: "0TKJJWS26V62QV15",
+                icon: "vites.svg",
+              },
+            ]}
+          />
+        </div>
+        <Link to="/underground/ventilation1">
+          <Button className="flex w-fit gap-2" size={"sm"} variant={"link"}>
+            <ChevronsDown size={16} />
+            <span>Voir plus</span>
+          </Button>
+        </Link>
+      </Card>
+
+      <Card className="flex flex-col p-4">
+        <h1 className="text-center text-lg font-semibold">Nombre de Tirs </h1>
         <div className="w-full text-center text-xs text-gray-400"></div>
         <div className="flex-1">
           <BarLineWidget
+            ceil={false}
             dateRange={dateRange}
             attributes={{
               stacked: true,
@@ -169,16 +246,16 @@ export default function UndergroundDashboardPage() {
                   name: "UG_TIR_REALISE",
                   unit: "T",
                   color: "#FFDC8C",
-                  label: "TIRS RÉALISÉ",
-                  serial: "DABF7PAT2G4BAG21",
+                  label: "Réalisé",
+                  serial: "WF5CW7A4T9R9VU9F",
                   type: "bar",
                 },
                 {
                   name: "UG_TIR_PLANIFIE",
                   unit: "T",
                   color: "#78F6EA",
-                  label: "TIRS PRÉVUES",
-                  serial: "DABF7PAT2G4BAG21",
+                  label: "Planifié",
+                  serial: "WF5CW7A4T9R9VU9F",
                   type: "bar",
                 },
                 {
@@ -186,16 +263,16 @@ export default function UndergroundDashboardPage() {
                   unit: "T",
 
                   color: "#B98EFF",
-                  label: "TIRS PRÉVUES CUMULÉE",
-                  serial: "DABF7PAT2G4BAG21",
+                  label: "Planifié (Cumulé)",
+                  serial: "WF5CW7A4T9R9VU9F",
                   type: "line",
                 },
                 {
                   name: "UG_TIR_REALISE_CUMULE",
                   unit: "T",
                   color: "#FF5AF1",
-                  label: "TIRS RÉALISÉ CUMULÉE",
-                  serial: "DABF7PAT2G4BAG21",
+                  label: "Réalisé (Cumulé)",
+                  serial: "WF5CW7A4T9R9VU9F",
                   type: "line",
                 },
               ],
@@ -203,36 +280,94 @@ export default function UndergroundDashboardPage() {
           />
         </div>
       </Card>
-      <Card className="relative col-span-3 p-4">
-        <h1 className="text-center text-lg font-semibold">
-          Développement du cycle
-        </h1>
+      <Card className="flex flex-col gap-4 p-4">
+        <h1 className="text-center text-lg font-semibold">Arrachement (%)</h1>
         <div className="flex-1">
+          <BarLineWidget
+            dateRange={dateRange}
+            ceil={false}
+            // moyenne={["UG_METRES_PLANIFIE", "UG_METRES_REALISE_TOTAL"]}
+            yAxis="one"
+            attributes={{
+              stacked: true,
+              telemetries: [
+                {
+                  name: "UG_TAUX_ARRACHEMENT_ARRACHEMENT",
+                  unit: "%",
+                  color: "#78F6EA",
+                  label: "Arrachement",
+                  serial: "GHZIN57J7EOVXG0C",
+                  type: "bar",
+                },
+              ],
+            }}
+          />
+        </div>
+      </Card>
+      <Card className="relative flex flex-col p-4">
+        <h1 className="text-center text-lg font-semibold">
+          Cycle de développement (h)
+        </h1>
+        <div className="h-1 flex-1">
           <D3DonutChart
             attribute={[
               {
-                name: "UG_FORATION_TIRS_PREPARATION-min",
-                color: "#009AB6",
-                label: "Quasi-accidents & observations",
-                serial: "DABF7PAT2G4BAG21",
+                nameTelemetry: "UG_FORATION_TIRS_PREPARATION-min",
+                nameLabelTelemetry: "Préparation",
+                bfsTelemetry: "UG_TAUX_ARRACHEMENT_PREPARATION_BFS",
+                bfsLabelTelemetry: "Préparation",
+                color: "#F2E205",
+                serial: "GHZIN57J7EOVXG0C",
+                bfsValue: 1.9,
               },
               {
-                name: "UG_FORATION_TIRS_PREPARATION-min",
-                color: "#009AB6",
-                label: "Quasi-accidents & observations",
-                serial: "DABF7PAT2G4BAG21",
+                nameTelemetry: "UG_FORATION_TIRS_TEMPS_DE_FORATION-min",
+                nameLabelTelemetry: "Foration",
+                bfsTelemetry: "UG_TAUX_ARRACHEMENT_TEMPS_DE_FORATION_BFS",
+                bfsLabelTelemetry: "Foration",
+                color: "#F2A104",
+                serial: "GHZIN57J7EOVXG0C",
+                bfsValue: 4.3,
               },
               {
-                name: "UG_FORATION_TIRS_PREPARATION-min",
-                color: "#009AB6",
-                label: "Quasi-accidents & observations",
-                serial: "DABF7PAT2G4BAG21",
+                nameTelemetry:
+                  "UG_FORATION_TIRS_TEMPS_DE_CHARGEMENT_EXPLOSIF-min",
+                nameLabelTelemetry: "Ch. explosif",
+                bfsTelemetry:
+                  "UG_TAUX_ARRACHEMENT_TEMPS_DE_CHARGEMENT_EXPLOSIF_BFS",
+                bfsLabelTelemetry: "Ch. explosif",
+                color: "#F25C05",
+                serial: "GHZIN57J7EOVXG0C",
+                bfsValue: 2,
               },
               {
-                name: "UG_FORATION_TIRS_PREPARATION-min",
+                nameTelemetry: "UG_DEBLAYAGE_TEMPS_DE_DEBLAYAGE-min",
+                nameLabelTelemetry: "Déblayage",
+                bfsTelemetry: "UG_TAUX_ARRACHEMENT_TEMPS_DE_DEBLAYAGE_BFS",
+                bfsLabelTelemetry: "Déblayage",
+                color: "#F20574",
+                serial: "GHZIN57J7EOVXG0C",
+                bfsValue: 3.9,
+              },
+              {
+                nameTelemetry: "UG_FORATION_TIRS_TIR_DELAI_GAZ_ET_LAVAGE-min",
+                nameLabelTelemetry: "Purge et Souflage",
+                // bfsTelemetry:
+                //   "UG_TAUX_ARRACHEMENT_TEMPS_DE_PURGE_ET_SOUFLAGE_BFS",
+                // bfsLabelTelemetry: "Purge et Souflage",
+                color: "#05F2C7",
+                serial: "GHZIN57J7EOVXG0C",
+              },
+              {
+                nameTelemetry:
+                  "UG_SOUTENEMENT_TEMPS_DE_MISE_EN_PLACE_SOUTENEMENT-min",
+                nameLabelTelemetry: "Soutènement",
+                bfsTelemetry:
+                  "UG_TAUX_ARRACHEMENT_TEMPS_DE_MISE_EN_PLACE_SOUTENEMENT_BFS",
+                bfsLabelTelemetry: "Soutènement",
                 color: "#009AB6",
-                label: "Quasi-accidents & observations",
-                serial: "DABF7PAT2G4BAG21",
+                serial: "GHZIN57J7EOVXG0C",
+                bfsValue: 6.3,
               },
             ]}
           />
@@ -247,60 +382,167 @@ export default function UndergroundDashboardPage() {
           </Button>
         </Link>
       </Card>
-      <Card className="col-span-3 flex flex-col gap-1 p-4">
+      <Card className="flex flex-col gap-1 p-4">
         <h1 className="text-center text-lg font-semibold">
-          Avancement/Arrachement journalier
+          Temps Moyen de cycle (h)
         </h1>
         <div className="h-1 flex-1">
           <LineChartWidget
+            selectionDate={false}
             attributes={{
               telemetries: [
                 {
                   area: true,
-                  name: "EST_REALISE_FORATION",
+                  name: "UG_SUIVI_TEMPS_MOYEN_CYCLE",
                   color: "#78F6EA",
-                  label: "Realisé ML/J",
-                  serial: "U9XQMQ1DXYT7LJIP",
+                  label: "Temps Moyen de cycle",
+                  serial: "HTCBJYTZC333HN7C",
                 },
               ],
             }}
           />
         </div>
       </Card>
-      <Card className="col-span-3 flex flex-col gap-2 p-2">
+      <Card className="col-span-full flex flex-col gap-2 px-6 pt-4">
         <h3 className="text-center text-lg font-semibold">
-          Disponibilité et utilisation des engins
+          Performance Engins
         </h3>
-        <div className="mx-6 flex-1 p-1">
+        <div className="h-1 flex-1 overflow-y-auto">
           <Engins
+            selectedWithDate={true}
             attribute={[
               {
-                label: "LH06",
-                icon: "/truck.svg",
-                utilisationTelemetry: "UG_LH06_UTILISATION",
-                disponibilliteTelemetry: "UG_LH06_DISPONIBILITE",
-                serial: "DABF7PAT2G4BAG21",
+                label: "BOLTEC M10",
+                icon: "JUMBO M20.png",
+                utilisationTelemetry: "UG_BOLTEC_M10_TU",
+                disponibilliteTelemetry: "UG_BOLTEC_M10_TD",
+                serial: "8S287JI0CLP38N38",
               },
               {
-                label: "LH06",
-                icon: "/truck.svg",
-                utilisationTelemetry: "UG_LH06_UTILISATION",
-                disponibilliteTelemetry: "UG_LH06_DISPONIBILITE",
-                serial: "DABF7PAT2G4BAG21",
+                label: "TITAN BAC2X350",
+                icon: "JUMBO T1.png",
+                utilisationTelemetry: "UG_CHARG_EXP_TITAN_BAC2X350_TU",
+                disponibilliteTelemetry: "UG_CHARG_EXP_TITAN_BAC2X350_TD",
+                serial: "8S287JI0CLP38N38",
               },
               {
-                label: "LH06",
-                icon: "/truck.svg",
-                utilisationTelemetry: "UG_LH06_UTILISATION",
-                disponibilliteTelemetry: "UG_LH06_DISPONIBILITE",
-                serial: "DABF7PAT2G4BAG21",
+                label: "R1700 - 01",
+                icon: "R17000.png",
+                utilisationTelemetry: "UG_CHARG_CAT_R1700_14T_1_TU",
+                disponibilliteTelemetry: "UG_CHARG_CAT_R1700_14T_1_TD",
+                serial: "8S287JI0CLP38N38",
               },
               {
-                label: "LH06",
-                icon: "/truck.svg",
-                utilisationTelemetry: "UG_LH06_UTILISATION",
-                disponibilliteTelemetry: "UG_LH06_DISPONIBILITE",
-                serial: "DABF7PAT2G4BAG21",
+                label: "R1700 - 02",
+                icon: "R17000.png",
+                utilisationTelemetry: "UG_CHARG_CAT_R1700_14T_2_TU",
+                disponibilliteTelemetry: "UG_CHARG_CAT_R1700_14T_2_TD",
+                serial: "8S287JI0CLP38N38",
+              },
+              {
+                label: "CHARIOT ELEVATEUR",
+                icon: "Elévateur électrique.png",
+                utilisationTelemetry: "UG_CHARIOT_ELEVATEUR_TU",
+                disponibilliteTelemetry: "UG_CHARIOT_ELEVATEUR_TD",
+                serial: "8S287JI0CLP38N38",
+              },
+              {
+                label: "COMPRESSEUR SQE 01",
+                icon: "DEUTZ DPS 450.png",
+                utilisationTelemetry: "UG_COMP_ATLAS_COP_1_TU",
+                disponibilliteTelemetry: "UG_COMP_ATLAS_COP_1_TD",
+                serial: "8S287JI0CLP38N38",
+              },
+              {
+                label: "COMPRESSEUR SQE 02",
+                icon: "DEUTZ DPS 450.png",
+                utilisationTelemetry: "UG_COMP_ATLAS_COP_2_TU",
+                disponibilliteTelemetry: "UG_COMP_ATLAS_COP_2_TD",
+                serial: "8S287JI0CLP38N38",
+              },
+              {
+                label: "CAT AD 45T 01",
+                icon: "machine-06.png",
+                utilisationTelemetry: "UG_DUMP_CAT_1_TU",
+                disponibilliteTelemetry: "UG_DUMP_CAT_1_TD",
+                serial: "8S287JI0CLP38N38",
+              },
+              {
+                label: "CAT AD 45T 02",
+                icon: "machine-06.png",
+                utilisationTelemetry: "UG_DUMP_CAT_2_TU",
+                disponibilliteTelemetry: "UG_DUMP_CAT_2_TD",
+                serial: "8S287JI0CLP38N38",
+              },
+              {
+                label: "DEUTZ DPS 450 01",
+                icon: "DEUTZ DPS 450.png",
+                utilisationTelemetry: "UG_ELEC_1_TU",
+                disponibilliteTelemetry: "UG_ELEC_1_TD",
+                serial: "8S287JI0CLP38N38",
+              },
+              {
+                label: "DEUTZ DPS 450 02",
+                icon: "DEUTZ DPS 450.png",
+                utilisationTelemetry: "UG_ELEC_2_TU",
+                disponibilliteTelemetry: "UG_ELEC_2_TD",
+                serial: "8S287JI0CLP38N38",
+              },
+              {
+                label: "DEUTZ DPS 450 03",
+                icon: "DEUTZ DPS 450.png",
+                utilisationTelemetry: "UG_ELEC_3_TU",
+                disponibilliteTelemetry: "UG_ELEC_3_TD",
+                serial: "8S287JI0CLP38N38",
+              },
+              {
+                label: "JUMBO T1D 01",
+                icon: "iconesEngin/Epiroc_Jumbo_M20-removebg-preview.png",
+                utilisationTelemetry: "UG_MEC_JUM_1_TU",
+                disponibilliteTelemetry: "UG_MEC_JUM_1_TD",
+                serial: "8S287JI0CLP38N38",
+              },
+              {
+                label: "JUMBO M20",
+                icon: "iconesEngin/Epiroc_Jumbo_M20-removebg-preview.png",
+                utilisationTelemetry: "UG_MEC_JUM_M20_TU",
+                disponibilliteTelemetry: "UG_MEC_JUM_M20_TD",
+                serial: "8S287JI0CLP38N38",
+              },
+              {
+                label: "TITAN BMP2X3",
+                icon: "ANFO3000.png",
+                utilisationTelemetry: "UG_PLAT_TU",
+                disponibilliteTelemetry: "UG_PLAT_TD",
+                serial: "8S287JI0CLP38N38",
+              },
+              {
+                label: "SIMBA",
+                icon: "SIMBA S7.png",
+                utilisationTelemetry: "UG_SIMBA_TU",
+                disponibilliteTelemetry: "UG_SIMBA_TD",
+                serial: "8S287JI0CLP38N38",
+              },
+              {
+                label: "TRACTEUR",
+                icon: "tractor.png",
+                utilisationTelemetry: "UG_TRAC_TU",
+                disponibilliteTelemetry: "UG_TRAC_TD",
+                serial: "8S287JI0CLP38N38",
+              },
+              {
+                label: "VEHICULE  MUV11",
+                icon: "/iconesEngin/titan_MUV5_et_MUV1-removebg-preview.png",
+                utilisationTelemetry: "UG_MUV11_TU",
+                disponibilliteTelemetry: "UG_MUV11_TD",
+                serial: "8S287JI0CLP38N38",
+              },
+              {
+                label: "VEHICULE  MUV5",
+                icon: "iconesEngin/titan_MUV5_et_MUV1-removebg-preview.png",
+                utilisationTelemetry: "UG_MUV5_TU",
+                disponibilliteTelemetry: "UG_MUV5_TD",
+                serial: "8S287JI0CLP38N38",
               },
             ]}
           />

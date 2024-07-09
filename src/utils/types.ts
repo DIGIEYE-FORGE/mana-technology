@@ -5,6 +5,7 @@ export type JsonValue =
   | number
   | boolean
   | null
+  | Date
   | JsonValue[]
   | JsonObject;
 export type JsonObject = { [key: string]: JsonValue };
@@ -43,7 +44,7 @@ export type FindManyParams = {
     perPage: number;
   };
   where?: Record<string, unknown>;
-  orderBy?: Record<string, "desc" | "asc"> | string;
+  orderBy?: Record<string, string> | string;
   include?: Record<string, unknown>;
   select?: Record<string, unknown> | string[];
 };
@@ -77,6 +78,11 @@ export type Widget = {
   dateRange?: TDateRange;
   moyenne?: "combined" | string[];
   yAxis?: "one" | "multiple";
+  stacked?: boolean;
+  ceil?: boolean;
+  correction?: Record<string, number>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  fakeData?: any;
 };
 
 export type ChartTelemetry = {
@@ -86,8 +92,10 @@ export type ChartTelemetry = {
   unit?: string;
   color?: string;
   area?: boolean;
+  data?: { x: Date; y: number }[];
+  accumulated?: boolean;
+  value?: number;
 };
-
 
 export type ChartsWidgetData = {
   serial: string;
@@ -98,7 +106,7 @@ export type ChartsWidgetData = {
   area?: boolean;
   type: "line" | "bar";
   yAxis?: "one" | "multiple";
-}
+};
 
 export type LastTelemetry = {
   id: string;
@@ -108,7 +116,11 @@ export type LastTelemetry = {
   createdAt: Date;
 };
 
-export type TDateRange = {
-  from: Date;
-  to?: Date;
-}  | undefined;
+export type TDateRange =
+  | {
+      from: Date;
+      to?: Date;
+    }
+  | undefined;
+
+export type NonEmptyArray<T> = [T, ...T[]];

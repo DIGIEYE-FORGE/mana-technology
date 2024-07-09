@@ -5,6 +5,7 @@ import { HistoryType, Widget } from "@/utils";
 import { MotionConfig, motion } from "framer-motion";
 import { Fragment } from "react/jsx-runtime";
 import useSWR from "swr";
+import { lastDayOfMonth } from "date-fns";
 
 export type ProgressAccumulationWidgetData = {
   serial?: string;
@@ -16,8 +17,10 @@ export type ProgressAccumulationWidgetData = {
   unit?: string;
 };
 
-function lastOfMonth(): Date {
-  return new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0);
+function lastOfMonth(date: Date): Date {
+  console.log(lastDayOfMonth(date));
+
+  return lastDayOfMonth(date);
 }
 
 export function ProgressAccumulation({ attributes }: Widget) {
@@ -58,7 +61,10 @@ export function ProgressAccumulation({ attributes }: Widget) {
           pagination: { page: 1, perPage: 1 },
           select: [accumulationTelemetryName],
           orderBy: "createdAt:desc",
-          where: { serial, createdAt: { $lte: lastOfMonth() } },
+          where: {
+            serial,
+            createdAt: { $lte: lastOfMonth(dateRange?.to || new Date()) },
+          },
         });
       if (endOfMountResult.length === 0) return null;
       const { results: currentProgressResults } =
@@ -66,19 +72,36 @@ export function ProgressAccumulation({ attributes }: Widget) {
           pagination: { page: 1, perPage: 1 },
           orderBy: "createdAt:desc",
           select: [progressTelemetryName],
-          where: { serial, createdAt: { $lte: dateRange?.to } },
+          where: {
+            serial,
+            createdAt: {
+              $lte:
+                dateRange?.to && new Date(dateRange.to) > new Date()
+                  ? new Date()
+                  : dateRange?.to,
+            },
+          },
         });
       const { results: currentTargetResults } =
         await backendApi.findMany<HistoryType>("/dpc-history/api/history", {
           pagination: { page: 1, perPage: 1 },
           orderBy: "createdAt:desc",
           select: [accumulationTelemetryName],
-          where: { serial, createdAt: { $lte: dateRange?.to } },
+          where: {
+            serial,
+            createdAt: {
+              $lte:
+                dateRange?.to && new Date(dateRange.to) > new Date()
+                  ? new Date()
+                  : dateRange?.to,
+            },
+          },
         });
 
-      const finalTarget = endOfMountResult[0][accumulationTelemetryName];
-      const currentTarget = currentTargetResults[0][accumulationTelemetryName];
-      const progress = currentProgressResults[0][progressTelemetryName];
+      const finalTarget = endOfMountResult[0]?.[accumulationTelemetryName];
+      const currentTarget =
+        currentTargetResults[0]?.[accumulationTelemetryName];
+      const progress = currentProgressResults[0]?.[progressTelemetryName];
 
       return { currentTarget, finalTarget, progress } as Record<
         string,
@@ -112,9 +135,9 @@ export function ProgressAccumulation({ attributes }: Widget) {
   const strokeWidth = 20;
   return (
     <Fragment>
-      <div className="relative h-1 flex-1 p-8">
-        <div className="absolute bottom-8 right-1/2 flex -translate-y-1/4 translate-x-1/2 flex-col items-center gap-1">
-          <span className="text-3xl font-bold">
+      <div className="relative h-1 flex-1 p-4">
+        <div className="absolute bottom-6 right-1/2 flex -translate-y-1/4 translate-x-1/2 flex-col items-center">
+          <span className="text-2xl font-bold">
             {((progress / finalTarget) * 100).toFixed(2)} %
           </span>
 
@@ -156,7 +179,7 @@ export function ProgressAccumulation({ attributes }: Widget) {
                 strokeDashoffset: 0,
               }}
             />
-            {progress >= currentTarget && (
+            {progress && progress >= currentTarget && (
               <motion.path
                 d="M10 74C10 39.7583 37.7583 12 72 12C106.242 12 134 39.7583 134 74"
                 stroke={progressColor}
@@ -187,7 +210,7 @@ export function ProgressAccumulation({ attributes }: Widget) {
                   100 - (currentTarget / finalTarget || 0) * 100,
               }}
             />
-            {progress < currentTarget && (
+            {progress && progress < currentTarget && (
               <motion.path
                 d="M10 74C10 39.7583 37.7583 12 72 12C106.242 12 134 39.7583 134 74"
                 stroke={progressColor}
@@ -206,20 +229,20 @@ export function ProgressAccumulation({ attributes }: Widget) {
           </MotionConfig>
         </svg>
       </div>
-      <div className="relative flex flex-wrap justify-center gap-x-4 text-xs font-medium">
+      <div className="relative flex flex-wrap justify-center gap-x-4 gap-y-1 px-1 pt-2 text-xs font-medium">
         <div className="flex items-center gap-1">
           <span
             className="h-[12px] w-[26px] rounded-full"
             style={{ backgroundColor: finalTargetColor }}
           ></span>
-          <span>Objectif final: {finalTarget}</span>
+          <span>Objectif final: {finalTarget.toFixed(0)}</span>
         </div>
         <div className="flex items-center gap-1">
           <span
             className="h-[12px] w-[26px] rounded-full"
             style={{ backgroundColor: currentTargetColor }}
           ></span>
-          <span>Cible actuelle: {currentTarget}</span>
+          <span>Cible à date: {currentTarget.toFixed(0)}</span>
         </div>
         <div className="flex items-center gap-1">
           <span
@@ -227,7 +250,7 @@ export function ProgressAccumulation({ attributes }: Widget) {
             style={{ backgroundColor: progressColor }}
           ></span>
           <div className="flex items-center gap-2">
-            <span>progrès: {progress}</span>
+            <span>Progrès: {progress.toFixed(0)}</span>
           </div>
         </div>
       </div>

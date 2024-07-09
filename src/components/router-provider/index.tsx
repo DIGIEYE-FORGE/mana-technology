@@ -15,11 +15,16 @@ import MainProjectPage from "@/pages/main-project";
 import UnderGroundPage from "@/pages/underground";
 import OpSud from "@/pages/op-sud";
 import Op from "@/pages/op";
+import OpEst from "@/pages/op-est";
 import OpSud2 from "@/pages/op-sud2";
 import OpSud4 from "@/pages/op-sud4";
 import UndergroundDashboardPage from "@/pages/underground/dashboard";
 import VentilationDashboard from "@/pages/ventilation-dashboard";
 import HomeDashboard from "@/pages/home/dashboard";
+import HsePage from "@/pages/hse";
+import HseDashboard from "@/pages/hse/dashboard";
+import MobilePage from "@/pages/mobile";
+import VentilationDashboard1 from "@/pages/ventilation-dashboard/index1";
 
 const routes: RouteObject[] = [
   {
@@ -32,15 +37,19 @@ const routes: RouteObject[] = [
         children: [
           {
             path: "",
+            element: <Op />,
+          },
+          {
+            path: "/op-est",
+            element: <OpEst />,
+          },
+          {
+            path: "op-est11",
             element: <HomeDashboard />,
           },
           {
             path: "op-sud",
             element: <OpSud />,
-          },
-          {
-            path: "op",
-            element: <Op />,
           },
           {
             path: "op-sud2",
@@ -73,6 +82,20 @@ const routes: RouteObject[] = [
             path: "ventilation",
             element: <VentilationDashboard />,
           },
+          {
+            path: "ventilation1",
+            element: <VentilationDashboard1 />,
+          },
+        ],
+      },
+      {
+        path: "hse",
+        element: <HsePage />,
+        children: [
+          {
+            path: "",
+            element: <HseDashboard />,
+          },
         ],
       },
       {
@@ -104,6 +127,10 @@ const routes: RouteObject[] = [
         element: <IselDevPage />,
       },
     ],
+  },
+  {
+    path: "mobile",
+    element: <MobilePage />,
   },
   { path: "*", element: <NotfoundPage /> },
 ];

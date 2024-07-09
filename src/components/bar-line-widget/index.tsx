@@ -10,9 +10,16 @@ import useSWR from "swr";
 import { useAppContext } from "@/Context";
 import Chart from "react-apexcharts";
 import Loader from "@/components/loader";
-type Props = Widget;
+import { Fragment } from "react/jsx-runtime";
+type Props = Widget & {
+  hideTooltip?: boolean;
+};
 
-export default function BarLineWidget(props: Props) {
+export default function BarLineWidget({
+  ceil = true,
+  correction,
+  ...props
+}: Props) {
   const { backendApi } = useAppContext();
 
   const telemetries = (props.attributes?.telemetries ||
@@ -21,6 +28,7 @@ export default function BarLineWidget(props: Props) {
   const { data, isLoading, error } = useSWR(
     `histories?${JSON.stringify({
       telemetries,
+      dateRange: props.dateRange,
     })}`,
     async () => {
       if (telemetries.length === 0) return [];
@@ -54,7 +62,12 @@ export default function BarLineWidget(props: Props) {
           type: telemetries[index].type,
           data: item.map((item) => ({
             x: new Date(item.createdAt),
-            y: Number(flatten(item)[telemetries[index].name]),
+            y: ceil ? Math.ceil(Number(
+                Number(flatten(item)[telemetries[index].name]).toFixed(2),
+              ) * (correction?.[telemetries[index].name] || 1)) :
+              Number(
+                Number(flatten(item)[telemetries[index].name]).toFixed(2),
+              ) * (correction?.[telemetries[index].name] || 1),
           })),
         })),
       ];
@@ -122,146 +135,150 @@ export default function BarLineWidget(props: Props) {
     );
 
   return (
-    <Chart
-      options={{
-        theme: { mode: "dark" },
-        tooltip: { cssClass: "text-black" },
-        chart: {
-          type: "line",
-          background: "transparent",
-          toolbar: { show: false },
-          animations: { enabled: true },
-          zoom: { enabled: false },
-          selection: { enabled: false },
-          dropShadow: { enabled: false },
-        },
-        dataLabels: { enabled: false },
+    <Fragment>
+      {/* {JSON.stringify(data)} */}
+      <Chart
+        options={{
+          theme: { mode: "dark" },
+          tooltip: { cssClass: "text-black", enabled: !props.hideTooltip },
+          chart: {
+            type: "line",
+            background: "transparent",
+            toolbar: { show: false },
+            animations: { enabled: true },
+            zoom: { enabled: false },
+            selection: { enabled: false },
+            dropShadow: { enabled: false },
+            stacked: props.stacked || false,
+          },
+          dataLabels: { enabled: false },
 
-        stroke: {
-          width: (data || []).map((item) =>
-            item.type === "line" || item.type === "area" ? 4 : 0,
-          ),
-          curve: "smooth",
-        },
-        xaxis: {
-          type: "datetime",
-
-          max: props.dateRange?.to?.getTime(),
-          axisBorder: { show: false },
-          axisTicks: { show: false },
-          labels: {
-            show: true,
-            style: {
-              fontSize: "12px",
-              fontFamily: "Helvetica, Arial, sans-serif",
-              fontWeight: 400,
-              cssClass: "apexcharts-xaxis-label",
+          stroke: {
+            width: (data || []).map((item) =>
+              item.type === "line" || item.type === "area" ? 2.5 : 0,
+            ),
+            curve: "smooth",
+          },
+          xaxis: {
+            type: "datetime",
+            max: props.dateRange?.to?.getTime(),
+            axisBorder: { show: false },
+            axisTicks: { show: false },
+            labels: {
+              show: true,
+              style: {
+                fontSize: "12px",
+                fontFamily: "Helvetica, Arial, sans-serif",
+                fontWeight: 400,
+                cssClass: "apexcharts-xaxis-label",
+              },
             },
           },
-        },
-        yaxis:
-          props.yAxis === "one"
-            ? {
-                axisTicks: {
-                  show: true,
-                },
-                axisBorder: {
-                  show: true,
-                },
-                labels: {
-                  formatter: function (value) {
-                    return value.toFixed(2);
-                  },
-                },
-              }
-            : [
-                {
-                  seriesName: data?.[0].name,
+          yaxis:
+            props.yAxis === "one"
+              ? {
                   axisTicks: {
                     show: true,
                   },
                   axisBorder: {
                     show: true,
                   },
-                  title: {
-                    style: {
-                      color: "#008FFB",
+                  labels: {
+                    formatter: function (value) {
+                      return ceil
+                        ? Math.ceil(value) + " "
+                        : typeof value === "number" &&
+                            value.toString().includes(".")
+                          ? value.toFixed(2) + " "
+                          : value + " ";
+                    },
+                  },
+                }
+              : [
+                  {
+                    seriesName:
+                      (data || [])?.length > 2
+                        ? ([data?.[0]?.name, data?.[1]?.name] as any)
+                        : data?.[0]?.name,
+                    // seriesName: [data?.[0]?.name, data?.[1]?.name] as any,
+                    axisTicks: {
+                      show: true,
+                    },
+                    axisBorder: {
+                      show: true,
+                    },
+                    title: {
+                      style: {
+                        color: "#008FFB",
+                      },
+                    },
+
+                    labels: {
+                      formatter: function (value) {
+                        return ceil
+                          ? Math.ceil(value) + " "
+                          : typeof value === "number" &&
+                              value.toString().includes(".")
+                            ? value.toFixed(2) + " "
+                            : value + " ";
+                      },
                     },
                   },
 
-                  labels: {
-                    formatter: function (value) {
-                      return value.toFixed(2);
+                  {
+                    opposite: true,
+                    seriesName:
+                      (data || [])?.length > 2
+                        ? data?.[2]?.name
+                        : data?.[1]?.name,
+                    axisTicks: {
+                      show: true,
+                    },
+                    axisBorder: {
+                      show: true,
+                    },
+                    labels: {
+                      formatter: function (value) {
+                        return ceil
+                          ? Math.ceil(value) + " "
+                          : typeof value === "number" &&
+                              value.toString().includes(".")
+                            ? value.toFixed(2) + " "
+                            : value + " ";
+                      },
+                    },
+                    title: {
+                      style: {
+                        color: "#FEB019",
+                      },
                     },
                   },
-                },
-                {
-                  seriesName: data?.[1].name,
-                  show: false,
-                },
-                {
-                  opposite: true,
-                  seriesName: data?.[2].name,
-                  axisTicks: {
-                    show: true,
-                  },
-                  axisBorder: {
-                    show: true,
-                  },
-                  labels: {
-                    formatter: function (value) {
-                      return value?.toFixed(2);
-                    },
-                  },
-                  title: {
-                    style: {
-                      color: "#FEB019",
-                    },
-                  },
-                },
-              ],
-        grid: {
-          borderColor: "#797979",
-          xaxis: { lines: { show: false } },
-          yaxis: { lines: { show: true } },
-        },
-        colors: telemetries.map((item) => item.color),
-        plotOptions: {
-          bar: {
-            horizontal: false,
-            borderRadius: 2,
-            borderRadiusApplication: "end",
-            borderRadiusWhenStacked: "all",
+                ],
+          grid: {
+            borderColor: "#797979",
+            xaxis: { lines: { show: false } },
+            yaxis: { lines: { show: true } },
           },
-        },
-        legend: {
-          position: "bottom",
-          markers: { width: 26, height: 12, radius: 8 },
-          fontWeight: 600,
-          fontSize: "12px",
-        },
-      }}
-      series={data as any}
-      // series={[
-      //   {
-      //     name: "Column A",
-      //     type: "column",
-      //     data: [21.1, 23, 33.1, 34, 44.1, 44.9, 56.5, 58.5],
-      //   },
-      //   {
-      //     name: "Column B",
-      //     type: "column",
-      //     data: [10, 19, 27, 26, 34, 35, 40, 38],
-      //   },
-      //   {
-      //     name: "Line C",
-      //     type: "line",
-      //     data: [1.4, 2, 2.5, 1.5, 2.5, 2.8, 3.8, 4.6],
-      //   },
-      // ]}
-      width={"100%"}
-      height={"100%"}
-      type="line"
-    />
+          colors: telemetries.map((item) => item.color),
+          plotOptions: {
+            bar: {
+              horizontal: false,
+              borderRadius: 2,
+              borderRadiusApplication: "end",
+              borderRadiusWhenStacked: "all",
+            },
+          },
+          legend: {
+            position: "bottom",
+            markers: { width: 26, height: 12, radius: 8 },
+            fontWeight: 600,
+            fontSize: "12px",
+          },
+        }}
+        series={data as any}
+        width={"100%"}
+        height={"100%"}
+      />
+    </Fragment>
   );
 }

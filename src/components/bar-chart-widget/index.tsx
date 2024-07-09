@@ -7,7 +7,7 @@ import {
 } from "@/utils";
 import useSWR from "swr";
 import { useAppContext } from "@/Context";
-import ReactApexChart from "react-apexcharts";
+import Chart from "react-apexcharts";
 import Loader from "@/components/loader";
 
 type Props = Widget;
@@ -26,7 +26,8 @@ export default function BarChartWidget(props: Props) {
     async () => {
       if (!dateRange?.from || telemetries.length === 0) return [];
       const res = await Promise.all(
-        telemetries.map(async ({ serial, name }) => {
+        telemetries.map(async ({ serial, name }, idx) => {
+          if (telemetries[idx].data) return [];
           const { results } = await backendApi.findMany<HistoryType>(
             "/dpc-history/api/history",
             {
@@ -35,6 +36,7 @@ export default function BarChartWidget(props: Props) {
                 perPage: 10_00,
               },
               select: [name],
+              orderBy: "createdAt:asc",
               where: {
                 serial,
                 createdAt: {
@@ -47,15 +49,26 @@ export default function BarChartWidget(props: Props) {
           return results;
         }),
       );
-      const res1 = res.map((item, index) => ({
-        name: telemetries[index].label || telemetries[index].name,
-        type: "bar",
-        nameTelemetry: telemetries[index].name,
-        data: item.map((item) => ({
-          x: new Date(item.createdAt),
-          y: Number(flatten(item)[telemetries[index].name]),
-        })),
-      }));
+      const res1 = res.map((item, index) => {
+        const newData: { x: Date; y: number }[] = [];
+        if (telemetries[index].data === undefined) {
+          for (let i = 0; i < item.length; i++) {
+            const x = new Date(item[i].createdAt);
+            let y = Number(flatten(item[i])[telemetries[index].name]);
+            if (telemetries[index].accumulated && i > 0) {
+              y += newData[i - 1].y;
+              console.log({ x, y });
+            }
+            newData.push({ x, y });
+          }
+        }
+        return {
+          name: telemetries[index].label || telemetries[index].name,
+          type: "bar",
+          nameTelemetry: telemetries[index].name,
+          data: telemetries[index].data || newData,
+        };
+      });
       if (props.moyenne) {
         const res2 = [];
         if (props.moyenne === "combined") {
@@ -119,10 +132,10 @@ export default function BarChartWidget(props: Props) {
       </div>
     );
   return (
-    <ReactApexChart
+    <Chart
       options={{
         theme: { mode: "dark" },
-        tooltip: { cssClass: "text-black" },
+        tooltip: { cssClass: "text-black",},
         legend: {
           position: "bottom",
           markers: { width: 26, height: 12, radius: 8 },
@@ -139,7 +152,7 @@ export default function BarChartWidget(props: Props) {
           },
         },
         stroke: {
-          width: (data || []).map((item) => (item.type === "line" ? 4 : 0)),
+          width: (data || []).map((item) => (item.type === "line" ? 2.5 : 0)),
           curve: "smooth",
         },
         grid: {
@@ -175,17 +188,18 @@ export default function BarChartWidget(props: Props) {
         },
         yaxis: {
           min: 0,
-          tickAmount: 4,
-          max:
-            Math.max(
-              ...(data || []).flatMap((item) =>
-                item.data.map((item) => item.y),
+          // tickAmount: 4,
+          max: stacked
+            ? undefined
+            : Math.max(
+                ...(data || []).flatMap((item) =>
+                  item.data.map((item) => item.y),
+                ),
               ),
-            ) * (stacked ? 2 : 1),
           labels: {
             show: true,
             formatter: function (value) {
-              return value.toFixed(2);
+              return Math.ceil(value) + " ";
             },
             style: {
               fontSize: "12px",
@@ -197,7 +211,6 @@ export default function BarChartWidget(props: Props) {
         },
       }}
       series={data || []}
-      type={"bar"}
       width={"100%"}
       height={"100%"}
     />

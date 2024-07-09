@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { TDateRange, User } from "./utils";
 import { z } from "zod";
@@ -9,9 +9,13 @@ import Loader from "./components/loader";
 import AppContext from "./Context";
 import LoginPage from "./pages/login";
 import BpIndicator from "./components/bp-indicator";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function App() {
   const [user, setUser] = useState<User | null | undefined>(undefined);
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const [fullScreen, setFullScreen] = useState(false);
   const [accessToken, setAccessToken] = useLocalStorage(
     "accessToken",
     z.string().default(""),
@@ -21,8 +25,8 @@ function App() {
     z.string().default(""),
   );
   const [dateRange, setDateRange] = useState<TDateRange>({
-    from: new Date("2024-06-01"),
-    to: new Date(),
+    from: new Date(new Date("2024-06-01").setHours(0, 0, 0, 0)),
+    to: new Date(new Date().setHours(23, 59, 59, 999)),
   });
   const backendApi = useMemo(
     () =>
@@ -55,6 +59,22 @@ function App() {
     },
   );
 
+  useEffect(() => {
+    if (pathname === "/") {
+      navigate("/main-project");
+    }
+  }, []);
+
+  useEffect(() => {
+    if (fullScreen && document?.documentElement?.requestFullscreen) {
+      document?.documentElement?.requestFullscreen().catch((e) => {
+        console.error(e);
+      });
+    } else if (!fullScreen && document?.exitFullscreen) {
+      document?.exitFullscreen();
+    }
+  }, [fullScreen]);
+
   if (isLoading || user === undefined) {
     return (
       <div className="flex min-h-[100svh] w-full items-center justify-center bg-black/20">
@@ -74,27 +94,28 @@ function App() {
         setUser,
         backendApi,
         dateRange,
+        fullScreen,
+        setFullScreen,
         setDateRange,
       }}
     >
       <SWRConfig
         value={{
-          shouldRetryOnError: false,
+          revalidateIfStale: false,
           revalidateOnFocus: false,
+          revalidateOnReconnect: false,
         }}
       >
         {user === null && <LoginPage />}
         {user && backendApi.isReady() && (
           <main
-            className="dark overflow-y-auto bg-[#05177E] text-foreground"
+            className="dark overflow-y-auto text-foreground"
             style={{
-              backgroundImage: 'url("/bg.png")',
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              // scrollbarGutter: "stable",
+              backgroundImage:
+                "linear-gradient(to bottom,  #172f6dd0 0%, #0f172ad0 70%), url(/sky-bg.png)",
+              backgroundSize: "100% 100%, 100% 100%",
             }}
           >
-            {/* <Navbar /> */}
             <Outlet />
           </main>
         )}

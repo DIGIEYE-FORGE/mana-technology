@@ -1,42 +1,46 @@
 export const widgetsData = {
   0: {
-    title: "Schema de tir",
+    title: "Schéma de tir",
     attributes: {
       image1: "/dashboard-02.01.jpeg",
       image2: "/dashboard-02.02.jpeg",
     },
   },
   1: {
-    title: "Dispo et Utilisation",
-    attributes: {
-      image: "/machine-02.png",
-      name: "Jumbo M20",
-      telemetries: [
-        {
-          name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
-          label: "Disponibilité",
-          serial: "U9XQMQ1DXYT7LJIP",
-          color: "#cda943",
-        },
-        {
-          name: "GMC_FOREUSE_EPRIROC_T45_02_DISPO",
-          label: "Utilisation",
-          serial: "U9XQMQ1DXYT7LJIP",
-          color: "#18a5c1",
-        },
-      ],
-    },
+    title: "Performance Engin",
+    image: "/machine-02.png",
+    attributes: [
+      {
+        name: "Jumbo M20",
+        image: "/machine-02.png",
+        telemetries: [
+          {
+            name: "UG_MEC_JUM_M20_TD",
+            label: "Disponibilité",
+            serial: "8S287JI0CLP38N38",
+            color: "#cda943",
+          },
+          {
+            name: "UG_MEC_JUM_M20_TU",
+            label: "Utilisation",
+            serial: "8S287JI0CLP38N38",
+            color: "#18a5c1",
+          },
+        ],
+      },
+    ],
   },
   2: {
-    title: "Vitesse de penetration",
+    title: "Nombre de trous forés",
     attributes: {
       telemetries: [
         {
           area: false,
-          name: "EST_PLANIFIE_FORATION",
+          // name: "UG_FORATION_TIRS_VITESSE_DE_PENETRATION-min_par_m",
+          name: "UG_FORATION_TIRS_SCHEMA_DE_TIR",
           color: "#cda943",
-          label: "Objectif ML/J",
-          serial: "U9XQMQ1DXYT7LJIP",
+          label: "Nombre de trous forés",
+          serial: "GHZIN57J7EOVXG0C",
         },
       ],
     },
@@ -47,10 +51,10 @@ export const widgetsData = {
       telemetries: [
         {
           area: false,
-          name: "EST_PLANIFIE_FORATION",
+          name: "UG_MEC_JUM_M20_TD",
           color: "#cda943",
-          label: "Objectif ML/J",
-          serial: "U9XQMQ1DXYT7LJIP",
+          label: "Disponibilité",
+          serial: "8S287JI0CLP38N38",
         },
       ],
     },
@@ -61,42 +65,44 @@ export const widgetsData = {
       telemetries: [
         {
           area: false,
-          name: "EST_PLANIFIE_FORATION",
+          name: "UG_MEC_JUM_M20_TU",
           color: "#18a5c1",
-          label: "Objectif ML/J",
-          serial: "U9XQMQ1DXYT7LJIP",
+          label: "Utilisation",
+          serial: "8S287JI0CLP38N38",
         },
       ],
     },
   },
   5: {
-    title: "Temps de foration",
+    title: "Temps de foration (min)",
     attributes: {
       telemetries: [
         {
-          name: "EST_PLANIFIE_FORATION",
+          name: "UG_FORATION_TIRS_TEMPS_DE_FORATION-min",
           color: "#18a5c1",
-          label: "Utilisation",
-          serial: "U9XQMQ1DXYT7LJIP",
+          label: "Temps de foration",
+          serial: "GHZIN57J7EOVXG0C",
+          type: "bar",
         },
         {
-          name: "EST_PLANIFIE_FORATION",
+          name: "UG_TAUX_ARRACHEMENT_TEMPS_DE_FORATION_BFS",
           color: "#cda943",
-          label: "Disponibilité",
-          serial: "U9XQMQ1DXYT7LJIP",
+          label: "BFS",
+          serial: "GHZIN57J7EOVXG0C",
+          type: "bar",
         },
       ],
     },
   },
   6: {
-    title: "Temps de Perdu entre temp",
+    title: "Longueur forée (m)",
     attributes: {
       telemetries: [
         {
-          name: "EST_PLANIFIE_FORATION",
+          name: "UG_FORATION_TIRS_LONGEUR_FORATION_PAR_TIR-m_par_tir",
           color: "#18a5c1",
-          label: "Utilisation",
-          serial: "U9XQMQ1DXYT7LJIP",
+          label: "Longueur forée",
+          serial: "GHZIN57J7EOVXG0C",
         },
       ],
     },

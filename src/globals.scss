@@ -28,7 +28,7 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 89.8%;
+    --border: 0 0% 3.9%;
     --input: 0 0% 89.8%;
     --ring: 0 0% 3.9%;
 
@@ -62,7 +62,7 @@
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 165 76% 52%;
+    --border: 0 0% 98%;
     --input: 0 0% 14.9%;
     --ring: 0 0% 83.1%;
   }
@@ -75,6 +75,20 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@font-face {
+  font-family: "Ethnocentric";
+  src: url("/fonts/ethnocentric-rg.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ethnocentric";
+  src: url("/fonts/ethnocentric-rg-it.otf") format("opentype");
+  font-weight: normal;
+  font-style: italic;
 }
 
 :root,
@@ -194,15 +208,59 @@ nav {
   }
 
   &::before {
-    @apply -left-6 translate-y-1/2 ;
+    @apply -left-6 translate-y-1/2;
   }
   &::after {
     @apply -right-6 translate-y-1/2;
   }
+}
+.custom-button {
+  box-shadow:
+    inset 0 0 8px 0 #e3deff37,
+    inset 0 20px 20px 0 #cbacff32,
+    inset 0 1px 2px 0 #ffffff47;
+  position: relative;
 }
 
 button:disabled {
   pointer-events: none;
   opacity: 0.5;
   filter: grayscale(0.5);
+}
+
+.flip-countdown-card-sec * {
+  color: #78a5c0 !important;
+  &::after {
+    color: #78a5c0 !important;
+  }
+  &::before {
+    color: #78a5c0 !important;
+  }
+}
+
+// backgroundImage:
+// "linear-gradient(to right, transparent, #002FBE, transparent)",
+// border: "10px solid",
+// borderImageSlice: 1,
+// borderWidth: "1px",
+// borderImageSource:
+// "linear-gradient(to right, transparent, white, transparent)",
+
+.gradient-border {
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    #002fbe,
+    transparent
+  );
+  border: 10px solid;
+  border-image-slice: 1;
+  border-width: 1px;
+  border-image-source: linear-gradient(
+    to right,
+    transparent,
+    white,
+    transparent
+  );
+  list-style: none;
 }

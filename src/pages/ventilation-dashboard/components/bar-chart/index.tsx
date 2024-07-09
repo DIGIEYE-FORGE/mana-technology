@@ -1,12 +1,90 @@
+import { useAppContext } from "@/Context";
 import Chart from "react-apexcharts";
 
-export const BarChart = () => {
-  const series = [
-    {
-      name: "Temperature",
-      data: [20, 30],
+import useSWR from "swr";
+import Loader from "@/components/loader";
+
+interface QualitAirProps {
+  attributes: {
+    telemetries: {
+      name: string;
+      serial: string;
+      color: string;
+      label: string;
+    }[];
+  };
+  interval?: number;
+  disabled?: boolean;
+  max?: number;
+}
+
+export const BarChart = ({
+  attributes,
+  max,
+  disabled = false,
+}: QualitAirProps) => {
+  const { backendApi } = useAppContext();
+  const { data, isLoading, error } = useSWR(
+    `telemetryDonutChartProps${JSON.stringify(attributes)}`,
+    async () => {
+      if (!attributes.telemetries?.length) return [];
+      if (disabled) {
+        return attributes.telemetries.map((device) => ({
+          color: device.color,
+          name: device.label,
+          value: 0,
+        }));
+      }
+      const res1 = await Promise.all(
+        attributes.telemetries.map(async (device) => {
+          const { name, color, serial, label } = device;
+          const res = await backendApi.findMany<{
+            name: string;
+            value: number;
+          }>("lasttelemetry", {
+            where: {
+              name,
+              device: { serial },
+            },
+            select: { name: true, value: true },
+            orderBy: {
+              createdAt: "desc",
+            },
+            pagination: {
+              page: 1,
+              perPage: 1,
+            },
+          });
+          return {
+            color: color,
+            name: label,
+            value: res.results[0]?.value || 0,
+          };
+        }),
+      );
+      return res1 || [];
     },
-  ];
+  );
+
+  if (isLoading)
+    return (
+      <div className="line-clamp-1 flex h-full w-full items-center justify-center">
+        <Loader />
+      </div>
+    );
+  if (error)
+    return (
+      <div className="flex h-full w-full items-center justify-center [&>*]:text-xl [&>*]:font-bold">
+        failed to load
+      </div>
+    );
+
+  if (!data)
+    return (
+      <div className="h-full w-full items-center justify-center [&>*]:text-xl [&>*]:font-bold">
+        no data
+      </div>
+    );
 
   return (
     <Chart
@@ -25,18 +103,18 @@ export const BarChart = () => {
         plotOptions: {
           bar: {
             horizontal: false,
-            columnWidth: "50%",
+            columnWidth: "40%",
             // endingShape: "flat",
           },
         },
         dataLabels: {
           enabled: true, // Enable data labels
           formatter: function (val) {
-            return val + "°C"; // Format the label to include °C
+            return Number(val).toFixed(1) + "°C";
           },
-          offsetY: 30,
+          offsetY: 50,
           style: {
-            fontSize: "12px",
+            fontSize: "14px",
             colors: ["#fff"],
           },
         },
@@ -47,12 +125,12 @@ export const BarChart = () => {
         },
         xaxis: {
           type: "category",
-          categories: ["Température Humide", "Température Sèche"],
+          categories: data.map((d) => d.name),
           axisBorder: { show: false },
           axisTicks: { show: false },
           labels: {
             style: {
-              fontSize: "7px",
+              fontSize: "12px",
               fontFamily: "Helvetica, Arial, sans-serif",
               fontWeight: 600,
               cssClass: "apexcharts-xaxis-label",
@@ -61,10 +139,22 @@ export const BarChart = () => {
         },
         yaxis: {
           min: 0,
-          max: series[0].data.reduce((a, b) => Math.max(a, b)) + 20,
+          max: max,
           tickAmount: 1,
           axisBorder: { show: false },
           axisTicks: { show: false },
+          labels: {
+            show: true,
+            style: {
+              fontSize: "12px",
+              fontFamily: "Helvetica, Arial, sans-serif",
+              fontWeight: 400,
+              cssClass: "apexcharts-yaxis-label",
+            },
+            formatter: function (val) {
+              return Number(val).toFixed(1);
+            },
+          },
         },
 
         fill: {
@@ -76,12 +166,12 @@ export const BarChart = () => {
             colorStops: [
               {
                 offset: 0,
-                color: "#FFDC8C",
+                color: disabled ? "#ffffff4d" : "#FFDC8C",
                 opacity: 1,
               },
               {
                 offset: 100,
-                color: "#C99E3E",
+                color: disabled ? "#ffffffb3" : "#C99E3E",
                 opacity: 1,
               },
             ],
@@ -92,9 +182,14 @@ export const BarChart = () => {
           },
         },
       }}
-      series={series}
+      series={[
+        {
+          name: "Temperature",
+          data: data.map((d) => d.value),
+        },
+      ]}
       type="bar"
-      height="80%"
+      height="100%"
     />
   );
 };

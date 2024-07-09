@@ -20,14 +20,14 @@ export default function HomePage() {
                   name: "EST_PLANIFIE_ROCHE_CUMUL",
                   color: "#0c2364",
                   label: "Cumulative planifié",
-                  serial: "U9XQMQ1DXYT7LJIP",
+                  serial: "JZVATMKQ1A8DA2P1",
                 },
                 {
                   area: true,
                   name: "EST_REALISE_ROCHE_CUMUL_Ton",
                   color: "#ed8936",
                   label: "Cumulative realisé",
-                  serial: "U9XQMQ1DXYT7LJIP",
+                  serial: "D5KP29KL463AZXWE",
                 },
               ],
             }}
@@ -47,14 +47,14 @@ export default function HomePage() {
                   name: "EST11_REALISE_ROCHE",
                   color: "#ecc94b",
                   label: "EST11",
-                  serial: "U9XQMQ1DXYT7LJIP",
+                  serial: "D5KP29KL463AZXWE",
                 },
                 {
                   area: false,
                   name: "EST12_REALISE_ROCHE",
                   color: "#4299e1",
                   label: "EST12",
-                  serial: "U9XQMQ1DXYT7LJIP",
+                  serial: "D5KP29KL463AZXWE",
                 },
               ],
             }}
@@ -74,14 +74,14 @@ export default function HomePage() {
                   unit: "T",
                   color: "#4299e1",
                   label: "Planifié",
-                  serial: "U9XQMQ1DXYT7LJIP",
+                  serial: "JZVATMKQ1A8DA2P1",
                 },
                 {
                   name: "EST_REALISE_ROCHE_Ton",
                   unit: "T",
                   color: "#ed8936",
                   label: "Realisé",
-                  serial: "U9XQMQ1DXYT7LJIP",
+                  serial: "D5KP29KL463AZXWE",
                 },
               ],
             }}
@@ -89,9 +89,9 @@ export default function HomePage() {
         </div>
       </Card>
       <Card className="col-span-full row-span-9 flex flex-col gap-4 p-4 lg:col-span-9">
-        <h3 className="text-center text-lg font-semibold">Tire</h3>
+        <h3 className="text-center text-lg font-semibold">Tir</h3>
         <TableWidget
-          className="flex-1"
+          className="h-1 flex-1"
           attributes={{
             serial: "C6XPYU0D920L1M07",
             mappings: [
@@ -129,14 +129,14 @@ export default function HomePage() {
                   unit: "T",
                   color: "#4299e1",
                   label: "Planned ML",
-                  serial: "U9XQMQ1DXYT7LJIP",
+                  serial: "D5KP29KL463AZXWE",
                 },
                 {
                   name: "EST_PLANIFIE_FORATION",
                   unit: "T",
                   color: "#ed8936",
                   label: "Unplanned ML",
-                  serial: "U9XQMQ1DXYT7LJIP",
+                  serial: "JZVATMKQ1A8DA2P1",
                 },
               ],
             }}
@@ -145,10 +145,10 @@ export default function HomePage() {
       </Card>
       <Card className="col-span-full row-span-8 p-4 xl:col-span-6">
         <h3 className="text-center text-lg font-semibold">
-          Disponibilité Engins CADEX DRIL
+          Disponibilité Engins pit SUD DRIL
         </h3>
         <TableWidget
-          className="flex-1"
+          className="h-1 flex-1"
           attributes={{
             serial: "C6XPYU0D920L1M07",
             mappings: [
@@ -163,7 +163,7 @@ export default function HomePage() {
       <Card className="col-span-full row-span-8 p-4 xl:col-span-6">
         <h3 className="text-center text-lg font-semibold">Production</h3>
         <TableWidget
-          className="flex-1"
+          className="h-1 flex-1"
           attributes={{
             serial: "C6XPYU0D920L1M07",
             mappings: [

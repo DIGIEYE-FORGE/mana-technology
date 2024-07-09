@@ -112,8 +112,8 @@ export function ProgressAccumulation({ attributes }: Widget) {
   const strokeWidth = 20;
   return (
     <Fragment>
-      <div className="debug relative h-1 flex-1 p-8">
-        <div className="absolute bottom-8 right-1/2 flex -translate-y-1/4 translate-x-1/2 flex-col items-center gap-1">
+      <div className="relative h-1 flex-1 p-2">
+        <div className="absolute bottom-4 right-1/2 flex -translate-y-1/4 translate-x-1/2 flex-col items-center">
           <span className="text-3xl font-bold">
             {((progress / finalTarget) * 100).toFixed(2)} %
           </span>
@@ -206,20 +206,20 @@ export function ProgressAccumulation({ attributes }: Widget) {
           </MotionConfig>
         </svg>
       </div>
-      <div className="debug relative flex flex-wrap justify-center gap-x-4 text-xs font-medium">
+      <div className="relative flex flex-wrap justify-center gap-x-4 gap-y-1 pt-2 text-xs font-medium">
         <div className="flex items-center gap-1">
           <span
             className="h-[12px] w-[26px] rounded-full"
             style={{ backgroundColor: finalTargetColor }}
           ></span>
-          <span>Objectif final: {finalTarget} ||||</span>
+          <span>Objectif final: {finalTarget?.toFixed(0)} </span>
         </div>
         <div className="flex items-center gap-1">
           <span
             className="h-[12px] w-[26px] rounded-full"
             style={{ backgroundColor: currentTargetColor }}
           ></span>
-          <span>Cible actuelle: {currentTarget} |||</span>
+          <span>Cible à date: {currentTarget?.toFixed(0)} </span>
         </div>
         <div className="flex items-center gap-1">
           <span
@@ -227,7 +227,7 @@ export function ProgressAccumulation({ attributes }: Widget) {
             style={{ backgroundColor: progressColor }}
           ></span>
           <div className="flex items-center gap-2">
-            <span>progrès: {progress} ||</span>
+            <span>Progrès: {progress?.toFixed(0)}</span>
           </div>
         </div>
       </div>

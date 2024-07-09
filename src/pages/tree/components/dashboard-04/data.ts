@@ -1,136 +1,155 @@
 export const widgetsData = {
   0: {
-    title: "Tonnage Débalyé",
+    title: "Tonnage Déblayé (t/poste)",
     attributes: {
-      stacked: false,
       telemetries: [
         {
-          name: "UG_METRES_PLANIFIE",
+          name: "UG_DEBLAYAGE_TONNE_DE_STERILE_PAR_POSTE-tonne_par_poste",
           color: "#25A18E",
-          label: "Est 11",
-          serial: "DABF7PAT2G4BAG21",
-        },
-      ],
-    }
-  },
-  1: {
-    title: "Dispo et Utilisation",
-    attributes: {
-      image: "/machine-04.png",
-      name: "Jumbo M20",
-      telemetries: [
-        {
-          name: "GMC_FOREUSE_EPRIROC_T45_01_DISPO",
-          label: "Disponibilité",
-          serial: "U9XQMQ1DXYT7LJIP",
-          color: "#cda943",
-        },
-        {
-          name: "GMC_FOREUSE_EPRIROC_T45_02_DISPO",
-          label: "Utilisation",
-          serial: "U9XQMQ1DXYT7LJIP",
-          color: "#18a5c1",
+          label: "Tonnage Déblayé",
+          serial: "GHZIN57J7EOVXG0C",
         },
       ],
     },
   },
+  1: {
+    title: "Performance Engins",
+    image: "/machine-04.png",
+    engineName: "Déblayage R1700",
+    attributes: [
+      {
+        name: "Déblayage R1700 01",
+        image: "/machine-04.png",
+        telemetries: [
+          {
+            name: "UG_CHARG_CAT_R1700_14T_1_TD",
+            label: "Disponibilité",
+            serial: "8S287JI0CLP38N38",
+            color: "#cda943",
+          },
+          {
+            name: "UG_CHARG_CAT_R1700_14T_1_TU",
+            label: "Utilisation",
+            serial: "8S287JI0CLP38N38",
+            color: "#18a5c1",
+          },
+        ],
+      },
+      {
+        name: "Déblayage R1700 02",
+        image: "/machine-04.png",
+        telemetries: [
+          {
+            name: "UG_CHARG_CAT_R1700_14T_2_TD",
+            label: "Disponibilité",
+            serial: "8S287JI0CLP38N38",
+            color: "#cda943",
+          },
+          {
+            name: "UG_CHARG_CAT_R1700_14T_2_TU",
+            label: "Utilisation",
+            serial: "8S287JI0CLP38N38",
+            color: "#18a5c1",
+          },
+        ],
+      },
+    ],
+  },
   2: {
     title: "Performance Déblayage",
     attributes: {
-      stacked: false,
       telemetries: [
         {
-          name: "UG_METRES_PLANIFIE",
+          name: "UG_DEBLAYAGE_PERFORMANCES_DEBLAYAGE_AVEC_LHD_R1700-tonne_par_heure",
           color: "#FF5AF1",
           label: "t/h",
-          serial: "DABF7PAT2G4BAG21",
+          serial: "GHZIN57J7EOVXG0C",
+          type: "line"
         },
         {
-          name: "UG_METRES_REALISE_TOTAL",
+          name: "PERF_Tonheur_Metr", //TODO calculable UG_DEBLAYAGE_PERFORMANCES_DEBLAYAGE_AVEC_LHD_R1700-tonne_par_heure / UG_DEBLAYAGE_DISTANCE-m
           color: "#FFDC8C",
           label: "t/h/ml",
-          serial: "DABF7PAT2G4BAG21",
+          serial: "GHZIN57J7EOVXG0C",
+          type: "line",
         },
       ],
     },
   },
   3: {
-    title: "Tonnage par Tir",
+    title: "Disponibilité",
     attributes: {
-      stacked: false,
       telemetries: [
         {
-          name: "UG_METRES_PLANIFIE",
+          name: "UG_CHARG_CAT_R1700_14T_1_TD",
+          color: "#FF5AF1",
+          label: "R1700 01",
+          serial: "8S287JI0CLP38N38",
+        },
+        {
+          name: "UG_CHARG_CAT_R1700_14T_2_TD",
           color: "#FFDC8C",
-          label: "Prévus",
-          serial: "DABF7PAT2G4BAG21",
-          type: "bar",
+          label: "R1700 02",
+          serial: "8S287JI0CLP38N38",
         },
       ],
     },
   },
   4: {
-    title: "Distance",
+    title: "Utilisation",
     attributes: {
       telemetries: [
         {
-          area: true,
-          name: "EST_REALISE_FORATION",
-          color: "#78F6EA",
-          label: "Realisé ML/J",
-          serial: "U9XQMQ1DXYT7LJIP",
+          name: "UG_CHARG_CAT_R1700_14T_1_TU",
+          color: "#FF5AF1",
+          label: "R1700 01",
+          serial: "8S287JI0CLP38N38",
+        },
+        {
+          name: "UG_CHARG_CAT_R1700_14T_2_TU",
+          color: "#FFDC8C",
+          label: "R1700 02",
+          serial: "8S287JI0CLP38N38",
         },
       ],
     },
   },
+
   5: {
-    title: "Temps de Déblayage",
+    title: "Temps de Déblayage (min)",
     attributes: {
-      stacked: false,
       telemetries: [
         {
-          name: "UG_METRES_PLANIFIE",
+          name: "UG_DEBLAYAGE_TEMPS_DE_DEBLAYAGE-min",
           color: "#FF5AF1",
-          label: "Chargement explosif",
-          serial: "DABF7PAT2G4BAG21",
+          label: "temps de Déblayage",
+          serial: "GHZIN57J7EOVXG0C",
         },
       ],
     },
   },
   6: {
-    title: "Temps trajet",
+    title: "Temps trajet (min)",
     attributes: {
       telemetries: [
         {
-          name: "EST_REALISE_FORATION",
+          name: "UG_DEBLAYAGE_TEMPS_TRAJET_ALLER_RETOUR-min",
           color: "#CCCCCC",
-          label: "Aller",
-          serial: "U9XQMQ1DXYT7LJIP",
-        },
-        {
-          name: "UG_METRES_PLANIFIE",
-          color: "#25A18E",
-          label: "Retour",
-          serial: "DABF7PAT2G4BAG21",
+          label: "Aller-Retour",
+          serial: "GHZIN57J7EOVXG0C",
         },
       ],
     },
   },
   7: {
-    title: "Distance Trajet",
+    title: "Distance Trajet (m)",
     attributes: {
       telemetries: [
         {
-          name: "EST_REALISE_FORATION",
-          color: "#CCCCCC",
-          label: "Aller",
-          serial: "U9XQMQ1DXYT7LJIP",
-        },
-        {
-          name: "UG_METRES_PLANIFIE",
-          color: "#25A18E",
-          label: "Retour",
-          serial: "DABF7PAT2G4BAG21",
+          name: "UG_DEBLAYAGE_DISTANCE-m",
+          color: "#FF5AF1",
+          label: "Distance Trajet",
+          serial: "GHZIN57J7EOVXG0C",
         },
       ],
     },

@@ -1,208 +1,223 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Card } from "@/components/card";
 import { MoteurCard } from "./components/moteurCard";
-import { CircularProgress } from "@/components/circular-progress";
-import { BarChart } from "./components/bar-chart";
-import { data } from "./data";
+// import { BarChart } from "./components/bar-chart";
+import { data, ventilation } from "./data";
+// import { QualitAir } from "./components/qualite-air";
+import { VentilationCard } from "./components/ventilation-card";
+import useSWR from "swr";
+import { useEffect, useState } from "react";
+import Loader from "@/components/loader";
+import { useAppContext } from "@/Context";
+import { flatten } from "@/utils";
+// import { cn } from "@/lib/utils";
 
 const VentilationDashboard = () => {
+  const { dateRange, backendApi } = useAppContext();
+  const [dataRealTime] = useState(true);
+  const [ChartData, setChartData] = useState<{
+    name: string;
+    color: string;
+    data: {
+      x: Date;
+      y: number;
+    }[];
+  } | null>(null);
+
+  const fetcher = async () => {
+    const res = await backendApi.findMany("/dpc-history/api/history", {
+      pagination: {
+        page: 1,
+        perPage: 20,
+      },
+      where: {
+        serial: data.serial,
+        createdAt: !dataRealTime
+          ? {
+              $gte: dateRange?.from,
+              $lte: dateRange?.to,
+            }
+          : undefined,
+      },
+    });
+    return res.results || [];
+  };
+
+  const fetchInterval = 5000;
+  const {
+    data: res,
+    isLoading,
+    error,
+  } = useSWR(
+    `dataHistory${!dataRealTime ? `from=${dateRange?.from}&to=${dateRange?.to}` : ""}`,
+    fetcher,
+    { refreshInterval: dataRealTime ? fetchInterval : undefined },
+  );
+
+  useEffect(() => {
+    if (res && !dataRealTime) {
+      setChartData(res as any);
+    }
+  }, [dataRealTime, res]);
+
+  useEffect(() => {
+    if ((!isLoading && !error) || !dataRealTime) return;
+    const intervalId = setInterval(async () => {
+      const newData = await fetcher();
+      setChartData(newData as any);
+    }, fetchInterval);
+
+    return () => clearInterval(intervalId); // Clean up interval on component unmount
+  }, [fetchInterval]);
+
+  if (isLoading)
+    return (
+      <div className="flex h-[calc(100svh-6rem)] w-full flex-1 items-center justify-center">
+        <Loader />
+      </div>
+    );
+
+  if (error)
+    return (
+      <div className="flex h-[calc(100svh-6rem)] w-full items-center justify-center text-xl">
+        <h3>Something went wrong.</h3>
+      </div>
+    );
+
   return (
-    <main className="grid h-full w-full grid-flow-dense auto-rows-[9rem] grid-cols-[repeat(16,minmax(0,1fr))] gap-4 [&>*]:p-4">
-      {data.map((item, index) => (
-        <Card key={index} className={item.cardClassNames}>
-          <h1 className="text-center text-lg font-semibold">{item.title}</h1>
-          <div className="grid flex-1 auto-rows-[1rem] gap-2">
-            {item.children.map((child, index) => (
-              <div key={index} className="row-span-4 flex flex-col">
-                <h4 className="text-left text-xs font-semibold">
-                  {child.title}
-                </h4>
-                <MoteurCard color={child.color} attributes={child.attributes} />
-              </div>
-            ))}
-          </div>
-        </Card>
-      ))}
-      <Card className="col-span-4 row-span-6 flex flex-col gap-2 p-6">
-        <h1 className="text-center text-lg font-semibold">Qualité d’air</h1>
-        <div className="grid flex-1 grid-rows-3 gap-2">
-          <div className="flex flex-1 flex-col gap-1">
-            <h4 className="text-lg font-semibold">Niveau 100</h4>
-            <div className="grid flex-1 grid-cols-3 rounded-2xl border-2 border-[#26E2B3] py-2">
-              <div className="flex flex-col items-center justify-center">
-                <h5 className="text-sm font-semibold">O2</h5>
-                <CircularProgress
-                  progress={60}
-                  color="#E6BF68"
-                  strokeWidth={11}
-                  className="size-[5.5rem]"
-                  legend="60%"
-                />
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <h5 className="text-sm font-semibold">CO</h5>
-                <CircularProgress
-                  progress={60}
-                  color="#E6BF68"
-                  strokeWidth={11}
-                  className="size-[5.7rem]"
-                  legend="60 ppm"
-                />
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <h5 className="text-sm font-semibold">NO2</h5>
-                <CircularProgress
-                  progress={60}
-                  color="#E6BF68"
-                  strokeWidth={11}
-                  className="size-[5.7rem]"
-                  legend="60 ppm"
-                />
-              </div>
-              <div className="col-span-2">
-                <BarChart />
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <h5 className="text-sm font-semibold">Vitesse air</h5>
-                <CircularProgress
-                  progress={60}
-                  color="#E6BF68"
-                  strokeWidth={11}
-                  className="size-[5.7rem]"
-                  legend="0.2 m/s"
-                />
-              </div>
+    <main className="grid h-full w-full grid-flow-dense auto-rows-[6.5rem] grid-cols-[repeat(9,minmax(0,1fr))] gap-4 [&>*]:p-4">
+      <Card className="col-span-3 row-span-7 flex flex-col justify-evenly gap-2">
+        {data[0].children.map((child, index) => (
+          <div
+            key={index}
+            className="flex h-[12rem] w-full flex-col rounded-xl bg-card/20 shadow-xl shadow-black/10"
+          >
+            <h1 className="text-center text-lg font-semibold">{child.title}</h1>
+            <div className="h-1 flex-1">
+              <MoteurCard
+                attributes={child.attributes}
+                val={child.attributes.telemetries.map((telemetry) => {
+                  return {
+                    name: telemetry.label || telemetry.name,
+                    color: telemetry.color,
+                    data:
+                      ((ChartData || []) as any)?.map(
+                        (item: Record<string, unknown>) => ({
+                          x: new Date(item.createdAt as any),
+                          y: Number(flatten(item)[telemetry.name]),
+                        }),
+                      ) || [],
+                  };
+                })}
+              />
             </div>
           </div>
-          <div className="flex flex-1 flex-col gap-1">
-            <h4 className="text-lg font-semibold">Niveau 500</h4>
-            <div className="grid flex-1 grid-cols-3 rounded-2xl border-2 border-[#26E2B3] py-2">
-              <div className="flex flex-col items-center justify-center">
-                <h5 className="text-sm font-semibold">O2</h5>
-                <CircularProgress
-                  progress={60}
-                  color="#E6BF68"
-                  strokeWidth={11}
-                  className="size-[5.5rem]"
-                  legend="60%"
-                />
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <h5 className="text-sm font-semibold">CO</h5>
-                <CircularProgress
-                  progress={60}
-                  color="#E6BF68"
-                  strokeWidth={11}
-                  className="size-[5.7rem]"
-                  legend="60 ppm"
-                />
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <h5 className="text-sm font-semibold">NO2</h5>
-                <CircularProgress
-                  progress={60}
-                  color="#E6BF68"
-                  strokeWidth={11}
-                  className="size-[5.7rem]"
-                  legend="60 ppm"
-                />
-              </div>
-              <div className="col-span-2">
-                <BarChart />
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <h5 className="text-sm font-semibold">Vitesse air</h5>
-                <CircularProgress
-                  progress={60}
-                  color="#E6BF68"
-                  strokeWidth={11}
-                  className="size-[5.7rem]"
-                  legend="0.2 m/s"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-1 flex-col gap-1">
-            <h4 className="text-lg font-semibold">Niveau 500</h4>
-            <div className="grid flex-1 grid-cols-3 rounded-2xl border-2 border-[#26E2B3] py-2">
-              <div className="flex flex-col items-center justify-center">
-                <h5 className="text-sm font-semibold">O2</h5>
-                <CircularProgress
-                  progress={60}
-                  color="#E6BF68"
-                  strokeWidth={11}
-                  className="size-[5.5rem]"
-                  legend="60%"
-                />
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <h5 className="text-sm font-semibold">CO</h5>
-                <CircularProgress
-                  progress={60}
-                  color="#E6BF68"
-                  strokeWidth={11}
-                  className="size-[5.7rem]"
-                  legend="60 ppm"
-                />
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <h5 className="text-sm font-semibold">NO2</h5>
-                <CircularProgress
-                  progress={60}
-                  color="#E6BF68"
-                  strokeWidth={11}
-                  className="size-[5.7rem]"
-                  legend="60 ppm"
-                />
-              </div>
-              <div className="col-span-2">
-                <BarChart />
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <h5 className="text-sm font-semibold">Vitesse air</h5>
-                <CircularProgress
-                  progress={60}
-                  color="#E6BF68"
-                  strokeWidth={11}
-                  className="size-[5.7rem]"
-                  legend="0.2 m/s"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+        ))}
       </Card>
-      <div className="col-span-9 row-span-3 !p-0">
+      <Card>
+        <VentilationCard
+          {...ventilation[0]}
+          interval={5000}
+          data={ventilation[0].telemetry.map((t) => {
+            return {
+              label: t.label,
+              value: ChartData
+                ? Number(flatten((ChartData as any)?.[0][t.name]))
+                : 0,
+            };
+          })}
+        />
+      </Card>
+      <Card>
+        <VentilationCard
+          {...ventilation[1]}
+          interval={5000}
+          data={ventilation[1].telemetry.map((t) => {
+            return {
+              label: "",
+              value: ChartData
+                ? Number(flatten((ChartData as any)?.[0][t.name]))
+                : 0,
+            };
+          })}
+        />
+      </Card>
+      <Card>
+        <VentilationCard
+          {...ventilation[2]}
+          interval={5000}
+          data={ventilation[2].telemetry.map((t) => {
+            return {
+              label: "",
+              value: ChartData
+                ? Number(flatten((ChartData as any)?.[0][t.name]))
+                : 0,
+            };
+          })}
+        />
+      </Card>
+      <Card className="col-span-3 row-span-7 flex flex-col justify-between gap-2">
+        {data[1].children.map((child, index) => (
+          <div
+            key={index}
+            className="flex h-[12rem] w-full flex-col rounded-xl bg-card/20 shadow-xl shadow-black/10"
+          >
+            <h1 className="text-center text-lg font-semibold">{child.title}</h1>
+            <div className="h-1 flex-1">
+              <MoteurCard
+                attributes={child.attributes}
+                val={child.attributes.telemetries.map((telemetry) => {
+                  return {
+                    name: telemetry.label || telemetry.name,
+                    color: telemetry.color,
+                    data:
+                      ((ChartData || []) as any)?.map(
+                        (item: Record<string, unknown>) => ({
+                          x: new Date(item.createdAt as any),
+                          y: Number(flatten(item)[telemetry.name]),
+                        }),
+                      ) || [],
+                  };
+                })}
+              />
+            </div>
+          </div>
+        ))}
+      </Card>
+      <Card className="col-span-3 row-span-3">
         <img
           src="/animation.gif"
           alt=""
           className="h-full w-full object-cover"
         />
-      </div>
-      <Card className="col-span-3 row-span-1 flex flex-col items-center gap-3">
-        <h1 className="text-center text-xl font-semibold">
-          Puissance Totale KW
-        </h1>
-        <div className="flex items-center gap-3 text-5xl font-semibold">
-          <span>1200</span>
-          <span>KW</span>
-        </div>
       </Card>
-      <Card className="col-span-3 row-span-1 flex flex-col items-center gap-3">
-        <h1 className="text-center text-xl font-semibold">
-          Puissance Thermique galerie
-        </h1>
-        <div className="flex items-center gap-3 text-5xl font-semibold">
-          <span>160</span>
-          <span>KW</span>
-        </div>
-      </Card>
-      <Card className="col-span-3 row-span-1 flex flex-col items-center gap-3 text-[#CAD2D6]">
-        <h1 className="text-center text-xl font-semibold">
-          Nombre d’Engins Présents
-        </h1>
-        <div className="flex items-center gap-3 text-5xl font-semibold">
-          <span>0000</span>
-        </div>
+      <Card className="col-span-3 row-span-3">
+        {data[2].children.map((child, index) => (
+          <div
+            key={index}
+            className="flex h-full w-full flex-col rounded-xl bg-card/20 shadow-xl shadow-black/10"
+          >
+            <h1 className="text-center text-lg font-semibold">{child.title}</h1>
+            <div className="flex-1">
+              <MoteurCard
+                attributes={child.attributes}
+                val={child.attributes.telemetries.map((telemetry) => {
+                  return {
+                    name: telemetry.label || telemetry.name,
+                    color: telemetry.color,
+                    data:
+                      ((ChartData || []) as any)?.map(
+                        (item: Record<string, unknown>) => ({
+                          x: new Date(item.createdAt as any),
+                          y: Number(flatten(item)[telemetry.name]),
+                        }),
+                      ) || [],
+                  };
+                })}
+              />
+            </div>
+          </div>
+        ))}
       </Card>
     </main>
   );

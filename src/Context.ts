@@ -11,6 +11,8 @@ const AppContext = React.createContext<{
   setUser: React.Dispatch<React.SetStateAction<User | null | undefined>>;
   backendApi: BackendApi;
   dateRange: TDateRange;
+  fullScreen: boolean;
+  setFullScreen: React.Dispatch<React.SetStateAction<boolean>>;
   setDateRange: React.Dispatch<React.SetStateAction<TDateRange>>;
 } | null>(null);
 

@@ -16,9 +16,9 @@ export function convertParams(params?: FindManyParams) {
     take: pagination?.perPage,
     skip: pagination && (pagination.page - 1) * pagination.perPage,
     where: where && stringify(where),
-    orderBy: orderBy && stringify(orderBy),
     include: include && stringify(include),
     select: select && stringify(select),
+    orderBy: orderBy && stringify(orderBy),
   };
 }
 
@@ -124,15 +124,12 @@ export default class BackendApi {
   }
 
   async signOut(refreshToken: string): Promise<void> {
-    await new Promise((resolve) => setTimeout(resolve, WAIT_TIME));
     await this.api.post("/auth/singout", {
       refreshToken,
     });
   }
 
   async getCurrentUser(): Promise<User> {
-    // TODO: remove this line
-    await new Promise((resolve) => setTimeout(resolve, WAIT_TIME));
     const res = await this.api.get("/auth/me");
     return res.data;
   }
@@ -147,8 +144,6 @@ export default class BackendApi {
     route: string,
     params?: FindManyParams,
   ): Promise<ManyResponse<T>> {
-    // TODO: remove this line
-    await new Promise((resolve) => setTimeout(resolve, WAIT_TIME));
     const res = await this.api.get(route, {
       params: convertParams(params),
     });
@@ -160,8 +155,6 @@ export default class BackendApi {
     id: number,
     params?: FindByIdParams,
   ): Promise<T> {
-    // TODO: remove this line
-    await new Promise((resolve) => setTimeout(resolve, WAIT_TIME));
     const res = await this.api.get(`${route}/${id}`, {
       params: convertParams(params),
     });
@@ -182,8 +175,6 @@ export default class BackendApi {
     data?: any,
     params?: FindByIdParams,
   ): Promise<T> {
-    // TODO: remove this line
-    await new Promise((resolve) => setTimeout(resolve, WAIT_TIME));
     const res = await this.api.post(route, data, {
       params: convertParams(params),
     });
@@ -197,8 +188,6 @@ export default class BackendApi {
     data?: any,
     params?: FindByIdParams,
   ): Promise<T> {
-    // TODO: remove this line
-    await new Promise((resolve) => setTimeout(resolve, WAIT_TIME));
     const res = await this.api.patch(`${route}/${id}`, data, {
       params: convertParams(params),
     });
@@ -210,28 +199,21 @@ export default class BackendApi {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     params?: FindByIdParams,
   ): Promise<T> {
-    // TODO: remove this line
-    await new Promise((resolve) => setTimeout(resolve, WAIT_TIME));
     const res = await this.api.patch(`${route}/${id}`, {
       params: convertParams(params),
     });
     return res.data;
   }
   async deleteMongo<T>(route: string, id: T): Promise<T> {
-    // TODO: remove this line
-    await new Promise((resolve) => setTimeout(resolve, WAIT_TIME));
     const res = await this.api.delete(`${route}/${id}`);
     return res.data;
   }
   async delete<T>(route: string, id: number): Promise<T> {
-    // TODO: remove this line
-    await new Promise((resolve) => setTimeout(resolve, WAIT_TIME));
     const res = await this.api.delete(`${route}/${id}`);
     return res.data;
   }
 
   async patchAll<T>(route: string, data: T[]) {
-    // TODO: remove this line
     const res = await this.api.patch(route, data);
     return res.data;
   }

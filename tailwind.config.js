@@ -20,6 +20,9 @@ module.exports = {
       screens: {
         "3xl": "1920px",
       },
+      fontFamily: {
+        ethnocentric: ["Ethnocentric", "sans-serif"],
+      },
       spacing: {
         "up-bar": "var(--up-bar)",
       },

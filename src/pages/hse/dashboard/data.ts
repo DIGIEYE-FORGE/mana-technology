@@ -1,0 +1,182 @@
+export const widgetsData = {
+  0: {
+    // title: "Chiffre effectif (Cost Value)",
+    title: "Effectif Projet",
+    telemetryName: "HSE_MP_Total",
+    label: "Disponibilité",
+    serial: "TATC8YPVCLHULUAF",
+  },
+  1: {
+    title: "Cumul des heures travaillées",
+    telemetryName: "HSE_MH_Total",
+    label: "Disponibilité",
+    serial: "TATC8YPVCLHULUAF",
+  },
+  2: {
+    title: "Taux de clôture",
+    telemetryName: "HSE_TC_Global",
+    label: "Disponibilité",
+    serial: "TATC8YPVCLHULUAF",
+    correction: 100,
+  },
+  3: {
+    title: "HSE Project Indicators",
+    attributes: {
+      telemetries: [
+        {
+          name: "HSE_NMO_Total",
+          color: "#25A18E",
+          label: "Observation ​+ Near miss​",
+          serial: "TATC8YPVCLHULUAF",
+        },
+        {
+          name: "HSE_MTC_Total",
+          color: "#FFCA05",
+          label: "MTC",
+          serial: "TATC8YPVCLHULUAF",
+        },
+        {
+          name: "HSE_LTI_total",
+          color: "#903E92",
+          label: "LTI",
+          serial: "TATC8YPVCLHULUAF",
+        },
+        {
+          name: "HSE_FAT_Total",
+          color: "#ff0000",
+          label: "FAT",
+          serial: "TATC8YPVCLHULUAF",
+        },
+      ],
+      progressTelemetries: [
+        {
+          name: "HSE_MTCF_Global",
+          color: "#f6d300",
+          serial: "TATC8YPVCLHULUAF",
+          label: "MTCF",
+        },
+        {
+          name: "HSE_LTIF_Global",
+          color: "#93469d",
+          serial: "TATC8YPVCLHULUAF",
+          label: "LTIF",
+        },
+        {
+          name: "HSE_FATIF_Global",
+          color: "#db1c31",
+          serial: "TATC8YPVCLHULUAF",
+          label: "FATF",
+        },
+      ],
+    },
+  },
+  4: {
+    title: "Évolution Heures Travaillées",
+    attributes: {
+      telemetries: [
+        {
+          serial: "LWGUT0FXIZ5ALOND",
+          name: "HSE_MH_Total",
+          color: "#78F6EA",
+          label: "Évolution Heures Travaillées",
+        },
+      ],
+    },
+  },
+  5: {
+    title: "Évolution Effectif",
+    attributes: {
+      telemetries: [
+        {
+          serial: "LWGUT0FXIZ5ALOND",
+          name: "HSE_MP_Total",
+          color: "#FF5AF1",
+          label: "Évolution Heures Travaillées",
+        },
+      ],
+    },
+  },
+  6: {
+    title: "Répartition des incidents",
+    attributes: {
+      telemetries: [
+        {
+          name: "HSE_Injury_Total",
+          color: "#25A18E",
+          label: "Injury",
+          serial: "TATC8YPVCLHULUAF",
+        },
+        {
+          name: "HSE_ASSETDAMAGE_Total",
+          color: "#FF5AF1",
+          label: "Asset Damage",
+          serial: "TATC8YPVCLHULUAF",
+        },
+        {
+          name: "HSE_ENVI_Total",
+          color: "#D2DDFF",
+          label: "Environment",
+          serial: "TATC8YPVCLHULUAF",
+        },
+      ],
+    },
+  },
+  7: {
+    title: "Incidents par catégorie",
+    attributes: {
+      stacked: true,
+      telemetries: [
+        {
+          name: "HSE_ASSET DAMAGE_Total",
+          color: "#FF5AF1",
+          label: "Asset",
+          serial: "LWGUT0FXIZ5ALOND",
+        },
+        {
+          name: "HSE_ENVI_Total",
+          color: "#D2DDFF",
+          label: "Environment",
+          serial: "LWGUT0FXIZ5ALOND",
+        },
+        {
+          name: "HSE_Injury_Total",
+          color: "#25A18E",
+          label: "Injury",
+          serial: "LWGUT0FXIZ5ALOND",
+        },
+      ],
+    },
+  },
+  8: {
+    title: "Incidents par Zone",
+    attributes: {
+      stacked: true,
+      telemetries: [
+        {
+          name: "HSE_Incident_ONS",
+          color: "#D2DDFF",
+          label: "ONS",
+          serial: "LWGUT0FXIZ5ALOND",
+        },
+        {
+          name: "HSE_Incident_OFS",
+          color: "#25A18E",
+          label: "OFS",
+          serial: "LWGUT0FXIZ5ALOND",
+        },
+        {
+          name: "HSE_Incident_UG",
+          color: "#F650A0",
+          label: "ug",
+          serial: "LWGUT0FXIZ5ALOND",
+        },
+        {
+          name: "HSE_Incident_OP",
+          color: "#FF5AF1",
+          label: "OP",
+          serial: "LWGUT0FXIZ5ALOND",
+        },
+      ],
+    },
+  },
+};

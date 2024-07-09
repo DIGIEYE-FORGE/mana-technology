@@ -1,32 +1,26 @@
-import { useEffect, useRef } from "react";
-import { pannellum } from "@/pannellum";
+import { D3GaugeChart } from "@/components/d3-gauge-chart";
 
 export default function DevPage() {
-  const { current: id } = useRef(
-    `panorama-${Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000}`,
-  );
-  const viewer = useRef<any>(null);
-
-  useEffect(() => {
-    viewer.current = pannellum.viewer(id, {
-      autoLoad: true,
-      panorama: "https://pannellum.org/images/cerro-toco-0.jpg",
-      dynamicUpdate: true,
-      compass: false,
-      friction: 0,
-      mouseZoom: false,
-      showZoomCtrl: false,
-      showFullscreenCtrl: false,
-      type: "equirectangular",
-    });
-
-    return () => {
-      viewer.current.destroy();
-    };
-  }, [id]);
   return (
-    // <main className="grid place-content-center">
-    <div id={id} className="flex h-screen w-full flex-grow rounded-xl"></div>
-    // </main>
+    <div className="debug grid h-screen w-full flex-grow place-content-center font-bold">
+      <D3GaugeChart
+        value={5}
+        maxValue={100}
+        backgroundColor="#ddd"
+        foregroundColor="#ffab00"
+        ticks={{
+          count: 5,
+          color: "#fff",
+          fontSize: "0.8rem",
+          offset: 10,
+        }}
+        dataLabels={{
+          show: true,
+          color: "#fff",
+          fontSize: "8rem",
+          formater: (d) => d.toString(),
+        }}
+      />
+    </div>
   );
 }

@@ -1,6 +1,6 @@
-import Dashboard3 from "../dashboard3";
 import { Dashboard1 } from "./components/dashboard-01";
 import { Dashboard2 } from "./components/dashboard-02";
+import { Dashboard3 } from "./components/dashboard-03";
 import { Dashboard4 } from "./components/dashboard-04";
 import { Dashboard5 } from "./components/dashboard-05";
 import { Dashboard6 } from "./components/dashboard-06";
@@ -28,7 +28,7 @@ export const machines = [
     },
   },
   {
-    name: "Chargement Explosif & Tir (Engins)",
+    name: "Chargement Explosif & Tir",
     image: "/machine-03.png",
     align: "center",
     sideOffset: -50,
@@ -48,7 +48,7 @@ export const machines = [
     },
   },
   {
-    name: "Soutènement boltec m10",
+    name: "Soutènement boltec M10",
     image: "/machine-05.png",
     align: "center",
     side: "right",
@@ -59,7 +59,7 @@ export const machines = [
     },
   },
   {
-    name: "Transport ad45",
+    name: "Transport AD45",
     image: "/machine-06.png",
     align: "end",
     side: "left",
