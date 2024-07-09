@@ -29,14 +29,14 @@ export const BarChart = ({
     async () => {
       if (!attributes.telemetries?.length) return [];
       if (disabled) {
-        return attributes.telemetries.map((device) => ({
+        return attributes.telemetries?.map((device) => ({
           color: device.color,
           name: device.label,
           value: 0,
         }));
       }
       const res1 = await Promise.all(
-        attributes.telemetries.map(async (device) => {
+        attributes.telemetries?.map(async (device) => {
           const { name, color, serial, label } = device;
           const res = await backendApi.findMany<{
             name: string;
@@ -125,7 +125,7 @@ export const BarChart = ({
         },
         xaxis: {
           type: "category",
-          categories: data.map((d) => d.name),
+          categories: data?.map((d) => d.name),
           axisBorder: { show: false },
           axisTicks: { show: false },
           labels: {
@@ -185,7 +185,7 @@ export const BarChart = ({
       series={[
         {
           name: "Temperature",
-          data: data.map((d) => d.value),
+          data: data?.map((d) => d.value),
         },
       ]}
       type="bar"

@@ -32,7 +32,7 @@ function ProgressData({ data, sum, className }: ProgressTo) {
   return (
     <div className="flex flex-col gap-2">
       <div className="flex items-center justify-between px-2">
-        {data.map((telemetry, index) => {
+        {(data || [])?.map((telemetry, index) => {
           return (
             <div key={index} className="flex flex-col">
               {telemetry.value.toFixed(0)}
@@ -46,7 +46,7 @@ function ProgressData({ data, sum, className }: ProgressTo) {
           className,
         )}
       >
-        {data.map((telemetry, index) => {
+        {data?.map((telemetry, index) => {
           return (
             <div
               className="text-bold flex flex-col items-center justify-center text-white"
@@ -82,10 +82,10 @@ function ProgressMultiple({ attributes }: props) {
     async () => {
       if (!dateRange?.from || !attributes?.length) return [];
       return await Promise.all(
-        attributes.map(async (device) => {
+        attributes?.map(async (device) => {
           const { telemetries } = device;
           const res = await Promise.all(
-            telemetries.map(async (telemetry) => {
+            telemetries?.map(async (telemetry) => {
               const { name, serial } = telemetry;
               const { results } = await backendApi.findMany<HistoryType>(
                 "/dpc-history/api/history",
@@ -140,7 +140,7 @@ function ProgressMultiple({ attributes }: props) {
     );
   return (
     <div className="flex flex-col gap-3 overflow-y-auto">
-      {attributes.map((device, index) => {
+      {(attributes || [])?.map((device, index) => {
         const { telemetries, title } = device;
         const sum = data[index]?.reduce(
           (acc, curr) => acc + curr?.value || 0,
@@ -151,7 +151,7 @@ function ProgressMultiple({ attributes }: props) {
           <div key={index} className="flex flex-col gap-1">
             <h3 className="font-semibold">{title}</h3>
             <ProgressData
-              data={data[index].map((ele) => {
+              data={data[index]?.map((ele) => {
                 console.log(ele);
 
                 return {

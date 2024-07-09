@@ -118,7 +118,7 @@ const VentilationDashboard = () => {
         <VentilationCard
           {...ventilation[0]}
           interval={5000}
-          data={ventilation[0].telemetry.map((t) => {
+          data={ventilation[0].telemetry?.map((t) => {
             return {
               label: t.label,
               value: ChartData
@@ -132,7 +132,7 @@ const VentilationDashboard = () => {
         <VentilationCard
           {...ventilation[1]}
           interval={5000}
-          data={ventilation[1].telemetry.map((t) => {
+          data={ventilation[1].telemetry?.map((t) => {
             return {
               label: "",
               value: ChartData
@@ -146,7 +146,7 @@ const VentilationDashboard = () => {
         <VentilationCard
           {...ventilation[2]}
           interval={5000}
-          data={ventilation[2].telemetry.map((t) => {
+          data={ventilation[2].telemetry?.map((t) => {
             return {
               label: "",
               value: ChartData
@@ -157,7 +157,7 @@ const VentilationDashboard = () => {
         />
       </Card>
       <Card className="col-span-3 row-span-7 flex flex-col justify-between gap-2">
-        {data[1].children.map((child, index) => (
+        {data[1].children?.map((child, index) => (
           <div
             key={index}
             className="flex h-[12rem] w-full flex-col rounded-xl bg-card/20 shadow-xl shadow-black/10"
@@ -166,7 +166,7 @@ const VentilationDashboard = () => {
             <div className="h-1 flex-1">
               <MoteurCard
                 attributes={child.attributes}
-                val={child.attributes.telemetries.map((telemetry) => {
+                val={child.attributes.telemetries?.map((telemetry) => {
                   return {
                     name: telemetry.label || telemetry.name,
                     color: telemetry.color,
@@ -192,7 +192,7 @@ const VentilationDashboard = () => {
         />
       </Card>
       <Card className="col-span-3 row-span-3">
-        {data[2].children.map((child, index) => (
+        {data[2].children?.map((child, index) => (
           <div
             key={index}
             className="flex h-full w-full flex-col rounded-xl bg-card/20 shadow-xl shadow-black/10"
@@ -201,7 +201,7 @@ const VentilationDashboard = () => {
             <div className="flex-1">
               <MoteurCard
                 attributes={child.attributes}
-                val={child.attributes.telemetries.map((telemetry) => {
+                val={child.attributes.telemetries?.map((telemetry) => {
                   return {
                     name: telemetry.label || telemetry.name,
                     color: telemetry.color,
