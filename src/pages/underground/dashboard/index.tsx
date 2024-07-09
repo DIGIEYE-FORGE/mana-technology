@@ -236,7 +236,7 @@ export default function UndergroundDashboardPage() {
         <div className="w-full text-center text-xs text-gray-400"></div>
         <div className="flex-1">
           <BarLineWidget
-            ceil={false}
+            // ceil={false}
             dateRange={dateRange}
             attributes={{
               stacked: true,

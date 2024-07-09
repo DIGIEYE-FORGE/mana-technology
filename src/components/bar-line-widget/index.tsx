@@ -210,6 +210,7 @@ export default function BarLineWidget({
                     axisBorder: {
                       show: true,
                     },
+                    forceNiceScale: ceil,
                     title: {
                       style: {
                         color: "#008FFB",
