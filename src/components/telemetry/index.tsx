@@ -78,6 +78,6 @@ export default function Telemetry({
 
   if (isLoading) return <Loader />;
   if (error) return "Something went wrong.";
-  if (!data) return "No data";
+  if (data === undefined || data === null) return "No data";
   return <Formatter value={value} displayFormat={displayFormat} />;
 }
