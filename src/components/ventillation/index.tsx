@@ -95,8 +95,8 @@ function Ventillation({ attribute }: VentillationProps) {
             name: labelTelemetry,
             value:
               (
-                floatOrDecimal(Number(res?.results[0]?.value)) ||
-                randomValue ||
+                floatOrDecimal(Number(res?.results[0]?.value)) ??
+                randomValue ??
                 0
               )
                 .toString()
@@ -135,13 +135,13 @@ function Ventillation({ attribute }: VentillationProps) {
   const dataWithSocket = useMemo(() => {
     if (!socketData) return data;
     return attribute?.map((item) => {
-      const newData = socketData[item.telemetryName];
-      if (newData) {
+      const newData = socketData[item?.telemetryName];
+      if (newData != null && newData !== undefined) {
         return {
           icon: item.icon,
           name: item.labelTelemetry,
           value:
-            (floatOrDecimal(Number(newData)) || item.randomValue || 0)
+            (floatOrDecimal(Number(newData)) ?? item.randomValue ?? 0)
               .toString()
               .replace(".", ",") +
             "" +

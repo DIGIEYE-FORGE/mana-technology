@@ -256,7 +256,7 @@ const data = [
       Capacity: "3,6 mtpa",
       ["Processing method"]: "Flotation",
       ["Product"]: "Copper Silver concentrate",
-      ["Production capacity"]: "120 Ktonnes per year",
+      ["Production capacity"]: "120 Kt per year",
     },
     background: "url(/vector.png)",
     position: {
@@ -374,7 +374,7 @@ export default function MainProjectPage() {
             hideYear
             // hideMonth
             theme="dark"
-            endAt={"2025-05-14 00:00:00"}
+            endAt={"2025-05-16 00:00:00"}
           />
         </div>
         <div className="flex h-full w-full flex-col gap-4">

@@ -36,7 +36,7 @@ export const widgetsData = {
       },
       {
         name: "TITAN BMP2X3",
-        image: "/machine-03.png",
+        image: "/machine-07.png",
         iconClassName: "absolute bottom-2 right-3 z-10 w-32",
         telemetries: [
           {

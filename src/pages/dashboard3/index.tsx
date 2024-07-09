@@ -85,7 +85,7 @@ function DashboardPage3() {
                   serial: "JZVATMKQ1A8DA2P1",
                 },
                 {
-                  name: "EST_REALISE_MIENRAI",
+                  name: "EST_REALISE_MINERAI",
                   unit: "T",
                   color: "#FEC33A",
                   label: "MINERAI Realisé",

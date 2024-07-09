@@ -109,6 +109,7 @@ export default function UndergroundDashboardPage() {
         <div className="w-full text-center text-xs text-gray-400"></div>
         <div className="flex-1">
           <BarLineWidget
+            ceil={false}
             moyenne={["UG_METRES_PLANIFIE", "UG_METRES_REALISE_TOTAL"]}
             yAxis="one"
             dateRange={dateRange}
@@ -137,9 +138,7 @@ export default function UndergroundDashboardPage() {
         </div>
       </Card>
       <Card className="flex flex-col items-center gap-1 p-4">
-        <h1 className="text-center text-lg font-semibold">
-          VOD
-        </h1>
+        <h1 className="text-center text-lg font-semibold">VOD</h1>
         <div className="w-full flex-1">
           <Ventillation
             attribute={[
@@ -167,13 +166,13 @@ export default function UndergroundDashboardPage() {
                 telemetryName: "s=Ventil2_Q",
                 labelTelemetry: "Ventilateur N°2",
                 serial: "0TKJJWS26V62QV15",
-                randomValue: 230,
+                randomValue: 1,
               },
               {
                 telemetryName: "s=plc1_DB_Conso1_HcpTotalMarche",
                 labelTelemetry: "Marche1",
                 serial: "0TKJJWS26V62QV15",
-                randomValue: 230,
+                randomValue: 251,
               },
               {
                 telemetryName: "s=plc1_DB_Conso2_HcpTotalMarche",
@@ -237,7 +236,7 @@ export default function UndergroundDashboardPage() {
         <div className="w-full text-center text-xs text-gray-400"></div>
         <div className="flex-1">
           <BarLineWidget
-            ceil={false}
+            // ceil={false}
             dateRange={dateRange}
             attributes={{
               stacked: true,
