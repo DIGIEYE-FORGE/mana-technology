@@ -8,7 +8,8 @@ import useSWR from "swr";
 import { addDays, isFirstDayOfMonth, lastDayOfMonth } from "date-fns";
 
 export type ProgressAccumulationWidgetData = {
-  serial?: string;
+  progressSerial?: string;
+  targetSerial?: string;
   progressTelemetryName?: string;
   accumulationTelemetryName?: string;
   progressColor?: string;
@@ -30,7 +31,8 @@ export function ProgressAccumulation({ attributes }: Widget) {
   const { backendApi, dateRange } = useAppContext();
 
   const {
-    serial,
+    progressSerial,
+    targetSerial,
     progressTelemetryName,
     accumulationTelemetryName,
     currentTargetColor = "#3b82f6",
@@ -41,7 +43,8 @@ export function ProgressAccumulation({ attributes }: Widget) {
   const key =
     `progressAcc?` +
     JSON.stringify({
-      serial,
+      progressSerial,
+      targetSerial,
       progressTelemetryName,
       accumulationTelemetryName,
       dateRange,
@@ -50,22 +53,27 @@ export function ProgressAccumulation({ attributes }: Widget) {
   const { data, isLoading, error } = useSWR(
     key,
     async () => {
-      if (!serial || !progressTelemetryName || !accumulationTelemetryName)
+      if (
+        !progressSerial ||
+        !targetSerial ||
+        !progressTelemetryName ||
+        !accumulationTelemetryName
+      )
         return null;
-      const { results: currentResults } =
-        await backendApi.findMany<HistoryType>("/dpc-history/api/history", {
-          pagination: { page: 1, perPage: 1 },
-          select: [progressTelemetryName, accumulationTelemetryName],
-          where: { serial, createdAt: { $lte: new Date() } },
-        });
-      if (currentResults.length === 0) return null;
+      // const { results: currentResults } =
+      //   await backendApi.findMany<HistoryType>("/dpc-history/api/history", {
+      //     pagination: { page: 1, perPage: 1 },
+      //     select: [progressTelemetryName, accumulationTelemetryName],
+      //     where: { serial, createdAt: { $lte: new Date() } },
+      //   });
+      // if (currentResults.length === 0) return null;
       const { results: endOfMountResult } =
         await backendApi.findMany<HistoryType>("/dpc-history/api/history", {
           pagination: { page: 1, perPage: 1 },
           select: [accumulationTelemetryName],
           orderBy: "createdAt:desc",
           where: {
-            serial,
+            serial: targetSerial,
             createdAt: { $lte: lastOfMonth(dateRange?.to || new Date()) },
           },
         });
@@ -76,7 +84,7 @@ export function ProgressAccumulation({ attributes }: Widget) {
           orderBy: "createdAt:desc",
           select: [progressTelemetryName],
           where: {
-            serial,
+            serial: progressSerial,
             createdAt: {
               $lte:
                 dateRange?.to && new Date(dateRange.to) > new Date()
@@ -91,7 +99,7 @@ export function ProgressAccumulation({ attributes }: Widget) {
           orderBy: "createdAt:desc",
           select: [accumulationTelemetryName],
           where: {
-            serial,
+            serial: targetSerial,
             createdAt: {
               $lte:
                 dateRange?.to && new Date(dateRange.to) > new Date()
