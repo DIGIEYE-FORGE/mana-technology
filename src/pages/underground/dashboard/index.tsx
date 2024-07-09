@@ -138,7 +138,7 @@ export default function UndergroundDashboardPage() {
       </Card>
       <Card className="flex flex-col items-center gap-1 p-4">
         <h1 className="text-center text-lg font-semibold">
-          Dashboard ventilation
+          VOD
         </h1>
         <div className="w-full flex-1">
           <Ventillation

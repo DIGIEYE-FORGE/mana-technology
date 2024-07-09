@@ -198,10 +198,6 @@ function DashboardPage3() {
                 telemetryName: "QUNTITE_EXPLOSIF_TIRE",
               },
               {
-                displayName: "Zone de Tir",
-                telemetryName: "ZONE DE TIRE",
-              },
-              {
                 displayName: "Tonnage Roche Abattu Minerai (t)",
                 telemetryName: "TONNAE_MINERAI_ABATTU",
               },

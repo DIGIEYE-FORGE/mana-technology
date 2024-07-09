@@ -188,7 +188,7 @@ export const homePageWidgets: Widget[] = [
     title: "Suivi des Tirs",
     className: "col-span-full row-span-3 p-4 lg:col-span-8",
     attributes: {
-      serial: "C6XPYU0D920L1M07",
+      serial: "U9XQMQ1DXYT7LJIP",
       element: "telemetries",
       mappings: [
         {
