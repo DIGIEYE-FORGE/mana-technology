@@ -233,7 +233,7 @@ export default function HomeDashboard() {
               },
               {
                 displayName: "Zone de Tir",
-                telemetryName: "ZONE_DE_TIRE",
+                telemetryName: "ZONEDETIRE",
               },
               {
                 displayName: "Tonnage Roche Abattu Minerai (t)",
