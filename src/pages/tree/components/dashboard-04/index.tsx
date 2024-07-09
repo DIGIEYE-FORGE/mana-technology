@@ -3,6 +3,7 @@ import { Card } from "@/components/card";
 import LineChartWidget from "@/components/line-chart-widget";
 import { widgetsData } from "./data";
 import { PerformanceEngins } from "../performance-engins";
+import BarLineWidget from "@/components/bar-line-widget";
 
 export const Dashboard4 = () => {
   return (
@@ -28,7 +29,7 @@ export const Dashboard4 = () => {
           {widgetsData[2].title}
         </h1>
         <div className="h-1 flex-1">
-          <LineChartWidget attributes={widgetsData[2].attributes} />
+          <BarLineWidget yAxis="multiple" attributes={widgetsData[2].attributes} />
         </div>
       </Card>
       <Card className="col-span-1 flex flex-col p-2">

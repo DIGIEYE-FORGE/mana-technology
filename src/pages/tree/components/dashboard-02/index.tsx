@@ -2,7 +2,6 @@ import { Card } from "@/components/card";
 import { widgetsData } from "./data";
 import LineChartWidget from "@/components/line-chart-widget";
 import BarChartWidget from "@/components/bar-chart-widget";
-import BarLineWidget from "@/components/bar-line-widget";
 import { PerformanceEngins } from "../performance-engins";
 import ModelVideo from "./video-model";
 
@@ -75,7 +74,7 @@ export const Dashboard2 = () => {
           {widgetsData[5]?.title}
         </h4>
         <div className="relative h-1 flex-1 -translate-y-4">
-          <BarLineWidget
+          <LineChartWidget
             yAxis="one"
             correction={{
               UG_TAUX_ARRACHEMENT_TEMPS_DE_FORATION_BFS: 60,

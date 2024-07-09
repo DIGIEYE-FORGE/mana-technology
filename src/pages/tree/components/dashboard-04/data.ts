@@ -64,12 +64,14 @@ export const widgetsData = {
           color: "#FF5AF1",
           label: "t/h",
           serial: "GHZIN57J7EOVXG0C",
+          type: "line"
         },
         {
-          name: "", //TODO calculable UG_DEBLAYAGE_PERFORMANCES_DEBLAYAGE_AVEC_LHD_R1700-tonne_par_heure / UG_DEBLAYAGE_DISTANCE-m
+          name: "PERF_Tonheur_Metr", //TODO calculable UG_DEBLAYAGE_PERFORMANCES_DEBLAYAGE_AVEC_LHD_R1700-tonne_par_heure / UG_DEBLAYAGE_DISTANCE-m
           color: "#FFDC8C",
           label: "t/h/ml",
           serial: "GHZIN57J7EOVXG0C",
+          type: "line",
         },
       ],
     },
