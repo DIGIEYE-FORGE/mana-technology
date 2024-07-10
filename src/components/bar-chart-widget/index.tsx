@@ -189,6 +189,7 @@ export default function BarChartWidget(props: Props) {
         yaxis: {
           min: 0,
           // tickAmount: 4,
+          forceNiceScale: true,
           max: stacked
             ? undefined
             : Math.max(
@@ -199,7 +200,7 @@ export default function BarChartWidget(props: Props) {
           labels: {
             show: true,
             formatter: function (value) {
-              return Math.ceil(value) + " ";
+              return props.ceil ? Math.ceil(value) + " ": value.toFixed(2) + " ";
             },
             style: {
               fontSize: "12px",

@@ -22,7 +22,6 @@ const VentilationDashboard1 = () => {
         page: 1,
         perPage: dataRealTime ? 20 : 1500,
       },
-      // orderBy: "createdAt:asc",
       where: {
         serial: data.serial,
         createdAt: !dataRealTime
@@ -41,7 +40,7 @@ const VentilationDashboard1 = () => {
     isLoading,
     error,
   } = useSWR(
-    `dataHistory${!dataRealTime ? `from=${dateRange?.from}&to=${dateRange?.to}` : `from: ${dateRange?.from}, to: ${dateRange?.to}`}`,
+    `dataHistory${!dataRealTime ? `from=${dateRange?.from}&to=${dateRange?.to}` : `realTime=${dataRealTime}`}`,
     fetcher,
   );
 
@@ -111,15 +110,15 @@ const VentilationDashboard1 = () => {
             <div className="h-1 flex-1">
               <MoteurCard
                 attributes={child.attributes}
-                val={child.attributes.telemetries?.map((telemetry) => {
+                val={child?.attributes?.telemetries?.map((telemetry) => {
                   return {
-                    name: telemetry.label || telemetry.name,
-                    color: telemetry.color,
+                    name: telemetry?.label || telemetry?.name,
+                    color: telemetry?.color,
                     data:
                       ((chartData || []) as any)?.map(
                         (item: Record<string, unknown>) => ({
-                          x: new Date(item.createdAt as any),
-                          y: Number(flatten(item)[telemetry.name]),
+                          x: new Date(item?.createdAt as any),
+                          y: Number(flatten(item)?.[telemetry.name] || 0),
                         }),
                       ) || [],
                   };
@@ -133,16 +132,16 @@ const VentilationDashboard1 = () => {
             <h1 className="text-center text-lg font-semibold">{child.title}</h1>
             <div className="h-1 flex-1">
               <MoteurCard
-                attributes={child.attributes}
-                val={child.attributes.telemetries.map((telemetry) => {
+                attributes={child?.attributes}
+                val={child?.attributes?.telemetries?.map((telemetry) => {
                   return {
-                    name: telemetry.label || telemetry.name,
-                    color: telemetry.color,
+                    name: telemetry?.label || telemetry?.name,
+                    color: telemetry?.color,
                     data:
                       ((chartData || []) as any)?.map(
                         (item: Record<string, unknown>) => ({
-                          x: new Date(item.createdAt as any),
-                          y: Number(flatten(item)[telemetry.name]),
+                          x: new Date(item?.createdAt as any),
+                          y: Number(flatten(item)?.[telemetry.name] || 0),
                         }),
                       ) || [],
                   };
@@ -184,11 +183,11 @@ const VentilationDashboard1 = () => {
                 <VentilationCard
                   {...ventilation[1]}
                   interval={5000}
-                  data={ventilation[1].telemetry?.map((t) => {
+                  data={ventilation?.[1]?.telemetry?.map((t) => {
                     return {
                       label: "",
                       value: chartData
-                        ? Number((chartData as any)?.[0][t.name])
+                        ? Number((chartData as any)?.[0]?.[t.name])
                         : 0,
                     };
                   })}
@@ -202,7 +201,7 @@ const VentilationDashboard1 = () => {
                     return {
                       label: "",
                       value: chartData
-                        ? Number((chartData as any)?.[0][t.name])
+                        ? Number((chartData as any)?.[0]?.[t.name])
                         : 0,
                     };
                   })}
@@ -213,11 +212,11 @@ const VentilationDashboard1 = () => {
               <VentilationCard
                 {...ventilation[0]}
                 interval={5000}
-                data={ventilation[0].telemetry?.map((t) => {
+                data={ventilation[0]?.telemetry?.map((t) => {
                   return {
                     label: t.label,
                     value: chartData
-                      ? Number((chartData as any)?.[0][t.name])
+                      ? Number((chartData as any)?.[0]?.[t.name])
                       : 0,
                   };
                 })}
@@ -249,7 +248,7 @@ const VentilationDashboard1 = () => {
                       ((chartData || []) as any)?.map(
                         (item: Record<string, unknown>) => ({
                           x: new Date(item.createdAt as any),
-                          y: Number(flatten(item)[telemetry.name]),
+                          y: Number(flatten(item)?.[telemetry.name]),
                         }),
                       ) || [],
                   };

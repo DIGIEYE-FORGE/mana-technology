@@ -22,7 +22,7 @@ export default function Dashboard() {
                 <div className="flex justify-center gap-6">
                   {extraTelemetries.map((extraTelemetry, index) => {
                     return (
-                      <div className="flex justify-center gap-2" key={index}>
+                      <div className="flex justify-center gap-2 text-xl	 " key={index}>
                         <Telemetry
                           telemetry={extraTelemetry}
                           displayFormat={extraTelemetry.displayFormat}
@@ -59,7 +59,7 @@ export default function Dashboard() {
               <div className="whitespace-nowrap text-xl font-semibold">
                 {label}
               </div>
-              <div className="flex gap-2 text-lg text-yellow-600">
+              <div className="flex gap-2 text-lg font-bold text-yellow-600">
                 <Telemetry
                   telemetry={telemetry}
                   displayFormat={displayFormat}
@@ -86,9 +86,9 @@ export default function Dashboard() {
         <div className="flex h-1 flex-1 flex-col justify-evenly">
           {widgetData[4].telemetries.map(
             ({ label, unit, displayFormat, ...telemetry }, index) => (
-              <div key={index} className="flex gap-4">
+              <div key={index} className="flex w-full justify-between gap-4">
                 <div className="whitespace-nowrap font-semibold">{label}</div>
-                <div className="flex gap-2">
+                <div className="flex gap-2 font-bold">
                   <Telemetry
                     telemetry={telemetry}
                     displayFormat={displayFormat}
@@ -107,9 +107,9 @@ export default function Dashboard() {
         <div className="flex h-1 flex-1 flex-col justify-evenly">
           {widgetData[5].telemetries.map(
             ({ unit, label, displayFormat, ...telemetry }, index) => (
-              <div className="flex gap-2" key={index}>
+              <div className="flex w-full justify-between gap-2" key={index}>
                 <div className="whitespace-nowrap font-semibold">{label}</div>
-                <div className="flex gap-2">
+                <div className="flex gap-2 font-bold">
                   <Telemetry
                     telemetry={telemetry}
                     displayFormat={displayFormat}
