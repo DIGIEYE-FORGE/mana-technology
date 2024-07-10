@@ -47,12 +47,14 @@ export default function Telemetry({
   telemetry,
   displayFormat,
   correction,
+  preLoadData,
 }: {
   telemetry: {
     name: string;
     serial: string;
     value?: JsonValue;
   };
+  preLoadData?: LastTelemetry[];
   correction?: number;
 
   displayFormat?: TableDisplayForma;
@@ -62,6 +64,10 @@ export default function Telemetry({
     `telemetry?${JSON.stringify({ telemetry })}`,
     async () => {
       if (telemetry.value !== undefined) return { value: telemetry.value };
+      if (preLoadData) {
+        const item = preLoadData.find((it) => it.name === telemetry.name);
+        if (item) return item;
+      }
       const res = await backendApi.findMany<LastTelemetry>("lasttelemetry", {
         where: {
           name: telemetry.name,
