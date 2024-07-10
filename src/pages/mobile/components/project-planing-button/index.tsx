@@ -2,7 +2,7 @@ import { Button, ButtonProps } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { DialogClose } from "@radix-ui/react-dialog";
-import { MoveLeft, MoveRight, XIcon } from "lucide-react";
+import { XIcon } from "lucide-react";
 import { useState } from "react";
 
 const tabs = [
