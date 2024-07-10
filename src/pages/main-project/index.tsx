@@ -347,7 +347,7 @@ const tree = {
   attribute: {
     "Mineral reserves": "59 Mt @ 0,9 %Cu et 19 g/t Ag",
     ["Mining methods"]: "R&P /LHOS",
-    ["Total development"]: "230 km lateral",
+    ["Total development"]: "250 km lateral",
     ["Daily production capacity"]: "10800 tpd from 2028",
     ["Extraction method"]: "Belt conveyor",
     ["Backfilling"]: "Paste backfilling",
