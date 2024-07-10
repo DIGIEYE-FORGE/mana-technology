@@ -5,14 +5,14 @@ import {
   DialogTrigger,
   DialogClose,
 } from "@/components/ui/dialog";
-import { ScanQrCode } from "lucide-react";
+import { QrCode } from "lucide-react";
 
 export const QrCodeDialog = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
         <Button variant={"ghost"}>
-          <ScanQrCode />
+          <QrCode />
         </Button>
       </DialogTrigger>
       <DialogContent
