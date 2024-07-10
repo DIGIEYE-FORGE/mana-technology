@@ -285,7 +285,7 @@ export function UpBar() {
       </div>
       <Sheet>
         <SheetTrigger>
-          <Button variant={"ghost"} size={"icon"} className="flex">
+          <Button variant={"ghost"} size={"icon"} className="flex lg:hidden">
             <MenuIcon size={24} />
           </Button>
         </SheetTrigger>
