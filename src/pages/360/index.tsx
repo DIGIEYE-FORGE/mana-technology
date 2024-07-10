@@ -1,7 +1,6 @@
 import Loader from "@/components/loader";
-import { Button } from "@/components/ui/button";
 import { MoveLeft } from "lucide-react";
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import { Link } from "react-router-dom";
 
 function VrUndergroundPage() {

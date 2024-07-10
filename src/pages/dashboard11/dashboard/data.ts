@@ -174,15 +174,15 @@ export const widgetData = [
     telemetries: [
       {
         serial: "L604RV7OPGGQGQ6R",
-        name: "R1700_1_Left Rear Tire Pressure",
-        label: "AR gauche",
+        name: "R1700_1_Right Rear Tire Pressure",
+        label: "AR droit",
         displayFormat: "integer",
         unit: "kpa",
       },
       {
         serial: "L604RV7OPGGQGQ6R",
-        name: "R1700_1_Right Rear Tire Pressure",
-        label: "AR droit",
+        name: "R1700_1_Left Rear Tire Pressure",
+        label: "AR gauche",
         displayFormat: "integer",
         unit: "kpa",
       },
