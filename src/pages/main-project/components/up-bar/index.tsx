@@ -5,6 +5,7 @@ import { OverviewButton } from "../overview-button";
 import ProjectPlaningButton from "../project-planing-button";
 import { EsgButton } from "../esg-button";
 import { useAppContext } from "@/Context";
+import { QrCodeDialog } from "../qr-code-modal";
 
 export function MainProjectUpBar() {
   const { fullScreen, setFullScreen } = useAppContext();
@@ -25,6 +26,7 @@ export function MainProjectUpBar() {
       <EsgButton variant={"ghost"} className="gap-2">
         <span>ESG</span>
       </EsgButton>
+      <QrCodeDialog />
       <Button
         onClick={() => {
           setFullScreen(!fullScreen);

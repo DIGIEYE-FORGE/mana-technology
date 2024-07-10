@@ -248,7 +248,9 @@ export const widgetData = [
           serial: "3KFVTKPZQGLUCGIB",
         },
       ],
+      
     },
+    
   },
   {
     title: "Pressions",
@@ -271,35 +273,35 @@ export const widgetData = [
         {
           area: false,
           name: "R1700_2_Fuel Pressure",
-          color: "#B98EFF",
+          color: "#705335",
           label: "Fuel",
           serial: "3KFVTKPZQGLUCGIB",
         },
         {
           area: false,
           name: "R1700_2_Transmission Oil Pressure",
-          color: "#78F6EA",
+          color: "#CF3476",
           label: "Transmission Oil",
           serial: "3KFVTKPZQGLUCGIB",
         },
         {
           area: false,
           name: "R1700_2_Engine Oil Pressure",
-          color: "#B98EFF",
+          color: "#FFA420",
           label: "Engine Oil",
           serial: "3KFVTKPZQGLUCGIB",
         },
         {
           area: false,
           name: "R1700_2_Intake Manifold Pressure",
-          color: "#78F6EA",
+          color: "#84C3BE",
           label: "ntake Manifold",
           serial: "3KFVTKPZQGLUCGIB",
         },
         {
           area: false,
           name: "R1700_2_Parking Brake Oil Pressure",
-          color: "#78F6EA",
+          color: "#287233",
           label: "ntake Manifold",
           serial: "3KFVTKPZQGLUCGIB",
         },

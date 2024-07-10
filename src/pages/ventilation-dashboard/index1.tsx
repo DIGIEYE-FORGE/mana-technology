@@ -11,6 +11,7 @@ import { flatten } from "@/utils";
 import io from "socket.io-client";
 import { Button } from "@/components/ui/button";
 import { Timer, TimerOff } from "lucide-react";
+import { env } from "@/utils/env";
 
 const VentilationDashboard1 = () => {
   const { dateRange, backendApi } = useAppContext();
@@ -57,7 +58,7 @@ const VentilationDashboard1 = () => {
 
   useEffect(() => {
     if (!dataRealTime) return;
-    const socket = io("https://ws.managem.digieye.io");
+    const socket = io(env.VITE_URL_SOCKET);
     socket.on("connect", () => {
       console.log("Connected to WebSocket server");
     });
