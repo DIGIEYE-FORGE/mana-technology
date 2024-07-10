@@ -188,7 +188,7 @@ export default function Dashboard() {
         </h3>
         <div className="h-1 flex-1">
           <LineChartWidget
-            preLoadData={data?.history}
+            // preLoadData={data?.history}
             attributes={widgetData[6].attributes as unknown as JsonObject}
           />
         </div>
