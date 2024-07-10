@@ -63,7 +63,7 @@ function DashboardPage3() {
                   area: false,
                   name: "SUD2_PLANIFIE_ROCHE",
                   color: "#78F6EA",
-                  label: "Cumulatif Planifié",
+                  label: "Planifié (Cumulé)",
                   serial: "QXYIV05MSG7F079I",
                 },
                 {
@@ -71,7 +71,7 @@ function DashboardPage3() {
                   area: true,
                   name: "SUD2_REALISE_ROCHE",
                   color: "#B98EFF",
-                  label: "Cumulatif Realisé",
+                  label: "Réalisé (Cumulé)",
                   serial: "PI6PQ8SEZC4BWRP3",
                 },
               ],
