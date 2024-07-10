@@ -65,10 +65,10 @@ export function OverviewButton({ className, ...props }: OverviewButtonProps) {
       </DialogTrigger>
       <DialogContent
         showCloseButton={false}
-        className="max dark bottom-0 top-[4rem] z-[102] flex w-[100%] max-w-none translate-y-0 flex-col rounded-none border-none bg-card/10 p-4 text-foreground backdrop-blur-xl"
+        className="max over dark bottom-0 top-[4rem] z-[102] flex w-[100%] max-w-none translate-y-0 flex-col gap-2 rounded-none border-none bg-card/10 p-4 text-foreground backdrop-blur-xl lg:gap-4"
         overlayClassName="bg-transparent"
       >
-        <div className="hide-scrollbar relative mx-auto flex w-full max-w-[1920px] gap-2 overflow-x-auto">
+        <div className="hide-scrollbar relative mx-auto flex w-full max-w-[1920px] shrink-0 gap-2 overflow-x-auto">
           {tabs.map((tab, index) => (
             <button
               key={index}
@@ -97,18 +97,18 @@ export function OverviewButton({ className, ...props }: OverviewButtonProps) {
           </DialogClose>
         </div>
         <div
-          className="relative mx-auto flex h-1 max-h-[16rem] w-full max-w-[1920px] flex-1 flex-col gap-4 2xl:max-h-[920px]"
+          className="max-h relative mx-auto flex aspect-video max-h-[calc(100%-2rem)] w-full max-w-[1920px] flex-col gap-4"
           style={{
             backgroundImage: "url(/dashboard-frame.png)",
             backgroundRepeat: "no-repeat",
             backgroundSize: "100% 100%",
           }}
         >
-          <div className="ml-3 mr-1 mt-8 h-1 flex-1 sm:ml-4 sm:mr-4 sm:mt-10 md:ml-6 md:mr-6 lg:mb-8 lg:ml-16 lg:mr-8 lg:mt-20">
+          <div className="mb-2 ml-3 mr-1 mt-5 flex h-1 flex-1 items-center justify-center sm:mb-2 sm:ml-4 sm:mr-4 sm:mt-6 md:ml-6 md:mr-6 lg:mb-8 lg:ml-16 lg:mr-8 2xl:mt-20">
             <img
               src={tabs[activeTab].subTabs[activeSubTab].image}
               alt={tabs[activeTab].subTabs[activeSubTab].title}
-              className="h-full w-full"
+              className="h-full object-contain"
             />
           </div>
         </div>
