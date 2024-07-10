@@ -4,6 +4,7 @@ import useSWR from "swr";
 import Loader from "../loader";
 import { io } from "socket.io-client";
 import { useState, useEffect, useMemo } from "react";
+import { env } from "@/utils/env";
 
 const floatOrDecimal = (value: number) => {
   return value % 1 === 0 ? value : value.toFixed(2);
@@ -113,7 +114,7 @@ function Ventillation({ attribute }: VentillationProps) {
   );
 
   useEffect(() => {
-    const socket = io("https://ws.managem.digieye.io");
+    const socket = io(env.VITE_URL_SOCKET);
     socket.on("connect", () => {
       console.log("Connected to WebSocket server");
     });
