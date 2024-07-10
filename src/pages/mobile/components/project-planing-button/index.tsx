@@ -122,7 +122,7 @@ function ProjectPlaningButton({
           <DialogClose asChild>
             <button
               className={cn(
-                "custom-button flex select-none justify-center rounded-lg bg-[#3A3D3F]/75 px-6 py-2 text-xl font-bold uppercase transition-colors hover:brightness-105",
+                "custom-button hidden select-none justify-center rounded-lg bg-[#3A3D3F]/75 px-6 py-2 text-xl font-bold uppercase transition-colors hover:brightness-105 lg:flex",
               )}
             >
               <XIcon className="size-4 md:size-5 lg:size-6" />
