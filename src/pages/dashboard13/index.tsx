@@ -24,7 +24,7 @@ export function UpBar() {
           setDateRange(date as TDateRange);
         }}
       />
-      <Link to="/tree" className="ml-auto">
+      <Link to="/underground/tree" className="ml-auto">
         <Button size="icon" variant="ghost">
           <MoveUpIcon size={24} className="size-6" />
         </Button>

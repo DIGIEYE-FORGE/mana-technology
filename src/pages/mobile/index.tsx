@@ -15,6 +15,9 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Minimize, Shrink } from "lucide-react";
+import { OverviewButton } from "../main-project/components/overview-button";
+import ProjectPlaningButton from "../main-project/components/project-planing-button";
+import { EsgButton } from "../main-project/components/esg-button";
 
 export default function MobilePage() {
   const [loading, setLoading] = useState(true);
@@ -273,6 +276,15 @@ export function UpBar() {
           Tizert Project Digital Twin
         </span>
       </div>
+      <OverviewButton variant={"ghost"} className="hidden gap-2 2xl:flex">
+        Project Overview
+      </OverviewButton>
+      <ProjectPlaningButton variant={"ghost"} className="hidden gap-2 2xl:flex">
+        <span>Project Planning</span>
+      </ProjectPlaningButton>
+      <EsgButton variant={"ghost"} className="hidden gap-2 2xl:flex">
+        <span>ESG</span>
+      </EsgButton>
       <Button
         onClick={() => {
           setFullScreen(!fullScreen);
