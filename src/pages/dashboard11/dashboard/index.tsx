@@ -6,6 +6,10 @@ import { JsonObject } from "@/utils";
 import GaugeWidget from "@/components/gauge-widget";
 
 export default function Dashboard() {
+  // const {} = useSwr("dashboard11", async () => {
+  //   const {}
+  // })
+
   return (
     <main className="mx-auto grid max-w-[1920px] auto-rows-[4.5rem] grid-cols-5 gap-4 p-6 [&>*]:p-4">
       <Card className="col-span-3 row-span-3 flex flex-col gap-4">

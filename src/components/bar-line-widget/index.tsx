@@ -274,7 +274,7 @@ export default function BarLineWidget({
           },
           legend: {
             position: "bottom",
-            markers: { width: 26, height: 12, radius: 8 },
+            // markers: { width: 26, height: 12, radius: 8 },
             fontWeight: 600,
             fontSize: "12px",
           },
