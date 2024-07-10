@@ -176,11 +176,7 @@ function DashboardPage3() {
         </div>
       </Card>
       <Card className="col-span-3 flex items-center justify-center text-3xl font-bold xl:row-span-2">
-        <img
-          src="/sud4.png"
-          alt="Logo"
-          className="h-full w-full object-contain"
-        />
+  
       </Card>
       <Card className="col-span-6 flex flex-col p-4">
         <h3 className="text-center text-lg font-semibold">Suivi des Tirs</h3>
