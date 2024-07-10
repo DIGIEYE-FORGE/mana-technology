@@ -22,7 +22,7 @@ export default function Dashboard() {
                 <div className="flex justify-center gap-6">
                   {extraTelemetries.map((extraTelemetry, index) => {
                     return (
-                      <div className="flex justify-center gap-2" key={index}>
+                      <div className="flex justify-center gap-2 text-xl	 " key={index}>
                         <Telemetry
                           telemetry={extraTelemetry}
                           displayFormat={extraTelemetry.displayFormat}

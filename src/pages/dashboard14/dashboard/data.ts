@@ -9,12 +9,8 @@ export const widgetData = [
         unit: "km/h",
         stops: [
           {
-            stop: 25,
-            color: "#78F6EA",
-          },
-          {
-            stop: 40,
-            color: "#B98EFF",
+            stop: 50,
+            color: "#F5A81C",
           },
         ],
         extraTelemetries: [
@@ -34,12 +30,8 @@ export const widgetData = [
         unit: "rpm",
         stops: [
           {
-            stop: 1800,
-            color: "#78F6EA",
-          },
-          {
-            stop: 2500,
-            color: "#B98EFF",
+            stop: 3500,
+            color: "#F5A81C",
           },
         ],
         extraTelemetries: [],
@@ -51,12 +43,12 @@ export const widgetData = [
         unit: "%",
         stops: [
           {
-            stop: 70,
-            color: "#78F6EA",
+            stop: 30,
+            color: "#F00",
           },
           {
             stop: 100,
-            color: "#B98EFF",
+            color: "#F5A81C",
           },
         ],
         extraTelemetries: [
@@ -98,7 +90,7 @@ export const widgetData = [
     ],
   },
   {
-    title: "Temperatures",
+    title: "Températures",
     attributes: {
       telemetries: [
         {
@@ -183,7 +175,6 @@ export const widgetData = [
         unit: "t",
         displayFormat: "integer",
       },
-     
     ],
   },
   {
