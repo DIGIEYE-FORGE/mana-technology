@@ -14,7 +14,7 @@ export function DailyProductionBreakUp() {
             tooltip: { cssClass: "text-black" },
             legend: {
               position: "bottom",
-              markers: { width: 26, height: 12 },
+              // markers: { width: 26, height: 12 },
               fontWeight: 600,
               fontSize: "12px",
             },

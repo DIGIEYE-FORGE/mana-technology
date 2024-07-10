@@ -31,10 +31,10 @@ export function ProductionEvolution() {
             fill: { type: "solid", opacity: [0.33, 1] },
             legend: {
               position: "bottom",
-              markers: {
-                width: 26,
-                height: 12,
-              },
+              // markers: {
+              //   width: 26,
+              //   height: 12,
+              // },
               fontWeight: 600,
               fontSize: "12px",
             },

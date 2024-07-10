@@ -117,10 +117,6 @@ export default function WidgetLabel({
               legendPosition != "none"
                 ? {
                     position: legendPosition,
-                    markers: {
-                      width: 26,
-                      height: 12,
-                    },
                     fontWeight: 600,
                     fontSize: "12px",
                   }

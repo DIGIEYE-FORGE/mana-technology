@@ -138,7 +138,7 @@ export default function BarChartWidget(props: Props) {
         tooltip: { cssClass: "text-black" },
         legend: {
           position: "bottom",
-          markers: { width: 26, height: 12, radius: 8 },
+          // markers: { width: 26, height: 12, radius: 8 },
           fontWeight: 600,
           fontSize: "12px",
         },
@@ -200,7 +200,7 @@ export default function BarChartWidget(props: Props) {
           labels: {
             show: true,
             formatter: function (value) {
-              return Math.ceil(value) + " ";
+              return props.ceil ? Math.ceil(value) + " ": value.toFixed(2) + " ";
             },
             style: {
               fontSize: "12px",

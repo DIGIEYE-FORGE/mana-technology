@@ -66,10 +66,10 @@ export default function DonutChartWidget(props: Props) {
           colors: ["transparent"],
         },
         legend: {
-          markers: {
-            width: 26,
-            height: 12,
-          },
+          // markers: {
+          //   width: 26,
+          //   height: 12,
+          // },
           fontWeight: 600,
           fontSize: "12px",
           position: "right",
