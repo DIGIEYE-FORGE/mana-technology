@@ -35,7 +35,15 @@ export const widgetData = [
             color: "#F5A81C",
           },
         ],
-        extraTelemetries: [],
+        extraTelemetries: [
+          {
+            serial: "L604RV7OPGGQGQ6R",
+            name: "R1700_1_Engine Load Factor",
+            label: "Facteur de charge du moteur",
+            unit: "%",
+            displayFormat: "integer",
+      },
+        ],
       },
       {
         serial: "L604RV7OPGGQGQ6R",
@@ -118,7 +126,7 @@ export const widgetData = [
         },
         {
           area: false,
-          name: "R1700_1_Fuel Température	",
+          name: "R1700_1_Fuel Température",
           color: "#E1CC4F",
           label: "Fuel",
           serial: "L604RV7OPGGQGQ6R",
@@ -174,14 +182,14 @@ export const widgetData = [
     telemetries: [
       {
         serial: "L604RV7OPGGQGQ6R",
-        name: "R1700_1_Right Rear Tire Pressure",
+        name: "R1700_1_Left Rear Tire Pressure",
         label: "AR droit",
         displayFormat: "integer",
         unit: "kpa",
       },
       {
         serial: "L604RV7OPGGQGQ6R",
-        name: "R1700_1_Left Rear Tire Pressure",
+        name: "R1700_1_Right Rear Tire Pressure",
         label: "AR gauche",
         displayFormat: "integer",
         unit: "kpa",
@@ -210,13 +218,6 @@ export const widgetData = [
         name: "R1700_1_Bucket Payload",
         label: "Tonnage instantané",
         unit: "t",
-        displayFormat: "integer",
-      },
-      {
-        serial: "L604RV7OPGGQGQ6R",
-        name: "R1700_1_Engine Load Factor",
-        label: "Facteur de chargement",
-        unit: "%",
         displayFormat: "integer",
       },
       {

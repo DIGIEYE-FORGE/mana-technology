@@ -123,7 +123,7 @@ export default function LineChartWidget({
           name: telemetries[index].label || telemetries[index].name,
           type: telemetries[index].area ? "area" : "line",
           nameTelemetry: telemetries[index].name,
-          color: telemetries[index].color,
+          color: telemetries[index].color || "#ffffff",
           data: telemetries[index].data || newData,
         };
       });
