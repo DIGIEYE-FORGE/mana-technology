@@ -221,7 +221,10 @@ function Location({ location }: { location: TLocation }) {
                               autoPlay
                               className="aspect-video h-full w-full object-contain opacity-90"
                               controls
-                              src={item.url}
+                              src={
+                                `${env.VITE_LOCAL_VIDEOS === "true" ? "/ignore/" : "https://managem.digieye.io/statics/"}` +
+                                item?.url
+                              }
                             />
                           )}
                         </div>
