@@ -191,20 +191,29 @@ function Location({ location }: { location: TLocation }) {
                     <DialogTrigger className="absolute inset-0" />
                     <DialogContent
                       showCloseButton={false}
-                      className="dark z-[100] aspect-video max-h-[80vh] w-[min(60rem,90vw)] max-w-none overflow-hidden rounded-xl border-2 border-primary/20 object-contain p-0 text-foreground opacity-90"
+                      className="dark z-[100] aspect-video max-h-[80vh] w-[min(60rem,90vw)] max-w-none overflow-hidden rounded-xl border-none object-contain p-0 text-foreground opacity-90"
                     >
                       <DialogClose asChild>
                         <Button
                           size={"icon"}
                           variant={"ghost"}
-                          className="absolute right-2 top-2 opacity-25 hover:opacity-100"
+                          className="absolute right-1 top-1 z-[1002] opacity-25 hover:opacity-100"
                         >
                           <XIcon size={20} />
                         </Button>
                       </DialogClose>
                       {item.type === "video" && (
                         <video
-                          autoPlay
+                          // autoPlay
+                          onPlay={(e) => {
+                            // toggle fullscreen
+                            const target = e.target as HTMLVideoElement;
+                            if (target.requestFullscreen) {
+                              target.requestFullscreen().catch((e) => {
+                                console.error(e);
+                              });
+                            }
+                          }}
                           className="w-full object-contain"
                           controls
                           src={
