@@ -1,4 +1,5 @@
-import { useEffect, useRef } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useRef } from "react";
 
 const FullscreenVideo = ({ src }: { src: string }) => {
   const videoRef = useRef(null);

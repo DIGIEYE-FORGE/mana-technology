@@ -7,6 +7,7 @@ import {
 import { Play, XIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { env } from "@/utils/env";
 
 function VideoDialog() {
   return (
