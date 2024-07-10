@@ -189,10 +189,12 @@ export default function BarLineWidget({
                   labels: {
                     formatter: function (value) {
                       return ceil
-                        ? Math.ceil(value) + " "
-                        : typeof value === "number" &&
-                            value.toString().includes(".")
-                          ? value.toFixed(2) + " "
+                        ? Math.ceil(value).toLocaleString("en") + " "
+                        : typeof value === "number"
+                          ? value.toLocaleString("en", {
+                              maximumFractionDigits: 2,
+                              minimumFractionDigits: 2,
+                            }) + " "
                           : value + " ";
                     },
                   },
@@ -220,10 +222,12 @@ export default function BarLineWidget({
                     labels: {
                       formatter: function (value) {
                         return ceil
-                          ? Math.ceil(value) + " "
-                          : typeof value === "number" &&
-                              value.toString().includes(".")
-                            ? value.toFixed(2) + " "
+                          ? Math.ceil(value).toLocaleString("en") + " "
+                          : typeof value === "number"
+                            ? value.toLocaleString("en", {
+                                maximumFractionDigits: 2,
+                                minimumFractionDigits: 2,
+                              }) + " "
                             : value + " ";
                       },
                     },
@@ -244,10 +248,12 @@ export default function BarLineWidget({
                     labels: {
                       formatter: function (value) {
                         return ceil
-                          ? Math.ceil(value) + " "
-                          : typeof value === "number" &&
-                              value.toString().includes(".")
-                            ? value.toFixed(2) + " "
+                          ? Math.ceil(value).toLocaleString("en") + " "
+                          : typeof value === "number"
+                            ? value.toLocaleString("en", {
+                                maximumFractionDigits: 2,
+                                minimumFractionDigits: 2,
+                              }) + " "
                             : value + " ";
                       },
                     },

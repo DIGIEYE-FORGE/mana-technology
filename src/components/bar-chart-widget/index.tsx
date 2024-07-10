@@ -200,7 +200,12 @@ export default function BarChartWidget(props: Props) {
           labels: {
             show: true,
             formatter: function (value) {
-              return props.ceil ? Math.ceil(value) + " ": value.toFixed(2) + " ";
+              return props.ceil
+                ? Math.ceil(value).toLocaleString("en") + " "
+                : value.toLocaleString("en", {
+                    maximumFractionDigits: 2,
+                    minimumFractionDigits: 2,
+                  }) + " ";
             },
             style: {
               fontSize: "12px",

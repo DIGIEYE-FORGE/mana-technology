@@ -93,7 +93,7 @@ export default function LinesWidget(props: Props) {
                 },
                 labels: {
                   formatter: function (value) {
-                    return Math.ceil(value) + " ";
+                    return Math.ceil(value).toLocaleString("en") + " ";
                   },
                 },
               }
@@ -108,7 +108,10 @@ export default function LinesWidget(props: Props) {
                   },
                   labels: {
                     formatter: function (value) {
-                      return value.toFixed(2);
+                      return value.toLocaleString("en", {
+                        maximumFractionDigits: 2,
+                        minimumFractionDigits: 2,
+                      });
                     },
                   },
                   // labels: {
@@ -129,7 +132,10 @@ export default function LinesWidget(props: Props) {
                   },
                   labels: {
                     formatter: function (value) {
-                      return value.toFixed(2);
+                      return value.toLocaleString("en", {
+                        maximumFractionDigits: 2,
+                        minimumFractionDigits: 2,
+                      });
                     },
                   },
                   axisBorder: {
