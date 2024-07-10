@@ -249,7 +249,7 @@ function Location({ location }: { location: TLocation }) {
             backgroundRepeat: "no-repeat",
           }}
         >
-          <h5 className="col-span-2 font-bold">{info.title}</h5>
+          <h5 className="col-span-2 font-bold text-yellow-400">{info.title}</h5>
           {Object.entries(info.data).map(([key, value], index) => (
             <React.Fragment key={index}>
               <div className="whitespace-nowrap">{key}:</div>
