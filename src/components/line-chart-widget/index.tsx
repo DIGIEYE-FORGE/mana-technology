@@ -26,6 +26,7 @@ type Props = Widget & {
   children?: ReactNode;
   selectionDate?: boolean;
   max?: number;
+  preLoadData?: HistoryType[];
 };
 
 export default function LineChartWidget({
@@ -33,6 +34,7 @@ export default function LineChartWidget({
   selectionDate = true,
   correction,
   max,
+  preLoadData,
   ...props
 }: Props) {
   const { backendApi, dateRange } = useAppContext();
@@ -52,7 +54,7 @@ export default function LineChartWidget({
         telemetries.map(async ({ serial, name, calculated }, idx) => {
           if (telemetries[idx].data) return [];
           if (!name && !calculated) return [];
-
+          if (preLoadData) return preLoadData;
           const { results } = await backendApi.findMany<HistoryType>(
             "/dpc-history/api/history",
             {

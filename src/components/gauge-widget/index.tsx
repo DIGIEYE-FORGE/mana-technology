@@ -23,7 +23,10 @@ export type GaugeWidgetData = {
   value?: number;
 };
 
-export default function GaugeWidget({ attributes }: Widget) {
+export default function GaugeWidget({
+  attributes,
+  preLoadData,
+}: Widget & { preLoadData?: LastTelemetry[] }) {
   const { backendApi } = useAppContext();
 
   const {
@@ -43,6 +46,10 @@ export default function GaugeWidget({ attributes }: Widget) {
     `${serial}/${telemetryName}`,
     async () => {
       if (attributes?.value) return { value: attributes.value };
+      if (preLoadData) {
+        const item = preLoadData.find((it) => it.name === telemetryName);
+        if (item) return { value: item.value };
+      }
       if (!serial || !telemetryName) return null;
 
       const { results } = await backendApi.findMany<LastTelemetry>(
