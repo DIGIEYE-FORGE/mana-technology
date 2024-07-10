@@ -16,6 +16,7 @@ const VentilationDashboard1 = () => {
   const { dateRange, backendApi } = useAppContext();
   const [dataRealTime, setDataRealTime] = useState<boolean>(true);
   const [socketData, setSocketData] = useState<any[]>([]);
+  const [relaod, setReload] = useState<undefined | number>(undefined);
   const fetcher = async () => {
     const res = await backendApi.findMany("/dpc-history/api/history", {
       pagination: {
@@ -40,7 +41,7 @@ const VentilationDashboard1 = () => {
     isLoading,
     error,
   } = useSWR(
-    `dataHistory${!dataRealTime ? `from=${dateRange?.from}&to=${dateRange?.to}` : `realTime=${dataRealTime}`}`,
+    `dataHistory${!dataRealTime ? `from=${dateRange?.from}&to=${dateRange?.to}` : `realTime=${dataRealTime} ${relaod}`}`,
     fetcher,
   );
 
@@ -49,7 +50,7 @@ const VentilationDashboard1 = () => {
       return res;
     }
     if (res) {
-      return [...socketData, ...res];
+      return [...socketData, ...res].splice(0, 30);
     }
     return null;
   }, [res, socketData, dataRealTime]);
@@ -61,6 +62,7 @@ const VentilationDashboard1 = () => {
       console.log("Connected to WebSocket server");
     });
 
+    setReload(new Date().getTime());
     socket.on(`telemetry`, (newData: any) => {
       setSocketData((prev: any) => {
         return [
