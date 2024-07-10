@@ -1,11 +1,61 @@
 import { Card } from "@/components/card";
-import { widgetData } from "./data";
+import { serial, widgetData } from "./data";
 import Telemetry from "@/components/telemetry";
 import LineChartWidget from "@/components/line-chart-widget";
-import { JsonObject } from "@/utils";
 import GaugeWidget from "@/components/gauge-widget";
+import { HistoryType, JsonObject, LastTelemetry } from "@/utils";
+import useSWR from "swr";
+import { useAppContext } from "@/Context";
+import Loader from "@/components/loader";
 
 export default function Dashboard() {
+  const { backendApi, dateRange } = useAppContext();
+
+  const key = `dashboard12${JSON.stringify(dateRange)}`;
+  const { data, isLoading, error } = useSWR(key, async () => {
+    const { results: lastTelemetries } =
+      await backendApi.findMany<LastTelemetry>("lasttelemetry", {
+        where: { device: { serial } },
+        pagination: { page: 1, perPage: 10_00 },
+      });
+    const { results: history } = await backendApi.findMany<HistoryType>(
+      "/dpc-history/api/history",
+      {
+        pagination: { page: 1, perPage: 10_000 },
+        orderBy: "createdAt:asc",
+        select: [
+          ...widgetData[3].attributes.telemetries.map((it) => it.name),
+          ...widgetData[6].attributes.telemetries.map((it) => it.name),
+          ...widgetData[7].attributes.telemetries.map((it) => it.name),
+        ],
+        where: {
+          serial,
+          createdAt: {
+            $gt: new Date(dateRange?.from as Date),
+            $lte: dateRange?.to && new Date(dateRange?.to as Date),
+          },
+        },
+      },
+    );
+    return { lastTelemetries, history };
+  });
+  if (error)
+    return (
+      <div className="main grid h-[calc(100svh-5rem)] place-content-center">
+        <h1 className="text-center text-4xl opacity-50 sm:text-6xl">
+          Something went wrong
+        </h1>
+      </div>
+    );
+  if (isLoading)
+    return (
+      <div className="main grid h-[calc(100svh-5rem)] place-content-center">
+        <Loader />
+      </div>
+    );
+
+  console.log(data);
+
   return (
     <main className="mx-auto grid max-w-[1920px] auto-rows-[4.5rem] grid-cols-5 gap-4 p-6 [&>*]:p-4">
       <Card className="col-span-3 row-span-3 flex flex-col gap-4">
@@ -18,14 +68,21 @@ export default function Dashboard() {
             return (
               <div className="flex h-full flex-col" key={index}>
                 <h4 className="text-center font-semibold">{label}</h4>
-                <GaugeWidget attributes={rest as unknown as JsonObject} />
+                <GaugeWidget
+                  preLoadData={data?.lastTelemetries}
+                  attributes={rest as unknown as JsonObject}
+                />
                 <div className="flex justify-center gap-6">
                   {extraTelemetries.map((extraTelemetry, index) => {
                     return (
-                      <div className="flex justify-center gap-2 text-xl	 " key={index}>
+                      <div
+                        className="flex justify-center gap-2 text-xl"
+                        key={index}
+                      >
                         <Telemetry
                           telemetry={extraTelemetry}
                           displayFormat={extraTelemetry.displayFormat}
+                          preLoadData={data?.lastTelemetries}
                         />
                         <span className="whitespace-nowrap">
                           {extraTelemetry.unit}
@@ -63,6 +120,7 @@ export default function Dashboard() {
                 <Telemetry
                   telemetry={telemetry}
                   displayFormat={displayFormat}
+                  preLoadData={data?.lastTelemetries}
                 />
               </div>
             </div>
@@ -75,6 +133,7 @@ export default function Dashboard() {
         </h3>
         <div className="h-1 flex-1">
           <LineChartWidget
+            preLoadData={data?.history}
             attributes={widgetData[3].attributes as unknown as JsonObject}
           />
         </div>
@@ -92,6 +151,7 @@ export default function Dashboard() {
                   <Telemetry
                     telemetry={telemetry}
                     displayFormat={displayFormat}
+                    preLoadData={data?.lastTelemetries}
                   />
                   <span>{unit}</span>
                 </div>
@@ -113,6 +173,7 @@ export default function Dashboard() {
                   <Telemetry
                     telemetry={telemetry}
                     displayFormat={displayFormat}
+                    preLoadData={data?.lastTelemetries}
                   />
                   <span className="whitespace-nowrap">{unit}</span>
                 </div>
@@ -127,6 +188,7 @@ export default function Dashboard() {
         </h3>
         <div className="h-1 flex-1">
           <LineChartWidget
+            preLoadData={data?.history}
             attributes={widgetData[6].attributes as unknown as JsonObject}
           />
         </div>
@@ -137,6 +199,7 @@ export default function Dashboard() {
         </h3>
         <div className="h-1 flex-1">
           <LineChartWidget
+            preLoadData={data?.history}
             attributes={widgetData[7].attributes as unknown as JsonObject}
           />
         </div>
