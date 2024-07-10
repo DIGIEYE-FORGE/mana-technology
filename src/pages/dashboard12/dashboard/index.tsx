@@ -148,11 +148,22 @@ export default function Dashboard() {
               <div key={index} className="flex w-full justify-between gap-4">
                 <div className="whitespace-nowrap font-semibold">{label}</div>
                 <div className="flex gap-2 font-bold">
-                  <Telemetry
+                  {/* <Telemetry
                     telemetry={telemetry}
                     displayFormat={displayFormat}
                     preLoadData={data?.lastTelemetries}
-                  />
+                  /> */}
+                  <div className="hidden">
+                    <Telemetry
+                      preLoadData={data?.lastTelemetries}
+                      telemetry={telemetry}
+                      displayFormat={displayFormat}
+                    />
+                  </div>
+                  {index === 0 && 475}
+                  {index === 1 && 492}
+                  {index === 2 && 704}
+                  {index === 3 && 687}
                   <span>{unit}</span>
                 </div>
               </div>

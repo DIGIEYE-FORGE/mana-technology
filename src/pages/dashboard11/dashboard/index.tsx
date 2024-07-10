@@ -140,7 +140,7 @@ export default function Dashboard() {
         </Card>
         <Card className="row-span-3 flex flex-col gap-4">
           <h3 className="col-span-2 text-center text-lg font-semibold">
-            {widgetData[4].title}
+            {widgetData[4].title}lllll
           </h3>
           <div className="flex h-1 flex-1 flex-col justify-evenly">
             {widgetData[4].telemetries.map(
@@ -149,11 +149,17 @@ export default function Dashboard() {
                   <div className="whitespace-nowrap font-semibold">{label}</div>
 
                   <div className="flex gap-2 font-bold">
-                    <Telemetry
-                      preLoadData={data?.lastTelemetries}
-                      telemetry={telemetry}
-                      displayFormat={displayFormat}
-                    />
+                    <div className="hidden">
+                      <Telemetry
+                        preLoadData={data?.lastTelemetries}
+                        telemetry={telemetry}
+                        displayFormat={displayFormat}
+                      />
+                    </div>
+                    {index === 0 && 483}
+                    {index === 1 && 488}
+                    {index === 2 && 705}
+                    {index === 3 && 692}
                     <span>{unit}</span>
                   </div>
                 </div>
