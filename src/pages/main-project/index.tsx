@@ -124,12 +124,11 @@ const data = [
   {
     title: "Plant",
     type: "video",
-    image: "/usins1.png",
     position: {
       top: "17%",
       left: "46%",
     },
-    url: "/statics/3dvideo.mp4",
+    url: "3dvideo.mp4",
     background: "url(/video.svg)",
     positionModel: {
       side: "top",
@@ -156,12 +155,11 @@ const data = [
   {
     title: "Pit SUD",
     type: "video",
-    image: "/screen1.png",
     position: {
       bottom: "20%",
       right: "16%",
     },
-    url: "/sud_vd.mp4",
+    url: "sud_vd.mp4",
     positionModel: {
       side: "left",
       align: "start",
@@ -172,12 +170,11 @@ const data = [
   {
     title: " Pit EST",
     type: "video",
-    image: "/screen1.png",
     position: {
       top: "14%",
       right: "30%",
     },
-    url: "/est_vd.mp4",
+    url: "est_vd.mp4",
     positionModel: {
       side: "left",
       align: "start",
@@ -189,12 +186,11 @@ const data = [
   {
     title: " Open Pit",
     type: "video",
-    image: "/screen1.png",
     position: {
       top: "45%",
       right: "9%",
     },
-    url: "/statics/op.mp4",
+    url: "op.mp4",
     positionModel: {
       side: "left",
       align: "start",
@@ -549,7 +545,12 @@ export default function MainProjectPage() {
                         </div>
                         {item?.type === "video" && item?.url ? (
                           <div>
-                            <FullscreenVideo src={item.url} />
+                            <FullscreenVideo
+                              src={
+                                `${env.VITE_LOCAL_VIDEOS === "true" ? "/ignore/" : "https://managem.digieye.io/statics/"}` +
+                                item?.url
+                              }
+                            />
 
                             {item.title == "Plant" && (
                               <div className="absolute left-[38%] top-[12%] w-fit">
@@ -801,7 +802,13 @@ export default function MainProjectPage() {
                     <div className="ml-auto flex h-14 w-[64%] shrink-0 items-center px-6 text-2xl font-semibold">
                       Underground Mine
                     </div>
-                    <FullscreenVideo src={"Underground.mp4"} />
+                    <FullscreenVideo
+                      //  src={"Underground.mp4"}
+                      src={
+                        `${env.VITE_LOCAL_VIDEOS === "true" ? "/ignore/" : "https://managem.digieye.io/statics/"}` +
+                        "Underground.mp4"
+                      }
+                    />
                   </div>
                 </div>
               </PopoverContent>
