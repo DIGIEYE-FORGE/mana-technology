@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { Minimize, Shrink } from "lucide-react";
+import { Minimize, MoveUpIcon, Shrink } from "lucide-react";
 import { useAppContext } from "@/Context";
 import Dashboard from "./dashboard";
 import { DatePickerWithRange } from "@/components/calander";
 import { TDateRange } from "@/utils";
+import { Link } from "react-router-dom";
 
 export function UpBar() {
   const { fullScreen, setFullScreen, dateRange, setDateRange } =
@@ -13,7 +14,7 @@ export function UpBar() {
       <div className="flex gap-4">
         <img src="/logo.svg" alt="logo" />
         <span className="h-3/4 border-l py-3 pl-4 font-ethnocentric text-lg font-bold">
-          Dashboard 14
+          CAT AD45_02 Overview
         </span>
       </div>
       <DatePickerWithRange
@@ -23,12 +24,15 @@ export function UpBar() {
           setDateRange(date as TDateRange);
         }}
       />
-
+      <Link to="/tree" className="ml-auto">
+        <Button size="icon" variant="ghost">
+          <MoveUpIcon size={24} className="size-6" />
+        </Button>
+      </Link>
       <Button
         onClick={() => {
           setFullScreen(!fullScreen);
         }}
-        className="ml-auto"
         size={"icon"}
         variant={"ghost"}
       >

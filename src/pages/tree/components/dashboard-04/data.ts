@@ -20,6 +20,7 @@ export const widgetsData = {
       {
         name: "Déblayage R1700 01",
         image: "/machine-04.png",
+        url: "/dashboard11",
         telemetries: [
           {
             name: "UG_CHARG_CAT_R1700_14T_1_TD",
@@ -38,6 +39,7 @@ export const widgetsData = {
       {
         name: "Déblayage R1700 02",
         image: "/machine-04.png",
+        url: "/dashboard12",
         telemetries: [
           {
             name: "UG_CHARG_CAT_R1700_14T_2_TD",
@@ -64,7 +66,7 @@ export const widgetsData = {
           color: "#FF5AF1",
           label: "t/h",
           serial: "GHZIN57J7EOVXG0C",
-          type: "line"
+          type: "line",
         },
         {
           name: "PERF_Tonheur_Metr", //TODO calculable UG_DEBLAYAGE_PERFORMANCES_DEBLAYAGE_AVEC_LHD_R1700-tonne_par_heure / UG_DEBLAYAGE_DISTANCE-m
