@@ -37,8 +37,8 @@ export const PerformanceEngins = ({
     <Fragment>
       <h4 className="relative flex items-center justify-center gap-2 py-1 text-center text-lg font-semibold">
         {title}
-        {attributes[activeTab].url && (
-          <Link to={attributes[activeTab].url} className="">
+        {attributes?.[activeTab]?.url && (
+          <Link to={attributes?.[activeTab]?.url || ""} className="">
             <Button variant={"ghost"}>
               <FilePieChart size={20} />
             </Button>
