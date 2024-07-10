@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { MenuIcon, Minimize, Shrink } from "lucide-react";
+import { MenuIcon, Minimize, Shrink, XIcon } from "lucide-react";
 import { OverviewButton } from "./components/overview-button";
 import ProjectPlaningButton from "./components/project-planing-button";
 import { EsgButton } from "./components/esg-button";
@@ -25,6 +25,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { DialogClose } from "@radix-ui/react-dialog";
 
 export default function MobilePage() {
   const [loading, setLoading] = useState(true);
@@ -190,6 +191,40 @@ function Location({ location }: { location: TLocation }) {
                     <DialogTrigger className="absolute inset-0" />
                     <DialogContent
                       showCloseButton={false}
+                      className="dark z-[100] aspect-video max-h-[80vh] w-[min(60rem,90vw)] max-w-none overflow-hidden rounded-xl border-none object-contain p-0 text-foreground opacity-90"
+                    >
+                      <DialogClose asChild>
+                        <Button
+                          size={"icon"}
+                          variant={"ghost"}
+                          className="absolute right-1 top-1 z-[1002] opacity-25 hover:opacity-100"
+                        >
+                          <XIcon size={20} />
+                        </Button>
+                      </DialogClose>
+                      {item.type === "video" && (
+                        <video
+                          // autoPlay
+                          onPlay={(e) => {
+                            // toggle fullscreen
+                            const target = e.target as HTMLVideoElement;
+                            if (target.requestFullscreen) {
+                              target.requestFullscreen().catch((e) => {
+                                console.error(e);
+                              });
+                            }
+                          }}
+                          className="w-full object-contain"
+                          controls
+                          src={
+                            `${env.VITE_LOCAL_VIDEOS === "true" ? "/ignore/" : "https://managem.digieye.io/statics/"}` +
+                            item?.url
+                          }
+                        />
+                      )}
+                    </DialogContent>
+                    {/* <DialogContent
+                      showCloseButton={false}
                       className="back dark w-fit max-w-none border-none !p-0 text-foreground"
                       style={{
                         clipPath:
@@ -229,7 +264,7 @@ function Location({ location }: { location: TLocation }) {
                           )}
                         </div>
                       </div>
-                    </DialogContent>
+                    </DialogContent> */}
                   </Dialog>
                 )}
                 {item.type === "link" && item.url && (
