@@ -1,4 +1,4 @@
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useAppContext } from "@/Context";
 
 import useSWR from "swr";
@@ -53,7 +53,7 @@ export const GroupedHorizontalBarChart = ({
           };
         }),
       );
-      const groupedData = res1.reduce((acc: any, entry: any) => {
+      const groupedData = res1?.reduce((acc: any, entry: any) => {
         if (!acc[entry.group]) {
           acc[entry.group] = [];
         }

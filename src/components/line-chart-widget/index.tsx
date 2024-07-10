@@ -26,6 +26,7 @@ type Props = Widget & {
   children?: ReactNode;
   selectionDate?: boolean;
   max?: number;
+  preLoadData?: HistoryType[];
 };
 
 export default function LineChartWidget({
@@ -33,6 +34,7 @@ export default function LineChartWidget({
   selectionDate = true,
   correction,
   max,
+  preLoadData,
   ...props
 }: Props) {
   const { backendApi, dateRange } = useAppContext();
@@ -52,7 +54,7 @@ export default function LineChartWidget({
         telemetries.map(async ({ serial, name, calculated }, idx) => {
           if (telemetries[idx].data) return [];
           if (!name && !calculated) return [];
-
+          if (preLoadData) return preLoadData;
           const { results } = await backendApi.findMany<HistoryType>(
             "/dpc-history/api/history",
             {
@@ -73,7 +75,7 @@ export default function LineChartWidget({
           return results;
         }),
       );
-      const res1 = res.map((item, index) => {
+      const res1 = res?.map((item, index) => {
         const newData: { x: Date; y: number }[] = [];
         const { calculated, name } = telemetries[index];
 
@@ -121,7 +123,7 @@ export default function LineChartWidget({
           name: telemetries[index].label || telemetries[index].name,
           type: telemetries[index].area ? "area" : "line",
           nameTelemetry: telemetries[index].name,
-          color: telemetries[index].color,
+          color: telemetries[index].color || "#ffffff",
           data: telemetries[index].data || newData,
         };
       });
@@ -129,17 +131,17 @@ export default function LineChartWidget({
         const res2 = [];
         if (props.moyenne === "combined") {
           const allDates = res1.flatMap((item) =>
-            item.data.map((item) => item.x),
+            item?.data?.map((item) => item.x),
           );
           const allData = res1.flatMap((item) =>
-            item.data.map((item) => item.y),
+            item?.data?.map((item) => item.y),
           );
-          const moyenne = allData.reduce((a, b) => a + b, 0) / allData.length;
+          const moyenne = allData?.reduce((a, b) => a + b, 0) / allData.length;
           res2.push({
             name: "Moyenne",
             type: "line",
             color: getRandomColor(),
-            data: allDates.map((item) => ({
+            data: allDates?.map((item) => ({
               x: item,
               y: Number(moyenne),
             })),
@@ -149,7 +151,7 @@ export default function LineChartWidget({
         }
         return [...(res1 || []), ...(res2 || [])];
       }
-      return res1.map((item) => ({
+      return res1?.map((item) => ({
         name: item.name,
         type: item.type,
         data: item.data,
@@ -199,17 +201,17 @@ export default function LineChartWidget({
         dataLabels: { enabled: false },
         fill: {
           type: "solid",
-          opacity: telemetries.map((item) => (item.area ? 0.33 : 1)),
+          opacity: telemetries?.map((item) => (item.area ? 0.33 : 1)),
         },
 
         legend:
           legendPosition != "none"
             ? {
                 position: legendPosition,
-                markers: {
-                  width: 26,
-                  height: 12,
-                },
+                // markers: {
+                //   width: 26,
+                //   height: 12,
+                // },
                 fontWeight: 600,
                 fontSize: "12px",
               }
@@ -247,8 +249,10 @@ export default function LineChartWidget({
             show: true,
             formatter: function (value) {
               return value < 2
-                ? value.toFixed(1)
-                : Math.ceil(value).toString() + (telemetries[0].unit || "");
+                ? value.toLocaleString("en", { maximumFractionDigits: 2 })
+                : Math.ceil(value).toLocaleString("en", {
+                    maximumFractionDigits: 2,
+                  }) + (telemetries[0].unit || "");
             },
             style: {
               fontSize: "12px",

@@ -32,7 +32,7 @@ export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
             nameLabelTelemetry,
             nameTelemetry,
             serial,
-            bfsValue
+            bfsValue,
           } = device;
           const resWithouyAvg = await backendApi.findMany<HistoryType>(
             "/dpc-history/api/history",
@@ -51,7 +51,7 @@ export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
               },
             },
           );
-          const sum = resWithouyAvg.results.reduce(
+          const sum = resWithouyAvg?.results?.reduce(
             (acc, curr) => acc + Number(curr[nameTelemetry]),
             0,
           );
@@ -84,7 +84,9 @@ export const D3DonutChart = ({ attribute }: D3DonutChartProps) => {
             color: color,
             name: nameLabelTelemetry,
             value: avg,
-            valueBfs: bfsValue ? bfsValue : (res2 as any)?.results[0]?.value || undefined,
+            valueBfs: bfsValue
+              ? bfsValue
+              : (res2 as any)?.results[0]?.value || undefined,
             bfsLabel: res2 && bfsLabelTelemetry,
           };
         }),

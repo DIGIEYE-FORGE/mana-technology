@@ -27,6 +27,7 @@ const Formatter = ({
   if (displayFormat === "boolean") return <>{value ? "true" : "false"}</>;
   if (displayFormat === "date")
     return <>{format(new Date(stringify(value)), "PP")}</>;
+  if (displayFormat === "onOff") return <>{value ? "ON" : "OFF"}</>;
   if (displayFormat === "image")
     return (
       <Avatar className="w-full rounded-none">
@@ -46,12 +47,14 @@ export default function Telemetry({
   telemetry,
   displayFormat,
   correction,
+  preLoadData,
 }: {
   telemetry: {
     name: string;
     serial: string;
     value?: JsonValue;
   };
+  preLoadData?: LastTelemetry[];
   correction?: number;
 
   displayFormat?: TableDisplayForma;
@@ -61,6 +64,10 @@ export default function Telemetry({
     `telemetry?${JSON.stringify({ telemetry })}`,
     async () => {
       if (telemetry.value !== undefined) return { value: telemetry.value };
+      if (preLoadData) {
+        const item = preLoadData.find((it) => it.name === telemetry.name);
+        if (item) return item;
+      }
       const res = await backendApi.findMany<LastTelemetry>("lasttelemetry", {
         where: {
           name: telemetry.name,
@@ -77,6 +84,6 @@ export default function Telemetry({
 
   if (isLoading) return <Loader />;
   if (error) return "Something went wrong.";
-  if (!data) return "No data";
+  if (data === undefined || data === null) return "No data";
   return <Formatter value={value} displayFormat={displayFormat} />;
 }

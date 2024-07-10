@@ -54,13 +54,16 @@ export const AverageCircularProgressChart = ({
             },
           );
           return {
-            sum: res.results.reduce((acc, curr) => acc + Number(curr[name]), 0),
+            sum: (res.results || [])?.reduce(
+              (acc, curr) => acc + Number(curr[name]),
+              0,
+            ),
             total: res.results.length,
           };
         }),
       );
-      const sum = res.reduce((acc, curr) => acc + curr.sum, 0);
-      const total = res.reduce((acc, curr) => acc + curr.total, 0);
+      const sum = res?.reduce((acc, curr) => acc + curr.sum, 0);
+      const total = res?.reduce((acc, curr) => acc + curr.total, 0);
       return sum / total;
     },
     {

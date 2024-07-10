@@ -23,6 +23,7 @@ import FlipCountdown from "@rumess/react-flip-countdown";
 import React from "react";
 import { MainProjectUpBar } from "./components/up-bar";
 import VideoDialog from "./video-dialog";
+import FullscreenVideo from "./full-screen-video";
 
 export function RotatingModel({
   modelRef,
@@ -60,7 +61,7 @@ const magazine = [
   {
     name: "OPEN PIT",
     top: "32%",
-    right: "17%",
+    right: "18%",
     type: "image",
     image: "/screen2.png",
     click: "Open Pit",
@@ -123,12 +124,11 @@ const data = [
   {
     title: "Plant",
     type: "video",
-    image: "/usins1.png",
     position: {
       top: "17%",
       left: "46%",
     },
-    url: "/statics/3dvideo.mp4",
+    url: "3dvideo.mp4",
     background: "url(/video.svg)",
     positionModel: {
       side: "top",
@@ -155,12 +155,11 @@ const data = [
   {
     title: "Pit SUD",
     type: "video",
-    image: "/screen1.png",
     position: {
       bottom: "20%",
       right: "16%",
     },
-    url: "/sud_vd.mp4",
+    url: "sud_vd.mp4",
     positionModel: {
       side: "left",
       align: "start",
@@ -171,12 +170,11 @@ const data = [
   {
     title: " Pit EST",
     type: "video",
-    image: "/screen1.png",
     position: {
       top: "14%",
       right: "30%",
     },
-    url: "/est_vd.mp4",
+    url: "est_vd.mp4",
     positionModel: {
       side: "left",
       align: "start",
@@ -188,12 +186,11 @@ const data = [
   {
     title: " Open Pit",
     type: "video",
-    image: "/screen1.png",
     position: {
       top: "45%",
       right: "9%",
     },
-    url: "/statics/op.mp4",
+    url: "op.mp4",
     positionModel: {
       side: "left",
       align: "start",
@@ -201,6 +198,24 @@ const data = [
     },
     background: "url(/video.svg)",
   },
+
+  ////////link/////////////
+  // {
+  //   type: "link",
+  //   image: "screen1.svg",
+  //   to: "/vr-underground",
+  //   position: {
+  //     bottom: "-7%",
+  //     right: "32.5%",
+  //   },
+  //   positionModel: {
+  //     side: "left",
+  //     align: "end",
+  //     sideOffset: 20,
+  //   },
+  //   background: "url(/vr-icon.svg)",
+  // },
+  ///////
   {
     title: "Electrical power line",
     type: "image",
@@ -256,7 +271,7 @@ const data = [
       Capacity: "3,6 mtpa",
       ["Processing method"]: "Flotation",
       ["Product"]: "Copper Silver concentrate",
-      ["Production capacity"]: "120 Ktonnes per year",
+      ["Production capacity"]: "120 Kt per year",
     },
     background: "url(/vector.png)",
     position: {
@@ -330,7 +345,7 @@ const data = [
 const tree = {
   titile: "Underground Mine",
   attribute: {
-    "Mineral reserves": "54 Mt @ 0,9 %Cu et 19 g/t Ag",
+    "Mineral reserves": "59 Mt @ 0,9 %Cu et 19 g/t Ag",
     ["Mining methods"]: "R&P /LHOS",
     ["Total development"]: "230 km lateral",
     ["Daily production capacity"]: "10800 tpd from 2028",
@@ -374,7 +389,7 @@ export default function MainProjectPage() {
             hideYear
             // hideMonth
             theme="dark"
-            endAt={"2025-05-14 00:00:00"}
+            endAt={"2025-05-16 00:00:00"}
           />
         </div>
         <div className="flex h-full w-full flex-col gap-4">
@@ -530,12 +545,13 @@ export default function MainProjectPage() {
                         </div>
                         {item?.type === "video" && item?.url ? (
                           <div>
-                            <video
-                              autoPlay
-                              className="aspect-video w-full object-contain opacity-90"
-                              controls
-                              src={item.url}
+                            <FullscreenVideo
+                              src={
+                                `${env.VITE_LOCAL_VIDEOS === "true" ? "/ignore/" : "https://managem.digieye.io/statics/"}` +
+                                item?.url
+                              }
                             />
+
                             {item.title == "Plant" && (
                               <div className="absolute left-[38%] top-[12%] w-fit">
                                 <VideoDialog />
@@ -543,14 +559,12 @@ export default function MainProjectPage() {
                             )}
                           </div>
                         ) : item?.type === "image" && item?.url ? (
-                          // <div className="relative aspect-video h-full w-full">
                           <img
                             className="h-full w-full object-contain"
                             src={item.url}
                             alt={item.title}
                           />
-                        ) : // </div>
-                        null}
+                        ) : null}
                       </div>
                     </div>
                   </PopoverContent>
@@ -728,6 +742,20 @@ export default function MainProjectPage() {
                 }}
               ></div>
             </Link>
+            <Link to={`/vr-underground`}>
+              <div
+                className="absolute h-[40px] w-[40px] xl:h-[45px] xl:w-[45px] 2xl:h-[64px] 2xl:w-[67px]"
+                style={{
+                  top: "-8%",
+                  left: "64%",
+                  cursor: "pointer",
+                  background: "url(/vr-icon.svg)",
+                  backgroundSize: "contain",
+                  backgroundRepeat: "no-repeat",
+                }}
+              ></div>
+            </Link>
+
             <Popover>
               <PopoverTrigger asChild>
                 <div
@@ -774,11 +802,12 @@ export default function MainProjectPage() {
                     <div className="ml-auto flex h-14 w-[64%] shrink-0 items-center px-6 text-2xl font-semibold">
                       Underground Mine
                     </div>
-
-                    <video
-                      className="aspect-video w-full object-contain opacity-90"
-                      controls
-                      src={"Underground.mp4"}
+                    <FullscreenVideo
+                      //  src={"Underground.mp4"}
+                      src={
+                        `${env.VITE_LOCAL_VIDEOS === "true" ? "/ignore/" : "https://managem.digieye.io/statics/"}` +
+                        "Underground.mp4"
+                      }
                     />
                   </div>
                 </div>

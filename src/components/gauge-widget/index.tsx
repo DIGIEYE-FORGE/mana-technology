@@ -23,7 +23,10 @@ export type GaugeWidgetData = {
   value?: number;
 };
 
-export default function GaugeWidget({ attributes }: Widget) {
+export default function GaugeWidget({
+  attributes,
+  preLoadData,
+}: Widget & { preLoadData?: LastTelemetry[] }) {
   const { backendApi } = useAppContext();
 
   const {
@@ -43,13 +46,17 @@ export default function GaugeWidget({ attributes }: Widget) {
     `${serial}/${telemetryName}`,
     async () => {
       if (attributes?.value) return { value: attributes.value };
+      if (preLoadData) {
+        const item = preLoadData.find((it) => it.name === telemetryName);
+        if (item) return { value: item.value };
+      }
       if (!serial || !telemetryName) return null;
 
       const { results } = await backendApi.findMany<LastTelemetry>(
         "lasttelemetry",
         {
-          where: { device: { serial, name: telemetryName } },
-          select: { lastTelemetries: { where: { name } } },
+          where: { device: { serial }, name: telemetryName },
+          // select: { lastTelemetries: { where: { name } } },
         },
       );
 
@@ -67,7 +74,7 @@ export default function GaugeWidget({ attributes }: Widget) {
 
   const sortedArcs = stops?.sort((a, b) => a.stop - b.stop);
   const max = stops.at(-1)?.stop || 100;
-  const arcsLength = sortedArcs.reduce((acc, arc, index, arr) => {
+  const arcsLength = sortedArcs?.reduce((acc, arc, index, arr) => {
     if (index === 0) return [arc.stop];
     const lastArc = arr[index - 1];
     const arcLength = arc.stop - lastArc.stop;
@@ -75,7 +82,7 @@ export default function GaugeWidget({ attributes }: Widget) {
     return acc;
   }, [] as number[]);
 
-  const colors = sortedArcs.map((arc) => arc.color);
+  const colors = sortedArcs?.map((arc) => arc.color);
 
   if (isLoading)
     return (

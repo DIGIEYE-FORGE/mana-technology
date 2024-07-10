@@ -14,7 +14,17 @@ import { cn } from "@/lib/utils";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Minimize, Shrink } from "lucide-react";
+import { MenuIcon, Minimize, Shrink } from "lucide-react";
+import { OverviewButton } from "./components/overview-button";
+import ProjectPlaningButton from "./components/project-planing-button";
+import { EsgButton } from "./components/esg-button";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 export default function MobilePage() {
   const [loading, setLoading] = useState(true);
@@ -239,7 +249,7 @@ function Location({ location }: { location: TLocation }) {
             backgroundRepeat: "no-repeat",
           }}
         >
-          <h5 className="col-span-2 font-bold">{info.title}</h5>
+          <h5 className="col-span-2 font-bold text-yellow-400">{info.title}</h5>
           {Object.entries(info.data).map(([key, value], index) => (
             <React.Fragment key={index}>
               <div className="whitespace-nowrap">{key}:</div>
@@ -266,13 +276,57 @@ export function UpBar() {
   }, [fullScreen]);
 
   return (
-    <div className="group sticky top-0 z-[100] flex h-up-bar w-full shrink-0 items-center justify-end gap-2 border-b px-6 backdrop-blur">
+    <div className="px- group sticky top-0 z-[100] flex h-up-bar w-full shrink-0 items-center justify-end gap-2 border-b px-2 backdrop-blur md:px-6">
       <div className="mr-auto flex gap-4">
         <img src="/logo.svg" alt="logo" className="max-w-[30%]" />
-        <span className="h-3/4 text-balance border-l py-3 pl-4 font-ethnocentric text-[10px] font-bold lg:text-lg">
+        <span className="h-3/4 text-balance border-l py-3 pl-4 text-[10px] font-bold lg:font-ethnocentric lg:text-lg">
           Tizert Project Digital Twin
         </span>
       </div>
+      <Sheet>
+        <SheetTrigger>
+          <Button variant={"ghost"} size={"icon"} className="flex lg:hidden">
+            <MenuIcon size={24} />
+          </Button>
+        </SheetTrigger>
+        <SheetContent className="dark z-[101] w-full max-w-none border-none bg-card/10 text-foreground backdrop-blur">
+          <SheetHeader>
+            <SheetTitle>
+              <img src="/logo.svg" alt="logo" />
+            </SheetTitle>
+          </SheetHeader>
+          <div className="flex flex-col gap-4 py-6">
+            <OverviewButton
+              variant={"ghost"}
+              className="justify-start gap-2 lg:flex"
+            >
+              Project Overview
+            </OverviewButton>
+            <ProjectPlaningButton
+              variant={"ghost"}
+              className="justify-start gap-2 lg:flex"
+            >
+              <span>Project Planning</span>
+            </ProjectPlaningButton>
+            <EsgButton
+              variant={"ghost"}
+              className="justify-start gap-2 lg:flex"
+            >
+              <span>ESG</span>
+            </EsgButton>
+          </div>
+        </SheetContent>
+      </Sheet>
+      <OverviewButton variant={"ghost"} className="hidden gap-2 2xl:flex">
+        Project Overview
+      </OverviewButton>
+      <ProjectPlaningButton variant={"ghost"} className="hidden gap-2 2xl:flex">
+        <span>Project Planning</span>
+      </ProjectPlaningButton>
+      <EsgButton variant={"ghost"} className="hidden gap-2 2xl:flex">
+        <span>ESG</span>
+      </EsgButton>
+
       <Button
         onClick={() => {
           setFullScreen(!fullScreen);

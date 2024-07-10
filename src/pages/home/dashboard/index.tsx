@@ -24,7 +24,7 @@ export default function HomeDashboard() {
                   serial: "JZVATMKQ1A8DA2P1",
                 },
                 {
-                  name: "EST_REALISE_MIENRAI",
+                  name: "EST_REALISE_MINERAI",
                   unit: "T",
                   color: "#B98EFF",
                   label: "Minerai Realisé",
@@ -61,7 +61,7 @@ export default function HomeDashboard() {
                   area: false,
                   name: "EST_PLANIFIE_ROCHE",
                   color: "#78F6EA",
-                  label: "Cumulatif Planifié",
+                  label: "Planifié (Cumulé)",
                   serial: "JZVATMKQ1A8DA2P1",
                   accumulated: true,
                 },
@@ -70,7 +70,7 @@ export default function HomeDashboard() {
                   area: true,
                   name: "EST_REALISE_ROCHE_Ton",
                   color: "#B98EFF",
-                  label: "Cumulatif Realisé",
+                  label: "Réalisé (Cumulé)",
                   serial: "D5KP29KL463AZXWE",
                 },
               ],
@@ -129,19 +129,19 @@ export default function HomeDashboard() {
                     name: "SUD4_REALISEORE_HG_SULF",
                     serial: "PI6PQ8SEZC4BWRP3",
                     label: "HG",
-                    color: "#FFDC8C",
+                    color: "#FF5C5C",
                   },
                   {
                     name: "SUD4_REALISE_ORE_MG_SULF",
                     serial: "PI6PQ8SEZC4BWRP3",
                     label: "MG",
-                    color: "#42F5FF",
+                    color: "#8AFF8A",
                   },
                   {
                     name: "SUD4_REALISE_ORE_LG_SULF",
                     serial: "PI6PQ8SEZC4BWRP3",
                     label: "LG",
-                    color: "#FFC8FF",
+                    color: "#5C5CFF",
                   },
                 ],
               },
@@ -152,19 +152,19 @@ export default function HomeDashboard() {
                     name: "SUD4_REALISE_ORE_HG_OXYD",
                     serial: "PI6PQ8SEZC4BWRP3",
                     label: "HG",
-                    color: "#FFDC8C",
+                    color: "#FF5C5C",
                   },
                   {
                     name: "SUD4_REALISE_ORE_MG_OXYD",
                     serial: "PI6PQ8SEZC4BWRP3",
                     label: "MG",
-                    color: "#42F5FF",
+                    color: "#8AFF8A",
                   },
                   {
                     name: "SUD4_REALISE_ORE_LG_OXYD",
                     serial: "PI6PQ8SEZC4BWRP3",
                     label: "LG",
-                    color: "#FFC8FF",
+                    color: "#5C5CFF",
                   },
                 ],
               },
@@ -174,9 +174,9 @@ export default function HomeDashboard() {
       </Card>
       <Card className="col-span-3 flex items-center justify-center overflow-hidden text-3xl font-bold xl:row-span-2">
         <img
-          src="/est11.jpeg"
+          src="/est11.png"
           alt="Logo"
-          className="h-full w-full object-cover"
+            className="h-full w-full object-contain"
         />
       </Card>
       <Card className="col-span-full flex flex-col p-4 xl:col-span-6">
@@ -195,10 +195,7 @@ export default function HomeDashboard() {
                 displayName: "Quantité d'explosif tirée (kg)",
                 telemetryName: "QUNTITE_EXPLOSIF_TIRE",
               },
-              {
-                displayName: "Zone de Tir",
-                telemetryName: "ZONE DE TIRE",
-              },
+
               {
                 displayName: "Tonnage Roche Abattu Minerai (t)",
                 telemetryName: "TONNAE_MINERAI_ABATTU",

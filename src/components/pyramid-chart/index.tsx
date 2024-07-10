@@ -6,7 +6,10 @@ function trapezoidPath(height: number, topBase: number, bottomBase: number) {
 }
 
 function calculateStyles(data: any) {
-  const totalArea = data.reduce((acc: any, entry: any) => acc + entry.value, 0);
+  const totalArea = data?.reduce(
+    (acc: any, entry: any) => acc + entry.value,
+    0,
+  );
 
   let areaAcc = 0;
   let prevSizesCoef = 0;

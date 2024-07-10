@@ -26,7 +26,7 @@ export default function BarChartWidget(props: Props) {
     async () => {
       if (!dateRange?.from || telemetries.length === 0) return [];
       const res = await Promise.all(
-        telemetries.map(async ({ serial, name }, idx) => {
+        telemetries?.map(async ({ serial, name }, idx) => {
           if (telemetries[idx].data) return [];
           const { results } = await backendApi.findMany<HistoryType>(
             "/dpc-history/api/history",
@@ -49,7 +49,7 @@ export default function BarChartWidget(props: Props) {
           return results;
         }),
       );
-      const res1 = res.map((item, index) => {
+      const res1 = res?.map((item, index) => {
         const newData: { x: Date; y: number }[] = [];
         if (telemetries[index].data === undefined) {
           for (let i = 0; i < item.length; i++) {
@@ -73,17 +73,17 @@ export default function BarChartWidget(props: Props) {
         const res2 = [];
         if (props.moyenne === "combined") {
           const allDates = res1.flatMap((item) =>
-            item.data.map((item) => item.x),
+            item.data?.map((item) => item.x),
           );
           const allData = res1.flatMap((item) =>
-            item.data.map((item) => item.y),
+            item.data?.map((item) => item.y),
           );
-          const moyenne = allData.reduce((a, b) => a + b, 0) / allData.length;
+          const moyenne = allData?.reduce((a, b) => a + b, 0) / allData.length;
           res2.push({
             name: "Moyenne",
             type: "line",
             color: getRandomColor(),
-            data: allDates.map((item) => ({
+            data: allDates?.map((item) => ({
               x: item,
               y: moyenne,
             })),
@@ -97,15 +97,15 @@ export default function BarChartWidget(props: Props) {
               (it) => it.nameTelemetry === item.name,
             );
             if (dataTelemetry) {
-              const allDates = dataTelemetry?.data.map((item) => item.x);
-              const allData = dataTelemetry?.data.map((item) => item.y);
+              const allDates = dataTelemetry?.data?.map((item) => item.x);
+              const allData = dataTelemetry?.data?.map((item) => item.y);
               const moyenne =
-                allData.reduce((a, b) => a + b, 0) / allData.length;
+                allData?.reduce((a, b) => a + b, 0) / allData.length;
               res2.push({
                 name: (item.label || item.name) + " (Moyenne)",
                 type: "line",
                 color: getRandomColor(),
-                data: allDates.map((item) => ({
+                data: allDates?.map((item) => ({
                   x: item,
                   y: moyenne,
                 })),
@@ -135,14 +135,14 @@ export default function BarChartWidget(props: Props) {
     <Chart
       options={{
         theme: { mode: "dark" },
-        tooltip: { cssClass: "text-black",},
+        tooltip: { cssClass: "text-black" },
         legend: {
           position: "bottom",
-          markers: { width: 26, height: 12, radius: 8 },
+          // markers: { width: 26, height: 12, radius: 8 },
           fontWeight: 600,
           fontSize: "12px",
         },
-        colors: telemetries.map((item) => item.color),
+        colors: telemetries?.map((item) => item.color),
         plotOptions: {
           bar: {
             horizontal: false,
@@ -152,7 +152,7 @@ export default function BarChartWidget(props: Props) {
           },
         },
         stroke: {
-          width: (data || []).map((item) => (item.type === "line" ? 2.5 : 0)),
+          width: (data || [])?.map((item) => (item.type === "line" ? 2.5 : 0)),
           curve: "smooth",
         },
         grid: {
@@ -189,17 +189,23 @@ export default function BarChartWidget(props: Props) {
         yaxis: {
           min: 0,
           // tickAmount: 4,
+          forceNiceScale: true,
           max: stacked
             ? undefined
             : Math.max(
                 ...(data || []).flatMap((item) =>
-                  item.data.map((item) => item.y),
+                  item?.data?.map((item) => item.y),
                 ),
               ),
           labels: {
             show: true,
             formatter: function (value) {
-              return Math.ceil(value) + " ";
+              return props.ceil
+                ? Math.ceil(value).toLocaleString("en") + " "
+                : value.toLocaleString("en", {
+                    maximumFractionDigits: 2,
+                    minimumFractionDigits: 2,
+                  }) + " ";
             },
             style: {
               fontSize: "12px",

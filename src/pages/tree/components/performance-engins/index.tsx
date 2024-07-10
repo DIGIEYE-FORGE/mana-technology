@@ -2,9 +2,10 @@ import MachineFrame from "@/assets/machine-frame.svg?react";
 import { AverageCircularProgressChart } from "./average-circular-progress-chart";
 import { Fragment, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { MoveLeft, MoveRight } from "lucide-react";
+import { FilePieChart, MoveLeft, MoveRight } from "lucide-react";
 import SwipeableTabs from "@/components/SwipeableTabs";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router-dom";
 
 interface PerformanceEnginsData {
   selectionDate?: boolean;
@@ -12,6 +13,7 @@ interface PerformanceEnginsData {
     name: string;
     image: string;
     iconClassName?: string;
+    url?: string;
     telemetries: {
       name: string;
       label: string;
@@ -33,7 +35,16 @@ export const PerformanceEngins = ({
 
   return (
     <Fragment>
-      <h4 className="py-1 text-center text-lg font-semibold">{title}</h4>
+      <h4 className="relative flex items-center justify-center gap-2 py-1 text-center text-lg font-semibold">
+        {title}
+        {attributes?.[activeTab]?.url && (
+          <Link to={attributes?.[activeTab]?.url || ""} className="">
+            <Button variant={"ghost"}>
+              <FilePieChart size={20} />
+            </Button>
+          </Link>
+        )}
+      </h4>
       <SwipeableTabs
         value={activeTab}
         className="flex h-full w-full items-center"
@@ -42,9 +53,9 @@ export const PerformanceEngins = ({
           return (
             <div
               key={index}
-              className="flex h-full w-full flex-1 items-center justify-evenly"
+              className="relative flex h-full w-full flex-1 items-center justify-evenly"
             >
-              <div className="flex flex-col items-center gap-1">
+              <div className="gap-1n flex flex-col items-center">
                 <div className="relative aspect-square h-20">
                   <MachineFrame className="h-full w-full" />
                   <div

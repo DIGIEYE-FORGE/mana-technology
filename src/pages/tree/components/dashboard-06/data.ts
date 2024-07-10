@@ -20,6 +20,7 @@ export const widgetsData = {
       {
         name: "Transport AD45 01",
         image: "/machine-06.png",
+        url: "/dashboard13",
         telemetries: [
           {
             name: "UG_DUMP_CAT_1_TD",
@@ -38,6 +39,7 @@ export const widgetsData = {
       {
         name: "Transport AD45 02",
         image: "/machine-06.png",
+        url: "/dashboard14",
         telemetries: [
           {
             name: "UG_DUMP_CAT_2_TD",

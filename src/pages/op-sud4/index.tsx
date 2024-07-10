@@ -25,7 +25,7 @@ function DashboardPage3() {
                   serial: "QXYIV05MSG7F079I",
                 },
                 {
-                  name: "SUD4_REALISE_MIENRAI",
+                  name: "SUD4_REALISE_MINERAI",
                   unit: "T",
                   color: "#FEC33A",
                   label: "Minerai Realisé",
@@ -63,7 +63,7 @@ function DashboardPage3() {
                   area: false,
                   name: "SUD4_PLANIFIE_ROCHE",
                   color: "#78F6EA",
-                  label: "Cumulatif Planifié",
+                  label: "Planifié (Cumulé)",
                   serial: "QXYIV05MSG7F079I",
                 },
                 {
@@ -71,7 +71,7 @@ function DashboardPage3() {
                   area: true,
                   name: "SUD4_REALISE_ROCHE",
                   color: "#B98EFF",
-                  label: "Cumulatif Realisé",
+                  label: "Réalisé (Cumulé)",
                   serial: "PI6PQ8SEZC4BWRP3",
                 },
               ],
@@ -131,20 +131,20 @@ function DashboardPage3() {
                     name: "SUD4_REALISEORE_HG_SULF",
                     serial: "PI6PQ8SEZC4BWRP3",
                     label: "HG",
-                    color: "#FFDC8C",
+                    color: "#FF5C5C",
                     // showLabel: true, if you need to show label
                   },
                   {
                     name: "SUD4_REALISE_ORE_MG_SULF",
                     serial: "PI6PQ8SEZC4BWRP3",
                     label: "MG",
-                    color: "#42F5FF",
+                    color: "#8AFF8A",
                   },
                   {
                     name: "SUD4_REALISE_ORE_LG_SULF",
                     serial: "PI6PQ8SEZC4BWRP3",
                     label: "LG",
-                    color: "#FFC8FF",
+                    color: "#5C5CFF",
                   },
                 ],
               },
@@ -155,19 +155,19 @@ function DashboardPage3() {
                     name: "SUD4_REALISE_ORE_HG_OXYD",
                     serial: "PI6PQ8SEZC4BWRP3",
                     label: "HG",
-                    color: "#FFDC8C",
+                    color: "#FF5C5C",
                   },
                   {
                     name: "SUD4_REALISE_ORE_MG_OXYD",
                     serial: "PI6PQ8SEZC4BWRP3",
                     label: "MG",
-                    color: "#42F5FF",
+                    color: "#8AFF8A",
                   },
                   {
                     name: "SUD4_REALISE_ORE_LG_OXYD",
                     serial: "PI6PQ8SEZC4BWRP3",
                     label: "LG",
-                    color: "#FFC8FF",
+                    color: "#5C5CFF",
                   },
                 ],
               },
@@ -176,11 +176,7 @@ function DashboardPage3() {
         </div>
       </Card>
       <Card className="col-span-3 flex items-center justify-center text-3xl font-bold xl:row-span-2">
-        <img
-          src="/sud4.png"
-          alt="Logo"
-          className="h-full w-full object-contain"
-        />
+  
       </Card>
       <Card className="col-span-6 flex flex-col p-4">
         <h3 className="text-center text-lg font-semibold">Suivi des Tirs</h3>

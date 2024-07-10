@@ -110,7 +110,7 @@ export const locations: TLocation[] = [
       data: {
         "Processing method": "Flotation",
         Product: "Copper Silver concentrate",
-        "Production capacity": "120 Ktonnes per year",
+        "Production capacity": "120 Kt per year",
       },
     },
   },
@@ -188,7 +188,7 @@ export const undergroundLocations: TLocation[] = [
         "right-[120%] xl:left-[120%] bottom-1/2 translate-y-1/2 w-[10rem] sm:w-[12rem]  xl:w-[20rem]",
       title: "Underground Mine",
       data: {
-        "Mineral reserves": "54 Mt @ 0,9 %Cu et 19 g/t Ag",
+        "Mineral reserves": "59 Mt @ 0,9 %Cu et 19 g/t Ag",
         "Mining methods": "R&P /LHOS",
         "Total development": "230 km lateral",
         "Daily production capacity": "10800 tpd from 2028",

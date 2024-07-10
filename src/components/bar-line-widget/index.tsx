@@ -33,7 +33,7 @@ export default function BarLineWidget({
     async () => {
       if (telemetries.length === 0) return [];
       const res = await Promise.all(
-        telemetries.map(async ({ serial, name }) => {
+        telemetries?.map(async ({ serial, name }) => {
           const { results } = await backendApi.findMany<HistoryType>(
             "/dpc-history/api/history",
             {
@@ -56,18 +56,21 @@ export default function BarLineWidget({
         }),
       );
       const res1 = [
-        ...res.map((item, index) => ({
+        ...(res || []).map((item, index) => ({
           name: telemetries[index].label || telemetries[index].name,
           nameTelemetry: telemetries[index].name,
           type: telemetries[index].type,
-          data: item.map((item) => ({
+          data: item?.map((item) => ({
             x: new Date(item.createdAt),
-            y: ceil ? Math.ceil(Number(
-                Number(flatten(item)[telemetries[index].name]).toFixed(2),
-              ) * (correction?.[telemetries[index].name] || 1)) :
-              Number(
-                Number(flatten(item)[telemetries[index].name]).toFixed(2),
-              ) * (correction?.[telemetries[index].name] || 1),
+            y: ceil
+              ? Math.ceil(
+                  Number(
+                    Number(flatten(item)[telemetries[index].name]).toFixed(2),
+                  ) * (correction?.[telemetries[index].name] || 1),
+                )
+              : Number(
+                  Number(flatten(item)[telemetries[index].name]).toFixed(2),
+                ) * (correction?.[telemetries[index].name] || 1),
           })),
         })),
       ];
@@ -75,17 +78,17 @@ export default function BarLineWidget({
         const res2 = [];
         if (props.moyenne === "combined") {
           const allDates = res1.flatMap((item) =>
-            item.data.map((item) => item.x),
+            item?.data?.map((item) => item.x),
           );
           const allData = res1.flatMap((item) =>
-            item.data.map((item) => item.y),
+            item?.data?.map((item) => item.y),
           );
-          const moyenne = allData.reduce((a, b) => a + b, 0) / allData.length;
+          const moyenne = allData?.reduce((a, b) => a + b, 0) / allData.length;
           res2.push({
             name: "Moyenne",
             type: "line",
             color: getRandomColor(),
-            data: allDates.map((item) => ({
+            data: allDates?.map((item) => ({
               x: item,
               y: moyenne,
             })),
@@ -94,20 +97,20 @@ export default function BarLineWidget({
           const newTelemetry = telemetries.filter((item) =>
             props.moyenne?.includes(item.name),
           );
-          newTelemetry.forEach((item) => {
+          newTelemetry?.forEach((item) => {
             const dataTelemetry = res1.find(
               (it) => it.nameTelemetry === item.name,
             );
             if (dataTelemetry) {
-              const allDates = dataTelemetry?.data.map((item) => item.x);
-              const allData = dataTelemetry?.data.map((item) => item.y);
+              const allDates = dataTelemetry?.data?.map((item) => item.x);
+              const allData = dataTelemetry?.data?.map((item) => item.y);
               const moyenne =
-                allData.reduce((a, b) => a + b, 0) / allData.length;
+                allData?.reduce((a, b) => a + b, 0) / allData.length;
               res2.push({
                 name: (item.label || item.name) + " (Moyenne)",
                 type: "line",
                 color: getRandomColor(),
-                data: allDates.map((item) => ({
+                data: allDates?.map((item) => ({
                   x: item,
                   y: moyenne,
                 })),
@@ -186,10 +189,12 @@ export default function BarLineWidget({
                   labels: {
                     formatter: function (value) {
                       return ceil
-                        ? Math.ceil(value) + " "
-                        : typeof value === "number" &&
-                            value.toString().includes(".")
-                          ? value.toFixed(2) + " "
+                        ? Math.ceil(value).toLocaleString("en") + " "
+                        : typeof value === "number"
+                          ? value.toLocaleString("en", {
+                              maximumFractionDigits: 2,
+                              minimumFractionDigits: 2,
+                            }) + " "
                           : value + " ";
                     },
                   },
@@ -207,6 +212,7 @@ export default function BarLineWidget({
                     axisBorder: {
                       show: true,
                     },
+                    forceNiceScale: ceil,
                     title: {
                       style: {
                         color: "#008FFB",
@@ -216,10 +222,12 @@ export default function BarLineWidget({
                     labels: {
                       formatter: function (value) {
                         return ceil
-                          ? Math.ceil(value) + " "
-                          : typeof value === "number" &&
-                              value.toString().includes(".")
-                            ? value.toFixed(2) + " "
+                          ? Math.ceil(value).toLocaleString("en") + " "
+                          : typeof value === "number"
+                            ? value.toLocaleString("en", {
+                                maximumFractionDigits: 2,
+                                minimumFractionDigits: 2,
+                              }) + " "
                             : value + " ";
                       },
                     },
@@ -240,10 +248,12 @@ export default function BarLineWidget({
                     labels: {
                       formatter: function (value) {
                         return ceil
-                          ? Math.ceil(value) + " "
-                          : typeof value === "number" &&
-                              value.toString().includes(".")
-                            ? value.toFixed(2) + " "
+                          ? Math.ceil(value).toLocaleString("en") + " "
+                          : typeof value === "number"
+                            ? value.toLocaleString("en", {
+                                maximumFractionDigits: 2,
+                                minimumFractionDigits: 2,
+                              }) + " "
                             : value + " ";
                       },
                     },
@@ -270,7 +280,7 @@ export default function BarLineWidget({
           },
           legend: {
             position: "bottom",
-            markers: { width: 26, height: 12, radius: 8 },
+            // markers: { width: 26, height: 12, radius: 8 },
             fontWeight: 600,
             fontSize: "12px",
           },

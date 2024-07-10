@@ -70,10 +70,10 @@ export const HistoryTable = ({
             page: 1,
             perPage: 20,
           },
-          select: telemetries.map((item) => item.name),
+          select: telemetries?.map((item) => item.name),
           where: {
             serial: {
-              $in: telemetries.map((item) => item.serial),
+              $in: telemetries?.map((item) => item.serial),
             },
             createdAt: {
               $gt: new Date(dateRange?.from as Date),
@@ -107,7 +107,7 @@ export const HistoryTable = ({
               <TableHeader>
                 <TableRow className="hover:bg-transparent">
                   <TableHead className="text-base text-white">Date</TableHead>
-                  {telemetries.map((telemetry) => (
+                  {telemetries?.map((telemetry) => (
                     <TableHead
                       key={telemetry.name}
                       className="text-base text-white"
@@ -118,7 +118,7 @@ export const HistoryTable = ({
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {histories.map((item, index) => (
+                {histories?.map((item, index) => (
                   <TableRow key={index} className="hover:bg-transparent">
                     <TableCell>
                       {format(
@@ -126,7 +126,7 @@ export const HistoryTable = ({
                         "MM/dd/yyyy HH:mm:ss",
                       )}
                     </TableCell>
-                    {telemetries.map((telemetry) => (
+                    {telemetries?.map((telemetry) => (
                       <TableCell key={telemetry.name}>
                         <Formatter
                           value={flatten(item)[telemetry.name]}

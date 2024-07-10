@@ -1,10 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Card } from "@/components/card";
 import { MoteurCard } from "./components/moteurCard";
-// import { BarChart } from "./components/bar-chart";
 import { data, ventilation } from "./data";
-// qualitédair
-// import { QualitAir } from "./components/qualite-air";
 import { VentilationCard } from "./components/ventilation-card";
 import useSWR from "swr";
 import { useEffect, useMemo, useState } from "react";
@@ -12,19 +9,20 @@ import { useAppContext } from "@/Context";
 import Loader from "@/components/loader";
 import { flatten } from "@/utils";
 import io from "socket.io-client";
-import { addHours } from "date-fns";
+import { Button } from "@/components/ui/button";
+import { Timer, TimerOff } from "lucide-react";
 
 const VentilationDashboard1 = () => {
   const { dateRange, backendApi } = useAppContext();
-  const [dataRealTime] = useState(true);
+  const [dataRealTime, setDataRealTime] = useState<boolean>(true);
   const [socketData, setSocketData] = useState<any[]>([]);
+  const [relaod, setReload] = useState<undefined | number>(undefined);
   const fetcher = async () => {
     const res = await backendApi.findMany("/dpc-history/api/history", {
       pagination: {
         page: 1,
         perPage: dataRealTime ? 20 : 1500,
       },
-      // orderBy: "createdAt:asc",
       where: {
         serial: data.serial,
         createdAt: !dataRealTime
@@ -43,32 +41,37 @@ const VentilationDashboard1 = () => {
     isLoading,
     error,
   } = useSWR(
-    `dataHistory${!dataRealTime ? `from=${dateRange?.from}&to=${dateRange?.to}` : `from: ${dateRange?.from}, to: ${dateRange?.to}`}`,
+    `dataHistory${!dataRealTime ? `from=${dateRange?.from}&to=${dateRange?.to}` : `realTime=${dataRealTime} ${relaod}`}`,
     fetcher,
   );
 
   const chartData = useMemo(() => {
+    if (!dataRealTime) {
+      return res;
+    }
     if (res) {
-      return [...res, ...socketData];
+      return [...socketData, ...res].splice(0, 30);
     }
     return null;
-  }, [res, socketData]);
+  }, [res, socketData, dataRealTime]);
 
   useEffect(() => {
+    if (!dataRealTime) return;
     const socket = io("https://ws.managem.digieye.io");
     socket.on("connect", () => {
       console.log("Connected to WebSocket server");
     });
 
+    setReload(new Date().getTime());
     socket.on(`telemetry`, (newData: any) => {
       setSocketData((prev: any) => {
         return [
-          ...prev,
           {
             ...newData,
-            date: addHours(new Date(), -1),
-            createdAt: addHours(new Date(), -1),
+            date: new Date(),
+            createdAt: new Date(),
           },
+          ...prev,
         ];
       });
       console.log("New data received from WebSocket server", newData);
@@ -81,7 +84,7 @@ const VentilationDashboard1 = () => {
     return () => {
       socket.disconnect();
     };
-  }, []);
+  }, [dataRealTime]);
 
   if (isLoading)
     return (
@@ -103,21 +106,21 @@ const VentilationDashboard1 = () => {
         <h1 className="text-lg font-semibold text-orange-300">
           Qualité de l’air
         </h1>
-        {data[0].children.map((child, index) => (
+        {data[0].children?.map((child, index) => (
           <Card key={index} className="flex h-[11rem] w-full flex-col">
             <h1 className="text-center text-lg font-semibold">{child.title}</h1>
             <div className="h-1 flex-1">
               <MoteurCard
                 attributes={child.attributes}
-                val={child.attributes.telemetries.map((telemetry) => {
+                val={child?.attributes?.telemetries?.map((telemetry) => {
                   return {
-                    name: telemetry.label || telemetry.name,
-                    color: telemetry.color,
+                    name: telemetry?.label || telemetry?.name,
+                    color: telemetry?.color,
                     data:
                       ((chartData || []) as any)?.map(
                         (item: Record<string, unknown>) => ({
-                          x: new Date(item.createdAt as any),
-                          y: Number(flatten(item)[telemetry.name]),
+                          x: new Date(item?.createdAt as any),
+                          y: Number(flatten(item)?.[telemetry.name] || 0),
                         }),
                       ) || [],
                   };
@@ -131,16 +134,16 @@ const VentilationDashboard1 = () => {
             <h1 className="text-center text-lg font-semibold">{child.title}</h1>
             <div className="h-1 flex-1">
               <MoteurCard
-                attributes={child.attributes}
-                val={child.attributes.telemetries.map((telemetry) => {
+                attributes={child?.attributes}
+                val={child?.attributes?.telemetries?.map((telemetry) => {
                   return {
-                    name: telemetry.label || telemetry.name,
-                    color: telemetry.color,
+                    name: telemetry?.label || telemetry?.name,
+                    color: telemetry?.color,
                     data:
                       ((chartData || []) as any)?.map(
                         (item: Record<string, unknown>) => ({
-                          x: new Date(item.createdAt as any),
-                          y: Number(flatten(item)[telemetry.name]),
+                          x: new Date(item?.createdAt as any),
+                          y: Number(flatten(item)?.[telemetry.name] || 0),
                         }),
                       ) || [],
                   };
@@ -151,9 +154,30 @@ const VentilationDashboard1 = () => {
         ))}
       </div>
       <div className="flex w-1 min-w-[30rem] flex-1 flex-col gap-4">
-        <h1 className="text-lg font-semibold text-orange-300">
-          Marche Ventilateurs
-        </h1>
+        <div className="flex justify-between gap-4">
+          <h1 className="text-lg font-semibold text-orange-300">
+            Marche Ventilateurs
+          </h1>
+          <Button
+            className="h-[2rem]"
+            variant={"outline"}
+            onClick={() => {
+              setDataRealTime(!dataRealTime);
+            }}
+          >
+            {dataRealTime ? (
+              <div className="flex gap-2">
+                <span>Real Time</span>
+                <Timer className="text-green-500" />
+              </div>
+            ) : (
+              <div className="flex gap-2">
+                <span>History</span>
+                <TimerOff className="text-red-500" />
+              </div>
+            )}
+          </Button>
+        </div>
         <div className="flex h-[11rem] justify-between gap-8">
           <div className="flex flex-col gap-4">
             <div className="flex flex-1 gap-4">
@@ -161,11 +185,11 @@ const VentilationDashboard1 = () => {
                 <VentilationCard
                   {...ventilation[1]}
                   interval={5000}
-                  data={ventilation[1].telemetry.map((t) => {
+                  data={ventilation?.[1]?.telemetry?.map((t) => {
                     return {
                       label: "",
                       value: chartData
-                        ? Number((chartData as any)?.[0][t.name])
+                        ? Number((chartData as any)?.[0]?.[t.name])
                         : 0,
                     };
                   })}
@@ -175,11 +199,11 @@ const VentilationDashboard1 = () => {
                 <VentilationCard
                   {...ventilation[2]}
                   interval={5000}
-                  data={ventilation[2].telemetry.map((t) => {
+                  data={ventilation[2].telemetry?.map((t) => {
                     return {
                       label: "",
                       value: chartData
-                        ? Number((chartData as any)?.[0][t.name])
+                        ? Number((chartData as any)?.[0]?.[t.name])
                         : 0,
                     };
                   })}
@@ -190,11 +214,11 @@ const VentilationDashboard1 = () => {
               <VentilationCard
                 {...ventilation[0]}
                 interval={5000}
-                data={ventilation[0].telemetry.map((t) => {
+                data={ventilation[0]?.telemetry?.map((t) => {
                   return {
                     label: t.label,
                     value: chartData
-                      ? Number((chartData as any)?.[0][t.name])
+                      ? Number((chartData as any)?.[0]?.[t.name])
                       : 0,
                   };
                 })}
@@ -210,7 +234,7 @@ const VentilationDashboard1 = () => {
             />
           </Card>
         </div>
-        {data[1].children.map((child, index) => (
+        {data[1].children?.map((child, index) => (
           <Card key={index} className="flex h-[11rem] w-full flex-col">
             <h1 className="text-center text-lg font-semibold">{child.title}</h1>
             <div className="h-1 flex-1">
@@ -218,7 +242,7 @@ const VentilationDashboard1 = () => {
                 attributes={child.attributes}
                 max={child?.max}
                 min={child?.min}
-                val={child.attributes.telemetries.map((telemetry) => {
+                val={child.attributes.telemetries?.map((telemetry) => {
                   return {
                     name: telemetry.label || telemetry.name,
                     color: telemetry.color,
@@ -226,7 +250,7 @@ const VentilationDashboard1 = () => {
                       ((chartData || []) as any)?.map(
                         (item: Record<string, unknown>) => ({
                           x: new Date(item.createdAt as any),
-                          y: Number(flatten(item)[telemetry.name]),
+                          y: Number(flatten(item)?.[telemetry.name]),
                         }),
                       ) || [],
                   };

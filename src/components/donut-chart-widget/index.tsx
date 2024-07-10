@@ -66,10 +66,10 @@ export default function DonutChartWidget(props: Props) {
           colors: ["transparent"],
         },
         legend: {
-          markers: {
-            width: 26,
-            height: 12,
-          },
+          // markers: {
+          //   width: 26,
+          //   height: 12,
+          // },
           fontWeight: 600,
           fontSize: "12px",
           position: "right",
@@ -78,14 +78,14 @@ export default function DonutChartWidget(props: Props) {
             return name + " " + value.toFixed(0);
           },
         },
-        colors: telemetries.map((t) => t.color || "#000"),
+        colors: telemetries?.map((t) => t.color || "#000"),
         dataLabels: {
           enabled: true,
           formatter: function (val) {
             return Number(val).toFixed(2) + "%";
           },
         },
-        labels: telemetries.map(
+        labels: telemetries?.map(
           (t) => t.label || t.name.split(".").at(-1) || "",
         ),
       }}

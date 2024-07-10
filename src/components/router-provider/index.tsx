@@ -25,6 +25,11 @@ import HsePage from "@/pages/hse";
 import HseDashboard from "@/pages/hse/dashboard";
 import MobilePage from "@/pages/mobile";
 import VentilationDashboard1 from "@/pages/ventilation-dashboard/index1";
+import Dashboard11Page from "@/pages/dashboard11";
+import Dashboard12Page from "@/pages/dashboard12";
+import Dashboard13Page from "@/pages/dashboard13";
+import Dashboard14Page from "@/pages/dashboard14";
+import VrUndergroundPage from "@/pages/360";
 
 const routes: RouteObject[] = [
   {
@@ -65,6 +70,10 @@ const routes: RouteObject[] = [
       {
         path: "main-project",
         element: <MainProjectPage />,
+      },
+      {
+        path: "vr-underground",
+        element: <VrUndergroundPage />,
       },
       {
         path: "underground",
@@ -125,6 +134,22 @@ const routes: RouteObject[] = [
       {
         path: "isel-dev",
         element: <IselDevPage />,
+      },
+      {
+        path: "dashboard11",
+        element: <Dashboard11Page />,
+      },
+      {
+        path: "dashboard12",
+        element: <Dashboard12Page />,
+      },
+      {
+        path: "dashboard13",
+        element: <Dashboard13Page />,
+      },
+      {
+        path: "dashboard14",
+        element: <Dashboard14Page />,
       },
     ],
   },

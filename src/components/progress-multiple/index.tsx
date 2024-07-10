@@ -32,10 +32,10 @@ function ProgressData({ data, sum, className }: ProgressTo) {
   return (
     <div className="flex flex-col gap-2">
       <div className="flex items-center justify-between px-2">
-        {data.map((telemetry, index) => {
+        {(data || [])?.map((telemetry, index) => {
           return (
             <div key={index} className="flex flex-col">
-              {telemetry.value.toFixed(2)}
+              {telemetry.value.toFixed(0)}
             </div>
           );
         })}
@@ -46,7 +46,7 @@ function ProgressData({ data, sum, className }: ProgressTo) {
           className,
         )}
       >
-        {data.map((telemetry, index) => {
+        {data?.map((telemetry, index) => {
           return (
             <div
               className="text-bold flex flex-col items-center justify-center text-white"
@@ -75,17 +75,17 @@ function ProgressData({ data, sum, className }: ProgressTo) {
 }
 
 function ProgressMultiple({ attributes }: props) {
-  const { backendApi } = useAppContext();
+  const { backendApi, dateRange } = useAppContext();
 
   const { data, isLoading, error } = useSWR(
-    `telemetries?${JSON.stringify({ attributes })}`,
+    `telemetries?${JSON.stringify({ attributes, dateRange })}`,
     async () => {
-      if (!attributes?.length) return [];
+      if (!dateRange?.from || !attributes?.length) return [];
       return await Promise.all(
-        attributes.map(async (device) => {
+        attributes?.map(async (device) => {
           const { telemetries } = device;
           const res = await Promise.all(
-            telemetries.map(async (telemetry) => {
+            telemetries?.map(async (telemetry) => {
               const { name, serial } = telemetry;
               const { results } = await backendApi.findMany<HistoryType>(
                 "/dpc-history/api/history",
@@ -97,14 +97,17 @@ function ProgressMultiple({ attributes }: props) {
                   select: [name],
                   where: {
                     serial,
+                    createdAt: {
+                      $gt: new Date(dateRange.from as Date),
+                      $lte: dateRange?.to && new Date(dateRange.to as Date),
+                    },
                   },
                 },
               );
-              const value =
-                results.reduce((acc, curr) => {
-                  const val = typeof curr[name] === "number" ? curr[name] : 0;
-                  return acc + Number(val);
-                }, 0) / results.length;
+              const value = results?.reduce((acc, curr) => {
+                const val = typeof curr[name] === "number" ? curr[name] : 0;
+                return acc + Number(val);
+              }, 0);
               return {
                 value: value,
                 name,
@@ -136,10 +139,10 @@ function ProgressMultiple({ attributes }: props) {
       </div>
     );
   return (
-    <div className="flex flex-col gap-4 overflow-y-auto">
-      {attributes.map((device, index) => {
+    <div className="flex flex-col gap-3 overflow-y-auto">
+      {(attributes || [])?.map((device, index) => {
         const { telemetries, title } = device;
-        const sum = data[index].reduce(
+        const sum = data[index]?.reduce(
           (acc, curr) => acc + curr?.value || 0,
           0,
         );
@@ -148,7 +151,9 @@ function ProgressMultiple({ attributes }: props) {
           <div key={index} className="flex flex-col gap-1">
             <h3 className="font-semibold">{title}</h3>
             <ProgressData
-              data={data[index].map((ele) => {
+              data={data[index]?.map((ele) => {
+                console.log(ele);
+
                 return {
                   value: ele?.value || 0,
                   name: ele?.name || "",
@@ -166,6 +171,28 @@ function ProgressMultiple({ attributes }: props) {
           </div>
         );
       })}
+
+      <div className="flex w-full justify-center gap-7">
+        {/* {data[index].map((ele, index) => {
+          return (
+            <div key={index} className="flex flex-col gap-1">
+              <span className="text-sm">{ele?.name}</span>
+            </div>
+          );
+        })} */}
+        <div className="flex items-center gap-1">
+          <span className="flex h-4 w-4 rounded-full bg-[#bf212f]"></span>
+          <span>HG</span>
+        </div>
+        <div className="flex items-center gap-1">
+          <span className="flex h-4 w-4 rounded-full bg-[#27b376]"></span>
+          <span>MG</span>
+        </div>
+        <div className="flex items-center gap-1">
+          <span className="flex h-4 w-4 rounded-full bg-[#3366ff]"></span>
+          <span>LG</span>
+        </div>
+      </div>
     </div>
   );
 }

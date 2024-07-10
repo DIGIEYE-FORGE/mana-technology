@@ -31,7 +31,7 @@ export const Dashboard4 = () => {
           {widgetsData[2].title}
         </h1>
         <div className="h-1 flex-1">
-          <BarLineWidget yAxis="multiple" attributes={widgetsData[2].attributes} dateRange={dateRange} />
+          <BarLineWidget yAxis="multiple" ceil={false}  attributes={widgetsData[2].attributes} dateRange={dateRange} />
         </div>
       </Card>
       <Card className="col-span-1 flex flex-col p-2">

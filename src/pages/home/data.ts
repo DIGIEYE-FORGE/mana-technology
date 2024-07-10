@@ -44,14 +44,14 @@ export const homePageWidgets: Widget[] = [
           area: false,
           name: "EST_PLANIFIE_ROCHE_CUMUL",
           color: "#ed8936",
-          label: "Cumulative planifié",
+          label: "Planifié (Cumulé)",
           serial: "JZVATMKQ1A8DA2P1",
         },
         {
           area: true,
           name: "EST_REALISE_ROCHE_CUMUL_Ton",
           color: "#4299e1",
-          label: "Cumulative realisé",
+          label: "Réalisé (Cumulé)",
           serial: "D5KP29KL463AZXWE",
         },
       ],
@@ -59,7 +59,7 @@ export const homePageWidgets: Widget[] = [
   },
   {
     type: "barChart",
-    title: "Production Journalière (t)",
+    title: "Production Roche Journalière (t)",
     className:
       "col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 2xl:col-span-5",
     attributes: {
@@ -104,7 +104,7 @@ export const homePageWidgets: Widget[] = [
           serial: "JZVATMKQ1A8DA2P1",
         },
         {
-          name: "EST_REALISE_MIENRAI",
+          name: "EST_REALISE_MINERAI",
           unit: "T",
           color: "#FEC33A",
           label: "MINERAI Realisé",
@@ -203,10 +203,7 @@ export const homePageWidgets: Widget[] = [
           displayName: "",
           telemetryName: "QUNTITE_EXPLOSIF_TIRE",
         },
-        {
-          displayName: "",
-          telemetryName: "ZONE DE TIRE",
-        },
+
         {
           displayName: "",
           telemetryName: "TONNAE_MINERAI_ABATTU",

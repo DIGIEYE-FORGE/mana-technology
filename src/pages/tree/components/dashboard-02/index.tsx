@@ -89,13 +89,6 @@ export const Dashboard2 = () => {
                   serial: "GHZIN57J7EOVXG0C",
                   type: "line",
                 },
-                {
-                  name: "UG_TAUX_ARRACHEMENT_TEMPS_DE_FORATION_BFS",
-                  color: "#cda943",
-                  label: "BFS",
-                  serial: "GHZIN57J7EOVXG0C",
-                  type: "line",
-                },
               ],
             }}
           />
@@ -106,7 +99,7 @@ export const Dashboard2 = () => {
           {widgetsData[6]?.title}
         </h4>
         <div className="relative h-1 flex-1 -translate-y-4">
-          <BarChartWidget ceil={true} attributes={widgetsData[6].attributes} />
+          <BarChartWidget ceil={false} attributes={widgetsData[6].attributes} />
         </div>
       </Card>
     </main>
