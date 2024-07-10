@@ -29,6 +29,7 @@ import Dashboard11Page from "@/pages/dashboard11";
 import Dashboard12Page from "@/pages/dashboard12";
 import Dashboard13Page from "@/pages/dashboard13";
 import Dashboard14Page from "@/pages/dashboard14";
+import VrUndergroundPage from "@/pages/360";
 
 const routes: RouteObject[] = [
   {
@@ -69,6 +70,10 @@ const routes: RouteObject[] = [
       {
         path: "main-project",
         element: <MainProjectPage />,
+      },
+      {
+        path: "vr-underground",
+        element: <VrUndergroundPage />,
       },
       {
         path: "underground",
