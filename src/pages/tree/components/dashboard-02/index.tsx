@@ -89,13 +89,6 @@ export const Dashboard2 = () => {
                   serial: "GHZIN57J7EOVXG0C",
                   type: "line",
                 },
-                {
-                  name: "UG_TAUX_ARRACHEMENT_TEMPS_DE_FORATION_BFS",
-                  color: "#cda943",
-                  label: "BFS",
-                  serial: "GHZIN57J7EOVXG0C",
-                  type: "line",
-                },
               ],
             }}
           />

@@ -84,13 +84,6 @@ export const widgetsData = {
           serial: "GHZIN57J7EOVXG0C",
           type: "bar",
         },
-        {
-          name: "UG_TAUX_ARRACHEMENT_TEMPS_DE_FORATION_BFS",
-          color: "#cda943",
-          label: "BFS",
-          serial: "GHZIN57J7EOVXG0C",
-          type: "bar",
-        },
       ],
     },
   },

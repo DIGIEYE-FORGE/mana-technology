@@ -30,7 +30,10 @@ function VideoDialog() {
             autoPlay
             className="h-full w-full"
             controls
-            src="/statics/timelapse.mp4"
+            src={
+              `${env.VITE_LOCAL_VIDEOS === "true" ? "/ignore/" : "https://managem.digieye.io/statics/"}` +
+              "timelapse.mp4"
+            }
           ></video>
           <DialogClose asChild>
             <Button
