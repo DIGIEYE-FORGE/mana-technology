@@ -1,3 +1,4 @@
+export const serial = "Z4Z1PTA1YFUYXO4M";
 export const widgetData = [
   {
     title: "",
