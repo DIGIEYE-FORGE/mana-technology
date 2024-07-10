@@ -249,8 +249,10 @@ export default function LineChartWidget({
             show: true,
             formatter: function (value) {
               return value < 2
-                ? value.toFixed(1)
-                : Math.ceil(value).toString() + (telemetries[0].unit || "");
+                ? value.toLocaleString("en", { maximumFractionDigits: 2 })
+                : Math.ceil(value).toLocaleString("en", {
+                    maximumFractionDigits: 2,
+                  }) + (telemetries[0].unit || "");
             },
             style: {
               fontSize: "12px",
