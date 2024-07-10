@@ -189,6 +189,7 @@ export default function BarChartWidget(props: Props) {
         yaxis: {
           min: 0,
           // tickAmount: 4,
+          forceNiceScale: true,
           max: stacked
             ? undefined
             : Math.max(
