@@ -271,7 +271,7 @@ export default function DashboardPage() {
                   area: true,
                   name: "EST_PLANIFIE_ROCHE_CUMUL",
                   color: "#E800534D",
-                  label: "Cumulative planifié",
+                  label: "Planifié (Cumulé)",
                   serial: "JZVATMKQ1A8DA2P1",
                 },
               ],
