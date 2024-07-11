@@ -1,3 +1,5 @@
+@import url("leaflet/dist/leaflet.css");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -255,7 +257,6 @@ button:disabled {
   );
   border: 10px solid;
   border-image-slice: 1;
-  border-width: 1px;
   border-image-source: linear-gradient(
     to right,
     transparent,
@@ -271,3 +272,15 @@ button:disabled {
     display: none;
   }
 }
+
+
+// .leaflet-container {
+//   filter: invert(0%) hue-rotate(0) brightness(100%) contrast(100%);
+//   transition: filter 0.5s;
+// }
+// .dark {
+//   .leaflet-container {
+//     filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+//     transition: filter 0.5s;
+//   }
+// }
