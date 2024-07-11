@@ -30,6 +30,7 @@ import Dashboard12Page from "@/pages/dashboard12";
 import Dashboard13Page from "@/pages/dashboard13";
 import Dashboard14Page from "@/pages/dashboard14";
 import VrUndergroundPage from "@/pages/360";
+import FuturePage from "@/pages/future";
 
 const routes: RouteObject[] = [
   {
@@ -66,7 +67,10 @@ const routes: RouteObject[] = [
           },
         ],
       },
-
+      {
+        path: "future",
+        element: <FuturePage />,
+      },
       {
         path: "main-project",
         element: <MainProjectPage />,

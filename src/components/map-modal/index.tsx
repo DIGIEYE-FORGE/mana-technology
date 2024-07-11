@@ -60,7 +60,7 @@ export const MapModal = () => {
           <X className="absolute right-2 top-2" />
         </DialogClose>
         <h2 className="mb-4 text-xl font-bold">
-          Disponibilité Engins pit SUD Location
+          Localisation des engines
         </h2>
         <div className="min-h-[30rem]">
           <MapContainer
