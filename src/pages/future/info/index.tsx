@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const tabs = [
   {
-    title: "Mane of the future",
+    title: "Mine of the future",
     subTabs: [
       {
         title: "",
@@ -16,7 +16,7 @@ const tabs = [
     ],
   },
   {
-    title: "Perfomance and Data architecture",
+    title: "Performance & Data architecture",
     subTabs: [
       {
         title: "",
