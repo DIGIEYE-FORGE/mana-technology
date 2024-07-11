@@ -7,107 +7,46 @@ import { useState } from "react";
 
 const tabs = [
   {
-    title: "timeline",
+    title: "Mine of the future",
     subTabs: [
       {
         title: "",
-        image: "/timeline.svg",
+        image: "/mane-of-the-future.png",
       },
     ],
   },
   {
-    title: "Governance",
-    subTabs: [
-      {
-        title: "Project Governance",
-        image: "/siir.svg",
-      },
-    ],
-  },
-  {
-    title: "Progress",
+    title: "Performance & Data architecture",
     subTabs: [
       {
         title: "",
-        image: "/Progress.png",
+        image: "/performance.png",
       },
     ],
   },
-  {
-    title: "S-curve",
-    subTabs: [
-      {
-        title: "",
-        image: "/curve.png",
-      },
-    ],
-  },
-  {
-    title: "planning",
-    subTabs: [
-      {
-        title: "",
-        image: "/planning1.svg",
-      },
-      {
-        title: "planning",
-        image: "/planning2.svg",
-      },
-    ],
-  },
-  {
-    title: "risk",
-    subTabs: [
-      {
-        title: "risk",
-        image: "/risk.svg",
-      },
-      {
-        title: "risk",
-        image: "/schedule.svg",
-      },
-    ],
-  },
-  {
-    title: "cost ",
-    subTabs: [
-      {
-        title: "cost report",
-        image: "/cost1.svg",
-      },
-      {
-        title: "Earned Value",
-        image: "/cost2.svg",
-      },
-    ],
-  },
-  
 ];
 
-interface ProjectPlaningButtonProps extends ButtonProps {}
+interface OverviewButtonProps extends ButtonProps {}
 
-function ProjectPlaningButton({
-  className,
-  ...props
-}: ProjectPlaningButtonProps) {
+export function InfoButton({ className, ...props }: OverviewButtonProps) {
   const [activeTab, setActiveTab] = useState(0);
   const [activeSubTab, setActiveSubTab] = useState(0);
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className={cn("", className)} {...props}></Button>
+        <Button className={cn("", className)} {...props} />
       </DialogTrigger>
       <DialogContent
         showCloseButton={false}
         className="max dark bottom-0 top-[4rem] flex w-[100%] max-w-none translate-y-0 flex-col rounded-none border-none bg-card/10 p-4 text-foreground backdrop-blur-xl"
         overlayClassName="bg-transparent"
       >
-        <div className="mx-auto flex w-full max-w-[1920px] gap-2">
+        <div className="relative mx-auto flex w-full max-w-[1920px] gap-2">
           {tabs.map((tab, index) => (
             <button
               key={index}
               className={cn(
-                "custom-button flex flex-1 justify-center rounded-lg py-2 text-lg  uppercase transition-colors hover:brightness-125",
+                "custom-button flex flex-1 justify-center rounded-lg py-2 text-lg uppercase transition-colors hover:brightness-125",
                 {
                   "bg-[#00A3FF]/50 hover:brightness-110": activeTab === index,
                 },
@@ -131,7 +70,7 @@ function ProjectPlaningButton({
           </DialogClose>
         </div>
         <div
-          className="mx-auto flex h-1 max-h-[920px] w-full max-w-[1920px] flex-1 flex-col gap-4"
+          className="relative mx-auto flex h-1 max-h-[920px] w-full max-w-[1920px] flex-1 flex-col gap-4"
           style={{
             backgroundImage: "url(/dashboard-frame.png)",
             backgroundRepeat: "no-repeat",
@@ -144,12 +83,10 @@ function ProjectPlaningButton({
                 {tabs[activeTab].subTabs[activeSubTab].title}
               </span>
             </div>
-            <div className="mr-4 mt-5 flex w-[62%] items-center justify-end gap-4 px-6">
+            <div className="mr-4 mt-5 flex w-[62%] items-center px-6">
               {activeSubTab > 0 && (
                 <Button
                   variant={"ghost"}
-                  className="mr-auto"
-                  size={"icon"}
                   onClick={() => setActiveSubTab(activeSubTab - 1)}
                 >
                   <MoveLeft className="h-6 w-6" />
@@ -158,7 +95,7 @@ function ProjectPlaningButton({
               {activeSubTab < tabs[activeTab].subTabs.length - 1 && (
                 <Button
                   variant={"ghost"}
-                  size={"icon"}
+                  className="ml-auto"
                   onClick={() => setActiveSubTab(activeSubTab + 1)}
                 >
                   <MoveRight className="h-6 w-6" />
@@ -166,11 +103,11 @@ function ProjectPlaningButton({
               )}
             </div>
           </div>
-          <div className="mb-8 ml-16 mr-8 flex h-1 flex-1 justify-center">
+          <div className="mb-8 ml-16 mr-8 h-1 flex-1">
             <img
               src={tabs[activeTab].subTabs[activeSubTab].image}
               alt={tabs[activeTab].subTabs[activeSubTab].title}
-              className="h-full"
+              className="h-full w-full"
             />
           </div>
         </div>
@@ -178,5 +115,3 @@ function ProjectPlaningButton({
     </Dialog>
   );
 }
-
-export default ProjectPlaningButton;
