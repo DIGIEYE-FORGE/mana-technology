@@ -29,7 +29,7 @@ const tabs = [
     subTabs: [
       {
         title: "",
-        image: "/Progress.png",
+        image: "/Progress1.png",
       },
     ],
   },
