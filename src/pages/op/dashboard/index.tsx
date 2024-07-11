@@ -6,6 +6,7 @@ import BarChartWidget from "@/components/bar-chart-widget";
 import MultiProgressWidget from "@/components/multi-progress-widget";
 import ProgressMultiple from "@/components/progress-multiple";
 import BarLineWidget from "@/components/bar-line-widget";
+import { MapModal } from "@/components/map-modal";
 
 export default function HomeDashboard() {
   return (
@@ -121,7 +122,7 @@ export default function HomeDashboard() {
         <ProgressAccumulation
           attributes={{
             targetSerial: "TIRSIL71OBOT4UB4",
-            progressSerial:"TIRSIL71OBOT4UB4",
+            progressSerial: "TIRSIL71OBOT4UB4",
             progressColor: "#FF5AF1",
             currentTargetColor: "#727DC6",
             progressTelemetryName: "REALISE_ROCHE_CUMUL",
@@ -398,9 +399,12 @@ export default function HomeDashboard() {
         />
       </Card>
       <Card className="col-span-3 row-span-3 flex flex-col gap-3 p-4 lg:col-span-6 xl:col-span-3">
-        <h3 className="text-center text-lg font-semibold">
-          Disponibilité Engins pit SUD
-        </h3>
+        <div className="flex items-center justify-end gap-5">
+          <h3 className="text-center text-lg font-semibold">
+            Disponibilité Engins pit SUD
+          </h3>
+          <MapModal />
+        </div>
         <MultiProgressWidget
           attributes={{
             telemetries: [
