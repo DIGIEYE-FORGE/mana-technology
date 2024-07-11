@@ -2,7 +2,7 @@ import { Button, ButtonProps } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { DialogClose } from "@radix-ui/react-dialog";
-import { MoveLeft, MoveRight, XIcon } from "lucide-react";
+import { ChevronLeftIcon, ChevronRightIcon, XIcon } from "lucide-react";
 import { useState } from "react";
 
 const tabs = [
@@ -29,7 +29,7 @@ const tabs = [
     subTabs: [
       {
         title: "",
-        image: "/usins.png",
+        image: "/Progress.png",
       },
     ],
   },
@@ -38,7 +38,7 @@ const tabs = [
     subTabs: [
       {
         title: "",
-        image: "/Progress.png",
+        image: "/curve.png",
       },
     ],
   },
@@ -94,14 +94,14 @@ function ProjectPlaningButton({
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className={cn("", className)} {...props}></Button>
+        <Button className={cn("", className)} {...props} />
       </DialogTrigger>
       <DialogContent
         showCloseButton={false}
-        className="dark bottom-0 top-[4rem] z-[102] flex w-[100%] max-w-none translate-y-0 flex-col rounded-none border-none bg-card/10 p-4 text-foreground backdrop-blur-xl"
+        className="max over dark bottom-0 top-[4rem] z-[102] flex w-[100%] max-w-none translate-y-0 flex-col gap-2 rounded-none border-none bg-card/10 p-4 text-foreground backdrop-blur-xl lg:gap-4"
         overlayClassName="bg-transparent"
       >
-        <div className="hide-scrollbar relative mx-auto flex w-full max-w-[1920px] gap-2 overflow-x-auto">
+        <div className="hide-scrollbar relative mx-auto flex w-full max-w-[1920px] shrink-0 gap-2 overflow-x-auto">
           {tabs.map((tab, index) => (
             <button
               key={index}
@@ -130,50 +130,22 @@ function ProjectPlaningButton({
           </DialogClose>
         </div>
         <div
-          className="relative mx-auto flex h-1 max-h-[16rem] w-full max-w-[1920px] flex-1 flex-col gap-4 2xl:max-h-[920px]"
+          className="max-h relative mx-auto flex aspect-video max-h-[calc(100%-2rem)] w-full max-w-[1920px] flex-col gap-4"
           style={{
             backgroundImage: "url(/dashboard-frame.png)",
             backgroundRepeat: "no-repeat",
             backgroundSize: "100% 100%",
           }}
         >
-          <div className="hidden h-20 justify-between lg:flex">
-            <div className="mb-5 ml-16 flex items-center">
-              <span className="text-2xl font-bold first-letter:uppercase">
-                {tabs[activeTab].subTabs[activeSubTab].title}
-              </span>
-            </div>
-            <div className="mr-4 mt-5 flex w-[62%] items-center justify-end gap-4 px-6">
-              {activeSubTab > 0 && (
-                <Button
-                  variant={"ghost"}
-                  className="mr-auto"
-                  size={"icon"}
-                  onClick={() => setActiveSubTab(activeSubTab - 1)}
-                >
-                  <MoveLeft className="h-6 w-6" />
-                </Button>
-              )}
-              {activeSubTab < tabs[activeTab].subTabs.length - 1 && (
-                <Button
-                  variant={"ghost"}
-                  size={"icon"}
-                  onClick={() => setActiveSubTab(activeSubTab + 1)}
-                >
-                  <MoveRight className="h-6 w-6" />
-                </Button>
-              )}
-            </div>
-          </div>
-          <div className="relative ml-3 mr-1 mt-8 h-1 flex-1 sm:ml-4 sm:mr-4 sm:mt-10 md:ml-6 md:mr-6 lg:mb-8 lg:ml-16 lg:mr-8 lg:mt-20">
+          <div className="relative mb-2 ml-3 mr-1 mt-6 flex h-1 flex-1 items-center justify-center sm:mb-2 sm:ml-4 sm:mr-4 sm:mt-7 md:ml-6 md:mr-6 lg:mb-8 lg:ml-16 lg:mr-8 2xl:mt-20">
             {activeSubTab > 0 && (
               <Button
                 variant={"ghost"}
-                className="absolute bottom-full right-1/2 translate-y-1/2 lg:hidden"
+                className="absolute bottom-full right-[60%] size-4 lg:size-8 lg:-translate-y-2 2xl:size-10"
                 size={"icon"}
                 onClick={() => setActiveSubTab(activeSubTab - 1)}
               >
-                <MoveLeft className="size-4" />
+                <ChevronLeftIcon className="size-4 lg:size-6 2xl:size-8" />
               </Button>
             )}
             {activeSubTab < tabs[activeTab].subTabs.length - 1 && (
@@ -181,16 +153,15 @@ function ProjectPlaningButton({
                 variant={"ghost"}
                 size={"icon"}
                 onClick={() => setActiveSubTab(activeSubTab + 1)}
-                className="absolute bottom-full right-0 translate-y-1/2 lg:hidden"
+                className="absolute bottom-full right-[5%] size-4 lg:size-8 lg:-translate-y-2 2xl:size-10"
               >
-                <MoveRight className="size-4" />
+                <ChevronRightIcon className="size-4 lg:size-6 2xl:size-8" />
               </Button>
             )}
-
             <img
               src={tabs[activeTab].subTabs[activeSubTab].image}
               alt={tabs[activeTab].subTabs[activeSubTab].title}
-              className="h-full w-full"
+              className="h-full object-contain"
             />
           </div>
         </div>
