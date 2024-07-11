@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useAppContext } from "@/Context";
 import { QrCodeDialog } from "@/pages/main-project/components/qr-code-modal";
-import { Minimize, MoveLeftIcon, MoveRightIcon, Shrink } from "lucide-react";
+import { Minimize, MoveLeftIcon, Shrink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { InfoButton } from "../info";
 

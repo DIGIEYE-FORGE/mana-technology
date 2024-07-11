@@ -1,4 +1,3 @@
-import React from "react";
 import UpBarFuturePage from "./up-bar";
 
 function FuturePage() {
