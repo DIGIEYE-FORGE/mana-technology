@@ -16,6 +16,33 @@ const PinIcon = new Icon({
 });
 
 export const MapModal = () => {
+  const [socketData, setSocketData] = useState<any>(null);
+
+  useEffect(() => {
+    const socket = io(
+      "wss://stag.ws.fleet.digieye.io/socket.io/?EIO=4&transport=websocket",
+      {
+        transports: ["websocket"],
+      },
+    );
+    socket.on("connect", () => {
+      console.log("Connected to WebSocket server hellow");
+    });
+
+    socket.on(`telemetry`, (newData: any) => {
+      setSocketData(newData);
+      console.log("New data received from WebSocket server", newData);
+    });
+
+    socket.on("disconnect", () => {
+      console.log("Disconnected from WebSocket server");
+    });
+
+    return () => {
+      socket.disconnect();
+    };
+  }, [open]);
+
   return (
     <Dialog>
       <DialogTrigger asChild>
