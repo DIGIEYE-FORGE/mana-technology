@@ -6,11 +6,9 @@ export function stringify(value: unknown) {
   return JSON.stringify(value);
 }
 
-
-
 export function getRandomColor() {
-  const letters = '0123456789ABCDEF';
-  let color = '#';
+  const letters = "0123456789ABCDEF";
+  let color = "#";
   for (let i = 0; i < 6; i++) {
     color += letters[Math.floor(Math.random() * 16)];
   }
@@ -35,3 +33,13 @@ export const flatten = (
   }
   return res;
 };
+
+export async function toggleFullScreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+    return true;
+  } else if (document.exitFullscreen) {
+    await document.exitFullscreen();
+    return false;
+  }
+}

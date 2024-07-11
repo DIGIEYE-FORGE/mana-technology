@@ -2,7 +2,7 @@ import { Link, Outlet, useLocation } from "react-router-dom";
 // import Logo from "@/assets/logo.svg?react";
 import { DatePickerWithRange } from "@/components/calander";
 import { useAppContext } from "@/Context";
-import { TDateRange } from "@/utils";
+import { TDateRange, toggleFullScreen } from "@/utils";
 import { Button } from "@/components/ui/button";
 import {
   Check,
@@ -139,7 +139,9 @@ function HomeUpBar() {
       </Popover>
       <Button
         onClick={() => {
-          setFullScreen(!fullScreen);
+          toggleFullScreen().then((isFullScreen) => {
+            if (isFullScreen !== undefined) setFullScreen(isFullScreen);
+          });
         }}
         size={"icon"}
         variant={"ghost"}

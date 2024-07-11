@@ -6,6 +6,7 @@ import ProjectPlaningButton from "../project-planing-button";
 import { EsgButton } from "../esg-button";
 import { useAppContext } from "@/Context";
 import { QrCodeDialog } from "../qr-code-modal";
+import { toggleFullScreen } from "@/utils";
 
 export function MainProjectUpBar() {
   const { fullScreen, setFullScreen } = useAppContext();
@@ -35,7 +36,9 @@ export function MainProjectUpBar() {
       <QrCodeDialog />
       <Button
         onClick={() => {
-          setFullScreen(!fullScreen);
+          toggleFullScreen().then((isFullScreen) => {
+            if (isFullScreen !== undefined) setFullScreen(isFullScreen);
+          });
         }}
         size={"icon"}
         variant={"ghost"}
