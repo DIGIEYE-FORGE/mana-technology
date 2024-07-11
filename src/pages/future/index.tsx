@@ -8,7 +8,7 @@ function FuturePage() {
         className="h-[calc(100%-4rem)] w-full"
         style={{
           backgroundImage: "url('backgorund-future.png')",
-          backgroundSize: "100% 100%",
+          backgroundSize: "contain",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
         }}
