@@ -83,7 +83,7 @@ export function RotatingModel({
   return null;
 }
 
-function ThreeDModel({
+export function ThreeDModel({
   setLoading,
 }: {
   setLoading: (loading: boolean) => void;

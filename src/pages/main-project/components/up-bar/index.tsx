@@ -17,6 +17,12 @@ export function MainProjectUpBar() {
           Tizert Project Digital Twin
         </span>
       </div>
+
+      <Link to="/future">
+        <Button variant={"ghost"} className="gap-2">
+          <span>Tizert X.0</span>
+        </Button>
+      </Link>
       <OverviewButton variant={"ghost"} className="gap-2">
         Project Overview
       </OverviewButton>
