@@ -206,16 +206,14 @@ function Location({ location }: { location: TLocation }) {
                       {item.type === "video" && (
                         <div className="relative h-full w-full">
                           <video
-                            // autoPlay
-                            onPlay={(e) => {
-                              // toggle fullscreen
-                              const target = e.target as HTMLVideoElement;
-                              if (target.requestFullscreen) {
-                                target.requestFullscreen().catch((e) => {
-                                  console.error(e);
-                                });
-                              }
-                            }}
+                            // onPlay={(e) => {
+                            //   const target = e.target as HTMLVideoElement;
+                            //   if (target.requestFullscreen) {
+                            //     target.requestFullscreen().catch((e) => {
+                            //       console.error(e);
+                            //     });
+                            //   }
+                            // }}
                             className="w-full object-contain"
                             controls
                             src={
