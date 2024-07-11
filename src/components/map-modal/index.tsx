@@ -9,6 +9,8 @@ import { MapPin, X } from "lucide-react";
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Icon } from "leaflet";
+import { useState, useEffect } from "react";
+import io from "socket.io-client";
 
 const PinIcon = new Icon({
   iconUrl: "/placeholder.png",
