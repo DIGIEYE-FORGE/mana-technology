@@ -9,7 +9,7 @@ import { MapPin, X } from "lucide-react";
 import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Icon } from "leaflet";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import io from "socket.io-client";
 import { DialogTitle } from "@radix-ui/react-dialog";
 
