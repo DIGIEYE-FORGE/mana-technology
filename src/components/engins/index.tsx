@@ -77,8 +77,8 @@ function Engins({ attribute, selectedWithDate = false }: EnginsProps) {
           return {
             label,
             icon,
-            value: (Number(sum1) / res1?.results.length) ,
-            value2: (Number(sum2) / res2?.results.length),
+            value: Number(sum1) / res1?.results.length,
+            value2: Number(sum2) / res2?.results.length,
           };
         }),
       );
@@ -137,11 +137,15 @@ function Engins({ attribute, selectedWithDate = false }: EnginsProps) {
                 className="h-full w-full rounded-lg bg-[#2B50C0]/30"
                 color="#D2DDFF"
               />
-              <div className="absolute left-2 top-[10%]">
-                <span className="font-bold text-[#2B50C0]">
-                  {Number(engin?.value || 0)?.toFixed(2) || 0}%
-                </span>
-              </div>
+
+              <span
+                className="absolute bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2 font-bold"
+                style={{
+                  mixBlendMode: "difference",
+                }}
+              >
+                {Number(engin?.value || 0)?.toFixed(2) || 0}%
+              </span>
             </div>
             <div className="relative h-[2rem] flex-1">
               <Progress
@@ -150,11 +154,14 @@ function Engins({ attribute, selectedWithDate = false }: EnginsProps) {
                 className="h-full w-full rounded-lg bg-[#2B50C0]/30"
                 color="#D2DDFF"
               />
-              <div className="absolute left-2 top-[10%]">
-                <span className="font-bold text-[#2B50C0]">
-                  {Number(engin.value2 || 0)?.toFixed(2)}%
-                </span>
-              </div>
+              <span
+                className="absolute bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2 font-bold"
+                style={{
+                  mixBlendMode: "difference",
+                }}
+              >
+                {Number(engin?.value || 0)?.toFixed(2) || 0}%
+              </span>
             </div>
           </div>
         ))}

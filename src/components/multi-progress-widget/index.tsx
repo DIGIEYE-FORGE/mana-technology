@@ -106,9 +106,7 @@ export default function MultiProgressWidget({ attributes }: Widget) {
 
                 <div
                   className="absolute bottom-1/2 right-1/2 translate-x-1/2 translate-y-1/2 text-lg font-bold text-white"
-                  style={{
-                    mixBlendMode: "difference",
-                  }}
+                  style={{ mixBlendMode: "difference" }}
                 >
                   {Number(item?.value) > 0
                     ? parseFloat(item?.value as string).toFixed(2)
