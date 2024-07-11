@@ -21,23 +21,29 @@ export const MapModal = () => {
   const [socketData, setSocketData] = useState<any>(null);
 
   useEffect(() => {
-    const socket = io(
-      "wss://stag.ws.fleet.digieye.io/socket.io/?EIO=4&transport=websocket",
-      {
-        transports: ["websocket"],
+    const socket = io("wss://stag.ws.fleet.digieye.io", {
+      path: "/socket.io/",
+      transports: ["websocket"],
+      query: {
+        EIO: 4,
       },
-    );
-    socket.on("connect", () => {
-      console.log("Connected to WebSocket server hellow");
     });
 
-    socket.on(`telemetry`, (newData: any) => {
-      setSocketData(newData);
-      console.log("New data received from WebSocket server", newData);
+    socket.on("connect", () => {
+      console.log("connected");
+      socket.emit("join", "room-name");
+    });
+
+    socket.on("message", (data) => {
+      console.log("received:", data);
     });
 
     socket.on("disconnect", () => {
-      console.log("Disconnected from WebSocket server");
+      console.log("disconnected");
+    });
+
+    socket.on("error", (err) => {
+      console.error("Socket error:", err);
     });
 
     return () => {
@@ -59,9 +65,7 @@ export const MapModal = () => {
         <DialogClose className="absolute right-2 top-2">
           <X className="absolute right-2 top-2" />
         </DialogClose>
-        <h2 className="mb-4 text-xl font-bold">
-          Localisation des engines
-        </h2>
+        <h2 className="mb-4 text-xl font-bold">Localisation des engines</h2>
         <div className="min-h-[30rem]">
           <MapContainer
             attributionControl={false}
