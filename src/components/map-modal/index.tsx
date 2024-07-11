@@ -9,7 +9,7 @@ import { MapPin, X } from "lucide-react";
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Icon } from "leaflet";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import io from "socket.io-client";
 
 const PinIcon = new Icon({
@@ -18,7 +18,7 @@ const PinIcon = new Icon({
 });
 
 export const MapModal = () => {
-  const [socketData, setSocketData] = useState<any>(null);
+  // const [socketData, setSocketData] = useState<any>(null);
 
   useEffect(() => {
     const socket = io("wss://stag.ws.fleet.digieye.io", {
@@ -49,7 +49,7 @@ export const MapModal = () => {
     return () => {
       socket.disconnect();
     };
-  }, [open]);
+  }, []);
 
   return (
     <Dialog>
