@@ -29,7 +29,7 @@ const tabs = [
     subTabs: [
       {
         title: "",
-        image: "/usins.png",
+        image: "/Progress.png",
       },
     ],
   },
@@ -38,7 +38,7 @@ const tabs = [
     subTabs: [
       {
         title: "",
-        image: "/Progress.png",
+        image: "/curve.png",
       },
     ],
   },
