@@ -12,7 +12,7 @@ function UpBarFuturePage() {
       <div className="mr-auto flex gap-4">
         <img src="/logo.svg" alt="logo" />
         <span className="h-3/4 border-l py-3 pl-4 font-ethnocentric text-lg font-bold">
-          tizert Project Overview
+          Tizert Mine X.0
         </span>
       </div>
       <InfoButton variant={"ghost"} className="gap-2">
