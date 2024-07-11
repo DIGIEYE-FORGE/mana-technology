@@ -152,7 +152,7 @@ function ProgressMultiple({ attributes }: props) {
             <h3 className="font-semibold">{title}</h3>
             <ProgressData
               data={data[index]?.map((ele) => {
-                console.log(ele);
+                // console.log(ele);
 
                 return {
                   value: ele?.value || 0,

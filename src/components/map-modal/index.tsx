@@ -6,19 +6,64 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 import { MapPin, X } from "lucide-react";
-import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Icon } from "leaflet";
 import { useState, useEffect } from "react";
 import io from "socket.io-client";
+import { DialogTitle } from "@radix-ui/react-dialog";
 
 const PinIcon = new Icon({
-  iconUrl: "/placeholder.png",
-  iconSize: [40, 40],
+  iconUrl: "/pin.png",
+  iconSize: [30, 30],
 });
 
+const MapUpdater = ({
+  markers,
+}: {
+  markers: { lat: number; lng: number; serial: string }[];
+}) => {
+  const map = useMap();
+
+  useEffect(() => {
+    if (markers.length === 0) {
+      // Default center
+      map.setView([29.9642596, -8.8221844], 10);
+      return;
+    }
+
+    // Count markers in each location
+    const locationCounts: Record<string, number> = {};
+    markers.forEach((marker) => {
+      const key = `${marker.lat},${marker.lng}`;
+      locationCounts[key] = (locationCounts[key] || 0) + 1;
+    });
+
+    // Find the location with the most markers
+    let maxCount = 0;
+    let bestLocation = [29.9642596, -8.8221844];
+    for (const [location, count] of Object.entries(locationCounts)) {
+      if (count > maxCount) {
+        maxCount = count;
+        bestLocation = location.split(",").map(Number) as [number, number];
+      }
+    }
+
+    // Center the map on the location with the most markers
+    map.setView(bestLocation as any, 12); // Increase the zoom level for better visibility
+  }, [markers, map]);
+
+  return null;
+};
+
 export const MapModal = () => {
-  const [socketData, setSocketData] = useState<any>(null);
+  const [markers, setMarkers] = useState<
+    {
+      lat: number;
+      lng: number;
+      serial: string;
+    }[]
+  >([]);
 
   useEffect(() => {
     const socket = io("wss://stag.ws.fleet.digieye.io", {
@@ -31,11 +76,39 @@ export const MapModal = () => {
 
     socket.on("connect", () => {
       console.log("connected");
-      socket.emit("join", "room-name");
+      socket.emit("join", [
+        "350544503978333",
+        "350544504047377",
+        "350544504047476",
+      ]);
+    });
+
+    socket.on("joined", (room) => {
+      console.log(`Joined room: ${room}`);
+      // Additional logic related to the "joined" event
     });
 
     socket.on("message", (data) => {
-      console.log("received:", data);
+      if (!data.lat || !data.lng || !data.serial) return;
+      setMarkers((prev) => {
+        const index = prev.findIndex((marker) => marker.serial === data.serial);
+        if (index > -1) {
+          prev[index] = {
+            lat: data.lat,
+            lng: data.lng,
+            serial: data.serial,
+          };
+          return [...prev];
+        }
+        return [
+          ...prev,
+          {
+            lat: data.lat,
+            lng: data.lng,
+            serial: data.serial,
+          },
+        ];
+      });
     });
 
     socket.on("disconnect", () => {
@@ -49,30 +122,37 @@ export const MapModal = () => {
     return () => {
       socket.disconnect();
     };
-  }, [open]);
+  }, []);
+
+  console.log(markers);
 
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant={"ghost"} className="z-[90] mr-3 h-fit p-0">
+        <Button
+          variant={"ghost"}
+          className="absolute right-0 z-[90] mr-3 h-fit p-0"
+        >
           <MapPin className="size-5" />
         </Button>
       </DialogTrigger>
       <DialogContent
         showCloseButton={false}
-        className="max-w-4xl gap-1 rounded-lg border-none text-white"
+        className="max-w-4xl gap-4 rounded-lg border-none text-white"
       >
         <DialogClose className="absolute right-2 top-2">
           <X className="absolute right-2 top-2" />
         </DialogClose>
-        <h2 className="mb-4 text-xl font-bold">Localisation des engines</h2>
+        <DialogTitle className="text-2xl font-bold">
+          Localisation des engines
+        </DialogTitle>
         <div className="min-h-[30rem]">
           <MapContainer
             attributionControl={false}
             center={[29.9642596, -8.8221844]}
             zoom={10}
             maxZoom={18}
-            minZoom={4}
+            minZoom={0}
             scrollWheelZoom={false}
             style={{
               height: "100%",
@@ -86,9 +166,16 @@ export const MapModal = () => {
               url="https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}"
               attribution="Labels &copy; Esri &mdash; Source: Esri, HERE, Garmin, FAO, NOAA, USGS, EPA, NPS"
             />
-            <Marker position={[29.9642596, -8.7221844]} icon={PinIcon}></Marker>
-            <Marker position={[29.9642596, -8.8221844]} icon={PinIcon}></Marker>
-            <Marker position={[29.9642596, -8.5221844]} icon={PinIcon}></Marker>
+
+            {markers.map((marker) => (
+              <Marker
+                key={marker.serial} // Added key prop for better performance
+                position={[marker.lat, marker.lng]}
+                icon={PinIcon}
+              />
+            ))}
+
+            <MapUpdater markers={markers} />
           </MapContainer>
         </div>
       </DialogContent>

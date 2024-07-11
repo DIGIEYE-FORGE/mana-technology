@@ -399,7 +399,7 @@ export default function HomeDashboard() {
         />
       </Card>
       <Card className="col-span-3 row-span-3 flex flex-col gap-3 p-4 lg:col-span-6 xl:col-span-3">
-        <div className="flex items-center justify-end gap-5">
+        <div className="relative flex items-center justify-center">
           <h3 className="text-center text-lg font-semibold">
             Disponibilité Engins pit SUD
           </h3>
