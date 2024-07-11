@@ -222,6 +222,13 @@ function Location({ location }: { location: TLocation }) {
                           }
                         />
                       )}
+                      {item.type === "image" && (
+                        <img
+                          className="w-full object-contain"
+                          src={item.url}
+                          alt={item.title}
+                        />
+                      )}
                     </DialogContent>
                     {/* <DialogContent
                       showCloseButton={false}
