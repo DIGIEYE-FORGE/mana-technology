@@ -255,7 +255,7 @@ button:disabled {
     #002fbe,
     transparent
   );
-  border: 10px solid;
+  border: 1px solid;
   border-image-slice: 1;
   border-image-source: linear-gradient(
     to right,
@@ -272,7 +272,6 @@ button:disabled {
     display: none;
   }
 }
-
 
 // .leaflet-container {
 //   filter: invert(0%) hue-rotate(0) brightness(100%) contrast(100%);
