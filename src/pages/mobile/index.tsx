@@ -27,6 +27,7 @@ import {
 } from "@/components/ui/sheet";
 import { DialogClose } from "@radix-ui/react-dialog";
 import VideoDialog from "../main-project/video-dialog";
+import { toggleFullScreen } from "@/utils";
 
 export default function MobilePage() {
   const [loading, setLoading] = useState(true);
@@ -318,14 +319,19 @@ export function UpBar() {
   const [fullScreen, setFullScreen] = useState(false);
 
   useEffect(() => {
-    if (fullScreen && document?.documentElement?.requestFullscreen) {
-      document?.documentElement?.requestFullscreen().catch((e) => {
-        console.error(e);
-      });
-    } else if (!fullScreen && document?.exitFullscreen) {
-      document?.exitFullscreen();
+    function preventFullScreen(event: KeyboardEvent) {
+      if (event.key === "F11") {
+        event.preventDefault();
+        toggleFullScreen().then((isFullScreen) => {
+          if (isFullScreen !== undefined) setFullScreen(isFullScreen);
+        });
+      }
     }
-  }, [fullScreen]);
+    document.addEventListener("keydown", preventFullScreen);
+    return () => {
+      document.removeEventListener("keydown", preventFullScreen);
+    };
+  }, []);
 
   return (
     <div className="px- group sticky top-0 z-[100] flex h-up-bar w-full shrink-0 items-center justify-end gap-2 border-b px-2 backdrop-blur md:px-6">
@@ -381,7 +387,9 @@ export function UpBar() {
 
       <Button
         onClick={() => {
-          setFullScreen(!fullScreen);
+          toggleFullScreen().then((isFullScreen) => {
+            if (isFullScreen !== undefined) setFullScreen(isFullScreen);
+          });
         }}
         size={"icon"}
         variant={"ghost"}

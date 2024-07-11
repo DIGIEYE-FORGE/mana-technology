@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Outlet } from "react-router-dom";
-import { TDateRange, User } from "./utils";
+import { TDateRange, toggleFullScreen, User } from "./utils";
 import { z } from "zod";
 import useLocalStorage from "./hooks/use-local-storage";
 import BackendApi from "./api/backend";
@@ -66,14 +66,19 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (fullScreen && document?.documentElement?.requestFullscreen) {
-      document?.documentElement?.requestFullscreen().catch((e) => {
-        console.error(e);
-      });
-    } else if (!fullScreen && document?.exitFullscreen) {
-      document?.exitFullscreen();
+    function preventFullScreen(event: KeyboardEvent) {
+      if (event.key === "F11") {
+        event.preventDefault();
+        toggleFullScreen().then((isFullScreen) => {
+          if (isFullScreen !== undefined) setFullScreen(isFullScreen);
+        });
+      }
     }
-  }, [fullScreen]);
+    document.addEventListener("keydown", preventFullScreen);
+    return () => {
+      document.removeEventListener("keydown", preventFullScreen);
+    };
+  }, []);
 
   if (isLoading || user === undefined) {
     return (

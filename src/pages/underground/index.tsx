@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Minimize, MoveLeftIcon, MoveRightIcon, Shrink } from "lucide-react";
 import { useAppContext } from "@/Context";
 import { DatePickerWithRange } from "@/components/calander";
-import { TDateRange } from "@/utils";
+import { TDateRange, toggleFullScreen } from "@/utils";
 import { cn } from "@/lib/utils";
 
 function UndergroundBar() {
@@ -34,7 +34,9 @@ function UndergroundBar() {
       />
       <Button
         onClick={() => {
-          setFullScreen(!fullScreen);
+          toggleFullScreen().then((isFullScreen) => {
+            if (isFullScreen !== undefined) setFullScreen(isFullScreen);
+          });
         }}
         size={"icon"}
         variant={"ghost"}
