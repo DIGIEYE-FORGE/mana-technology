@@ -33,7 +33,7 @@ export const locations: TLocation[] = [
         {
           type: "video",
           thumb: "/video.svg",
-          url: "/est_vd.mp4",
+          url: "/op.mp4",
         },
       ],
     },
@@ -83,7 +83,7 @@ export const locations: TLocation[] = [
         {
           type: "video",
           thumb: "/video.svg",
-          url: "/est_vd.mp4",
+          url: "/sud_vd.mp4",
           title: "Pit SUD",
         },
       ],
