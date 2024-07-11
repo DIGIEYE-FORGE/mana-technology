@@ -69,15 +69,15 @@ export const MapModal = () => {
     }[]
   >([]);
 
-  const { isLoading } = useSWR(
-    "enigines/locations",
+  const { isLoading, error } = useSWR(
+    "enigineslocations",
     async () => {
       const response = await axios.get(
         "https://stag.api.fleet.digieye.io/api/vehicule/associated-to-gps/temp",
         {
           headers: {
             Authorization:
-              "Bearer 8935|wx2AHTjqKUDRWnZuq54sgNPG0kWBPOdeNIm88gjV",
+              "Bearer 8948|shs5QGrFAQqJDgxKm5r3lvdIC5kFsBdvAEpBmClv",
           },
         },
       );
@@ -120,6 +120,10 @@ export const MapModal = () => {
       },
     },
   );
+
+  if (error) {
+    console.error(error);
+  }
 
   useEffect(() => {
     const socket = io("wss://stag.ws.fleet.digieye.io", {
