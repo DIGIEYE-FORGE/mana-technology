@@ -13,6 +13,9 @@ import { Icon } from "leaflet";
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
 import { DialogTitle } from "@radix-ui/react-dialog";
+import useSWR from "swr";
+import axios from "axios";
+import Loader from "../loader";
 
 const PinIcon = new Icon({
   iconUrl: "/pin.png",
@@ -65,6 +68,58 @@ export const MapModal = () => {
       serial: string;
     }[]
   >([]);
+
+  const { isLoading } = useSWR(
+    "enigines/locations",
+    async () => {
+      const response = await axios.get(
+        "https://stag.api.fleet.digieye.io/api/vehicule/associated-to-gps/temp",
+        {
+          headers: {
+            Authorization:
+              "Bearer 8935|wx2AHTjqKUDRWnZuq54sgNPG0kWBPOdeNIm88gjV",
+          },
+        },
+      );
+      return response.data;
+    },
+    {
+      onSuccess: (data) => {
+        data?.payload?.forEach((engine: any) => {
+          const currentData = engine.device_current_data;
+          if (!currentData) return;
+          if (
+            currentData.imei === "350544503978333" ||
+            currentData.imei === "350544504047377" ||
+            currentData.imei === "350544504047476"
+          ) {
+            const coords = currentData.coordinates;
+            setMarkers((prev) => {
+              const index = prev.findIndex(
+                (marker) => marker.serial === currentData.imei,
+              );
+              if (index > -1) {
+                prev[index] = {
+                  lat: coords[1],
+                  lng: coords[0],
+                  serial: currentData.imei,
+                };
+                return [...prev];
+              }
+              return [
+                ...prev,
+                {
+                  lat: coords[1],
+                  lng: coords[0],
+                  serial: currentData.imei,
+                },
+              ];
+            });
+          }
+        });
+      },
+    },
+  );
 
   useEffect(() => {
     const socket = io("wss://stag.ws.fleet.digieye.io", {
@@ -148,36 +203,42 @@ export const MapModal = () => {
           Localisation des engines
         </DialogTitle>
         <div className="min-h-[30rem]">
-          <MapContainer
-            attributionControl={false}
-            center={[29.9642596, -8.8221844]}
-            zoom={10}
-            maxZoom={18}
-            minZoom={0}
-            scrollWheelZoom={false}
-            style={{
-              height: "100%",
-            }}
-          >
-            <TileLayer
-              url="https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-              attribution="Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"
-            />
-            <TileLayer
-              url="https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}"
-              attribution="Labels &copy; Esri &mdash; Source: Esri, HERE, Garmin, FAO, NOAA, USGS, EPA, NPS"
-            />
-
-            {markers.map((marker) => (
-              <Marker
-                key={marker.serial} // Added key prop for better performance
-                position={[marker.lat, marker.lng]}
-                icon={PinIcon}
+          {isLoading && markers.length === 0 ? (
+            <div className="flex h-full items-center justify-center">
+              <Loader />
+            </div>
+          ) : (
+            <MapContainer
+              attributionControl={false}
+              center={[29.9642596, -8.8221844]}
+              zoom={10}
+              maxZoom={18}
+              minZoom={0}
+              scrollWheelZoom={false}
+              style={{
+                height: "100%",
+              }}
+            >
+              <TileLayer
+                url="https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+                attribution="Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"
               />
-            ))}
+              <TileLayer
+                url="https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}"
+                attribution="Labels &copy; Esri &mdash; Source: Esri, HERE, Garmin, FAO, NOAA, USGS, EPA, NPS"
+              />
 
-            <MapUpdater markers={markers} />
-          </MapContainer>
+              {markers.map((marker) => (
+                <Marker
+                  key={marker.serial} // Added key prop for better performance
+                  position={[marker.lat, marker.lng]}
+                  icon={PinIcon}
+                />
+              ))}
+
+              <MapUpdater markers={markers} />
+            </MapContainer>
+          )}
         </div>
       </DialogContent>
     </Dialog>
