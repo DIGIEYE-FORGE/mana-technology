@@ -9,7 +9,10 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { env } from "@/utils/env";
 
-function VideoDialog() {
+interface VideoDialogProps {
+  className?: string;
+}
+function VideoDialog({ className }: VideoDialogProps) {
   return (
     <div>
       <Dialog>
@@ -20,16 +23,19 @@ function VideoDialog() {
             size={"icon"}
           >
             <Play className="h-6 w-6 text-[#dbd520]" />
-            <span>Timelapse</span>
+            <span className="xl:text-bas text-xs lg:text-sm">Timelapse</span>
           </Button>
         </DialogTrigger>
         <DialogContent
           showCloseButton={false}
-          className="h-[90%] !min-w-[90vw] p-8"
+          className={cn(
+            `h-[90%] !min-w-[90vw] overflow-hidden rounded-lg border-none p-8 text-white`,
+            className,
+          )}
         >
           <video
             autoPlay
-            className="h-full w-full"
+            className="h-[97%] w-full object-contain"
             controls
             src={
               `${env.VITE_LOCAL_VIDEOS === "true" ? "/ignore/" : "https://managem.digieye.io/statics/"}` +

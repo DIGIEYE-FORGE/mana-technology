@@ -26,6 +26,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { DialogClose } from "@radix-ui/react-dialog";
+import VideoDialog from "../main-project/video-dialog";
 
 export default function MobilePage() {
   const [loading, setLoading] = useState(true);
@@ -203,25 +204,33 @@ function Location({ location }: { location: TLocation }) {
                         </Button>
                       </DialogClose>
                       {item.type === "video" && (
-                        <video
-                          // autoPlay
-                          onPlay={(e) => {
-                            // toggle fullscreen
-                            const target = e.target as HTMLVideoElement;
-                            if (target.requestFullscreen) {
-                              target.requestFullscreen().catch((e) => {
-                                console.error(e);
-                              });
+                        <div className="relative h-full w-full">
+                          <video
+                            // autoPlay
+                            onPlay={(e) => {
+                              // toggle fullscreen
+                              const target = e.target as HTMLVideoElement;
+                              if (target.requestFullscreen) {
+                                target.requestFullscreen().catch((e) => {
+                                  console.error(e);
+                                });
+                              }
+                            }}
+                            className="w-full object-contain"
+                            controls
+                            src={
+                              `${env.VITE_LOCAL_VIDEOS === "true" ? "/ignore/" : "https://managem.digieye.io/statics/"}` +
+                              item?.url
                             }
-                          }}
-                          className="w-full object-contain"
-                          controls
-                          src={
-                            `${env.VITE_LOCAL_VIDEOS === "true" ? "/ignore/" : "https://managem.digieye.io/statics/"}` +
-                            item?.url
-                          }
-                        />
+                          />
+                          {item.title == "Plant" && (
+                            <div className="absolute left-[50%] top-[1%] w-fit -translate-x-1/2 transform bg-black/50 p-2">
+                              <VideoDialog className="z-[999]" />
+                            </div>
+                          )}
+                        </div>
                       )}
+
                       {item.type === "image" && (
                         <img
                           className="w-full object-contain"
