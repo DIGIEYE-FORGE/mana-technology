@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { env } from "@/utils/env";
 import { XIcon } from "lucide-react";
-import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
 export default function VideoPage() {

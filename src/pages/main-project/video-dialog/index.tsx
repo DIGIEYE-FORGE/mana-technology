@@ -1,19 +1,8 @@
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Play, XIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { env } from "@/utils/env";
 import { Link } from "react-router-dom";
 
-interface VideoDialogProps {
-  className?: string;
-}
-function VideoDialog({ className }: VideoDialogProps) {
+function VideoDialog() {
   return (
     <Link to={"/video/timelapse.mp4"}>
       <Button
