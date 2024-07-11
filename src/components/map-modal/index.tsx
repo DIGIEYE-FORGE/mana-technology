@@ -7,7 +7,7 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 import { MapPin, X } from "lucide-react";
-import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, useMap, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Icon } from "leaflet";
 import { useEffect, useState } from "react";
@@ -54,7 +54,7 @@ const MapUpdater = ({
     }
 
     // Center the map on the location with the most markers
-    map.setView(bestLocation as any, 12); // Increase the zoom level for better visibility
+    map.setView(bestLocation as any, 18); // Increase the zoom level for better visibility
   }, [markers, map]);
 
   return null;
@@ -66,6 +66,7 @@ export const MapModal = () => {
       lat: number;
       lng: number;
       serial: string;
+      matricule: string;
     }[]
   >([]);
 
@@ -103,6 +104,7 @@ export const MapModal = () => {
                   lat: coords[1],
                   lng: coords[0],
                   serial: currentData.imei,
+                  matricule: currentData.matricule,
                 };
                 return [...prev];
               }
@@ -112,6 +114,7 @@ export const MapModal = () => {
                   lat: coords[1],
                   lng: coords[0],
                   serial: currentData.imei,
+                  matricule: currentData.matricule,
                 },
               ];
             });
@@ -154,6 +157,7 @@ export const MapModal = () => {
         const index = prev.findIndex((marker) => marker.serial === data.serial);
         if (index > -1) {
           prev[index] = {
+            ...prev[index],
             lat: data.lat,
             lng: data.lng,
             serial: data.serial,
@@ -163,6 +167,7 @@ export const MapModal = () => {
         return [
           ...prev,
           {
+            matricule: "",
             lat: data.lat,
             lng: data.lng,
             serial: data.serial,
@@ -183,8 +188,6 @@ export const MapModal = () => {
       socket.disconnect();
     };
   }, []);
-
-  console.log(markers);
 
   return (
     <Dialog>
@@ -237,7 +240,26 @@ export const MapModal = () => {
                   key={marker.serial} // Added key prop for better performance
                   position={[marker.lat, marker.lng]}
                   icon={PinIcon}
-                />
+                >
+                  <Popup>
+                    <div className="flex flex-col">
+                      <div className="flex items-center gap-1">
+                        <span className="text-base font-bold">
+                          Engine Imei:{" "}
+                        </span>
+                        <span className="text-sm font-medium">
+                          {marker.serial}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <span className="text-base font-bold">Matricule: </span>
+                        <span className="text-sm font-medium">
+                          {marker.matricule}
+                        </span>
+                      </div>
+                    </div>
+                  </Popup>
+                </Marker>
               ))}
 
               <MapUpdater markers={markers} />
