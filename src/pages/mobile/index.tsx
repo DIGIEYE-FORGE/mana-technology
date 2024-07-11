@@ -224,7 +224,7 @@ function Location({ location }: { location: TLocation }) {
                           />
                           {item.title == "Plant" && (
                             <div className="absolute left-[50%] top-[1%] w-fit -translate-x-1/2 transform bg-black/50 p-2">
-                              <VideoDialog className="z-[999]" />
+                              <VideoDialog />
                             </div>
                           )}
                         </div>

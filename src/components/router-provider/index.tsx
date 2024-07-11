@@ -31,6 +31,7 @@ import Dashboard13Page from "@/pages/dashboard13";
 import Dashboard14Page from "@/pages/dashboard14";
 import VrUndergroundPage from "@/pages/360";
 import FuturePage from "@/pages/future";
+import VideoPage from "@/pages/video";
 
 const routes: RouteObject[] = [
   {
@@ -160,6 +161,10 @@ const routes: RouteObject[] = [
   {
     path: "mobile",
     element: <MobilePage />,
+  },
+  {
+    path: "video/:name",
+    element: <VideoPage />,
   },
   { path: "*", element: <NotfoundPage /> },
 ];
