@@ -18,7 +18,7 @@ export function MainProjectUpBar() {
         </span>
         <Link to="/future">
           <Button variant={"ghost"} className="gap-2">
-            <span>Tizert X.0</span>
+            <span>Mine X.0</span>
           </Button>
         </Link>
       </div>
