@@ -160,7 +160,7 @@ function Engins({ attribute, selectedWithDate = false }: EnginsProps) {
                   mixBlendMode: "difference",
                 }}
               >
-                {Number(engin?.value || 0)?.toFixed(2) || 0}%
+                {Number(engin?.value2 || 0)?.toFixed(2) || 0}%
               </span>
             </div>
           </div>
