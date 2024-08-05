@@ -26,7 +26,7 @@ export const widgetsData = {
             name: "UG_CHARG_CAT_R1700_14T_1_TD",
             label: "Disponibilité",
             serial: "8S287JI0CLP38N38",
-            color: "#ccc",
+            color: "#cda943",
           },
           {
             name: "UG_CHARG_CAT_R1700_14T_1_TU",
