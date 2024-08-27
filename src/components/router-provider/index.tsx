@@ -32,6 +32,7 @@ import Dashboard14Page from "@/pages/dashboard14";
 import VrUndergroundPage from "@/pages/360";
 import FuturePage from "@/pages/future";
 import VideoPage from "@/pages/video";
+import Projection360Page from "@/pages/360-projection";
 
 const routes: RouteObject[] = [
   {
@@ -157,6 +158,10 @@ const routes: RouteObject[] = [
         element: <Dashboard14Page />,
       },
     ],
+  },
+  {
+    path: "360-projection",
+    element: <Projection360Page />,
   },
   {
     path: "mobile",
