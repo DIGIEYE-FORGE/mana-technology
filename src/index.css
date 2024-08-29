@@ -66,3 +66,36 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+
+
+.custom-label {
+  position: relative;
+}
+
+.custom-label::after {
+  content: attr(data-label);
+  position: absolute;
+  top: -30px; /* Adjust this value to position the label above the marker */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 165, 0, 0.8); /* Background color for the label */
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  white-space: nowrap;
+  font-size: 60px;
+  font-weight: bolder;
+}
+
+.custom-icon {
+  width: 100px;
+  transform: rotateX(290deg);
+}
+
+/* .custom-icon-container {
+  width: 100px;
+} */
+.custom-icon-container:hover {
+  background: #000;
+}

@@ -118,9 +118,32 @@ export type LastTelemetry = {
 
 export type TDateRange =
   | {
-      from: Date;
-      to?: Date;
-    }
+    from: Date;
+    to?: Date;
+  }
   | undefined;
 
 export type NonEmptyArray<T> = [T, ...T[]];
+
+
+export interface HotSpot {
+  pitch: number;
+  yaw: number;
+  type: "scene" | "info";
+  text?: string;
+  sceneId?: string;
+  label?: string;
+  markerType?: "forward" | "backward";
+  transform?: {
+    rotateX?: number;
+    rotateY?: number;
+    rotateZ?: number;
+    scale?: number;
+  };
+}
+
+export interface Scene {
+  id: string;
+  path: string;
+  hotSpots: HotSpot[];
+}

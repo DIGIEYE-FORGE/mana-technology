@@ -283,3 +283,43 @@ button:disabled {
 //     transition: filter 0.5s;
 //   }
 // }
+
+
+.custom-label {
+  position: relative;
+}
+
+.custom-label::after {
+  content: attr(data-label);
+  position: absolute;
+  top: -30px; /* Adjust this value to position the label above the marker */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 165, 0, 0.8); /* Background color for the label */
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  white-space: nowrap;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+.fade-transition {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out; /* Adjust the duration and timing function as needed */
+}
+
+.fade-transition.show {
+  opacity: 1;
+}
+
+// .custom-icon {
+//   width: 100px;
+//   transform: rotateX(290deg) scale(1);
+// }
+
+// .custom-icon:hover {
+//   transform: rotateX(290deg) scale(1.5) !important;
+//   transition: transform 0.5s ease-in-out;
+// } 

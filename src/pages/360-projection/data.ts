@@ -1,31 +1,51 @@
-export const scenes = [
+import { Scene } from "@/utils";
+
+export const scenes: Scene[] = [
   {
     id: "scene1",
-    path: "/360/IMG_20240627_172435_00_001_PureShot.jpg",
+    path: "/src/assets/360/1.jpg",
     hotSpots: [
       {
-        pitch: -5,
-        yaw: -20,
-        type: "scene",
-        text: "Go to Scene 2",
-        sceneId: "scene2",
+        pitch: 5,
+        yaw: -30,
+        type: "info",
+        label: "Park Engins",
       },
       {
-        pitch: 0,
-        yaw: 65,
+        pitch: -1,
+        yaw: 40,
         type: "scene",
         text: "Go to Scene 3",
-        sceneId: "scene3",
+        sceneId: "scene2",
       },
     ],
   },
   {
     id: "scene2",
-    path: "/360/IMG_20240627_172830_00_002_PureShot.jpg",
+    path: "/src/assets/360/2.jpg",
     hotSpots: [
       {
-        pitch: -3,
-        yaw: 45,
+        pitch: -5,
+        yaw: 35,
+        type: "info",
+        label: "Boxcut",
+      },
+      {
+        pitch: -12,
+        yaw: 35,
+        type: "scene",
+        text: "Go to Scene 3",
+        sceneId: "scene4",
+      },
+      {
+        pitch: -5,
+        yaw: -60,
+        transform: {
+          rotateX: 240,
+          rotateY: -10,
+          rotateZ: 250,
+          scale: 0.8,
+        },
         type: "scene",
         text: "Go to Scene 3",
         sceneId: "scene3",
@@ -34,168 +54,398 @@ export const scenes = [
   },
   {
     id: "scene3",
-    path: "/360/IMG_20240627_174221_00_003_PureShot.jpg",
+    path: "/src/assets/360/3.jpg",
     hotSpots: [
       {
         pitch: -12,
         yaw: -10,
         type: "scene",
         text: "Go to Scene 4",
-        sceneId: "scene4",
+        sceneId: "scene2",
+        markerType: "backward",
       },
     ],
   },
   {
     id: "scene4",
-    path: "/360/IMG_20240627_174856_00_005_PureShot.jpg",
+    path: "/src/assets/360/4.jpg",
     hotSpots: [
       {
-        pitch: -12,
-        yaw: -5,
+        pitch: -5,
+        yaw: -15,
+        type: "info",
+        label: "Bureau Tag In - Tag Out",
+      },
+      {
+        pitch: -15,
+        yaw: -55,
+        transform: {
+          rotateX: 290,
+          rotateY: 0,
+          rotateZ: 40,
+          scale: 1,
+        },
         type: "scene",
-        text: "Go to Scene 5",
         sceneId: "scene5",
-        targetYaw: 180,
-        targetPitch: 20
+        markerType: "forward",
+      },
+      {
+        pitch: 5,
+        yaw: 150,
+        transform: {
+          rotateX: 305,
+          rotateY: 0,
+          rotateZ: 0,
+          scale: 1,
+        },
+        type: "scene",
+        sceneId: "scene2",
+        markerType: "backward",
       },
     ],
   },
   {
     id: "scene5",
-    path: "/360/IMG_20240627_181407_00_006_PureShot.jpg",
+    path: "/src/assets/360/5.jpg",
     hotSpots: [
       {
-        pitch: 200,
-        yaw: 5,
+        pitch: 0,
+        yaw: -170,
+        type: "info",
+        label: "Baie de sécurité N°1",
+      },
+      {
+        pitch: -12,
+        yaw: -185,
+        transform: {
+          rotateX: 295,
+          rotateY: 0,
+          rotateZ: 0,
+          scale: 0.7,
+        },
         type: "scene",
-        text: "Go to Scene 6",
         sceneId: "scene6",
+        markerType: "forward",
+      },
+      {
+        pitch: 0,
+        yaw: 0,
+        transform: {
+          rotateX: 302,
+          rotateY: 0,
+          rotateZ: 0,
+          scale: 1.3,
+        },
+        type: "scene",
+        sceneId: "scene4",
+        markerType: "backward",
       },
     ],
   },
   {
     id: "scene6",
-    path: "/360/IMG_20240627_181745_00_007_PureShot.jpg",
+    path: "/src/assets/360/6.jpg",
     hotSpots: [
       {
-        pitch: -8,
-        yaw: 80,
+        pitch: 22,
+        yaw: -20,
+        type: "info",
+        label:
+          "Baie de sécurité N°1 (Refuge lors du croisement avec un engin minier)",
+      },
+      {
+        pitch: -5,
+        yaw: 20,
+        transform: {
+          rotateX: 312,
+          rotateY: 0,
+          rotateZ: -10,
+          scale: 1.2,
+        },
         type: "scene",
-        text: "Go to Scene 7",
+        sceneId: "scene5",
+        markerType: "backward",
+      },
+      {
+        pitch: -12,
+        yaw: -170,
+        transform: {
+          rotateX: 295,
+          rotateY: 0,
+          rotateZ: 30,
+          scale: 0.7,
+        },
+        type: "scene",
         sceneId: "scene7",
+        markerType: "forward",
       },
     ],
   },
   {
     id: "scene7",
-    path: "/360/IMG_20240627_182002_00_010_PureShot.jpg",
+    path: "/src/assets/360/7.jpg",
     hotSpots: [
       {
-        pitch: 10,
-        yaw: 20,
+        pitch: 13,
+        yaw: 0,
+        type: "info",
+        label: "Boltec M10 Epiroc",
+      },
+      {
+        pitch: -7,
+        yaw: -154,
+        transform: {
+          rotateX: 300,
+          rotateY: 0,
+          rotateZ: -60,
+          scale: 0.8,
+        },
         type: "scene",
-        text: "Go to Scene 8",
-        sceneId: "scene8",
+        sceneId: "scene6",
+        markerType: "backward",
+      },
+      {
+        pitch: -9,
+        yaw: -140,
+        transform: {
+          rotateX: 295,
+          rotateY: 0,
+          rotateZ: 80,
+          scale: 0.9,
+        },
+        type: "scene",
+        sceneId: "scene9",
+        markerType: "forward",
       },
     ],
   },
-  // {
-  //   id: "scene8",
-  //   path: "/360/IMG_20240627_182612_00_011_PureShot.jpg",
-  //   hotSpots: [
-  //     {
-  //       pitch: 10,
-  //       yaw: 20,
-  //       type: "scene",
-  //       text: "Go to Scene 9",
-  //       sceneId: "scene9",
-  //     },
-  //   ],
-  // },
-  // {
-  //   id: "scene9",
-  //   path: "/360/IMG_20240627_183109_00_012_PureShot.jpg",
-  //   hotSpots: [
-  //     {
-  //       pitch: 10,
-  //       yaw: 20,
-  //       type: "scene",
-  //       text: "Go to Scene 10",
-  //       sceneId: "scene10",
-  //     },
-  //   ],
-  // },
-  // {
-  //   id: "scene10",
-  //   path: "/360/IMG_20240627_183248_00_013_PureShot.jpg",
-  //   hotSpots: [
-  //     {
-  //       pitch: 10,
-  //       yaw: 20,
-  //       type: "scene",
-  //       text: "Go to Scene 11",
-  //       sceneId: "scene11",
-  //     },
-  //   ],
-  // },
-  // {
-  //   id: "scene11",
-  //   path: "/360/IMG_20240627_183544_00_014_PureShot.jpg",
-  //   hotSpots: [
-  //     {
-  //       pitch: 10,
-  //       yaw: 20,
-  //       type: "scene",
-  //       text: "Go to Scene 12",
-  //       sceneId: "scene12",
-  //     },
-  //   ],
-  // },
-  // {
-  //   id: "scene12",
-  //   path: "/360/IMG_20240627_183934_00_015_PureShot.jpg",
-  //   hotSpots: [
-  //     {
-  //       pitch: 10,
-  //       yaw: 20,
-  //       type: "scene",
-  //       text: "Go to Scene 13",
-  //       sceneId: "scene13",
-  //     },
-  //   ],
-  // },
-  // {
-  //   id: "scene13",
-  //   path: "/360/IMG_20240627_185156_00_018_PureShot.jpg",
-  //   hotSpots: [
-  //     {
-  //       pitch: 10,
-  //       yaw: 20,
-  //       type: "scene",
-  //       text: "Go to Scene 14",
-  //       sceneId: "scene14",
-  //     },
-  //   ],
-  // },
-  // {
-  //   id: "scene14",
-  //   path: "/360/IMG_20240627_200215_00_023_PureShot.jpg",
-  //   hotSpots: [
-  //     {
-  //       pitch: 10,
-  //       yaw: 20,
-  //       type: "scene",
-  //       text: "Go to Scene 15",
-  //       sceneId: "scene15",
-  //     },
-  //   ],
-  // },
-  // {
-  //   id: "scene15",
-  //   path: "/360/IMG_20240627_200439_00_024_PureShot.jpg",
-  //   hotSpots: [
-
-  //   ],
-  // },
-
-]
+  {
+    id: "scene9",
+    path: "/src/assets/360/9.jpg",
+    hotSpots: [
+      {
+        pitch: 0,
+        yaw: -174,
+        transform: {
+          rotateX: 300,
+          rotateY: 0,
+          rotateZ: -3,
+          scale: 1.3,
+        },
+        type: "scene",
+        sceneId: "scene7",
+        markerType: "backward",
+      },
+      {
+        pitch: -16,
+        yaw: -5,
+        transform: {
+          rotateX: 303,
+          rotateY: 0,
+          rotateZ: -30,
+          scale: 1.3,
+        },
+        type: "scene",
+        sceneId: "scene10",
+        markerType: "forward",
+      },
+    ],
+  },
+  {
+    id: "scene10",
+    path: "/src/assets/360/10.jpg",
+    hotSpots: [
+      {
+        pitch: -2,
+        yaw: -105,
+        transform: {
+          rotateX: 292,
+          rotateY: 0,
+          rotateZ: 0,
+          scale: 1.8,
+        },
+        type: "scene",
+        sceneId: "scene9",
+        markerType: "backward",
+      },
+      {
+        pitch: -17,
+        yaw: 100,
+        transform: {
+          rotateX: 299,
+          rotateY: 0,
+          rotateZ: 50,
+          scale: 1.3,
+        },
+        type: "scene",
+        sceneId: "scene11",
+        markerType: "forward",
+      },
+    ],
+  },
+  {
+    id: "scene11",
+    path: "/src/assets/360/11.jpg",
+    hotSpots: [
+      {
+        pitch: -3,
+        yaw: -175,
+        transform: {
+          rotateX: 292,
+          rotateY: 0,
+          rotateZ: 60,
+          scale: 1.3,
+        },
+        type: "scene",
+        sceneId: "scene9",
+        markerType: "backward",
+      },
+      {
+        pitch: -14,
+        yaw: -18,
+        transform: {
+          rotateX: 292,
+          rotateY: 0,
+          rotateZ: 5,
+          scale: 1.1,
+        },
+        type: "scene",
+        sceneId: "scene12",
+        markerType: "forward",
+      },
+    ],
+  },
+  {
+    id: "scene12",
+    path: "/src/assets/360/12.jpg",
+    hotSpots: [
+      {
+        pitch: 5,
+        yaw: 25,
+        type: "info",
+        label: "Baie de sécurité N°3",
+      },
+      {
+        pitch: 15,
+        yaw: -15,
+        type: "info",
+        label: "Antenne WIFI",
+      },
+      {
+        pitch: -9,
+        yaw: -190,
+        transform: {
+          rotateX: 305,
+          rotateY: 0,
+          rotateZ: 0,
+          scale: 1.7,
+        },
+        type: "scene",
+        sceneId: "scene11",
+        markerType: "backward",
+      },
+      {
+        pitch: -12,
+        yaw: -12,
+        transform: {
+          rotateX: 292,
+          rotateY: 0,
+          rotateZ: 0,
+          scale: 0.8,
+        },
+        type: "scene",
+        sceneId: "scene13",
+        markerType: "forward",
+      },
+    ],
+  },
+  {
+    id: "scene13",
+    path: "/src/assets/360/13.jpg",
+    hotSpots: [
+      {
+        pitch: 12,
+        yaw: -120,
+        type: "info",
+        label: "Camion Minier Caterpillar AD45 Capacite: 45 tonnes",
+      },
+      {
+        pitch: 0,
+        yaw: -88,
+        transform: {
+          rotateX: 295,
+          rotateY: 0,
+          rotateZ: 0,
+          scale: 1,
+        },
+        type: "scene",
+        sceneId: "scene12",
+        markerType: "backward",
+      },
+      {
+        pitch: -12,
+        yaw: 92,
+        transform: {
+          rotateX: 292,
+          rotateY: 0,
+          rotateZ: 0,
+          scale: 0.8,
+        },
+        type: "scene",
+        sceneId: "scene15",
+        markerType: "forward",
+      },
+    ],
+  },
+  {
+    id: "scene15",
+    path: "/src/assets/360/14.jpg",
+    hotSpots: [
+      {
+        pitch: 3,
+        yaw: 2,
+        transform: {
+          rotateX: 295,
+          rotateY: 0,
+          rotateZ: 0,
+          scale: 1,
+        },
+        type: "scene",
+        sceneId: "scene13",
+        markerType: "backward",
+      },
+      {
+        pitch: -30,
+        yaw: 185,
+        transform: {
+          rotateX: 305,
+          rotateY: 0,
+          rotateZ: 0,
+          scale: 1.8,
+        },
+        type: "scene",
+        sceneId: "scene16",
+        markerType: "forward",
+      },
+    ],
+  },
+  {
+    id: "scene16",
+    path: "/src/assets/360/15.jpg",
+    hotSpots: [
+      {
+        pitch: 3,
+        yaw: 210,
+        transform: {
+          rotateX: 295,
+          rotateY: 0,
+          rotateZ: 0,
+          scale: 1,
+        },
+        type: "scene",
+        sceneId: "scene13",
+        markerType: "backward",
+      },
+    ],
+  },
+];
