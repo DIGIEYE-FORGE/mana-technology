@@ -3,7 +3,7 @@ import { Scene } from "@/utils";
 export const scenes: Scene[] = [
   {
     id: "scene1",
-    path: "/src/assets/360/1.jpg",
+    path: "/360/1.jpg",
     hotSpots: [
       {
         pitch: 5,
@@ -22,7 +22,7 @@ export const scenes: Scene[] = [
   },
   {
     id: "scene2",
-    path: "/src/assets/360/2.jpg",
+    path: "/360/2.jpg",
     hotSpots: [
       {
         pitch: -5,
@@ -54,7 +54,7 @@ export const scenes: Scene[] = [
   },
   {
     id: "scene3",
-    path: "/src/assets/360/3.jpg",
+    path: "/360/3.jpg",
     hotSpots: [
       {
         pitch: -12,
@@ -68,7 +68,7 @@ export const scenes: Scene[] = [
   },
   {
     id: "scene4",
-    path: "/src/assets/360/4.jpg",
+    path: "/360/4.jpg",
     hotSpots: [
       {
         pitch: -5,
@@ -106,7 +106,7 @@ export const scenes: Scene[] = [
   },
   {
     id: "scene5",
-    path: "/src/assets/360/5.jpg",
+    path: "/360/5.jpg",
     hotSpots: [
       {
         pitch: 0,
@@ -144,7 +144,7 @@ export const scenes: Scene[] = [
   },
   {
     id: "scene6",
-    path: "/src/assets/360/6.jpg",
+    path: "/360/6.jpg",
     hotSpots: [
       {
         pitch: 22,
@@ -183,7 +183,7 @@ export const scenes: Scene[] = [
   },
   {
     id: "scene7",
-    path: "/src/assets/360/7.jpg",
+    path: "/360/7.jpg",
     hotSpots: [
       {
         pitch: 13,
@@ -221,7 +221,7 @@ export const scenes: Scene[] = [
   },
   {
     id: "scene9",
-    path: "/src/assets/360/9.jpg",
+    path: "/360/9.jpg",
     hotSpots: [
       {
         pitch: 0,
@@ -253,7 +253,7 @@ export const scenes: Scene[] = [
   },
   {
     id: "scene10",
-    path: "/src/assets/360/10.jpg",
+    path: "/360/10.jpg",
     hotSpots: [
       {
         pitch: -2,
@@ -285,7 +285,7 @@ export const scenes: Scene[] = [
   },
   {
     id: "scene11",
-    path: "/src/assets/360/11.jpg",
+    path: "/360/11.jpg",
     hotSpots: [
       {
         pitch: -3,
@@ -317,7 +317,7 @@ export const scenes: Scene[] = [
   },
   {
     id: "scene12",
-    path: "/src/assets/360/12.jpg",
+    path: "/360/12.jpg",
     hotSpots: [
       {
         pitch: 5,
@@ -361,7 +361,7 @@ export const scenes: Scene[] = [
   },
   {
     id: "scene13",
-    path: "/src/assets/360/13.jpg",
+    path: "/360/13.jpg",
     hotSpots: [
       {
         pitch: 12,
@@ -399,7 +399,7 @@ export const scenes: Scene[] = [
   },
   {
     id: "scene15",
-    path: "/src/assets/360/14.jpg",
+    path: "/360/14.jpg",
     hotSpots: [
       {
         pitch: 3,
@@ -431,7 +431,7 @@ export const scenes: Scene[] = [
   },
   {
     id: "scene16",
-    path: "/src/assets/360/15.jpg",
+    path: "/360/15.jpg",
     hotSpots: [
       {
         pitch: 3,

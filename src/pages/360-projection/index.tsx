@@ -15,9 +15,7 @@ export function customMarker(hotSpotDiv: HTMLElement, args: HotSpot): void {
     const icon = document.createElement("img");
     icon.classList.add("custom-icon");
     icon.src =
-      args.markerType === "backward"
-        ? "/src/assets/Arrow-Blue.png"
-        : "/src/assets/Arrow-White.png";
+      args.markerType === "backward" ? "/Arrow-Blue.png" : "/Arrow-White.png";
 
     const {
       rotateX = 290,
