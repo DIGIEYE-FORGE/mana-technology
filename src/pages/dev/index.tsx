@@ -1,26 +1,36 @@
-import { D3GaugeChart } from "@/components/d3-gauge-chart";
+import { useEffect } from "react";
 
-export default function DevPage() {
+declare global {
+  interface Window {
+    embedpano: (options: any) => void;
+  }
+}
+
+export default function Projection360Page() {
+  useEffect(() => {
+    // Load the KRpano script
+    const script = document.createElement("script");
+    script.src = "/360/krpano/tour.js"; // Adjust the path if necessary
+    script.onload = () => {
+      // Initialize KRpano viewer
+      if (window.embedpano) {
+        window.embedpano({
+          xml: "/360/krpano/tour.xml", // Path to your tour.xml file
+          target: "krpanoContainer",
+          html5: "prefer",
+          passQueryParameters: true,
+        });
+      }
+    };
+    document.body.appendChild(script);
+  }, []);
+
   return (
-    <div className="debug grid h-screen w-full flex-grow place-content-center font-bold">
-      <D3GaugeChart
-        value={5}
-        maxValue={100}
-        backgroundColor="#ddd"
-        foregroundColor="#ffab00"
-        ticks={{
-          count: 5,
-          color: "#fff",
-          fontSize: "0.8rem",
-          offset: 10,
-        }}
-        dataLabels={{
-          show: true,
-          color: "#fff",
-          fontSize: "8rem",
-          formater: (d) => d.toString(),
-        }}
-      />
+    <div
+      id="krpanoContainer"
+      className="h-full max-h-[100dvh] w-full overflow-hidden"
+    >
+      {/* KRpano will be embedded here */}
     </div>
   );
 }
