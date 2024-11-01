@@ -14,7 +14,7 @@ export function Drilling() {
             tooltip: { cssClass: "text-black" },
             legend: {
               position: "bottom",
-              markers: { radius: 8 },
+              // markers: { radius: 8 },
               fontWeight: 600,
               fontSize: "12px",
               height: 60,
