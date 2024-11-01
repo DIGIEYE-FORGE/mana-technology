@@ -112,11 +112,14 @@ const VentilationDashboard1 = () => {
             <h1 className="text-center text-lg font-semibold">{child.title}</h1>
             <div className="h-1 flex-1">
               <MoteurCard
+                min={index == 0 ? 16 : undefined}
+                max={index == 0 ? 26 : undefined}
                 attributes={child.attributes}
                 val={child?.attributes?.telemetries?.map((telemetry) => {
                   return {
                     name: telemetry?.label || telemetry?.name,
                     color: telemetry?.color,
+
                     data:
                       ((chartData || []) as any)?.map(
                         (item: Record<string, unknown>) => ({

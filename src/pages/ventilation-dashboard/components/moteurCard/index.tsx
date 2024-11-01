@@ -64,7 +64,7 @@ export const MoteurCard = (props: Props) => {
           },
         },
         yaxis: {
-          min: 0,
+          min: props?.min || 0,
           max: props.max,
           tickAmount: 1,
           labels: {
