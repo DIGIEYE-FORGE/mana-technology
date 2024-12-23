@@ -199,7 +199,7 @@ function TreePage() {
           shadow-camera-bottom={-10}
         />
         <Suspense fallback={<Loader3D />}>
-          {/* <Model
+          <Model
             // color2="#96CFFE"
             // color1="#96CFFE"
             url={
@@ -208,7 +208,7 @@ function TreePage() {
             }
             ref={modelRef}
             onLoad={() => setLoading(false)}
-          /> */}
+          />
         </Suspense>
         <RotatingModel modelRef={modelRef} />
         <OrbitControls enableRotate rotateSpeed={1} zoomToCursor />
