@@ -50,6 +50,7 @@ export default function LineChartWidget({
     }`,
     async () => {
       if (!dateRange?.from || telemetries.length === 0) return [];
+
       const res = await Promise.all(
         telemetries.map(async ({ serial, name, calculated }, idx) => {
           if (telemetries[idx].data) return [];
@@ -75,6 +76,7 @@ export default function LineChartWidget({
           return results;
         }),
       );
+
       const res1 = res?.map((item, index) => {
         const newData: { x: Date; y: number }[] = [];
         const { calculated, name } = telemetries[index];
@@ -94,6 +96,7 @@ export default function LineChartWidget({
             const x = new Date(item[i].createdAt);
             let y1 =
               Number(flatten(item[i])[name1]) * (correction?.[name1] || 1);
+
             let y2 =
               Number(flatten(item[i])[name2]) * (correction?.[name2] || 1);
             if (telemetries[index].accumulated && i > 0) {
@@ -124,7 +127,7 @@ export default function LineChartWidget({
           type: telemetries[index].area ? "area" : "line",
           nameTelemetry: telemetries[index].name,
           color: telemetries[index].color || "#ffffff",
-          data: telemetries[index].data || newData,
+          data: telemetries[index].data || newData.filter((item) => item.y),
         };
       });
       if (props.moyenne) {
@@ -143,7 +146,7 @@ export default function LineChartWidget({
             color: getRandomColor(),
             data: allDates?.map((item) => ({
               x: item,
-              y: Number(moyenne),
+              y: Number(moyenne).toFixed(2),
             })),
           });
         } else if (Array.isArray(props.moyenne)) {
@@ -189,7 +192,6 @@ export default function LineChartWidget({
         },
         chart: {
           id,
-          type: "bar",
           background: "transparent",
           toolbar: { show: false },
           animations: { enabled: true },
