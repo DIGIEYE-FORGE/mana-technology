@@ -1,4 +1,3 @@
-import { color } from "framer-motion";
 
 export const data = {
   serial:"0TKJJWS26V62QV15",
