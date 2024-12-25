@@ -1,3 +1,5 @@
+import { color } from "framer-motion";
+
 export const data = {
   serial:"0TKJJWS26V62QV15",
   0: {
@@ -110,6 +112,17 @@ export const data = {
               serial: "0TKJJWS26V62QV15",
               label: "M2 V2",
             },
+            {
+              color: "#19C816FF",
+              name: "s=Var3_Vitesse",
+              serial: "0TKJJWS26V62QV15",
+              label: "M3 V1",
+            },{
+              color: "#097C69FF",
+              name: "s=Var6_Vitesse",
+              serial: "0TKJJWS26V62QV15",
+              label: "M3 V2",
+            }
           ],
         },
       },
@@ -143,6 +156,17 @@ export const data = {
               serial: "0TKJJWS26V62QV15",
               label: "M2 V2",
             },
+            {
+              color: "#19C816FF",
+              name: "s=Var3_Pw",
+              serial: "0TKJJWS26V62QV15",
+              label: "M3 V1",
+            }, {
+              color: "#097C69FF",
+              name: "s=Var6_Pw",
+              serial: "0TKJJWS26V62QV15",
+              label: "M3 V2",
+            }
           ],
         },
       },
@@ -174,6 +198,17 @@ export const data = {
               serial: "0TKJJWS26V62QV15",
               label: "M2 V2",
             },
+            {
+              color: "#19C816FF",
+              name: "s=Var3_VibDe",
+              serial: "0TKJJWS26V62QV15",
+              label: "M3 V1",
+            },{
+              color: "#097C69FF",
+              name: "s=Var6_VibDe",
+              serial: "0TKJJWS26V62QV15",
+              label: "M3 V2",
+            }
           ],
         },
       },
@@ -205,6 +240,18 @@ export const data = {
               serial: "0TKJJWS26V62QV15",
               label: "M2 V2",
             },
+            {
+              color: "#19C816FF",
+              name: "s=Pt100NdeM3",
+              serial: "0TKJJWS26V62QV15",
+              label: "M3 V1",
+            },
+            {
+              color: "#097C69FF",
+              name: "s=Pt100NdeM6",
+              serial: "0TKJJWS26V62QV15",
+              label: "M3 V2",
+            }
           ],
         },
       },
