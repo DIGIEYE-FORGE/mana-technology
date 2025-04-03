@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-interface CardProps extends React.HTMLAttributes<HTMLDivElement> {}
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 function TopLeftCorner() {
   return (
@@ -136,7 +136,7 @@ function Corners() {
 export function Card({ className, children, style, ...props }: CardProps) {
   return (
     <div
-      className={cn("card relative  bg-card/10", className)}
+      className={cn("card relative bg-card/10", className)}
       style={{
         ...style,
       }}
