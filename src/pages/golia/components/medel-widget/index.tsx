@@ -41,11 +41,15 @@ export function ModelWidget({ className, ...props }: ModelWidgetProps) {
       <Canvas
         style={{
           position: "absolute",
-          bottom: "0",
+          bottom: "50%",
+          right: "50%",
+          transform: "translate(50%, 50%)",
+          width: "100vw",
+          height: "100vh",
         }}
         shadows
         camera={{
-          position: [30, 30, 30],
+          position: [30, 30, 60],
           fov: 20,
           localToWorld(vector) {
             return vector;
