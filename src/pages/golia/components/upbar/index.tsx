@@ -40,12 +40,12 @@ export function UpBar() {
       >
         {fullScreen ? <Shrink size={24} /> : <Minimize size={24} />}
       </Button>
-      <Link to="/" className="duration-500">
+      <Link to="/" className="hidden duration-500">
         <Button variant="ghost" size={"icon"}>
           <MoveLeftIcon size={24} className="size-6" />
         </Button>
       </Link>
-      <Link to="/underground" className="duration-500">
+      <Link to="/underground" className="hidden duration-500">
         <Button variant="ghost" size={"icon"}>
           <MoveRightIcon size={24} className="size-6" />
         </Button>
