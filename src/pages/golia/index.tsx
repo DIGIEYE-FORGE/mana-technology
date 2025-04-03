@@ -1,6 +1,5 @@
 import { Card } from "@/components/card";
 import { UpBar } from "./components/upbar";
-import { useFrame } from "@react-three/fiber";
 import { ModelWidget } from "./components/medel-widget";
 import BarChartWidget from "@/components/bar-chart-widget";
 import LineChartWidget from "@/components/line-chart-widget";
@@ -11,23 +10,7 @@ import { D3DonutChart } from "@/components/d3-donut chart";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ChevronsDown } from "lucide-react";
-
-export function RotatingModel({
-  modelRef,
-  isRotating,
-}: {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  modelRef: any;
-  isRotating?: boolean;
-}) {
-  useFrame(() => {
-    if (modelRef.current) {
-      modelRef.current.rotation.y += isRotating ? 0.002 : 0;
-    }
-  });
-
-  return null;
-}
+import { Golia } from "./components/golia";
 
 export default function GoliaPage() {
   return (
@@ -39,6 +22,7 @@ export default function GoliaPage() {
       }}
     >
       <UpBar />
+      <Golia />
       <div className="isolate grid grid-flow-dense auto-rows-[19.5rem] gap-4 p-6 md:grid-cols-6 xl:grid-cols-9 2xl:grid-cols-12 [&>*]:relative">
         <Card className="relative z-10 col-span-3 flex flex-col p-4">
           <h1 className="text-center text-lg font-semibold">
