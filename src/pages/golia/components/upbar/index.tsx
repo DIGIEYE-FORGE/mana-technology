@@ -2,10 +2,12 @@ import { Button } from "@/components/ui/button";
 import { Minimize, MoveLeftIcon, MoveRightIcon, Shrink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useAppContext } from "@/Context";
-import { toggleFullScreen } from "@/utils";
+import { TDateRange, toggleFullScreen } from "@/utils";
+import { DatePickerWithRange } from "@/components/calander";
 
 export function UpBar() {
-  const { fullScreen, setFullScreen } = useAppContext();
+  const { fullScreen, setFullScreen, dateRange, setDateRange } =
+    useAppContext();
   return (
     <div className="group sticky top-0 z-10 flex h-up-bar w-full shrink-0 items-center justify-end gap-2 border-b px-6 backdrop-blur">
       <div className="mr-auto flex items-center gap-6">
@@ -18,6 +20,13 @@ export function UpBar() {
             <span>Mine X.0</span>
           </Button>
         </Link>
+        <DatePickerWithRange
+          className="mr-auto hidden lg:block"
+          date={dateRange}
+          onChange={(date) => {
+            setDateRange(date as TDateRange);
+          }}
+        />
       </div>
 
       <Button

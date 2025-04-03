@@ -32,7 +32,11 @@ export function ModelWidget({ className, ...props }: ModelWidgetProps) {
   const [loading, setLoading] = useState(true);
   const [isRotating, setIsRotating] = useState(true);
   return (
-    <Card {...props} className={twMerge("relative isolate", className)}>
+    <Card
+      {...props}
+      className={twMerge("relative isolate", className)}
+      onClick={() => setIsRotating(!isRotating)}
+    >
       {loading && (
         <div className="absolute inset-0 z-10 grid place-content-center">
           <Loader />
@@ -58,7 +62,6 @@ export function ModelWidget({ className, ...props }: ModelWidgetProps) {
         onCreated={({ gl }) => {
           gl.shadowMap.enabled = true;
         }}
-        onClick={() => setIsRotating(!isRotating)}
       >
         <ambientLight intensity={0.5} />
         <directionalLight
