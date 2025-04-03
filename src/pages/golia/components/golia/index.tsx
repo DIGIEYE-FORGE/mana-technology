@@ -45,8 +45,18 @@ export function Golia() {
 
   return (
     <GoliaWidget
+      style={{
+        position: "fixed",
+        bottom: "20px",
+        right: "20px",
+        zIndex: 9999,
+      }}
+      containerStyle={{
+        width: "min(600px, 100vw - 40px)",
+        height: "min(800px, 100vh - 120px)",
+        resize: "both",
+      }}
       bot={bot}
-      position="bottom-right"
       placeholder="Ask me anything..."
       primaryColor="#f4a81d"
       // botAvatarUrl="https://example.com/bot-avatar.jpg"
