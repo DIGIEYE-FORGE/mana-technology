@@ -86,6 +86,9 @@ importers:
       framer-motion:
         specifier: ^11.2.10
         version: 11.11.11(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      golia-chatbot:
+        specifier: ^2.0.6
+        version: 2.0.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       leaflet:
         specifier: ^1.9.4
         version: 1.9.4
@@ -2136,6 +2139,12 @@ packages:
 
   glsl-noise@0.0.0:
     resolution: {integrity: sha512-b/ZCF6amfAUb7dJM/MxRs7AetQEahYzJ8PtgfrmEdtw6uyGOr+ZSGtgjFm6mfsBkxJ4d2W7kg+Nlqzqvn3Bc0w==}
+
+  golia-chatbot@2.0.6:
+    resolution: {integrity: sha512-yaqPMwxa0QCNpzmL8qvk+ZgHB/KUcmp7M4SZxFy/9+3+ZqmTEDqx5U/luswzB4dHDBw+lNn3acMggFPmGZ0N3w==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
 
   graphemer@1.4.0:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
@@ -5200,6 +5209,11 @@ snapshots:
       slash: 3.0.0
 
   glsl-noise@0.0.0: {}
+
+  golia-chatbot@2.0.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
 
   graphemer@1.4.0: {}
 

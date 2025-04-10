@@ -10,7 +10,7 @@ import AppContext from "./Context";
 import LoginPage from "./pages/login";
 import BpIndicator from "./components/bp-indicator";
 import { useNavigate, useLocation } from "react-router-dom";
-
+import { GoliaBot, GoliaWidget } from "golia-chatbot";
 function App() {
   const [user, setUser] = useState<User | null | undefined>(undefined);
   const navigate = useNavigate();
@@ -24,6 +24,8 @@ function App() {
     "refreshToken",
     z.string().default(""),
   );
+  const [bot, setBot] = useState<GoliaBot | null>(null);
+  const [isLoadingBot, setIsLoadingBot] = useState(true);
   const [dateRange, setDateRange] = useState<TDateRange>({
     from: new Date(new Date("2024-06-01").setHours(0, 0, 0, 0)),
     to: new Date(new Date().setHours(23, 59, 59, 999)),
@@ -64,6 +66,36 @@ function App() {
       navigate("/main-project");
     }
   }, []);
+  useEffect(() => {
+    if (!user || bot) return;
+    // Initialize bot with user info
+    const initBot = async () => {
+      setIsLoadingBot(true);
+      if (!user) return;
+      const goliaBot = new GoliaBot({
+        name: "Golia",
+        apiEndpoint: "https://goliya.digieye.io/api/",
+
+        greeting:
+          "Welcome to the Digital Twin demo of the Tizert Project — a cutting-edge virtual representation of one of Morocco's most strategic mining operations. This platform enables real-time monitoring, data-driven decision-making, and immersive visualization of the entire site, bridging the physical and digital worlds to optimize performance, safety, and sustainability",
+        user: {
+          email: "digital-twin@gmail.com",
+          firstName: "digital",
+          lastName: "twin",
+          avatar: user?.avatar
+            ? import.meta.env.VITE_BACKEND_API + "/uploads" + user.avatar
+            : undefined,
+        },
+      });
+      setTimeout(() => {
+        setBot(goliaBot);
+        setIsLoadingBot(false);
+      }, 1000);
+      // Wait a moment for authentication to complete
+    };
+
+    initBot();
+  }, [user]);
 
   useEffect(() => {
     function preventFullScreen(event: KeyboardEvent) {
@@ -121,6 +153,23 @@ function App() {
               backgroundSize: "100% 100%, 100% 100%",
             }}
           >
+            {bot && (
+              <GoliaWidget
+                style={{
+                  position: "fixed",
+                  bottom: "20px",
+                  right: "20px",
+                  zIndex: 999999,
+                }}
+                containerStyle={{
+                  resize: "both",
+                }}
+                bot={bot}
+                placeholder="Ask me anything..."
+                maxHistoryMessages={10}
+                primaryColor="#352cd9"
+              />
+            )}
             <Outlet />
           </main>
         )}
