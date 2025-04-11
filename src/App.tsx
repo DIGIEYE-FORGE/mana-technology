@@ -75,7 +75,7 @@ function App() {
       const goliaBot = new GoliaBot({
         name: "Golia",
         apiEndpoint: "https://goliya.digieye.io/api/",
-
+        destroyed: false,
         greeting:
           "Welcome to the Digital Twin demo of the Tizert Project — a cutting-edge virtual representation of one of Morocco's most strategic mining operations. This platform enables real-time monitoring, data-driven decision-making, and immersive visualization of the entire site, bridging the physical and digital worlds to optimize performance, safety, and sustainability",
         user: {
@@ -161,13 +161,22 @@ function App() {
                   right: "20px",
                   zIndex: 999999,
                 }}
+                launcherStyle={{
+                  border: "2px solid white",
+                  borderRadius: "50%",
+                  width: 60,
+                  height: 60,
+                  boxShadow: "0 8px 30px rgba(0,0,0,0.12)",
+                }}
                 containerStyle={{
                   resize: "both",
+                  bottom: "30px",
+                  right: "90px",
                 }}
                 bot={bot}
                 placeholder="Ask me anything..."
                 maxHistoryMessages={10}
-                primaryColor="#352cd9"
+                primaryColor="#3b8eff"
               />
             )}
             <Outlet />
