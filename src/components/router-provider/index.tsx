@@ -33,7 +33,7 @@ import VrUndergroundPage from "@/pages/360";
 import FuturePage from "@/pages/future";
 import VideoPage from "@/pages/video";
 import Projection360Page from "@/pages/360-projection";
-import GoliaPage from "@/pages/golia";
+// import GoliaPage from "@/pages/golia";
 
 const routes: RouteObject[] = [
   {
@@ -74,10 +74,10 @@ const routes: RouteObject[] = [
         path: "future",
         element: <FuturePage />,
       },
-      {
-        path: "golia",
-        element: <GoliaPage />,
-      },
+      // {
+      //   path: "golia",
+      //   element: <GoliaPage />,
+      // },
       {
         path: "main-project",
         element: <MainProjectPage />,
