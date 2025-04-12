@@ -153,7 +153,7 @@ function App() {
               backgroundSize: "100% 100%, 100% 100%",
             }}
           >
-            {bot && (
+            {bot && !isLoadingBot && (
               <GoliaWidget
                 style={{
                   position: "fixed",
