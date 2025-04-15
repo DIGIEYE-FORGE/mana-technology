@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function VideoDialog() {
   return (
-    <Link to={"/video/timelapse.mp4"}>
+    <Link to={"/video/Progress_Tizert_a_Mars_2025.mp4"}>
       <Button
         className="flex h-full w-full gap-2 rounded-full"
         variant={"ghost"}

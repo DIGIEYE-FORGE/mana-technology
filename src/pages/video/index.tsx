@@ -21,7 +21,7 @@ export default function VideoPage() {
       document.removeEventListener("click", enablePlaybackOnInteraction);
     };
 
-    if (name === "timelapse.mp4" && videoRef.current) {
+    if (name === "Progress_Tizert_a_Mars_2025.mp4" && videoRef.current) {
       // Attempt to play without muting
       videoRef.current.play().catch((error) => {
         console.error("AutoPlay blocked, waiting for user interaction:", error);
@@ -53,7 +53,7 @@ export default function VideoPage() {
         ref={videoRef}
         className="h-[100dvh] w-screen"
         controls
-        loop={name === "timelapse.mp4"}
+        loop={name === "Progress_Tizert_a_Mars_2025.mp4"}
         src={
           `${env.VITE_LOCAL_VIDEOS === "true" ? "/ignore/" : "https://managem.digieye.io/statics/"}` +
           name
