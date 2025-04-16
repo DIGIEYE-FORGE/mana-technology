@@ -112,8 +112,13 @@ const VentilationDashboard1 = () => {
             <h1 className="text-center text-lg font-semibold">{child.title}</h1>
             <div className="h-1 flex-1">
               <MoteurCard
-                min={index == 0 ? 16 : undefined}
-                max={index == 0 ? 26 : undefined}
+                min={
+                  index == 0
+                    ? 18
+                    : //// lst
+                      undefined
+                }
+                max={index == 0 ? 21 : undefined}
                 attributes={child.attributes}
                 val={child?.attributes?.telemetries?.map((telemetry) => {
                   return {
@@ -134,10 +139,12 @@ const VentilationDashboard1 = () => {
           </Card>
         ))}
         {data[2].children.map((child, index) => (
-          <Card key={index} className="flex h-[11rem] w-full flex-col">
+          <Card key={index} className="debug flex h-[11rem] w-full flex-col">
             <h1 className="text-center text-lg font-semibold">{child.title}</h1>
             <div className="h-1 flex-1">
               <MoteurCard
+                min={15}
+                max={40}
                 attributes={child?.attributes}
                 val={child?.attributes?.telemetries?.map((telemetry) => {
                   return {
