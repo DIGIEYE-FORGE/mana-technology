@@ -139,7 +139,7 @@ const VentilationDashboard1 = () => {
           </Card>
         ))}
         {data[2].children.map((child, index) => (
-          <Card key={index} className="debug flex h-[11rem] w-full flex-col">
+          <Card key={index} className="flex h-[11rem] w-full flex-col">
             <h1 className="text-center text-lg font-semibold">{child.title}</h1>
             <div className="h-1 flex-1">
               <MoteurCard
