@@ -389,7 +389,7 @@ export default function MainProjectPage() {
             hideYear
             // hideMonth
             theme="dark"
-            endAt={"2025-05-16 00:00:00"}
+            endAt={"2025-05-30 00:00:00"}
           />
         </div>
         <div className="flex h-full w-full flex-col gap-4">
