@@ -20,6 +20,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { XIcon } from "lucide-react";
 import { machines } from "./data";
+import { env } from "@/utils/env";
 
 extend({ PlaneGeometry });
 export function Loader3D() {
@@ -198,7 +199,7 @@ function TreePage() {
           shadow-camera-bottom={-10}
         />
         <Suspense fallback={<Loader3D />}>
-          <Model
+          {/* <Model
             // color2="#96CFFE"
             // color1="#96CFFE"
             url={
@@ -207,7 +208,7 @@ function TreePage() {
             }
             ref={modelRef}
             onLoad={() => setLoading(false)}
-          />
+          /> */}
         </Suspense>
         <RotatingModel modelRef={modelRef} />
         <OrbitControls enableRotate rotateSpeed={1} zoomToCursor />

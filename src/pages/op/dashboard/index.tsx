@@ -115,11 +115,11 @@ export default function HomeDashboard() {
         </div>
       </Card>
 
-      <Card className="col-span-full row-span-3 flex flex-col px-2 py-6 lg:col-span-6 xl:col-span-4">
+      <Card className="col-span-full row-span-6 flex flex-col px-2 py-6 lg:col-span-12 xl:col-span-8">
         <h1 className="text-center text-base font-semibold 2xl:text-lg">
-          Évolution de la Production vs Planifié
+          Évolution des engins
         </h1>
-        <ProgressAccumulation
+        {/* <ProgressAccumulation
           attributes={{
             targetSerial: "TIRSIL71OBOT4UB4",
             progressSerial: "TIRSIL71OBOT4UB4",
@@ -128,9 +128,10 @@ export default function HomeDashboard() {
             progressTelemetryName: "REALISE_ROCHE_CUMUL",
             accumulationTelemetryName: "PLANIFIE_ROCHE_CUMUL",
           }}
-        />
+        /> */}
+        <MapModal />
       </Card>
-      <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-4">
+      {/* <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-4">
         <h1 className="text-center text-lg font-semibold">
           Production Roche par Fosse (t)
         </h1>
@@ -158,7 +159,7 @@ export default function HomeDashboard() {
             }}
           />
         </div>
-      </Card>
+      </Card> */}
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-6 xl:col-span-4">
         <h1 className="text-center text-lg font-semibold">
           Production par qualité (t)
@@ -216,7 +217,7 @@ export default function HomeDashboard() {
           />
         </div>
       </Card>
-      <Card className="col-span-full row-span-3 flex flex-col gap-1 p-4 lg:col-span-8">
+      {/* <Card className="col-span-full row-span-3 flex flex-col gap-1 p-4 lg:col-span-8">
         <h3 className="text-center text-lg font-semibold">Suivi des Tirs</h3>
         <TableWidget
           className="h-1 flex-1"
@@ -256,7 +257,7 @@ export default function HomeDashboard() {
             ],
           }}
         />
-      </Card>
+      </Card> */}
       <Card className="col-span-full row-span-3 flex flex-col p-6 lg:col-span-4">
         <h1 className="text-center text-lg font-semibold">Foration (ml/J)</h1>
         <div className="flex-1">
@@ -403,7 +404,7 @@ export default function HomeDashboard() {
           <h3 className="text-center text-lg font-semibold">
             Disponibilité Engins pit SUD
           </h3>
-          <MapModal />
+          {/* <MapModal /> */}
         </div>
         <MultiProgressWidget
           attributes={{

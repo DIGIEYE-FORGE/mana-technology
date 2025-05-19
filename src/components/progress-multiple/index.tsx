@@ -172,7 +172,7 @@ function ProgressMultiple({ attributes }: props) {
         );
       })}
 
-      <div className="flex w-full justify-center gap-7">
+      <div className="flex w-full justify-center gap-5">
         {/* {data[index].map((ele, index) => {
           return (
             <div key={index} className="flex flex-col gap-1">
