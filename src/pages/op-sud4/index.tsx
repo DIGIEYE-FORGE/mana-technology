@@ -109,7 +109,7 @@ function DashboardPage3() {
         <ProgressAccumulation
           attributes={{
             targetSerial: "QXYIV05MSG7F079I",
-            progressSerial:"PI6PQ8SEZC4BWRP3",
+            progressSerial: "PI6PQ8SEZC4BWRP3",
             progressColor: "#EBC94A",
             currentTargetColor: "#78F6EA",
             progressTelemetryName: "SUD4_REALISE_ROCHE_CUMUL",
@@ -175,9 +175,7 @@ function DashboardPage3() {
           />
         </div>
       </Card>
-      <Card className="col-span-3 flex items-center justify-center text-3xl font-bold xl:row-span-2">
-  
-      </Card>
+      <Card className="col-span-3 flex items-center justify-center text-3xl font-bold xl:row-span-2"></Card>
       <Card className="col-span-6 flex flex-col p-4">
         <h3 className="text-center text-lg font-semibold">Suivi des Tirs</h3>
         <TableWidget

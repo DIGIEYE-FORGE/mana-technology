@@ -107,7 +107,7 @@ export default function HomeDashboard() {
         <ProgressAccumulation
           attributes={{
             targetSerial: "JZVATMKQ1A8DA2P1",
-            progressSerial:"D5KP29KL463AZXWE",
+            progressSerial: "D5KP29KL463AZXWE",
             progressColor: "#EBC94A",
             currentTargetColor: "#78F6EA",
             progressTelemetryName: "EST_REALISE_ROCHE_CUMUL_Ton",
@@ -176,7 +176,7 @@ export default function HomeDashboard() {
         <img
           src="/est11.png"
           alt="Logo"
-            className="h-full w-full object-contain"
+          className="h-full w-full object-contain"
         />
       </Card>
       <Card className="col-span-full flex flex-col p-4 xl:col-span-6">
