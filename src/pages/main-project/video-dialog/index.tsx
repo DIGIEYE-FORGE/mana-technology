@@ -7,8 +7,7 @@ function VideoDialog() {
     <Link
       to={
         //// TODO: add a condition to check if the video is local or remote
-        `${import.meta.env.VITE_LOCAL_VIDEOS === "true" ? "/ignore/" : "https://managem.digieye.io/statics/"}` +
-        "timelapse.mp4"
+        "/Tizert_video"
       }
     >
       <Button
