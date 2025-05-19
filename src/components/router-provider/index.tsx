@@ -33,6 +33,7 @@ import VrUndergroundPage from "@/pages/360";
 import FuturePage from "@/pages/future";
 import VideoPage from "@/pages/video";
 import Projection360Page from "@/pages/360-projection";
+import TizertVideo from "@/pages/tizert-video";
 // import GoliaPage from "@/pages/golia";
 
 const routes: RouteObject[] = [
@@ -161,6 +162,10 @@ const routes: RouteObject[] = [
       {
         path: "dashboard14",
         element: <Dashboard14Page />,
+      },
+      {
+        path: "/Tizert_video/",
+        element: <TizertVideo />,
       },
     ],
   },

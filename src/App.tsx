@@ -146,7 +146,7 @@ function App() {
         {user === null && <LoginPage />}
         {user && backendApi.isReady() && (
           <main
-            className="dark overflow-y-auto text-foreground"
+            className="dark overflow-hidden text-foreground"
             style={{
               backgroundImage:
                 "linear-gradient(to bottom,  #172f6dd0 0%, #0f172ad0 70%), url(/sky-bg.png)",

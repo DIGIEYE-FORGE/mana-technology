@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import Circle1 from "@/assets/circle-1.svg?react";
 import Circle2 from "@/assets/circle-2.svg?react";
 import Circle3 from "@/assets/circle-3.svg?react";
+import Safety from "@/assets/safety.svg?react";
 import Light from "@/assets/light.svg?react";
 import { Suspense, useRef, useState } from "react";
 import { Loader3D } from "../tree";
@@ -24,6 +25,7 @@ import React from "react";
 import { MainProjectUpBar } from "./components/up-bar";
 import VideoDialog from "./video-dialog";
 import FullscreenVideo from "./full-screen-video";
+import YoutubeComponent from "@/components/video-youtube";
 
 export function RotatingModel({
   modelRef,
@@ -380,17 +382,65 @@ export default function MainProjectPage() {
     >
       <main className="relative mx-auto max-h-[1200px] w-full max-w-[1920px]">
         <MainProjectUpBar />
-        <div className="absolute bottom-36 right-4 z-10 flex w-[19rem] -translate-x-1/4 -translate-y-1/2 scale-150 flex-col gap-2">
-          <h4 className="text-center text-lg font-semibold text-orange-300">
-            1 <sup>st</sup> copper concentrate
-          </h4>
-          <FlipCountdown
-            size="small"
-            hideYear
-            // hideMonth
-            theme="dark"
-            endAt={"2025-05-16 00:00:00"}
-          />
+        <div className="absolute bottom-[5rem] right-4 z-10 flex w-[19rem] -translate-x-1/4 -translate-y-1/2 scale-150 flex-col items-center gap-2">
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button variant="ghost" className="!m-0 size-[4rem] !p-1">
+                <Safety className="size-[4rem] cursor-pointer text-orange-300" />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent
+              side={"right"}
+              align={"center"}
+              sideOffset={110}
+              className="dark w-fit border-none bg-transparent p-0 backdrop-blur"
+              style={{
+                clipPath:
+                  "polygon(0% 18.5%, 2.8% 13.5%, 34% 13.5%, 36.2% 9.3%, 36.2% 0%, 100% 0%, 100% 99.6%, 1.6% 99.6%, 1.6% 67%, 0% 64%)",
+              }}
+            >
+              <div
+                className="relative z-10 aspect-[1.7] h-[35rem] w-[50rem] lg:h-[40rem] lg:w-[60rem] 2xl:h-[46rem] 2xl:w-[70rem]"
+                style={{
+                  backgroundImage: "url(/card-bg.png)",
+                  backgroundSize: "100% 100%",
+                }}
+              >
+                <PopoverClose asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="absolute right-4 top-4 text-white"
+                  >
+                    <XIcon size={24} />
+                  </Button>
+                </PopoverClose>
+                <div className="flex h-full flex-col gap-[3.5rem] pb-7 pl-11 pr-6 pt-2">
+                  <div className="ml-auto flex h-14 w-[64%] shrink-0 items-center px-6 text-2xl font-semibold">
+                    {"SAFETY FIRST"}
+                  </div>
+
+                  <YoutubeComponent
+                    url="https://www.youtube.com/embed/Fr345gpEgm4"
+                    title="Induction 7 2024"
+                  />
+                </div>
+              </div>
+            </PopoverContent>
+          </Popover>
+
+          <div>
+            <h4 className="text-center text-lg font-semibold text-orange-300">
+              1 <sup>st</sup> copper concentrate
+            </h4>
+            <FlipCountdown
+              size="small"
+              hideYear
+              // hideMonth
+              theme="dark"
+              endAt={"2025-06-30 00:00:00"}
+            />
+          </div>
         </div>
         <div className="flex h-full w-full flex-col gap-4">
           <div className="max-h-1/2 relative flex items-center justify-center">
@@ -755,7 +805,6 @@ export default function MainProjectPage() {
                 }}
               ></div>
             </Link>
-
             <Popover>
               <PopoverTrigger asChild>
                 <div
