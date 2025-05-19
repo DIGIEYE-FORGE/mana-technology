@@ -4,7 +4,13 @@ import { Link } from "react-router-dom";
 
 function VideoDialog() {
   return (
-    <Link to={"/Tizert_video"}>
+    <Link
+      to={
+        //// TODO: add a condition to check if the video is local or remote
+        `${import.meta.env.VITE_LOCAL_VIDEOS === "true" ? "/ignore/" : "https://managem.digieye.io/statics/"}` +
+        "timelapse.mp4"
+      }
+    >
       <Button
         className="flex h-full w-full gap-2 rounded-full"
         variant={"ghost"}
