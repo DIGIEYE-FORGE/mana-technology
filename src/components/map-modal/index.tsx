@@ -1,18 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogTrigger,
-  DialogClose,
-} from "@/components/ui/dialog";
-import { MapPin, X } from "lucide-react";
+
 import { MapContainer, TileLayer, Marker, useMap, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Icon } from "leaflet";
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
-import { DialogTitle } from "@radix-ui/react-dialog";
+
 import useSWR from "swr";
 import axios from "axios";
 import Loader from "../loader";
@@ -68,7 +61,21 @@ export const MapModal = () => {
       serial: string;
       matricule: string;
     }[]
-  >([]);
+  >([
+    {
+      serial: "350544503978333",
+      lat: 30.2345183,
+      lng: -8.4137433,
+      matricule: "",
+    },
+
+    {
+      serial: "350544504047476",
+      lat: 30.2389033,
+      lng: -8.4123633,
+      matricule: "",
+    },
+  ]);
 
   const { isLoading, error } = useSWR(
     "enigineslocations",
@@ -152,6 +159,7 @@ export const MapModal = () => {
     });
 
     socket.on("message", (data) => {
+      console.log("Received message:", data);
       if (!data.lat || !data.lng || !data.serial) return;
       setMarkers((prev) => {
         const index = prev.findIndex((marker) => marker.serial === data.serial);
