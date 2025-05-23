@@ -26,5 +26,8 @@
     "baseUrl": ".",
     "allowImportingTsExtensions": true,
   },
-  "include": ["src"]
+  "include": ["src"],
+   "exclude": ["ignore"],
+   
+  
 }

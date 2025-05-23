@@ -1,6 +1,4 @@
 import { Card } from "@/components/card";
-// import { ProgressAccumulation } from "@/components/progress-accumulation";
-// import TableWidget from "@/components/table-widget";
 import LineChartWidget from "@/components/line-chart-widget";
 import BarChartWidget from "@/components/bar-chart-widget";
 import MultiProgressWidget from "@/components/multi-progress-widget";

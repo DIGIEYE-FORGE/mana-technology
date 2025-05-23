@@ -16,50 +16,32 @@ const tabs = [
     ],
   },
   {
-    title: "Permitting",
-    subTabs: [
-      {
-        image: "/Onsite.svg",
-        title: "On Site - Initial Situation",
-      },
-      {
-        image: "/Onsite2.svg",
-        title: "On Site - Exploration Phase",
-      },
-      {
-        image: "/Onsite3.svg",
-        title: "On Site - Operations Phase",
-      },
-      {
-        image: "/Onsite4.svg",
-        title: "On Site - Operation  Phase",
-      },
-      {
-        image: "/offsite.svg",
-        title: "Off Site",
-      },
-    ],
-  },
- 
+  title: "ES Commitment",
+  subTabs: [
+    {
+      image: "/Frame 1000007925.svg",
+      title: "ES Commitment",
+    },
+  ],
+},
   {
-    title: "Actions",
+    title: "Eco-responsible",
     subTabs: [
       {
-        title: "Actions",
-        image: "/action.png",
+        title: "Eco-responsible",
+        image: "/eco.svg",
       },
     ],
   },
   {
-    title: "Operations readiness",
-    subTabs: [
-      {
-        image: "/readiness.svg",
-        title: "Commitment to excellence and growth",
-      },
-    ],
-  },
-  
+  title: "Actions",
+  subTabs: [
+    {
+      title: "Actions",
+      image: "/action.png",
+    },
+  ],
+},
 ];
 
 interface EsgButtonProps extends ButtonProps {}

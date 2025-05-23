@@ -25,6 +25,7 @@ import React from "react";
 import { MainProjectUpBar } from "./components/up-bar";
 import VideoDialog from "./video-dialog";
 import FullscreenVideo from "./full-screen-video";
+import HLSPlayer from "./components/hls-player";
 // import YoutubeComponent from "@/components/video-youtube";
 
 export function RotatingModel({
@@ -424,7 +425,7 @@ export default function MainProjectPage() {
                     title="Induction 7 2024"
                   /> */}
                   {/* TODO */}
-                  <video
+                  {/*<video
                     className="h-full w-full rounded-lg"
                     controls
                     autoPlay
@@ -433,7 +434,8 @@ export default function MainProjectPage() {
                       `${import.meta.env.VITE_LOCAL_VIDEOS === "true" ? "/ignore/" : "https://managem.digieye.io/statics/"}` +
                       "Induction 7-2024.mp4"
                     }
-                  />
+                  /> */}
+                  <HLSPlayer src="/videos/Induction/output.m3u8" />
                 </div>
               </div>
             </PopoverContent>
