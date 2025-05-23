@@ -27,7 +27,7 @@ function App() {
   const [bot, setBot] = useState<GoliaBot | null>(null);
   const [isLoadingBot, setIsLoadingBot] = useState(true);
   const [dateRange, setDateRange] = useState<TDateRange>({
-    from: new Date(new Date("2024-06-01").setHours(0, 0, 0, 0)),
+    from: new Date(new Date("2025-01-01").setHours(0, 0, 0, 0)),
     to: new Date(new Date().setHours(23, 59, 59, 999)),
   });
   const backendApi = useMemo(

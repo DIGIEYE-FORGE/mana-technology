@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
-import { Link } from "react-router-dom";
+import HLSPlayer from "../main-project/components/hls-player";
 
 function TizertVideo() {
   return (
@@ -14,7 +14,7 @@ function TizertVideo() {
           <ArrowLeft className="h-6 w-6" />
         </Button>
       </div>
-      <video
+      {/*<video
         autoPlay
         className="h-full w-full object-contain"
         controls
@@ -22,7 +22,8 @@ function TizertVideo() {
           `${import.meta.env.VITE_LOCAL_VIDEOS === "true" ? "/ignore/" : "https://managem.digieye.io/statics/"}` +
           "timelapse.mp4"
         }
-      ></video>
+      />*/}
+      <HLSPlayer src="/videos/timelapse/output.m3u8" />
     </div>
   );
 }

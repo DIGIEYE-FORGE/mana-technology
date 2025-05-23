@@ -43,15 +43,15 @@ const tabs = [
       },
     ],
   },
-  {
-    title: "Eco-responsible",
-    subTabs: [
-      {
-        title: "",
-        image: "/eco.svg",
-      },
-    ],
-  },
+  
+  
+  
+  
+  
+  
+  
+  
+  
 ];
 
 interface OverviewButtonProps extends ButtonProps {}
