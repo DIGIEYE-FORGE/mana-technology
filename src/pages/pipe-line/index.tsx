@@ -9,7 +9,7 @@ import Circle3 from "@/assets/circle-3.svg?react";
 import Light from "@/assets/light.svg?react";
 import HexagonImage from "./components/Hexagon-Image";
 import LiquidProgress from "./components/progress";
-import { ArrowBigRight, XIcon } from "lucide-react";
+import { ArrowBigRight, ArrowRight, XIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Popover,
@@ -300,28 +300,27 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
     {showCard && (
       <div
         className={cn(
-          "absolute z-10 min-h-[10rem] min-w-[20rem]",
+          "absolute z-10 min-h-[10rem] min-w-[20rem] scale-90",
           getCardPositionClass(point.card.position),
         )}
         style={point.card.optionsPosition}
       >
-        <CustomCardComponent className="flex min-h-[10rem] flex-col gap-2 p-4 !px-2 !py-1">
+        <CustomCardComponent className="flex min-h-[10rem] flex-col gap-2 !px-4 !pb-4">
           <div className="flex justify-between">
             <h3 className="text-md flex items-center justify-center px-3 text-white">
               {point.title}
             </h3>
             <Popover>
               <PopoverTrigger asChild>
-                <Button
-                  className="text-md flex items-center gap-3 text-[#78F6EA]"
-                  variant={"ghost"}
+                <button
+                  className="text-md group flex items-center gap-2 text-[#78F6EA]"
                   onClick={(event) => {
                     event.stopPropagation();
                   }}
                 >
                   Voir plus
-                  <ArrowBigRight />
-                </Button>
+                  <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </button>
               </PopoverTrigger>
               <PopoverContent
                 side={point.model?.side}
@@ -376,10 +375,10 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                         {value.map((state: string) => (
                           <div
                             key={state}
-                            className="size-6 border-2 border-white"
+                            className="aspect-video h-5 w-6 rounded-sm border-0 border-white"
                             style={{
                               backgroundColor:
-                                state === "Running" ? "#00FF00" : "#FF0000",
+                                state === "Running" ? "#26E2B3" : "#FF0000",
                             }}
                           ></div>
                         ))}
@@ -411,10 +410,12 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
     ></div>
 
     <div className="relative left-0 top-0 h-full w-full">
-      <HexagonImage
-        className="absolute -top-[65%] left-1/2 z-20 size-[6rem] -translate-x-1/2 -translate-y-1/2"
+      <img
         src={point.image}
         alt={point.title}
+        className={cn(
+          "absolute bottom-[calc(100%+1em)] size-28 object-contain",
+        )}
       />
       <div
         className="absolute bottom-20 right-1/2 z-10 translate-x-1/2 whitespace-nowrap px-2 py-0.5 text-xs font-bold 2xl:text-base"

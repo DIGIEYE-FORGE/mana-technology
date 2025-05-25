@@ -47,7 +47,7 @@ const LiquidProgress: React.FC<LiquidProgressProps> = ({
 
       {/* CENTERED TEXT */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <span className="text-xl font-bold text-black text-white">
+        <span className="text-xl font-bold text-white mix-blend-difference">
           {clamped}%
         </span>
       </div>
