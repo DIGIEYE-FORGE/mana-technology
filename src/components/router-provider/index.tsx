@@ -10,7 +10,6 @@ import DevPage from "@/pages/dev";
 import IselDevPage from "@/pages/isel-dev";
 import DashboardPage5 from "@/pages/ventilation-dashboard";
 import DashboardPage3 from "@/pages/dashboard3";
-import OjamilDevPage from "@/pages/ojamil-dev";
 import MainProjectPage from "@/pages/main-project";
 import UnderGroundPage from "@/pages/underground";
 import OpSud from "@/pages/op-sud";
@@ -34,6 +33,10 @@ import FuturePage from "@/pages/future";
 import VideoPage from "@/pages/video";
 import Projection360Page from "@/pages/360-projection";
 import TizertVideo from "@/pages/tizert-video";
+
+import OMniverseLayout from "@/pages/omniverse-layout";
+import OmniversePage from "@/pages/omniverse";
+import PipeLine from "@/pages/pipe-line";
 // import GoliaPage from "@/pages/golia";
 
 const routes: RouteObject[] = [
@@ -68,6 +71,20 @@ const routes: RouteObject[] = [
           {
             path: "op-sud4",
             element: <OpSud4 />,
+          },
+        ],
+      },
+      {
+        path: "pipeline",
+        element: <PipeLine />,
+      },
+      {
+        path: "omniverse",
+        element: <OMniverseLayout />,
+        children: [
+          {
+            path: "",
+            element: <OmniversePage />,
           },
         ],
       },
@@ -135,10 +152,10 @@ const routes: RouteObject[] = [
         path: "tree",
         element: <TreePage />,
       },
-      {
-        path: "ojamil",
-        element: <OjamilDevPage />,
-      },
+      // {
+      //   path: "ojamil",
+      //   element: <OjamilDevPage />,
+      // },
       {
         path: "dev",
         element: <DevPage />,

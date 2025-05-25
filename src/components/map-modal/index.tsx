@@ -1,18 +1,11 @@
-<<<<<<< HEAD
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-=======
->>>>>>> origin/hls-video
 import { MapContainer, TileLayer, Marker, useMap, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Icon } from "leaflet";
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
-<<<<<<< HEAD
 
-import useSWR from "swr";
-=======
->>>>>>> origin/hls-video
 import axios from "axios";
 import Loader from "../loader";
 
@@ -42,9 +35,11 @@ const CenterMapView = ({ markers }: { markers: VehicleMarker[] }) => {
     }
 
     // Find the average position of all markers for a balanced center
-    const avgLat = markers.reduce((sum, marker) => sum + marker.lat, 0) / markers.length;
-    const avgLng = markers.reduce((sum, marker) => sum + marker.lng, 0) / markers.length;
-    
+    const avgLat =
+      markers.reduce((sum, marker) => sum + marker.lat, 0) / markers.length;
+    const avgLng =
+      markers.reduce((sum, marker) => sum + marker.lng, 0) / markers.length;
+
     // Center the map on the average position
     map.setView([avgLat, avgLng], 15);
   }, [markers, map]);
@@ -53,7 +48,7 @@ const CenterMapView = ({ markers }: { markers: VehicleMarker[] }) => {
 };
 
 export const MapModal = () => {
- const [markers, setMarkers] = useState<
+  const [markers, setMarkers] = useState<
     {
       lat: number;
       lng: number;
@@ -85,15 +80,16 @@ export const MapModal = () => {
           "https://stag.api.fleet.digieye.io/api/vehicule/associated-to-gps/temp",
           {
             headers: {
-              Authorization: "Bearer 8948|shs5QGrFAQqJDgxKm5r3lvdIC5kFsBdvAEpBmClv",
+              Authorization:
+                "Bearer 8948|shs5QGrFAQqJDgxKm5r3lvdIC5kFsBdvAEpBmClv",
             },
-          }
+          },
         );
 
         const trackedImeis = [
           "350544503978333",
           "350544504047377",
-          "350544504047476"
+          "350544504047476",
         ];
 
         const newMarkers: VehicleMarker[] = [];
@@ -101,7 +97,7 @@ export const MapModal = () => {
         response.data?.payload?.forEach((engine: any) => {
           const currentData = engine.device_current_data;
           if (!currentData || !trackedImeis.includes(currentData.imei)) return;
-          
+
           const coords = currentData.coordinates;
           if (!coords || !Array.isArray(coords) || coords.length < 2) return;
 
@@ -144,7 +140,7 @@ export const MapModal = () => {
     socket.on("message", (data) => {
       console.log("Received message:", data);
       if (!data.lat || !data.lng || !data.serial) return;
-      
+
       setMarkers((prev) => {
         const index = prev.findIndex((marker) => marker.serial === data.serial);
         if (index > -1) {
@@ -196,11 +192,9 @@ export const MapModal = () => {
             url="https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
             attribution="Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP"
           />
-          
+
           {/* Overlay with boundaries and place names */}
-          <TileLayer
-            url="https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}"
-          />
+          <TileLayer url="https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}" />
 
           {/* Render all markers */}
           {markers.map((marker) => (

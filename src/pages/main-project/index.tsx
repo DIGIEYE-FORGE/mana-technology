@@ -10,7 +10,7 @@ import Safety from "@/assets/safety.svg?react";
 import Light from "@/assets/light.svg?react";
 import { Suspense, useRef, useState } from "react";
 import { Loader3D } from "../tree";
-import Model from "@/components/models";
+// import Model from "@/components/models";
 import { env } from "@/utils/env";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
@@ -154,7 +154,21 @@ const data = [
     },
     background: "url(/screen1.svg)",
   },
-
+  {
+    type: "link",
+    image: "screen1.svg",
+    to: "/pipeline",
+    position: {
+      top: "64%",
+      left: "5%",
+    },
+    positionModel: {
+      side: "left",
+      align: "end",
+      sideOffset: 20,
+    },
+    background: "url(/pipeline.png)",
+  },
   {
     title: "Pit SUD",
     type: "video",
@@ -361,9 +375,9 @@ const tree = {
 export default function MainProjectPage() {
   const [isRotating, setIsRotating] = useState(true);
   const modelRef = useRef();
-  const [, setLoading] = useState(true);
+  // const [, setLoading] = useState(true);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [hovered] = useState("");
+  // const [hovered] = useState("");
 
   const [showInfo, setShowInfo] = useState<string[]>([
     "Electrical power line",
@@ -692,7 +706,7 @@ export default function MainProjectPage() {
                 shadow-camera-bottom={-10}
               />
               <Suspense fallback={<Loader3D />}>
-                <Model
+                {/* <Model
                   hovered={hovered}
                   url={
                     `${env.VITE_LOCAL_MODELS === "true" ? "/ignore/" : "https://managem.digieye.io/statics/"}` +
@@ -700,7 +714,7 @@ export default function MainProjectPage() {
                   }
                   ref={modelRef}
                   onLoad={() => setLoading(false)}
-                />
+                /> */}
               </Suspense>
               <RotatingModel modelRef={modelRef} isRotating={isRotating} />
               <OrbitControls enableRotate rotateSpeed={1} zoomToCursor />

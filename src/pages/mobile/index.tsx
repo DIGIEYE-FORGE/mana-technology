@@ -2,7 +2,7 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import React, { Suspense, useEffect, useRef, useState } from "react";
 import { Loader3D } from "../tree";
-import Model from "@/components/models";
+// import Model from "@/components/models";
 import { env } from "@/utils/env";
 import { OrbitControls } from "@react-three/drei";
 import { locations, TLocation, undergroundLocations } from "./data";
@@ -91,6 +91,7 @@ export function ThreeDModel({
 }: {
   setLoading: (loading: boolean) => void;
 }) {
+  void setLoading(false);
   const [isRotating, setIsRotating] = useState(true);
   const modelRef = useRef();
 
@@ -124,14 +125,14 @@ export function ThreeDModel({
         shadow-camera-bottom={-10}
       />
       <Suspense fallback={<Loader3D />}>
-        <Model
+        {/* <Model
           url={
             `${env.VITE_LOCAL_MODELS === "true" ? "/ignore/" : "https://managem.digieye.io/statics/"}` +
             "mine026.glb"
           }
           ref={modelRef}
           onLoad={() => setLoading(false)}
-        />
+        /> */}
       </Suspense>
       <RotatingModel modelRef={modelRef} isRotating={isRotating} />
       <OrbitControls enableRotate rotateSpeed={1} zoomToCursor />

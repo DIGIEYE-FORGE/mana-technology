@@ -1,0 +1,49 @@
+import { cn } from "@/lib/utils";
+
+interface ProgressBarProps {
+  data: {
+    min: number;
+    max: number;
+    // status: string;
+    color: string;
+  }[];
+  className?: string;
+  value?: string;
+  unite?: string;
+  title: string;
+}
+
+function ProgressBar({
+  data,
+  className,
+  value,
+  unite,
+  title,
+}: ProgressBarProps) {
+  return (
+    <div className={cn("flex w-full items-center px-2")}>
+      {/* Render each segment of the progress bar */}
+      <span className="p-4 text-xs text-white">{!title ? "--" : title}</span>
+      <div className={cn("flex flex-1", className)}>
+        {data.map((item, index) => (
+          <div
+            key={index}
+            style={{
+              backgroundColor: item.color,
+              width: `${item.max - item.min}%`,
+              position: "relative",
+              height: "100%",
+              color: "#fff",
+              textAlign: "center",
+            }}
+          ></div>
+        ))}
+      </div>
+      <span className="p-4 text-xs text-white">
+        {value ? value : "--"} {unite ? unite : ""}
+      </span>
+    </div>
+  );
+}
+
+export default ProgressBar;

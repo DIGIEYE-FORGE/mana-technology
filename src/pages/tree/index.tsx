@@ -2,7 +2,7 @@
 import { Canvas, extend, useFrame } from "@react-three/fiber";
 import { OrbitControls, Html } from "@react-three/drei";
 import { PlaneGeometry } from "three";
-import Model from "@/components/models";
+// import Model from "@/components/models";
 import { Suspense, useEffect, useRef, useState } from "react";
 import Loader from "@/components/loader";
 import Circle1 from "@/assets/circle-1.svg?react";
@@ -20,7 +20,6 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { XIcon } from "lucide-react";
 import { machines } from "./data";
-import { env } from "@/utils/env";
 
 extend({ PlaneGeometry });
 export function Loader3D() {
@@ -39,7 +38,7 @@ export function RotatingModel({ modelRef }: { modelRef: any }) {
 
 function TreePage() {
   const modelRef = useRef();
-  const [loading, setLoading] = useState(true);
+  const [loading] = useState(true);
   const [active, setActive] = useState<number | null>(null);
 
   useEffect(() => {
@@ -199,7 +198,7 @@ function TreePage() {
           shadow-camera-bottom={-10}
         />
         <Suspense fallback={<Loader3D />}>
-          <Model
+          {/* <Model
             // color2="#96CFFE"
             // color1="#96CFFE"
             url={
@@ -208,7 +207,7 @@ function TreePage() {
             }
             ref={modelRef}
             onLoad={() => setLoading(false)}
-          />
+          /> */}
         </Suspense>
         <RotatingModel modelRef={modelRef} />
         <OrbitControls enableRotate rotateSpeed={1} zoomToCursor />

@@ -23,7 +23,9 @@ export function MainProjectUpBar() {
           </Button>
         </Link>
       </div>
-
+      <Link to="/omniverse" className="gap-2">
+        Omniverse
+      </Link>
       <OverviewButton variant={"ghost"} className="gap-2">
         Project Overview
       </OverviewButton>
