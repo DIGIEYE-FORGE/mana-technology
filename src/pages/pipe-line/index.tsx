@@ -787,6 +787,42 @@ const PipeLine: React.FC = () => {
           },
         },
       },
+      {
+        id: "SP6",
+        title: "SP6",
+        position: { top: "70%", right: "-3%" },
+        card: {
+          position: "left",
+          optionsPosition: { top: "220%", left: "-100%" },
+          progress: filteredResults?.["s=SP8_LIT_01_MAE_TM"],
+          attributes: {
+            "Flow input": filteredResults?.["s=SP8_FIT_01_MAE_TM"],
+            "Flow output": filteredResults?.["s=SP8_FIT_02_MAE_TM"],
+            "delta flow":
+              +filteredResults?.["s=SP8_FIT_02_MAE_TM"] -
+              +filteredResults?.["s=SP8_FIT_02_MAE_TM"],
+            "pression output": filteredResults?.["s=SP8_PIT_04_MAE_TM"],
+            pumps: ["P01", "P02", "P03"],
+            "Running state": [
+              filteredResults?.["s=SP8_M01_RM_TS"],
+              filteredResults?.["s=SP8_M02_RM_TS"],
+              filteredResults?.["s=SP8_M03_RM_TS"],
+            ],
+            Pression: [
+              filteredResults?.["s=SP8_PIT_01_MAE_TM"],
+              filteredResults?.["s=SP8_PIT_02_MAE_TM"],
+              filteredResults?.["s=SP8_PIT_03_MAE_TM"],
+            ],
+          },
+        },
+        image: "/lines-images/sp5.png",
+        model: {
+          dashboard: {
+            title: "SP6 Dashboard",
+            component: <Dashboard2 />,
+          },
+        },
+      },
     ];
   });
 
