@@ -13,11 +13,11 @@ import LiquidProgress from "./components/progress";
 import { ArrowRight, XIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
-  Popover,
-  PopoverClose,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import Dashboard1 from "./components/dashboards/dashboard1";
 import Dashboard2 from "./components/dashboards/dashboard2";
 import Dashboard3 from "./components/dashboards/dashboard3";
@@ -67,9 +67,6 @@ interface PointData {
   card: CardConfig;
   image: string;
   model?: {
-    side: "left" | "right";
-    align: "center" | "end" | "start" | undefined;
-    sideOffset?: number;
     dashboard?: {
       title: string;
       component?: React.ReactNode;
@@ -115,9 +112,6 @@ const POINTS_DATA: PointData[] = [
     },
     image: "/lines-images/sp01.png",
     model: {
-      side: "right",
-      align: "start",
-      sideOffset: -250,
       dashboard: {
         title: "SP01 Dashboard",
         component: <Dashboard3 />,
@@ -136,9 +130,6 @@ const POINTS_DATA: PointData[] = [
     },
     image: "/lines-images/sp02.png",
     model: {
-      side: "left",
-      align: "start",
-      sideOffset: -400,
       dashboard: {
         title: "SP02 Dashboard",
         component: <Dashboard1 />,
@@ -148,7 +139,7 @@ const POINTS_DATA: PointData[] = [
   {
     id: "SP03",
     title: "SP03",
-    position: { top: "25%", right: "35%" },
+    position: { top: "25%", left: "65%" },
     card: {
       position: "left",
       optionsPosition: { top: "-30%" },
@@ -157,9 +148,6 @@ const POINTS_DATA: PointData[] = [
     },
     image: "/lines-images/sp03.png",
     model: {
-      side: "right",
-      align: "start",
-      sideOffset: -320,
       dashboard: {
         title: "SP03 Dashboard",
         component: <Dashboard2 />,
@@ -178,9 +166,6 @@ const POINTS_DATA: PointData[] = [
     },
     image: "/lines-images/sp1.png",
     model: {
-      side: "right",
-      align: "start",
-      sideOffset: 0,
       dashboard: {
         title: "SP1 Dashboard",
         component: <Dashboard2 />,
@@ -199,9 +184,6 @@ const POINTS_DATA: PointData[] = [
     },
     image: "/lines-images/sp03.png",
     model: {
-      side: "left",
-      align: "center",
-      sideOffset: -300,
       dashboard: {
         title: "SP05 Dashboard",
         component: <Dashboard2 />,
@@ -220,57 +202,12 @@ const POINTS_DATA: PointData[] = [
     },
     image: "/lines-images/img1.png",
     model: {
-      side: "right",
-      align: "center",
-      sideOffset: 0,
       dashboard: {
         title: "SP06 Dashboard",
         component: <Dashboard2 />,
       },
     },
   },
-  // {
-  //   id: "SP07",
-  //   title: "SP07",
-  //   position: { bottom: "6%", right: "14%" },
-  //   card: {
-  //     position: "left",
-  //     progress: 30,
-  //     optionsPosition: { top: "45%" },
-  //     attributes: DEFAULT_PUMP_ATTRIBUTES,
-  //   },
-  //   image: "/lines-images/img1.png",
-  //   model: {
-  //     side: "left",
-  //     align: "center",
-  //     sideOffset: 0,
-  //     dashboard: {
-  //       title: "SP07 Dashboard",
-  //       component: <Dashboard2 />,
-  //     },
-  //   },
-  // },
-  // {
-  //   id: "SP08",
-  //   title: "SP08",
-  //   position: { top: "50%", right: "0%" },
-  //   card: {
-  //     position: "left",
-  //     progress: 20,
-  //     optionsPosition: { top: "-230%", right: "-70%" },
-  //     attributes: DEFAULT_PUMP_ATTRIBUTES,
-  //   },
-  //   image: "/lines-images/img1.png",
-  //   model: {
-  //     side: "right",
-  //     align: "start",
-  //     sideOffset: 0,
-  //     dashboard: {
-  //       title: "SP08 Dashboard",
-  //       component: <Dashboard2 />,
-  //     },
-  //   },
-  // },
 ];
 
 // Utility functions
@@ -317,8 +254,8 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
             <h3 className="text-md flex items-center justify-center px-3 text-white">
               {point.title}
             </h3>
-            <Popover>
-              <PopoverTrigger asChild>
+            <Dialog>
+              <DialogTrigger asChild>
                 <button
                   className="text-md group flex items-center gap-2 text-[#78F6EA]"
                   onClick={(event) => {
@@ -328,12 +265,9 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                   Voir plus
                   <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </button>
-              </PopoverTrigger>
-              <PopoverContent
-                side={point.model?.side}
-                align={point.model?.align}
-                sideOffset={point.model?.sideOffset}
-                className="debug dark flex h-[30rem] min-h-fit min-w-[70rem] flex-col border-none bg-transparent p-0 backdrop-blur"
+              </DialogTrigger>
+              <DialogContent
+                className="flex h-[30rem] min-h-fit min-w-[70rem] max-w-[90vw] flex-col border-none bg-transparent p-0 backdrop-blur"
                 style={{
                   clipPath:
                     "polygon(0% 18.5%, 2.8% 13.5%, 34% 13.5%, 36.2% 9.3%, 36.2% 0%, 100% 0%, 100% 99.6%, 1.6% 99.6%, 1.6% 67%, 0% 64%)",
@@ -345,7 +279,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                   <span className="shrink-0 font-ethnocentric text-sm font-extralight first-letter:uppercase">
                     {point.model?.dashboard?.title || "Dashboard"}
                   </span>
-                  <PopoverClose asChild>
+                  <DialogClose asChild>
                     <Button
                       variant="ghost"
                       size="icon"
@@ -353,11 +287,11 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                     >
                       <XIcon size={20} />
                     </Button>
-                  </PopoverClose>
+                  </DialogClose>
                 </div>
                 {point.model?.dashboard?.component}
-              </PopoverContent>
-            </Popover>
+              </DialogContent>
+            </Dialog>
           </div>
           <div className="flex h-full w-full gap-2">
             <div className="w-[6rem]">
@@ -444,7 +378,6 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
     </div>
   </div>
 );
-
 // PipeLine Component
 const PipeLine: React.FC = () => {
   const { backendApi } = useAppContext();
