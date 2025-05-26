@@ -4,7 +4,23 @@ import PlugIcon from "@/assets/plug.svg?react";
 import ElectricIcon from "@/assets/electric.svg?react";
 import SettingIcon from "@/assets/setting.svg?react";
 
-const UpCards = () => {
+interface UpCardsProps {
+  flowRate: string | number;
+  energy: string | number;
+  utilization: string | number;
+  bounce1: string | number;
+  bounce2: string | number;
+  bounce3: string | number;
+}
+
+const UpCards = ({
+  flowRate,
+  energy,
+  utilization,
+  bounce1,
+  bounce2,
+  bounce3,
+}: UpCardsProps) => {
   return (
     <div className="flex w-full gap-2">
       <Card className="flex grow flex-col items-center gap-2 !rounded p-2">
@@ -12,11 +28,11 @@ const UpCards = () => {
         <div className="flex w-full gap-3">
           <Card className="flex grow flex-col items-center justify-center !rounded py-1">
             <span>Input</span>
-            <span className="text-lg font-bold text-[#FFC829]">xx</span>
+            <span className="text-lg font-bold text-[#FFC829]">{flowRate}</span>
           </Card>
           <Card className="flex grow flex-col items-center justify-center !rounded py-1">
             <span>Output</span>
-            <span className="text-lg font-bold text-[#FFC829]">xx</span>
+            <span className="text-lg font-bold text-[#FFC829]">{flowRate}</span>
           </Card>
         </div>
       </Card>
@@ -38,14 +54,16 @@ const UpCards = () => {
         <ElectricIcon className="size-16" />
         <div className="flex flex-col gap-1">
           <span>Energy (kwh)</span>
-          <span className="text-lg font-bold text-[#FFC829]">xx</span>
+          <span className="text-lg font-bold text-[#FFC829]">{energy}</span>
         </div>
       </Card>
       <Card className="flex max-w-fit grow items-center justify-center gap-5 !rounded px-5">
         <SettingIcon className="size-16" />
         <div className="flex flex-col gap-1">
           <span>Utilization (%)</span>
-          <span className="text-lg font-bold text-[#FFC829]">xx</span>
+          <span className="text-lg font-bold text-[#FFC829]">
+            {utilization}
+          </span>
         </div>
       </Card>
       <Card className="flex grow flex-col items-center gap-2 !rounded p-2">
@@ -53,15 +71,15 @@ const UpCards = () => {
         <div className="flex w-full gap-3">
           <Card className="flex grow flex-col items-center justify-center !rounded py-1">
             <span>1</span>
-            <span className="text-lg font-bold text-[#FFC829]">xx</span>
+            <span className="text-lg font-bold text-[#FFC829]">{bounce1}</span>
           </Card>
           <Card className="flex grow flex-col items-center justify-center !rounded py-1">
             <span>2</span>
-            <span className="text-lg font-bold text-[#FFC829]">xx</span>
+            <span className="text-lg font-bold text-[#FFC829]">{bounce2}</span>
           </Card>
           <Card className="flex grow flex-col items-center justify-center !rounded py-1">
             <span>3</span>
-            <span className="text-lg font-bold text-[#FFC829]">xx</span>
+            <span className="text-lg font-bold text-[#FFC829]">{bounce3}</span>
           </Card>
         </div>
       </Card>

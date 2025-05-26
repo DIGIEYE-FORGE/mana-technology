@@ -163,5 +163,5 @@ export const D3GaugeChart = ({
     }
   }, [value, maxValue, ticks]);
 
-  return <div ref={ref} className="debug h-fit font-semibold" />;
+  return <div ref={ref} className="h-fit font-semibold" />;
 };

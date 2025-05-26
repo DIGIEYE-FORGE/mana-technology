@@ -1,13 +1,24 @@
 import { Card } from "@/components/card";
 import ReactApexChart from "react-apexcharts";
 
-const LeftBar = () => {
+interface LeftBarProps {
+  runningState: string;
+  nde: { x: Date; y: number }[];
+  de: { x: Date; y: number }[];
+  u1: { x: Date; y: number }[];
+  v1: { x: Date; y: number }[];
+  w1: { x: Date; y: number }[];
+}
+
+const LeftBar = ({ runningState, nde, de, u1, v1, w1 }: LeftBarProps) => {
   return (
     <div className="relative z-10 flex h-full w-[500px] flex-col gap-3">
       <Card className="!rounded px-5 py-3">
         <div className="mb-2 flex flex-col gap-1">
           <span>Running State</span>
-          <span className="text-xl font-bold text-[#FFC829]">xx Hrs</span>
+          <span className="text-xl font-bold text-[#FFC829]">
+            {runningState} Hrs
+          </span>
           <div className="flex h-8 w-full overflow-hidden rounded-sm">
             <div className="flex h-full w-[44%] items-center justify-center bg-[#8AFF8A] font-semibold text-black">
               XX
@@ -96,53 +107,11 @@ const LeftBar = () => {
           series={[
             {
               name: "NDE",
-              data: [
-                {
-                  x: "2023-10-01T00:00:00.000Z",
-                  y: 100,
-                },
-                {
-                  x: "2023-10-02T00:00:00.000Z",
-                  y: 120,
-                },
-                {
-                  x: "2023-10-03T00:00:00.000Z",
-                  y: 80,
-                },
-                {
-                  x: "2023-10-04T00:00:00.000Z",
-                  y: 150,
-                },
-                {
-                  x: "2023-10-05T00:00:00.000Z",
-                  y: 200,
-                },
-              ],
+              data: nde || [],
             },
             {
               name: "DE",
-              data: [
-                {
-                  x: "2023-10-01T00:00:00.000Z",
-                  y: 70,
-                },
-                {
-                  x: "2023-10-02T00:00:00.000Z",
-                  y: 80,
-                },
-                {
-                  x: "2023-10-03T00:00:00.000Z",
-                  y: 90,
-                },
-                {
-                  x: "2023-10-04T00:00:00.000Z",
-                  y: 100,
-                },
-                {
-                  x: "2023-10-05T00:00:00.000Z",
-                  y: 110,
-                },
-              ],
+              data: de || [],
             },
           ]}
         />
@@ -205,78 +174,15 @@ const LeftBar = () => {
           series={[
             {
               name: "U1",
-              data: [
-                {
-                  x: "2023-10-01T00:00:00.000Z",
-                  y: 100,
-                },
-                {
-                  x: "2023-10-02T00:00:00.000Z",
-                  y: 120,
-                },
-                {
-                  x: "2023-10-03T00:00:00.000Z",
-                  y: 80,
-                },
-                {
-                  x: "2023-10-04T00:00:00.000Z",
-                  y: 150,
-                },
-                {
-                  x: "2023-10-05T00:00:00.000Z",
-                  y: 200,
-                },
-              ],
+              data: u1 || [],
             },
             {
               name: "V1",
-              data: [
-                {
-                  x: "2023-10-01T00:00:00.000Z",
-                  y: 70,
-                },
-                {
-                  x: "2023-10-02T00:00:00.000Z",
-                  y: 80,
-                },
-                {
-                  x: "2023-10-03T00:00:00.000Z",
-                  y: 90,
-                },
-                {
-                  x: "2023-10-04T00:00:00.000Z",
-                  y: 100,
-                },
-                {
-                  x: "2023-10-05T00:00:00.000Z",
-                  y: 110,
-                },
-              ],
+              data: v1 || [],
             },
             {
               name: "W1",
-              data: [
-                {
-                  x: "2023-10-01T00:00:00.000Z",
-                  y: 60,
-                },
-                {
-                  x: "2023-10-02T00:00:00.000Z",
-                  y: 70,
-                },
-                {
-                  x: "2023-10-03T00:00:00.000Z",
-                  y: 80,
-                },
-                {
-                  x: "2023-10-04T00:00:00.000Z",
-                  y: 90,
-                },
-                {
-                  x: "2023-10-05T00:00:00.000Z",
-                  y: 100,
-                },
-              ],
+              data: w1 || [],
             },
           ]}
         />

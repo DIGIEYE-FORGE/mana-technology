@@ -528,7 +528,7 @@ export default function MainProjectPage() {
               item.type != "image" ? (
                 <div
                   key={index}
-                  className={cn(`debug absolute`, {
+                  className={cn(`absolute`, {
                     "h-fit w-fit max-w-[18rem] 2xl:max-w-[22rem]":
                       item.type === "information",
                     "h-fit w-fit max-w-[17rem] 2xl:max-w-[22rem]":

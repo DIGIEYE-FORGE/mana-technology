@@ -1,10 +1,12 @@
 import { Card } from "@/components/card";
+
 import ReactApexChart from "react-apexcharts";
+import { ModelCanvas } from "./model-viewer";
 
 function Omniverse() {
   return (
     <div className="pointer-events-none relative flex [&>div]:pointer-events-auto">
-      <div className="relative z-10 flex h-full w-[20rem] flex-1 flex-col gap-3">
+      <div className="relative z-10 flex h-full w-[35rem] flex-col gap-3">
         <div className="flex w-full gap-2 [&>div]:!rounded">
           <Card className="flex h-16 grow flex-col justify-center px-5">
             <span className="font-medium">Cadence</span>
@@ -273,18 +275,11 @@ function Omniverse() {
       {/* ------------------------- middle side ------------------------- */}
       <div className="relative isolate flex flex-1 flex-col gap-2 px-6">
         <div className="absolute inset-0 isolate z-0 flex flex-1 items-center justify-center p-0">
-          {/* <Canvas
-          camera={{ position: [30, 30, 40], fov: 15 }}
-          className="w-full h-full"
-        >
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[30, 40, 60]} intensity={2} />
-          <OrbitControls makeDefault />
-
-          <Suspense fallback={<ModelLoader />}>
-            <ModelViewer data={dataModel} />
-          </Suspense>
-        </Canvas> */}
+          <ModelCanvas
+            url={"/model/jaw02.glb"}
+            position={[-40, 15, -20]}
+            fov={10}
+          />
         </div>
         <Card className="mt-auto w-full">
           <ReactApexChart
@@ -368,7 +363,7 @@ function Omniverse() {
       </div>
 
       {/* ------------------------- right side ------------------------- */}
-      <div className="relative z-10 flex h-full w-[20rem] flex-1 flex-col gap-3">
+      <div className="relative z-10 flex h-full w-[35rem] flex-col gap-3">
         <Card className="mt-10 !rounded px-5 py-5">
           <div className="grid grid-cols-4 gap-x-1 gap-y-[22px]">
             <span className="col-start-3">Running State</span>
