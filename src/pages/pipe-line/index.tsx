@@ -175,11 +175,11 @@ interface PipelinePointProps {
 //   {
 //     id: "SP2",
 //     title: "SP2",
-//     position: { top: "40%", right: "22%" },
+//     position: { top: "50%", right: "22%" },
 //     card: {
 //       position: "left",
 //       progress: 50,
-//       optionsPosition: { top: "100%", right: "80%" },
+//       optionsPosition: { top: "0%", right: "80%" },
 //       attributes: DEFAULT_PUMP_ATTRIBUTES,
 //     },
 //     image: "/lines-images/sp03.png",
@@ -211,11 +211,11 @@ interface PipelinePointProps {
 //   {
 //     id: "SP4",
 //     title: "SP4",
-//     position: { top: "60%", right: "17%" },
+//     position: { top: "70%", right: "17%" },
 //     card: {
 //       position: "left",
 //       progress: 40,
-//       optionsPosition: { top: "120%", left: "-350%" },
+//       optionsPosition: { top: "20%", left: "-350%" },
 //       attributes: DEFAULT_PUMP_ATTRIBUTES,
 //     },
 //     image: "/lines-images/sp4.png",
@@ -310,7 +310,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
       >
         <div className="flex min-h-[10rem] flex-col gap-2">
           <div className="flex justify-between">
-            <h3 className="text-md flex items-center justify-center px-3 text-white">
+            <h3 className="text-md text-bold flex items-center justify-center px-3 text-xl text-[#FFE473]">
               {point.title}
             </h3>
             <Dialog>
@@ -798,6 +798,42 @@ const PipeLine: React.FC = () => {
           sideOffset: 0,
           dashboard: {
             title: "SP08 Dashboard",
+            component: <Dashboard2 />,
+          },
+        },
+      },
+      {
+        id: "SP6",
+        title: "SP6",
+        position: { top: "70%", right: "-3%" },
+        card: {
+          position: "left",
+          optionsPosition: { top: "220%", left: "-100%" },
+          progress: filteredResults?.["s=SP8_LIT_01_MAE_TM"],
+          attributes: {
+            "Flow input": filteredResults?.["s=SP8_FIT_01_MAE_TM"],
+            "Flow output": filteredResults?.["s=SP8_FIT_02_MAE_TM"],
+            "delta flow":
+              +filteredResults?.["s=SP8_FIT_02_MAE_TM"] -
+              +filteredResults?.["s=SP8_FIT_02_MAE_TM"],
+            "pression output": filteredResults?.["s=SP8_PIT_04_MAE_TM"],
+            pumps: ["P01", "P02", "P03"],
+            "Running state": [
+              filteredResults?.["s=SP8_M01_RM_TS"],
+              filteredResults?.["s=SP8_M02_RM_TS"],
+              filteredResults?.["s=SP8_M03_RM_TS"],
+            ],
+            Pression: [
+              filteredResults?.["s=SP8_PIT_01_MAE_TM"],
+              filteredResults?.["s=SP8_PIT_02_MAE_TM"],
+              filteredResults?.["s=SP8_PIT_03_MAE_TM"],
+            ],
+          },
+        },
+        image: "/lines-images/sp5.png",
+        model: {
+          dashboard: {
+            title: "SP6 Dashboard",
             component: <Dashboard2 />,
           },
         },
