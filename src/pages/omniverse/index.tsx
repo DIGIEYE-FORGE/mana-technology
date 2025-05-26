@@ -23,8 +23,9 @@ function Omniverse() {
             <span>100 kw</span>
           </Card>
         </div>
+        <h1 className="text-xl font-semibold">Jaw Crusher</h1>
         <Card className="!rounded px-5 py-3">
-          <div className="mb-2 flex flex-col gap-2">
+          <div className="mb-5 flex flex-col gap-2">
             <span>Running State</span>
             <div className="flex h-8 w-full overflow-hidden rounded-sm">
               <div className="h-full w-[44%] bg-green-600"></div>
@@ -32,7 +33,7 @@ function Omniverse() {
               <div className="flex-1 bg-red-500"></div>
             </div>
           </div>
-          <div className="grid grid-cols-4 grid-rows-4 gap-1">
+          <div className="grid grid-cols-4 grid-rows-4 gap-x-1 gap-y-3">
             <span className="col-start-2">Day</span>
             <span className="">Month</span>
             <span className="">Year</span>
@@ -52,7 +53,7 @@ function Omniverse() {
         </Card>
         <Card className="w-full">
           <ReactApexChart
-            height={250}
+            height={280}
             options={{
               chart: {
                 height: 200,
@@ -161,7 +162,7 @@ function Omniverse() {
         </Card>
         <Card className="w-full">
           <ReactApexChart
-            height={250}
+            height={275}
             options={{
               chart: {
                 height: 200,
@@ -368,8 +369,8 @@ function Omniverse() {
 
       {/* ------------------------- right side ------------------------- */}
       <div className="relative z-10 flex h-full w-[20rem] flex-1 flex-col gap-3">
-        <Card className="!rounded px-5 py-3">
-          <div className="grid grid-cols-4 gap-1">
+        <Card className="mt-10 !rounded px-5 py-5">
+          <div className="grid grid-cols-4 gap-x-1 gap-y-[22px]">
             <span className="col-start-3">Running State</span>
             <span>Utilisation</span>
             <span className="col-span-2">Convoyer Rom</span>
