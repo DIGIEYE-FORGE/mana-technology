@@ -333,7 +333,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                 }}
               >
                 <div
-                  className="relative z-10 h-fit max-h-[80vh] min-h-[50vh] w-[60vw]"
+                  className="debug relative z-10 h-fit max-h-[80vh] min-h-[50vh] w-[60vw]"
                   style={{
                     backgroundImage: "url(/card-bg.png)",
                     backgroundSize: "100% 100%",
@@ -349,11 +349,11 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                     </Button>
                   </PopoverClose>
                   <div className="flex h-full flex-col gap-[3.5rem] pb-7 pl-11 pr-6 pt-4">
-                    <div className="ml-auto flex h-8 w-[64%] shrink-0 items-end px-6 text-2xl font-semibold">
-                      {point.model?.dashboard?.title || point.title}
+                    <div className="ml-auto flex h-[8%] w-[64%] shrink-0 items-end px-6 text-2xl font-semibold">
+                      {/* {point.model?.dashboard?.title || point.title} */}
                     </div>
                     <div className="h-full">
-                      {point.model?.dashboard?.component}
+                      {/* {point.model?.dashboard?.component} */}
                     </div>
                   </div>
                 </div>
@@ -364,6 +364,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
             <div className="w-[6rem]">
               <LiquidProgress percentage={point.card.progress} />
             </div>
+
             <div className="flex flex-1 flex-col gap-1">
               {Object.entries(point.card.attributes).map(([key, value]) => (
                 <div key={key} className="flex justify-between">
