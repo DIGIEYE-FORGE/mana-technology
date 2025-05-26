@@ -106,7 +106,7 @@ const POINTS_DATA: PointData[] = [
       progress: 30,
       attributes: DEFAULT_PUMP_ATTRIBUTES,
     },
-    image: "/lines-images/img1.png",
+    image: "/lines-images/sp01.png",
     model: {
       side: "right",
       align: "start",
@@ -127,7 +127,7 @@ const POINTS_DATA: PointData[] = [
       progress: 80,
       attributes: DEFAULT_PUMP_ATTRIBUTES,
     },
-    image: "/lines-images/img1.png",
+    image: "/lines-images/sp02.png",
     model: {
       side: "left",
       align: "start",
@@ -141,14 +141,14 @@ const POINTS_DATA: PointData[] = [
   {
     id: "SP03",
     title: "SP03",
-    position: { top: "24%", right: "33%" },
+    position: { top: "20%", right: "33%" },
     card: {
       position: "left",
       optionsPosition: { top: "-30%" },
       progress: 70,
       attributes: DEFAULT_PUMP_ATTRIBUTES,
     },
-    image: "/lines-images/img1.png",
+    image: "/lines-images/sp03.png",
     model: {
       side: "right",
       align: "start",
@@ -160,8 +160,8 @@ const POINTS_DATA: PointData[] = [
     },
   },
   {
-    id: "SP04",
-    title: "SP04",
+    id: "SP1",
+    title: "SP1",
     position: { top: "23%", right: "17%" },
     card: {
       position: "top",
@@ -169,13 +169,13 @@ const POINTS_DATA: PointData[] = [
       progress: 60,
       attributes: DEFAULT_PUMP_ATTRIBUTES,
     },
-    image: "/lines-images/img1.png",
+    image: "/lines-images/sp1.png",
     model: {
       side: "right",
       align: "start",
       sideOffset: 0,
       dashboard: {
-        title: "SP04 Dashboard",
+        title: "SP1 Dashboard",
         component: <Dashboard2 />,
       },
     },
@@ -190,7 +190,7 @@ const POINTS_DATA: PointData[] = [
       optionsPosition: { top: "40%" },
       attributes: DEFAULT_PUMP_ATTRIBUTES,
     },
-    image: "/lines-images/img1.png",
+    image: "/lines-images/sp03.png",
     model: {
       side: "left",
       align: "center",
@@ -229,7 +229,7 @@ const POINTS_DATA: PointData[] = [
     card: {
       position: "left",
       progress: 30,
-      optionsPosition: { top: "40%" },
+      optionsPosition: { top: "45%" },
       attributes: DEFAULT_PUMP_ATTRIBUTES,
     },
     image: "/lines-images/img1.png",
@@ -326,14 +326,14 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                 side={point.model?.side}
                 align={point.model?.align}
                 sideOffset={point.model?.sideOffset}
-                className="dark w-fit border-none bg-transparent p-0 backdrop-blur"
+                className="dark h-fit w-fit border-none bg-transparent p-0 backdrop-blur"
                 style={{
                   clipPath:
                     "polygon(0% 18.5%, 2.8% 13.5%, 34% 13.5%, 36.2% 9.3%, 36.2% 0%, 100% 0%, 100% 99.6%, 1.6% 99.6%, 1.6% 67%, 0% 64%)",
                 }}
               >
                 <div
-                  className="relative z-10 aspect-[1.7] min-h-[90vh] w-[80rem]"
+                  className="relative z-10 h-fit max-h-[80vh] min-h-[50vh] w-[60vw]"
                   style={{
                     backgroundImage: "url(/card-bg.png)",
                     backgroundSize: "100% 100%",
@@ -343,16 +343,16 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="absolute right-6 top-[2rem] text-white"
+                      className="absolute right-6 top-[2%] text-white"
                     >
                       <XIcon size={24} />
                     </Button>
                   </PopoverClose>
                   <div className="flex h-full flex-col gap-[3.5rem] pb-7 pl-11 pr-6 pt-4">
-                    <div className="ml-auto flex h-14 w-[64%] shrink-0 items-end px-6 text-2xl font-semibold">
+                    <div className="ml-auto flex h-8 w-[64%] shrink-0 items-end px-6 text-2xl font-semibold">
                       {point.model?.dashboard?.title || point.title}
                     </div>
-                    <div className="mt-[2rem] h-full">
+                    <div className="h-full">
                       {point.model?.dashboard?.component}
                     </div>
                   </div>
@@ -482,7 +482,7 @@ const PipeLine: React.FC = () => {
             {DATA_CARDS.map((item, idx) => (
               <CustomCardComponent key={idx} className="!px-2 !py-1">
                 <h3 className="text-lg text-white">{item.title}</h3>
-                <span className="text-2xl text-[#FFC829]">{item.value}</span>
+                <span className="text-xl text-[#FFC829]">{item.value}</span>
               </CustomCardComponent>
             ))}
           </div>

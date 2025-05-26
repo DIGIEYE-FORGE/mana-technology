@@ -63,25 +63,25 @@ const progressDataLine = [
     value: "XX",
     unite: "kWh",
   },
-  {
-    id: 3,
-    title: "p3",
-    data: [
-      {
-        min: 0,
-        max: 100,
-        // status: "Worked",
-        color: "#26E2B3",
-      },
-    ],
-    value: "XX",
-    unite: "kWh",
-  },
+  // {
+  //   id: 3,
+  //   title: "p3",
+  //   data: [
+  //     {
+  //       min: 0,
+  //       max: 100,
+  //       // status: "Worked",
+  //       color: "#26E2B3",
+  //     },
+  //   ],
+  //   value: "XX",
+  //   unite: "kWh",
+  // },
 ];
 function Dashboard3() {
   return (
-    <div className="flex- relative">
-      <div className="absolute -top-[3.5rem] right-[1rem] flex gap-4">
+    <div className="relative flex h-fit">
+      {/* <div className="absolute right-[1rem] flex gap-4">
         {Data.map((item) => (
           <div
             key={item.id}
@@ -90,11 +90,25 @@ function Dashboard3() {
             {item.name}
           </div>
         ))}
-      </div>
-      <div className="mt-4 flex flex-1 gap-[2rem]">
+      </div> */}
+      <div className="mt-6 flex flex-1 gap-[2rem]">
         <div className="flex flex-1 flex-col gap-4 [&>*]:flex-1">
+          <Card className="relative">
+            <LineChartWidget
+              attributes={{
+                telemetries: [
+                  {
+                    area: true,
+                    name: "EST_PLANIFIE_ROCHE_CUMUL",
+                    color: "#E800534D",
+                    label: "Planifié (Cumulé)",
+                    serial: "JZVATMKQ1A8DA2P1",
+                  },
+                ],
+              }}
+            />
+          </Card>
           <Card>
-            <h3>hello</h3>
             <LineChartWidget
               attributes={{
                 telemetries: [
@@ -125,7 +139,7 @@ function Dashboard3() {
               }}
             />
           </Card>
-          <Card>
+          {/* <Card>
             <h3>hello</h3>
             <LineChartWidget
               attributes={{
@@ -140,23 +154,7 @@ function Dashboard3() {
                 ],
               }}
             />
-          </Card>
-          <Card>
-            <h3>hello</h3>
-            <LineChartWidget
-              attributes={{
-                telemetries: [
-                  {
-                    area: true,
-                    name: "EST_PLANIFIE_ROCHE_CUMUL",
-                    color: "#E800534D",
-                    label: "Planifié (Cumulé)",
-                    serial: "JZVATMKQ1A8DA2P1",
-                  },
-                ],
-              }}
-            />
-          </Card>
+          </Card> */}
         </div>
         <div className="flex flex-1 flex-col gap-4 [&>*]:min-h-[32%]">
           <Card className="flex items-center justify-evenly gap-4 p-4">

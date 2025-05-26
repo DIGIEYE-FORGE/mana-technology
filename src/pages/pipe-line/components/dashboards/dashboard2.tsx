@@ -60,7 +60,7 @@ const res = [
 ];
 function Dashboard2() {
   return (
-    <div className="flex- relative">
+    <div className="debug relative flex">
       <div className="mt-4 flex flex-1 gap-[2rem]">
         <div className="flex flex-1 flex-col gap-4 [&>*]:flex-1">
           <div className="grid grid-cols-3 grid-rows-1 gap-2">
