@@ -4,7 +4,7 @@ import React from "react";
 function Omniverse() {
   return (
     <div className="pointer-events-none relative flex">
-      <div className="pointer-events-auto relative z-10 flex h-full w-[20rem] flex-1 flex-col gap-3 [&>*]:min-h-[22vh]">
+      <div className="pointer-events-auto relative z-10 flex h-full w-[20rem] flex-1 flex-col gap-3 [&>*]:min-h-[21vh]">
         <Card className="gap-2"></Card>
         <Card className=""></Card>
         <Card className=""></Card>
@@ -16,7 +16,7 @@ function Omniverse() {
       </div>
 
       {/* ------------------------- right side ------------------------- */}
-      <div className="pointer-events-auto relative z-10 flex h-full w-[20rem] flex-1 flex-col gap-3 [&>*]:min-h-[22vh]">
+      <div className="pointer-events-auto relative z-10 flex h-full w-[20rem] flex-1 flex-col gap-3 [&>*]:min-h-[21vh]">
         <Card className="gap-2"></Card>
         <Card className=""></Card>
         <Card className=""></Card>
