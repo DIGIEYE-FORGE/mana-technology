@@ -81,188 +81,188 @@ interface PipelinePointProps {
 }
 
 // Constants
-const DATA_CARDS = [
-  { title: "Pumped Volume", value: "XX" },
-  { title: "Flow Rate", value: "XX" },
-  { title: "Average Daily flow rate", value: "XX" },
-];
+// const DATA_CARDS = [
+//   { title: "Pumped Volume", value: "XX" },
+//   { title: "Flow Rate", value: "XX" },
+//   { title: "Average Daily flow rate", value: "XX" },
+// ];
 
-const DEFAULT_PUMP_ATTRIBUTES: PumpAttributes = {
-  "Chlore input": "XX",
-  "Chlore output": "XX",
-  "Flow input": "XX",
-  "Flow output": "XX",
-  "delta flow": "XX",
-  "pression output": "XX",
-  pumps: ["P01", "P02", "P03"],
-  "Running state": ["Running", "Running", "Running"],
-  Pression: ["XX", "XX", "XX"],
-};
+// const DEFAULT_PUMP_ATTRIBUTES: PumpAttributes = {
+//   "Chlore input": "XX",
+//   "Chlore output": "XX",
+//   "Flow input": "XX",
+//   "Flow output": "XX",
+//   "delta flow": "XX",
+//   "pression output": "XX",
+//   pumps: ["P01", "P02", "P03"],
+//   "Running state": ["Running", "Running", "Running"],
+//   Pression: ["XX", "XX", "XX"],
+// };
 
-const POINTS_DATA: PointData[] = [
-  {
-    id: "SP01",
-    title: "SP01",
-    position: { top: "62%", left: "0%" },
-    card: {
-      position: "right",
-      optionsPosition: { top: "49%", left: "90%" },
-      progress: 30,
-      attributes: DEFAULT_PUMP_ATTRIBUTES,
-    },
-    image: "/lines-images/sp01.png",
-    model: {
-      dashboard: {
-        title: "SP01 Dashboard",
-        component: <Dashboard3 />,
-      },
-    },
-  },
-  {
-    id: "SP02",
-    title: "SP02",
-    position: { top: "40%", left: "31%" },
-    card: {
-      position: "center",
-      optionsPosition: { top: "-110%", left: "-170%" },
-      progress: 80,
-      attributes: DEFAULT_PUMP_ATTRIBUTES,
-    },
-    image: "/lines-images/sp02.png",
-    model: {
-      dashboard: {
-        title: "SP02 Dashboard",
-        component: <Dashboard1 />,
-      },
-    },
-  },
-  {
-    id: "SP03",
-    title: "SP03",
-    position: { top: "25%", left: "60%" },
-    card: {
-      position: "left",
-      optionsPosition: { top: "-30%" },
-      progress: 70,
-      attributes: DEFAULT_PUMP_ATTRIBUTES,
-    },
-    image: "/lines-images/sp03.png",
-    model: {
-      dashboard: {
-        title: "SP03 Dashboard",
-        component: <Dashboard2 />,
-      },
-    },
-  },
-  {
-    id: "SP1",
-    title: "SP1",
-    position: { top: "28%", right: "14%" },
-    card: {
-      position: "top",
-      optionsPosition: { bottom: "220%", left: "0%" },
-      progress: 60,
-      attributes: DEFAULT_PUMP_ATTRIBUTES,
-    },
-    image: "/lines-images/sp1.png",
-    model: {
-      dashboard: {
-        title: "SP1 Dashboard",
-        component: <Dashboard2 />,
-      },
-    },
-  },
-  {
-    id: "SP2",
-    title: "SP2",
-    position: { top: "50%", right: "22%" },
-    card: {
-      position: "left",
-      progress: 50,
-      optionsPosition: { top: "0%", right: "80%" },
-      attributes: DEFAULT_PUMP_ATTRIBUTES,
-    },
-    image: "/lines-images/sp03.png",
-    model: {
-      dashboard: {
-        title: "SP05 Dashboard",
-        component: <Dashboard2 />,
-      },
-    },
-  },
-  {
-    id: "SP3",
-    title: "SP3",
-    position: { top: "50%", right: "4%" },
-    card: {
-      position: "left",
-      progress: 40,
-      optionsPosition: { top: "-240%", left: "-20%" },
-      attributes: DEFAULT_PUMP_ATTRIBUTES,
-    },
-    image: "/lines-images/sp3.png",
-    model: {
-      dashboard: {
-        title: "SP3 Dashboard",
-        component: <Dashboard2 />,
-      },
-    },
-  },
-  {
-    id: "SP4",
-    title: "SP4",
-    position: { top: "70%", right: "17%" },
-    card: {
-      position: "left",
-      progress: 40,
-      optionsPosition: { top: "20%", left: "-350%" },
-      attributes: DEFAULT_PUMP_ATTRIBUTES,
-    },
-    image: "/lines-images/sp4.png",
-    model: {
-      dashboard: {
-        title: "SP4 Dashboard",
-        component: <Dashboard2 />,
-      },
-    },
-  },
-  {
-    id: "SP5",
-    title: "SP5",
-    position: { top: "90%", right: "10%" },
-    card: {
-      position: "left",
-      progress: 40,
-      optionsPosition: { top: "40%", right: "100%" },
-      attributes: DEFAULT_PUMP_ATTRIBUTES,
-    },
-    image: "/lines-images/sp5.png",
-    model: {
-      dashboard: {
-        title: "SP5 Dashboard",
-        component: <Dashboard2 />,
-      },
-    },
-  },
-  {
-    id: "SP6",
-    title: "SP6",
-    position: { top: "70%", right: "-3%" },
-    card: {
-      position: "left",
-      progress: 40,
-      optionsPosition: { top: "220%", left: "-100%" },
-      attributes: DEFAULT_PUMP_ATTRIBUTES,
-    },
-    image: "/lines-images/sp5.png",
-    model: {
-      dashboard: {
-        title: "SP6 Dashboard",
-        component: <Dashboard2 />,
-      },
-    },
-  },
-];
+// const POINTS_DATA: PointData[] = [
+//   {
+//     id: "SP01",
+//     title: "SP01",
+//     position: { top: "62%", left: "0%" },
+//     card: {
+//       position: "right",
+//       optionsPosition: { top: "49%", left: "90%" },
+//       progress: 30,
+//       attributes: DEFAULT_PUMP_ATTRIBUTES,
+//     },
+//     image: "/lines-images/sp01.png",
+//     model: {
+//       dashboard: {
+//         title: "SP01 Dashboard",
+//         component: <Dashboard3 />,
+//       },
+//     },
+//   },
+//   {
+//     id: "SP02",
+//     title: "SP02",
+//     position: { top: "40%", left: "31%" },
+//     card: {
+//       position: "center",
+//       optionsPosition: { top: "-110%", left: "-170%" },
+//       progress: 80,
+//       attributes: DEFAULT_PUMP_ATTRIBUTES,
+//     },
+//     image: "/lines-images/sp02.png",
+//     model: {
+//       dashboard: {
+//         title: "SP02 Dashboard",
+//         component: <Dashboard1 />,
+//       },
+//     },
+//   },
+//   {
+//     id: "SP03",
+//     title: "SP03",
+//     position: { top: "25%", left: "60%" },
+//     card: {
+//       position: "left",
+//       optionsPosition: { top: "-30%" },
+//       progress: 70,
+//       attributes: DEFAULT_PUMP_ATTRIBUTES,
+//     },
+//     image: "/lines-images/sp03.png",
+//     model: {
+//       dashboard: {
+//         title: "SP03 Dashboard",
+//         component: <Dashboard2 />,
+//       },
+//     },
+//   },
+//   {
+//     id: "SP1",
+//     title: "SP1",
+//     position: { top: "28%", right: "14%" },
+//     card: {
+//       position: "top",
+//       optionsPosition: { bottom: "220%", left: "0%" },
+//       progress: 60,
+//       attributes: DEFAULT_PUMP_ATTRIBUTES,
+//     },
+//     image: "/lines-images/sp1.png",
+//     model: {
+//       dashboard: {
+//         title: "SP1 Dashboard",
+//         component: <Dashboard2 />,
+//       },
+//     },
+//   },
+//   {
+//     id: "SP2",
+//     title: "SP2",
+//     position: { top: "50%", right: "22%" },
+//     card: {
+//       position: "left",
+//       progress: 50,
+//       optionsPosition: { top: "0%", right: "80%" },
+//       attributes: DEFAULT_PUMP_ATTRIBUTES,
+//     },
+//     image: "/lines-images/sp03.png",
+//     model: {
+//       dashboard: {
+//         title: "SP05 Dashboard",
+//         component: <Dashboard2 />,
+//       },
+//     },
+//   },
+//   {
+//     id: "SP3",
+//     title: "SP3",
+//     position: { top: "50%", right: "4%" },
+//     card: {
+//       position: "left",
+//       progress: 40,
+//       optionsPosition: { top: "-240%", left: "-20%" },
+//       attributes: DEFAULT_PUMP_ATTRIBUTES,
+//     },
+//     image: "/lines-images/sp3.png",
+//     model: {
+//       dashboard: {
+//         title: "SP3 Dashboard",
+//         component: <Dashboard2 />,
+//       },
+//     },
+//   },
+//   {
+//     id: "SP4",
+//     title: "SP4",
+//     position: { top: "70%", right: "17%" },
+//     card: {
+//       position: "left",
+//       progress: 40,
+//       optionsPosition: { top: "20%", left: "-350%" },
+//       attributes: DEFAULT_PUMP_ATTRIBUTES,
+//     },
+//     image: "/lines-images/sp4.png",
+//     model: {
+//       dashboard: {
+//         title: "SP4 Dashboard",
+//         component: <Dashboard2 />,
+//       },
+//     },
+//   },
+//   {
+//     id: "SP5",
+//     title: "SP5",
+//     position: { top: "90%", right: "10%" },
+//     card: {
+//       position: "left",
+//       progress: 40,
+//       optionsPosition: { top: "40%", right: "100%" },
+//       attributes: DEFAULT_PUMP_ATTRIBUTES,
+//     },
+//     image: "/lines-images/sp5.png",
+//     model: {
+//       dashboard: {
+//         title: "SP5 Dashboard",
+//         component: <Dashboard2 />,
+//       },
+//     },
+//   },
+//   {
+//     id: "SP6",
+//     title: "SP6",
+//     position: { top: "70%", right: "-3%" },
+//     card: {
+//       position: "left",
+//       progress: 40,
+//       optionsPosition: { top: "220%", left: "-100%" },
+//       attributes: DEFAULT_PUMP_ATTRIBUTES,
+//     },
+//     image: "/lines-images/sp5.png",
+//     model: {
+//       dashboard: {
+//         title: "SP6 Dashboard",
+//         component: <Dashboard2 />,
+//       },
+//     },
+//   },
+// ];
 
 // Utility functions
 const createPositionStyle = (position: Position): React.CSSProperties => {
@@ -355,7 +355,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
           </div>
           <div className="flex h-full w-full gap-2">
             <div className="w-[7rem]">
-              <LiquidProgress percentage={point.card.progress} />
+              <LiquidProgress percentage={+point.card.progress} />
             </div>
 
             <div className="flex flex-1 flex-col gap-1">
@@ -450,6 +450,8 @@ const PipeLine: React.FC = () => {
     );
   };
 
+  const [widgetData, setWidgetData] = useState<any>(null);
+
   const { data } = useSWR("last-telemetry", async () => {
     const res = await backendApi.findMany("lastTelemetry", {
       where: {
@@ -471,6 +473,15 @@ const PipeLine: React.FC = () => {
       },
       {} as Record<string, any>,
     );
+
+    setWidgetData([
+      {
+        title: "Pumped Volume",
+        value: filteredResults?.["s=B_FIT_02_TOT_MES_TM"],
+      },
+      { title: "Flow Rate", value: filteredResults?.["s=B_FIT_02_MAE_TM"] },
+      { title: "Average Daily flow rate", value: "XX" },
+    ]);
 
     return [
       {
@@ -851,7 +862,7 @@ const PipeLine: React.FC = () => {
         <PipeLineUpBar />
         <div className="flex flex-1 flex-col overflow-y-visible px-[4rem]">
           <div className="flex gap-4 [&>*]:min-w-[12rem]">
-            {DATA_CARDS.map((item, idx) => (
+            {widgetData?.map((item: any, idx: number) => (
               <CustomCardComponent key={idx}>
                 <h3 className="text-lg text-white">{item.title}</h3>
                 <span className="text-xl text-[#FFC829]">{item.value}</span>
@@ -861,10 +872,10 @@ const PipeLine: React.FC = () => {
           <div className="relative h-1 flex-1 pr-[6rem]">
             <div className="relative h-full px-8 pb-6 pt-[5rem]">
               <PipeLineSvg className="h-full w-full" />
-              {POINTS_DATA.map((point) => (
+              {data?.map((point) => (
                 <PipelinePoint
                   key={point.id}
-                  point={point}
+                  point={point as any}
                   onPointClick={handlePointClick}
                   showCard={visibleCardIds.includes(point.id)}
                 />
