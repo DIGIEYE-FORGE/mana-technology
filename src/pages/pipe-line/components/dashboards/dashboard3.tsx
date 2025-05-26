@@ -3,14 +3,14 @@ import { Card } from "@/components/card";
 import LiquidProgress from "../progress";
 
 import CircularGauge from "../progres-circle";
-import ProgressBar from "../progres-bar";
+// import ProgressBar from "../progres-bar";
 import ChloreSVG from "../chlore";
 
-const Data = [
-  { id: 1, name: "Float rate xx" },
-  { id: 2, name: "Dt Flow xx" },
-  { id: 3, name: "Pumped volume xx" },
-];
+// const Data = [
+//   { id: 1, name: "Float rate xx" },
+//   { id: 2, name: "Dt Flow xx" },
+//   { id: 3, name: "Pumped volume xx" },
+// ];
 const progressData = [
   { id: 1, name: "Suction tank", percentage: 40 },
   { id: 2, name: "Discharge tank", percentage: 40 },

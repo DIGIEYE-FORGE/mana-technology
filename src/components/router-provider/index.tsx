@@ -37,6 +37,7 @@ import TizertVideo from "@/pages/tizert-video";
 import OMniverseLayout from "@/pages/omniverse-layout";
 import OmniversePage from "@/pages/omniverse";
 import PipeLine from "@/pages/pipe-line";
+import PebbleCrusher from "@/pages/pebble-crusher";
 // import GoliaPage from "@/pages/golia";
 
 const routes: RouteObject[] = [
@@ -87,6 +88,10 @@ const routes: RouteObject[] = [
             element: <OmniversePage />,
           },
         ],
+      },
+      {
+        path: "pebble-crusher",
+        element: <PebbleCrusher />,
       },
       {
         path: "future",

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from "react";
 import { PipeLineUpBar } from "./components/up-bar";
 import PipeLineSvg from "@/assets/pipeline.svg?react";
@@ -7,9 +8,9 @@ import Circle1 from "@/assets/circle-1.svg?react";
 import Circle2 from "@/assets/circle-2.svg?react";
 import Circle3 from "@/assets/circle-3.svg?react";
 import Light from "@/assets/light.svg?react";
-import HexagonImage from "./components/Hexagon-Image";
+
 import LiquidProgress from "./components/progress";
-import { ArrowBigRight, ArrowRight, XIcon } from "lucide-react";
+import { ArrowRight, XIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Popover,
@@ -20,6 +21,8 @@ import {
 import Dashboard1 from "./components/dashboards/dashboard1";
 import Dashboard2 from "./components/dashboards/dashboard2";
 import Dashboard3 from "./components/dashboards/dashboard3";
+import { useAppContext } from "@/Context";
+import useSWR from "swr";
 
 // Type Definitions
 interface Position {
@@ -30,6 +33,8 @@ interface Position {
 }
 
 interface PumpAttributes {
+  "Chlore input": string;
+  "Chlore output": string;
   "Flow input": string;
   "Flow output": string;
   "delta flow": string;
@@ -86,6 +91,8 @@ const DATA_CARDS = [
 ];
 
 const DEFAULT_PUMP_ATTRIBUTES: PumpAttributes = {
+  "Chlore input": "XX",
+  "Chlore output": "XX",
   "Flow input": "XX",
   "Flow output": "XX",
   "delta flow": "XX",
@@ -99,7 +106,7 @@ const POINTS_DATA: PointData[] = [
   {
     id: "SP01",
     title: "SP01",
-    position: { top: "80%", left: "0%" },
+    position: { top: "62%", left: "0%" },
     card: {
       position: "right",
       optionsPosition: { top: "30%", left: "90%" },
@@ -120,7 +127,7 @@ const POINTS_DATA: PointData[] = [
   {
     id: "SP02",
     title: "SP02",
-    position: { top: "38%", left: "27%" },
+    position: { top: "40%", left: "31%" },
     card: {
       position: "center",
       optionsPosition: { top: "-110%", left: "-170%" },
@@ -141,7 +148,7 @@ const POINTS_DATA: PointData[] = [
   {
     id: "SP03",
     title: "SP03",
-    position: { top: "23%", right: "39%" },
+    position: { top: "25%", right: "35%" },
     card: {
       position: "left",
       optionsPosition: { top: "-30%" },
@@ -370,7 +377,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                             className="aspect-video h-5 w-6 rounded-sm border-0 border-white"
                             style={{
                               backgroundColor:
-                                state === "Running" ? "#26E2B3" : "#FF0000",
+                                state === "True" ? "#26E2B3" : "#FF0000",
                             }}
                           ></div>
                         ))}
@@ -440,6 +447,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
 
 // PipeLine Component
 const PipeLine: React.FC = () => {
+  const { backendApi } = useAppContext();
   const [visibleCardIds, setVisibleCardIds] = useState<string[]>([]);
   const handlePointClick = (id: string) => {
     setVisibleCardIds((prev) =>
@@ -448,6 +456,349 @@ const PipeLine: React.FC = () => {
         : [...prev, id],
     );
   };
+
+  const { data } = useSWR("last-telemetry", async () => {
+    const res = await backendApi.findMany("lastTelemetry", {
+      where: {
+        device: {
+          serial: "JHF455XKPCH6DBLH",
+        },
+      },
+      pagination: {
+        page: 1,
+        perPage: 10000,
+      },
+    });
+
+    const filteredResults = res?.results?.reduce(
+      (acc: Record<string, any>, item: any) => {
+        acc[item.name] =
+          typeof item.value === "number" ? item.value?.toFixed(2) : item.value;
+        return acc;
+      },
+      {} as Record<string, any>,
+    );
+
+    return [
+      {
+        id: "SP01",
+        title: "SP01",
+        position: { top: "38%", left: "1%" },
+        card: {
+          position: "right",
+          optionsPosition: { top: "-60%" },
+          progress: filteredResults?.["s=SP1_LIT_01_MAE_TM"],
+          attributes: {
+            "Chlore input": filteredResults?.["s=SP01CHL_CHL_01_MAE_TM"],
+            "Chlore output": filteredResults?.["s=SP1_CHL_02_MAE_TM"],
+            "Flow input": filteredResults?.["s=SP1_FIT_01_MAE_TM"],
+            "Flow output": filteredResults?.["s=SP1_FIT_02_MAE_TM"],
+            "delta flow":
+              +filteredResults?.["s=SP1_FIT_02_MAE_TM"] -
+              +filteredResults?.["s=SP1_FIT_02_MAE_TM"],
+            "pression output": filteredResults?.["s=SP1_PIT_04_MAE_TM"],
+            pumps: ["P01", "P02", "P03"],
+            "Running state": [
+              filteredResults?.["s=SP1_M01_RM_TS"],
+              filteredResults?.["s=SP1_M02_RM_TS"],
+              filteredResults?.["s=SP1_M03_RM_TS"],
+            ],
+            Pression: [
+              filteredResults?.["s=SP1_PIT_01_MAE_TM"],
+              filteredResults?.["s=SP1_PIT_02_MAE_TM"],
+              filteredResults?.["s=SP1_PIT_03_MAE_TM"],
+            ],
+          },
+        },
+        image: "/lines-images/sp01.png",
+        model: {
+          side: "right",
+          align: "start",
+          sideOffset: -250,
+          dashboard: {
+            title: "SP01 Dashboard",
+            component: <Dashboard3 />,
+          },
+        },
+      },
+      {
+        id: "SP02",
+        title: "SP02",
+        position: { top: "40%", left: "30%" },
+        card: {
+          position: "center",
+          optionsPosition: { top: "250%" },
+          progress: filteredResults?.["s=SP2_LIT_01_MAE_TM"],
+          attributes: {
+            "Flow input": filteredResults?.["s=SP2_FIT_01_MAE_TM"],
+            "Flow output": filteredResults?.["s=SP2_FIT_02_MAE_TM"],
+            "delta flow":
+              +filteredResults?.["s=SP2_FIT_02_MAE_TM"] -
+              +filteredResults?.["s=SP2_FIT_01_MAE_TM"],
+            "pression output": filteredResults?.["s=SP2_PIT_04_MAE_TM"],
+            pumps: ["P01", "P02", "P03"],
+            "Running state": [
+              filteredResults?.["s=SP2_M01_RM_TS"],
+              filteredResults?.["s=SP2_M02_RM_TS"],
+              filteredResults?.["s=SP2_M03_RM_TS"],
+            ],
+            Pression: [
+              filteredResults?.["s=SP2_PIT_01_MAE_TM"],
+              filteredResults?.["s=SP2_PIT_02_MAE_TM"],
+              filteredResults?.["s=SP2_PIT_03_MAE_TM"],
+            ],
+          },
+        },
+        image: "/lines-images/sp02.png",
+        model: {
+          side: "left",
+          align: "start",
+          sideOffset: -400,
+          dashboard: {
+            title: "SP02 Dashboard",
+            component: <Dashboard1 />,
+          },
+        },
+      },
+      {
+        id: "SP03",
+        title: "SP03",
+        position: { top: "20%", right: "33%" },
+        card: {
+          position: "left",
+          optionsPosition: { top: "-30%" },
+          progress: filteredResults?.["s=SP3_LIT_01_MAE_TM"],
+          attributes: {
+            "Flow input": filteredResults?.["s=SP3_FIT_01_MAE_TM"],
+            "Flow output": filteredResults?.["s=SP3_FIT_02_MAE_TM"],
+            "delta flow":
+              +filteredResults?.["s=SP3_FIT_02_MAE_TM"] -
+              +filteredResults?.["s=SP3_FIT_02_MAE_TM"],
+            "pression output": filteredResults?.["s=SP3_PIT_04_MAE_TM"],
+            pumps: ["P01", "P02", "P03"],
+            "Running state": [
+              filteredResults?.["s=SP3_M01_RM_TS"],
+              filteredResults?.["s=SP3_M02_RM_TS"],
+              filteredResults?.["s=SP3_M03_RM_TS"],
+            ],
+            Pression: [
+              filteredResults?.["s=SP3_PIT_01_MAE_TM"],
+              filteredResults?.["s=SP3_PIT_02_MAE_TM"],
+              filteredResults?.["s=SP3_PIT_03_MAE_TM"],
+            ],
+          },
+        },
+        image: "/lines-images/sp03.png",
+        model: {
+          side: "right",
+          align: "start",
+          sideOffset: -320,
+          dashboard: {
+            title: "SP03 Dashboard",
+            component: <Dashboard2 />,
+          },
+        },
+      },
+      {
+        id: "SP1",
+        title: "SP1",
+        position: { top: "23%", right: "17%" },
+        card: {
+          position: "top",
+          optionsPosition: { bottom: "210%" },
+          progress: filteredResults?.["s=SP4_LIT_01_MAE_TM"],
+          attributes: {
+            "Flow input": filteredResults?.["s=SP4_FIT_01_MAE_TM"],
+            "Flow output": filteredResults?.["s=SP4_FIT_02_MAE_TM"],
+            "delta flow":
+              +filteredResults?.["s=SP4_FIT_02_MAE_TM"] -
+              +filteredResults?.["s=SP4_FIT_02_MAE_TM"],
+            "pression output": filteredResults?.["s=SP4_PIT_04_MAE_TM"],
+            pumps: ["P01", "P02", "P03"],
+            "Running state": [
+              filteredResults?.["s=SP4_M01_RM_TS"],
+              filteredResults?.["s=SP4_M02_RM_TS"],
+              filteredResults?.["s=SP4_M03_RM_TS"],
+            ],
+            Pression: [
+              filteredResults?.["s=SP4_PIT_01_MAE_TM"],
+              filteredResults?.["s=SP4_PIT_02_MAE_TM"],
+              filteredResults?.["s=SP4_PIT_03_MAE_TM"],
+            ],
+          },
+        },
+        image: "/lines-images/sp1.png",
+        model: {
+          side: "right",
+          align: "start",
+          sideOffset: 0,
+          dashboard: {
+            title: "SP1 Dashboard",
+            component: <Dashboard2 />,
+          },
+        },
+      },
+      {
+        id: "SP2",
+        title: "SP2",
+        position: { top: "43%", right: "24%" },
+        card: {
+          position: "left",
+          optionsPosition: { top: "40%" },
+          progress: filteredResults?.["s=SP5_LIT_01_MAE_TM"],
+          attributes: {
+            "Flow input": filteredResults?.["s=SP5_FIT_01_MAE_TM"],
+            "Flow output": filteredResults?.["s=SP5_FIT_02_MAE_TM"],
+            "delta flow":
+              +filteredResults?.["s=SP5_FIT_02_MAE_TM"] -
+              +filteredResults?.["s=SP5_FIT_02_MAE_TM"],
+            "pression output": filteredResults?.["s=SP5_PIT_04_MAE_TM"],
+            pumps: ["P01", "P02", "P03"],
+            "Running state": [
+              filteredResults?.["s=SP5_M01_RM_TS"],
+              filteredResults?.["s=SP5_M02_RM_TS"],
+              filteredResults?.["s=SP5_M03_RM_TS"],
+            ],
+            Pression: [
+              filteredResults?.["s=SP5_PIT_01_MAE_TM"],
+              filteredResults?.["s=SP5_PIT_02_MAE_TM"],
+              filteredResults?.["s=SP5_PIT_03_MAE_TM"],
+            ],
+          },
+        },
+        image: "/lines-images/sp03.png",
+        model: {
+          side: "left",
+          align: "center",
+          sideOffset: -300,
+          dashboard: {
+            title: "SP05 Dashboard",
+            component: <Dashboard2 />,
+          },
+        },
+      },
+      {
+        id: "SP4",
+        title: "SP4",
+        position: { top: "59%", right: "17%" },
+        card: {
+          position: "left",
+          optionsPosition: { top: "85%" },
+          progress: filteredResults?.["s=SP7_LIT_01_MAE_TM"],
+          attributes: {
+            "Flow input": filteredResults?.["s=SP7_FIT_01_MAE_TM"],
+            "Flow output": filteredResults?.["s=SP7_FIT_02_MAE_TM"],
+            "delta flow":
+              +filteredResults?.["s=SP7_FIT_02_MAE_TM"] -
+              +filteredResults?.["s=SP7_FIT_02_MAE_TM"],
+            "pression output": filteredResults?.["s=SP7_PIT_04_MAE_TM"],
+            pumps: ["P01", "P02", "P03"],
+            "Running state": [
+              filteredResults?.["s=SP7_M01_RM_TS"],
+              filteredResults?.["s=SP7_M02_RM_TS"],
+              filteredResults?.["s=SP7_M03_RM_TS"],
+            ],
+            Pression: [
+              filteredResults?.["s=SP7_PIT_01_MAE_TM"],
+              filteredResults?.["s=SP7_PIT_02_MAE_TM"],
+              filteredResults?.["s=SP7_PIT_03_MAE_TM"],
+            ],
+          },
+        },
+        image: "/lines-images/img1.png",
+        model: {
+          side: "right",
+          align: "center",
+          sideOffset: 0,
+          dashboard: {
+            title: "SP06 Dashboard",
+            component: <Dashboard2 />,
+          },
+        },
+      },
+      {
+        id: "SP5",
+        title: "SP5",
+        position: { bottom: "6%", right: "14%" },
+        card: {
+          position: "left",
+          optionsPosition: { top: "45%" },
+          progress: filteredResults?.["s=SP8_LIT_01_MAE_TM"],
+          attributes: {
+            "Flow input": filteredResults?.["s=SP8_FIT_01_MAE_TM"],
+            "Flow output": filteredResults?.["s=SP8_FIT_02_MAE_TM"],
+            "delta flow":
+              +filteredResults?.["s=SP8_FIT_02_MAE_TM"] -
+              +filteredResults?.["s=SP8_FIT_02_MAE_TM"],
+            "pression output": filteredResults?.["s=SP8_PIT_04_MAE_TM"],
+            pumps: ["P01", "P02", "P03"],
+            "Running state": [
+              filteredResults?.["s=SP8_M01_RM_TS"],
+              filteredResults?.["s=SP8_M02_RM_TS"],
+              filteredResults?.["s=SP8_M03_RM_TS"],
+            ],
+            Pression: [
+              filteredResults?.["s=SP8_PIT_01_MAE_TM"],
+              filteredResults?.["s=SP8_PIT_02_MAE_TM"],
+              filteredResults?.["s=SP8_PIT_03_MAE_TM"],
+            ],
+          },
+        },
+        image: "/lines-images/img1.png",
+        model: {
+          side: "left",
+          align: "center",
+          sideOffset: 0,
+          dashboard: {
+            title: "SP07 Dashboard",
+            component: <Dashboard2 />,
+          },
+        },
+      },
+      {
+        id: "SP3",
+        title: "SP3",
+        position: { top: "50%", right: "0%" },
+        card: {
+          position: "left",
+          optionsPosition: { top: "-230%", right: "-70%" },
+          progress: filteredResults?.["s=SP6_LIT_01_MAE_TM"],
+          attributes: {
+            "Flow input": filteredResults?.["s=SP6_FIT_01_MAE_TM"],
+            "Flow output": filteredResults?.["s=SP6_FIT_02_MAE_TM"],
+            "delta flow":
+              +filteredResults?.["s=SP6_FIT_02_MAE_TM"] -
+              +filteredResults?.["s=SP6_FIT_02_MAE_TM"],
+            "pression output": filteredResults?.["s=SP6_PIT_04_MAE_TM"],
+            pumps: ["P01", "P02", "P03"],
+            "Running state": [
+              filteredResults?.["s=SP6_M01_RM_TS"],
+              filteredResults?.["s=SP6_M02_RM_TS"],
+              filteredResults?.["s=SP6_M03_RM_TS"],
+            ],
+            Pression: [
+              filteredResults?.["s=SP6_PIT_01_MAE_TM"],
+              filteredResults?.["s=SP6_PIT_02_MAE_TM"],
+              filteredResults?.["s=SP6_PIT_03_MAE_TM"],
+            ],
+          },
+        },
+        image: "/lines-images/img1.png",
+        model: {
+          side: "right",
+          align: "start",
+          sideOffset: 0,
+          dashboard: {
+            title: "SP08 Dashboard",
+            component: <Dashboard2 />,
+          },
+        },
+      },
+    ];
+  });
+
+  console.log({ data });
+
   return (
     <main
       className="relative flex flex-col text-foreground"
