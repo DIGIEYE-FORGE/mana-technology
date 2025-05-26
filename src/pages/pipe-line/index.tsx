@@ -244,12 +244,17 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
     {showCard && (
       <div
         className={cn(
-          "absolute z-10 min-h-[10rem] min-w-[20rem] scale-[0.80]",
+          "absolute z-10 min-h-[10rem] min-w-[21rem] p-4 pr-6",
           getCardPositionClass(point.card.position),
         )}
-        style={point.card.optionsPosition}
+        style={{
+          ...(point.card.optionsPosition || {}),
+          background: "url(/vector.png)",
+          backgroundSize: "100% 100%",
+          backgroundRepeat: "no-repeat",
+        }}
       >
-        <CustomCardComponent className="flex min-h-[10rem] flex-col gap-2 !px-4 !pb-4">
+        <div className="flex min-h-[10rem] flex-col gap-2">
           <div className="flex justify-between">
             <h3 className="text-md flex items-center justify-center px-3 text-white">
               {point.title}
@@ -295,7 +300,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
             </Dialog>
           </div>
           <div className="flex h-full w-full gap-2">
-            <div className="w-[6rem]">
+            <div className="w-[7rem]">
               <LiquidProgress percentage={point.card.progress} />
             </div>
 
@@ -333,7 +338,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
               ))}
             </div>
           </div>
-        </CustomCardComponent>
+        </div>
       </div>
     )}
     <div
