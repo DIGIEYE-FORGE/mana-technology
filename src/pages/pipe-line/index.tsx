@@ -290,9 +290,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                     </Button>
                   </DialogClose>
                 </div>
-                <div className="h-1 flex-1 overflow-auto pl-10 pr-8">
-                  {point.model?.dashboard?.component}
-                </div>
+                {point.model?.dashboard?.component}
               </DialogContent>
             </Dialog>
           </div>
