@@ -175,11 +175,11 @@ const POINTS_DATA: PointData[] = [
   {
     id: "SP2",
     title: "SP2",
-    position: { top: "40%", right: "22%" },
+    position: { top: "50%", right: "22%" },
     card: {
       position: "left",
       progress: 50,
-      optionsPosition: { top: "100%", right: "80%" },
+      optionsPosition: { top: "0%", right: "80%" },
       attributes: DEFAULT_PUMP_ATTRIBUTES,
     },
     image: "/lines-images/sp03.png",
@@ -211,11 +211,11 @@ const POINTS_DATA: PointData[] = [
   {
     id: "SP4",
     title: "SP4",
-    position: { top: "60%", right: "17%" },
+    position: { top: "70%", right: "17%" },
     card: {
       position: "left",
       progress: 40,
-      optionsPosition: { top: "120%", left: "-350%" },
+      optionsPosition: { top: "20%", left: "-350%" },
       attributes: DEFAULT_PUMP_ATTRIBUTES,
     },
     image: "/lines-images/sp4.png",
