@@ -326,37 +326,29 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                 side={point.model?.side}
                 align={point.model?.align}
                 sideOffset={point.model?.sideOffset}
-                className="dark h-fit w-fit border-none bg-transparent p-0 backdrop-blur"
+                className="dark flex h-[30rem] min-h-fit min-w-[40rem] flex-col border-none bg-transparent p-0 backdrop-blur"
                 style={{
                   clipPath:
                     "polygon(0% 18.5%, 2.8% 13.5%, 34% 13.5%, 36.2% 9.3%, 36.2% 0%, 100% 0%, 100% 99.6%, 1.6% 99.6%, 1.6% 67%, 0% 64%)",
+                  backgroundImage: "url(/card-bg.png)",
+                  backgroundSize: "100% 100%",
                 }}
               >
-                <div
-                  className="debug relative z-10 h-fit max-h-[80vh] min-h-[50vh] w-[60vw]"
-                  style={{
-                    backgroundImage: "url(/card-bg.png)",
-                    backgroundSize: "100% 100%",
-                  }}
-                >
+                <div className="flex h-[11%] items-center pl-[calc(36%+1rem)]">
+                  <span className="font-ethnocentric text-sm font-extralight first-letter:uppercase">
+                    title
+                  </span>
                   <PopoverClose asChild>
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="absolute right-6 top-[2%] text-white"
+                      className="absolute right-6 size-5 text-white"
                     >
-                      <XIcon size={24} />
+                      <XIcon size={20} />
                     </Button>
                   </PopoverClose>
-                  <div className="flex h-full flex-col gap-[3.5rem] pb-7 pl-11 pr-6 pt-4">
-                    <div className="ml-auto flex h-[8%] w-[64%] shrink-0 items-end px-6 text-2xl font-semibold">
-                      {/* {point.model?.dashboard?.title || point.title} */}
-                    </div>
-                    <div className="h-full">
-                      {/* {point.model?.dashboard?.component} */}
-                    </div>
-                  </div>
                 </div>
+                {/* children here */}
               </PopoverContent>
             </Popover>
           </div>
