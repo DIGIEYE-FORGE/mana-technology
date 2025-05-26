@@ -106,7 +106,7 @@ const POINTS_DATA: PointData[] = [
     position: { top: "62%", left: "0%" },
     card: {
       position: "right",
-      optionsPosition: { top: "30%", left: "90%" },
+      optionsPosition: { top: "49%", left: "90%" },
       progress: 30,
       attributes: DEFAULT_PUMP_ATTRIBUTES,
     },
@@ -139,7 +139,7 @@ const POINTS_DATA: PointData[] = [
   {
     id: "SP03",
     title: "SP03",
-    position: { top: "25%", left: "65%" },
+    position: { top: "25%", left: "60%" },
     card: {
       position: "left",
       optionsPosition: { top: "-30%" },
@@ -160,7 +160,7 @@ const POINTS_DATA: PointData[] = [
     position: { top: "28%", right: "14%" },
     card: {
       position: "top",
-      optionsPosition: { bottom: "100%", left: "260%" },
+      optionsPosition: { bottom: "220%", left: "0%" },
       progress: 60,
       attributes: DEFAULT_PUMP_ATTRIBUTES,
     },
@@ -175,11 +175,11 @@ const POINTS_DATA: PointData[] = [
   {
     id: "SP2",
     title: "SP2",
-    position: { top: "48%", right: "22%" },
+    position: { top: "40%", right: "22%" },
     card: {
       position: "left",
       progress: 50,
-      optionsPosition: { top: "30%", right: "80%" },
+      optionsPosition: { top: "100%", right: "80%" },
       attributes: DEFAULT_PUMP_ATTRIBUTES,
     },
     image: "/lines-images/sp03.png",
@@ -191,19 +191,73 @@ const POINTS_DATA: PointData[] = [
     },
   },
   {
-    id: "SP06",
-    title: "SP06",
-    position: { top: "50%", right: "11%" },
+    id: "SP3",
+    title: "SP3",
+    position: { top: "50%", right: "4%" },
     card: {
       position: "left",
       progress: 40,
-      optionsPosition: { top: "0%", left: "90%" },
+      optionsPosition: { top: "-240%", left: "-20%" },
       attributes: DEFAULT_PUMP_ATTRIBUTES,
     },
-    image: "/lines-images/img1.png",
+    image: "/lines-images/sp3.png",
     model: {
       dashboard: {
-        title: "SP06 Dashboard",
+        title: "SP3 Dashboard",
+        component: <Dashboard2 />,
+      },
+    },
+  },
+  {
+    id: "SP4",
+    title: "SP4",
+    position: { top: "60%", right: "17%" },
+    card: {
+      position: "left",
+      progress: 40,
+      optionsPosition: { top: "120%", left: "-350%" },
+      attributes: DEFAULT_PUMP_ATTRIBUTES,
+    },
+    image: "/lines-images/sp4.png",
+    model: {
+      dashboard: {
+        title: "SP4 Dashboard",
+        component: <Dashboard2 />,
+      },
+    },
+  },
+  {
+    id: "SP5",
+    title: "SP5",
+    position: { top: "90%", right: "10%" },
+    card: {
+      position: "left",
+      progress: 40,
+      optionsPosition: { top: "40%", right: "100%" },
+      attributes: DEFAULT_PUMP_ATTRIBUTES,
+    },
+    image: "/lines-images/sp5.png",
+    model: {
+      dashboard: {
+        title: "SP5 Dashboard",
+        component: <Dashboard2 />,
+      },
+    },
+  },
+  {
+    id: "SP6",
+    title: "SP6",
+    position: { top: "70%", right: "-3%" },
+    card: {
+      position: "left",
+      progress: 40,
+      optionsPosition: { top: "220%", left: "-100%" },
+      attributes: DEFAULT_PUMP_ATTRIBUTES,
+    },
+    image: "/lines-images/sp5.png",
+    model: {
+      dashboard: {
+        title: "SP6 Dashboard",
         component: <Dashboard2 />,
       },
     },
@@ -244,7 +298,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
     {showCard && (
       <div
         className={cn(
-          "absolute z-10 min-h-[10rem] min-w-[21rem] p-4 pr-6",
+          "absolute z-10 min-h-[10rem] min-w-[21rem] scale-90 p-4 pr-6",
           getCardPositionClass(point.card.position),
         )}
         style={{
@@ -272,7 +326,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                 </button>
               </DialogTrigger>
               <DialogContent
-                className="flex h-[min(95vh,67rem)] min-w-[70rem] max-w-[min(95vw,90rem)] flex-col gap-0 gap-20 border-none bg-transparent p-0 pb-6 pt-4 text-foreground backdrop-blur"
+                className="flex h-[min(95vh,67rem)] min-w-[70rem] max-w-[min(95vw,90rem)] flex-col gap-20 border-none bg-transparent p-0 pb-6 pt-4 text-foreground backdrop-blur"
                 style={{
                   clipPath:
                     "polygon(0% 18.5%, 2.8% 13.5%, 34% 13.5%, 36.2% 9.3%, 36.2% 0%, 100% 0%, 100% 99.6%, 1.6% 99.6%, 1.6% 67%, 0% 64%)",
@@ -761,7 +815,7 @@ const PipeLine: React.FC = () => {
       />
       <main className="relative z-10 mx-auto flex max-h-[1200px] w-full max-w-[1920px] flex-col gap-4 overflow-visible">
         <PipeLineUpBar />
-        <div className="flex flex-1 flex-col overflow-y-visible px-6">
+        <div className="flex flex-1 flex-col overflow-y-visible px-[4rem]">
           <div className="flex gap-4 [&>*]:min-w-[12rem]">
             {DATA_CARDS.map((item, idx) => (
               <CustomCardComponent key={idx}>
