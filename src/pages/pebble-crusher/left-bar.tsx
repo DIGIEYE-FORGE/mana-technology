@@ -1,6 +1,10 @@
 import { Card } from "@/components/card";
 import ReactApexChart from "react-apexcharts";
 
+interface LeftBarProps {
+  runningState: string;
+}
+
 const LeftBar = () => {
   return (
     <div className="relative z-10 flex h-full w-[500px] flex-col gap-3">
