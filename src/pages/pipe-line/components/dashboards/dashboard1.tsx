@@ -79,7 +79,7 @@ const progressDataLine = [
 ];
 function Dashboard1() {
   return (
-    <div className="flex- debug debug relative">
+    <div className="relative flex">
       <div className="absolute -top-[3.5rem] right-[1rem] flex gap-4">
         {Data.map((item) => (
           <div
@@ -183,9 +183,9 @@ function Dashboard1() {
           </Card>
           <Card className="flex items-center gap-4 p-6">
             <div className="flex h-full w-[6rem] flex-col items-center justify-center gap-[5rem]">
-              <span className="text-2xl font-bold">Energy</span>
+              <span className="text-xl font-bold">Energy</span>
               <div className="flex flex-col items-center">
-                <span className="text-bold text-2xl">XX</span>
+                <span className="text-bold text-xl">XX</span>
                 <span className="text-xs"> kWh</span>
               </div>
             </div>
@@ -194,8 +194,8 @@ function Dashboard1() {
               <CircularGauge
                 value={50}
                 maxValue={100}
-                size={300}
-                width={250}
+                size={200}
+                width={200}
                 color="#ef8f08"
               />
             </div>

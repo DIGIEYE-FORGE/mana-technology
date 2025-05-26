@@ -364,7 +364,6 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
             <div className="w-[6rem]">
               <LiquidProgress percentage={point.card.progress} />
             </div>
-
             <div className="flex flex-1 flex-col gap-1">
               {Object.entries(point.card.attributes).map(([key, value]) => (
                 <div key={key} className="flex justify-between">
