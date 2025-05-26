@@ -267,16 +267,17 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                 </button>
               </DialogTrigger>
               <DialogContent
-                className="flex h-[30rem] min-h-fit min-w-[70rem] max-w-[90vw] flex-col border-none bg-transparent p-0 backdrop-blur"
+                className="flex h-[min(95vh,67rem)] min-w-[70rem] max-w-[min(95vw,90rem)] flex-col gap-0 gap-20 border-none bg-transparent p-0 pb-6 pt-4 text-foreground backdrop-blur"
                 style={{
                   clipPath:
                     "polygon(0% 18.5%, 2.8% 13.5%, 34% 13.5%, 36.2% 9.3%, 36.2% 0%, 100% 0%, 100% 99.6%, 1.6% 99.6%, 1.6% 67%, 0% 64%)",
                   backgroundImage: "url(/card-bg.png)",
                   backgroundSize: "100% 100%",
                 }}
+                hideCloseButton
               >
-                <div className="flex h-[14%] shrink-0 items-center pl-[calc(36%+1rem)]">
-                  <span className="shrink-0 font-ethnocentric text-sm font-extralight first-letter:uppercase">
+                <div className="flex h-[8%] shrink-0 items-center pl-[calc(36%+1rem)]">
+                  <span className="shrink-0 pl-6 font-ethnocentric text-sm font-extralight text-foreground first-letter:uppercase">
                     {point.model?.dashboard?.title || "Dashboard"}
                   </span>
                   <DialogClose asChild>
@@ -289,7 +290,9 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                     </Button>
                   </DialogClose>
                 </div>
-                {point.model?.dashboard?.component}
+                <div className="h-1 flex-1 overflow-auto pl-10 pr-8">
+                  {point.model?.dashboard?.component}
+                </div>
               </DialogContent>
             </Dialog>
           </div>
