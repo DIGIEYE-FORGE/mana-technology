@@ -1,5 +1,3 @@
-import React from "react";
-
 function ChloreSVG({
   value = "XX",
   topTitle = "SP01-M-03",
