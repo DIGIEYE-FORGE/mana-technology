@@ -6,7 +6,7 @@ import TableWidget from "@/components/table-widget";
 
 function DashboardPage3() {
   return (
-    <div className="grid h-full w-full grid-flow-dense auto-rows-[19rem] grid-cols-9 gap-6">
+    <div className="debug h-full w-full grid-flow-dense auto-rows-[19rem] grid-cols-9 gap-6">
       <Card className="col-span-3 flex flex-col p-4">
         <h3 className="text-center text-lg font-semibold">
           Evolution Production cumule

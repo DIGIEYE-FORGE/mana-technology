@@ -6,11 +6,11 @@ import CircularGauge from "../progres-circle";
 // import ProgressBar from "../progres-bar";
 import ChloreSVG from "../chlore";
 
-// const Data = [
-//   { id: 1, name: "Float rate xx" },
-//   { id: 2, name: "Dt Flow xx" },
-//   { id: 3, name: "Pumped volume xx" },
-// ];
+const Data = [
+  { id: 1, name: "Float rate xx" },
+  { id: 2, name: "Dt Flow xx" },
+  { id: 3, name: "Pumped volume xx" },
+];
 const progressData = [
   { id: 1, name: "Suction tank", percentage: 40 },
   { id: 2, name: "Discharge tank", percentage: 40 },
@@ -81,8 +81,8 @@ const progressDataLine = [
 ];
 function Dashboard3() {
   return (
-    <div className="relative flex h-fit px-8 pb-6 pt-12">
-      {/* <div className="absolute right-[1rem] flex gap-4">
+    <>
+      <div className="absolute right-[1rem] top-[13%] flex gap-4">
         {Data.map((item) => (
           <div
             key={item.id}
@@ -91,9 +91,9 @@ function Dashboard3() {
             {item.name}
           </div>
         ))}
-      </div> */}
-      <div className="mt-6 flex flex-1 gap-[2rem]">
-        <div className="flex flex-1 flex-col gap-4 [&>*]:flex-1">
+      </div>
+      <div className="relative flex h-1 flex-1 overflow-auto pb-6 pl-14 pr-10 pt-4">
+        <div className="grid flex-1 grid-cols-2 gap-[2rem]">
           <Card className="relative">
             <LineChartWidget
               attributes={{
@@ -156,8 +156,6 @@ function Dashboard3() {
               }}
             />
           </Card> */}
-        </div>
-        <div className="flex flex-1 flex-col gap-4 [&>*]:min-h-[32%]">
           <Card className="flex items-center justify-evenly gap-4 p-4">
             {progressData.map((item) => (
               <div
@@ -218,7 +216,7 @@ function Dashboard3() {
           </Card>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -167,7 +167,7 @@ const data = [
       align: "end",
       sideOffset: 20,
     },
-    background: "url(/pipeline.png)",
+    background: "url(/pipe.png)",
   },
   {
     title: "Pit SUD",
@@ -528,7 +528,7 @@ export default function MainProjectPage() {
               item.type != "image" ? (
                 <div
                   key={index}
-                  className={cn(`absolute`, {
+                  className={cn(`debug absolute`, {
                     "h-fit w-fit max-w-[18rem] 2xl:max-w-[22rem]":
                       item.type === "information",
                     "h-fit w-fit max-w-[17rem] 2xl:max-w-[22rem]":

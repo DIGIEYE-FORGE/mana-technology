@@ -13,11 +13,11 @@ import LiquidProgress from "./components/progress";
 import { ArrowRight, XIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
-  Popover,
-  PopoverClose,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import Dashboard1 from "./components/dashboards/dashboard1";
 import Dashboard2 from "./components/dashboards/dashboard2";
 import Dashboard3 from "./components/dashboards/dashboard3";
@@ -67,9 +67,6 @@ interface PointData {
   card: CardConfig;
   image: string;
   model?: {
-    side: "left" | "right";
-    align: "center" | "end" | "start" | undefined;
-    sideOffset?: number;
     dashboard?: {
       title: string;
       component?: React.ReactNode;
@@ -109,15 +106,12 @@ const POINTS_DATA: PointData[] = [
     position: { top: "62%", left: "0%" },
     card: {
       position: "right",
-      optionsPosition: { top: "30%", left: "90%" },
+      optionsPosition: { top: "49%", left: "90%" },
       progress: 30,
       attributes: DEFAULT_PUMP_ATTRIBUTES,
     },
     image: "/lines-images/sp01.png",
     model: {
-      side: "right",
-      align: "start",
-      sideOffset: -250,
       dashboard: {
         title: "SP01 Dashboard",
         component: <Dashboard3 />,
@@ -136,9 +130,6 @@ const POINTS_DATA: PointData[] = [
     },
     image: "/lines-images/sp02.png",
     model: {
-      side: "left",
-      align: "start",
-      sideOffset: -400,
       dashboard: {
         title: "SP02 Dashboard",
         component: <Dashboard1 />,
@@ -148,7 +139,7 @@ const POINTS_DATA: PointData[] = [
   {
     id: "SP03",
     title: "SP03",
-    position: { top: "25%", right: "35%" },
+    position: { top: "25%", left: "60%" },
     card: {
       position: "left",
       optionsPosition: { top: "-30%" },
@@ -157,9 +148,6 @@ const POINTS_DATA: PointData[] = [
     },
     image: "/lines-images/sp03.png",
     model: {
-      side: "right",
-      align: "start",
-      sideOffset: -320,
       dashboard: {
         title: "SP03 Dashboard",
         component: <Dashboard2 />,
@@ -169,18 +157,15 @@ const POINTS_DATA: PointData[] = [
   {
     id: "SP1",
     title: "SP1",
-    position: { top: "28%", right: "20%" },
+    position: { top: "28%", right: "14%" },
     card: {
       position: "top",
-      optionsPosition: { bottom: "100%", left: "260%" },
+      optionsPosition: { bottom: "220%", left: "0%" },
       progress: 60,
       attributes: DEFAULT_PUMP_ATTRIBUTES,
     },
     image: "/lines-images/sp1.png",
     model: {
-      side: "right",
-      align: "start",
-      sideOffset: 0,
       dashboard: {
         title: "SP1 Dashboard",
         component: <Dashboard2 />,
@@ -188,20 +173,17 @@ const POINTS_DATA: PointData[] = [
     },
   },
   {
-    id: "SP05",
-    title: "SP05",
-    position: { top: "48%", right: "28%" },
+    id: "SP2",
+    title: "SP2",
+    position: { top: "40%", right: "22%" },
     card: {
       position: "left",
       progress: 50,
-      optionsPosition: { top: "30%", right: "80%" },
+      optionsPosition: { top: "100%", right: "80%" },
       attributes: DEFAULT_PUMP_ATTRIBUTES,
     },
     image: "/lines-images/sp03.png",
     model: {
-      side: "left",
-      align: "center",
-      sideOffset: -300,
       dashboard: {
         title: "SP05 Dashboard",
         component: <Dashboard2 />,
@@ -209,68 +191,77 @@ const POINTS_DATA: PointData[] = [
     },
   },
   {
-    id: "SP06",
-    title: "SP06",
-    position: { top: "50%", right: "11%" },
+    id: "SP3",
+    title: "SP3",
+    position: { top: "50%", right: "4%" },
     card: {
       position: "left",
       progress: 40,
-      optionsPosition: { top: "0%", left: "90%" },
+      optionsPosition: { top: "-240%", left: "-20%" },
       attributes: DEFAULT_PUMP_ATTRIBUTES,
     },
-    image: "/lines-images/img1.png",
+    image: "/lines-images/sp3.png",
     model: {
-      side: "right",
-      align: "center",
-      sideOffset: 0,
       dashboard: {
-        title: "SP06 Dashboard",
+        title: "SP3 Dashboard",
         component: <Dashboard2 />,
       },
     },
   },
-  // {
-  //   id: "SP07",
-  //   title: "SP07",
-  //   position: { bottom: "6%", right: "14%" },
-  //   card: {
-  //     position: "left",
-  //     progress: 30,
-  //     optionsPosition: { top: "45%" },
-  //     attributes: DEFAULT_PUMP_ATTRIBUTES,
-  //   },
-  //   image: "/lines-images/img1.png",
-  //   model: {
-  //     side: "left",
-  //     align: "center",
-  //     sideOffset: 0,
-  //     dashboard: {
-  //       title: "SP07 Dashboard",
-  //       component: <Dashboard2 />,
-  //     },
-  //   },
-  // },
-  // {
-  //   id: "SP08",
-  //   title: "SP08",
-  //   position: { top: "50%", right: "0%" },
-  //   card: {
-  //     position: "left",
-  //     progress: 20,
-  //     optionsPosition: { top: "-230%", right: "-70%" },
-  //     attributes: DEFAULT_PUMP_ATTRIBUTES,
-  //   },
-  //   image: "/lines-images/img1.png",
-  //   model: {
-  //     side: "right",
-  //     align: "start",
-  //     sideOffset: 0,
-  //     dashboard: {
-  //       title: "SP08 Dashboard",
-  //       component: <Dashboard2 />,
-  //     },
-  //   },
-  // },
+  {
+    id: "SP4",
+    title: "SP4",
+    position: { top: "60%", right: "17%" },
+    card: {
+      position: "left",
+      progress: 40,
+      optionsPosition: { top: "120%", left: "-350%" },
+      attributes: DEFAULT_PUMP_ATTRIBUTES,
+    },
+    image: "/lines-images/sp4.png",
+    model: {
+      dashboard: {
+        title: "SP4 Dashboard",
+        component: <Dashboard2 />,
+      },
+    },
+  },
+  {
+    id: "SP5",
+    title: "SP5",
+    position: { top: "90%", right: "10%" },
+    card: {
+      position: "left",
+      progress: 40,
+      optionsPosition: { top: "40%", right: "100%" },
+      attributes: DEFAULT_PUMP_ATTRIBUTES,
+    },
+    image: "/lines-images/sp5.png",
+    model: {
+      dashboard: {
+        title: "SP5 Dashboard",
+        component: <Dashboard2 />,
+      },
+    },
+  },
+  {
+    id: "SP6",
+    title: "SP6",
+    position: { top: "70%", right: "-3%" },
+    card: {
+      position: "left",
+      progress: 40,
+      optionsPosition: { top: "220%", left: "-100%" },
+      attributes: DEFAULT_PUMP_ATTRIBUTES,
+    },
+    image: "/lines-images/sp5.png",
+    model: {
+      dashboard: {
+        title: "SP6 Dashboard",
+        component: <Dashboard2 />,
+      },
+    },
+  },
 ];
 
 // Utility functions
@@ -307,18 +298,23 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
     {showCard && (
       <div
         className={cn(
-          "absolute z-10 min-h-[10rem] min-w-[20rem] scale-[0.80]",
+          "absolute z-10 min-h-[10rem] min-w-[21rem] scale-90 p-4 pr-6",
           getCardPositionClass(point.card.position),
         )}
-        style={point.card.optionsPosition}
+        style={{
+          ...(point.card.optionsPosition || {}),
+          background: "url(/vector.png)",
+          backgroundSize: "100% 100%",
+          backgroundRepeat: "no-repeat",
+        }}
       >
-        <CustomCardComponent className="flex min-h-[10rem] flex-col gap-2 !px-4 !pb-4">
+        <div className="flex min-h-[10rem] flex-col gap-2">
           <div className="flex justify-between">
             <h3 className="text-md flex items-center justify-center px-3 text-white">
               {point.title}
             </h3>
-            <Popover>
-              <PopoverTrigger asChild>
+            <Dialog>
+              <DialogTrigger asChild>
                 <button
                   className="text-md group flex items-center gap-2 text-[#78F6EA]"
                   onClick={(event) => {
@@ -328,24 +324,22 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                   Voir plus
                   <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </button>
-              </PopoverTrigger>
-              <PopoverContent
-                side={point.model?.side}
-                align={point.model?.align}
-                sideOffset={point.model?.sideOffset}
-                className="debug dark flex h-[30rem] min-h-fit min-w-[70rem] flex-col border-none bg-transparent p-0 backdrop-blur"
+              </DialogTrigger>
+              <DialogContent
+                className="flex h-[min(95vh,67rem)] min-w-[70rem] max-w-[min(95vw,90rem)] flex-col gap-20 border-none bg-transparent p-0 pb-6 pt-4 text-foreground backdrop-blur"
                 style={{
                   clipPath:
                     "polygon(0% 18.5%, 2.8% 13.5%, 34% 13.5%, 36.2% 9.3%, 36.2% 0%, 100% 0%, 100% 99.6%, 1.6% 99.6%, 1.6% 67%, 0% 64%)",
                   backgroundImage: "url(/card-bg.png)",
                   backgroundSize: "100% 100%",
                 }}
+                hideCloseButton
               >
-                <div className="flex h-[14%] shrink-0 items-center pl-[calc(36%+1rem)]">
-                  <span className="shrink-0 font-ethnocentric text-sm font-extralight first-letter:uppercase">
+                <div className="flex h-[8%] shrink-0 items-center pl-[calc(36%+1rem)]">
+                  <span className="shrink-0 pl-6 font-ethnocentric text-sm font-extralight text-foreground first-letter:uppercase">
                     {point.model?.dashboard?.title || "Dashboard"}
                   </span>
-                  <PopoverClose asChild>
+                  <DialogClose asChild>
                     <Button
                       variant="ghost"
                       size="icon"
@@ -353,14 +347,14 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                     >
                       <XIcon size={20} />
                     </Button>
-                  </PopoverClose>
+                  </DialogClose>
                 </div>
                 {point.model?.dashboard?.component}
-              </PopoverContent>
-            </Popover>
+              </DialogContent>
+            </Dialog>
           </div>
           <div className="flex h-full w-full gap-2">
-            <div className="w-[6rem]">
+            <div className="w-[7rem]">
               <LiquidProgress percentage={point.card.progress} />
             </div>
 
@@ -398,7 +392,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
               ))}
             </div>
           </div>
-        </CustomCardComponent>
+        </div>
       </div>
     )}
     <div
@@ -444,7 +438,6 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
     </div>
   </div>
 );
-
 // PipeLine Component
 const PipeLine: React.FC = () => {
   const { backendApi } = useAppContext();
@@ -820,7 +813,7 @@ const PipeLine: React.FC = () => {
       />
       <main className="relative z-10 mx-auto flex max-h-[1200px] w-full max-w-[1920px] flex-col gap-4 overflow-visible">
         <PipeLineUpBar />
-        <div className="flex flex-1 flex-col overflow-y-visible px-6">
+        <div className="flex flex-1 flex-col overflow-y-visible px-[4rem]">
           <div className="flex gap-4 [&>*]:min-w-[12rem]">
             {DATA_CARDS.map((item, idx) => (
               <CustomCardComponent key={idx}>
