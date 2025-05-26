@@ -169,7 +169,7 @@ const POINTS_DATA: PointData[] = [
   {
     id: "SP1",
     title: "SP1",
-    position: { top: "28%", right: "20%" },
+    position: { top: "28%", right: "14%" },
     card: {
       position: "top",
       optionsPosition: { bottom: "100%", left: "260%" },
@@ -188,9 +188,9 @@ const POINTS_DATA: PointData[] = [
     },
   },
   {
-    id: "SP05",
-    title: "SP05",
-    position: { top: "48%", right: "28%" },
+    id: "SP2",
+    title: "SP2",
+    position: { top: "48%", right: "22%" },
     card: {
       position: "left",
       progress: 50,

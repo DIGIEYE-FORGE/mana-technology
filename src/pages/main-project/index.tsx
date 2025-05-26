@@ -167,7 +167,7 @@ const data = [
       align: "end",
       sideOffset: 20,
     },
-    background: "url(/pipeline.png)",
+    background: "url(/pipe.png)",
   },
   {
     title: "Pit SUD",
