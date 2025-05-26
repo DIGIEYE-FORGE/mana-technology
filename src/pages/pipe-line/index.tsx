@@ -310,7 +310,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
       >
         <div className="flex min-h-[10rem] flex-col gap-2">
           <div className="flex justify-between">
-            <h3 className="text-md flex items-center justify-center px-3 text-white">
+            <h3 className="text-md text-bold flex items-center justify-center px-3 text-xl text-[#FFE473]">
               {point.title}
             </h3>
             <Dialog>
