@@ -99,10 +99,10 @@ const POINTS_DATA: PointData[] = [
   {
     id: "SP01",
     title: "SP01",
-    position: { top: "38%", left: "1%" },
+    position: { top: "80%", left: "0%" },
     card: {
       position: "right",
-      optionsPosition: { top: "-60%" },
+      optionsPosition: { top: "30%", left: "90%" },
       progress: 30,
       attributes: DEFAULT_PUMP_ATTRIBUTES,
     },
@@ -120,10 +120,10 @@ const POINTS_DATA: PointData[] = [
   {
     id: "SP02",
     title: "SP02",
-    position: { top: "40%", left: "30%" },
+    position: { top: "38%", left: "27%" },
     card: {
       position: "center",
-      optionsPosition: { top: "250%" },
+      optionsPosition: { top: "-110%", left: "-170%" },
       progress: 80,
       attributes: DEFAULT_PUMP_ATTRIBUTES,
     },
@@ -141,7 +141,7 @@ const POINTS_DATA: PointData[] = [
   {
     id: "SP03",
     title: "SP03",
-    position: { top: "20%", right: "33%" },
+    position: { top: "23%", right: "39%" },
     card: {
       position: "left",
       optionsPosition: { top: "-30%" },
@@ -162,10 +162,10 @@ const POINTS_DATA: PointData[] = [
   {
     id: "SP1",
     title: "SP1",
-    position: { top: "23%", right: "17%" },
+    position: { top: "28%", right: "20%" },
     card: {
       position: "top",
-      optionsPosition: { bottom: "210%" },
+      optionsPosition: { bottom: "100%", left: "260%" },
       progress: 60,
       attributes: DEFAULT_PUMP_ATTRIBUTES,
     },
@@ -183,11 +183,11 @@ const POINTS_DATA: PointData[] = [
   {
     id: "SP05",
     title: "SP05",
-    position: { top: "43%", right: "24%" },
+    position: { top: "48%", right: "28%" },
     card: {
       position: "left",
       progress: 50,
-      optionsPosition: { top: "40%" },
+      optionsPosition: { top: "30%", right: "80%" },
       attributes: DEFAULT_PUMP_ATTRIBUTES,
     },
     image: "/lines-images/sp03.png",
@@ -204,11 +204,11 @@ const POINTS_DATA: PointData[] = [
   {
     id: "SP06",
     title: "SP06",
-    position: { top: "59%", right: "17%" },
+    position: { top: "50%", right: "11%" },
     card: {
       position: "left",
       progress: 40,
-      optionsPosition: { top: "85%" },
+      optionsPosition: { top: "0%", left: "90%" },
       attributes: DEFAULT_PUMP_ATTRIBUTES,
     },
     image: "/lines-images/img1.png",
@@ -222,48 +222,48 @@ const POINTS_DATA: PointData[] = [
       },
     },
   },
-  {
-    id: "SP07",
-    title: "SP07",
-    position: { bottom: "6%", right: "14%" },
-    card: {
-      position: "left",
-      progress: 30,
-      optionsPosition: { top: "45%" },
-      attributes: DEFAULT_PUMP_ATTRIBUTES,
-    },
-    image: "/lines-images/img1.png",
-    model: {
-      side: "left",
-      align: "center",
-      sideOffset: 0,
-      dashboard: {
-        title: "SP07 Dashboard",
-        component: <Dashboard2 />,
-      },
-    },
-  },
-  {
-    id: "SP08",
-    title: "SP08",
-    position: { top: "50%", right: "0%" },
-    card: {
-      position: "left",
-      progress: 20,
-      optionsPosition: { top: "-230%", right: "-70%" },
-      attributes: DEFAULT_PUMP_ATTRIBUTES,
-    },
-    image: "/lines-images/img1.png",
-    model: {
-      side: "right",
-      align: "start",
-      sideOffset: 0,
-      dashboard: {
-        title: "SP08 Dashboard",
-        component: <Dashboard2 />,
-      },
-    },
-  },
+  // {
+  //   id: "SP07",
+  //   title: "SP07",
+  //   position: { bottom: "6%", right: "14%" },
+  //   card: {
+  //     position: "left",
+  //     progress: 30,
+  //     optionsPosition: { top: "45%" },
+  //     attributes: DEFAULT_PUMP_ATTRIBUTES,
+  //   },
+  //   image: "/lines-images/img1.png",
+  //   model: {
+  //     side: "left",
+  //     align: "center",
+  //     sideOffset: 0,
+  //     dashboard: {
+  //       title: "SP07 Dashboard",
+  //       component: <Dashboard2 />,
+  //     },
+  //   },
+  // },
+  // {
+  //   id: "SP08",
+  //   title: "SP08",
+  //   position: { top: "50%", right: "0%" },
+  //   card: {
+  //     position: "left",
+  //     progress: 20,
+  //     optionsPosition: { top: "-230%", right: "-70%" },
+  //     attributes: DEFAULT_PUMP_ATTRIBUTES,
+  //   },
+  //   image: "/lines-images/img1.png",
+  //   model: {
+  //     side: "right",
+  //     align: "start",
+  //     sideOffset: 0,
+  //     dashboard: {
+  //       title: "SP08 Dashboard",
+  //       component: <Dashboard2 />,
+  //     },
+  //   },
+  // },
 ];
 
 // Utility functions
@@ -300,7 +300,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
     {showCard && (
       <div
         className={cn(
-          "absolute z-10 min-h-[10rem] min-w-[20rem] scale-90",
+          "absolute z-10 min-h-[10rem] min-w-[20rem] scale-[0.80]",
           getCardPositionClass(point.card.position),
         )}
         style={point.card.optionsPosition}
@@ -326,7 +326,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                 side={point.model?.side}
                 align={point.model?.align}
                 sideOffset={point.model?.sideOffset}
-                className="dark flex h-[30rem] min-h-fit min-w-[70rem] flex-col border-none bg-transparent p-0 backdrop-blur"
+                className="debug dark flex h-[30rem] min-h-fit min-w-[70rem] flex-col border-none bg-transparent p-0 backdrop-blur"
                 style={{
                   clipPath:
                     "polygon(0% 18.5%, 2.8% 13.5%, 34% 13.5%, 36.2% 9.3%, 36.2% 0%, 100% 0%, 100% 99.6%, 1.6% 99.6%, 1.6% 67%, 0% 64%)",
@@ -334,7 +334,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                   backgroundSize: "100% 100%",
                 }}
               >
-                <div className="debug flex h-[14%] shrink-0 items-center pl-[calc(36%+1rem)]">
+                <div className="flex h-[14%] shrink-0 items-center pl-[calc(36%+1rem)]">
                   <span className="shrink-0 font-ethnocentric text-sm font-extralight first-letter:uppercase">
                     {point.model?.dashboard?.title || "Dashboard"}
                   </span>
@@ -401,7 +401,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
       }}
     ></div>
 
-    <div className="relative left-0 top-0 h-full w-full">
+    <div className="relative left-0 top-0 h-full w-full scale-[0.9]">
       <img
         src={point.image}
         alt={point.title}
@@ -450,7 +450,7 @@ const PipeLine: React.FC = () => {
   };
   return (
     <main
-      className="relative flex flex-col overflow-y-auto text-foreground"
+      className="relative flex flex-col text-foreground"
       style={{
         backgroundImage:
           "linear-gradient(to right,#061991 6%, #17306D 48%, #061991 95% ), url(/sky-bg.png)",
@@ -467,27 +467,29 @@ const PipeLine: React.FC = () => {
           maskImage: "radial-gradient(#0101016E, transparent 80%)",
         }}
       />
-      <main className="relative z-10 mx-auto flex max-h-[1200px] w-full max-w-[1920px] flex-col gap-4">
+      <main className="relative z-10 mx-auto flex max-h-[1200px] w-full max-w-[1920px] flex-col gap-4 overflow-visible">
         <PipeLineUpBar />
-        <div className="flex flex-1 flex-col overflow-y-auto px-[4rem]">
-          <div className="flex h-[6rem] w-full gap-4">
+        <div className="flex flex-1 flex-col overflow-y-visible px-6">
+          <div className="flex gap-4 [&>*]:min-w-[12rem]">
             {DATA_CARDS.map((item, idx) => (
-              <CustomCardComponent key={idx} className="!px-2 !py-1">
+              <CustomCardComponent key={idx}>
                 <h3 className="text-lg text-white">{item.title}</h3>
                 <span className="text-xl text-[#FFC829]">{item.value}</span>
               </CustomCardComponent>
             ))}
           </div>
-          <div className="relative h-1 flex-1 px-8 pb-6 pt-[5rem]">
-            <PipeLineSvg className="h-full w-full" />
-            {POINTS_DATA.map((point) => (
-              <PipelinePoint
-                key={point.id}
-                point={point}
-                onPointClick={handlePointClick}
-                showCard={visibleCardIds.includes(point.id)}
-              />
-            ))}
+          <div className="relative h-1 flex-1 pr-[6rem]">
+            <div className="relative h-full px-8 pb-6 pt-[5rem]">
+              <PipeLineSvg className="h-full w-full" />
+              {POINTS_DATA.map((point) => (
+                <PipelinePoint
+                  key={point.id}
+                  point={point}
+                  onPointClick={handlePointClick}
+                  showCard={visibleCardIds.includes(point.id)}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </main>
