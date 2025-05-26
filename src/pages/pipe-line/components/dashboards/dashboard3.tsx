@@ -4,6 +4,7 @@ import LiquidProgress from "../progress";
 
 import CircularGauge from "../progres-circle";
 import ProgressBar from "../progres-bar";
+import ChloreSVG from "../chlore";
 
 const Data = [
   { id: 1, name: "Float rate xx" },
@@ -80,7 +81,7 @@ const progressDataLine = [
 ];
 function Dashboard3() {
   return (
-    <div className="relative flex h-fit">
+    <div className="relative flex h-fit px-8 pb-6 pt-12">
       {/* <div className="absolute right-[1rem] flex gap-4">
         {Data.map((item) => (
           <div
@@ -201,18 +202,19 @@ function Dashboard3() {
               ))}
             </div>
           </Card>
-          <Card className="flex flex-col gap-4 p-4">
+          <Card className="flex flex-col gap-4">
             <span className="text-xl font-bold">Pumps ring state</span>
-            {progressDataLine.map((item) => (
-              <ProgressBar
-                data={item.data}
-                key={item.id}
-                value={item.value || "--"}
-                unite={item.unite || "--"}
-                title={item.title || "--"}
-                className="h-[3rem] overflow-hidden rounded-md bg-white/20"
-              />
-            ))}
+            <div className="flex items-center justify-center gap-4">
+              {progressDataLine.map((item) => (
+                <ChloreSVG
+                  key={item.id}
+                  value={item.value}
+                  topTitle={"telemetry"}
+                  bottomTitle={"telemetry"}
+                  leftTitle={"telemetry"}
+                />
+              ))}
+            </div>
           </Card>
         </div>
       </div>

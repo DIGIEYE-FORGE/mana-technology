@@ -326,7 +326,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                 side={point.model?.side}
                 align={point.model?.align}
                 sideOffset={point.model?.sideOffset}
-                className="dark flex h-[30rem] min-h-fit min-w-[40rem] flex-col border-none bg-transparent p-0 backdrop-blur"
+                className="dark flex h-[30rem] min-h-fit min-w-[70rem] flex-col border-none bg-transparent p-0 backdrop-blur"
                 style={{
                   clipPath:
                     "polygon(0% 18.5%, 2.8% 13.5%, 34% 13.5%, 36.2% 9.3%, 36.2% 0%, 100% 0%, 100% 99.6%, 1.6% 99.6%, 1.6% 67%, 0% 64%)",
@@ -334,9 +334,9 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                   backgroundSize: "100% 100%",
                 }}
               >
-                <div className="flex h-[11%] items-center pl-[calc(36%+1rem)]">
-                  <span className="font-ethnocentric text-sm font-extralight first-letter:uppercase">
-                    title
+                <div className="debug flex h-[14%] shrink-0 items-center pl-[calc(36%+1rem)]">
+                  <span className="shrink-0 font-ethnocentric text-sm font-extralight first-letter:uppercase">
+                    {point.model?.dashboard?.title || "Dashboard"}
                   </span>
                   <PopoverClose asChild>
                     <Button
@@ -348,7 +348,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                     </Button>
                   </PopoverClose>
                 </div>
-                {/* children here */}
+                {point.model?.dashboard?.component}
               </PopoverContent>
             </Popover>
           </div>
