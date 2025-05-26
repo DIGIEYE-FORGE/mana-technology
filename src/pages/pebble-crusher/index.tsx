@@ -5,6 +5,7 @@ import LeftBar from "./left-bar";
 import RightBar from "./right-bar";
 import { useAppContext } from "@/Context";
 import useSWR from "swr";
+import { ModelCanvas } from "../omniverse/model-viewer";
 
 const PebbleCrusher = () => {
   const { backendApi } = useAppContext();
@@ -78,7 +79,7 @@ const PebbleCrusher = () => {
     >
       <main className="mx-auto flex max-w-[1920px] flex-col gap-3">
         <UpBar />
-        <main className="flex !h-fit flex-col gap-5 px-6 pb-6">
+        <main className="relative flex !h-fit flex-col gap-5 px-6 pb-6">
           <UpCards
             flowRate={data?.["s=6210-WI-2215"] || 0}
             energy={data?.["s=6100-TR-2001"] || 0}
@@ -87,6 +88,13 @@ const PebbleCrusher = () => {
             bounce2={data?.["s=6140-VT-2426B"] || 0}
             bounce3={data?.["s=6140-VT-2426C"] || 0}
           />
+          <div className="absolute inset-0 isolate z-0 flex flex-1 items-center justify-center p-0">
+            <ModelCanvas
+              url={"/model/pebble.glb"}
+              position={[-40, 15, -20]}
+              fov={10}
+            />
+          </div>
           <div className="flex justify-between">
             <LeftBar
               runningState={data?.["s=6210-WI-2217"] || 0}
