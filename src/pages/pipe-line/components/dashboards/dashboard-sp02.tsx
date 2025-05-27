@@ -81,7 +81,12 @@ const progressDataLine = [
     unite: "kWh",
   },
 ];
-export function DashboardSP02() {
+
+interface DashboardSP02Props {
+  data: any;
+}
+
+export function DashboardSP02({ data }: DashboardSP02Props) {
   return (
     <>
       <div className="absolute right-[1rem] top-[13%] flex gap-4">

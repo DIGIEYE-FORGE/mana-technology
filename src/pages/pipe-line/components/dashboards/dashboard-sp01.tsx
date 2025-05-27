@@ -4,7 +4,7 @@ import LiquidProgress from "../progress";
 import CircularGauge from "../progres-circle";
 import ProgressBar from "../progres-bar";
 import ChloreSVG from "../chlore";
-import HammerArrestorSVG  from "@/assets/hammer-svg.svg?react";
+import HammerArrestorSVG from "@/assets/hammer-svg.svg?react";
 import SuctionTankSVG from "@/assets/suction-svg.svg?react";
 
 const Data = [
@@ -108,21 +108,57 @@ const flowsOutputData = [
 
 const pressuresData = {
   Output: [
-    { x: 1, y: 80 }, { x: 3, y: 85 }, { x: 5, y: 90 }, { x: 7, y: 95 }, { x: 9, y: 100 },
-    { x: 11, y: 90 }, { x: 13, y: 95 }, { x: 15, y: 100 }, { x: 17, y: 90 }, { x: 19, y: 95 }, { x: 21, y: 100 }
+    { x: 1, y: 80 },
+    { x: 3, y: 85 },
+    { x: 5, y: 90 },
+    { x: 7, y: 95 },
+    { x: 9, y: 100 },
+    { x: 11, y: 90 },
+    { x: 13, y: 95 },
+    { x: 15, y: 100 },
+    { x: 17, y: 90 },
+    { x: 19, y: 95 },
+    { x: 21, y: 100 },
   ],
   P1: [
-    { x: 1, y: 20 }, { x: 3, y: 40 }, { x: 5, y: 60 }, { x: 7, y: 50 }, { x: 9, y: 70 },
-    { x: 11, y: 40 }, { x: 13, y: 30 }, { x: 15, y: 60 }, { x: 17, y: 80 }, { x: 19, y: 60 }, { x: 21, y: 70 }
+    { x: 1, y: 20 },
+    { x: 3, y: 40 },
+    { x: 5, y: 60 },
+    { x: 7, y: 50 },
+    { x: 9, y: 70 },
+    { x: 11, y: 40 },
+    { x: 13, y: 30 },
+    { x: 15, y: 60 },
+    { x: 17, y: 80 },
+    { x: 19, y: 60 },
+    { x: 21, y: 70 },
   ],
   P2: [
-    { x: 1, y: 60 }, { x: 3, y: 70 }, { x: 5, y: 80 }, { x: 7, y: 90 }, { x: 9, y: 80 },
-    { x: 11, y: 100 }, { x: 13, y: 90 }, { x: 15, y: 80 }, { x: 17, y: 100 }, { x: 19, y: 90 }, { x: 21, y: 80 }
+    { x: 1, y: 60 },
+    { x: 3, y: 70 },
+    { x: 5, y: 80 },
+    { x: 7, y: 90 },
+    { x: 9, y: 80 },
+    { x: 11, y: 100 },
+    { x: 13, y: 90 },
+    { x: 15, y: 80 },
+    { x: 17, y: 100 },
+    { x: 19, y: 90 },
+    { x: 21, y: 80 },
   ],
   P3: [
-    { x: 1, y: 40 }, { x: 3, y: 60 }, { x: 5, y: 50 }, { x: 7, y: 70 }, { x: 9, y: 60 },
-    { x: 11, y: 50 }, { x: 13, y: 40 }, { x: 15, y: 60 }, { x: 17, y: 80 }, { x: 19, y: 70 }, { x: 21, y: 60 }
-  ]
+    { x: 1, y: 40 },
+    { x: 3, y: 60 },
+    { x: 5, y: 50 },
+    { x: 7, y: 70 },
+    { x: 9, y: 60 },
+    { x: 11, y: 50 },
+    { x: 13, y: 40 },
+    { x: 15, y: 60 },
+    { x: 17, y: 80 },
+    { x: 19, y: 70 },
+    { x: 21, y: 60 },
+  ],
 };
 
 const levelData = [
@@ -136,7 +172,7 @@ const levelData = [
   { x: 15, y: 60 },
   { x: 17, y: 90 },
   { x: 19, y: 25 },
-  { x: 21, y: 50 }
+  { x: 21, y: 50 },
 ];
 
 const chloreInputData = [
@@ -150,7 +186,7 @@ const chloreInputData = [
   { x: 15, y: 60 },
   { x: 17, y: 80 },
   { x: 19, y: 40 },
-  { x: 21, y: 65 }
+  { x: 21, y: 65 },
 ];
 const chloreOutputData = [
   { x: 1, y: 30 },
@@ -163,10 +199,16 @@ const chloreOutputData = [
   { x: 15, y: 70 },
   { x: 17, y: 75 },
   { x: 19, y: 60 },
-  { x: 21, y: 70 }
+  { x: 21, y: 70 },
 ];
 
-export function DashboardSP01() {
+interface DashboardSP01Props {
+  data: any;
+}
+
+export function DashboardSP01({ data }: DashboardSP01Props) {
+  console.log({ data });
+
   return (
     <>
       {/* Top metrics bar */}
@@ -182,17 +224,15 @@ export function DashboardSP01() {
       </div>
 
       {/* Main dashboard content */}
-      <div className="relative mr-4 flex h-full flex-1 min-h-0 min-w-0 gap-4 overflow-hidden py-4 pl-12 pr-4">
-        
+      <div className="relative mr-4 flex h-full min-h-0 min-w-0 flex-1 gap-4 overflow-hidden py-4 pl-12 pr-4">
         {/* 2 columns × 4 rows grid layout */}
-        <div className="grid grid-cols-2 grid-rows-4 gap-4 h-full w-full min-h-0 min-w-0 flex-1">
-          
+        <div className="grid h-full min-h-0 w-full min-w-0 flex-1 grid-cols-2 grid-rows-4 gap-4">
           {/* Row 1, Col 1 - Flows Chart */}
-          <Card className="flex flex-col h-full">
-            <div className="flex px-4 pt-2 p-0 m-0">
-              <span className="text-white font-medium">Flows</span>
+          <Card className="flex h-full flex-col">
+            <div className="m-0 flex p-0 px-4 pt-2">
+              <span className="font-medium text-white">Flows</span>
             </div>
-            <div className="flex-1 pr-2 pl-2">
+            <div className="flex-1 pl-2 pr-2">
               <LineChartWidget
                 attributes={{
                   telemetries: [
@@ -217,27 +257,31 @@ export function DashboardSP01() {
           </Card>
 
           {/* Row 1, Col 2 - Tank Levels */}
-          <Card className="flex items-center justify-center gap-8 p-4 h-full bg-transparent border-none shadow-none">
-            <div className="flex flex-col items-center flex-1">
-              <span className="text-sm text-white font-medium mb-2">Suction tank</span>
-              <LiquidProgress 
+          <Card className="flex h-full items-center justify-center gap-8 border-none bg-transparent p-4 shadow-none">
+            <div className="flex flex-1 flex-col items-center">
+              <span className="mb-2 text-sm font-medium text-white">
+                Suction tank
+              </span>
+              <LiquidProgress
                 percentage={[{ value: 80, title: "" }]}
                 className="h-[7rem] w-[5rem]"
                 textStyle="text-white font-bold"
               />
             </div>
-            <div className="flex flex-col items-center flex-1">
-              <span className="text-sm text-white font-medium mb-2">Hammer arrestor</span>
+            <div className="flex flex-1 flex-col items-center">
+              <span className="mb-2 text-sm font-medium text-white">
+                Hammer arrestor
+              </span>
               <HammerArrestorSVG />
             </div>
           </Card>
 
           {/* Row 2, Col 1 - Pressures Chart */}
-          <Card className="flex flex-col h-full">
-            <div className="flex px-4 pt-2 p-0 m-0">
-              <span className="text-white font-medium">Presures</span>
+          <Card className="flex h-full flex-col">
+            <div className="m-0 flex p-0 px-4 pt-2">
+              <span className="font-medium text-white">Presures</span>
             </div>
-            <div className="flex-1 pr-2 pl-2">
+            <div className="flex-1 pl-2 pr-2">
               <LineChartWidget
                 attributes={{
                   telemetries: [
@@ -272,7 +316,7 @@ export function DashboardSP01() {
           </Card>
 
           {/* Row 2, Col 2 - Energy and Power section */}
-          <Card className="flex items-center gap-2 p-4 h-full">
+          <Card className="flex h-full items-center gap-2 p-4">
             <div className="flex h-full w-[6rem] flex-col items-center justify-between py-4">
               <span className="text-xl font-bold">Energy</span>
               <div className="flex flex-col items-center">
@@ -290,11 +334,11 @@ export function DashboardSP01() {
                 color="#B29100"
               />
             </div>
-            <div className="grid flex-1 grid-cols-3 grid-rows-2 gap-2 m-0">
+            <div className="m-0 grid flex-1 grid-cols-3 grid-rows-2 gap-2">
               {valuesData.map((item) => (
                 <div
                   key={item.id}
-                  className="flex flex-col items-center justify-center gap-2 rounded-md border-2 border-gray-500 bg-[#021E3F]/60 p-1 text-white backdrop-blur-md w-[60px] h-[70px]"
+                  className="flex h-[70px] w-[60px] flex-col items-center justify-center gap-2 rounded-md border-2 border-gray-500 bg-[#021E3F]/60 p-1 text-white backdrop-blur-md"
                 >
                   <span className="text-xs">{item.name}</span>
                   <span className="text-xl font-bold">{item.value}</span>
@@ -304,11 +348,11 @@ export function DashboardSP01() {
           </Card>
 
           {/* Row 3, Col 1 - Level Chart */}
-          <Card className="flex flex-col h-[180px] overflow-hidden">
-            <div className="flex px-4 pt-2 p-0 m-0">
-              <span className="text-white font-medium">Level</span>
+          <Card className="flex h-[180px] flex-col overflow-hidden">
+            <div className="m-0 flex p-0 px-4 pt-2">
+              <span className="font-medium text-white">Level</span>
             </div>
-            <div className="flex-1 pr-2 pl-2">
+            <div className="flex-1 pl-2 pr-2">
               <LineChartWidget
                 max={140}
                 attributes={{
@@ -326,9 +370,11 @@ export function DashboardSP01() {
           </Card>
 
           {/* Row 3, Col 2 - Pumps ring state bars */}
-          <Card className="flex flex-col gap-0 p-2 h-full">
-            <span className="text-sm font-bold text-white">Pumps ring state</span>
-            <div className="flex-1 flex flex-col justify-center gap-0">
+          <Card className="flex h-full flex-col gap-0 p-2">
+            <span className="text-sm font-bold text-white">
+              Pumps ring state
+            </span>
+            <div className="flex flex-1 flex-col justify-center gap-0">
               {progressDataLine.map((item) => (
                 <ProgressBar
                   data={item.data}
@@ -343,15 +389,19 @@ export function DashboardSP01() {
           </Card>
 
           {/* Row 4, Col 1 - Chlore Chart */}
-          <Card className="flex flex-col h-full">
-            <div className="flex justify-between items-center px-4 pt-2 p-0 m-0 relative">
-              <span className="text-white font-medium">r</span>
+          <Card className="flex h-full flex-col">
+            <div className="relative m-0 flex items-center justify-between p-0 px-4 pt-2">
+              <span className="font-medium text-white">r</span>
               <div className="absolute right-4 flex gap-2 text-xs">
-                <span className="bg-[#021E3F] border border-white rounded-full px-3 py-1 text-white">Input XX</span>
-                <span className="bg-[#021E3F] border border-white rounded-full px-3 py-1 text-white">Output XX</span>
+                <span className="rounded-full border border-white bg-[#021E3F] px-3 py-1 text-white">
+                  Input XX
+                </span>
+                <span className="rounded-full border border-white bg-[#021E3F] px-3 py-1 text-white">
+                  Output XX
+                </span>
               </div>
             </div>
-            <div className="flex-1 pr-2 pl-2">
+            <div className="flex-1 pl-2 pr-2">
               <LineChartWidget
                 attributes={{
                   telemetries: [
@@ -374,7 +424,7 @@ export function DashboardSP01() {
           </Card>
 
           {/* Row 4, Col 2 - Chlore Station */}
-          <Card className="flex flex-col gap-0 p-4 h-full">
+          <Card className="flex h-full flex-col gap-0 p-4">
             <span className="text-xl font-bold">Chlore Station</span>
             <div className="flex items-center justify-center gap-8">
               {/* First block */}
@@ -393,7 +443,6 @@ export function DashboardSP01() {
               />
             </div>
           </Card>
-
         </div>
       </div>
     </>

@@ -119,7 +119,10 @@ const res = [
     ],
   },
 ];
-export function DashboardSPU() {
+interface DashboardSPUProps {
+  data: any;
+}
+export function DashboardSPU({ data }: DashboardSPUProps) {
   return (
     <div className="relative mb-8 flex h-full min-h-0 flex-1 flex-col overflow-hidden pl-12 pr-6">
       {/* Summary bar */}
