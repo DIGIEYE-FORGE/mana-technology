@@ -180,6 +180,8 @@ export default function LineChartWidget({
     );
   return (
     <Chart
+      width={"100%"}
+      height={"100%"}
       options={{
         ...{
           theme: { mode: "dark" },
@@ -195,12 +197,12 @@ export default function LineChartWidget({
               top: 0,
               right: 0,
               bottom: 0,
-              left: 0
-            }
+              left: 0,
+            },
           },
           stroke: {
             width: 2,
-            curve: 'smooth'
+            curve: "smooth",
           },
           chart: {
             id,
@@ -210,7 +212,7 @@ export default function LineChartWidget({
             zoom: { enabled: false },
             selection: { enabled: false },
             dropShadow: { enabled: false },
-            height: (max || 180),
+            height: max || 180,
             sparkline: { enabled: false },
             parentHeightOffset: 0,
             offsetY: 0,
@@ -218,50 +220,50 @@ export default function LineChartWidget({
               top: 0,
               right: 0,
               bottom: 0,
-              left: 0
-            }
-          },
-          legend: {
-            position: legendPosition,
-            markers: {
-              width: 12,
-              height: 4,
-              radius: 0,
-              offsetX: 0,
-              offsetY: 0,
-              shape: "square"
+              left: 0,
             },
+          },
+
+          legend: {
+            // show: false,
+            // markers: {
+            //   width: 12,
+            //   height: 4,
+            //   radius: 0,
+            //   offsetX: 0,
+            //   offsetY: 0,
+            //   shape: "square",
+            // },
             height: 70,
             offsetY: -10,
             floating: false,
             containerMargin: {
-              top: 0,
+              top: 20,
               right: 0,
               bottom: 0,
-              left: 0
+              left: 0,
             },
             itemMargin: {
-              horizontal: 2,
-              vertical: 0
+              horizontal: 0,
+              vertical: 0,
             },
-            fontSize: '9px',
-            formatter: function(seriesName: string) {
-              return seriesName.length > 12 ? seriesName.substring(0, 12) + '...' : seriesName;
-            }
+            fontSize: "9px",
+            formatter: function (seriesName: string) {
+              return seriesName.length > 12
+                ? seriesName.substring(0, 12) + "..."
+                : seriesName;
+            },
           },
         },
         ...options,
       }}
-      series={
-        (data || [])?.map((item) => ({
-          name: item.name,
-          type: item.type,
-          data: item.data,
-          color: item.color,
-        }))
-      }
+      series={(data || [])?.map((item) => ({
+        name: item.name,
+        type: item.type,
+        data: item.data,
+        color: item.color,
+      }))}
       type="line"
-      height={max || 180}
     />
   );
 }

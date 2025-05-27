@@ -24,6 +24,7 @@ import { useAppContext } from "@/Context";
 import useSWR from "swr";
 import { env } from "@/utils/env";
 import { io } from "socket.io-client";
+import { div } from "three/examples/jsm/nodes/Nodes";
 interface Position {
   top?: string;
   bottom?: string;
@@ -197,12 +198,14 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                   percentage={
                     point?.card?.progress && Array.isArray(point.card.progress)
                       ? point.card.progress.map((p) => ({
-                          value: p,
+                          value: Number(p)?.toFixed(2) as unknown as number,
                           title: "",
                         }))
                       : [
                           {
-                            value: point.card.progress as number,
+                            value: Number(point.card.progress)?.toFixed(
+                              2,
+                            ) as unknown as number,
                             title: "",
                           },
                         ]
@@ -1174,7 +1177,9 @@ const PipeLine: React.FC = () => {
             <div className="relative h-full px-8 pb-6 pt-[3rem]">
               <PipeLineSvg className="h-full w-full" />
               {isLoading ? (
-                <Loader />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <Loader className="size-[4rem] animate-spin text-white" />
+                </div>
               ) : (
                 PipeLineAttributes?.map((item) => ({
                   ...item,
