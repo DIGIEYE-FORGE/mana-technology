@@ -20,7 +20,7 @@ const UpBar = () => {
             ? pathname.split("/").at(-1) === "tree"
               ? "Cycle de développement"
               : "VOD"
-            : "Pebble crusher"}
+            : "CRUSHING"}
         </span>
       </div>
       {/* <DatePickerWithRange
@@ -42,6 +42,7 @@ const UpBar = () => {
         {fullScreen ? <Shrink size={24} /> : <Minimize size={24} />}
       </Button>
  */}
+
       <Link to="/main-project">
         <Button variant="ghost" size={"icon"}>
           <MoveRightIcon size={24} className="size-6" />

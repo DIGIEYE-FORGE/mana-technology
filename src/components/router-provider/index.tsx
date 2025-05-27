@@ -38,6 +38,7 @@ import OMniverseLayout from "@/pages/omniverse-layout";
 import OmniversePage from "@/pages/omniverse";
 import PipeLine from "@/pages/pipe-line";
 import PebbleCrusher from "@/pages/pebble-crusher";
+import JawCrusher from "@/pages/jaw-crusher";
 // import GoliaPage from "@/pages/golia";
 
 const routes: RouteObject[] = [
@@ -92,6 +93,10 @@ const routes: RouteObject[] = [
       {
         path: "pebble-crusher",
         element: <PebbleCrusher />,
+      },
+      {
+        path: "jaw-crusher",
+        element: <JawCrusher />,
       },
       {
         path: "future",

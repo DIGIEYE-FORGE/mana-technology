@@ -661,8 +661,6 @@ const PipeLine: React.FC = () => {
     ];
   });
 
-  console.log({ data });
-
   return (
     <main
       className="relative flex flex-col text-foreground"
