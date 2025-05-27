@@ -191,6 +191,16 @@ export default function LineChartWidget({
             borderColor: "#797979",
             xaxis: { lines: { show: false } },
             yaxis: { lines: { show: true } },
+            padding: {
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: 0
+            }
+          },
+          stroke: {
+            width: 2,
+            curve: 'smooth'
           },
           chart: {
             id,
@@ -200,16 +210,43 @@ export default function LineChartWidget({
             zoom: { enabled: false },
             selection: { enabled: false },
             dropShadow: { enabled: false },
+            height: (max || 180) - 70,
+            sparkline: { enabled: false },
+            parentHeightOffset: 0,
+            offsetY: 0,
+            padding: {
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: 0
+            },
           },
           legend: {
             position: legendPosition,
             markers: {
-              width: 20,
-              height: 8,
+              width: 12,
+              height: 4,
               radius: 0,
               offsetX: 0,
               offsetY: 0,
               shape: "square"
+            },
+            height: 70,
+            offsetY: 0,
+            floating: false,
+            containerMargin: {
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: 0
+            },
+            itemMargin: {
+              horizontal: 2,
+              vertical: 0
+            },
+            fontSize: '9px',
+            formatter: function(seriesName: string) {
+              return seriesName.length > 12 ? seriesName.substring(0, 12) + '...' : seriesName;
             }
           },
         },
