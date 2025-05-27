@@ -79,6 +79,7 @@ const progressDataLine = [
   //   unite: "kWh",
   // },
 ];
+
 export function DashboardSP02() {
   return (
     <>
@@ -219,5 +220,3 @@ export function DashboardSP02() {
     </>
   );
 }
-
-
