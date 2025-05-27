@@ -80,6 +80,21 @@ const JawCrusher = () => {
       <main className="mx-auto flex max-w-[1920px] flex-col gap-3">
         <UpBar />
         <main className="relative flex !h-fit flex-col gap-5 px-6 pb-6">
+          <img
+            src="/model/model-circle.png"
+            className="pointer-events-none absolute bottom-[100px] left-1/2 z-0 h-[200px] w-[700px] -translate-x-1/2 opacity-30"
+          />
+          <img
+            src="/model/bg-pattern.png"
+            className="pointer-events-none absolute left-0 top-0 z-0 h-full w-full opacity-60"
+          />
+          <div className="z-1 absolute inset-0 isolate flex flex-1 items-center justify-center p-0">
+            <ModelCanvas
+              url={"/model/jaw02.glb"}
+              position={[-40, 15, -20]}
+              fov={10}
+            />
+          </div>
           <UpCards
             flowRateIn={data?.["s=6028-WI-1042"] || 0}
             flowRateOut={data?.["s=6032-WI-1142"] || 0}
@@ -92,13 +107,7 @@ const JawCrusher = () => {
             power={data?.["s=6210-WI-2217"] || 0}
             crushed={data?.["s=6210-WI-2217"] || 0}
           />
-          <div className="absolute inset-0 isolate z-0 flex flex-1 items-center justify-center p-0">
-            <ModelCanvas
-              url={"/model/jaw02.glb"}
-              position={[-40, 15, -20]}
-              fov={10}
-            />
-          </div>
+
           <div className="flex justify-between">
             <LeftBar
               runningState={data?.["s=6210-WI-2217"] || 0}
