@@ -5,7 +5,7 @@ import { TDateRange, toggleFullScreen } from "@/utils";
 import { Minimize, MoveRightIcon, Shrink } from "lucide-react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 
-function OMniversedBar() {
+function CrushingdBar() {
   const { fullScreen, setFullScreen, dateRange, setDateRange } =
     useAppContext();
   const { pathname } = useLocation();
@@ -20,7 +20,7 @@ function OMniversedBar() {
             ? pathname.split("/").at(-1) === "tree"
               ? "Cycle de développement"
               : "VOD"
-            : "OMNIVERSE"}
+            : "Crushing"}
         </span>
       </div>
       <DatePickerWithRange
@@ -50,7 +50,7 @@ function OMniversedBar() {
     </div>
   );
 }
-function OMniverseLayout() {
+function CrushingLayout() {
   return (
     <div
       className="h-[100svh] overflow-auto"
@@ -60,7 +60,7 @@ function OMniverseLayout() {
       }}
     >
       <main className="mx-auto flex max-w-[1920px] flex-col gap-6">
-        <OMniversedBar />
+        <CrushingdBar />
         <main className="!h-fit px-6 pb-6">
           <Outlet />
         </main>
@@ -69,4 +69,4 @@ function OMniverseLayout() {
   );
 }
 
-export default OMniverseLayout;
+export default CrushingLayout;

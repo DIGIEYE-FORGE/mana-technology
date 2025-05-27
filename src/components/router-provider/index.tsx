@@ -33,12 +33,10 @@ import FuturePage from "@/pages/future";
 import VideoPage from "@/pages/video";
 import Projection360Page from "@/pages/360-projection";
 import TizertVideo from "@/pages/tizert-video";
-
-import OMniverseLayout from "@/pages/omniverse-layout";
-import OmniversePage from "@/pages/omniverse";
+import CrushingPage from "@/pages/omniverse";
 import PipeLine from "@/pages/pipe-line";
 import PebbleCrusher from "@/pages/pebble-crusher";
-// import GoliaPage from "@/pages/golia";
+import CrushingLayout from "@/pages/omniverse-layout";
 
 const routes: RouteObject[] = [
   {
@@ -80,12 +78,12 @@ const routes: RouteObject[] = [
         element: <PipeLine />,
       },
       {
-        path: "omniverse",
-        element: <OMniverseLayout />,
+        path: "crushing",
+        element: <CrushingLayout />,
         children: [
           {
             path: "",
-            element: <OmniversePage />,
+            element: <CrushingPage />,
           },
         ],
       },

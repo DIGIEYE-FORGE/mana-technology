@@ -3,7 +3,7 @@ import { Card } from "@/components/card";
 import ReactApexChart from "react-apexcharts";
 import { ModelCanvas } from "./model-viewer";
 
-function Omniverse() {
+function Crushing() {
   return (
     <div className="pointer-events-none relative flex [&>div]:pointer-events-auto">
       <div className="relative z-10 flex h-full w-[35rem] flex-col gap-3">
@@ -455,4 +455,4 @@ function Omniverse() {
   );
 }
 
-export default Omniverse;
+export default Crushing;
