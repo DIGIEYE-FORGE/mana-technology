@@ -53,7 +53,7 @@ const LiquidProgress: React.FC<LiquidProgressProps> = ({
         {clamped.map((value, index) => (
           <div
             key={index}
-            className={cn("relative h-full", className)}
+            className={cn("debug relative h-full", className)}
             style={{
               background: "white",
               ...style,

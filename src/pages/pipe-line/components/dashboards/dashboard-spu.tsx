@@ -153,7 +153,7 @@ export function DashboardSPU() {
                 title: item.name,
               }))}
               style={{
-                background:""
+                background: "#87EFD5",
               }}
               className="h-[12rem] !w-[7rem]"
             />
