@@ -80,191 +80,6 @@ interface PipelinePointProps {
   onPointClick: (id: string) => void;
 }
 
-// Constants
-const DATA_CARDS = [
-  { title: "Pumped Volume", value: "XX" },
-  { title: "Flow Rate", value: "XX" },
-  { title: "Average Daily flow rate", value: "XX" },
-];
-
-const DEFAULT_PUMP_ATTRIBUTES: PumpAttributes = {
-  "Chlore input": "XX",
-  "Chlore output": "XX",
-  "Flow input": "XX",
-  "Flow output": "XX",
-  "delta flow": "XX",
-  "pression output": "XX",
-  pumps: ["P01", "P02", "P03"],
-  "Running state": ["Running", "Running", "Running"],
-  Pression: ["XX", "XX", "XX"],
-};
-
-const POINTS_DATA: PointData[] = [
-  {
-    id: "SP01",
-    title: "SP01",
-    position: { top: "62%", left: "0%" },
-    card: {
-      position: "right",
-      optionsPosition: { top: "49%", left: "90%" },
-      progress: 30,
-      attributes: DEFAULT_PUMP_ATTRIBUTES,
-    },
-    image: "/lines-images/sp01.png",
-    model: {
-      dashboard: {
-        title: "SP01 Dashboard",
-        component: <Dashboard3 />,
-      },
-    },
-  },
-  {
-    id: "SP02",
-    title: "SP02",
-    position: { top: "40%", left: "31%" },
-    card: {
-      position: "center",
-      optionsPosition: { top: "-110%", left: "-170%" },
-      progress: 80,
-      attributes: DEFAULT_PUMP_ATTRIBUTES,
-    },
-    image: "/lines-images/sp02.png",
-    model: {
-      dashboard: {
-        title: "SP02 Dashboard",
-        component: <Dashboard1 />,
-      },
-    },
-  },
-  {
-    id: "SP03",
-    title: "SP03",
-    position: { top: "25%", left: "60%" },
-    card: {
-      position: "left",
-      optionsPosition: { top: "-30%" },
-      progress: 70,
-      attributes: DEFAULT_PUMP_ATTRIBUTES,
-    },
-    image: "/lines-images/sp03.png",
-    model: {
-      dashboard: {
-        title: "SP03 Dashboard",
-        component: <Dashboard2 />,
-      },
-    },
-  },
-  {
-    id: "SP1",
-    title: "SP1",
-    position: { top: "28%", right: "14%" },
-    card: {
-      position: "top",
-      optionsPosition: { bottom: "220%", left: "0%" },
-      progress: 60,
-      attributes: DEFAULT_PUMP_ATTRIBUTES,
-    },
-    image: "/lines-images/sp1.png",
-    model: {
-      dashboard: {
-        title: "SP1 Dashboard",
-        component: <Dashboard2 />,
-      },
-    },
-  },
-  {
-    id: "SP2",
-    title: "SP2",
-    position: { top: "50%", right: "22%" },
-    card: {
-      position: "left",
-      progress: 50,
-      optionsPosition: { top: "0%", right: "80%" },
-      attributes: DEFAULT_PUMP_ATTRIBUTES,
-    },
-    image: "/lines-images/sp03.png",
-    model: {
-      dashboard: {
-        title: "SP05 Dashboard",
-        component: <Dashboard2 />,
-      },
-    },
-  },
-  {
-    id: "SP3",
-    title: "SP3",
-    position: { top: "50%", right: "4%" },
-    card: {
-      position: "left",
-      progress: 40,
-      optionsPosition: { top: "-240%", left: "-20%" },
-      attributes: DEFAULT_PUMP_ATTRIBUTES,
-    },
-    image: "/lines-images/sp3.png",
-    model: {
-      dashboard: {
-        title: "SP3 Dashboard",
-        component: <Dashboard2 />,
-      },
-    },
-  },
-  {
-    id: "SP4",
-    title: "SP4",
-    position: { top: "70%", right: "17%" },
-    card: {
-      position: "left",
-      progress: 40,
-      optionsPosition: { top: "20%", left: "-350%" },
-      attributes: DEFAULT_PUMP_ATTRIBUTES,
-    },
-    image: "/lines-images/sp4.png",
-    model: {
-      dashboard: {
-        title: "SP4 Dashboard",
-        component: <Dashboard2 />,
-      },
-    },
-  },
-  {
-    id: "SP5",
-    title: "SP5",
-    position: { top: "90%", right: "10%" },
-    card: {
-      position: "left",
-      progress: 40,
-      optionsPosition: { top: "40%", right: "100%" },
-      attributes: DEFAULT_PUMP_ATTRIBUTES,
-    },
-    image: "/lines-images/sp5.png",
-    model: {
-      dashboard: {
-        title: "SP5 Dashboard",
-        component: <Dashboard2 />,
-      },
-    },
-  },
-  {
-    id: "SP6",
-    title: "SP6",
-    position: { top: "70%", right: "-3%" },
-    card: {
-      position: "left",
-      progress: 40,
-      optionsPosition: { top: "220%", left: "-100%" },
-      attributes: DEFAULT_PUMP_ATTRIBUTES,
-    },
-    image: "/lines-images/sp5.png",
-    model: {
-      dashboard: {
-        title: "SP6 Dashboard",
-        component: <Dashboard2 />,
-      },
-    },
-  },
-];
-
-// Utility functions
 const createPositionStyle = (position: Position): React.CSSProperties => {
   return { ...position };
 };
@@ -289,155 +104,164 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
   point,
   onPointClick,
   showCard,
-}) => (
-  <div
-    className="absolute size-[6rem] cursor-pointer"
-    style={createPositionStyle(point.position)}
-    onClick={() => onPointClick(point.id)}
-  >
-    {showCard && (
-      <div
-        className={cn(
-          "absolute z-10 min-h-[10rem] min-w-[21rem] scale-90 p-4 pr-6",
-          getCardPositionClass(point.card.position),
-        )}
-        style={{
-          ...(point.card.optionsPosition || {}),
-          background: "url(/vector.png)",
-          backgroundSize: "100% 100%",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        <div className="flex min-h-[10rem] flex-col gap-2">
-          <div className="flex justify-between">
-            <h3 className="text-md text-bold flex items-center justify-center px-3 text-xl text-[#FFE473]">
-              {point.title}
-            </h3>
-            <Dialog>
-              <DialogTrigger asChild>
-                <button
-                  className="text-md group flex items-center gap-2 text-[#78F6EA]"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                  }}
-                >
-                  Voir plus
-                  <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </button>
-              </DialogTrigger>
-              <DialogContent
-                className="flex h-[min(95vh,67rem)] min-w-[70rem] max-w-[min(95vw,90rem)] flex-col gap-20 border-none bg-transparent p-0 pb-6 pt-4 text-foreground backdrop-blur"
-                style={{
-                  clipPath:
-                    "polygon(0% 18.5%, 2.8% 13.5%, 34% 13.5%, 36.2% 9.3%, 36.2% 0%, 100% 0%, 100% 99.6%, 1.6% 99.6%, 1.6% 67%, 0% 64%)",
-                  backgroundImage: "url(/card-bg.png)",
-                  backgroundSize: "100% 100%",
-                }}
-                hideCloseButton
-              >
-                <div className="flex h-[8%] shrink-0 items-center pl-[calc(36%+1rem)]">
-                  <span className="shrink-0 pl-6 font-ethnocentric text-sm font-extralight text-foreground first-letter:uppercase">
-                    {point.model?.dashboard?.title || "Dashboard"}
-                  </span>
-                  <DialogClose asChild>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="absolute right-6 size-5 text-white"
-                    >
-                      <XIcon size={20} />
-                    </Button>
-                  </DialogClose>
-                </div>
-                {point.model?.dashboard?.component}
-              </DialogContent>
-            </Dialog>
-          </div>
-          <div className="flex h-full w-full gap-2">
-            <div className="w-[7rem]">
-              <LiquidProgress percentage={point.card.progress} />
-            </div>
-
-            <div className="flex flex-1 flex-col gap-1">
-              {Object.entries(point.card.attributes).map(([key, value]) => (
-                <div key={key} className="flex justify-between">
-                  <span className="text-xs text-gray-400">{key}</span>
-                  <span className="text-xs text-white">
-                    {key == "Running state" ? (
-                      <div className="flex flex-wrap gap-1">
-                        {value.map((state: string) => (
-                          <div
-                            key={state}
-                            className="aspect-video h-5 w-6 rounded-sm border-0 border-white"
-                            style={{
-                              backgroundColor:
-                                state === "True" ? "#26E2B3" : "#FF0000",
-                            }}
-                          ></div>
-                        ))}
-                      </div>
-                    ) : value instanceof Array ? (
-                      <div className="flex flex-wrap gap-1">
-                        {value.map((v, idx) => (
-                          <span key={idx} className="text-xs text-white">
-                            {v}
-                          </span>
-                        ))}
-                      </div>
-                    ) : (
-                      value
-                    )}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    )}
+}) => {
+  return (
     <div
-      className="absolute left-1/2 top-1/2 z-10 h-6 w-6 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#002FBE]"
-      style={{
-        backgroundImage: "radial-gradient(circle, #002FBE 0%, #000000 100%)",
-      }}
-    ></div>
+      className="absolute size-[6rem] cursor-pointer"
+      style={createPositionStyle(point.position)}
+      onClick={() => onPointClick(point.id)}
+    >
+      {showCard && (
+        <div
+          className={cn(
+            "absolute z-10 min-h-[10rem] min-w-[21rem] scale-[0.8] p-4 pr-6",
+            getCardPositionClass(point.card.position),
+            point.id === "SP6" ? "scale-[0.60] bg-red-500" : "scale[0.8]",
+          )}
+          style={{
+            ...(point.card.optionsPosition || {}),
+            background: "url(/vector.png)",
+            backgroundSize: "100% 100%",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          <div className="flex min-h-[10rem] flex-col gap-2">
+            <div className="flex justify-between">
+              <h3 className="text-md text-bold flex items-center justify-center px-3 text-xl text-[#FFE473]">
+                {point.title}
+              </h3>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <button
+                    className="text-md group flex items-center gap-2 text-[#78F6EA]"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                    }}
+                  >
+                    Voir plus
+                    <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </button>
+                </DialogTrigger>
+                <DialogContent
+                  className="flex h-[min(95vh,67rem)] min-w-[70rem] max-w-[min(95vw,90rem)] flex-col gap-20 border-none bg-transparent p-0 pb-6 pt-4 text-foreground backdrop-blur"
+                  style={{
+                    clipPath:
+                      "polygon(0% 18.5%, 2.8% 13.5%, 34% 13.5%, 36.2% 9.3%, 36.2% 0%, 100% 0%, 100% 99.6%, 1.6% 99.6%, 1.6% 67%, 0% 64%)",
+                    backgroundImage: "url(/card-bg.png)",
+                    backgroundSize: "100% 100%",
+                  }}
+                  hideCloseButton
+                >
+                  <div className="flex h-[8%] shrink-0 items-center pl-[calc(36%+1rem)]">
+                    <span className="shrink-0 pl-6 font-ethnocentric text-sm font-extralight text-foreground first-letter:uppercase">
+                      {point.model?.dashboard?.title || "Dashboard"}
+                    </span>
+                    <DialogClose asChild>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="absolute right-6 size-5 text-white"
+                      >
+                        <XIcon size={20} />
+                      </Button>
+                    </DialogClose>
+                  </div>
+                  {point.model?.dashboard?.component}
+                </DialogContent>
+              </Dialog>
+            </div>
+            <div className="flex h-full w-full gap-2">
+              <div className="w-[7rem]">
+                <LiquidProgress
+                  percentage={
+                    +point.card.progress < 100
+                      ? +Number(point.card.progress || 0).toFixed(2)
+                      : 100
+                  }
+                />
+              </div>
 
-    <div className="relative left-0 top-0 h-full w-full scale-[0.9]">
-      <img
-        src={point.image}
-        alt={point.title}
-        className={cn(
-          "absolute bottom-[calc(100%+1em)] size-28 object-contain",
-        )}
-      />
+              <div className="flex flex-1 flex-col gap-1">
+                {Object.entries(point.card.attributes).map(([key, value]) => (
+                  <div key={key} className="flex justify-between">
+                    <span className="text-xs text-gray-400">{key}</span>
+                    <span className="text-xs text-white">
+                      {key == "Running state" ? (
+                        <div className="flex flex-wrap gap-1">
+                          {value.map((state: string) => (
+                            <div
+                              key={state}
+                              className="aspect-video h-5 w-6 rounded-sm border-0 border-white"
+                              style={{
+                                backgroundColor:
+                                  state === "True" ? "#26E2B3" : "#FF0000",
+                              }}
+                            ></div>
+                          ))}
+                        </div>
+                      ) : value instanceof Array ? (
+                        <div className="flex flex-wrap gap-1">
+                          {value.map((v, idx) => (
+                            <span key={idx} className="text-xs text-white">
+                              {v}
+                            </span>
+                          ))}
+                        </div>
+                      ) : (
+                        value
+                      )}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       <div
-        className="absolute bottom-20 right-1/2 z-10 translate-x-1/2 whitespace-nowrap px-2 py-0.5 text-xs font-bold 2xl:text-base"
+        className="absolute left-1/2 top-1/2 z-10 h-6 w-6 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#002FBE]"
         style={{
-          backgroundImage:
-            "linear-gradient(to right, transparent, #002FBE, transparent)",
-          border: "1px solid",
-          borderImageSlice: 1,
-          borderImageSource:
-            "linear-gradient(to right, transparent, white, transparent)",
+          backgroundImage: "radial-gradient(circle, #002FBE 0%, #000000 100%)",
         }}
-      >
-        {point.title}
-      </div>
-      <div className="machine-highlight absolute bottom-0 aspect-square w-full">
-        <div className="circle circle-3 relative h-full w-full">
-          <Circle3 className="rotate h-full w-full duration-1000" />
+      ></div>
+
+      <div className="relative left-0 top-0 h-full w-full scale-[0.9]">
+        <img
+          src={point.image}
+          alt={point.title}
+          className={cn(
+            "absolute bottom-[calc(100%+1em)] size-[5.5rem] object-contain",
+          )}
+        />
+        <div
+          className="absolute bottom-20 right-1/2 z-10 translate-x-1/2 whitespace-nowrap px-2 py-0.5 text-xs font-bold 2xl:text-base"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, transparent, #002FBE, transparent)",
+            border: "1px solid",
+            borderImageSlice: 1,
+            borderImageSource:
+              "linear-gradient(to right, transparent, white, transparent)",
+          }}
+        >
+          {point.title}
         </div>
-        <div className="circle circle-2 relative h-full w-full">
-          <Circle2 className="rotate h-full w-full duration-1000" />
+        <div className="machine-highlight absolute bottom-0 aspect-square w-full">
+          <div className="circle circle-3 relative h-full w-full">
+            <Circle3 className="rotate h-full w-full duration-1000" />
+          </div>
+          <div className="circle circle-2 relative h-full w-full">
+            <Circle2 className="rotate h-full w-full duration-1000" />
+          </div>
+          <div className="circle circle-1 relative h-full w-full">
+            <Circle1 className="rotate h-full w-full duration-1000" />
+          </div>
+          <Light className="absolute bottom-[40%] right-1/2 w-full translate-x-1/2" />
         </div>
-        <div className="circle circle-1 relative h-full w-full">
-          <Circle1 className="rotate h-full w-full duration-1000" />
-        </div>
-        <Light className="absolute bottom-[40%] right-1/2 w-full translate-x-1/2" />
       </div>
     </div>
-  </div>
-);
+  );
+};
 // PipeLine Component
 const PipeLine: React.FC = () => {
   const { backendApi } = useAppContext();
@@ -449,6 +273,8 @@ const PipeLine: React.FC = () => {
         : [...prev, id],
     );
   };
+
+  const [widgetData, setWidgetData] = useState<any>(null);
 
   const { data } = useSWR("last-telemetry", async () => {
     const res = await backendApi.findMany("lastTelemetry", {
@@ -472,14 +298,23 @@ const PipeLine: React.FC = () => {
       {} as Record<string, any>,
     );
 
+    setWidgetData([
+      {
+        title: "Pumped Volume",
+        value: filteredResults?.["s=B_FIT_02_TOT_MES_TM"],
+      },
+      { title: "Flow Rate", value: filteredResults?.["s=B_FIT_02_MAE_TM"] },
+      { title: "Average Daily flow rate", value: "XX" },
+    ]);
+
     return [
       {
         id: "SP01",
         title: "SP01",
-        position: { top: "38%", left: "1%" },
+        position: { top: "60%", left: "0%" }, // Updated from { top: "50%", left: "1%" }
         card: {
           position: "right",
-          optionsPosition: { top: "-60%" },
+          optionsPosition: { top: "54%", left: "50%" }, // Updated from { top: "-60%" }
           progress: filteredResults?.["s=SP1_LIT_01_MAE_TM"],
           attributes: {
             "Chlore input": filteredResults?.["s=SP01CHL_CHL_01_MAE_TM"],
@@ -517,10 +352,10 @@ const PipeLine: React.FC = () => {
       {
         id: "SP02",
         title: "SP02",
-        position: { top: "40%", left: "30%" },
+        position: { top: "41%", left: "30%" },
         card: {
           position: "center",
-          optionsPosition: { top: "250%" },
+          optionsPosition: { top: "-100%", left: "-135%" },
           progress: filteredResults?.["s=SP2_LIT_01_MAE_TM"],
           attributes: {
             "Flow input": filteredResults?.["s=SP2_FIT_01_MAE_TM"],
@@ -556,10 +391,10 @@ const PipeLine: React.FC = () => {
       {
         id: "SP03",
         title: "SP03",
-        position: { top: "20%", right: "33%" },
+        position: { top: "25%", right: "33%" },
         card: {
           position: "left",
-          optionsPosition: { top: "-30%" },
+          optionsPosition: { top: "-30%", right: "52%" },
           progress: filteredResults?.["s=SP3_LIT_01_MAE_TM"],
           attributes: {
             "Flow input": filteredResults?.["s=SP3_FIT_01_MAE_TM"],
@@ -595,10 +430,10 @@ const PipeLine: React.FC = () => {
       {
         id: "SP1",
         title: "SP1",
-        position: { top: "23%", right: "17%" },
+        position: { top: "25%", right: "13%" },
         card: {
           position: "top",
-          optionsPosition: { bottom: "210%" },
+          optionsPosition: { bottom: "170%" },
           progress: filteredResults?.["s=SP4_LIT_01_MAE_TM"],
           attributes: {
             "Flow input": filteredResults?.["s=SP4_FIT_01_MAE_TM"],
@@ -634,10 +469,10 @@ const PipeLine: React.FC = () => {
       {
         id: "SP2",
         title: "SP2",
-        position: { top: "43%", right: "24%" },
+        position: { top: "48%", right: "21%" },
         card: {
           position: "left",
-          optionsPosition: { top: "40%" },
+          optionsPosition: { top: "8%", right: "50%" },
           progress: filteredResults?.["s=SP5_LIT_01_MAE_TM"],
           attributes: {
             "Flow input": filteredResults?.["s=SP5_FIT_01_MAE_TM"],
@@ -673,10 +508,10 @@ const PipeLine: React.FC = () => {
       {
         id: "SP4",
         title: "SP4",
-        position: { top: "59%", right: "17%" },
+        position: { top: "70%", right: "16%" },
         card: {
           position: "left",
-          optionsPosition: { top: "85%" },
+          optionsPosition: { top: "-3%" },
           progress: filteredResults?.["s=SP7_LIT_01_MAE_TM"],
           attributes: {
             "Flow input": filteredResults?.["s=SP7_FIT_01_MAE_TM"],
@@ -698,7 +533,7 @@ const PipeLine: React.FC = () => {
             ],
           },
         },
-        image: "/lines-images/img1.png",
+        image: "/lines-images/sp4.png",
         model: {
           side: "right",
           align: "center",
@@ -712,10 +547,10 @@ const PipeLine: React.FC = () => {
       {
         id: "SP5",
         title: "SP5",
-        position: { bottom: "6%", right: "14%" },
+        position: { bottom: "0%", right: "9%" },
         card: {
           position: "left",
-          optionsPosition: { top: "45%" },
+          optionsPosition: { top: "10%" },
           progress: filteredResults?.["s=SP8_LIT_01_MAE_TM"],
           attributes: {
             "Flow input": filteredResults?.["s=SP8_FIT_01_MAE_TM"],
@@ -737,7 +572,7 @@ const PipeLine: React.FC = () => {
             ],
           },
         },
-        image: "/lines-images/img1.png",
+        image: "/lines-images/sp5.png",
         model: {
           side: "left",
           align: "center",
@@ -751,10 +586,10 @@ const PipeLine: React.FC = () => {
       {
         id: "SP3",
         title: "SP3",
-        position: { top: "50%", right: "0%" },
+        position: { top: "45%", right: "4%" },
         card: {
           position: "left",
-          optionsPosition: { top: "-230%", right: "-70%" },
+          optionsPosition: { top: "-180%", left: "-8%" },
           progress: filteredResults?.["s=SP6_LIT_01_MAE_TM"],
           attributes: {
             "Flow input": filteredResults?.["s=SP6_FIT_01_MAE_TM"],
@@ -776,7 +611,7 @@ const PipeLine: React.FC = () => {
             ],
           },
         },
-        image: "/lines-images/img1.png",
+        image: "/lines-images/sp3.png",
         model: {
           side: "right",
           align: "start",
@@ -790,10 +625,10 @@ const PipeLine: React.FC = () => {
       {
         id: "SP6",
         title: "SP6",
-        position: { top: "70%", right: "-3%" },
+        position: { top: "86%", right: "-3%" },
         card: {
           position: "left",
-          optionsPosition: { top: "220%", left: "-100%" },
+          optionsPosition: { top: "-210%", left: "-90%" },
           progress: filteredResults?.["s=SP8_LIT_01_MAE_TM"],
           attributes: {
             "Flow input": filteredResults?.["s=SP8_FIT_01_MAE_TM"],
@@ -851,7 +686,7 @@ const PipeLine: React.FC = () => {
         <PipeLineUpBar />
         <div className="flex flex-1 flex-col overflow-y-visible px-[4rem]">
           <div className="flex gap-4 [&>*]:min-w-[12rem]">
-            {DATA_CARDS.map((item, idx) => (
+            {widgetData?.map((item: any, idx: number) => (
               <CustomCardComponent key={idx}>
                 <h3 className="text-lg text-white">{item.title}</h3>
                 <span className="text-xl text-[#FFC829]">{item.value}</span>
@@ -859,12 +694,12 @@ const PipeLine: React.FC = () => {
             ))}
           </div>
           <div className="relative h-1 flex-1 pr-[6rem]">
-            <div className="relative h-full px-8 pb-6 pt-[5rem]">
+            <div className="relative h-full px-8 pb-6 pt-[3rem]">
               <PipeLineSvg className="h-full w-full" />
-              {POINTS_DATA.map((point) => (
+              {data?.map((point) => (
                 <PipelinePoint
                   key={point.id}
-                  point={point}
+                  point={point as any}
                   onPointClick={handlePointClick}
                   showCard={visibleCardIds.includes(point.id)}
                 />
