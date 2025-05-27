@@ -4,7 +4,8 @@ import LiquidProgress from "../progress";
 
 import CircularGauge from "../progres-circle";
 // import ProgressBar from "../progres-bar";
-import ChloreSVG from "../chlore";
+// import ChloreSVG from "../chlore";
+import ProgressBar from "../progres-bar";
 
 const Data = [
   { id: 1, name: "Float rate xx" },
@@ -13,7 +14,7 @@ const Data = [
 ];
 const progressData = [
   { id: 1, name: "Suction tank", percentage: 40 },
-  { id: 2, name: "Discharge tank", percentage: 40 },
+  { id: 2, name: "Hammer arrestor", percentage: 40 },
 ];
 const valuesData = [
   { id: 1, name: "v1", value: "XX" },
@@ -30,18 +31,18 @@ const progressDataLine = [
     data: [
       {
         min: 0,
-        max: 30,
+        max: 60,
         // status: "Worked",
         color: "#26E2B3",
       },
       {
-        min: 30,
-        max: 60,
+        min: 60,
+        max: 70,
         // status: "Stopped",
         color: "#E64C3C",
       },
       {
-        min: 60,
+        min: 70,
         max: 100,
         // status: "Worked",
         color: "#26E2B3",
@@ -64,20 +65,20 @@ const progressDataLine = [
     value: "XX",
     unite: "kWh",
   },
-  // {
-  //   id: 3,
-  //   title: "p3",
-  //   data: [
-  //     {
-  //       min: 0,
-  //       max: 100,
-  //       // status: "Worked",
-  //       color: "#26E2B3",
-  //     },
-  //   ],
-  //   value: "XX",
-  //   unite: "kWh",
-  // },
+  {
+    id: 3,
+    title: "p3",
+    data: [
+      {
+        min: 0,
+        max: 100,
+        // status: "Worked",
+        color: "#26E2B3",
+      },
+    ],
+    value: "XX",
+    unite: "kWh",
+  },
 ];
 export function DashboardSP02() {
   return (
@@ -94,130 +95,130 @@ export function DashboardSP02() {
       </div>
       <div className="relative flex h-1 flex-1 overflow-auto pb-6 pl-14 pr-10 pt-4">
         <div className="grid flex-1 grid-cols-2 gap-[2rem]">
-          <Card className="relative">
-            <LineChartWidget
-              attributes={{
-                telemetries: [
-                  {
-                    area: true,
-                    name: "EST_PLANIFIE_ROCHE_CUMUL",
-                    color: "#E800534D",
-                    label: "Planifié (Cumulé)",
-                    serial: "JZVATMKQ1A8DA2P1",
-                  },
-                ],
-              }}
-            />
-          </Card>
-          <Card>
-            <LineChartWidget
-              attributes={{
-                telemetries: [
-                  {
-                    area: true,
-                    name: "EST_PLANIFIE_ROCHE_CUMUL",
-                    color: "#E800534D",
-                    label: "Planifié (Cumulé)",
-                    serial: "JZVATMKQ1A8DA2P1",
-                  },
-                ],
-              }}
-            />
-          </Card>
-          <Card>
-            <h3>hello</h3>
-            <LineChartWidget
-              attributes={{
-                telemetries: [
-                  {
-                    area: true,
-                    name: "EST_PLANIFIE_ROCHE_CUMUL",
-                    color: "#E800534D",
-                    label: "Planifié (Cumulé)",
-                    serial: "JZVATMKQ1A8DA2P1",
-                  },
-                ],
-              }}
-            />
-          </Card>
-          {/* <Card>
-            <h3>hello</h3>
-            <LineChartWidget
-              attributes={{
-                telemetries: [
-                  {
-                    area: true,
-                    name: "EST_PLANIFIE_ROCHE_CUMUL",
-                    color: "#E800534D",
-                    label: "Planifié (Cumulé)",
-                    serial: "JZVATMKQ1A8DA2P1",
-                  },
-                ],
-              }}
-            />
-          </Card> */}
-          <Card className="flex items-center justify-evenly gap-4 p-4">
-            {progressData.map((item) => (
-              <div
-                className="flex h-full w-full flex-1 flex-col items-center"
-                key={item.id}
-              >
-                <span className="text-xl font-bold">{item.name}</span>
-                <LiquidProgress
-                  percentage={item.percentage}
-                  className="w-[50%]"
+          {/* Première colonne: LineChartWidget empilés verticalement */}
+          <div className="flex flex-col gap-[0.5rem]">
+            <Card className="flex h-[202px] flex-col">
+              <div className="px-4 pt-2 text-lg font-bold">Flows</div>
+              <div className="flex-1">
+                <LineChartWidget
+                  attributes={{
+                    telemetries: [
+                      {
+                        area: true,
+                        name: "EST_PLANIFIE_ROCHE_CUMUL",
+                        color: "#E800534D",
+                        label: "Planifié (Cumulé)",
+                        serial: "JZVATMKQ1A8DA2P1",
+                      },
+                    ],
+                  }}
                 />
               </div>
-            ))}
-          </Card>
-          <Card className="flex items-center gap-4 p-6">
-            <div className="flex h-full w-[6rem] flex-col items-center justify-center gap-[5rem]">
-              <span className="text-2xl font-bold">Energy</span>
-              <div className="flex flex-col items-center">
-                <span className="text-bold text-2xl">XX</span>
-                <span className="text-xs"> kWh</span>
+            </Card>
+            <Card className="flex h-[202px] flex-col">
+              <div className="px-4 pt-2 text-lg font-bold">Pressure</div>
+              <div className="flex-1">
+                <LineChartWidget
+                  attributes={{
+                    telemetries: [
+                      {
+                        area: true,
+                        name: "EST_PLANIFIE_ROCHE_CUMUL",
+                        color: "#E800534D",
+                        label: "Planifié (Cumulé)",
+                        serial: "JZVATMKQ1A8DA2P1",
+                      },
+                    ],
+                  }}
+                />
               </div>
-            </div>
-            <div className="flex min-h-[10rem] w-full flex-1 flex-col items-center justify-center gap-4">
-              <span className="text-2xl font-bold">Power</span>
-              <CircularGauge
-                value={50}
-                maxValue={100}
-                size={300}
-                width={250}
-                color="#ef8f08"
-              />
-            </div>
-            <div className="grid flex-1 grid-cols-3 grid-rows-2 gap-4">
-              {valuesData.map((item) => (
-                <div
-                  key={item.id}
-                  className="flex flex-col items-center justify-center gap-2 rounded-md border-2 border-white bg-[#021E3F]/60 p-2 px-4 text-white backdrop-blur-md"
-                >
-                  <span className="text-xs">{item.name}</span>
-                  <span className="text-xl font-bold">{item.value}</span>
+            </Card>
+            <Card className="flex h-[202px] flex-col">
+              <div className="px-4 pt-2 text-lg font-bold">Level</div>
+              <div className="flex-1">
+                <LineChartWidget
+                  attributes={{
+                    telemetries: [
+                      {
+                        area: true,
+                        name: "EST_PLANIFIE_ROCHE_CUMUL",
+                        color: "#E800534D",
+                        label: "Planifié (Cumulé)",
+                        serial: "JZVATMKQ1A8DA2P1",
+                      },
+                    ],
+                  }}
+                />
+              </div>
+            </Card>
+          </div>
+
+          {/* Deuxième colonne */}
+          <div className="flex flex-col gap-[0.5rem]">
+            <Card className="flex h-[202px] items-center gap-4 p-6">
+              <div className="flex h-full w-[6rem] flex-col items-center justify-center gap-[5rem]">
+                <span className="text-2xl font-bold">Energy</span>
+                <div className="flex flex-col items-center">
+                  <span className="text-bold text-2xl">XX</span>
+                  <span className="text-xs"> kWh</span>
                 </div>
-              ))}
-            </div>
-          </Card>
-          <Card className="flex flex-col gap-4">
-            <span className="text-xl font-bold">Pumps ring state</span>
-            <div className="flex items-center justify-center gap-4">
-              {progressDataLine.map((item) => (
-                <ChloreSVG
-                  key={item.id}
-                  value={item.value}
-                  topTitle={"telemetry"}
-                  bottomTitle={"telemetry"}
-                  leftTitle={"telemetry"}
+              </div>
+              <div className="flex min-h-[10rem] w-full flex-1 flex-col items-center justify-center gap-4">
+                <span className="text-2xl font-bold">Power</span>
+                <CircularGauge
+                  value={50}
+                  maxValue={100}
+                  size={300}
+                  width={250}
+                  color="#ef8f08"
                 />
-              ))}
-            </div>
-          </Card>
+              </div>
+              <div className="grid flex-1 grid-cols-3 grid-rows-2 gap-4">
+                {valuesData.map((item) => (
+                  <div
+                    key={item.id}
+                    className="flex flex-col items-center justify-center gap-2 rounded-md border-[0.5px] border-white bg-[#021E3F]/60 p-2 px-4 text-white backdrop-blur-md"
+                  >
+                    <span className="text-xs font-bold">{item.name}</span>
+                    <span className="text-xl font-bold">{item.value}</span>
+                  </div>
+                ))}
+              </div>
+            </Card>
+
+            <Card className="flex h-[202px] items-center justify-evenly gap-4 p-4">
+              {/* {progressData.map((item) => (
+                <div
+                  className="flex h-full w-full flex-1 flex-col items-center"
+                  key={item.id}
+                >
+                  <span className="text-xl font-bold pb-2">{item.name}</span>
+                  <LiquidProgress
+                    percentage={item.percentage}
+                    className="w-[90px]"
+                  />
+                </div>
+              ))} */}
+            </Card>
+
+            <Card className="flex h-[202px] flex-col gap-1 p-4">
+              <div className="mb-2 text-lg font-bold">Pumps ring state</div>
+              <div className="flex flex-1 flex-col justify-around">
+                {progressDataLine.map((item) => (
+                  <ProgressBar
+                    data={item.data}
+                    key={item.id}
+                    value={item.value || "--"}
+                    unite={item.unite || "--"}
+                    title={item.title || "--"}
+                    className="h-[2rem] overflow-hidden rounded-md bg-white/20"
+                  />
+                ))}
+              </div>
+            </Card>
+          </div>
         </div>
       </div>
     </>
   );
 }
-
-

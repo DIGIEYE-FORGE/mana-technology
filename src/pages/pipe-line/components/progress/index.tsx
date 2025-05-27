@@ -22,7 +22,7 @@ const LiquidProgress: React.FC<LiquidProgressProps> = ({
 
   return (
     <div
-      className="relative flex h-full w-full"
+      className="relative flex h-[85%] "
       style={{
         borderTopLeftRadius: "10px",
         borderTopRightRadius: "10px",
@@ -35,7 +35,7 @@ const LiquidProgress: React.FC<LiquidProgressProps> = ({
           className={cn("h-full w-full flex-1", className)}
           style={{
             ...style,
-            backgroundColor: "#FFFFFF",
+            backgroundColor: "#0A4B51",
           }}
         >
           {/* FILL CONTAINER */}
@@ -84,10 +84,10 @@ const LiquidProgress: React.FC<LiquidProgressProps> = ({
               />
             </svg>
           </div>
-          <div className="absolute top-4 h-[0.3rem] w-full rounded-md bg-gradient-to-r from-[#98FFE5] to-[#009670]"></div>
-          <div className="absolute top-1 h-[0.3rem] w-full rounded-md bg-gradient-to-r from-[#98FFE5] to-[#009670]"></div>
-          <div className="absolute bottom-4 h-[0.3rem] w-full rounded-md bg-gradient-to-r from-[#98FFE5] to-[#009670]"></div>
-          <div className="absolute bottom-1 h-[0.3rem] w-full rounded-md bg-gradient-to-r from-[#98FFE5] to-[#009670]"></div>
+          <div className="absolute top-4 h-[0.1rem] w-full rounded-md bg-gradient-to-r from-[#98FFE5] to-[#009670]"></div>
+          <div className="absolute top-1 h-[0.1rem] w-full rounded-md bg-gradient-to-r from-[#98FFE5] to-[#009670]"></div>
+          <div className="absolute bottom-4 h-[0.1rem] w-full rounded-md bg-gradient-to-r from-[#98FFE5] to-[#009670]"></div>
+          <div className="absolute bottom-1 h-[0.1rem] w-full rounded-md bg-gradient-to-r from-[#98FFE5] to-[#009670]"></div>
           <div className="absolute inset-0 flex items-center justify-center">
             <span className="text-xl font-bold text-white mix-blend-difference">
               {value}%
