@@ -275,7 +275,7 @@ const PipeLine: React.FC = () => {
     );
   };
 
-  const [widgetData, setWidgetData] = useState<any>(null);
+  const [widgetData, setWidgetData] = useState<any>([]);
 
   const { data } = useSWR("last-telemetry", async () => {
     const res = await backendApi.findMany("lastTelemetry", {
@@ -705,7 +705,10 @@ const PipeLine: React.FC = () => {
         <div className="flex flex-1 flex-col overflow-y-visible px-[4rem]">
           <div className="flex gap-4 [&>*]:min-w-[12rem]">
             {widgetData?.map((item: any, idx: number) => (
-              <CustomCardComponent key={idx}>
+              <CustomCardComponent
+                key={idx}
+                className={cn("", { hidden: item.hidden })}
+              >
                 <h3 className="text-lg text-white">{item.title}</h3>
                 <span className="text-xl text-[#FFC829]">{item.value}</span>
               </CustomCardComponent>
