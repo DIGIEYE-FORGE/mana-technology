@@ -7,19 +7,27 @@ import CrushedIcon from "@/assets/crushed.svg?react";
 import LevelIcon from "@/assets/level.svg?react";
 
 interface UpCardsProps {
-  flowRate: string | number;
+  flowRateIn: string | number;
+  flowRateOut: string | number;
   cadence: string | number;
   crushed: string | number;
-  stockpileLevel: string | number;
+  stockpileLevelMin: string | number;
+  stockpileLevelMax: string | number;
+  crushedOreMin: string | number;
+  crushedOreMax: string | number;
   energy: string | number;
   power: string | number;
 }
 
 const UpCards = ({
-  flowRate,
+  flowRateIn,
+  flowRateOut,
   cadence,
   crushed,
-  stockpileLevel,
+  stockpileLevelMin,
+  stockpileLevelMax,
+  crushedOreMin,
+  crushedOreMax,
   energy,
   power,
 }: UpCardsProps) => {
@@ -30,11 +38,15 @@ const UpCards = ({
         <div className="flex w-full gap-3">
           <Card className="flex grow flex-col items-center justify-center !rounded py-1">
             <span>Input</span>
-            <span className="text-lg font-bold text-[#FFC829]">{flowRate}</span>
+            <span className="text-lg font-bold text-[#FFC829]">
+              {flowRateIn}
+            </span>
           </Card>
           <Card className="flex grow flex-col items-center justify-center !rounded py-1">
             <span>Output</span>
-            <span className="text-lg font-bold text-[#FFC829]">{flowRate}</span>
+            <span className="text-lg font-bold text-[#FFC829]">
+              {flowRateOut}
+            </span>
           </Card>
         </div>
       </Card>
@@ -58,10 +70,10 @@ const UpCards = ({
           <span>Rom Stockpile Level</span>
           <div className="flex w-full justify-between">
             <span className="text-lg font-bold text-[#FFC829]">
-              {stockpileLevel}
+              {stockpileLevelMin}
             </span>
             <span className="text-lg font-bold text-[#FFC829]">
-              {stockpileLevel}
+              {stockpileLevelMax}
             </span>
           </div>
         </div>
@@ -72,10 +84,10 @@ const UpCards = ({
           <span>Crushed Ore Stockpile Level</span>
           <div className="flex w-full justify-between">
             <span className="text-lg font-bold text-[#FFC829]">
-              {stockpileLevel} %
+              {crushedOreMin} %
             </span>
             <span className="text-lg font-bold text-[#FFC829]">
-              {stockpileLevel} %
+              {crushedOreMax} %
             </span>
           </div>
         </div>

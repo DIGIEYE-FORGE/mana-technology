@@ -311,10 +311,10 @@ const PipeLine: React.FC = () => {
       {
         id: "SP01",
         title: "SP01",
-        position: { top: "60%", left: "0%" }, // Updated from { top: "50%", left: "1%" }
+        position: { top: "60%", left: "0%" },
         card: {
           position: "right",
-          optionsPosition: { top: "54%", left: "50%" }, // Updated from { top: "-60%" }
+          optionsPosition: { top: "54%", left: "50%" },
           progress: filteredResults?.["s=SP1_LIT_01_MAE_TM"],
           attributes: {
             "Chlore input": filteredResults?.["s=SP01CHL_CHL_01_MAE_TM"],

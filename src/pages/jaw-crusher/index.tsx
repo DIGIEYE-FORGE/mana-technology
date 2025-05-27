@@ -81,16 +81,20 @@ const JawCrusher = () => {
         <UpBar />
         <main className="relative flex !h-fit flex-col gap-5 px-6 pb-6">
           <UpCards
-            flowRate={data?.["s=6210-WI-2215"] || 0}
+            flowRateIn={data?.["s=6028-WI-1042"] || 0}
+            flowRateOut={data?.["s=6032-WI-1142"] || 0}
+            cadence={data?.["s=6032-WI-1142"] || 0}
+            stockpileLevelMin={data?.["s=6028-LI-1009A"] || 0}
+            stockpileLevelMax={data?.["s=6028-LI-1009B"] || 0}
+            crushedOreMin={data?.["s=6120-LI-2006A"] || 0}
+            crushedOreMax={data?.["s=6120-LI-2006B"] || 0}
             energy={data?.["s=6100-TR-2001"] || 0}
             power={data?.["s=6210-WI-2217"] || 0}
             crushed={data?.["s=6210-WI-2217"] || 0}
-            cadence={data?.["s=6210-WI-2217"] || 0}
-            stockpileLevel={data?.["s=6210-WI-2217"] || 0}
           />
           <div className="absolute inset-0 isolate z-0 flex flex-1 items-center justify-center p-0">
             <ModelCanvas
-              url={"/model/pebble.glb"}
+              url={"/model/jaw02.glb"}
               position={[-40, 15, -20]}
               fov={10}
             />
@@ -98,20 +102,27 @@ const JawCrusher = () => {
           <div className="flex justify-between">
             <LeftBar
               runningState={data?.["s=6210-WI-2217"] || 0}
-              nde={history?.["s=6140-TE-2426NDE"] || []}
-              de={history?.["s=6140-TE-2426DE"] || []}
-              u1={history?.["s=6140-TE-2426U1"] || []}
-              v1={history?.["s=6140-TE-2426V1"] || []}
-              w1={history?.["s=6140-TE-2426W1"] || []}
+              frameLeft={history?.["s=6032-TT-1130C"] || []}
+              frameRight={history?.["s=6032-TT-1130D"] || []}
+              pitmanLeft={history?.["s=6032-TT-1130E"] || []}
+              pitmanRight={history?.["s=6032-TT-1130F"] || []}
+              v1={history?.["s=6032-TE-1130V1"] || []}
+              u1={history?.["s=6032-TE-1130U1"] || []}
+              w1={history?.["s=6032-TE-1130W1"] || []}
             />
             <RightBar
-              pressure={data?.["s=6210-WI-2215"] || 0}
-              hydraulic={data?.["s=6140-PDSH-2426C"] || 0}
-              clamping={data?.["s=6140-PIT-2426D"] || 0}
-              tramp={data?.["s=6140-PIT-2426E"] || 0}
-              lub={data?.["s=6140-PDSH-2426F"] || 0}
-              tank={history?.["s=6140-TE-2426E"] || 0}
-              return={history?.["s=6140-TE-2426F"] || 0}
+              conveyorRom={data?.["s=6032-FD-1107"] || 0}
+              romBinWithdrawal={data?.["s=6032-FD-1107"] || 0}
+              romStockpileAprf1={data?.["s=6028-FD-1021"] || 0}
+              romStockpileAprf2={data?.["s=6028-FD-1022"] || 0}
+              apronDischarge={data?.["s=6028-CV-1037"] || 0}
+              grizzlyFeeder={data?.["s=6032-FD-1120"] || 0}
+              diverterChute={data?.["s=6026-ZA-1004"] || 0}
+              crushedOreApronFeeder1={data?.["s=6120-FD-2021"] || 0}
+              crushedOreApronFeeder2={data?.["s=6120-FD-2022"] || 0}
+              crushedOreApronFeeder3={data?.["s=6120-FD-2023"] || 0}
+              crushedDischargeConveyor={data?.["s=6032-ZM-1142"] || 0}
+              plantFeedConveyor={data?.["s=6120-CV-2040s"] || 0}
             />
           </div>
         </main>
