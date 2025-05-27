@@ -532,7 +532,7 @@ const PipeLine: React.FC = () => {
         },
         pagination: {
           page: 1,
-          perPage: 10000,
+          perPage: 1000,
         },
       });
       return res;
