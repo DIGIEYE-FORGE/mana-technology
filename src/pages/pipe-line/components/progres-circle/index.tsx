@@ -45,7 +45,7 @@ const CircularGauge = ({
 
     const backgroundArc = d3
       .arc()
-      .innerRadius(radius - 15)
+      .innerRadius(radius - 20)
       .outerRadius(radius - 5)
       .startAngle(startAngle)
       .endAngle(endAngle)
@@ -53,14 +53,14 @@ const CircularGauge = ({
 
     const progressArc = d3
       .arc()
-      .innerRadius(radius - 25)
-      .outerRadius(radius)
+      .innerRadius(radius - 20)
+      .outerRadius(radius - 5)
       .startAngle(startAngle)
       .cornerRadius(50);
 
     g.append("path")
       .attr("d", backgroundArc as any)
-      .style("fill", "#CAECF8")
+      .style("fill", "#FFFFFF80")
       .style("filter", "url(#glow)");
 
     const progress = value / maxValue;
@@ -68,22 +68,8 @@ const CircularGauge = ({
 
     g.append("path")
       .datum({ endAngle: progressEndAngle })
-
       .attr("d", progressArc as any)
-      .style("fill", color)
-      .style("filter", "url(#glow)");
-
-    const defs = svg.append("defs");
-    const filter = defs.append("filter").attr("id", "glow");
-
-    filter
-      .append("feGaussianBlur")
-      .attr("stdDeviation", "3")
-      .attr("result", "coloredBlur");
-
-    const feMerge = filter.append("feMerge");
-    feMerge.append("feMergeNode").attr("in", "coloredBlur");
-    feMerge.append("feMergeNode").attr("in", "SourceGraphic");
+      .style("fill", color);
   }, [value, maxValue, size]);
 
   return (

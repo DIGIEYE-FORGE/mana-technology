@@ -18,12 +18,15 @@ const LiquidProgress: React.FC<LiquidProgressProps> = ({
   style,
   textStyle = "text-gray-700",
 }) => {
-  const clamped =
-    typeof percentage.map((item) => item.value) === "number"
-      ? percentage.map((item) => Math.max(0, Math.min(100, item.value)))
-      : percentage.map((item) =>
-          Math.max(0, Math.min(100, parseFloat(item.value.toString()))),
-        );
+  // Ensure percentage is always an array and has valid values
+  const percentageArray = Array.isArray(percentage) ? percentage : [percentage];
+  
+  const clamped = percentageArray
+    .filter(item => item && typeof item.value !== 'undefined')
+    .map((item) => 
+      Math.max(0, Math.min(100, parseFloat(String(item.value || 0))))
+    );
+
   if (clamped.length === 0) {
     return <div className={cn("h-0 w-0", className)} style={style} />;
   }
