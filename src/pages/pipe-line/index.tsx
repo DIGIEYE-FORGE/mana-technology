@@ -18,9 +18,9 @@ import {
   DialogContent,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import Dashboard1 from "./components/dashboards/dashboard1";
-import Dashboard2 from "./components/dashboards/dashboard2";
-import Dashboard3 from "./components/dashboards/dashboard3";
+import { DashboardSP01 } from "./components/dashboards/dashboard-sp01";
+import { DashboardSPU } from "./components/dashboards/dashboard-spu";
+import { DashboardSP02 } from "./components/dashboards/dashboard-sp02";
 import { useAppContext } from "@/Context";
 import useSWR from "swr";
 
@@ -345,7 +345,7 @@ const PipeLine: React.FC = () => {
           sideOffset: -250,
           dashboard: {
             title: "SP01 Dashboard",
-            component: <Dashboard3 />,
+            component: <DashboardSP01 />,
           },
         },
       },
@@ -384,7 +384,7 @@ const PipeLine: React.FC = () => {
           sideOffset: -400,
           dashboard: {
             title: "SP02 Dashboard",
-            component: <Dashboard1 />,
+            component: <DashboardSP01 />,
           },
         },
       },
@@ -422,8 +422,8 @@ const PipeLine: React.FC = () => {
           align: "start",
           sideOffset: -320,
           dashboard: {
-            title: "SP03 Dashboard",
-            component: <Dashboard2 />,
+            title: "SPU",
+            component: <DashboardSP01 />,
           },
         },
       },
@@ -462,7 +462,7 @@ const PipeLine: React.FC = () => {
           sideOffset: 0,
           dashboard: {
             title: "SP1 Dashboard",
-            component: <Dashboard2 />,
+            component: <DashboardSP02 />,
           },
         },
       },
@@ -501,7 +501,7 @@ const PipeLine: React.FC = () => {
           sideOffset: -300,
           dashboard: {
             title: "SP05 Dashboard",
-            component: <Dashboard2 />,
+            component: <DashboardSP02 />,
           },
         },
       },
@@ -540,7 +540,7 @@ const PipeLine: React.FC = () => {
           sideOffset: 0,
           dashboard: {
             title: "SP06 Dashboard",
-            component: <Dashboard2 />,
+              component: <DashboardSP02 />,
           },
         },
       },
@@ -579,7 +579,7 @@ const PipeLine: React.FC = () => {
           sideOffset: 0,
           dashboard: {
             title: "SP07 Dashboard",
-            component: <Dashboard2 />,
+                  component: <DashboardSP02 />, 
           },
         },
       },
@@ -618,13 +618,13 @@ const PipeLine: React.FC = () => {
           sideOffset: 0,
           dashboard: {
             title: "SP08 Dashboard",
-            component: <Dashboard2 />,
+            component: <DashboardSP02 />,
           },
         },
       },
       {
         id: "SP6",
-        title: "SP6",
+        title: "Bassin d’arrivée",
         position: { top: "86%", right: "-3%" },
         card: {
           position: "left",
@@ -653,8 +653,8 @@ const PipeLine: React.FC = () => {
         image: "/lines-images/sp5.png",
         model: {
           dashboard: {
-            title: "SP6 Dashboard",
-            component: <Dashboard2 />,
+            title: "Bassin d’arrivée",
+            component: <DashboardSPU />,
           },
         },
       },

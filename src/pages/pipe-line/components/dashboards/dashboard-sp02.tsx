@@ -79,7 +79,7 @@ const progressDataLine = [
   //   unite: "kWh",
   // },
 ];
-function Dashboard3() {
+export function DashboardSP02() {
   return (
     <>
       <div className="absolute right-[1rem] top-[13%] flex gap-4">
@@ -220,4 +220,4 @@ function Dashboard3() {
   );
 }
 
-export default Dashboard3;
+

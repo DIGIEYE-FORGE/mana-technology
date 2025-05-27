@@ -58,7 +58,7 @@ const res = [
     ],
   },
 ];
-function Dashboard2() {
+export function DashboardSPU() {
   return (
     <div className="relative mr-4 flex h-1 flex-1 overflow-x-hidden pl-12 pr-4 pt-2">
       <div className="flex flex-1 gap-[2rem]">
@@ -199,4 +199,4 @@ function Dashboard2() {
   );
 }
 
-export default Dashboard2;
+

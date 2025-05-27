@@ -3,6 +3,7 @@ import { Card } from "@/components/card";
 import LiquidProgress from "../progress";
 import CircularGauge from "../progres-circle";
 import ProgressBar from "../progres-bar";
+import ChloreSVG from "../chlore";
 
 const Data = [
   { id: 1, name: "Float rate xx" },
@@ -77,7 +78,7 @@ const progressDataLine = [
     unite: "kWh",
   },
 ];
-function Dashboard1() {
+export function DashboardSP01() {
   return (
     <>
       <div className="absolute right-[1rem] top-[12%] flex gap-4">
@@ -215,19 +216,20 @@ function Dashboard1() {
             ))}
           </div>
         </Card>
-        <Card className="flex flex-col gap-1 p-4">
-          <span className="text-xl font-bold">Pumps ring state</span>
-          {progressDataLine.map((item) => (
-            <ProgressBar
-              data={item.data}
-              key={item.id}
-              value={item.value || "--"}
-              unite={item.unite || "--"}
-              title={item.title || "--"}
-              className="h-[2rem] overflow-hidden rounded-md bg-white/20"
-            />
-          ))}
-        </Card>
+        <Card className="flex flex-col gap-4">
+            <span className="text-xl font-bold">Pumps ring state</span>
+            <div className="flex items-center justify-center gap-4">
+              {progressDataLine.map((item) => (
+                <ChloreSVG
+                  key={item.id}
+                  value={item.value}
+                  topTitle={"telemetry"}
+                  bottomTitle={"telemetry"}
+                  leftTitle={"telemetry"}
+                />
+              ))}
+            </div>
+          </Card>
         <Card className="flex flex-col gap-1 p-4">
           <span className="text-xl font-bold">Pumps ring state</span>
           {progressDataLine.map((item) => (
@@ -246,4 +248,4 @@ function Dashboard1() {
   );
 }
 
-export default Dashboard1;
+
