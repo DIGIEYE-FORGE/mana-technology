@@ -31,22 +31,19 @@ const LeftBar = ({ runningState, nde, de, u1, v1, w1 }: LeftBarProps) => {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-5 grid-rows-4 gap-1">
-          <span className="col-start-3">Day</span>
-          <span className="">Month</span>
-          <span className="">Year</span>
-          <span className="col-span-2">Running hours</span>
-          <span className="text-xl font-bold text-[#FFC829]">XX</span>
-          <span className="text-xl font-bold text-[#FFC829]">XX</span>
-          <span className="text-xl font-bold text-[#FFC829]">XX</span>
-          <span className="col-span-2">Stop Hours</span>
-          <span className="text-xl font-bold text-[#FFC829]">XX</span>
-          <span className="text-xl font-bold text-[#FFC829]">XX</span>
-          <span className="text-xl font-bold text-[#FFC829]">XX</span>
-          <span className="col-span-2">Utilisation (%)</span>
-          <span className="text-xl font-bold text-[#FFC829]">XX</span>
-          <span className="text-xl font-bold text-[#FFC829]">XX</span>
-          <span className="text-xl font-bold text-[#FFC829]">XX</span>
+        <div className="flex flex-col gap-1">
+          <div className="flex w-full justify-between">
+            <span>Running hours</span>
+            <span className="text-xl font-bold text-[#FFC829]">XX</span>
+          </div>
+          <div className="flex w-full justify-between">
+            <span>Stop Hours</span>
+            <span className="text-xl font-bold text-[#FFC829]">XX</span>
+          </div>
+          <div className="flex w-full justify-between">
+            <span>Utilisation (%)</span>
+            <span className="text-xl font-bold text-[#FFC829]">XX</span>
+          </div>
         </div>
       </Card>
       <Card className="w-full p-2">
