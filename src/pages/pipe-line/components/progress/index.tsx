@@ -1,6 +1,5 @@
 import { cn } from "@/lib/utils";
 import React from "react";
-import { div } from "three/examples/jsm/nodes/Nodes";
 
 interface LiquidProgressProps {
   percentage: {
