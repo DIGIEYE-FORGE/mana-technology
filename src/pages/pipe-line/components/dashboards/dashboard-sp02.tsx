@@ -189,7 +189,7 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
           </div>
         ))}
       </div>
-      <div className="debug relative flex h-1 flex-1 overflow-auto pb-6 pl-14 pr-10 pt-4">
+      <div className="relative flex h-1 flex-1 overflow-auto pb-6 pl-14 pr-10 pt-4">
         <div className="flex w-full flex-1 gap-[2rem]">
           <div className="flex flex-1 flex-col gap-[0.5rem] [&>*]:flex-1">
             <Card className="flex h-[202px] flex-col">

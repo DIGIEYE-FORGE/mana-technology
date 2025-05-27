@@ -14,6 +14,31 @@ import Light from "@/assets/light.svg?react";
 const PebbleCrusher = () => {
   const { backendApi, dateRange } = useAppContext();
 
+  const { data: count, error: countError } = useSWR("count", async () => {
+    const res = await backendApi.getHistory(
+      "/dpc-history/api/history/count/0V7ZJGB503H9WGH3",
+      {
+        startDate: new Date(
+          dateRange?.from ||
+            /// last hour
+            new Date(Date.now() - 60 * 60 * 1000),
+        ).toISOString(),
+        endDate: new Date(dateRange?.to || new Date()).toISOString(),
+        telemetries: [
+          {
+            name: "s=6140-CR-2426",
+            value: true,
+          },
+          {
+            name: "s=6140-CR-2426",
+            value: false,
+          },
+        ],
+      },
+    );
+    return res;
+  });
+
   const { data } = useSWR("last-telemetry", async () => {
     const res = await backendApi.findMany("lastTelemetry", {
       where: {
@@ -87,6 +112,16 @@ const PebbleCrusher = () => {
     >
       <main className="mx-auto flex max-w-[1920px] flex-col gap-3">
         <UpBar />
+        {JSON.stringify(countError) && (
+          <div className="text-red-500">
+            Error fetching count data: {JSON.stringify(countError)}
+          </div>
+        )}
+        {JSON.stringify(count) && (
+          <div className="text-green-500">
+            Count data: {JSON.stringify(count)}
+          </div>
+        )}
         <main className="relative flex !h-fit flex-col gap-5 px-6 pb-6">
           <div className="machine-highlight absolute bottom-0 left-1/2 aspect-square w-[500px] -translate-x-1/2">
             <div className="circle circle-3 relative h-full w-full">

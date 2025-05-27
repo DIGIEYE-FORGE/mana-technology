@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FindManyParams, FindByIdParams } from "@/utils";
 import { ManyResponse, User } from "@/utils";
 import { env } from "@/utils/env";
@@ -215,6 +216,26 @@ export default class BackendApi {
 
   async patchAll<T>(route: string, data: T[]) {
     const res = await this.api.patch(route, data);
+    return res.data;
+  }
+
+  async getHistory<T>(
+    route: string,
+    params?: any,
+  ): Promise<ManyResponse<T>> {
+    
+const res = await this.api.get(route, {
+  params: {
+    ...Object.keys(params).reduce<Record<string, string>>((acc, key) => {
+      acc[key] = 
+      /// check if date or boolean or number
+      typeof params[key] === "string" || typeof params[key] === "number"
+        ? params[key].toString()
+        : JSON.stringify(params[key]);
+      return acc;
+    }, {}),
+  },
+});
     return res.data;
   }
 }
