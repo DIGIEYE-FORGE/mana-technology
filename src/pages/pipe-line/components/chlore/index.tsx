@@ -3,12 +3,12 @@ function ChloreSVG({
   topTitle = "SP01-M-03",
   bottomTitle = "SP01-M-02",
   leftTitle = "LSLL-04",
-  width = 139,
-  height = 115,
+  width = 200,
+  height = 140,
 }) {
   return (
     <svg
-      viewBox="0 0 139 115"
+      viewBox="0 0 200 140"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       width={width}
@@ -134,17 +134,42 @@ function ChloreSVG({
               fill="#26E2B3"
             />
           </g>
-          <text
-            fill="white"
-            fontFamily="Be Vietnam Pro"
-            fontSize="20"
-            fontWeight="500"
-            letterSpacing="0.139218px"
-            x="77.4968"
-            y="77.183"
-          >
-            {value}
-          </text>
+          {/* Value to the right of the croix icon in a rounded rectangle */}
+          {(() => {
+            const croixX = 107.633;
+            const croixWidth = 13;
+            const gap = 6;
+            const valueRectWidth = 50;
+            const valueRectHeight = 22;
+            const valueRectX = croixX + croixWidth + gap;
+            const valueRectY = 101.667;
+            return (
+              <g>
+                <rect
+                  x={valueRectX}
+                  y={valueRectY}
+                  rx={10}
+                  width={valueRectWidth}
+                  height={valueRectHeight}
+                  fill="#021E3F"
+                  stroke="white"
+                  strokeWidth={1.5}
+                />
+                <text
+                  fill="white"
+                  fontFamily="Be Vietnam Pro"
+                  fontSize="18"
+                  fontWeight="normal"
+                  x={valueRectX + valueRectWidth / 2}
+                  y={valueRectY + valueRectHeight / 2 + 2}
+                  textAnchor="middle"
+                  alignmentBaseline="middle"
+                >
+                  {value}
+                </text>
+              </g>
+            );
+          })()}
         </g>
       </g>
       <defs>
