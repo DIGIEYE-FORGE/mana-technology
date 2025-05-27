@@ -60,9 +60,9 @@ const res = [
 ];
 function Dashboard2() {
   return (
-    <div className="relative flex">
-      <div className="mt-4 flex flex-1 gap-[2rem]">
-        <div className="flex flex-1 flex-col gap-4 [&>*]:flex-1">
+    <div className="relative mr-4 flex h-1 flex-1 overflow-x-hidden pl-12 pr-4 pt-2">
+      <div className="flex flex-1 gap-[2rem]">
+        <div className="flex flex-1 flex-col gap-4 [&>.card]:flex [&>.card]:h-[13.25rem] [&>.card]:flex-col">
           <div className="grid grid-cols-3 grid-rows-1 gap-2">
             {res.map((item, index) => (
               <div
@@ -87,11 +87,11 @@ function Dashboard2() {
               </div>
             ))}
           </div>
-          <Card className="h-[35%]">
+          <Card className="card">
             <div className="flex px-2">
               <span>Flows</span>
             </div>
-            <div className="min-h-[18vh]">
+            <div className="h-1 flex-1">
               <LineChartWidget
                 attributes={{
                   telemetries: [
@@ -107,11 +107,11 @@ function Dashboard2() {
               />
             </div>
           </Card>
-          <Card className="h-[35%]">
+          <Card className="card">
             <div className="flex px-2">
               <span>Presures</span>
             </div>
-            <div className="min-h-[18vh]">
+            <div className="h-1 flex-1">
               <LineChartWidget
                 attributes={{
                   telemetries: [
@@ -127,11 +127,11 @@ function Dashboard2() {
               />
             </div>
           </Card>
-          <Card className="h-[35%]">
+          <Card className="card">
             <div className="flex px-2">
               <span>Level</span>
             </div>
-            <div className="min-h-[18vh]">
+            <div className="h-1 flex-1">
               <LineChartWidget
                 attributes={{
                   telemetries: [
@@ -149,7 +149,7 @@ function Dashboard2() {
           </Card>
         </div>
         <div className="flex flex-1 flex-col gap-4">
-          <Card className="flex min-h-[50%] items-center justify-evenly gap-4 p-4">
+          <Card className="flex h-[24rem] shrink-0 items-center justify-evenly gap-4 p-4">
             {progressData.map((item) => (
               <div
                 className="flex h-full w-full flex-1 flex-col items-center"
@@ -163,7 +163,7 @@ function Dashboard2() {
               </div>
             ))}
           </Card>
-          <Card className="flex min-h-[45%] items-center gap-4 p-6">
+          <Card className="flex h-[23.25rem] shrink-0 items-center gap-4 p-6">
             <div className="flex h-full w-[6rem] flex-col items-center justify-center gap-[5rem]">
               <span className="text-2xl font-bold">Energy</span>
               <div className="flex flex-col items-center">
