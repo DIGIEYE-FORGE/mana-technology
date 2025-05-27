@@ -197,12 +197,14 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                   percentage={
                     point?.card?.progress && Array.isArray(point.card.progress)
                       ? point.card.progress.map((p) => ({
-                          value: p,
+                          value: Number(p)?.toFixed(2) as unknown as number,
                           title: "",
                         }))
                       : [
                           {
-                            value: point.card.progress as number,
+                            value: Number(point.card.progress)?.toFixed(
+                              2,
+                            ) as unknown as number,
                             title: "",
                           },
                         ]
