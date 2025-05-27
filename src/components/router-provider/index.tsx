@@ -36,6 +36,8 @@ import TizertVideo from "@/pages/tizert-video";
 import CrushingPage from "@/pages/omniverse";
 import PipeLine from "@/pages/pipe-line";
 import PebbleCrusher from "@/pages/pebble-crusher";
+import JawCrusher from "@/pages/jaw-crusher";
+// import GoliaPage from "@/pages/golia";
 import CrushingLayout from "@/pages/omniverse-layout";
 
 const routes: RouteObject[] = [
@@ -90,6 +92,10 @@ const routes: RouteObject[] = [
       {
         path: "pebble-crusher",
         element: <PebbleCrusher />,
+      },
+      {
+        path: "jaw-crusher",
+        element: <JawCrusher />,
       },
       {
         path: "future",
