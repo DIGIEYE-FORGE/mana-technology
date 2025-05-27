@@ -113,9 +113,9 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
       {showCard && (
         <div
           className={cn(
-            "absolute z-10 min-h-[10rem] min-w-[21rem] scale-[0.8] p-4 pr-6",
+            "absolute z-10 min-h-[10rem] min-w-[21rem] max-w-fit scale-[0.8] p-4 pr-6",
             getCardPositionClass(point.card.position),
-            point.id === "SP6" ? "scale-[0.60] bg-red-500" : "scale[0.8]",
+            point.id === "SP6" ? "scale-[0.70] bg-red-500" : "scale[0.8]",
           )}
           style={{
             ...(point.card.optionsPosition || {}),
@@ -172,38 +172,41 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
             <div className="flex h-full w-full gap-2">
               <div className="w-[7rem]">
                 <LiquidProgress
-                  className="h-[9rem] w-[7rem]"
+                  className={cn("h-[9rem] w-[7rem]", {
+                    "w-[3rem]": point.id === "SP6",
+                  })}
                   style={{}}
                   stops={[
                     {
                       color: "red",
-                      value: 20,
+                      value: 5,
                     },
                     {
                       color: "blue",
-                      value: 40,
+                      value: 18,
                     },
                     {
                       color: "yellow",
-                      value: 60,
+                      value: 89,
                     },
                     {
                       color: "green",
-                      value: 80,
-                    },
-                    {
-                      color: "red",
-                      value: 90,
+                      value: 94,
                     },
                   ]}
-                  percentage={[
-                    // {
-                    //   value: +Number(point.card.progress || 0).toFixed(2),
-                    // },
-                    {
-                      value: 50,
-                    },
-                  ]}
+                  percentage={
+                    point?.card?.progress && Array.isArray(point.card.progress)
+                      ? point.card.progress.map((p) => ({
+                          value: p,
+                          title: "",
+                        }))
+                      : [
+                          {
+                            value: point.card.progress as number,
+                            title: "",
+                          },
+                        ]
+                  }
                 />
               </div>
 
@@ -351,7 +354,7 @@ const PipeLine: React.FC = () => {
         card: {
           position: "right",
           optionsPosition: { top: "54%", left: "50%" },
-          progress: filteredResults?.["s=SP1_LIT_01_MAE_TM"],
+          progress: [filteredResults?.["s=SP1_LIT_01_MAE_TM"] || 0],
           attributes: {
             "Chlore input": filteredResults?.["s=SP01CHL_CHL_01_MAE_TM"],
             "Chlore output": filteredResults?.["s=SP1_CHL_02_MAE_TM"],
@@ -392,7 +395,7 @@ const PipeLine: React.FC = () => {
         card: {
           position: "center",
           optionsPosition: { top: "-100%", left: "-135%" },
-          progress: filteredResults?.["s=SP2_LIT_01_MAE_TM"],
+          progress: [filteredResults?.["s=SP2_LIT_01_MAE_TM"]],
           attributes: {
             "Flow input": filteredResults?.["s=SP2_FIT_01_MAE_TM"],
             "Flow output": filteredResults?.["s=SP2_FIT_02_MAE_TM"],
@@ -431,7 +434,7 @@ const PipeLine: React.FC = () => {
         card: {
           position: "left",
           optionsPosition: { top: "-30%", right: "52%" },
-          progress: filteredResults?.["s=SP3_LIT_01_MAE_TM"],
+          progress: [filteredResults?.["s=SP3_LIT_01_MAE_TM"]],
           attributes: {
             "Flow input": filteredResults?.["s=SP3_FIT_01_MAE_TM"],
             "Flow output": filteredResults?.["s=SP3_FIT_02_MAE_TM"],
@@ -470,7 +473,7 @@ const PipeLine: React.FC = () => {
         card: {
           position: "top",
           optionsPosition: { bottom: "170%" },
-          progress: filteredResults?.["s=SP4_LIT_01_MAE_TM"],
+          progress: [filteredResults?.["s=SP4_LIT_01_MAE_TM"]],
           attributes: {
             "Flow input": filteredResults?.["s=SP4_FIT_01_MAE_TM"],
             "Flow output": filteredResults?.["s=SP4_FIT_02_MAE_TM"],
@@ -509,7 +512,7 @@ const PipeLine: React.FC = () => {
         card: {
           position: "left",
           optionsPosition: { top: "8%", right: "50%" },
-          progress: filteredResults?.["s=SP5_LIT_01_MAE_TM"],
+          progress: [filteredResults?.["s=SP5_LIT_01_MAE_TM"]],
           attributes: {
             "Flow input": filteredResults?.["s=SP5_FIT_01_MAE_TM"],
             "Flow output": filteredResults?.["s=SP5_FIT_02_MAE_TM"],
@@ -548,7 +551,7 @@ const PipeLine: React.FC = () => {
         card: {
           position: "left",
           optionsPosition: { top: "-3%" },
-          progress: filteredResults?.["s=SP7_LIT_01_MAE_TM"],
+          progress: [filteredResults?.["s=SP7_LIT_01_MAE_TM"]],
           attributes: {
             "Flow input": filteredResults?.["s=SP7_FIT_01_MAE_TM"],
             "Flow output": filteredResults?.["s=SP7_FIT_02_MAE_TM"],
@@ -587,7 +590,7 @@ const PipeLine: React.FC = () => {
         card: {
           position: "left",
           optionsPosition: { top: "10%" },
-          progress: filteredResults?.["s=SP8_LIT_01_MAE_TM"],
+          progress: [filteredResults?.["s=SP8_LIT_01_MAE_TM"]],
           attributes: {
             "Flow input": filteredResults?.["s=SP8_FIT_01_MAE_TM"],
             "Flow output": filteredResults?.["s=SP8_FIT_02_MAE_TM"],
@@ -626,7 +629,7 @@ const PipeLine: React.FC = () => {
         card: {
           position: "left",
           optionsPosition: { top: "-180%", left: "-8%" },
-          progress: filteredResults?.["s=SP6_LIT_01_MAE_TM"],
+          progress: [filteredResults?.["s=SP6_LIT_01_MAE_TM"]],
           attributes: {
             "Flow input": filteredResults?.["s=SP6_FIT_01_MAE_TM"],
             "Flow output": filteredResults?.["s=SP6_FIT_02_MAE_TM"],
@@ -665,7 +668,10 @@ const PipeLine: React.FC = () => {
         card: {
           position: "left",
           optionsPosition: { top: "-210%", left: "-90%" },
-          progress: filteredResults?.["s=SP8_LIT_01_MAE_TM"],
+          progress: [
+            filteredResults?.["s=SP8_LIT_01_MAE_TM"] || 20,
+            filteredResults?.["s=SP8_LIT_02_MAE_TM"] || 10,
+          ],
           attributes: {
             "Flow input": filteredResults?.["s=SP8_FIT_01_MAE_TM"],
             "Flow output": filteredResults?.["s=SP8_FIT_02_MAE_TM"],
