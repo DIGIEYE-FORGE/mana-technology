@@ -60,33 +60,29 @@ const res = [
 ];
 export function DashboardSPU() {
   return (
-    <div className="relative mr-4 flex h-1 flex-1 overflow-x-hidden pl-12 pr-4 pt-2">
+    <div className="relative mr-4 flex h-1 flex-1 flex-col gap-4 overflow-x-hidden pl-12 pr-4">
+      <div className="ml-auto grid w-[60rem] grid-cols-3 grid-rows-1 gap-2">
+        {res.map((item, index) => (
+          <div
+            key={index}
+            className="flex flex-col items-center justify-center"
+          >
+            <span className="text-lg font-bold">{item.name}</span>
+            <div className="flex w-full gap-2">
+              {item.data.map((dataItem, dataIndex) => (
+                <div key={dataIndex} className="flex w-full flex-col">
+                  <span className="text-center text-sm">{dataItem.name}</span>
+                  <div className="flex items-center justify-center gap-2 rounded-2xl border border-white bg-[#021E3F]/80 p-1 px-6 text-white backdrop-blur-md">
+                    <span className="text-lg font-bold">{dataItem.value}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
       <div className="flex flex-1 gap-[2rem]">
         <div className="flex flex-1 flex-col gap-4 [&>.card]:flex [&>.card]:h-[13.25rem] [&>.card]:flex-col">
-          <div className="grid grid-cols-3 grid-rows-1 gap-2">
-            {res.map((item, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center justify-center"
-              >
-                <span className="text-lg font-bold">{item.name}</span>
-                <div className="flex w-full gap-2">
-                  {item.data.map((dataItem, dataIndex) => (
-                    <div key={dataIndex} className="flex w-full flex-col">
-                      <span className="text-center text-sm">
-                        {dataItem.name}
-                      </span>
-                      <div className="flex gap-2 rounded-md border-2 border-white bg-[#021E3F]/20 p-1 px-6 text-white backdrop-blur-md">
-                        <span className="text-lg font-bold">
-                          {dataItem.value}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
           <Card className="card">
             <div className="flex px-2">
               <span>Flows</span>
@@ -149,21 +145,17 @@ export function DashboardSPU() {
           </Card>
         </div>
         <div className="flex flex-1 flex-col gap-4">
-          <Card className="flex h-[24rem] shrink-0 items-center justify-evenly gap-4 p-4">
-            {progressData.map((item) => (
-              <div
-                className="flex h-full w-full flex-1 flex-col items-center"
-                key={item.id}
-              >
-                <span className="text-xl font-bold">{item.name}</span>
-                <LiquidProgress
-                  percentage={item.percentage}
-                  className="w-[70%]"
-                />
-              </div>
-            ))}
+          <Card className="flex h-[20rem] shrink-0 items-center justify-evenly gap-4 p-4">
+            <LiquidProgress
+              textStyle="text-white font-bold"
+              percentage={progressData.map((item) => ({
+                value: item.percentage,
+                title: item.name,
+              }))}
+              className="h-[12rem] !w-[7rem]"
+            />
           </Card>
-          <Card className="flex h-[23.25rem] shrink-0 items-center gap-4 p-6">
+          <Card className="flex h-[18.75rem] shrink-0 items-center gap-4 p-6">
             <div className="flex h-full w-[6rem] flex-col items-center justify-center gap-[5rem]">
               <span className="text-2xl font-bold">Energy</span>
               <div className="flex flex-col items-center">
@@ -198,5 +190,3 @@ export function DashboardSPU() {
     </div>
   );
 }
-
-

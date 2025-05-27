@@ -173,11 +173,12 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
             <div className="flex h-full w-full gap-2">
               <div className="w-[7rem]">
                 <LiquidProgress
-                  percentage={
-                    +point.card.progress < 100
-                      ? +Number(point.card.progress || 0).toFixed(2)
-                      : 100
-                  }
+                  className="h-[9rem] w-[7rem]"
+                  percentage={[
+                    {
+                      value: +Number(point.card.progress || 0).toFixed(2),
+                    },
+                  ]}
                 />
               </div>
 
@@ -540,7 +541,7 @@ const PipeLine: React.FC = () => {
           sideOffset: 0,
           dashboard: {
             title: "SP06 Dashboard",
-              component: <DashboardSP02 />,
+            component: <DashboardSP02 />,
           },
         },
       },
@@ -579,7 +580,7 @@ const PipeLine: React.FC = () => {
           sideOffset: 0,
           dashboard: {
             title: "SP07 Dashboard",
-                  component: <DashboardSP02 />, 
+            component: <DashboardSP02 />,
           },
         },
       },
