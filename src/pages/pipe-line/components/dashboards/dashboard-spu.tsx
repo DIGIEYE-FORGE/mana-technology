@@ -1,20 +1,81 @@
 import LineChartWidget from "@/components/line-chart-widget";
 import { Card } from "@/components/card";
 import LiquidProgress from "../progress";
-import CircularGauge from "../progres-circle";
+// import CircularGauge from "../progres-circle";
+import ChloreSVG from "../chlore";
 // import ProgressBar from "../progres-bar";
 
 const progressData = [
-  { id: 1, name: "Suction tank", percentage: 40 },
-  { id: 2, name: "Discharge tank", percentage: 40 },
+  { id: 1, name: "", percentage: 40 },
+  { id: 2, name: "", percentage: 40 },
 ];
-const valuesData = [
-  { id: 1, name: "v1", value: "XX" },
-  { id: 2, name: "v2", value: "XX" },
-  { id: 3, name: "v3", value: "XX" },
-  { id: 4, name: "l1", value: "XX" },
-  { id: 5, name: "l2", value: "XX" },
-  { id: 6, name: "l3", value: "XX" },
+const flowsInputData = [
+  { x: 1, y: 55 },
+  { x: 3, y: 60 },
+  { x: 5, y: 70 },
+  { x: 7, y: 65 },
+  { x: 9, y: 100 },
+  { x: 11, y: 80 },
+  { x: 13, y: 75 },
+  { x: 15, y: 95 },
+  { x: 17, y: 100 },
+  { x: 19, y: 90 },
+  { x: 21, y: 95 },
+];
+const flowsOutputData = [
+  { x: 1, y: 70 },
+  { x: 3, y: 50 },
+  { x: 5, y: 60 },
+  { x: 7, y: 80 },
+  { x: 9, y: 90 },
+  { x: 11, y: 100 },
+  { x: 13, y: 60 },
+  { x: 15, y: 70 },
+  { x: 17, y: 95 },
+  { x: 19, y: 60 },
+  { x: 21, y: 90 },
+];
+
+const levelData = [
+  { x: 1, y: 10 },
+  { x: 3, y: 40 },
+  { x: 5, y: 35 },
+  { x: 7, y: 50 },
+  { x: 9, y: 30 },
+  { x: 11, y: 55 },
+  { x: 13, y: 40 },
+  { x: 15, y: 60 },
+  { x: 17, y: 90 },
+  { x: 19, y: 25 },
+  { x: 21, y: 50 },
+];
+
+const chloreInputData = [
+  { x: 1, y: 20 },
+  { x: 3, y: 30 },
+  { x: 5, y: 40 },
+  { x: 7, y: 35 },
+  { x: 9, y: 50 },
+  { x: 11, y: 70 },
+  { x: 13, y: 45 },
+  { x: 15, y: 60 },
+  { x: 17, y: 80 },
+  { x: 19, y: 40 },
+  { x: 21, y: 65 },
+];
+
+const chloreOutputData = [
+  { x: 1, y: 30 },
+  { x: 3, y: 40 },
+  { x: 5, y: 50 },
+  { x: 7, y: 60 },
+  { x: 9, y: 70 },
+  { x: 11, y: 80 },
+  { x: 13, y: 90 },
+  { x: 15, y: 100 },
+  { x: 17, y: 95 },
+  { x: 19, y: 60 },
+  { x: 21, y: 90 },
 ];
 
 const res = [
@@ -60,8 +121,9 @@ const res = [
 ];
 export function DashboardSPU() {
   return (
-    <div className="relative mr-4 flex h-1 flex-1 flex-col gap-4 overflow-x-hidden pl-12 pr-4">
-      <div className="ml-auto grid w-[60rem] grid-cols-3 grid-rows-1 gap-2">
+    <div className="relative mb-8 flex h-full min-h-0 flex-1 flex-col overflow-hidden pl-12 pr-6">
+      {/* Summary bar */}
+      <div className="mb-6 ml-auto grid w-full max-w-[60rem] grid-cols-3 grid-rows-1 gap-2">
         {res.map((item, index) => (
           <div
             key={index}
@@ -81,62 +143,84 @@ export function DashboardSPU() {
           </div>
         ))}
       </div>
-      <div className="flex flex-1 gap-[2rem]">
-        <div className="flex flex-1 flex-col gap-4 [&>.card]:flex [&>.card]:h-[13.25rem] [&>.card]:flex-col">
-          <Card className="card">
-            <div className="flex px-2">
-              <span>Flows</span>
+      {/* Main dashboard grid */}
+      <div className="flex h-full min-h-0 flex-1 flex-row gap-6 overflow-hidden">
+        {/* Left column: 3 rows */}
+        <div className="flex h-full min-h-0 flex-1 flex-col gap-3">
+          <Card className="flex h-[28%] min-h-0 flex-1 flex-col">
+            <div className="flex p-0 px-4 pt-2">
+              <span className="font-medium text-white">Flows</span>
             </div>
-            <div className="h-1 flex-1">
+            <div className="flex-1 pl-2 pr-2">
               <LineChartWidget
                 attributes={{
                   telemetries: [
                     {
-                      area: true,
-                      name: "EST_PLANIFIE_ROCHE_CUMUL",
-                      color: "#E800534D",
-                      label: "Planifié (Cumulé)",
+                      area: false,
+                      label: "Input",
+                      color: "#26E2B3",
                       serial: "JZVATMKQ1A8DA2P1",
+                      data: flowsInputData,
+                    },
+                    {
+                      area: false,
+                      label: "Output",
+                      color: "#FFD2A6",
+                      serial: "JZVATMKQ1A8DA2P1",
+                      data: flowsOutputData,
                     },
                   ],
                 }}
               />
             </div>
           </Card>
-          <Card className="card">
-            <div className="flex px-2">
-              <span>Presures</span>
+          <Card className="flex h-[22%] min-h-0 flex-1 flex-col">
+            <div className="flex p-0 px-4 pt-2">
+              <span className="font-medium text-white">Level</span>
             </div>
-            <div className="h-1 flex-1">
+            <div className="flex-1 pl-2 pr-2">
               <LineChartWidget
+                max={140}
                 attributes={{
                   telemetries: [
                     {
-                      area: true,
-                      name: "EST_PLANIFIE_ROCHE_CUMUL",
-                      color: "#E800534D",
-                      label: "Planifié (Cumulé)",
-                      serial: "JZVATMKQ1A8DA2P1",
+                      area: false,
+                      label: "Level",
+                      color: "#26E2B3",
+                      data: levelData,
                     },
                   ],
                 }}
               />
             </div>
           </Card>
-          <Card className="card">
-            <div className="flex px-2">
-              <span>Level</span>
+          <Card className="flex h-[28%] min-h-0 flex-1 flex-col">
+            <div className="relative flex items-center justify-between p-0 px-4 pt-2">
+              <span className="font-medium text-white">Chlore</span>
+              <div className="absolute right-4 flex gap-2 text-xs">
+                <span className="rounded-full border border-white bg-[#021E3F] px-3 py-1 text-white">
+                  Input XX
+                </span>
+                <span className="rounded-full border border-white bg-[#021E3F] px-3 py-1 text-white">
+                  Output XX
+                </span>
+              </div>
             </div>
-            <div className="h-1 flex-1">
+            <div className="flex-1 pl-2 pr-2">
               <LineChartWidget
                 attributes={{
                   telemetries: [
                     {
-                      area: true,
-                      name: "EST_PLANIFIE_ROCHE_CUMUL",
-                      color: "#E800534D",
-                      label: "Planifié (Cumulé)",
-                      serial: "JZVATMKQ1A8DA2P1",
+                      area: false,
+                      label: "Input",
+                      color: "#26E2B3",
+                      data: chloreInputData,
+                    },
+                    {
+                      area: false,
+                      label: "Output",
+                      color: "#FFD2A6",
+                      data: chloreOutputData,
                     },
                   ],
                 }}
@@ -144,48 +228,40 @@ export function DashboardSPU() {
             </div>
           </Card>
         </div>
-        <div className="flex flex-1 flex-col gap-4">
-          <Card className="flex h-[20rem] shrink-0 items-center justify-evenly gap-4 p-4">
+        {/* Right column: 2 rows */}
+        <div className="flex h-full min-h-0 flex-1 flex-col gap-3">
+          <Card className="flex h-[32%] min-h-0 flex-1 items-center justify-center">
             <LiquidProgress
               textStyle="text-white font-bold"
               percentage={progressData.map((item) => ({
                 value: item.percentage,
                 title: item.name,
               }))}
-              style={{
-                background: "#87EFD5",
-              }}
-              className="h-[12rem] !w-[7rem]"
+              style={{ background: "#87EFD5" }}
+              className="h-[10rem] !w-[7rem]"
             />
           </Card>
-          <Card className="flex h-[18.75rem] shrink-0 items-center gap-4 p-6">
-            <div className="flex h-full w-[6rem] flex-col items-center justify-center gap-[5rem]">
-              <span className="text-2xl font-bold">Energy</span>
-              <div className="flex flex-col items-center">
-                <span className="text-bold text-2xl">XX</span>
-                <span className="text-xs"> kWh</span>
-              </div>
-            </div>
-            <div className="flex min-h-[10rem] w-full flex-1 flex-col items-center justify-center gap-4">
-              <span className="text-2xl font-bold">Power</span>
-              <CircularGauge
-                value={50}
-                maxValue={100}
-                size={300}
-                width={250}
-                color="#ef8f08"
+          <Card className="flex min-h-0 flex-1 flex-col">
+            <span className="mb-2 p-2 text-lg font-bold text-white">
+              Chlore Station
+            </span>
+            <div className="flex min-h-0 flex-1 items-center justify-center gap-0">
+              <ChloreSVG
+                topTitle="SP01-M-03"
+                leftTitle="LSLL-03"
+                bottomTitle="SP01-M-01"
+                value="XX"
+                width={240}
+                height={170}
               />
-            </div>
-            <div className="grid flex-1 grid-cols-3 grid-rows-2 gap-4">
-              {valuesData.map((item) => (
-                <div
-                  key={item.id}
-                  className="border-1 flex flex-col items-center justify-center gap-2 rounded-xl border-white bg-[#021E3F]/60 p-1 px-2 text-white backdrop-blur-md"
-                >
-                  <span className="text-xs">{item.name}</span>
-                  <span className="text-xl font-bold">{item.value}</span>
-                </div>
-              ))}
+              <ChloreSVG
+                topTitle="SP01-M-03"
+                leftTitle="LSLL-04"
+                bottomTitle="SP01-M-02"
+                value="XX"
+                width={240}
+                height={170}
+              />
             </div>
           </Card>
         </div>
