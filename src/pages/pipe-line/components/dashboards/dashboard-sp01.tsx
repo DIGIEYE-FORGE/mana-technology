@@ -290,11 +290,11 @@ export function DashboardSP01() {
                 color="#B29100"
               />
             </div>
-            <div className="grid flex-1 grid-cols-3 grid-rows-2 gap-4">
+            <div className="grid flex-1 grid-cols-3 grid-rows-2 gap-2 m-0">
               {valuesData.map((item) => (
                 <div
                   key={item.id}
-                  className="flex flex-col items-center justify-center gap-2 rounded-md border-2 border-gray-500 bg-[#021E3F]/60 p-1 px-2 text-white backdrop-blur-md"
+                  className="flex flex-col items-center justify-center gap-2 rounded-md border-2 border-gray-500 bg-[#021E3F]/60 p-1 text-white backdrop-blur-md w-[60px] h-[70px]"
                 >
                   <span className="text-xs">{item.name}</span>
                   <span className="text-xl font-bold">{item.value}</span>
