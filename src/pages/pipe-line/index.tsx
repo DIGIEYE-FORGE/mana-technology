@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { PipeLineUpBar } from "./components/up-bar";
 import PipeLineSvg from "@/assets/pipeline.svg?react";
 import CustomCardComponent from "./components/card";
@@ -23,6 +23,8 @@ import { DashboardSPU } from "./components/dashboards/dashboard-spu";
 import { DashboardSP02 } from "./components/dashboards/dashboard-sp02";
 import { useAppContext } from "@/Context";
 import useSWR from "swr";
+import { env } from "@/utils/env";
+import { io } from "socket.io-client";
 
 // Type Definitions
 interface Position {
@@ -173,22 +175,24 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
             <div className="flex h-full w-full gap-2">
               <div className="w-[7rem]">
                 <LiquidProgress
-                  percentage={
-                    +point.card.progress < 100
-                      ? +Number(point.card.progress || 0).toFixed(2)
-                      : 100
-                  }
+                  className="h-[9rem] w-[7rem]"
+                  style={{}}
+                  percentage={[
+                    {
+                      value: +Number(point.card.progress || 0).toFixed(2),
+                    },
+                  ]}
                 />
               </div>
 
               <div className="flex flex-1 flex-col gap-1">
-                {Object.entries(point.card.attributes).map(([key, value]) => (
+                {Object.entries(point.card.attributes)?.map(([key, value]) => (
                   <div key={key} className="flex justify-between">
                     <span className="text-xs text-gray-400">{key}</span>
                     <span className="text-xs text-white">
                       {key == "Running state" ? (
                         <div className="flex flex-wrap gap-1">
-                          {value.map((state: string) => (
+                          {value?.map((state: string) => (
                             <div
                               key={state}
                               className="aspect-video h-5 w-6 rounded-sm border-0 border-white"
@@ -201,7 +205,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                         </div>
                       ) : value instanceof Array ? (
                         <div className="flex flex-wrap gap-1">
-                          {value.map((v, idx) => (
+                          {value?.map((v, idx) => (
                             <span key={idx} className="text-xs text-white">
                               {v}
                             </span>
@@ -540,7 +544,7 @@ const PipeLine: React.FC = () => {
           sideOffset: 0,
           dashboard: {
             title: "SP06 Dashboard",
-              component: <DashboardSP02 />,
+            component: <DashboardSP02 />,
           },
         },
       },
@@ -579,7 +583,7 @@ const PipeLine: React.FC = () => {
           sideOffset: 0,
           dashboard: {
             title: "SP07 Dashboard",
-                  component: <DashboardSP02 />, 
+            component: <DashboardSP02 />,
           },
         },
       },
@@ -660,6 +664,25 @@ const PipeLine: React.FC = () => {
       },
     ];
   });
+
+  useEffect(() => {
+    const socket = io(env.VITE_URL_SOCKET);
+    socket.on("connect", () => {
+      console.log("Connected to WebSocket server Pipeline");
+    });
+    socket.on("disconnect", () => {
+      console.log("Disconnected from WebSocket server");
+    });
+    socket.on("error", (error) => {
+      console.error("WebSocket error:", error);
+    });
+    socket.on("serial-JHF455XKPCH6DBLH", (data) => {
+      console.log("Received message:", data);
+    });
+    return () => {
+      socket.close();
+    };
+  }, [data]);
 
   return (
     <main
