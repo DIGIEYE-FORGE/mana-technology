@@ -207,6 +207,8 @@ interface DashboardSP01Props {
 }
 
 export function DashboardSP01({ data }: DashboardSP01Props) {
+  console.log({ data });
+
   return (
     <>
       {/* Top metrics bar */}

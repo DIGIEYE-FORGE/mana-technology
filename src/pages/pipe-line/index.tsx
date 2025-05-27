@@ -9,7 +9,7 @@ import Circle2 from "@/assets/circle-2.svg?react";
 import Circle3 from "@/assets/circle-3.svg?react";
 import Light from "@/assets/light.svg?react";
 import LiquidProgress from "./components/progress";
-import { ArrowRight, XIcon } from "lucide-react";
+import { ArrowRight, Loader, XIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -82,195 +82,6 @@ interface PipelinePointProps {
 const createPositionStyle = (position: Position): React.CSSProperties => {
   return { ...position };
 };
-
-const PipeLineAttributes = [
-  {
-    id: "SP01",
-    title: "SP01",
-    position: { top: "60%", left: "0%" },
-    card: {
-      position: "right",
-      optionsPosition: { top: "54%", left: "50%" },
-      progress: 0,
-      attributes: {},
-    },
-    image: "/lines-images/sp01.png",
-    model: {
-      side: "right",
-      align: "start",
-      sideOffset: -250,
-      dashboard: {
-        title: "SP01 Dashboard",
-        component: <DashboardSP01 data={dataHistory?.SP01} />,
-      },
-    },
-  },
-  {
-    id: "SP02",
-    title: "SP02",
-    position: { top: "41%", left: "30%" },
-    card: {
-      position: "center",
-      optionsPosition: { top: "-100%", left: "-135%" },
-      progress: 0,
-      attributes: {},
-    },
-    image: "/lines-images/sp02.png",
-    model: {
-      side: "left",
-      align: "start",
-      sideOffset: -400,
-      dashboard: {
-        title: "SP02 Dashboard",
-        component: <DashboardSP01 />,
-      },
-    },
-  },
-  {
-    id: "SP03",
-    title: "SP03",
-    position: { top: "25%", right: "33%" },
-    card: {
-      position: "left",
-      optionsPosition: { top: "-30%", right: "52%" },
-      progress: 0,
-      attributes: {},
-    },
-    image: "/lines-images/sp03.png",
-    model: {
-      side: "right",
-      align: "start",
-      sideOffset: -320,
-      dashboard: {
-        title: "SPU",
-        component: <DashboardSP01 />,
-      },
-    },
-  },
-  {
-    id: "SP1",
-    title: "SP1",
-    position: { top: "25%", right: "13%" },
-    card: {
-      position: "top",
-      optionsPosition: { bottom: "170%" },
-      progress: 0,
-      attributes: {},
-    },
-    image: "/lines-images/sp1.png",
-    model: {
-      side: "right",
-      align: "start",
-      sideOffset: 0,
-      dashboard: {
-        title: "SP1 Dashboard",
-        component: <DashboardSP02 />,
-      },
-    },
-  },
-  {
-    id: "SP2",
-    title: "SP2",
-    position: { top: "48%", right: "21%" },
-    card: {
-      position: "left",
-      optionsPosition: { top: "8%", right: "50%" },
-      progress: 0,
-      attributes: {},
-    },
-    image: "/lines-images/sp03.png",
-    model: {
-      side: "left",
-      align: "center",
-      sideOffset: -300,
-      dashboard: {
-        title: "SP05 Dashboard",
-        component: <DashboardSP02 />,
-      },
-    },
-  },
-  {
-    id: "SP3",
-    title: "SP3",
-    position: { top: "45%", right: "4%" },
-    card: {
-      position: "left",
-      optionsPosition: { top: "-180%", left: "-8%" },
-      progress: 0,
-      attributes: {},
-    },
-    image: "/lines-images/sp3.png",
-    model: {
-      side: "right",
-      align: "start",
-      sideOffset: 0,
-      dashboard: {
-        title: "SP08 Dashboard",
-        component: <DashboardSP02 />,
-      },
-    },
-  },
-  {
-    id: "SP4",
-    title: "SP4",
-    position: { top: "70%", right: "16%" },
-    card: {
-      position: "left",
-      optionsPosition: { top: "-3%" },
-      progress: 0,
-      attributes: {},
-    },
-    image: "/lines-images/sp4.png",
-    model: {
-      side: "right",
-      align: "center",
-      sideOffset: 0,
-      dashboard: {
-        title: "SP06 Dashboard",
-        component: <DashboardSP02 />,
-      },
-    },
-  },
-  {
-    id: "SP5",
-    title: "SP5",
-    position: { bottom: "0%", right: "9%" },
-    card: {
-      position: "left",
-      optionsPosition: { top: "10%" },
-      progress: 0,
-      attributes: {},
-    },
-    image: "/lines-images/sp5.png",
-    model: {
-      side: "left",
-      align: "center",
-      sideOffset: 0,
-      dashboard: {
-        title: "SP07 Dashboard",
-        component: <DashboardSP02 />,
-      },
-    },
-  },
-  {
-    id: "SP6",
-    title: "SPU",
-    position: { top: "86%", right: "-3%" },
-    card: {
-      position: "left",
-      optionsPosition: { top: "-210%", left: "-90%" },
-      progress: 0,
-      attributes: {},
-    },
-    image: "/lines-images/sp5.png",
-    model: {
-      dashboard: {
-        title: "SPU",
-        component: <DashboardSPU />,
-      },
-    },
-  },
-];
 
 const getCardPositionClass = (position: CardConfig["position"]): string => {
   const map = {
@@ -488,7 +299,196 @@ const PipeLine: React.FC = () => {
     SP6: {},
   });
 
-  const { data: history } = useSWR(
+  const PipeLineAttributes = [
+    {
+      id: "SP01",
+      title: "SP01",
+      position: { top: "60%", left: "0%" },
+      card: {
+        position: "right",
+        optionsPosition: { top: "54%", left: "50%" },
+        progress: 0,
+        attributes: {},
+      },
+      image: "/lines-images/sp01.png",
+      model: {
+        side: "right",
+        align: "start",
+        sideOffset: -250,
+        dashboard: {
+          title: "SP01 Dashboard",
+          component: <DashboardSP01 data={dataHistory?.SP01} />,
+        },
+      },
+    },
+    {
+      id: "SP02",
+      title: "SP02",
+      position: { top: "41%", left: "30%" },
+      card: {
+        position: "center",
+        optionsPosition: { top: "-100%", left: "-135%" },
+        progress: 0,
+        attributes: {},
+      },
+      image: "/lines-images/sp02.png",
+      model: {
+        side: "left",
+        align: "start",
+        sideOffset: -400,
+        dashboard: {
+          title: "SP02 Dashboard",
+          component: <DashboardSP01 data={dataHistory?.SP02} />,
+        },
+      },
+    },
+    {
+      id: "SP03",
+      title: "SP03",
+      position: { top: "25%", right: "33%" },
+      card: {
+        position: "left",
+        optionsPosition: { top: "-30%", right: "52%" },
+        progress: 0,
+        attributes: {},
+      },
+      image: "/lines-images/sp03.png",
+      model: {
+        side: "right",
+        align: "start",
+        sideOffset: -320,
+        dashboard: {
+          title: "SPU",
+          component: <DashboardSP01 data={dataHistory?.SP03} />,
+        },
+      },
+    },
+    {
+      id: "SP1",
+      title: "SP1",
+      position: { top: "25%", right: "13%" },
+      card: {
+        position: "top",
+        optionsPosition: { bottom: "170%" },
+        progress: 0,
+        attributes: {},
+      },
+      image: "/lines-images/sp1.png",
+      model: {
+        side: "right",
+        align: "start",
+        sideOffset: 0,
+        dashboard: {
+          title: "SP1 Dashboard",
+          component: <DashboardSP02 data={dataHistory?.SP1} />,
+        },
+      },
+    },
+    {
+      id: "SP2",
+      title: "SP2",
+      position: { top: "48%", right: "21%" },
+      card: {
+        position: "left",
+        optionsPosition: { top: "8%", right: "50%" },
+        progress: 0,
+        attributes: {},
+      },
+      image: "/lines-images/sp03.png",
+      model: {
+        side: "left",
+        align: "center",
+        sideOffset: -300,
+        dashboard: {
+          title: "SP05 Dashboard",
+          component: <DashboardSP02 data={dataHistory?.SP2} />,
+        },
+      },
+    },
+    {
+      id: "SP3",
+      title: "SP3",
+      position: { top: "45%", right: "4%" },
+      card: {
+        position: "left",
+        optionsPosition: { top: "-180%", left: "-8%" },
+        progress: 0,
+        attributes: {},
+      },
+      image: "/lines-images/sp3.png",
+      model: {
+        side: "right",
+        align: "start",
+        sideOffset: 0,
+        dashboard: {
+          title: "SP08 Dashboard",
+          component: <DashboardSP02 data={dataHistory?.SP3} />,
+        },
+      },
+    },
+    {
+      id: "SP4",
+      title: "SP4",
+      position: { top: "70%", right: "16%" },
+      card: {
+        position: "left",
+        optionsPosition: { top: "-3%" },
+        progress: 0,
+        attributes: {},
+      },
+      image: "/lines-images/sp4.png",
+      model: {
+        side: "right",
+        align: "center",
+        sideOffset: 0,
+        dashboard: {
+          title: "SP06 Dashboard",
+          component: <DashboardSP02 data={dataHistory?.SP4} />,
+        },
+      },
+    },
+    {
+      id: "SP5",
+      title: "SP5",
+      position: { bottom: "0%", right: "9%" },
+      card: {
+        position: "left",
+        optionsPosition: { top: "10%" },
+        progress: 0,
+        attributes: {},
+      },
+      image: "/lines-images/sp5.png",
+      model: {
+        side: "left",
+        align: "center",
+        sideOffset: 0,
+        dashboard: {
+          title: "SP07 Dashboard",
+          component: <DashboardSP02 data={dataHistory?.SP5} />,
+        },
+      },
+    },
+    {
+      id: "SP6",
+      title: "SPU",
+      position: { top: "86%", right: "-3%" },
+      card: {
+        position: "left",
+        optionsPosition: { top: "-210%", left: "-90%" },
+        progress: 0,
+        attributes: {},
+      },
+      image: "/lines-images/sp5.png",
+      model: {
+        dashboard: {
+          title: "SPU",
+          component: <DashboardSPU data={dataHistory?.SP6} />,
+        },
+      },
+    },
+  ];
+
+  const { isLoading } = useSWR(
     `dpc-history/api/history`,
     async () => {
       const res = await backendApi.findMany("dpc-history/api/history", {
@@ -1145,20 +1145,24 @@ const PipeLine: React.FC = () => {
           <div className="relative h-1 flex-1 pr-[6rem]">
             <div className="relative h-full px-8 pb-6 pt-[3rem]">
               <PipeLineSvg className="h-full w-full" />
-              {PipeLineAttributes?.map((item) => ({
-                ...item,
-                card: {
-                  ...item.card,
-                  ...attributes[item.id],
-                },
-              }))?.map((point) => (
-                <PipelinePoint
-                  key={point.id}
-                  point={point as any}
-                  onPointClick={handlePointClick}
-                  showCard={visibleCardIds.includes(point.id)}
-                />
-              ))}
+              {isLoading ? (
+                <Loader />
+              ) : (
+                PipeLineAttributes?.map((item) => ({
+                  ...item,
+                  card: {
+                    ...item.card,
+                    ...attributes[item.id],
+                  },
+                }))?.map((point) => (
+                  <PipelinePoint
+                    key={point.id}
+                    point={point as any}
+                    onPointClick={handlePointClick}
+                    showCard={visibleCardIds.includes(point.id)}
+                  />
+                ))
+              )}
             </div>
           </div>
         </div>
