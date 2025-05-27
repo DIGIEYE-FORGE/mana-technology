@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { PipeLineUpBar } from "./components/up-bar";
 import PipeLineSvg from "@/assets/pipeline.svg?react";
 import CustomCardComponent from "./components/card";
@@ -23,6 +23,8 @@ import { DashboardSPU } from "./components/dashboards/dashboard-spu";
 import { DashboardSP02 } from "./components/dashboards/dashboard-sp02";
 import { useAppContext } from "@/Context";
 import useSWR from "swr";
+import { env } from "@/utils/env";
+import { io } from "socket.io-client";
 
 // Type Definitions
 interface Position {
@@ -540,7 +542,7 @@ const PipeLine: React.FC = () => {
           sideOffset: 0,
           dashboard: {
             title: "SP06 Dashboard",
-              component: <DashboardSP02 />,
+            component: <DashboardSP02 />,
           },
         },
       },
@@ -579,7 +581,7 @@ const PipeLine: React.FC = () => {
           sideOffset: 0,
           dashboard: {
             title: "SP07 Dashboard",
-                  component: <DashboardSP02 />, 
+            component: <DashboardSP02 />,
           },
         },
       },
@@ -660,6 +662,25 @@ const PipeLine: React.FC = () => {
       },
     ];
   });
+
+  useEffect(() => {
+    const socket = io(env.VITE_URL_SOCKET);
+    socket.on("connect", () => {
+      console.log("Connected to WebSocket server Pipeline");
+    });
+    socket.on("disconnect", () => {
+      console.log("Disconnected from WebSocket server");
+    });
+    socket.on("error", (error) => {
+      console.error("WebSocket error:", error);
+    });
+    socket.on("serial-JHF455XKPCH6DBLH", (data) => {
+      console.log("Received message:", data);
+    });
+    return () => {
+      socket.close();
+    };
+  }, [data]);
 
   return (
     <main

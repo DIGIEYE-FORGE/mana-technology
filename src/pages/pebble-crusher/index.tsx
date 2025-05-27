@@ -6,6 +6,10 @@ import RightBar from "./right-bar";
 import { useAppContext } from "@/Context";
 import useSWR from "swr";
 import { ModelCanvas } from "../omniverse/model-viewer";
+import Circle1 from "@/assets/circle-1.svg?react";
+import Circle2 from "@/assets/circle-2.svg?react";
+import Circle3 from "@/assets/circle-3.svg?react";
+import Light from "@/assets/light.svg?react";
 
 const PebbleCrusher = () => {
   const { backendApi } = useAppContext();
@@ -80,10 +84,18 @@ const PebbleCrusher = () => {
       <main className="mx-auto flex max-w-[1920px] flex-col gap-3">
         <UpBar />
         <main className="relative flex !h-fit flex-col gap-5 px-6 pb-6">
-          <img
-            src="/model/model-circle.png"
-            className="pointer-events-none absolute bottom-[100px] left-1/2 z-0 h-[200px] w-[700px] -translate-x-1/2 opacity-30"
-          />
+          <div className="machine-highlight absolute bottom-0 left-1/2 aspect-square w-[500px] -translate-x-1/2">
+            <div className="circle circle-3 relative h-full w-full">
+              <Circle3 className="rotate h-full w-full duration-1000" />
+            </div>
+            <div className="circle circle-2 relative h-full w-full">
+              <Circle2 className="rotate h-full w-full duration-1000" />
+            </div>
+            <div className="circle circle-1 relative h-full w-full">
+              <Circle1 className="rotate h-full w-full duration-1000" />
+            </div>
+            <Light className="absolute bottom-[40%] right-1/2 w-full translate-x-1/2" />
+          </div>
           <img
             src="/model/bg-pattern.png"
             className="pointer-events-none absolute left-0 top-0 z-0 h-full w-full opacity-60"
