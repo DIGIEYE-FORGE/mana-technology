@@ -369,18 +369,23 @@ export function DashboardSP01() {
           </Card>
 
           {/* Row 4, Col 2 - Chlore Station */}
-          <Card className="flex flex-col gap-4 p-4 h-full">
-          <span className="text-xl font-bold">Pumps ring state</span>
-            <div className="flex items-center justify-center gap-4">
-              {progressDataLine.map((item) => (
-                <ChloreSVG
-                  key={item.id}
-                  value={item.value}
-                  topTitle={"telemetry"}
-                  bottomTitle={"telemetry"}
-                  leftTitle={"telemetry"}
-                />
-              ))}
+          <Card className="flex flex-col gap-0 p-4 h-full">
+            <span className="text-xl font-bold">Chlore Station</span>
+            <div className="flex items-center justify-center gap-8">
+              {/* First block */}
+              <ChloreSVG
+                topTitle="SP01-M-03"
+                leftTitle="LSLL-03"
+                bottomTitle="SP01-M-01"
+                value="XX"
+              />
+              {/* Second block */}
+              <ChloreSVG
+                topTitle="SP01-M-03"
+                leftTitle="LSLL-04"
+                bottomTitle="SP01-M-02"
+                value="XX"
+              />
             </div>
           </Card>
 

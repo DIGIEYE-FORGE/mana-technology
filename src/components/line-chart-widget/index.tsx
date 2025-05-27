@@ -201,6 +201,17 @@ export default function LineChartWidget({
             selection: { enabled: false },
             dropShadow: { enabled: false },
           },
+          legend: {
+            position: legendPosition,
+            markers: {
+              width: 20,
+              height: 8,
+              radius: 0,
+              offsetX: 0,
+              offsetY: 0,
+              shape: "square"
+            }
+          },
         },
         ...options,
       }}
