@@ -1,6 +1,7 @@
 import LineChartWidget from "@/components/line-chart-widget";
 import { Card } from "@/components/card";
 import LiquidProgress from "../progress";
+import HammerArrestorSVG from "@/assets/hammer-svg.svg?react";
 
 import CircularGauge from "../progres-circle";
 // import ProgressBar from "../progres-bar";
@@ -186,8 +187,8 @@ export function DashboardSP02() {
               </div>
             </Card>
 
-            <Card className="flex h-[202px] items-center justify-evenly gap-4 p-4">
-              {/* {progressData.map((item) => (
+            {/* <Card className="flex h-[202px] items-center justify-evenly gap-4 p-4"> */}
+            {/* {progressData.map((item) => (
                 <div
                   className="flex h-full w-full flex-1 flex-col items-center"
                   key={item.id}
@@ -199,6 +200,25 @@ export function DashboardSP02() {
                   />
                 </div>
               ))} */}
+            {/* </Card> */}
+
+            <Card className="flex h-full items-center justify-center gap-8 border-none bg-transparent p-4 shadow-none">
+              <div className="flex flex-1 flex-col items-center">
+                <span className="mb-2 text-sm font-medium text-white">
+                  Suction tank
+                </span>
+                <LiquidProgress
+                  percentage={[{ value: 80, title: "" }]}
+                  className="h-[7rem] w-[5rem]"
+                  textStyle="text-white font-bold"
+                />
+              </div>
+              <div className="flex flex-1 flex-col items-center">
+                <span className="mb-2 text-sm font-medium text-white">
+                  Hammer arrestor
+                </span>
+                <HammerArrestorSVG />
+              </div>
             </Card>
 
             <Card className="flex h-[202px] flex-col gap-1 p-4">
