@@ -26,6 +26,7 @@ import { MainProjectUpBar } from "./components/up-bar";
 import VideoDialog from "./video-dialog";
 import FullscreenVideo from "./full-screen-video";
 import HLSPlayer from "./components/hls-player";
+import Model from "@/components/models";
 // import YoutubeComponent from "@/components/video-youtube";
 
 export function RotatingModel({
@@ -375,9 +376,9 @@ const tree = {
 export default function MainProjectPage() {
   const [isRotating, setIsRotating] = useState(true);
   const modelRef = useRef();
-  // const [, setLoading] = useState(true);
+  const [, setLoading] = useState(true);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  // const [hovered] = useState("");
+  const [hovered] = useState("");
 
   const [showInfo, setShowInfo] = useState<string[]>([
     "Electrical power line",
@@ -706,7 +707,7 @@ export default function MainProjectPage() {
                 shadow-camera-bottom={-10}
               />
               <Suspense fallback={<Loader3D />}>
-                {/* <Model
+                <Model
                   hovered={hovered}
                   url={
                     `${env.VITE_LOCAL_MODELS === "true" ? "/ignore/" : "https://managem.digieye.io/statics/"}` +
@@ -714,7 +715,7 @@ export default function MainProjectPage() {
                   }
                   ref={modelRef}
                   onLoad={() => setLoading(false)}
-                /> */}
+                />
               </Suspense>
               <RotatingModel modelRef={modelRef} isRotating={isRotating} />
               <OrbitControls enableRotate rotateSpeed={1} zoomToCursor />

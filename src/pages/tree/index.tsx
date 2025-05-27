@@ -20,6 +20,8 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { XIcon } from "lucide-react";
 import { machines } from "./data";
+import Model from "@/components/models";
+import { env } from "@/utils/env";
 
 extend({ PlaneGeometry });
 export function Loader3D() {
@@ -38,7 +40,7 @@ export function RotatingModel({ modelRef }: { modelRef: any }) {
 
 function TreePage() {
   const modelRef = useRef();
-  const [loading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [active, setActive] = useState<number | null>(null);
 
   useEffect(() => {
@@ -198,16 +200,14 @@ function TreePage() {
           shadow-camera-bottom={-10}
         />
         <Suspense fallback={<Loader3D />}>
-          {/* <Model
-            // color2="#96CFFE"
-            // color1="#96CFFE"
+          <Model
             url={
               `${env.VITE_LOCAL_MODELS === "true" ? "/ignore/" : "https://managem.digieye.io/statics/"}` +
               "mine026.glb"
             }
             ref={modelRef}
             onLoad={() => setLoading(false)}
-          /> */}
+          />
         </Suspense>
         <RotatingModel modelRef={modelRef} />
         <OrbitControls enableRotate rotateSpeed={1} zoomToCursor />
