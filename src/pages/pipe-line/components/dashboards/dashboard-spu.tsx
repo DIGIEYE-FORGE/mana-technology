@@ -58,7 +58,10 @@ const res = [
     ],
   },
 ];
-export function DashboardSPU() {
+interface DashboardSPUProps {
+  data: any;
+}
+export function DashboardSPU({ data }: DashboardSPUProps) {
   return (
     <div className="relative mr-4 flex h-1 flex-1 flex-col gap-4 overflow-x-hidden pl-12 pr-4">
       <div className="ml-auto grid w-[60rem] grid-cols-3 grid-rows-1 gap-2">

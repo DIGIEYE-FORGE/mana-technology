@@ -101,7 +101,7 @@ const PipeLineAttributes = [
       sideOffset: -250,
       dashboard: {
         title: "SP01 Dashboard",
-        component: <DashboardSP01 />,
+        component: <DashboardSP01 data={dataHistory?.SP01} />,
       },
     },
   },
