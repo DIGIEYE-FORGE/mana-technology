@@ -24,7 +24,6 @@ import { useAppContext } from "@/Context";
 import useSWR from "swr";
 import { env } from "@/utils/env";
 import { io } from "socket.io-client";
-import { div } from "three/examples/jsm/nodes/Nodes";
 interface Position {
   top?: string;
   bottom?: string;
@@ -778,7 +777,10 @@ const PipeLine: React.FC = () => {
             },
           },
           SP6: {
-            progress: filteredResults?.["s=SP8_LIT_01_MAE_TM"]?.[length - 1]?.y,
+            progress: [
+              filteredResults?.["s=SP8_LIT_01_MAE_TM"]?.[length - 1]?.y,
+              filteredResults?.["s=SP8_LIT_01_MAE_TM"]?.[length - 1]?.y,
+            ],
             attributes: {
               "Flow input":
                 filteredResults?.["s=SP8_FIT_01_MAE_TM"]?.[length - 1]?.y,
