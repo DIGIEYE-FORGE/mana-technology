@@ -210,7 +210,7 @@ export default function LineChartWidget({
             zoom: { enabled: false },
             selection: { enabled: false },
             dropShadow: { enabled: false },
-            height: (max || 180) - 70,
+            height: (max || 180),
             sparkline: { enabled: false },
             parentHeightOffset: 0,
             offsetY: 0,
@@ -219,7 +219,7 @@ export default function LineChartWidget({
               right: 0,
               bottom: 0,
               left: 0
-            },
+            }
           },
           legend: {
             position: legendPosition,
@@ -232,7 +232,7 @@ export default function LineChartWidget({
               shape: "square"
             },
             height: 70,
-            offsetY: 0,
+            offsetY: -10,
             floating: false,
             containerMargin: {
               top: 0,

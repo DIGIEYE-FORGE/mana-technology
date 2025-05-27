@@ -189,10 +189,10 @@ export function DashboardSP01() {
           
           {/* Row 1, Col 1 - Flows Chart */}
           <Card className="flex flex-col h-full">
-            <div className="flex px-4 py-2 border-b border-gray-600">
+            <div className="flex px-4 pt-2 p-0 m-0">
               <span className="text-white font-medium">Flows</span>
             </div>
-            <div className="flex-1 p-2">
+            <div className="flex-1 pr-2 pl-2">
               <LineChartWidget
                 attributes={{
                   telemetries: [
@@ -230,10 +230,10 @@ export function DashboardSP01() {
 
           {/* Row 2, Col 1 - Pressures Chart */}
           <Card className="flex flex-col h-full">
-            <div className="flex px-4 py-2 border-b border-gray-600">
+            <div className="flex px-4 pt-2 p-0 m-0">
               <span className="text-white font-medium">Presures</span>
             </div>
-            <div className="flex-1 p-2">
+            <div className="flex-1 pr-2 pl-2">
               <LineChartWidget
                 attributes={{
                   telemetries: [
@@ -300,12 +300,13 @@ export function DashboardSP01() {
           </Card>
 
           {/* Row 3, Col 1 - Level Chart */}
-          <Card className="flex flex-col h-full">
-            <div className="flex px-4 py-2 border-b border-gray-600">
+          <Card className="flex flex-col h-[180px] overflow-hidden">
+            <div className="flex px-4 pt-2 p-0 m-0">
               <span className="text-white font-medium">Level</span>
             </div>
-            <div className="flex-1 p-2">
+            <div className="flex-1 pr-2 pl-2">
               <LineChartWidget
+                max={140}
                 attributes={{
                   telemetries: [
                     {
@@ -339,14 +340,14 @@ export function DashboardSP01() {
 
           {/* Row 4, Col 1 - Chlore Chart */}
           <Card className="flex flex-col h-full">
-            <div className="flex justify-between items-center px-4 py-2 border-b border-gray-600 relative">
+            <div className="flex justify-between items-center px-4 pt-2 p-0 m-0 relative">
               <span className="text-white font-medium">r</span>
               <div className="absolute right-4 flex gap-2 text-xs">
                 <span className="bg-[#021E3F] border border-white rounded-full px-3 py-1 text-white">Input XX</span>
                 <span className="bg-[#021E3F] border border-white rounded-full px-3 py-1 text-white">Output XX</span>
               </div>
             </div>
-            <div className="flex-1 p-2">
+            <div className="flex-1 pr-2 pl-2">
               <LineChartWidget
                 attributes={{
                   telemetries: [
