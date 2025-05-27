@@ -80,13 +80,13 @@ const PebbleCrusher = () => {
       <main className="mx-auto flex max-w-[1920px] flex-col gap-3">
         <UpBar />
         <main className="relative flex !h-fit flex-col gap-5 px-6 pb-6">
-          <UpCards
-            flowRate={data?.["s=6210-WI-2215"] || 0}
-            energy={data?.["s=6100-TR-2001"] || 0}
-            utilization={data?.["s=6210-WI-2217"] || 0}
-            bounce1={data?.["s=6140-VT-2426A"] || 0}
-            bounce2={data?.["s=6140-VT-2426B"] || 0}
-            bounce3={data?.["s=6140-VT-2426C"] || 0}
+          <img
+            src="/model/model-circle.png"
+            className="pointer-events-none absolute bottom-[100px] left-1/2 z-0 h-[200px] w-[700px] -translate-x-1/2 opacity-30"
+          />
+          <img
+            src="/model/bg-pattern.png"
+            className="pointer-events-none absolute left-0 top-0 z-0 h-full w-full opacity-60"
           />
           <div className="absolute inset-0 isolate z-0 flex flex-1 items-center justify-center p-0">
             <ModelCanvas
@@ -95,6 +95,14 @@ const PebbleCrusher = () => {
               fov={10}
             />
           </div>
+          <UpCards
+            flowRate={data?.["s=6210-WI-2215"] || 0}
+            energy={data?.["s=6100-TR-2001"] || 0}
+            utilization={data?.["s=6210-WI-2217"] || 0}
+            bounce1={data?.["s=6140-VT-2426A"] || 0}
+            bounce2={data?.["s=6140-VT-2426B"] || 0}
+            bounce3={data?.["s=6140-VT-2426C"] || 0}
+          />
           <div className="flex justify-between">
             <LeftBar
               runningState={data?.["s=6210-WI-2217"] || 0}
