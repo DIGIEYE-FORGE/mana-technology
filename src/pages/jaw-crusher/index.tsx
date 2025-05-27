@@ -12,7 +12,7 @@ import Circle3 from "@/assets/circle-3.svg?react";
 import Light from "@/assets/light.svg?react";
 
 const JawCrusher = () => {
-  const { backendApi } = useAppContext();
+  const { backendApi, dateRange } = useAppContext();
 
   const { data } = useSWR("last-telemetry", async () => {
     const res = await backendApi.findMany("lastTelemetry", {
@@ -39,39 +39,43 @@ const JawCrusher = () => {
     return filteredResults;
   });
 
-  const { data: history } = useSWR("dpc-history/api/history", async () => {
-    const res = await backendApi.findMany("dpc-history/api/history", {
-      where: {
-        serial: "0V7ZJGB503H9WGH3",
-        createdAt: {
-          $gt: "2025-05-25T17:43:19.795Z",
+  const { data: history } = useSWR(
+    `dpc-history/api/history/${dateRange?.from}/${dateRange?.to}`,
+    async () => {
+      const res = await backendApi.findMany("dpc-history/api/history", {
+        where: {
+          serial: "0V7ZJGB503H9WGH3",
+          createdAt: {
+            $gt: dateRange?.from,
+            $lte: dateRange?.to,
+          },
         },
-      },
-      pagination: {
-        page: 1,
-        perPage: 10000,
-      },
-    });
+        pagination: {
+          page: 1,
+          perPage: 10000,
+        },
+      });
 
-    const filteredResults = res?.results?.reduce(
-      (acc: Record<string, any>, item: any) => {
-        Object.entries(item).forEach(([key, value]) => {
-          if (typeof value === "number" && key !== "deviceId")
-            acc[key] = [
-              {
-                x: new Date(item.createdAt),
-                y: value,
-              },
-              ...(acc[key] || []),
-            ];
-        });
-        return acc;
-      },
-      {} as Record<string, any>,
-    );
+      const filteredResults = res?.results?.reduce(
+        (acc: Record<string, any>, item: any) => {
+          Object.entries(item).forEach(([key, value]) => {
+            if (typeof value === "number" && key !== "deviceId")
+              acc[key] = [
+                {
+                  x: new Date(item.createdAt),
+                  y: value,
+                },
+                ...(acc[key] || []),
+              ];
+          });
+          return acc;
+        },
+        {} as Record<string, any>,
+      );
 
-    return filteredResults;
-  });
+      return filteredResults;
+    },
+  );
 
   return (
     <div

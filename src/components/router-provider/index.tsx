@@ -80,7 +80,7 @@ const routes: RouteObject[] = [
         element: <PipeLine />,
       },
       {
-        path: "crushing",
+        path: "old-crushing",
         element: <CrushingLayout />,
         children: [
           {
@@ -94,7 +94,7 @@ const routes: RouteObject[] = [
         element: <PebbleCrusher />,
       },
       {
-        path: "jaw-crusher",
+        path: "crushing",
         element: <JawCrusher />,
       },
       {
