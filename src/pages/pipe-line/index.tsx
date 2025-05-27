@@ -174,9 +174,34 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                 <LiquidProgress
                   className="h-[9rem] w-[7rem]"
                   style={{}}
-                  percentage={[
+                  stops={[
                     {
-                      value: +Number(point.card.progress || 0).toFixed(2),
+                      color: "red",
+                      value: 20,
+                    },
+                    {
+                      color: "blue",
+                      value: 40,
+                    },
+                    {
+                      color: "yellow",
+                      value: 60,
+                    },
+                    {
+                      color: "green",
+                      value: 80,
+                    },
+                    {
+                      color: "red",
+                      value: 90,
+                    },
+                  ]}
+                  percentage={[
+                    // {
+                    //   value: +Number(point.card.progress || 0).toFixed(2),
+                    // },
+                    {
+                      value: 50,
                     },
                   ]}
                 />
