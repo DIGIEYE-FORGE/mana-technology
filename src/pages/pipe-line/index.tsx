@@ -113,9 +113,9 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
       {showCard && (
         <div
           className={cn(
-            "absolute z-10 min-h-[10rem] min-w-[21rem] scale-[0.8] p-4 pr-6",
+            "absolute z-10 min-h-[10rem] min-w-[21rem] max-w-fit scale-[0.8] p-4 pr-6",
             getCardPositionClass(point.card.position),
-            point.id === "SP6" ? "scale-[0.60] bg-red-500" : "scale[0.8]",
+            point.id === "SP6" ? "scale-[0.70] bg-red-500" : "scale[0.8]",
           )}
           style={{
             ...(point.card.optionsPosition || {}),
@@ -172,13 +172,41 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
             <div className="flex h-full w-full gap-2">
               <div className="w-[7rem]">
                 <LiquidProgress
-                  className="h-[9rem] w-[7rem]"
+                  className={cn("h-[9rem] w-[7rem]", {
+                    "w-[3rem]": point.id === "SP6",
+                  })}
                   style={{}}
-                  percentage={[
+                  stops={[
                     {
-                      value: +Number(point.card.progress || 0).toFixed(2),
+                      color: "red",
+                      value: 5,
+                    },
+                    {
+                      color: "blue",
+                      value: 18,
+                    },
+                    {
+                      color: "yellow",
+                      value: 89,
+                    },
+                    {
+                      color: "green",
+                      value: 94,
                     },
                   ]}
+                  percentage={
+                    point?.card?.progress && Array.isArray(point.card.progress)
+                      ? point.card.progress.map((p) => ({
+                          value: p,
+                          title: "",
+                        }))
+                      : [
+                          {
+                            value: point.card.progress as number,
+                            title: "",
+                          },
+                        ]
+                  }
                 />
               </div>
 
