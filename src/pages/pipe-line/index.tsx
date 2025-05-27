@@ -182,13 +182,13 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
               </div>
 
               <div className="flex flex-1 flex-col gap-1">
-                {Object.entries(point.card.attributes).map(([key, value]) => (
+                {Object.entries(point.card.attributes)?.map(([key, value]) => (
                   <div key={key} className="flex justify-between">
                     <span className="text-xs text-gray-400">{key}</span>
                     <span className="text-xs text-white">
                       {key == "Running state" ? (
                         <div className="flex flex-wrap gap-1">
-                          {value.map((state: string) => (
+                          {value?.map((state: string) => (
                             <div
                               key={state}
                               className="aspect-video h-5 w-6 rounded-sm border-0 border-white"
@@ -201,7 +201,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                         </div>
                       ) : value instanceof Array ? (
                         <div className="flex flex-wrap gap-1">
-                          {value.map((v, idx) => (
+                          {value?.map((v, idx) => (
                             <span key={idx} className="text-xs text-white">
                               {v}
                             </span>
@@ -540,7 +540,7 @@ const PipeLine: React.FC = () => {
           sideOffset: 0,
           dashboard: {
             title: "SP06 Dashboard",
-              component: <DashboardSP02 />,
+            component: <DashboardSP02 />,
           },
         },
       },
@@ -579,7 +579,7 @@ const PipeLine: React.FC = () => {
           sideOffset: 0,
           dashboard: {
             title: "SP07 Dashboard",
-                  component: <DashboardSP02 />, 
+            component: <DashboardSP02 />,
           },
         },
       },
