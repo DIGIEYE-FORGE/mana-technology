@@ -6,8 +6,8 @@ import ChloreSVG from "../chlore";
 // import ProgressBar from "../progres-bar";
 
 const progressData = [
-  { id: 1, name: "", percentage: 40 },
-  { id: 2, name: "", percentage: 40 },
+  { id: 1, name: "", percentage: 80 },
+  { id: 2, name: "", percentage: 80 },
 ];
 const flowsInputData = [
   { x: 1, y: 55 },
@@ -147,7 +147,7 @@ export function DashboardSPU() {
       <div className="flex h-full min-h-0 flex-1 flex-row gap-6 overflow-hidden">
         {/* Left column: 3 rows */}
         <div className="flex h-full min-h-0 flex-1 flex-col gap-3">
-          <Card className="flex h-[28%] min-h-0 flex-1 flex-col">
+          <Card className="flex h-[22%] min-h-0 flex-1 flex-col">
             <div className="flex p-0 px-4 pt-2">
               <span className="font-medium text-white">Flows</span>
             </div>
@@ -174,7 +174,7 @@ export function DashboardSPU() {
               />
             </div>
           </Card>
-          <Card className="flex h-[22%] min-h-0 flex-1 flex-col">
+          <Card className="flex h-[18%] min-h-0 flex-1 flex-col">
             <div className="flex p-0 px-4 pt-2">
               <span className="font-medium text-white">Level</span>
             </div>
@@ -194,7 +194,7 @@ export function DashboardSPU() {
               />
             </div>
           </Card>
-          <Card className="flex h-[28%] min-h-0 flex-1 flex-col">
+          <Card className="flex h-[22%] min-h-0 flex-1 flex-col">
             <div className="relative flex items-center justify-between p-0 px-4 pt-2">
               <span className="font-medium text-white">Chlore</span>
               <div className="absolute right-4 flex gap-2 text-xs">
@@ -230,7 +230,7 @@ export function DashboardSPU() {
         </div>
         {/* Right column: 2 rows */}
         <div className="flex h-full min-h-0 flex-1 flex-col gap-3">
-          <Card className="flex h-[32%] min-h-0 flex-1 items-center justify-center">
+          <Card className="flex h-[28%] min-h-0 flex-1 items-center justify-center">
             <LiquidProgress
               textStyle="text-white font-bold"
               percentage={progressData.map((item) => ({
@@ -238,7 +238,7 @@ export function DashboardSPU() {
                 title: item.name,
               }))}
               style={{ background: "#87EFD5" }}
-              className="h-[10rem] !w-[7rem]"
+              className="h-[14rem] !w-[9rem]"
             />
           </Card>
           <Card className="flex min-h-0 flex-1 flex-col">
