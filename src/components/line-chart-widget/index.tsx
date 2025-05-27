@@ -27,6 +27,7 @@ type Props = Widget & {
   selectionDate?: boolean;
   max?: number;
   preLoadData?: HistoryType[];
+  options?: any;
 };
 
 export default function LineChartWidget({
@@ -35,6 +36,7 @@ export default function LineChartWidget({
   correction,
   max,
   preLoadData,
+  options = {},
   ...props
 }: Props) {
   const { backendApi, dateRange } = useAppContext();
@@ -179,96 +181,87 @@ export default function LineChartWidget({
   return (
     <Chart
       options={{
-        theme: { mode: "dark" },
-
-        tooltip: {
-          shared: true,
-          hideEmptySeries: false,
-        },
-        grid: {
-          borderColor: "#797979",
-          xaxis: { lines: { show: false } },
-          yaxis: { lines: { show: true } },
-        },
-        chart: {
-          id,
-          background: "transparent",
-          toolbar: { show: false },
-          animations: { enabled: true },
-          zoom: { enabled: false },
-          selection: { enabled: false },
-          dropShadow: { enabled: false },
-        },
-        stroke: { curve: "smooth", width: 2.5 },
-        dataLabels: { enabled: false },
-        fill: {
-          type: "solid",
-          opacity: telemetries?.map((item) => (item.area ? 0.33 : 1)),
-        },
-
-        legend:
-          legendPosition != "none"
-            ? {
-                position: legendPosition,
-                // markers: {
-                //   width: 26,
-                //   height: 12,
-                // },
-                fontWeight: 600,
-                fontSize: "12px",
-              }
-            : { show: false },
-        xaxis: {
-          type: "datetime",
-          max:
-            dateRange?.to && selectionDate
-              ? new Date(dateRange?.to).getTime()
-              : undefined,
+        ...{
+          theme: { mode: "dark" },
           tooltip: {
-            enabled: false,
+            shared: true,
+            hideEmptySeries: false,
           },
-          axisBorder: { show: false },
-          axisTicks: { show: false },
-          labels: {
-            show: true,
-            style: {
-              fontSize: "12px",
-              fontFamily: "Helvetica, Arial, sans-serif",
-              fontWeight: 400,
-              cssClass: "apexcharts-xaxis-label",
+          grid: {
+            borderColor: "#797979",
+            xaxis: { lines: { show: false } },
+            yaxis: { lines: { show: true } },
+            padding: {
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: 0
+            }
+          },
+          stroke: {
+            width: 2,
+            curve: 'smooth'
+          },
+          chart: {
+            id,
+            background: "transparent",
+            toolbar: { show: false },
+            animations: { enabled: true },
+            zoom: { enabled: false },
+            selection: { enabled: false },
+            dropShadow: { enabled: false },
+            height: (max || 180),
+            sparkline: { enabled: false },
+            parentHeightOffset: 0,
+            offsetY: 0,
+            padding: {
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: 0
+            }
+          },
+          legend: {
+            position: legendPosition,
+            markers: {
+              width: 12,
+              height: 4,
+              radius: 0,
+              offsetX: 0,
+              offsetY: 0,
+              shape: "square"
             },
+            height: 70,
+            offsetY: -10,
+            floating: false,
+            containerMargin: {
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: 0
+            },
+            itemMargin: {
+              horizontal: 2,
+              vertical: 0
+            },
+            fontSize: '9px',
+            formatter: function(seriesName: string) {
+              return seriesName.length > 12 ? seriesName.substring(0, 12) + '...' : seriesName;
+            }
           },
         },
-
-        yaxis: {
-          min: 0,
-          // tickAmount: 4,
-          max,
-          tooltip: {
-            enabled: false,
-          },
-          labels: {
-            show: true,
-            formatter: function (value) {
-              return value < 2
-                ? value.toLocaleString("en", { maximumFractionDigits: 2 })
-                : Math.ceil(value).toLocaleString("en", {
-                    maximumFractionDigits: 2,
-                  }) + (telemetries[0].unit || "");
-            },
-            style: {
-              fontSize: "12px",
-              fontFamily: "Helvetica, Arial, sans-serif",
-              fontWeight: 400,
-              cssClass: "apexcharts-xaxis-label",
-            },
-          },
-        },
+        ...options,
       }}
-      series={data}
-      width={"100%"}
-      height={"100%"}
+      series={
+        (data || [])?.map((item) => ({
+          name: item.name,
+          type: item.type,
+          data: item.data,
+          color: item.color,
+        }))
+      }
       type="line"
+      height={max || 180}
     />
   );
 }

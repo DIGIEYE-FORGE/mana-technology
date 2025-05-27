@@ -8,7 +8,6 @@ import Circle1 from "@/assets/circle-1.svg?react";
 import Circle2 from "@/assets/circle-2.svg?react";
 import Circle3 from "@/assets/circle-3.svg?react";
 import Light from "@/assets/light.svg?react";
-
 import LiquidProgress from "./components/progress";
 import { ArrowRight, XIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -25,8 +24,6 @@ import { useAppContext } from "@/Context";
 import useSWR from "swr";
 import { env } from "@/utils/env";
 import { io } from "socket.io-client";
-
-// Type Definitions
 interface Position {
   top?: string;
   bottom?: string;
@@ -175,11 +172,13 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
             <div className="flex h-full w-full gap-2">
               <div className="w-[7rem]">
                 <LiquidProgress
-                  percentage={
-                    +point.card.progress < 100
-                      ? +Number(point.card.progress || 0).toFixed(2)
-                      : 100
-                  }
+                  className="h-[9rem] w-[7rem]"
+                  style={{}}
+                  percentage={[
+                    {
+                      value: +Number(point.card.progress || 0).toFixed(2),
+                    },
+                  ]}
                 />
               </div>
 
@@ -626,7 +625,7 @@ const PipeLine: React.FC = () => {
       },
       {
         id: "SP6",
-        title: "Bassin d’arrivée",
+        title: "SPU",
         position: { top: "86%", right: "-3%" },
         card: {
           position: "left",
@@ -655,7 +654,7 @@ const PipeLine: React.FC = () => {
         image: "/lines-images/sp5.png",
         model: {
           dashboard: {
-            title: "Bassin d’arrivée",
+            title: "SPU",
             component: <DashboardSPU />,
           },
         },
