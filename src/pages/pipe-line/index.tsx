@@ -275,8 +275,18 @@ const PipeLine: React.FC = () => {
     );
   };
 
-  const [widgetData, setWidgetData] = useState<any>(null);
-
+  const [widgetData, setWidgetData] = useState<any>([]);
+  const [dataHistory, setDataHistory] = useState({
+    SP01: [],
+    SP02: [],
+    SP03: [],
+    SP1: [],
+    SP2: [],
+    SP4: [],
+    SP5: [],
+    SP6: [],
+  });
+  const [historyTimesSeries, setHistoryTimesSeries] = useState<any>(null);
   const { data } = useSWR("last-telemetry", async () => {
     const res = await backendApi.findMany("lastTelemetry", {
       where: {
@@ -661,6 +671,46 @@ const PipeLine: React.FC = () => {
       },
     ];
   });
+  const { data: history } = useSWR(
+    `dpc-history/api/history`,
+    async () => {
+      const res = await backendApi.findMany("dpc-history/api/history", {
+        where: {
+          serial: "0V7ZJGB503H9WGH3",
+          createdAt: {
+            $gt: new Date(Date.now() - 60 * 60 * 1000),
+            // Last 24 hours
+          },
+        },
+        pagination: {
+          page: 1,
+          perPage: 10000,
+        },
+      });
+      return res;
+    },
+    {
+      onSuccess: (data) => {
+        const filteredResults = data?.results?.reduce(
+          (acc: Record<string, any>, item: any) => {
+            Object.entries(item).forEach(([key, value]) => {
+              if (typeof value === "number" && key !== "deviceId")
+                acc[key] = [
+                  {
+                    x: new Date(item.createdAt),
+                    y: value,
+                  },
+                  ...(acc[key] || []),
+                ];
+            });
+            return acc;
+          },
+          {} as Record<string, any>,
+        );
+        setHistoryTimesSeries(filteredResults);
+      },
+    },
+  );
 
   useEffect(() => {
     const socket = io(env.VITE_URL_SOCKET);
@@ -705,7 +755,10 @@ const PipeLine: React.FC = () => {
         <div className="flex flex-1 flex-col overflow-y-visible px-[4rem]">
           <div className="flex gap-4 [&>*]:min-w-[12rem]">
             {widgetData?.map((item: any, idx: number) => (
-              <CustomCardComponent key={idx}>
+              <CustomCardComponent
+                key={idx}
+                className={cn("", { hidden: item.hidden })}
+              >
                 <h3 className="text-lg text-white">{item.title}</h3>
                 <span className="text-xl text-[#FFC829]">{item.value}</span>
               </CustomCardComponent>
@@ -714,7 +767,7 @@ const PipeLine: React.FC = () => {
           <div className="relative h-1 flex-1 pr-[6rem]">
             <div className="relative h-full px-8 pb-6 pt-[3rem]">
               <PipeLineSvg className="h-full w-full" />
-              {data?.map((point) => (
+              {(data || [])?.map((point) => (
                 <PipelinePoint
                   key={point.id}
                   point={point as any}
