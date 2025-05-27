@@ -189,10 +189,9 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
           </div>
         ))}
       </div>
-      <div className="relative flex h-1 flex-1 overflow-auto pb-6 pl-14 pr-10 pt-4">
-        <div className="grid flex-1 grid-cols-2 gap-[2rem]">
-          {/* Première colonne: LineChartWidget empilés verticalement */}
-          <div className="flex flex-col gap-[0.5rem]">
+      <div className="debug relative flex h-1 flex-1 overflow-auto pb-6 pl-14 pr-10 pt-4">
+        <div className="flex w-full flex-1 gap-[2rem]">
+          <div className="flex flex-1 flex-col gap-[0.5rem] [&>*]:flex-1">
             <Card className="flex h-[202px] flex-col">
               <div className="m-0 flex p-0 px-4 pt-2">
                 <span className="font-medium text-white">Flows</span>
@@ -277,8 +276,7 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
             </Card>
           </div>
 
-          {/* Deuxième colonne */}
-          <div className="flex flex-col gap-[0.5rem]">
+          <div className="flex flex-1 flex-col gap-[0.5rem] [&>*]:flex-1">
             <Card className="flex h-full items-center justify-center gap-8 border-none bg-transparent p-4 shadow-none">
               <div className="flex flex-1 flex-col items-center">
                 <span className="mb-2 text-sm font-medium text-white">
