@@ -152,6 +152,9 @@ export function DashboardSPU() {
                 value: item.percentage,
                 title: item.name,
               }))}
+              style={{
+                background:""
+              }}
               className="h-[12rem] !w-[7rem]"
             />
           </Card>

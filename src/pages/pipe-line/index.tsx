@@ -174,6 +174,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
               <div className="w-[7rem]">
                 <LiquidProgress
                   className="h-[9rem] w-[7rem]"
+                  style={{}}
                   percentage={[
                     {
                       value: +Number(point.card.progress || 0).toFixed(2),
