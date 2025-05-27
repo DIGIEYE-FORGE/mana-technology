@@ -124,7 +124,7 @@ interface DashboardSPUProps {
 }
 export function DashboardSPU({ data }: DashboardSPUProps) {
   return (
-    <div className="relative mb-8 flex h-full min-h-0 flex-1 flex-col overflow-hidden pl-12 pr-6">
+    <div className="debug relative mb-8 flex h-full min-h-0 flex-1 flex-col overflow-hidden pl-12 pr-6">
       {/* Summary bar */}
       <div className="mb-6 ml-auto grid w-full max-w-[60rem] grid-cols-3 grid-rows-1 gap-2">
         {res.map((item, index) => (
@@ -154,7 +154,7 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
             <div className="flex p-0 px-4 pt-2">
               <span className="font-medium text-white">Flows</span>
             </div>
-            <div className="flex-1 pl-2 pr-2">
+            <div className="debug [&>] flex-1 pl-2 pr-2 [&>*]:h-full [&>*]:w-full">
               <LineChartWidget
                 attributes={{
                   telemetries: [
@@ -181,7 +181,7 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
             <div className="flex p-0 px-4 pt-2">
               <span className="font-medium text-white">Level</span>
             </div>
-            <div className="flex-1 pl-2 pr-2">
+            <div className="debug [&>] flex-1 pl-2 pr-2 [&>*]:h-full [&>*]:w-full">
               <LineChartWidget
                 max={140}
                 attributes={{
@@ -209,7 +209,7 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                 </span>
               </div>
             </div>
-            <div className="flex-1 pl-2 pr-2">
+            <div className="debug [&>] flex-1 pl-2 pr-2 [&>*]:h-full [&>*]:w-full">
               <LineChartWidget
                 attributes={{
                   telemetries: [
