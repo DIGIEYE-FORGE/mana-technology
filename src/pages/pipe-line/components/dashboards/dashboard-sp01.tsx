@@ -1,6 +1,6 @@
 import LineChartWidget from "@/components/line-chart-widget";
 import { Card } from "@/components/card";
-// import LiquidProgress from "../progress";
+import LiquidProgress from "../progress";
 import CircularGauge from "../progres-circle";
 import ProgressBar from "../progres-bar";
 import ChloreSVG from "../chlore";
@@ -220,7 +220,11 @@ export function DashboardSP01() {
           <Card className="flex items-center justify-center gap-8 p-4 h-full bg-transparent border-none shadow-none">
             <div className="flex flex-col items-center flex-1">
               <span className="text-sm text-white font-medium mb-2">Suction tank</span>
-              <SuctionTankSVG />
+              <LiquidProgress 
+                percentage={[{ value: 80, title: "" }]}
+                className="h-[7rem] w-[5rem]"
+                textStyle="text-white font-bold"
+              />
             </div>
             <div className="flex flex-col items-center flex-1">
               <span className="text-sm text-white font-medium mb-2">Hammer arrestor</span>
