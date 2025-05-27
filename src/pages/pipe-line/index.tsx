@@ -276,6 +276,16 @@ const PipeLine: React.FC = () => {
   };
 
   const [widgetData, setWidgetData] = useState<any>([]);
+  const [dataHistory, setDataHistory] = useState({
+    SP01: [],
+    SP02: [],
+    SP03: [],
+    SP1: [],
+    SP2: [],
+    SP4: [],
+    SP5: [],
+    SP6: [],
+  });
   const [historyTimesSeries, setHistoryTimesSeries] = useState<any>(null);
   const { data } = useSWR("last-telemetry", async () => {
     const res = await backendApi.findMany("lastTelemetry", {
