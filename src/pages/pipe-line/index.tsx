@@ -150,11 +150,11 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                       value: 5,
                     },
                     {
-                      color: "blue",
+                      color: "orange",
                       value: 18,
                     },
                     {
-                      color: "yellow",
+                      color: "#0a50e6",
                       value: 89,
                     },
                     {
