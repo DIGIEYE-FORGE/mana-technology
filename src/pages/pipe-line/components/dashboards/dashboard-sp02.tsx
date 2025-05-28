@@ -8,6 +8,7 @@ import CircularGauge from "../progres-circle";
 // import ChloreSVG from "../chlore";
 import ProgressBar from "../progres-bar";
 import ReactApexChart from "react-apexcharts";
+import { cn } from "@/lib/utils";
 
 const Data = [
   { id: 1, name: "Flow rate", key: "flowRate" },
@@ -337,7 +338,13 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                 <span className="mb-2 text-sm font-medium text-white">
                   Hammer arrestor
                 </span>
-                <HammerArrestorSVG />
+                <HammerArrestorSVG
+                  className={cn("[&_.indicator]:fill-[#26e2b3]", {
+                    // TODO: change this base on state
+                    "[&_.indicator-1]:!fill-red-500": true,
+                    "[&_.indicator-2]:!fill-red-500": true,
+                  })}
+                />
               </div>
             </Card>
             <Card className="flex h-[202px] cursor-not-allowed items-center gap-4 p-6 opacity-40">
