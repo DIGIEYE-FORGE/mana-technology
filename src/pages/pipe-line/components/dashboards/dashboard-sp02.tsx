@@ -98,6 +98,9 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
         <div className="flex w-full flex-1 gap-[2rem]">
           <div className="flex flex-1 flex-col gap-[0.5rem] [&>*]:flex-1">
             <Card className="flex h-[202px] flex-col">
+              <div className="px-4 pt-3 text-sm font-bold text-white">
+                Flows
+              </div>
               <div className="flex-1 pl-2 pr-2">
                 <ReactApexChart
                   height={"100%"}
@@ -109,14 +112,6 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                       },
                       toolbar: {
                         show: false,
-                      },
-                    },
-                    title: {
-                      text: "Flows",
-                      align: "left",
-                      style: {
-                        fontSize: "14px",
-                        color: "#ffffff",
                       },
                     },
                     tooltip: {
@@ -167,8 +162,8 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
               </div>
             </Card>
             <Card className="flex h-[202px] flex-col">
-              <div className="m-0 flex p-0 px-4 pt-2">
-                <span className="font-medium text-white">Presures</span>
+              <div className="p-4 pb-0 text-sm font-bold text-white">
+                Presures
               </div>
               <div className="flex-1 pl-2 pr-2">
                 <ReactApexChart
@@ -181,14 +176,6 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                       },
                       toolbar: {
                         show: false,
-                      },
-                    },
-                    title: {
-                      text: "Presures",
-                      align: "left",
-                      style: {
-                        fontSize: "14px",
-                        color: "#ffffff",
                       },
                     },
                     tooltip: {
@@ -247,9 +234,7 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
               </div>
             </Card>
             <Card className="flex h-[202px] flex-col">
-              <div className="m-0 flex p-0 px-4 pt-2">
-                <span className="font-medium text-white">Level</span>
-              </div>
+              <div className="p-4 pb-0 text-sm font-bold text-white">Level</div>
               <div className="flex-1 pl-2 pr-2">
                 <ReactApexChart
                   height={"100%"}
@@ -261,14 +246,6 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                       },
                       toolbar: {
                         show: false,
-                      },
-                    },
-                    title: {
-                      text: "Presures",
-                      align: "left",
-                      style: {
-                        fontSize: "14px",
-                        color: "#ffffff",
                       },
                     },
                     tooltip: {
