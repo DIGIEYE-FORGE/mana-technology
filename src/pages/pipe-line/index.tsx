@@ -129,12 +129,16 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
               <h3 className="text-md text-bold flex items-center justify-center px-3 text-xl text-[#FFE473]">
                 {point.title}
               </h3>
-              <Dialog>
+              <Dialog
+                onOpenChange={(open) => {
+                  void open;
+                }}
+              >
                 <DialogTrigger asChild>
                   <button
                     className="text-md group flex items-center gap-2 text-[#78F6EA]"
                     onClick={(event) => {
-                      event.stopPropagation();
+                      // event.stopPropagation();
                     }}
                   >
                     Voir plus
@@ -142,7 +146,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                   </button>
                 </DialogTrigger>
                 <DialogContent
-                  className="flex h-[min(95vh,67rem)] min-w-[70rem] max-w-[min(95vw,90rem)] flex-col gap-20 border-none bg-transparent p-0 pb-6 pt-4 text-foreground backdrop-blur"
+                  className="debug flex h-[min(95vh,67rem)] min-w-[70rem] max-w-[min(95vw,90rem)] flex-col gap-20 border-none bg-transparent p-0 pb-6 pt-4 text-foreground backdrop-blur"
                   style={{
                     clipPath:
                       "polygon(0% 18.5%, 2.8% 13.5%, 34% 13.5%, 36.2% 9.3%, 36.2% 0%, 100% 0%, 100% 99.6%, 1.6% 99.6%, 1.6% 67%, 0% 64%)",
@@ -219,9 +223,9 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                     <span className="text-xs text-white">
                       {key == "Running state" ? (
                         <div className="flex flex-wrap gap-1">
-                          {value?.map((state: string) => (
+                          {value?.map((state: string, index: number) => (
                             <div
-                              key={state}
+                              key={index}
                               className="aspect-video h-5 w-6 rounded-sm border-0 border-white"
                               style={{
                                 backgroundColor:
@@ -296,7 +300,6 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
 // PipeLine Component
 const PipeLine: React.FC = () => {
   const { backendApi } = useAppContext();
-  const [visibleCardIds, setVisibleCardIds] = useState<string[]>([]);
   const handlePointClick = (id: string) => {
     setVisibleCardIds((prev) =>
       prev.includes(id)
@@ -328,7 +331,17 @@ const PipeLine: React.FC = () => {
     SP5: {},
     SP6: {},
   });
-
+  const [visibleCardIds, setVisibleCardIds] = useState<string[]>([
+    "SP01",
+    "SP02",
+    "SP03",
+    "SP1",
+    "SP2",
+    "SP3",
+    "SP4",
+    "SP5",
+    "SP6",
+  ]);
   const PipeLineAttributes = [
     {
       id: "SP01",
@@ -814,8 +827,6 @@ const PipeLine: React.FC = () => {
           },
         ]);
 
-        console.log({ filteredResults });
-
         setDataHistory({
           SP01: {
             flowRate: filteredResults?.["s=SP1_FIT_02_MAE_TM"]?.[length - 1]?.y,
@@ -1234,14 +1245,17 @@ const PipeLine: React.FC = () => {
                     ...item.card,
                     ...attributes[item.id],
                   },
-                }))?.map((point) => (
-                  <PipelinePoint
-                    key={point.id}
-                    point={point as any}
-                    onPointClick={handlePointClick}
-                    showCard={visibleCardIds.includes(point.id)}
-                  />
-                ))
+                }))?.map((point, index) => {
+                  return (
+                    <div key={index}>
+                      <PipelinePoint
+                        point={point as any}
+                        onPointClick={handlePointClick}
+                        showCard={visibleCardIds.includes(point.id)}
+                      />
+                    </div>
+                  );
+                })
               )}
             </div>
           </div>
