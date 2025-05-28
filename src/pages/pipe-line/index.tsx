@@ -11,12 +11,7 @@ import Light from "@/assets/light.svg?react";
 import LiquidProgress from "./components/progress";
 import { ArrowRight, Loader, XIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { Dialog, DialogClose, DialogContent } from "@/components/ui/dialog";
 import { DashboardSP01 } from "./components/dashboards/dashboard-sp01";
 import { DashboardSPU } from "./components/dashboards/dashboard-spu";
 import { DashboardSP02 } from "./components/dashboards/dashboard-sp02";
@@ -77,6 +72,7 @@ interface PipelinePointProps {
   point: PointData;
   showCard: boolean;
   onPointClick: (id: string) => void;
+  setActivePoint: any;
 }
 
 const createPositionStyle = (position: Position): React.CSSProperties => {
@@ -103,6 +99,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
   point,
   onPointClick,
   showCard,
+  setActivePoint,
 }) => {
   return (
     <div
@@ -129,49 +126,16 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
               <h3 className="text-md text-bold flex items-center justify-center px-3 text-xl text-[#FFE473]">
                 {point.title}
               </h3>
-              <Dialog
-                onOpenChange={(open) => {
-                  void open;
+              <button
+                className="text-md group flex items-center gap-2 text-[#78F6EA]"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  setActivePoint(point.id);
                 }}
               >
-                <DialogTrigger asChild>
-                  <button
-                    className="text-md group flex items-center gap-2 text-[#78F6EA]"
-                    onClick={(event) => {
-                      event.stopPropagation();
-                    }}
-                  >
-                    Voir plus
-                    <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
-                  </button>
-                </DialogTrigger>
-                <DialogContent
-                  className="z-[999999] flex h-[min(95vh,67rem)] min-w-[70rem] max-w-[min(95vw,90rem)] flex-col gap-20 border-none bg-transparent p-0 pb-6 pt-4 text-foreground backdrop-blur"
-                  style={{
-                    clipPath:
-                      "polygon(0% 18.5%, 2.8% 13.5%, 34% 13.5%, 36.2% 9.3%, 36.2% 0%, 100% 0%, 100% 99.6%, 1.6% 99.6%, 1.6% 67%, 0% 64%)",
-                    backgroundImage: "url(/card-bg.png)",
-                    backgroundSize: "100% 100%",
-                  }}
-                  hideCloseButton
-                >
-                  <div className="flex h-[8%] shrink-0 items-center pl-[calc(36%+1rem)]">
-                    <span className="shrink-0 pl-6 font-ethnocentric text-sm font-extralight text-foreground first-letter:uppercase">
-                      {point.model?.dashboard?.title || "Dashboard"}
-                    </span>
-                    <DialogClose asChild>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="absolute right-6 size-5 text-white"
-                      >
-                        <XIcon size={20} />
-                      </Button>
-                    </DialogClose>
-                  </div>
-                  {point.model?.dashboard?.component}
-                </DialogContent>
-              </Dialog>
+                Voir plus
+                <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </button>
             </div>
             <div className="flex h-full w-full gap-2">
               <div className="w-[7rem]">
@@ -201,14 +165,16 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                   percentage={
                     point?.card?.progress && Array.isArray(point.card.progress)
                       ? point.card.progress.map((p) => ({
-                          value: Number(p)?.toFixed(2) as unknown as number,
+                          value: Number(p / 5) * 100,
                           title: "",
                         }))
                       : [
                           {
-                            value: Number(point.card.progress)?.toFixed(
-                              2,
-                            ) as unknown as number,
+                            // value: Number(point.card.progress)?.toFixed(
+                            //   2,
+                            value: (
+                              Number(point.card.progress / 5) * 100
+                            ).toFixed(2) as unknown as number,
                             title: "",
                           },
                         ]
@@ -821,10 +787,6 @@ const PipeLine: React.FC = () => {
             title: "Flow Rate",
             value: filteredResults?.["s=B_FIT_02_MAE_TM"]?.[length - 1]?.y,
           },
-          {
-            title: "Average Daily flow rate",
-            value: "XX",
-          },
         ]);
 
         setDataHistory({
@@ -1193,7 +1155,7 @@ const PipeLine: React.FC = () => {
       socket.close();
     };
   }, []);
-
+  const [activePoint, setActivePoint] = useState<string | null>(null);
   return (
     <main
       className="relative flex flex-col text-foreground"
@@ -1249,6 +1211,7 @@ const PipeLine: React.FC = () => {
                   return (
                     <div key={index}>
                       <PipelinePoint
+                        setActivePoint={setActivePoint}
                         point={point as any}
                         onPointClick={handlePointClick}
                         showCard={visibleCardIds.includes(point.id)}
@@ -1260,6 +1223,48 @@ const PipeLine: React.FC = () => {
             </div>
           </div>
         </div>
+        <Dialog
+          open={!!activePoint}
+          onOpenChange={(open) => {
+            if (!open) {
+              setActivePoint(null);
+            }
+          }}
+        >
+          {/* <DialogTrigger></DialogTrigger> */}
+          <DialogContent
+            className="z-[999999] flex h-[min(95vh,67rem)] min-w-[70rem] max-w-[min(95vw,90rem)] flex-col gap-20 border-none bg-transparent p-0 pb-6 pt-4 text-foreground backdrop-blur"
+            style={{
+              clipPath:
+                "polygon(0% 18.5%, 2.8% 13.5%, 34% 13.5%, 36.2% 9.3%, 36.2% 0%, 100% 0%, 100% 99.6%, 1.6% 99.6%, 1.6% 67%, 0% 64%)",
+              backgroundImage: "url(/card-bg.png)",
+              backgroundSize: "100% 100%",
+            }}
+            hideCloseButton
+          >
+            <div className="flex h-[8%] shrink-0 items-center pl-[calc(36%+1rem)]">
+              <span className="shrink-0 pl-6 font-ethnocentric text-sm font-extralight text-foreground first-letter:uppercase">
+                {/* {point.model?.dashboard?.title || "Dashboard"} */}
+                {/* {point.model?.dashboard?.title || "Pipeline Dashboard"} */}
+                {PipeLineAttributes.find((item) => item.id === activePoint)
+                  ?.title || "Pipeline Dashboard"}
+              </span>
+              <DialogClose asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="absolute right-6 size-5 text-white"
+                >
+                  <XIcon size={20} />
+                </Button>
+              </DialogClose>
+            </div>
+            {
+              PipeLineAttributes.find((item) => item.id === activePoint)?.model
+                .dashboard.component
+            }
+          </DialogContent>
+        </Dialog>
       </main>
     </main>
   );

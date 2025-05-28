@@ -1,11 +1,4 @@
-import {
-  Dialog,
-  DialogTrigger,
-  DialogClose,
-  DialogContent,
-} from "@/components/ui/dialog";
-
-import { useEffect } from "react";
+import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 
 declare global {
   interface Window {
