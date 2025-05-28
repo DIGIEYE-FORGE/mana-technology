@@ -106,7 +106,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
 }) => {
   return (
     <div
-      className="absolute size-[6rem] cursor-pointer"
+      className="absolute isolate size-[6rem] cursor-pointer"
       style={createPositionStyle(point.position)}
       onClick={() => onPointClick(point.id)}
     >
@@ -138,7 +138,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                   <button
                     className="text-md group flex items-center gap-2 text-[#78F6EA]"
                     onClick={(event) => {
-                      // event.stopPropagation();
+                      event.stopPropagation();
                     }}
                   >
                     Voir plus
@@ -146,7 +146,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                   </button>
                 </DialogTrigger>
                 <DialogContent
-                  className="debug flex h-[min(95vh,67rem)] min-w-[70rem] max-w-[min(95vw,90rem)] flex-col gap-20 border-none bg-transparent p-0 pb-6 pt-4 text-foreground backdrop-blur"
+                  className="z-[999999] flex h-[min(95vh,67rem)] min-w-[70rem] max-w-[min(95vw,90rem)] flex-col gap-20 border-none bg-transparent p-0 pb-6 pt-4 text-foreground backdrop-blur"
                   style={{
                     clipPath:
                       "polygon(0% 18.5%, 2.8% 13.5%, 34% 13.5%, 36.2% 9.3%, 36.2% 0%, 100% 0%, 100% 99.6%, 1.6% 99.6%, 1.6% 67%, 0% 64%)",
