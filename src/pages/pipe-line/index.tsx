@@ -381,7 +381,7 @@ const PipeLine: React.FC = () => {
         sideOffset: -400,
         dashboard: {
           title: "SP02 Dashboard",
-          component: <DashboardSP01 data={dataHistory?.SP02} />,
+          component: <DashboardSP02 data={dataHistory?.SP02} />,
         },
       },
     },
@@ -401,8 +401,8 @@ const PipeLine: React.FC = () => {
         align: "start",
         sideOffset: -320,
         dashboard: {
-          title: "SPU",
-          component: <DashboardSP01 data={dataHistory?.SP03} />,
+          title: "SP03 Dashboard",
+          component: <DashboardSP02 data={dataHistory?.SP03} />,
         },
       },
     },
@@ -613,24 +613,24 @@ const PipeLine: React.FC = () => {
           SP02: {
             progress: filteredResults?.["s=SP2_LIT_01_MAE_TM"]?.[length - 1]?.y,
             attributes: {
-              "Chlore input":
-                filteredResults?.["s=SP02CHL_CHL_01_MAE_TM"]?.[length - 1]?.y,
-              "Chlore output":
-                filteredResults?.["s=SP2_CHL_02_MAE_TM"]?.[length - 1]?.y,
+              // "Chlore input":
+              //   filteredResults?.["s=SP02CHL_CHL_01_MAE_TM"]?.[length - 1]?.y,
+              // "Chlore output":
+              //   filteredResults?.["s=SP2_CHL_02_MAE_TM"]?.[length - 1]?.y,
               "Flow input":
                 filteredResults?.["s=SP2_FIT_01_MAE_TM"]?.[length - 1]?.y,
               "Flow output":
                 filteredResults?.["s=SP2_FIT_02_MAE_TM"]?.[length - 1]?.y,
               "delta flow":
                 +filteredResults?.["s=SP2_FIT_02_MAE_TM"]?.[length - 1]?.y -
-                +filteredResults?.["s=SP2_FIT_02_MAE_TM"]?.[length - 1]?.y,
+                +filteredResults?.["s=SP2_FIT_01_MAE_TM"]?.[length - 1]?.y,
               "pression output":
                 filteredResults?.["s=SP2_PIT_04_MAE_TM"]?.[length - 1]?.y,
               pumps: ["P01", "P02", "P03"],
               "Running state": [
-                filteredResults?.["s=SP2_M01_RM_TS"]?.[length - 1]?.y,
-                filteredResults?.["s=SP2_M02_RM_TS"]?.[length - 1]?.y,
-                filteredResults?.["s=SP2_M03_RM_TS"]?.[length - 1]?.y,
+                filteredResults?.["s=SP2_M01_TM_TLC"]?.[length - 1]?.y,
+                filteredResults?.["s=SP2_M02_TM_TLC"]?.[length - 1]?.y,
+                filteredResults?.["s=SP2_M03_TM_TLC"]?.[length - 1]?.y,
               ],
               Pression: [
                 filteredResults?.["s=SP2_PIT_01_MAE_TM"]?.[length - 1]?.y,
@@ -648,14 +648,14 @@ const PipeLine: React.FC = () => {
                 filteredResults?.["s=SP3_FIT_02_MAE_TM"]?.[length - 1]?.y,
               "delta flow":
                 +filteredResults?.["s=SP3_FIT_02_MAE_TM"]?.[length - 1]?.y -
-                +filteredResults?.["s=SP3_FIT_02_MAE_TM"]?.[length - 1]?.y,
+                +filteredResults?.["s=SP3_FIT_01_MAE_TM"]?.[length - 1]?.y,
               "pression output":
                 filteredResults?.["s=SP3_PIT_04_MAE_TM"]?.[length - 1]?.y,
               pumps: ["P01", "P02", "P03"],
               "Running state": [
-                filteredResults?.["s=SP3_M01_RM_TS"]?.[length - 1]?.y,
-                filteredResults?.["s=SP3_M02_RM_TS"]?.[length - 1]?.y,
-                filteredResults?.["s=SP3_M03_RM_TS"]?.[length - 1]?.y,
+                filteredResults?.["s=SP3_M01_TM_TLC"]?.[length - 1]?.y,
+                filteredResults?.["s=SP3_M02_TM_TLC"]?.[length - 1]?.y,
+                filteredResults?.["s=SP3_M03_TM_TLC"]?.[length - 1]?.y,
               ],
               Pression: [
                 filteredResults?.["s=SP3_PIT_01_MAE_TM"]?.[length - 1]?.y,
@@ -912,7 +912,7 @@ const PipeLine: React.FC = () => {
               filteredResults?.["s=SP2_ANTIB_LSH_TA"]?.[length - 1]?.y,
 
             runningStateP1:
-              filteredResults?.["s=SP2_M01_RM_TS"]?.[length - 1]?.y,
+              filteredResults?.["s=SP2_M01_TM_TLC"]?.[length - 1]?.y,
             runningStateP2:
               filteredResults?.["s=SP2_M02_TM_TLC"]?.[length - 1]?.y,
             runningStateP3:
@@ -949,7 +949,7 @@ const PipeLine: React.FC = () => {
               filteredResults?.["s=SP3_ANTIB_LSH_TA"]?.[length - 1]?.y,
 
             runningStateP1:
-              filteredResults?.["s=SP3_M01_RM_TS"]?.[length - 1]?.y,
+              filteredResults?.["s=SP3_M01_TM_TLC"]?.[length - 1]?.y,
             runningStateP2:
               filteredResults?.["s=SP3_M02_TM_TLC"]?.[length - 1]?.y,
             runningStateP3:
