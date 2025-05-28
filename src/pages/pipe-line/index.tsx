@@ -19,6 +19,7 @@ import { useAppContext } from "@/Context";
 import useSWR from "swr";
 import { env } from "@/utils/env";
 import { io } from "socket.io-client";
+
 interface Position {
   top?: string;
   bottom?: string;
@@ -74,6 +75,16 @@ interface PipelinePointProps {
   onPointClick: (id: string) => void;
   setActivePoint: any;
 }
+
+const ATTRIBUTE_UNITS: Record<string, string> = {
+  "Chlore input": "(mg/L)",
+  "Chlore output": "(mg/L)",
+  "Flow input": "(L/s)",
+  "Flow output": "(L/s)",
+  "delta flow": "(L/s)",
+  "pression output": "(bar)",
+  "Pression": "(bar)",
+};
 
 const createPositionStyle = (position: Position): React.CSSProperties => {
   return { ...position };
@@ -193,7 +204,9 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
               <div className="flex flex-1 flex-col gap-1">
                 {Object.entries(point.card.attributes)?.map(([key, value]) => (
                   <div key={key} className="flex justify-between">
-                    <span className="text-xs text-gray-400">{key}</span>
+                    <span className="text-xs text-gray-400">
+                      {key} {ATTRIBUTE_UNITS[key] ? ATTRIBUTE_UNITS[key] : ""}
+                    </span>
                     <span className="text-xs text-white">
                       {key == "Running state" ? (
                         <div className="flex flex-wrap gap-1">
