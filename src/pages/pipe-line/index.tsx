@@ -920,7 +920,7 @@ const PipeLine: React.FC = () => {
           SP1: {
             flowRate: filteredResults?.["s=SP4_FIT_02_MAE_TM"]?.[length - 1]?.y,
             pumpedVolume:
-              filteredResults?.["s=SP4_FIT_02_TOT_MES_TM"]?.[length - 1]?.y,
+              filteredResults?.["s=SP1_FIT_04_TOT_MES_TM"]?.[length - 1]?.y,
             deltaFlow:
               filteredResults?.["s=SP4_FIT_02_MAE_TM"]?.[length - 1]?.y -
               filteredResults?.["s=SP4_FIT_01_MAE_TM"]?.[length - 1]?.y,
