@@ -39,16 +39,16 @@ const LeftBar = ({
         </div>
         <div className="flex flex-col gap-1">
           <div className="flex w-full justify-between">
-            <span>Running hours</span>
-            <span className="text-xl font-bold text-[#FFC829]">XX</span>
+            <span>Operating hours (h)</span>
+            <span className="text-xl font-bold text-[#FFC829]">00</span>
           </div>
           <div className="flex w-full justify-between">
-            <span>Stop Hours</span>
-            <span className="text-xl font-bold text-[#FFC829]">XX</span>
+            <span>Downtime hours (h)</span>
+            <span className="text-xl font-bold text-[#FFC829]">00</span>
           </div>
           <div className="flex w-full justify-between">
             <span>Utilisation (%)</span>
-            <span className="text-xl font-bold text-[#FFC829]">XX</span>
+            <span className="text-xl font-bold text-[#FFC829]">00</span>
           </div>
         </div>
       </Card>
@@ -70,7 +70,7 @@ const LeftBar = ({
               theme: "dark",
             },
             title: {
-              text: "Frame bearing temperature",
+              text: "Frame bearing temperature (°C)",
               align: "left",
               style: {
                 fontSize: "14px",
@@ -137,7 +137,7 @@ const LeftBar = ({
               theme: "dark",
             },
             title: {
-              text: "Pitman bearing temperature",
+              text: "Pitman bearing temperature (°C)",
               align: "left",
               style: {
                 fontSize: "14px",
@@ -148,7 +148,7 @@ const LeftBar = ({
               curve: "smooth",
               width: 3,
             },
-            colors: ["#FFCA05"],
+            colors: ["#FFCA05", "#40EFDE"],
             legend: {
               labels: {
                 colors: "#A2B0B8",
@@ -176,11 +176,11 @@ const LeftBar = ({
           }}
           series={[
             {
-              name: "left",
+              name: "V1",
               data: pitmanLeft || [],
             },
             {
-              name: "right",
+              name: "W1",
               data: pitmanRight || [],
             },
           ]}
@@ -204,7 +204,7 @@ const LeftBar = ({
               theme: "dark",
             },
             title: {
-              text: "Winding",
+              text: "Motor winding temperatures (°C)",
               align: "left",
               style: {
                 fontSize: "14px",

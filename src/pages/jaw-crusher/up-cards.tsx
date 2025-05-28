@@ -54,29 +54,29 @@ const UpCards = ({
         <Card className="flex max-w-fit grow items-center justify-center gap-5 !rounded px-5">
           <RocketIcon className="size-16" />
           <div className="flex flex-col gap-1">
-            <span>Cadence</span>
+            <span>Throughput rate (t/h)</span>
             <span className="text-lg font-bold text-[#FFC829]">{cadence}</span>
           </div>
         </Card>
         <Card className="flex max-w-fit grow items-center justify-center gap-5 !rounded px-5">
           <CrushedIcon className="size-16" />
           <div className="flex flex-col gap-1">
-            <span>Crushed ORE</span>
+            <span>Crushed Ore (t)</span>
             <span className="text-lg font-bold text-[#FFC829]">
-              {crushed} %
+              {crushed}
             </span>
           </div>
         </Card>
         <Card className="flex max-w-fit grow items-center justify-center gap-5 !rounded px-5">
           <LevelIcon className="size-16" />
           <div className="flex flex-col gap-1">
-            <span>Rom Stockpile Level</span>
+            <span className="text-wrap">Rom Stockpile Level (%)</span>
             <div className="flex w-full justify-between">
               <span className="text-lg font-bold text-[#FFC829]">
-                {stockpileLevelMin}
+                {stockpileLevelMin} %
               </span>
               <span className="text-lg font-bold text-[#FFC829]">
-                {stockpileLevelMax}
+                {stockpileLevelMax} %
               </span>
             </div>
           </div>
@@ -84,7 +84,7 @@ const UpCards = ({
         <Card className="flex max-w-fit grow items-center justify-center gap-5 !rounded px-5">
           <SettingIcon className="size-16" />
           <div className="flex flex-col gap-1">
-            <span>Crushed Ore Stockpile Level</span>
+            <span>Crushed Ore Stockpile Level (%)</span>
             <div className="flex w-full justify-between">
               <span className="text-lg font-bold text-[#FFC829]">
                 {crushedOreMin} %
