@@ -30,9 +30,9 @@ const RightBar = ({
   plantFeedConveyor,
 }: RightBarProps) => {
   return (
-    <div className="relative z-10 flex h-full w-[400px] shrink-0 flex-col gap-3">
-      <Card className="flex flex-col gap-1 !rounded px-4 py-3">
-        <h1 className="text-lg font-semibold">Running State</h1>
+    <Card className="flex h-full w-[400px] flex-col gap-2 overflow-hidden !rounded px-4 py-3">
+      <h1 className="text-lg font-semibold">Running State</h1>
+      <div className="h-1 flex-1 gap-2 space-y-2 overflow-auto px-1">
         <Card className="flex flex-col gap-1 !rounded px-2 py-1">
           <div className="flex items-center justify-between text-sm">
             <span>Convoyer Rom</span>
@@ -49,6 +49,7 @@ const RightBar = ({
             <span>100%</span>
           </div>
         </Card>
+
         <Card className="flex flex-col gap-1 !rounded px-2 py-1">
           <div className="flex items-center justify-between text-sm">
             <span>ROM Bin Withdrawal</span>
@@ -225,9 +226,10 @@ const RightBar = ({
             <span>100%</span>
           </div>
         </Card>
-      </Card>
-    </div>
+      </div>
+    </Card>
   );
+  1165;
 };
 
 export default RightBar;
