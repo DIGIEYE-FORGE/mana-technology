@@ -17,12 +17,12 @@ const Data = [
 ];
 
 const valuesData = [
-  { id: 1, name: "V1", value: "XX" },
-  { id: 2, name: "V2", value: "XX" },
-  { id: 3, name: "V3", value: "XX" },
-  { id: 4, name: "I1", value: "XX" },
-  { id: 5, name: "I2", value: "XX" },
-  { id: 6, name: "I3", value: "XX" },
+  { id: 1, name: "V1", value: "0" },
+  { id: 2, name: "V2", value: "0" },
+  { id: 3, name: "V3", value: "0" },
+  { id: 4, name: "I1", value: "0" },
+  { id: 5, name: "I2", value: "0" },
+  { id: 6, name: "I3", value: "0" },
 ];
 
 const progressDataLine = [
@@ -46,7 +46,7 @@ const progressDataLine = [
         color: "#26E2B3",
       },
     ],
-    value: "XX",
+    value: "0",
     unite: "Hrs",
   },
   {
@@ -59,7 +59,7 @@ const progressDataLine = [
         color: "#26E2B3",
       },
     ],
-    value: "XX",
+    value: "0",
     unite: "Hrs",
   },
   {
@@ -72,7 +72,7 @@ const progressDataLine = [
         color: "#26E2B3",
       },
     ],
-    value: "XX",
+    value: "0",
     unite: "Hrs",
   },
 ];
@@ -324,41 +324,41 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
           <div className="flex flex-1 flex-col gap-[0.5rem] [&>*]:flex-1">
             <Card className="flex h-full items-center justify-center gap-8 border-none bg-transparent p-4 shadow-none">
               <div className="flex flex-1 flex-col items-center">
-                <span className="mb-2 text-sm font-medium text-white">
+                <span className="text mb-2 text-xl font-medium text-white">
                   Suction tank
                 </span>
                 <LiquidProgress
                   percentage={[{ value: 80, title: "" }]}
-                  className="h-[7rem] w-[5rem]"
+                  className="h-[10rem] w-[8rem]"
                   textStyle="text-white font-bold"
                   stops={[]}
                 />
               </div>
               <div className="flex flex-1 flex-col items-center">
-                <span className="mb-2 text-sm font-medium text-white">
+                <span className="mb-2 text-xl font-medium text-white">
                   Hammer arrestor
                 </span>
                 <HammerArrestorSVG
-                  className={cn("[&_.indicator]:fill-[#26e2b3]", {
+                  className={cn("size-[10rem] [&_.indicator]:fill-[#26e2b3]", {
                     // TODO: change this base on state
-                    "[&_.indicator-1]:!fill-red-500": true,
+                    "[&_.indicator-1]:!fill-red-500": false,
                     "[&_.indicator-2]:!fill-red-500": true,
                   })}
                 />
               </div>
             </Card>
             <Card className="flex h-[202px] cursor-not-allowed items-center gap-4 p-6 opacity-40">
-              <div className="flex h-full w-[6rem] flex-col items-center justify-between py-4">
+              <div className="flex h-full w-[6rem] flex-col items-center justify-evenly py-4">
                 <span className="text-xl font-bold">Energy</span>
                 <div className="flex flex-col items-center">
-                  <span className="text-bold text-4xl">XX</span>
+                  <span className="text-bold text-4xl">0</span>
                   <span className="text-md"> KwH</span>
                 </div>
               </div>
               <div className="flex min-h-[10rem] w-full flex-1 flex-col items-center justify-center gap-4">
                 <span className="text-2xl font-bold">Power</span>
                 <CircularGauge
-                  value={50}
+                  value={0}
                   maxValue={100}
                   size={200}
                   width={200}
