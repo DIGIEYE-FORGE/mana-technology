@@ -77,7 +77,7 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
   return (
     <>
       {/* Top metrics bar */}
-      <div className="absolute right-[1rem] top-[12%] flex gap-4">
+      <div className="debug absolute right-[1rem] top-[12%] flex gap-4">
         {Data.map((item) => (
           <div
             key={item.id}
