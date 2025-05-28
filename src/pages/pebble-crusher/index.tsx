@@ -14,7 +14,11 @@ import Light from "@/assets/light.svg?react";
 const PebbleCrusher = () => {
   const { backendApi, dateRange } = useAppContext();
 
-  const { data: count, error: countError } = useSWR("count", async () => {
+  const {
+    // data: count,
+    error: countError,
+    isLoading: isLoadingCount,
+  } = useSWR("count", async () => {
     const res = await backendApi.getHistory(
       "/dpc-history/api/history/count/0V7ZJGB503H9WGH3",
       {
@@ -39,7 +43,7 @@ const PebbleCrusher = () => {
     return res;
   });
 
-  const { data } = useSWR("last-telemetry", async () => {
+  const { data, isLoading, error } = useSWR("last-telemetry", async () => {
     const res = await backendApi.findMany("lastTelemetry", {
       where: {
         device: {
@@ -64,7 +68,11 @@ const PebbleCrusher = () => {
     return filteredResults;
   });
 
-  const { data: history } = useSWR(
+  const {
+    data: history,
+    isLoading: isLoadingHistory,
+    error: historyError,
+  } = useSWR(
     `dpc-history/api/history/${dateRange?.from}/${dateRange?.to}`,
     async () => {
       const res = await backendApi.findMany("dpc-history/api/history", {
@@ -112,68 +120,71 @@ const PebbleCrusher = () => {
     >
       <main className="mx-auto flex max-w-[1920px] flex-col gap-3">
         <UpBar />
-        {JSON.stringify(countError) && (
-          <div className="text-red-500">
-            Error fetching count data: {JSON.stringify(countError)}
+
+        {isLoading || isLoadingCount || isLoadingHistory ? (
+          <div className="flex h-[calc(100svh-80px)] items-center justify-center">
+            <div className="loader"></div>
           </div>
+        ) : error || countError || historyError ? (
+          <div className="flex h-[calc(100svh-80px)] items-center justify-center">
+            <div className="text-red-500">
+              Error loading data. Please try again later.
+            </div>
+          </div>
+        ) : (
+          <main className="relative flex !h-fit flex-col gap-5 px-6 pb-6">
+            <div className="machine-highlight absolute bottom-0 left-1/2 aspect-square w-[500px] -translate-x-1/2">
+              <div className="circle circle-3 relative h-full w-full">
+                <Circle3 className="rotate h-full w-full duration-1000" />
+              </div>
+              <div className="circle circle-2 relative h-full w-full">
+                <Circle2 className="rotate h-full w-full duration-1000" />
+              </div>
+              <div className="circle circle-1 relative h-full w-full">
+                <Circle1 className="rotate h-full w-full duration-1000" />
+              </div>
+              <Light className="absolute bottom-[40%] right-1/2 w-full translate-x-1/2" />
+            </div>
+            <img
+              src="/model/bg-pattern.png"
+              className="pointer-events-none absolute left-0 top-0 z-0 h-full w-full opacity-60"
+            />
+            <div className="absolute inset-0 isolate z-0 flex flex-1 items-center justify-center p-0">
+              <ModelCanvas
+                url={"/model/pebble.glb"}
+                position={[-40, 15, -20]}
+                fov={10}
+              />
+            </div>
+            <UpCards
+              flowRate={data?.["s=6210-WI-2215"] || 0}
+              energy={data?.["s=6100-TR-2001"] || 0}
+              utilization={data?.["s=6210-WI-2217"] || 0}
+              bounce1={data?.["s=6140-VT-2426A"] || 0}
+              bounce2={data?.["s=6140-VT-2426B"] || 0}
+              bounce3={data?.["s=6140-VT-2426C"] || 0}
+            />
+            <div className="flex justify-between">
+              <LeftBar
+                runningState={data?.["s=6210-WI-2217"] || 0}
+                nde={history?.["s=6140-TE-2426NDE"] || []}
+                de={history?.["s=6140-TE-2426DE"] || []}
+                u1={history?.["s=6140-TE-2426U1"] || []}
+                v1={history?.["s=6140-TE-2426V1"] || []}
+                w1={history?.["s=6140-TE-2426W1"] || []}
+              />
+              <RightBar
+                pressure={data?.["s=6210-WI-2215"] || 0}
+                hydraulic={data?.["s=6140-PDSH-2426C"] || 0}
+                clamping={data?.["s=6140-PIT-2426D"] || 0}
+                tramp={data?.["s=6140-PIT-2426E"] || 0}
+                lub={data?.["s=6140-PDSH-2426F"] || 0}
+                tank={history?.["s=6140-TE-2426E"] || 0}
+                return={history?.["s=6140-TE-2426F"] || 0}
+              />
+            </div>
+          </main>
         )}
-        {JSON.stringify(count) && (
-          <div className="text-green-500">
-            Count data: {JSON.stringify(count)}
-          </div>
-        )}
-        <main className="relative flex !h-fit flex-col gap-5 px-6 pb-6">
-          <div className="machine-highlight absolute bottom-0 left-1/2 aspect-square w-[500px] -translate-x-1/2">
-            <div className="circle circle-3 relative h-full w-full">
-              <Circle3 className="rotate h-full w-full duration-1000" />
-            </div>
-            <div className="circle circle-2 relative h-full w-full">
-              <Circle2 className="rotate h-full w-full duration-1000" />
-            </div>
-            <div className="circle circle-1 relative h-full w-full">
-              <Circle1 className="rotate h-full w-full duration-1000" />
-            </div>
-            <Light className="absolute bottom-[40%] right-1/2 w-full translate-x-1/2" />
-          </div>
-          <img
-            src="/model/bg-pattern.png"
-            className="pointer-events-none absolute left-0 top-0 z-0 h-full w-full opacity-60"
-          />
-          <div className="absolute inset-0 isolate z-0 flex flex-1 items-center justify-center p-0">
-            <ModelCanvas
-              url={"/model/pebble.glb"}
-              position={[-40, 15, -20]}
-              fov={10}
-            />
-          </div>
-          <UpCards
-            flowRate={data?.["s=6210-WI-2215"] || 0}
-            energy={data?.["s=6100-TR-2001"] || 0}
-            utilization={data?.["s=6210-WI-2217"] || 0}
-            bounce1={data?.["s=6140-VT-2426A"] || 0}
-            bounce2={data?.["s=6140-VT-2426B"] || 0}
-            bounce3={data?.["s=6140-VT-2426C"] || 0}
-          />
-          <div className="flex justify-between">
-            <LeftBar
-              runningState={data?.["s=6210-WI-2217"] || 0}
-              nde={history?.["s=6140-TE-2426NDE"] || []}
-              de={history?.["s=6140-TE-2426DE"] || []}
-              u1={history?.["s=6140-TE-2426U1"] || []}
-              v1={history?.["s=6140-TE-2426V1"] || []}
-              w1={history?.["s=6140-TE-2426W1"] || []}
-            />
-            <RightBar
-              pressure={data?.["s=6210-WI-2215"] || 0}
-              hydraulic={data?.["s=6140-PDSH-2426C"] || 0}
-              clamping={data?.["s=6140-PIT-2426D"] || 0}
-              tramp={data?.["s=6140-PIT-2426E"] || 0}
-              lub={data?.["s=6140-PDSH-2426F"] || 0}
-              tank={history?.["s=6140-TE-2426E"] || 0}
-              return={history?.["s=6140-TE-2426F"] || 0}
-            />
-          </div>
-        </main>
       </main>
     </div>
   );
