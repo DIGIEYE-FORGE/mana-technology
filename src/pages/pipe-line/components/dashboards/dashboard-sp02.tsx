@@ -163,7 +163,7 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
             </Card>
             <Card className="flex h-[202px] flex-col">
               <div className="p-4 pb-0 text-[14px] font-bold text-white">
-                Presures
+                Pressures
               </div>
               <div className="flex-1 pl-2 pr-2">
                 <ReactApexChart
@@ -313,39 +313,39 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                 <HammerArrestorSVG />
               </div>
             </Card>
-            <Card className="flex h-[202px] items-center gap-4 p-6">
-              <div className="flex h-full w-[6rem] flex-col items-center justify-center gap-[5rem]">
-                <span className="text-2xl font-bold">Energy</span>
-                <div className="flex flex-col items-center">
-                  <span className="text-bold text-2xl">XX</span>
-                  <span className="text-xs"> kWh</span>
+            <Card className="flex h-[202px] items-center opacity-40 cursor-not-allowed gap-4 p-6">
+            <div className="flex h-full w-[6rem] flex-col items-center justify-between py-4">
+              <span className="text-xl font-bold">Energy</span>
+              <div className="flex flex-col items-center">
+                <span className="text-bold text-4xl">XX</span>
+                <span className="text-md"> KwH</span>
+              </div>
+            </div>
+            <div className="flex min-h-[10rem] w-full flex-1 flex-col items-center justify-center gap-4">
+              <span className="text-2xl font-bold">Power</span>
+              <CircularGauge
+                value={50}
+                maxValue={100}
+                size={200}
+                width={200}
+                color="#B29100"
+              />
+            </div>
+            <div className="m-0 grid flex-1 grid-cols-3 grid-rows-2 gap-2">
+              {valuesData.map((item) => (
+                <div
+                  key={item.id}
+                  className="flex h-[70px] w-[60px] flex-col items-center justify-center gap-2 rounded-md border-2 border-gray-500 bg-[#021E3F]/60 p-1 text-white backdrop-blur-md"
+                >
+                  <span className="text-xs">{item.name}</span>
+                  <span className="text-xl font-bold">{item.value}</span>
                 </div>
-              </div>
-              <div className="flex min-h-[10rem] w-full flex-1 flex-col items-center justify-center gap-4">
-                <span className="text-2xl font-bold">Power</span>
-                <CircularGauge
-                  value={50}
-                  maxValue={100}
-                  size={200}
-                  width={200}
-                  color="#ef8f08"
-                />
-              </div>
-              <div className="grid flex-1 grid-cols-3 grid-rows-2 gap-4">
-                {valuesData.map((item) => (
-                  <div
-                    key={item.id}
-                    className="flex flex-col items-center justify-center gap-2 rounded-md border-[0.5px] border-white bg-[#021E3F]/60 p-1 px-2 text-white backdrop-blur-md"
-                  >
-                    <span className="text-xs font-bold">{item.name}</span>
-                    <span className="text-xl font-bold">{item.value}</span>
-                  </div>
-                ))}
-              </div>
+              ))}
+            </div>
             </Card>
             <Card className="flex h-[202px] flex-col gap-1 p-4">
               <div className="text-[14px] font-bold text-white">
-                Pumps ring state
+                Pumps running state
               </div>
               <div className="flex flex-1 flex-col justify-center gap-0">
                 {progressDataLine.map((item) => (
