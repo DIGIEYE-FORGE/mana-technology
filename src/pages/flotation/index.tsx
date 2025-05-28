@@ -9,34 +9,36 @@ import Circle2 from "@/assets/circle-2.svg?react";
 import Circle3 from "@/assets/circle-3.svg?react";
 import Light from "@/assets/light.svg?react";
 import { useState } from "react";
+import { useAppContext } from "@/Context";
+import useSWR from "swr";
 
 const Flotation = () => {
-  // const { backendApi, dateRange } = useAppContext();
+  const { backendApi } = useAppContext();
 
-  // const { data } = useSWR("last-telemetry", async () => {
-  //   const res = await backendApi.findMany("lastTelemetry", {
-  //     where: {
-  //       device: {
-  //         serial: "0V7ZJGB503H9WGH3",
-  //       },
-  //     },
-  //     pagination: {
-  //       page: 1,
-  //       perPage: 1000,
-  //     },
-  //   });
+  const { data } = useSWR("last-telemetry", async () => {
+    const res = await backendApi.findMany("lastTelemetry", {
+      where: {
+        device: {
+          serial: "0V7ZJGB503H9WGH3",
+        },
+      },
+      pagination: {
+        page: 1,
+        perPage: 1000,
+      },
+    });
 
-  //   const filteredResults = res?.results?.reduce(
-  //     (acc: Record<string, any>, item: any) => {
-  //       acc[item.name] =
-  //         typeof item.value === "number" ? item.value?.toFixed(2) : item.value;
-  //       return acc;
-  //     },
-  //     {} as Record<string, any>,
-  //   );
+    const filteredResults = res?.results?.reduce(
+      (acc: Record<string, any>, item: any) => {
+        acc[item.name] =
+          typeof item.value === "number" ? item.value?.toFixed(2) : item.value;
+        return acc;
+      },
+      {} as Record<string, any>,
+    );
 
-  //   return filteredResults;
-  // });
+    return filteredResults;
+  });
 
   // const { data: history } = useSWR(
   //   `dpc-history/api/history/${dateRange?.from}/${dateRange?.to}`,
@@ -76,7 +78,6 @@ const Flotation = () => {
   //   },
   // );
 
-  const [data] = useState<any>({});
   const [history] = useState<any>({});
 
   return (
@@ -89,7 +90,7 @@ const Flotation = () => {
     >
       <main className="mx-auto flex max-w-[1920px] flex-col gap-3">
         <UpBar />
-        <main className="relative flex !h-fit gap-5 px-6 pb-6">
+        <main className="relative flex !h-fit gap-5 px-6 pb-6 text-xs">
           <div className="machine-highlight absolute bottom-0 left-1/2 aspect-square w-[500px] -translate-x-1/2">
             <div className="circle circle-3 relative h-full w-full">
               <Circle3 className="rotate h-full w-full duration-1000" />
@@ -106,7 +107,7 @@ const Flotation = () => {
             src="/model/bg-pattern.png"
             className="pointer-events-none absolute left-0 top-0 z-0 h-full w-full opacity-60"
           />
-          {/*
+          {/* TODO: add model path here
           <div className="z-1 absolute inset-0 isolate flex flex-1 items-center justify-center p-0">
             <ModelCanvas
               url={"/model/jaw02.glb"}
@@ -115,7 +116,7 @@ const Flotation = () => {
             />
           </div> */}
 
-          <div className="flex w-full flex-col justify-between gap-5">
+          <div className="flex w-full flex-col justify-between gap-1">
             <UpCards
               flotYield={data?.["s=6028-WI-1042"] || 0}
               sulfideYield={data?.["s=6028-WI-1042"] || 0}

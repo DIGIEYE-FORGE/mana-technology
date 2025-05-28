@@ -37,6 +37,8 @@ const JawCrusher = () => {
       {} as Record<string, any>,
     );
 
+    console.log({ filteredResults });
+
     return filteredResults;
   });
 
