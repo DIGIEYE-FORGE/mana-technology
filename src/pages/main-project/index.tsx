@@ -261,7 +261,7 @@ const data = [
       align: "end",
       sideOffset: 20,
     },
-    background: "url(/crusher.svg)",
+    background: "url(/flotation.svg)",
   },
   {
     type: "link",
