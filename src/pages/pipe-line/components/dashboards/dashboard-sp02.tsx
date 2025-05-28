@@ -181,7 +181,6 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                     tooltip: {
                       theme: "dark",
                     },
-
                     stroke: {
                       curve: "smooth",
                       width: 3,
@@ -203,14 +202,40 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                       },
                       type: "datetime",
                     },
-                    yaxis: {
-                      labels: {
-                        style: {
-                          colors: "#A2B0B8",
+                    yaxis: [
+                      {
+                        seriesName: "Output",
+                        labels: {
+                          style: {
+                            colors: "#A2B0B8",
+                          },
                         },
+                        title: {
+                          text: "Output",
+                          style: {
+                            color: "#E4A0F5",
+                          },
+                        },
+                        decimalsInFloat: 2,
                       },
-                      decimalsInFloat: 2,
-                    },
+                      {
+                        seriesName: "p1",
+                        opposite: true,
+                        labels: {
+                          style: {
+                            colors: "#A2B0B8",
+                          },
+                        },
+                        title: {
+                          text: "P1, P2, P3",
+                          style: {
+                            color: "#A2B0B8",
+                          },
+                        },
+                        decimalsInFloat: 2,
+                        show: true,
+                      },
+                    ],
                   }}
                   series={[
                     {
@@ -234,7 +259,9 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
               </div>
             </Card>
             <Card className="flex h-[202px] flex-col">
-              <div className="p-4 pb-0 text-[14px] font-bold text-white">Level</div>
+              <div className="p-4 pb-0 text-[14px] font-bold text-white">
+                Level
+              </div>
               <div className="flex-1 pl-2 pr-2">
                 <ReactApexChart
                   height={"100%"}

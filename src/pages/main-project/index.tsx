@@ -223,17 +223,61 @@ const data = [
   //   image: "screen1.svg",
   //   to: "/vr-underground",
   //   position: {
-  //     bottom: "-7%",
-  //     right: "32.5%",
+  //     bottom: "70%",
+  //     right: "45.5%",
   //   },
   //   positionModel: {
   //     side: "left",
   //     align: "end",
   //     sideOffset: 20,
   //   },
-  //   background: "url(/vr-icon.svg)",
+  //   background: "url(/crusher.svg)",
   // },
-  ///////
+  {
+    type: "link",
+    image: "screen1.svg",
+    to: "/crushing",
+    position: {
+      bottom: "71%",
+      right: "42%",
+    },
+    positionModel: {
+      side: "left",
+      align: "end",
+      sideOffset: 20,
+    },
+    background: "url(/crusher.svg)",
+  },
+  {
+    type: "link",
+    image: "screen1.svg",
+    to: "/flotation",
+    position: {
+      bottom: "71%",
+      right: "46%",
+    },
+    positionModel: {
+      side: "left",
+      align: "end",
+      sideOffset: 20,
+    },
+    background: "url(/flotation.svg)",
+  },
+  {
+    type: "link",
+    image: "screen1.svg",
+    to: "/pebble-crusher",
+    position: {
+      bottom: "71%",
+      right: "38%",
+    },
+    positionModel: {
+      side: "left",
+      align: "end",
+      sideOffset: 20,
+    },
+    background: "url(/jaw.svg)",
+  },
   {
     title: "Electrical power line",
     type: "image",
