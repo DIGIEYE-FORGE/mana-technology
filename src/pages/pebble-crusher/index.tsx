@@ -10,38 +10,39 @@ import Circle1 from "@/assets/circle-1.svg?react";
 import Circle2 from "@/assets/circle-2.svg?react";
 import Circle3 from "@/assets/circle-3.svg?react";
 import Light from "@/assets/light.svg?react";
+import Loader from "@/components/loader";
 
 const PebbleCrusher = () => {
   const { backendApi, dateRange } = useAppContext();
 
-  // const {
-  //   data: count,
-  //   error: countError,
-  //   isLoading: isLoadingCount,
-  // } = useSWR("count", async () => {
-  //   const res = await backendApi.getHistory(
-  //     "/dpc-history/api/history/count/0V7ZJGB503H9WGH3",
-  //     {
-  //       startDate: new Date(
-  //         dateRange?.from ||
-  //           /// last hour
-  //           new Date(Date.now() - 60 * 60 * 1000),
-  //       ).toISOString(),
-  //       endDate: new Date(dateRange?.to || new Date()).toISOString(),
-  //       telemetries: [
-  //         {
-  //           name: "s=6140-CR-2426",
-  //           value: true,
-  //         },
-  //         {
-  //           name: "s=6140-CR-2426",
-  //           value: false,
-  //         },
-  //       ],
-  //     },
-  //   );
-  //   return res;
-  // });
+  const {
+    data: count,
+    error: countError,
+    isLoading: isLoadingCount,
+  } = useSWR("count", async () => {
+    const res = await backendApi.getHistory(
+      "/dpc-history/api/history/count/0V7ZJGB503H9WGH3",
+      {
+        startDate: new Date(
+          dateRange?.from ||
+            /// last hour
+            new Date(Date.now() - 60 * 60 * 1000),
+        ).toISOString(),
+        endDate: new Date(dateRange?.to || new Date()).toISOString(),
+        telemetries: [
+          {
+            name: "s=6140-CR-2426",
+            value: true,
+          },
+          {
+            name: "s=6140-CR-2426",
+            value: false,
+          },
+        ],
+      },
+    );
+    return res;
+  });
 
   const { data, isLoading, error } = useSWR("last-telemetry", async () => {
     const res = await backendApi.findMany("lastTelemetry", {
@@ -120,11 +121,11 @@ const PebbleCrusher = () => {
     >
       <main className="mx-auto flex max-w-[1920px] flex-col gap-3">
         <UpBar />
-        {isLoading || isLoadingHistory ? (
+        {isLoading || isLoadingHistory || isLoadingCount ? (
           <div className="flex h-[calc(100svh-80px)] items-center justify-center">
-            <div className="loader"></div>
+            <Loader />
           </div>
-        ) : error || historyError ? (
+        ) : error || historyError || countError ? (
           <div className="flex h-[calc(100svh-80px)] items-center justify-center">
             <div className="text-red-500">
               Error loading data. Please try again later.
@@ -132,7 +133,7 @@ const PebbleCrusher = () => {
           </div>
         ) : (
           <main className="relative flex !h-fit flex-col gap-5 px-6 pb-6">
-            {/* {JSON.stringify(data, null, 2)} */}
+            {JSON.stringify(count, null, 2)}
             <div className="machine-highlight absolute bottom-0 left-1/2 aspect-square w-[500px] -translate-x-1/2">
               <div className="circle circle-3 relative h-full w-full">
                 <Circle3 className="rotate h-full w-full duration-1000" />

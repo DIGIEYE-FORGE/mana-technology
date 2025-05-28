@@ -366,6 +366,9 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
 
           {/* Row 2, Col 1 - Pressures Chart */}
           <Card className="flex h-full flex-col">
+            <div className="px-4 pt-3 text-sm font-bold text-white">
+              Presures
+            </div>
             <div className="flex-1 pl-2 pr-2">
               {/* <LineChartWidget
                 attributes={{
@@ -413,14 +416,6 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                   tooltip: {
                     theme: "dark",
                   },
-                  title: {
-                    text: "Presures",
-                    align: "left",
-                    style: {
-                      fontSize: "14px",
-                      color: "#ffffff",
-                    },
-                  },
                   stroke: {
                     curve: "smooth",
                     width: 3,
@@ -442,14 +437,42 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                     },
                     type: "datetime",
                   },
-                  yaxis: {
-                    labels: {
-                      style: {
-                        colors: "#A2B0B8",
+                  yaxis: [
+                    {
+                      // Axe Y gauche pour Output
+                      seriesName: "Output",
+                      labels: {
+                        style: {
+                          colors: "#A2B0B8",
+                        },
                       },
+                      title: {
+                        text: "Output",
+                        style: {
+                          color: "#E4A0F5",
+                        },
+                      },
+                      decimalsInFloat: 2,
                     },
-                    decimalsInFloat: 2,
-                  },
+                    {
+                      // Axe Y droit pour P1, P2, P3
+                      seriesName: "P1",
+                      opposite: true,
+                      labels: {
+                        style: {
+                          colors: "#A2B0B8",
+                        },
+                      },
+                      title: {
+                        text: "P1, P2, P3",
+                        style: {
+                          color: "#A2B0B8",
+                        },
+                      },
+                      decimalsInFloat: 2,
+                      show: true,
+                    },
+                  ],
                 }}
                 series={[
                   {
