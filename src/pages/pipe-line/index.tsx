@@ -218,7 +218,9 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                                 backgroundColor:
                                   state === "True" ? "#26E2B3" : "#FF0000",
                               }}
-                            ></div>
+                            >
+                              {JSON.stringify(state)}
+                            </div>
                           ))}
                         </div>
                       ) : value instanceof Array ? (
@@ -621,9 +623,9 @@ const PipeLine: React.FC = () => {
                 filteredResults?.["s=SP2_PIT_04_MAE_TM"]?.[length - 1]?.y,
               pumps: ["P01", "P02", "P03"],
               "Running state": [
-                filteredResults?.["s=SP2_M01_TM_TLC"]?.[length - 1]?.y,
-                filteredResults?.["s=SP2_M02_TM_TLC"]?.[length - 1]?.y,
-                filteredResults?.["s=SP2_M03_TM_TLC"]?.[length - 1]?.y,
+                filteredResults?.["s=SP2_M01_RM_TS"]?.[length - 1]?.y,
+                filteredResults?.["s=SP2_M02_RM_TS"]?.[length - 1]?.y,
+                filteredResults?.["s=SP2_M03_RM_TS"]?.[length - 1]?.y,
               ],
               Pression: [
                 filteredResults?.["s=SP2_PIT_01_MAE_TM"]?.[length - 1]?.y,
@@ -646,9 +648,9 @@ const PipeLine: React.FC = () => {
                 filteredResults?.["s=SP3_PIT_04_MAE_TM"]?.[length - 1]?.y,
               pumps: ["P01", "P02", "P03"],
               "Running state": [
-                filteredResults?.["s=SP3_M01_TM_TLC"]?.[length - 1]?.y,
-                filteredResults?.["s=SP3_M02_TM_TLC"]?.[length - 1]?.y,
-                filteredResults?.["s=SP3_M03_TM_TLC"]?.[length - 1]?.y,
+                filteredResults?.["s=SP3_M01_RM_TS"]?.[length - 1]?.y,
+                filteredResults?.["s=SP3_M02_RM_TS"]?.[length - 1]?.y,
+                filteredResults?.["s=SP3_M03_RM_TS"]?.[length - 1]?.y,
               ],
               Pression: [
                 filteredResults?.["s=SP3_PIT_01_MAE_TM"]?.[length - 1]?.y,
@@ -671,9 +673,9 @@ const PipeLine: React.FC = () => {
                 filteredResults?.["s=SP4_PIT_04_MAE_TM"]?.[length - 1]?.y,
               pumps: ["P01", "P02", "P03"],
               "Running state": [
-                filteredResults?.["s=SP4_M01_TM_TLC"]?.[length - 1]?.y,
-                filteredResults?.["s=SP4_M02_TM_TLC"]?.[length - 1]?.y,
-                filteredResults?.["s=SP4_M03_TM_TLC"]?.[length - 1]?.y,
+                filteredResults?.["s=SP4_M01_RM_TS"]?.[length - 1]?.y,
+                filteredResults?.["s=SP4_M02_RM_TS"]?.[length - 1]?.y,
+                filteredResults?.["s=SP4_M03_RM_TS"]?.[length - 1]?.y,
               ],
               Pression: [
                 filteredResults?.["s=SP4_PIT_01_MAE_TM"]?.[length - 1]?.y,
@@ -696,9 +698,9 @@ const PipeLine: React.FC = () => {
                 filteredResults?.["s=SP5_PIT_04_MAE_TM"]?.[length - 1]?.y,
               pumps: ["P01", "P02", "P03"],
               "Running state": [
-                filteredResults?.["s=SP5_M01_TM_TLC"]?.[length - 1]?.y,
-                filteredResults?.["s=SP5_M02_TM_TLC"]?.[length - 1]?.y,
-                filteredResults?.["s=SP5_M03_TM_TLC"]?.[length - 1]?.y,
+                filteredResults?.["s=SP5_M01_RM_TS"]?.[length - 1]?.y,
+                filteredResults?.["s=SP5_M02_RM_TS"]?.[length - 1]?.y,
+                filteredResults?.["s=SP5_M03_RM_TS"]?.[length - 1]?.y,
               ],
               Pression: [
                 filteredResults?.["s=SP5_PIT_01_MAE_TM"]?.[length - 1]?.y,
@@ -721,9 +723,9 @@ const PipeLine: React.FC = () => {
                 filteredResults?.["s=SP6_PIT_04_MAE_TM"]?.[length - 1]?.y,
               pumps: ["P01", "P02", "P03"],
               "Running state": [
-                filteredResults?.["s=SP6_M01_TM_TLC"]?.[length - 1]?.y,
-                filteredResults?.["s=SP6_M02_TM_TLC"]?.[length - 1]?.y,
-                filteredResults?.["s=SP6_M03_TM_TLC"]?.[length - 1]?.y,
+                filteredResults?.["s=SP6_M01_RM_TS"]?.[length - 1]?.y,
+                filteredResults?.["s=SP6_M02_RM_TS"]?.[length - 1]?.y,
+                filteredResults?.["s=SP6_M03_RM_TS"]?.[length - 1]?.y,
               ],
               Pression: [
                 filteredResults?.["s=SP6_PIT_01_MAE_TM"]?.[length - 1]?.y,
@@ -746,9 +748,9 @@ const PipeLine: React.FC = () => {
                 filteredResults?.["s=SP7_PIT_04_MAE_TM"]?.[length - 1]?.y,
               pumps: ["P01", "P02", "P03"],
               "Running state": [
-                filteredResults?.["s=SP7_M01_TM_TLC"]?.[length - 1]?.y,
-                filteredResults?.["s=SP7_M02_TM_TLC"]?.[length - 1]?.y,
-                filteredResults?.["s=SP7_M03_TM_TLC"]?.[length - 1]?.y,
+                filteredResults?.["s=SP7_M01_RM_TS"]?.[length - 1]?.y,
+                filteredResults?.["s=SP7_M02_RM_TS"]?.[length - 1]?.y,
+                filteredResults?.["s=SP7_M03_RM_TS"]?.[length - 1]?.y,
               ],
               Pression: [
                 filteredResults?.["s=SP7_PIT_01_MAE_TM"]?.[length - 1]?.y,
@@ -771,9 +773,9 @@ const PipeLine: React.FC = () => {
                 filteredResults?.["s=SP8_PIT_04_MAE_TM"]?.[length - 1]?.y,
               pumps: ["P01", "P02", "P03"],
               "Running state": [
-                filteredResults?.["s=SP8_M01_TM_TLC"]?.[length - 1]?.y,
-                filteredResults?.["s=SP8_M02_TM_TLC"]?.[length - 1]?.y,
-                filteredResults?.["s=SP8_M03_TM_TLC"]?.[length - 1]?.y,
+                filteredResults?.["s=SP8_M01_RM_TS"]?.[length - 1]?.y,
+                filteredResults?.["s=SP8_M02_RM_TS"]?.[length - 1]?.y,
+                filteredResults?.["s=SP8_M03_RM_TS"]?.[length - 1]?.y,
               ],
               Pression: [
                 filteredResults?.["s=SP8_PIT_01_MAE_TM"]?.[length - 1]?.y,
