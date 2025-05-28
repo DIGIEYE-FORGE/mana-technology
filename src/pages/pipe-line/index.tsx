@@ -83,7 +83,7 @@ const ATTRIBUTE_UNITS: Record<string, string> = {
   "Flow output": "(L/s)",
   "delta flow": "(L/s)",
   "pression output": "(bar)",
-  "Pression": "(bar)",
+  Pression: "(bar)",
 };
 
 const createPositionStyle = (position: Position): React.CSSProperties => {
@@ -118,7 +118,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
       style={createPositionStyle(point.position)}
       onClick={() => onPointClick(point.id)}
     >
-      {showCard && Object.values(point?.card?.attributes || {}).length > 3 && (
+      {showCard && Object?.values(point?.card?.attributes || {}).length > 3 && (
         <div
           className={cn(
             "absolute z-10 min-h-[10rem] min-w-[21rem] max-w-fit scale-[0.8] p-4 pr-6",
@@ -202,7 +202,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
               </div>
 
               <div className="flex flex-1 flex-col gap-1">
-                {Object.entries(point.card.attributes)?.map(([key, value]) => (
+                {Object?.entries(point.card.attributes)?.map(([key, value]) => (
                   <div key={key} className="flex justify-between">
                     <span className="text-xs text-gray-400">
                       {key} {ATTRIBUTE_UNITS[key] ? ATTRIBUTE_UNITS[key] : ""}
@@ -527,16 +527,12 @@ const PipeLine: React.FC = () => {
     },
   ];
 
-  const { isLoading } = useSWR(
-    `dpc-history/api/historyz`,
+  const { isLoading, isValidating } = useSWR(
+    `dpc-history/api/history`,
     async () => {
       const res = await backendApi.findMany("dpc-history/api/history", {
         where: {
           serial: "JHF455XKPCH6DBLH",
-          // createdAt: {
-          //   $gt: new Date(Date.now() - 1 * 60 * 60 * 1000),
-          //   // Last 24 hours
-          // },
         },
         pagination: {
           page: 1,
@@ -551,7 +547,7 @@ const PipeLine: React.FC = () => {
 
         const filteredResults = data?.results?.reduce(
           (acc: Record<string, any>, item: any) => {
-            Object.entries(item).forEach(([key, value]) => {
+            Object?.entries(item).forEach(([key, value]) => {
               if (
                 [
                   "deviceId",
@@ -811,11 +807,11 @@ const PipeLine: React.FC = () => {
         setWidgetData([
           {
             title: "Pumped Volume",
-            value: filteredResults?.["s=B_FIT_02_TOT_MES_TM"],
+            value: filteredResults?.["s=B_FIT_02_TOT_MES_TM"]?.[length - 1]?.y,
           },
           {
             title: "Flow Rate",
-            value: filteredResults?.["s=B_FIT_02_MAE_TM"],
+            value: filteredResults?.["s=B_FIT_02_MAE_TM"]?.[length - 1]?.y,
           },
         ]);
 
@@ -1195,7 +1191,9 @@ const PipeLine: React.FC = () => {
       socket.close();
     };
   }, []);
+  console.log("pipelinepage");
   const [activePoint, setActivePoint] = useState<string | null>(null);
+
   return (
     <main
       className="relative flex flex-col text-foreground"
@@ -1241,7 +1239,7 @@ const PipeLine: React.FC = () => {
           <div className="relative h-1 flex-1 pr-[6rem]">
             <div className="relative h-full px-8 pb-6 pt-[3rem]">
               <PipeLineSvg className="h-full w-full" />
-              {isLoading ? (
+              {isLoading || isValidating ? (
                 <div className="absolute inset-0 flex items-center justify-center">
                   <Loader className="size-[4rem] animate-spin text-white" />
                 </div>
