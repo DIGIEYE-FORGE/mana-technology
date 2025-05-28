@@ -266,7 +266,7 @@ const data = [
   {
     type: "link",
     image: "screen1.svg",
-    to: "/jaw-crusher",
+    to: "/pebble-crusher",
     position: {
       bottom: "71%",
       right: "38%",
