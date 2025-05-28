@@ -218,9 +218,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                                 backgroundColor:
                                   state === "True" ? "#26E2B3" : "#FF0000",
                               }}
-                            >
-                              {JSON.stringify(state)}
-                            </div>
+                            ></div>
                           ))}
                         </div>
                       ) : value instanceof Array ? (
