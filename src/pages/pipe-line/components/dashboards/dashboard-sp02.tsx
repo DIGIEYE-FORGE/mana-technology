@@ -98,7 +98,7 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
         <div className="flex w-full flex-1 gap-[2rem]">
           <div className="flex flex-1 flex-col gap-[0.5rem] [&>*]:flex-1">
             <Card className="flex h-[202px] flex-col">
-              <div className="px-4 pt-3 text-sm font-bold text-white">
+              <div className="px-4 pt-3 text-[14px] font-bold text-white">
                 Flows
               </div>
               <div className="flex-1 pl-2 pr-2">
@@ -162,7 +162,7 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
               </div>
             </Card>
             <Card className="flex h-[202px] flex-col">
-              <div className="p-4 pb-0 text-sm font-bold text-white">
+              <div className="p-4 pb-0 text-[14px] font-bold text-white">
                 Presures
               </div>
               <div className="flex-1 pl-2 pr-2">
@@ -234,7 +234,7 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
               </div>
             </Card>
             <Card className="flex h-[202px] flex-col">
-              <div className="p-4 pb-0 text-sm font-bold text-white">Level</div>
+              <div className="p-4 pb-0 text-[14px] font-bold text-white">Level</div>
               <div className="flex-1 pl-2 pr-2">
                 <ReactApexChart
                   height={"100%"}
@@ -344,7 +344,7 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
               </div>
             </Card>
             <Card className="flex h-[202px] flex-col gap-1 p-4">
-              <div className="text-sm font-bold text-white">
+              <div className="text-[14px] font-bold text-white">
                 Pumps ring state
               </div>
               <div className="flex flex-1 flex-col justify-center gap-0">

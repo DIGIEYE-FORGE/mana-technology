@@ -68,7 +68,7 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
             key={index}
             className="flex flex-col items-center justify-center"
           >
-            <span className="text-lg font-bold">{item.name}</span>
+            <span className="text-[14px] font-bold">{item.name}</span>
             <div className="flex w-full gap-2">
               {item.data.map((dataItem, dataIndex) => (
                 <div key={dataIndex} className="flex w-full flex-col">
@@ -228,7 +228,7 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
           </Card>
           <Card className="flex h-[22%] min-h-0 flex-1 flex-col">
             <div className="relative flex items-center justify-between p-0 px-4 pt-2">
-              <span className="font-medium text-white">Chlore</span>
+              <span className="text-[14px] font-bold text-white">Chlore</span>
               <div className="absolute right-4 flex gap-2 text-xs">
                 <span className="rounded-full border border-white bg-[#021E3F] px-3 py-1 text-white">
                   Input {data.chloreInput?.at(-1)?.y ?? "XX"}
@@ -313,7 +313,7 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
             />
           </Card>
           <Card className="flex min-h-0 flex-1 flex-col">
-            <span className="mb-2 p-2 text-lg font-bold text-white">
+            <span className="mb-2 p-2 text-[14px] font-bold text-white">
               Chlore Station
             </span>
             <div className="flex min-h-0 flex-1 items-center justify-center gap-0">

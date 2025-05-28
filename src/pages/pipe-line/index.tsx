@@ -443,7 +443,7 @@ const PipeLine: React.FC = () => {
         align: "center",
         sideOffset: -300,
         dashboard: {
-          title: "SP05 Dashboard",
+          title: "SP2 Dashboard",
           component: <DashboardSP02 data={dataHistory?.SP2} />,
         },
       },
@@ -464,7 +464,7 @@ const PipeLine: React.FC = () => {
         align: "start",
         sideOffset: 0,
         dashboard: {
-          title: "SP08 Dashboard",
+          title: "SP3 Dashboard",
           component: <DashboardSP02 data={dataHistory?.SP3} />,
         },
       },
@@ -485,7 +485,7 @@ const PipeLine: React.FC = () => {
         align: "center",
         sideOffset: 0,
         dashboard: {
-          title: "SP06 Dashboard",
+          title: "SP4 Dashboard",
           component: <DashboardSP02 data={dataHistory?.SP4} />,
         },
       },
@@ -506,7 +506,7 @@ const PipeLine: React.FC = () => {
         align: "center",
         sideOffset: 0,
         dashboard: {
-          title: "SP07 Dashboard",
+          title: "SP5 Dashboard",
           component: <DashboardSP02 data={dataHistory?.SP5} />,
         },
       },

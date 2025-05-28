@@ -25,187 +25,54 @@ const valuesData = [
   { id: 6, name: "I3", value: "XX" },
 ];
 
-const progressDataLine = [
-  {
-    id: 1,
-    title: "P1",
-    data: [
-      {
-        min: 0,
-        max: 70,
-        color: "#26E2B3",
-      },
-      {
-        min: 70,
-        max: 85,
-        color: "#E64C3C",
-      },
-      {
-        min: 85,
-        max: 100,
-        color: "#26E2B3",
-      },
-    ],
-    value: "XX",
-    unite: "Hrs",
-  },
-  {
-    id: 2,
-    title: "P2",
-    data: [
-      {
-        min: 0,
-        max: 100,
-        color: "#26E2B3",
-      },
-    ],
-    value: "XX",
-    unite: "Hrs",
-  },
-  {
-    id: 3,
-    title: "P3",
-    data: [
-      {
-        min: 0,
-        max: 100,
-        color: "#26E2B3",
-      },
-    ],
-    value: "XX",
-    unite: "Hrs",
-  },
-];
-
-// const flowsInputData = [
-//   { x: 1, y: 55 },
-//   { x: 3, y: 60 },
-//   { x: 5, y: 70 },
-//   { x: 7, y: 65 },
-//   { x: 9, y: 100 },
-//   { x: 11, y: 80 },
-//   { x: 13, y: 75 },
-//   { x: 15, y: 95 },
-//   { x: 17, y: 100 },
-//   { x: 19, y: 90 },
-//   { x: 21, y: 95 },
-// ];
-// const flowsOutputData = [
-//   { x: 1, y: 70 },
-//   { x: 3, y: 50 },
-//   { x: 5, y: 60 },
-//   { x: 7, y: 80 },
-//   { x: 9, y: 90 },
-//   { x: 11, y: 100 },
-//   { x: 13, y: 60 },
-//   { x: 15, y: 70 },
-//   { x: 17, y: 95 },
-//   { x: 19, y: 60 },
-//   { x: 21, y: 90 },
-// ];
-
-// const pressuresData = {
-//   Output: [
-//     { x: 1, y: 80 },
-//     { x: 3, y: 85 },
-//     { x: 5, y: 90 },
-//     { x: 7, y: 95 },
-//     { x: 9, y: 100 },
-//     { x: 11, y: 90 },
-//     { x: 13, y: 95 },
-//     { x: 15, y: 100 },
-//     { x: 17, y: 90 },
-//     { x: 19, y: 95 },
-//     { x: 21, y: 100 },
-//   ],
-//   P1: [
-//     { x: 1, y: 20 },
-//     { x: 3, y: 40 },
-//     { x: 5, y: 60 },
-//     { x: 7, y: 50 },
-//     { x: 9, y: 70 },
-//     { x: 11, y: 40 },
-//     { x: 13, y: 30 },
-//     { x: 15, y: 60 },
-//     { x: 17, y: 80 },
-//     { x: 19, y: 60 },
-//     { x: 21, y: 70 },
-//   ],
-//   P2: [
-//     { x: 1, y: 60 },
-//     { x: 3, y: 70 },
-//     { x: 5, y: 80 },
-//     { x: 7, y: 90 },
-//     { x: 9, y: 80 },
-//     { x: 11, y: 100 },
-//     { x: 13, y: 90 },
-//     { x: 15, y: 80 },
-//     { x: 17, y: 100 },
-//     { x: 19, y: 90 },
-//     { x: 21, y: 80 },
-//   ],
-//   P3: [
-//     { x: 1, y: 40 },
-//     { x: 3, y: 60 },
-//     { x: 5, y: 50 },
-//     { x: 7, y: 70 },
-//     { x: 9, y: 60 },
-//     { x: 11, y: 50 },
-//     { x: 13, y: 40 },
-//     { x: 15, y: 60 },
-//     { x: 17, y: 80 },
-//     { x: 19, y: 70 },
-//     { x: 21, y: 60 },
-//   ],
-// };
-
-// const levelData = [
-//   { x: 1, y: 10 },
-//   { x: 3, y: 40 },
-//   { x: 5, y: 35 },
-//   { x: 7, y: 50 },
-//   { x: 9, y: 30 },
-//   { x: 11, y: 55 },
-//   { x: 13, y: 40 },
-//   { x: 15, y: 60 },
-//   { x: 17, y: 90 },
-//   { x: 19, y: 25 },
-//   { x: 21, y: 50 },
-// ];
-
-// const chloreInputData = [
-//   { x: 1, y: 20 },
-//   { x: 3, y: 30 },
-//   { x: 5, y: 40 },
-//   { x: 7, y: 35 },
-//   { x: 9, y: 50 },
-//   { x: 11, y: 70 },
-//   { x: 13, y: 45 },
-//   { x: 15, y: 60 },
-//   { x: 17, y: 80 },
-//   { x: 19, y: 40 },
-//   { x: 21, y: 65 },
-// ];
-// const chloreOutputData = [
-//   { x: 1, y: 30 },
-//   { x: 3, y: 40 },
-//   { x: 5, y: 50 },
-//   { x: 7, y: 60 },
-//   { x: 9, y: 70 },
-//   { x: 11, y: 90 },
-//   { x: 13, y: 60 },
-//   { x: 15, y: 70 },
-//   { x: 17, y: 75 },
-//   { x: 19, y: 60 },
-//   { x: 21, y: 70 },
-// ];
-
 interface DashboardSP01Props {
   data: any;
 }
 
 export function DashboardSP01({ data }: DashboardSP01Props) {
   console.log({ data });
+
+  const progressDataLine = [
+    {
+      id: 1,
+      title: "P1",
+      data: [
+        {
+          min: 0,
+          max: 100,
+          color: data.runningStateP1 ? "#26E2B3" : "#E64C3C",
+        },
+      ],
+      value: "XX",
+      unite: "Hrs",
+    },
+    {
+      id: 2,
+      title: "P2",
+      data: [
+        {
+          min: 0,
+          max: 100,
+          color: data.runningStateP2 ? "#26E2B3" : "#E64C3C",
+        },
+      ],
+      value: "XX",
+      unite: "Hrs",
+    },
+    {
+      id: 3,
+      title: "P3",
+      data: [
+        {
+          min: 0,
+          max: 100,
+          color: data.runningStateP3 ? "#26E2B3" : "#E64C3C",
+        },
+      ],
+      value: "XX",
+      unite: "Hrs",
+    },
+  ];
 
   return (
     <SWRConfig
@@ -276,6 +143,7 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                     style: {
                       fontSize: "14px",
                       color: "#ffffff",
+
                     },
                   },
                   stroke: {
@@ -414,7 +282,7 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                     theme: "dark",
                   },
                   title: {
-                    text: "Presures",
+                    text: "Pressures",
                     align: "left",
                     style: {
                       fontSize: "14px",
@@ -474,7 +342,7 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
           </Card>
 
           {/* Row 2, Col 2 - Energy and Power section */}
-          <Card className="flex h-full items-center gap-2 p-4">
+          <Card className="flex h-full items-center gap-2 p-4 opacity-50">
             <div className="flex h-full w-[6rem] flex-col items-center justify-between py-4">
               <span className="text-xl font-bold">Energy</span>
               <div className="flex flex-col items-center">
@@ -506,7 +374,7 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
           </Card>
 
           {/* Row 3, Col 1 - Level Chart */}
-          <Card className="flex h-[180px] flex-col overflow-hidden">
+          <Card className="flex h-[180px] flex-col">
             {/* <div className="m-0 flex p-0 px-4 pt-2">
               <span className="font-medium text-white">Level</span>
             </div> */}
@@ -540,7 +408,7 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                     theme: "dark",
                   },
                   title: {
-                    text: "level",
+                    text: "Level",
                     align: "left",
                     style: {
                       fontSize: "14px",
@@ -589,8 +457,8 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
 
           {/* Row 3, Col 2 - Pumps ring state bars */}
           <Card className="flex h-full flex-col gap-0 p-2">
-            <span className="text-sm font-bold text-white">
-              Pumps ring state
+            <span className="text-[14px] font-bold text-white">
+              Pumps running state
             </span>
             <div className="flex flex-1 flex-col justify-center gap-0">
               {progressDataLine.map((item) => (
@@ -609,7 +477,7 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
           {/* Row 4, Col 1 - Chlore Chart */}
           <Card className="flex h-full flex-col">
             <div className="relative m-0 flex items-center justify-between p-0 px-4 pt-2">
-              <span className="font-medium text-white">Clore</span>
+              <span className="text-[14px] font-bold text-white">Chlorine</span>
               <div className="absolute right-4 flex gap-2 text-xs">
                 <span className="rounded-full border border-white bg-[#021E3F] px-3 py-1 text-white">
                   Input XX
@@ -682,7 +550,7 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
 
           {/* Row 4, Col 2 - Chlore Station */}
           <Card className="flex h-full flex-col gap-0 p-4">
-            <span className="text-xl font-bold">Chlore Station</span>
+            <span className="text-[14px] font-bold">Chlorine Stations</span>
             <div className="flex items-center justify-center gap-8">
               <ChloreSVG
                 topTitle={data.chloreStationH1 || "SP01-M-02"}
