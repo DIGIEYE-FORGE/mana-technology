@@ -8,6 +8,7 @@ import ChloreSVG from "../chlore";
 import HammerArrestorSVG from "@/assets/hammer-svg.svg?react";
 // import SuctionTankSVG from "@/assets/suction-svg.svg?react";
 import ReactApexChart from "react-apexcharts";
+import { SWRConfig } from "swr";
 
 const Data = [
   { id: 1, name: "Flow rate", key: "flowRate" },
@@ -207,7 +208,12 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
   console.log({ data });
 
   return (
-    <>
+    <SWRConfig
+      value={{
+        revalidateOnFocus: false,
+        revalidateOnReconnect: false,
+      }}
+    >
       {/* Top metrics bar */}
       <div className="absolute right-[1rem] top-[12%] flex gap-4">
         {Data.map((item) => (
@@ -696,6 +702,6 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
           </Card>
         </div>
       </div>
-    </>
+    </SWRConfig>
   );
 }
