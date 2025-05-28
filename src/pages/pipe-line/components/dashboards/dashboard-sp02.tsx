@@ -17,12 +17,12 @@ const Data = [
 ];
 
 const valuesData = [
-  { id: 1, name: "V1", value: "0" },
-  { id: 2, name: "V2", value: "0" },
-  { id: 3, name: "V3", value: "0" },
-  { id: 4, name: "I1", value: "0" },
-  { id: 5, name: "I2", value: "0" },
-  { id: 6, name: "I3", value: "0" },
+  { id: 1, name: "V1", value: "00" },
+  { id: 2, name: "V2", value: "00" },
+  { id: 3, name: "V3", value: "00" },
+  { id: 4, name: "I1", value: "00" },
+  { id: 5, name: "I2", value: "00" },
+  { id: 6, name: "I3", value: "00" },
 ];
 
 const progressDataLine = [
@@ -85,7 +85,7 @@ interface DashboardSP02Props {
 export function DashboardSP02({ data }: DashboardSP02Props) {
   return (
     <>
-      <div className="absolute right-[1rem] top-[13%] flex gap-4">
+      <div className="debug absolute right-[1rem] top-[13%] flex gap-4">
         {Data.map((item) => (
           <div
             key={item.id}
@@ -107,6 +107,9 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                   height={"100%"}
                   options={{
                     chart: {
+                      animations: {
+                        enabled: false, // Disable animations for smoother performance
+                      },
                       type: "line",
                       zoom: {
                         enabled: false,
@@ -171,6 +174,9 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                   height={"100%"}
                   options={{
                     chart: {
+                      animations: {
+                        enabled: false, // Disable animations for smoother performance
+                      },
                       type: "line",
                       zoom: {
                         enabled: false,
@@ -268,6 +274,9 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                   height={"100%"}
                   options={{
                     chart: {
+                      animations: {
+                        enabled: false, // Disable animations for smoother performance
+                      },
                       type: "line",
                       zoom: {
                         enabled: false,

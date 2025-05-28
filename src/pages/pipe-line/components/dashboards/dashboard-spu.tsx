@@ -57,12 +57,22 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
         },
       ],
     },
+    {
+      name: "trubidité",
+      data: [
+        {
+          name: "trubidité",
+          value: data.trubidite || 0,
+          key: "trubidite",
+        },
+      ],
+    },
   ];
 
   return (
     <div className="relative mb-8 flex h-full min-h-0 flex-1 flex-col overflow-hidden pl-12 pr-6">
       {/* Summary bar */}
-      <div className="mb-6 ml-auto grid w-full max-w-[60rem] grid-cols-3 grid-rows-1 gap-2">
+      <div className="mb-6 ml-auto grid w-full max-w-[60rem] grid-cols-4 grid-rows-1 gap-2">
         {res.map((item, index) => (
           <div
             key={index}
@@ -97,6 +107,9 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                 options={{
                   chart: {
                     type: "line",
+                    animations: {
+                      enabled: false, // Disable animations for smoother performance
+                    },
                     zoom: {
                       enabled: false,
                     },

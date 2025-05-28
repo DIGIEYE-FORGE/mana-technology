@@ -561,7 +561,7 @@ const PipeLine: React.FC = () => {
         },
         pagination: {
           page: 1,
-          perPage: 1000,
+          perPage: 10,
         },
       });
       return res;

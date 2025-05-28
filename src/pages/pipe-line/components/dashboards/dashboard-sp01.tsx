@@ -14,15 +14,16 @@ const Data = [
   { id: 1, name: "Flow rate", key: "flowRate" },
   { id: 2, name: "Δt Flow", key: "deltaFlow" },
   { id: 3, name: "Pumped volume ", key: "pumpedVolume" },
+  { id: 4, name: "trubidite", key: "trubidite" },
 ];
 
 const valuesData = [
-  { id: 1, name: "V1", value: "XX" },
-  { id: 2, name: "V2", value: "XX" },
-  { id: 3, name: "V3", value: "XX" },
-  { id: 4, name: "I1", value: "XX" },
-  { id: 5, name: "I2", value: "XX" },
-  { id: 6, name: "I3", value: "XX" },
+  { id: 1, name: "V1", value: "00" },
+  { id: 2, name: "V2", value: "00" },
+  { id: 3, name: "V3", value: "00" },
+  { id: 4, name: "I1", value: "00" },
+  { id: 5, name: "I2", value: "00" },
+  { id: 6, name: "I3", value: "00" },
 ];
 
 interface DashboardSP01Props {
@@ -77,19 +78,19 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
   return (
     <>
       {/* Top metrics bar */}
-      <div className="debug absolute right-[1rem] top-[12%] flex gap-4">
+      <div className="absolute right-[1rem] top-[12%] flex gap-4">
         {Data.map((item) => (
           <div
             key={item.id}
             className="rounded-md border-2 border-white bg-[#021E3F] p-2 px-4 text-white backdrop-blur-md"
           >
-            {item.name} {Number(data[item.key])?.toFixed(2) || "0"}
+            {item.name} {Number(data[item.key] || 0)?.toFixed(2) || "0"}
           </div>
         ))}
       </div>
 
       {/* Main dashboard content */}
-      <div className="relative mr-4 flex h-full min-h-0 min-w-0 flex-1 gap-4 overflow-hidden py-4 pl-12 pr-4">
+      <div className="debug relative mr-4 flex h-full min-h-0 min-w-0 flex-1 gap-4 overflow-hidden py-4 pl-12 pr-4">
         {/* {JSON.stringify(data)} */}
         {/* 2 columns × 4 rows grid layout */}
         <div className="grid h-full min-h-0 w-full min-w-0 flex-1 grid-cols-2 grid-rows-4 gap-4">
@@ -122,6 +123,9 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                   chart: {
                     height: 200,
                     type: "line",
+                    animations: {
+                      enabled: false, // Disable animations for smoother performance
+                    },
                     zoom: {
                       enabled: false,
                     },
@@ -131,9 +135,15 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                   },
                   tooltip: {
                     theme: "dark",
+                    // add (l/s) to the tooltip values
+                    y: {
+                      formatter: (value: any) => {
+                        return `${value} l/s`;
+                      },
+                    },
                   },
                   title: {
-                    text: "Flows",
+                    text: "Flows  (l/s)",
                     align: "left",
                     style: {
                       fontSize: "14px",
@@ -158,6 +168,10 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                       style: {
                         colors: "#A2B0B8",
                       },
+                      // add (l/s) to the x-axis labels
+                      // formatter: (value: any) => {
+                      //   return `${value} l/s`;
+                      // },
                     },
                     type: "datetime",
                   },
@@ -228,9 +242,9 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
 
           {/* Row 2, Col 1 - Pressures Chart */}
           <Card className="flex h-full flex-col">
-            <div className="px-4 pt-3 text-sm font-bold text-white">
+            {/* <div className="px-4 pt-3 text-sm font-bold text-white">
               Presures
-            </div>
+            </div> */}
             <div className="flex-1 pl-2 pr-2">
               {/* <LineChartWidget
                 attributes={{
@@ -267,6 +281,9 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                 options={{
                   chart: {
                     height: 200,
+                    animations: {
+                      enabled: false, // Disable animations for smoother performance
+                    },
                     type: "line",
                     zoom: {
                       enabled: false,
@@ -275,11 +292,17 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                       show: false,
                     },
                   },
+
                   tooltip: {
                     theme: "dark",
+                    y: {
+                      formatter: (value: any) => {
+                        return `${Number(value).toFixed(2)} (bar)`;
+                      },
+                    },
                   },
                   title: {
-                    text: "Pressures",
+                    text: "Pressures (bar)",
                     align: "left",
                     style: {
                       fontSize: "14px",
@@ -307,42 +330,51 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                     },
                     type: "datetime",
                   },
-                  yaxis: [
-                    {
-                      // Axe Y gauche pour Output
-                      seriesName: "Output",
-                      labels: {
-                        style: {
-                          colors: "#A2B0B8",
-                        },
+                  yaxis: {
+                    min: 30,
+                    labels: {
+                      style: {
+                        colors: "#A2B0B8",
                       },
-                      title: {
-                        text: "Output",
-                        style: {
-                          color: "#E4A0F5",
-                        },
-                      },
-                      decimalsInFloat: 2,
                     },
-                    {
-                      // Axe Y droit pour P1, P2, P3
-                      seriesName: "P1",
-                      opposite: true,
-                      labels: {
-                        style: {
-                          colors: "#A2B0B8",
-                        },
-                      },
-                      title: {
-                        text: "P1, P2, P3",
-                        style: {
-                          color: "#A2B0B8",
-                        },
-                      },
-                      decimalsInFloat: 2,
-                      show: true,
-                    },
-                  ],
+                    decimalsInFloat: 0,
+                  },
+                  // yaxis: [
+                  //   {
+                  //     // Axe Y gauche pour Output
+                  //     seriesName: "Output",
+                  //     labels: {
+                  //       style: {
+                  //         colors: "#A2B0B8",
+                  //       },
+                  //     },
+                  //     title: {
+                  //       text: "Output",
+                  //       style: {
+                  //         color: "#E4A0F5",
+                  //       },
+                  //     },
+                  //     decimalsInFloat: 2,
+                  //   },
+                  //   {
+                  //     // Axe Y droit pour P1, P2, P3
+                  //     seriesName: "P1",
+                  //     opposite: true,
+                  //     labels: {
+                  //       style: {
+                  //         colors: "#A2B0B8",
+                  //       },
+                  //     },
+                  //     title: {
+                  //       text: "P1, P2, P3",
+                  //       style: {
+                  //         color: "#A2B0B8",
+                  //       },
+                  //     },
+                  //     decimalsInFloat: 2,
+                  //     show: true,
+                  //   },
+                  // ],
                 }}
                 series={[
                   {
@@ -371,14 +403,14 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
             <div className="flex h-full w-[6rem] flex-col items-center justify-between py-4">
               <span className="text-xl font-bold">Energy</span>
               <div className="flex flex-col items-center">
-                <span className="text-bold text-4xl">XX</span>
+                <span className="text-bold text-4xl">00</span>
                 <span className="text-md"> KwH</span>
               </div>
             </div>
             <div className="flex min-h-[10rem] w-full flex-1 flex-col items-center justify-center gap-4">
               <span className="text-2xl font-bold">Power</span>
               <CircularGauge
-                value={50}
+                value={0}
                 maxValue={100}
                 size={200}
                 width={200}
@@ -421,6 +453,9 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                 height={"100%"}
                 options={{
                   chart: {
+                    animations: {
+                      enabled: false, // Disable animations for smoother performance
+                    },
                     type: "line",
                     zoom: {
                       enabled: false,
@@ -431,9 +466,14 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                   },
                   tooltip: {
                     theme: "dark",
+                    y: {
+                      formatter: (value: any) => {
+                        return `${Number(value).toFixed(0)} (%)`;
+                      },
+                    },
                   },
                   title: {
-                    text: "Level",
+                    text: "Level (%)",
                     align: "left",
                     style: {
                       fontSize: "14px",
@@ -462,18 +502,23 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                     type: "datetime",
                   },
                   yaxis: {
+                    min: 0,
+                    max: 100,
                     labels: {
                       style: {
                         colors: "#A2B0B8",
                       },
                     },
-                    decimalsInFloat: 2,
+                    decimalsInFloat: 0,
                   },
                 }}
                 series={[
                   {
                     name: "level",
-                    data: data.level || [],
+                    data: data.level.map((item: { x: string; y: number }) => ({
+                      x: item.x,
+                      y: (item.y / 5) * 100,
+                    })),
                   },
                 ]}
               />
@@ -502,7 +547,9 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
           {/* Row 4, Col 1 - Chlore Chart */}
           <Card className="flex h-full flex-col">
             <div className="relative m-0 flex items-center justify-between p-0 px-4 pt-2">
-              <span className="text-[14px] font-bold text-white">Chlorine</span>
+              <span className="text-[14px] font-bold text-white">
+                Chlorine (mg/l)
+              </span>
               <div className="absolute right-4 flex gap-2 text-xs">
                 <span className="rounded-full border border-white bg-[#021E3F] px-3 py-1 text-white">
                   Input XX
@@ -517,6 +564,9 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                 height={"100%"}
                 options={{
                   chart: {
+                    animations: {
+                      enabled: false, // Disable animations for smoother performance
+                    },
                     type: "line",
                     zoom: {
                       enabled: false,
@@ -527,6 +577,11 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                   },
                   tooltip: {
                     theme: "dark",
+                    y: {
+                      formatter: (value: any) => {
+                        return `${Number(value).toFixed(2)} (mg/l)`;
+                      },
+                    },
                   },
 
                   stroke: {
