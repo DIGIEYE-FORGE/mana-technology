@@ -524,7 +524,7 @@ const PipeLine: React.FC = () => {
       image: "/lines-images/sp5.png",
       model: {
         dashboard: {
-          title: "SPU",
+          title: "Basin",
           component: <DashboardSPU data={dataHistory?.SP6} />,
         },
       },
@@ -673,14 +673,14 @@ const PipeLine: React.FC = () => {
                 filteredResults?.["s=SP4_FIT_02_MAE_TM"]?.[length - 1]?.y,
               "delta flow":
                 +filteredResults?.["s=SP4_FIT_02_MAE_TM"]?.[length - 1]?.y -
-                +filteredResults?.["s=SP4_FIT_02_MAE_TM"]?.[length - 1]?.y,
+                +filteredResults?.["s=SP4_FIT_01_MAE_TM"]?.[length - 1]?.y,
               "pression output":
                 filteredResults?.["s=SP4_PIT_04_MAE_TM"]?.[length - 1]?.y,
               pumps: ["P01", "P02", "P03"],
               "Running state": [
-                filteredResults?.["s=SP4_M01_RM_TS"]?.[length - 1]?.y,
-                filteredResults?.["s=SP4_M02_RM_TS"]?.[length - 1]?.y,
-                filteredResults?.["s=SP4_M03_RM_TS"]?.[length - 1]?.y,
+                filteredResults?.["s=SP4_M01_TM_TLC"]?.[length - 1]?.y,
+                filteredResults?.["s=SP4_M02_TM_TLC"]?.[length - 1]?.y,
+                filteredResults?.["s=SP4_M03_TM_TLC"]?.[length - 1]?.y,
               ],
               Pression: [
                 filteredResults?.["s=SP4_PIT_01_MAE_TM"]?.[length - 1]?.y,
@@ -698,14 +698,14 @@ const PipeLine: React.FC = () => {
                 filteredResults?.["s=SP5_FIT_02_MAE_TM"]?.[length - 1]?.y,
               "delta flow":
                 +filteredResults?.["s=SP5_FIT_02_MAE_TM"]?.[length - 1]?.y -
-                +filteredResults?.["s=SP5_FIT_02_MAE_TM"]?.[length - 1]?.y,
+                +filteredResults?.["s=SP5_FIT_01_MAE_TM"]?.[length - 1]?.y,
               "pression output":
                 filteredResults?.["s=SP5_PIT_04_MAE_TM"]?.[length - 1]?.y,
               pumps: ["P01", "P02", "P03"],
               "Running state": [
-                filteredResults?.["s=SP5_M01_RM_TS"]?.[length - 1]?.y,
-                filteredResults?.["s=SP5_M02_RM_TS"]?.[length - 1]?.y,
-                filteredResults?.["s=SP5_M03_RM_TS"]?.[length - 1]?.y,
+                filteredResults?.["s=SP5_M01_TM_TLC"]?.[length - 1]?.y,
+                filteredResults?.["s=SP5_M02_TM_TLC"]?.[length - 1]?.y,
+                filteredResults?.["s=SP5_M03_TM_TLC"]?.[length - 1]?.y,
               ],
               Pression: [
                 filteredResults?.["s=SP5_PIT_01_MAE_TM"]?.[length - 1]?.y,
@@ -723,14 +723,14 @@ const PipeLine: React.FC = () => {
                 filteredResults?.["s=SP6_FIT_02_MAE_TM"]?.[length - 1]?.y,
               "delta flow":
                 +filteredResults?.["s=SP6_FIT_02_MAE_TM"]?.[length - 1]?.y -
-                +filteredResults?.["s=SP6_FIT_02_MAE_TM"]?.[length - 1]?.y,
+                +filteredResults?.["s=SP6_FIT_01_MAE_TM"]?.[length - 1]?.y,
               "pression output":
                 filteredResults?.["s=SP6_PIT_04_MAE_TM"]?.[length - 1]?.y,
               pumps: ["P01", "P02", "P03"],
               "Running state": [
-                filteredResults?.["s=SP6_M01_RM_TS"]?.[length - 1]?.y,
-                filteredResults?.["s=SP6_M02_RM_TS"]?.[length - 1]?.y,
-                filteredResults?.["s=SP6_M03_RM_TS"]?.[length - 1]?.y,
+                filteredResults?.["s=SP6_M01_TM_TLC"]?.[length - 1]?.y,
+                filteredResults?.["s=SP6_M02_TM_TLC"]?.[length - 1]?.y,
+                filteredResults?.["s=SP6_M03_TM_TLC"]?.[length - 1]?.y,
               ],
               Pression: [
                 filteredResults?.["s=SP6_PIT_01_MAE_TM"]?.[length - 1]?.y,
@@ -748,14 +748,14 @@ const PipeLine: React.FC = () => {
                 filteredResults?.["s=SP7_FIT_02_MAE_TM"]?.[length - 1]?.y,
               "delta flow":
                 +filteredResults?.["s=SP7_FIT_02_MAE_TM"]?.[length - 1]?.y -
-                +filteredResults?.["s=SP7_FIT_02_MAE_TM"]?.[length - 1]?.y,
+                +filteredResults?.["s=SP7_FIT_01_MAE_TM"]?.[length - 1]?.y,
               "pression output":
                 filteredResults?.["s=SP7_PIT_04_MAE_TM"]?.[length - 1]?.y,
               pumps: ["P01", "P02", "P03"],
               "Running state": [
-                filteredResults?.["s=SP7_M01_RM_TS"]?.[length - 1]?.y,
-                filteredResults?.["s=SP7_M02_RM_TS"]?.[length - 1]?.y,
-                filteredResults?.["s=SP7_M03_RM_TS"]?.[length - 1]?.y,
+                filteredResults?.["s=SP7_M01_TM_TLC"]?.[length - 1]?.y,
+                filteredResults?.["s=SP7_M02_TM_TLC"]?.[length - 1]?.y,
+                filteredResults?.["s=SP7_M03_TM_TLC"]?.[length - 1]?.y,
               ],
               Pression: [
                 filteredResults?.["s=SP7_PIT_01_MAE_TM"]?.[length - 1]?.y,
@@ -773,14 +773,14 @@ const PipeLine: React.FC = () => {
                 filteredResults?.["s=SP8_FIT_02_MAE_TM"]?.[length - 1]?.y,
               "delta flow":
                 +filteredResults?.["s=SP8_FIT_02_MAE_TM"]?.[length - 1]?.y -
-                +filteredResults?.["s=SP8_FIT_02_MAE_TM"]?.[length - 1]?.y,
+                +filteredResults?.["s=SP8_FIT_01_MAE_TM"]?.[length - 1]?.y,
               "pression output":
                 filteredResults?.["s=SP8_PIT_04_MAE_TM"]?.[length - 1]?.y,
               pumps: ["P01", "P02", "P03"],
               "Running state": [
-                filteredResults?.["s=SP8_M01_RM_TS"]?.[length - 1]?.y,
-                filteredResults?.["s=SP8_M02_RM_TS"]?.[length - 1]?.y,
-                filteredResults?.["s=SP8_M03_RM_TS"]?.[length - 1]?.y,
+                filteredResults?.["s=SP8_M01_TM_TLC"]?.[length - 1]?.y,
+                filteredResults?.["s=SP8_M02_TM_TLC"]?.[length - 1]?.y,
+                filteredResults?.["s=SP8_M03_TM_TLC"]?.[length - 1]?.y,
               ],
               Pression: [
                 filteredResults?.["s=SP8_PIT_01_MAE_TM"]?.[length - 1]?.y,
@@ -805,7 +805,7 @@ const PipeLine: React.FC = () => {
                 filteredResults?.["s=B_FIT_02_MAE_TM"]?.[length - 1]?.y,
               "delta flow":
                 +filteredResults?.["s=B_FIT_02_MAE_TM"]?.[length - 1]?.y -
-                +filteredResults?.["s=B_FIT_02_MAE_TM"]?.[length - 1]?.y,
+                +filteredResults?.["s=B_FIT_01_MAE_TM"]?.[length - 1]?.y,
               "pression output":
                 filteredResults?.["s=B_PIT_04_MAE_TM"]?.[length - 1]?.y,
             },
@@ -975,20 +975,20 @@ const PipeLine: React.FC = () => {
 
             suctionTankLL:
               filteredResults?.["s=SP4_LSLL_01_TA"]?.[length - 1]?.y,
-            suctionTankL: filteredResults?.["SP4_LSL_01_TS"]?.[length - 1]?.y,
-            suctionTankH: filteredResults?.["SP4_LSH_01_TS"]?.[length - 1]?.y,
-            suctionTankHH: filteredResults?.["SP4_LSHH_01_TA"]?.[length - 1]?.y,
+            suctionTankL: filteredResults?.["s=SP4_LSL_01_TS"]?.[length - 1]?.y,
+            suctionTankH: filteredResults?.["s=SP4_LSH_01_TS"]?.[length - 1]?.y,
+            suctionTankHH: filteredResults?.["s=SP4_LSHH_01_TA"]?.[length - 1]?.y,
 
             hammerArrestorL:
-              filteredResults?.["SP4_ANTIB_LSL_TA"]?.[length - 1]?.y,
+              filteredResults?.["s=SP4_ANTIB_LSL_TA"]?.[length - 1]?.y,
             hammerArrestorH:
-              filteredResults?.["SP4_ANTIB_LSH_TA"]?.[length - 1]?.y,
+              filteredResults?.["s=SP4_ANTIB_LSH_TA"]?.[length - 1]?.y,
 
-            runningStateP1: filteredResults?.["SP4_M01_RM_TS"]?.[length - 1]?.y,
+            runningStateP1: filteredResults?.["s=SP4_M01_TM_TLC"]?.[length - 1]?.y,
             runningStateP2:
-              filteredResults?.["SP4_M02_TM_TLC"]?.[length - 1]?.y,
+              filteredResults?.["s=SP4_M02_TM_TLC"]?.[length - 1]?.y,
             runningStateP3:
-              filteredResults?.["SP4_M03_TM_TLC"]?.[length - 1]?.y,
+              filteredResults?.["s=SP4_M03_TM_TLC"]?.[length - 1]?.y,
           },
           SP2: {
             flowRate: filteredResults?.["s=SP5_FIT_02_MAE_TM"]?.[length - 1]?.y,
@@ -1010,20 +1010,20 @@ const PipeLine: React.FC = () => {
 
             suctionTankLL:
               filteredResults?.["s=SP5_LSLL_01_TA"]?.[length - 1]?.y,
-            suctionTankL: filteredResults?.["SP5_LSL_01_TS"]?.[length - 1]?.y,
-            suctionTankH: filteredResults?.["SP5_LSH_01_TS"]?.[length - 1]?.y,
-            suctionTankHH: filteredResults?.["SP5_LSHH_01_TA"]?.[length - 1]?.y,
+            suctionTankL: filteredResults?.["s=SP5_LSL_01_TS"]?.[length - 1]?.y,
+            suctionTankH: filteredResults?.["s=SP5_LSH_01_TS"]?.[length - 1]?.y,
+            suctionTankHH: filteredResults?.["s=SP5_LSHH_01_TA"]?.[length - 1]?.y,
 
             hammerArrestorL:
-              filteredResults?.["SP5_ANTIB_LSL_TA"]?.[length - 1]?.y,
+              filteredResults?.["s=SP5_ANTIB_LSL_TA"]?.[length - 1]?.y,
             hammerArrestorH:
-              filteredResults?.["SP5_ANTIB_LSH_TA"]?.[length - 1]?.y,
+              filteredResults?.["s=SP5_ANTIB_LSH_TA"]?.[length - 1]?.y,
 
-            runningStateP1: filteredResults?.["SP5_M01_RM_TS"]?.[length - 1]?.y,
+            runningStateP1: filteredResults?.["s=SP5_M01_TM_TLC"]?.[length - 1]?.y,
             runningStateP2:
-              filteredResults?.["SP5_M02_TM_TLC"]?.[length - 1]?.y,
+              filteredResults?.["s=SP5_M02_TM_TLC"]?.[length - 1]?.y,
             runningStateP3:
-              filteredResults?.["SP5_M03_TM_TLC"]?.[length - 1]?.y,
+              filteredResults?.["s=SP5_M03_TM_TLC"]?.[length - 1]?.y,
           },
           SP3: {
             flowRate: filteredResults?.["s=SP6_FIT_02_MAE_TM"]?.[length - 1]?.y,
@@ -1045,20 +1045,20 @@ const PipeLine: React.FC = () => {
 
             suctionTankLL:
               filteredResults?.["s=SP6_LSLL_01_TA"]?.[length - 1]?.y,
-            suctionTankL: filteredResults?.["SP6_LSL_01_TS"]?.[length - 1]?.y,
-            suctionTankH: filteredResults?.["SP6_LSH_01_TS"]?.[length - 1]?.y,
-            suctionTankHH: filteredResults?.["SP6_LSHH_01_TA"]?.[length - 1]?.y,
+            suctionTankL: filteredResults?.["s=SP6_LSL_01_TS"]?.[length - 1]?.y,
+            suctionTankH: filteredResults?.["s=SP6_LSH_01_TS"]?.[length - 1]?.y,
+            suctionTankHH: filteredResults?.["s=SP6_LSHH_01_TA"]?.[length - 1]?.y,
 
             hammerArrestorL:
-              filteredResults?.["SP6_ANTIB_LSL_TA"]?.[length - 1]?.y,
+              filteredResults?.["s=SP6_ANTIB_LSL_TA"]?.[length - 1]?.y,
             hammerArrestorH:
-              filteredResults?.["SP6_ANTIB_LSH_TA"]?.[length - 1]?.y,
+              filteredResults?.["s=SP6_ANTIB_LSH_TA"]?.[length - 1]?.y,
 
-            runningStateP1: filteredResults?.["SP6_M01_RM_TS"]?.[length - 1]?.y,
+            runningStateP1: filteredResults?.["s=SP6_M01_TM_TLC"]?.[length - 1]?.y,
             runningStateP2:
-              filteredResults?.["SP6_M02_TM_TLC"]?.[length - 1]?.y,
+              filteredResults?.["s=SP6_M02_TM_TLC"]?.[length - 1]?.y,
             runningStateP3:
-              filteredResults?.["SP6_M03_TM_TLC"]?.[length - 1]?.y,
+              filteredResults?.["s=SP6_M03_TM_TLC"]?.[length - 1]?.y,
           },
           SP4: {
             flowRate: filteredResults?.["s=SP7_FIT_02_MAE_TM"]?.[length - 1]?.y,
@@ -1080,20 +1080,20 @@ const PipeLine: React.FC = () => {
 
             suctionTankLL:
               filteredResults?.["s=SP7_LSLL_01_TA"]?.[length - 1]?.y,
-            suctionTankL: filteredResults?.["SP7_LSL_01_TS"]?.[length - 1]?.y,
-            suctionTankH: filteredResults?.["SP7_LSH_01_TS"]?.[length - 1]?.y,
-            suctionTankHH: filteredResults?.["SP7_LSHH_01_TA"]?.[length - 1]?.y,
+            suctionTankL: filteredResults?.["s=SP7_LSL_01_TS"]?.[length - 1]?.y,
+            suctionTankH: filteredResults?.["s=SP7_LSH_01_TS"]?.[length - 1]?.y,
+            suctionTankHH: filteredResults?.["s=SP7_LSHH_01_TA"]?.[length - 1]?.y,
 
             hammerArrestorL:
-              filteredResults?.["SP7_ANTIB_LSL_TA"]?.[length - 1]?.y,
+              filteredResults?.["s=SP7_ANTIB_LSL_TA"]?.[length - 1]?.y,
             hammerArrestorH:
-              filteredResults?.["SP7_ANTIB_LSH_TA"]?.[length - 1]?.y,
+              filteredResults?.["s=SP7_ANTIB_LSH_TA"]?.[length - 1]?.y,
 
-            runningStateP1: filteredResults?.["SP7_M01_RM_TS"]?.[length - 1]?.y,
+            runningStateP1: filteredResults?.["s=SP7_M01_TM_TLC"]?.[length - 1]?.y,
             runningStateP2:
-              filteredResults?.["SP7_M02_TM_TLC"]?.[length - 1]?.y,
+              filteredResults?.["s=SP7_M02_TM_TLC"]?.[length - 1]?.y,
             runningStateP3:
-              filteredResults?.["SP7_M03_TM_TLC"]?.[length - 1]?.y,
+              filteredResults?.["s=SP7_M03_TM_TLC"]?.[length - 1]?.y,
           },
           SP5: {
             flowRate: filteredResults?.["s=SP8_FIT_02_MAE_TM"]?.[length - 1]?.y,
@@ -1115,20 +1115,20 @@ const PipeLine: React.FC = () => {
 
             suctionTankLL:
               filteredResults?.["s=SP8_LSLL_01_TA"]?.[length - 1]?.y,
-            suctionTankL: filteredResults?.["SP8_LSL_01_TS"]?.[length - 1]?.y,
-            suctionTankH: filteredResults?.["SP8_LSH_01_TS"]?.[length - 1]?.y,
-            suctionTankHH: filteredResults?.["SP8_LSHH_01_TA"]?.[length - 1]?.y,
+            suctionTankL: filteredResults?.["s=SP8_LSL_01_TS"]?.[length - 1]?.y,
+            suctionTankH: filteredResults?.["s=SP8_LSH_01_TS"]?.[length - 1]?.y,
+            suctionTankHH: filteredResults?.["s=SP8_LSHH_01_TA"]?.[length - 1]?.y,
 
             hammerArrestorL:
-              filteredResults?.["SP8_ANTIB_LSL_TA"]?.[length - 1]?.y,
+              filteredResults?.["s=SP8_ANTIB_LSL_TA"]?.[length - 1]?.y,
             hammerArrestorH:
-              filteredResults?.["SP8_ANTIB_LSH_TA"]?.[length - 1]?.y,
+              filteredResults?.["s=SP8_ANTIB_LSH_TA"]?.[length - 1]?.y,
 
-            runningStateP1: filteredResults?.["SP8_M01_RM_TS"]?.[length - 1]?.y,
+            runningStateP1: filteredResults?.["s=SP8_M01_TM_TLC"]?.[length - 1]?.y,
             runningStateP2:
-              filteredResults?.["SP8_M02_TM_TLC"]?.[length - 1]?.y,
+              filteredResults?.["s=SP8_M02_TM_TLC"]?.[length - 1]?.y,
             runningStateP3:
-              filteredResults?.["SP8_M03_TM_TLC"]?.[length - 1]?.y,
+              filteredResults?.["s=SP8_M03_TM_TLC"]?.[length - 1]?.y,
           },
           SP6: {
             flowRateInput:
