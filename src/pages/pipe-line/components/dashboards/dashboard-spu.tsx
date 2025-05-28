@@ -62,7 +62,7 @@ interface DashboardSPUProps {
 }
 export function DashboardSPU({ data }: DashboardSPUProps) {
   return (
-    <div className="debug relative mb-8 flex h-full min-h-0 flex-1 flex-col overflow-hidden pl-12 pr-6">
+    <div className="relative mb-8 flex h-full min-h-0 flex-1 flex-col overflow-hidden pl-12 pr-6">
       {/* Summary bar */}
       <div className="mb-6 ml-auto grid w-full max-w-[60rem] grid-cols-3 grid-rows-1 gap-2">
         {res.map((item, index) => (
@@ -93,7 +93,7 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
         {/* Left column: 3 rows */}
         <div className="flex h-full min-h-0 flex-1 flex-col gap-3">
           <Card className="flex h-[22%] min-h-0 flex-1 flex-col">
-            <div className="debug [&>] flex-1 pl-2 pr-2 [&>*]:h-full [&>*]:w-full">
+            <div className="[&>] flex-1 pl-2 pr-2 [&>*]:h-full [&>*]:w-full">
               <ReactApexChart
                 height={"100%"}
                 options={{
@@ -158,7 +158,7 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
             </div>
           </Card>
           <Card className="flex h-[18%] min-h-0 flex-1 flex-col">
-            <div className="debug [&>] flex-1 pl-2 pr-2 [&>*]:h-full [&>*]:w-full">
+            <div className="[&>] flex-1 pl-2 pr-2 [&>*]:h-full [&>*]:w-full">
               <ReactApexChart
                 height={"100%"}
                 options={{
@@ -238,7 +238,7 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                 </span>
               </div>
             </div>
-            <div className="debug [&>] flex-1 pl-2 pr-2 [&>*]:h-full [&>*]:w-full">
+            <div className="[&>] flex-1 pl-2 pr-2 [&>*]:h-full [&>*]:w-full">
               <ReactApexChart
                 height={"100%"}
                 options={{

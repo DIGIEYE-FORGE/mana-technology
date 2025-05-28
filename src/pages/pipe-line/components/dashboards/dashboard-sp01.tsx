@@ -221,7 +221,7 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
       </div>
 
       {/* Main dashboard content */}
-      <div className="debug relative mr-4 flex h-full min-h-0 min-w-0 flex-1 gap-4 overflow-hidden py-4 pl-12 pr-4">
+      <div className="relative mr-4 flex h-full min-h-0 min-w-0 flex-1 gap-4 overflow-hidden py-4 pl-12 pr-4">
         {/* {JSON.stringify(data)} */}
         {/* 2 columns × 4 rows grid layout */}
         <div className="grid h-full min-h-0 w-full min-w-0 flex-1 grid-cols-2 grid-rows-4 gap-4">
@@ -602,7 +602,7 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
 
           {/* Row 4, Col 1 - Chlore Chart */}
           <Card className="flex h-full flex-col">
-            <div className="debug relative m-0 flex items-center justify-between p-0 px-4 pt-2">
+            <div className="relative m-0 flex items-center justify-between p-0 px-4 pt-2">
               <span className="font-medium text-white">Clore</span>
               <div className="absolute right-4 flex gap-2 text-xs">
                 <span className="rounded-full border border-white bg-[#021E3F] px-3 py-1 text-white">

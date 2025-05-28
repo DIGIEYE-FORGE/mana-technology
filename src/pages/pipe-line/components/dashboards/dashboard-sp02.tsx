@@ -84,7 +84,7 @@ interface DashboardSP02Props {
 export function DashboardSP02({ data }: DashboardSP02Props) {
   return (
     <>
-      <div className="debug absolute right-[1rem] top-[13%] flex gap-4">
+      <div className="absolute right-[1rem] top-[13%] flex gap-4">
         {Data.map((item) => (
           <div
             key={item.id}

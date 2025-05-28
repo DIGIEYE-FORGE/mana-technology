@@ -125,7 +125,7 @@ const PebbleCrusher = () => {
             <div className="loader"></div>
           </div>
         ) : error || historyError ? (
-          <div className="debug flex h-[calc(100svh-80px)] items-center justify-center">
+          <div className="flex h-[calc(100svh-80px)] items-center justify-center">
             <div className="text-red-500">
               Error loading data. Please try again later.
             </div>
