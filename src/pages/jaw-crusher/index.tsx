@@ -11,6 +11,8 @@ import Circle2 from "@/assets/circle-2.svg?react";
 import Circle3 from "@/assets/circle-3.svg?react";
 import Light from "@/assets/light.svg?react";
 import Loader from "@/components/loader";
+import { Card } from "@/components/card";
+import ReactApexChart from "react-apexcharts";
 
 const JawCrusher = () => {
   const { backendApi, dateRange } = useAppContext();
@@ -96,7 +98,7 @@ const JawCrusher = () => {
           </div>
         ) : (
           <main className="relative flex !h-fit flex-col gap-5 px-6 pb-6">
-            <div className="machine-highlight absolute bottom-0 left-1/2 aspect-square w-[500px] -translate-x-1/2">
+            <div className="machine-highlight absolute bottom-[150px] left-1/2 aspect-square w-[500px] -translate-x-1/2">
               <div className="circle circle-3 relative h-full w-full">
                 <Circle3 className="rotate h-full w-full duration-1000" />
               </div>
@@ -115,8 +117,8 @@ const JawCrusher = () => {
             <div className="z-1 absolute inset-0 isolate flex flex-1 items-center justify-center p-0">
               <ModelCanvas
                 url={"/model/jaw02.glb"}
-                position={[-40, 15, -20]}
-                fov={10}
+                position={[10, 10, -40]}
+                fov={20}
               />
             </div>
             <UpCards
@@ -132,7 +134,7 @@ const JawCrusher = () => {
               crushed={data?.["s=6210-WI-2217"] || 0}
             />
 
-            <div className="flex justify-between">
+            <div className="flex gap-5">
               <LeftBar
                 runningState={data?.["s=6210-WI-2217"] || 0}
                 frameLeft={history?.["s=6032-TT-1130C"] || []}
@@ -143,6 +145,64 @@ const JawCrusher = () => {
                 u1={history?.["s=6032-TE-1130U1"] || []}
                 w1={history?.["s=6032-TE-1130W1"] || []}
               />
+              <Card className="h-[200px] flex-1 self-end !rounded">
+                <ReactApexChart
+                  height={"100%"}
+                  options={{
+                    chart: {
+                      height: 200,
+                      type: "line",
+                      zoom: {
+                        enabled: false,
+                      },
+                      toolbar: {
+                        show: false,
+                      },
+                    },
+                    tooltip: {
+                      theme: "dark",
+                    },
+                    title: {
+                      text: "Pitman bearing temperature",
+                      align: "left",
+                      style: {
+                        fontSize: "14px",
+                        color: "#ffffff",
+                      },
+                    },
+                    stroke: {
+                      curve: "smooth",
+                      width: 3,
+                    },
+                    colors: ["#FFCA05"],
+                    legend: {
+                      labels: {
+                        colors: "#A2B0B8",
+                      },
+                      markers: {
+                        shape: "circle",
+                      },
+                    },
+                    xaxis: {
+                      labels: {
+                        style: {
+                          colors: "#A2B0B8",
+                        },
+                      },
+                      type: "datetime",
+                    },
+                    yaxis: {
+                      labels: {
+                        style: {
+                          colors: "#A2B0B8",
+                        },
+                      },
+                      decimalsInFloat: 2,
+                    },
+                  }}
+                  series={[]}
+                />
+              </Card>
               <RightBar
                 conveyorRom={data?.["s=6032-FD-1107"] || 0}
                 romBinWithdrawal={data?.["s=6032-FD-1107"] || 0}

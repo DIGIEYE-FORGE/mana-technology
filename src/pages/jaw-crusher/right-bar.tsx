@@ -30,7 +30,7 @@ const RightBar = ({
   plantFeedConveyor,
 }: RightBarProps) => {
   return (
-    <div className="relative z-10 flex h-full w-[500px] flex-col gap-3">
+    <div className="relative z-10 flex h-full w-[400px] shrink-0 flex-col gap-3">
       <Card className="flex flex-col gap-1 !rounded px-4 py-3">
         <h1 className="text-lg font-semibold">Running State</h1>
         <Card className="flex flex-col gap-1 !rounded px-2 py-1">

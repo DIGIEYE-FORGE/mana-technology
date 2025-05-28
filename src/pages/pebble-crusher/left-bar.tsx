@@ -48,7 +48,7 @@ const LeftBar = ({ runningState, nde, de, u1, v1, w1 }: LeftBarProps) => {
       </Card>
       <Card className="w-full p-2">
         <ReactApexChart
-          height={250}
+          height={265}
           options={{
             chart: {
               height: 200,
@@ -115,7 +115,7 @@ const LeftBar = ({ runningState, nde, de, u1, v1, w1 }: LeftBarProps) => {
       </Card>
       <Card className="w-full p-2">
         <ReactApexChart
-          height={250}
+          height={265}
           options={{
             chart: {
               height: 200,
