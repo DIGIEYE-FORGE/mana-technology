@@ -90,7 +90,7 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
             key={item.id}
             className="rounded-md border-2 border-white bg-[#021E3F] p-2 px-4 text-white backdrop-blur-md"
           >
-            {item.name} {data[item.key] || 0}
+            {item.name} {Number(data[item.key || 0])?.toFixed(2) || 0}
           </div>
         ))}
       </div>
@@ -340,35 +340,35 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                 <HammerArrestorSVG />
               </div>
             </Card>
-            <Card className="flex h-[202px] items-center opacity-40 cursor-not-allowed gap-4 p-6">
-            <div className="flex h-full w-[6rem] flex-col items-center justify-between py-4">
-              <span className="text-xl font-bold">Energy</span>
-              <div className="flex flex-col items-center">
-                <span className="text-bold text-4xl">XX</span>
-                <span className="text-md"> KwH</span>
-              </div>
-            </div>
-            <div className="flex min-h-[10rem] w-full flex-1 flex-col items-center justify-center gap-4">
-              <span className="text-2xl font-bold">Power</span>
-              <CircularGauge
-                value={50}
-                maxValue={100}
-                size={200}
-                width={200}
-                color="#B29100"
-              />
-            </div>
-            <div className="m-0 grid flex-1 grid-cols-3 grid-rows-2 gap-2">
-              {valuesData.map((item) => (
-                <div
-                  key={item.id}
-                  className="flex h-[70px] w-[60px] flex-col items-center justify-center gap-2 rounded-md border-2 border-gray-500 bg-[#021E3F]/60 p-1 text-white backdrop-blur-md"
-                >
-                  <span className="text-xs">{item.name}</span>
-                  <span className="text-xl font-bold">{item.value}</span>
+            <Card className="flex h-[202px] cursor-not-allowed items-center gap-4 p-6 opacity-40">
+              <div className="flex h-full w-[6rem] flex-col items-center justify-between py-4">
+                <span className="text-xl font-bold">Energy</span>
+                <div className="flex flex-col items-center">
+                  <span className="text-bold text-4xl">XX</span>
+                  <span className="text-md"> KwH</span>
                 </div>
-              ))}
-            </div>
+              </div>
+              <div className="flex min-h-[10rem] w-full flex-1 flex-col items-center justify-center gap-4">
+                <span className="text-2xl font-bold">Power</span>
+                <CircularGauge
+                  value={50}
+                  maxValue={100}
+                  size={200}
+                  width={200}
+                  color="#B29100"
+                />
+              </div>
+              <div className="m-0 grid flex-1 grid-cols-3 grid-rows-2 gap-2">
+                {valuesData.map((item) => (
+                  <div
+                    key={item.id}
+                    className="flex h-[70px] w-[60px] flex-col items-center justify-center gap-2 rounded-md border-2 border-gray-500 bg-[#021E3F]/60 p-1 text-white backdrop-blur-md"
+                  >
+                    <span className="text-xs">{item.name}</span>
+                    <span className="text-xl font-bold">{item.value}</span>
+                  </div>
+                ))}
+              </div>
             </Card>
             <Card className="flex h-[202px] flex-col gap-1 p-4">
               <div className="text-[14px] font-bold text-white">

@@ -75,12 +75,7 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
   ];
 
   return (
-    <SWRConfig
-      value={{
-        revalidateOnFocus: false,
-        revalidateOnReconnect: false,
-      }}
-    >
+    <>
       {/* Top metrics bar */}
       <div className="absolute right-[1rem] top-[12%] flex gap-4">
         {Data.map((item) => (
@@ -88,7 +83,7 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
             key={item.id}
             className="rounded-md border-2 border-white bg-[#021E3F] p-2 px-4 text-white backdrop-blur-md"
           >
-            {item.name} {Number(data[item.key]).toFixed(0) || "0"}
+            {item.name} {Number(data[item.key])?.toFixed(2) || "0"}
           </div>
         ))}
       </div>
@@ -372,7 +367,7 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
           </Card>
 
           {/* Row 2, Col 2 - Energy and Power section */}
-          <Card className="flex h-full items-center  gap-2 p-4 opacity-40 cursor-not-allowed">
+          <Card className="flex h-full cursor-not-allowed items-center gap-2 p-4 opacity-40">
             <div className="flex h-full w-[6rem] flex-col items-center justify-between py-4">
               <span className="text-xl font-bold">Energy</span>
               <div className="flex flex-col items-center">
@@ -600,6 +595,6 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
           </Card>
         </div>
       </div>
-    </SWRConfig>
+    </>
   );
 }
