@@ -31,7 +31,10 @@ const RightBar = ({
 }: RightBarProps) => {
   return (
     <Card className="flex h-full w-[400px] flex-col gap-2 overflow-hidden !rounded px-4 py-3">
-      <h1 className="text-lg font-semibold">Running State</h1>
+      <div className="w-full flex justify-between items-center">
+        <span className="text-lg font-semibold">Utilisation</span>
+        <span className="text-lg font-semibold">Running State</span>
+      </div>
       <div className="h-1 flex-1 gap-2 space-y-2 overflow-auto px-1">
         <Card className="flex flex-col gap-1 !rounded px-2 py-1">
           <div className="flex items-center justify-between text-sm">

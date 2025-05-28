@@ -114,7 +114,7 @@ const JawCrusher = () => {
               src="/model/bg-pattern.png"
               className="pointer-events-none absolute left-0 top-0 z-0 h-full w-full opacity-60"
             />
-            <div className="z-1 absolute inset-0 isolate flex h-1 flex-1 items-center justify-center p-0">
+            <div className="z-1 absolute inset-0 isolate flex h-1 flex-1 items-center justify-center p-0 ">
               <ModelCanvas
                 url={"/model/jaw02.glb"}
                 position={[10, 10, -40]}
@@ -133,7 +133,7 @@ const JawCrusher = () => {
               power={data?.["s=6210-WI-2217"] || 0}
               crushed={data?.["s=6210-WI-2217"] || 0}
             />
-
+            
             <div className="flex h-1 flex-1 gap-5">
               <LeftBar
                 runningState={data?.["s=6210-WI-2217"] || 0}
@@ -163,7 +163,7 @@ const JawCrusher = () => {
                       theme: "dark",
                     },
                     title: {
-                      text: "Pitman bearing temperature",
+                      text: "Crushed Ore Flow (t/h)",
                       align: "left",
                       style: {
                         fontSize: "14px",
