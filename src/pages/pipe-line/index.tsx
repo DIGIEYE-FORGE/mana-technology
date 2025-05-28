@@ -166,21 +166,22 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                     point?.card?.progress && Array.isArray(point.card.progress)
                       ? point.card.progress.map((p) => ({
                           value:
-                            (p &&
-                              Number(p / (point.id === "SP6" ? 2.72 : 5)) *
-                                100) ||
-                            0,
+                            (
+                              p &&
+                              Number(p / (point.id === "SP6" ? 2.72 : 5)) * 100
+                            )?.toFixed(2) || 0,
                           title: "",
                         }))
                       : [
                           {
                             value:
-                              ((point.card.progress as number) &&
+                              (
+                                (point.card.progress as number) &&
                                 Number(
                                   point.card.progress /
                                     (point.id === "SP6" ? 2.72 : 5),
-                                ) * 100) ||
-                              0,
+                                ) * 100
+                              )?.toFixed(2) || 0,
 
                             title: "",
                           },
