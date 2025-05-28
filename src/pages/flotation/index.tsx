@@ -11,6 +11,7 @@ import Light from "@/assets/light.svg?react";
 import { useState } from "react";
 import { useAppContext } from "@/Context";
 import useSWR from "swr";
+import { ModelCanvas } from "../omniverse/model-viewer";
 
 const Flotation = () => {
   const { backendApi } = useAppContext();
@@ -107,15 +108,14 @@ const Flotation = () => {
             src="/model/bg-pattern.png"
             className="pointer-events-none absolute left-0 top-0 z-0 h-full w-full opacity-60"
           />
-          {/* TODO: add model path here
+          {/* TODO: add model path here */}
           <div className="z-1 absolute inset-0 isolate flex flex-1 items-center justify-center p-0">
             <ModelCanvas
               url={"/model/jaw02.glb"}
               position={[-40, 15, -20]}
               fov={10}
             />
-          </div> */}
-
+          </div>
           <div className="flex w-full flex-col justify-between gap-1">
             <UpCards
               flotYield={data?.["s=6028-WI-1042"] || 0}
