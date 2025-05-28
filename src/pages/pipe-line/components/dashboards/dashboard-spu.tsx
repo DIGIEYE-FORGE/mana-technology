@@ -6,61 +6,59 @@ import ChloreSVG from "../chlore";
 import ReactApexChart from "react-apexcharts";
 // import ProgressBar from "../progres-bar";
 
-const progressData = [
-  { id: 1, name: "", percentage: 80 },
-  { id: 2, name: "", percentage: 80 },
-];
-const res = [
-  {
-    name: "Flow rate",
-    data: [
-      {
-        name: "input",
-        value: 0,
-        key: "flowRateInput",
-      },
-      {
-        name: "to plant",
-        value: 0,
-        key: "flowRateToPlant",
-      },
-    ],
-  },
-  {
-    name: "volume",
-    data: [
-      {
-        name: "input",
-        value: 0,
-        key: "volumeInput",
-      },
-      {
-        name: "to plant",
-        value: 0,
-        key: "volumeOutput",
-      },
-    ],
-  },
-  {
-    name: "Stock",
-    data: [
-      {
-        name: "input",
-        value: 0,
-        key: "stock",
-      },
-      {
-        name: "to plant",
-        value: 0,
-      },
-    ],
-  },
-];
 interface DashboardSPUProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: any;
 }
 export function DashboardSPU({ data }: DashboardSPUProps) {
+  const progressData = [
+    { id: 1, name: "B1", percentage: Number(data.levelB1?.at(-1)?.y) || 0 },
+    { id: 2, name: "B2", percentage: Number(data.levelB2?.at(-1)?.y) || 0 },
+  ];
+
+  const res = [
+    {
+      name: "Flow rate",
+      data: [
+        {
+          name: "Input",
+          value: data.flowRateInput || 0,
+          key: "flowRateInput",
+        },
+        {
+          name: "To plant",
+          value: data.flowRatePlant || 0,
+          key: "flowRatePlant",
+        },
+      ],
+    },
+    {
+      name: "Volume",
+      data: [
+        {
+          name: "Input",
+          value: data.volumeInput || 0,
+          key: "volumeInput",
+        },
+        {
+          name: "To plant",
+          value: data.volumePlant || 0,
+          key: "volumePlant",
+        },
+      ],
+    },
+    {
+      name: "Stock",
+      data: [
+        {
+          name: "Value",
+          value: data.stock || 0,
+          key: "stock",
+        },
+      ],
+    },
+  ];
+
   return (
     <div className="relative mb-8 flex h-full min-h-0 flex-1 flex-col overflow-hidden pl-12 pr-6">
       {/* Summary bar */}
@@ -70,7 +68,7 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
             key={index}
             className="flex flex-col items-center justify-center"
           >
-            <span className="text-lg font-bold">{item.name}</span>
+            <span className="text-[14px] font-bold">{item.name}</span>
             <div className="flex w-full gap-2">
               {item.data.map((dataItem, dataIndex) => (
                 <div key={dataIndex} className="flex w-full flex-col">
@@ -117,12 +115,11 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                   tooltip: {
                     theme: "dark",
                   },
-
                   stroke: {
                     curve: "smooth",
                     width: 3,
                   },
-                  colors: ["#0843e4"],
+                  colors: ["#0843e4", "#26E2B3"],
                   legend: {
                     labels: {
                       colors: "#A2B0B8",
@@ -150,8 +147,12 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                 }}
                 series={[
                   {
-                    name: "level",
+                    name: "Input",
                     data: data.flowInput || [],
+                  },
+                  {
+                    name: "Output",
+                    data: data.flowPlant || [],
                   },
                 ]}
               />
@@ -182,12 +183,11 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                   tooltip: {
                     theme: "dark",
                   },
-
                   stroke: {
                     curve: "smooth",
                     width: 3,
                   },
-                  colors: ["#0843e4"],
+                  colors: ["#0843e4", "#26E2B3"],
                   legend: {
                     labels: {
                       colors: "#A2B0B8",
@@ -215,12 +215,12 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                 }}
                 series={[
                   {
-                    name: "levelB1",
-                    data: data.filteredResults || [],
+                    name: "B1",
+                    data: data.levelB1 || [],
                   },
                   {
-                    name: "levelB2",
-                    data: data.filteredResults || [],
+                    name: "B2",
+                    data: data.levelB2 || [],
                   },
                 ]}
               />
@@ -228,13 +228,13 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
           </Card>
           <Card className="flex h-[22%] min-h-0 flex-1 flex-col">
             <div className="relative flex items-center justify-between p-0 px-4 pt-2">
-              <span className="font-medium text-white">Chlore</span>
+              <span className="text-[14px] font-bold text-white">Chlore</span>
               <div className="absolute right-4 flex gap-2 text-xs">
                 <span className="rounded-full border border-white bg-[#021E3F] px-3 py-1 text-white">
-                  Input XX
+                  Input {data.chloreInput?.at(-1)?.y ?? "XX"}
                 </span>
                 <span className="rounded-full border border-white bg-[#021E3F] px-3 py-1 text-white">
-                  Output XX
+                  Output {data.chlorePlant?.at(-1)?.y ?? "XX"}
                 </span>
               </div>
             </div>
@@ -254,12 +254,11 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                   tooltip: {
                     theme: "dark",
                   },
-
                   stroke: {
                     curve: "smooth",
                     width: 3,
                   },
-                  colors: ["#0843e4"],
+                  colors: ["#0843e4", "#26E2B3"],
                   legend: {
                     labels: {
                       colors: "#A2B0B8",
@@ -287,12 +286,12 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                 }}
                 series={[
                   {
-                    name: "levelB1",
+                    name: "Input",
                     data: data.chloreInput || [],
                   },
                   {
-                    name: "levelB2",
-                    data: data.chloreOutput || [],
+                    name: "Output",
+                    data: data.chlorePlant || [],
                   },
                 ]}
               />
@@ -314,7 +313,7 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
             />
           </Card>
           <Card className="flex min-h-0 flex-1 flex-col">
-            <span className="mb-2 p-2 text-lg font-bold text-white">
+            <span className="mb-2 p-2 text-[14px] font-bold text-white">
               Chlore Station
             </span>
             <div className="flex min-h-0 flex-1 items-center justify-center gap-0">
@@ -322,7 +321,7 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                 topTitle="SP01-M-03"
                 leftTitle="LSLL-03"
                 bottomTitle="SP01-M-01"
-                value="XX"
+                value={data.station1 ?? "XX"}
                 width={240}
                 height={170}
               />
@@ -330,7 +329,7 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                 topTitle="SP01-M-03"
                 leftTitle="LSLL-04"
                 bottomTitle="SP01-M-02"
-                value="XX"
+                value={data.station2 ?? "XX"}
                 width={240}
                 height={170}
               />

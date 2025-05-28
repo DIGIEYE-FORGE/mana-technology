@@ -6,6 +6,9 @@ function ChloreSVG({
   width = 200,
   height = 140,
 }) {
+  
+  const leftTitleColor = leftTitle.toLowerCase() === "true" ? "#26E2B3" : leftTitle.toLowerCase() === "false" ? "#E64C3C" : "white";
+
   return (
     <svg
       viewBox="0 0 200 140"
@@ -113,12 +116,12 @@ function ChloreSVG({
               width="45"
               height="17"
               rx="1.5"
-              stroke="#26E2B3"
+              stroke={leftTitleColor}
               shapeRendering="crispEdges"
             />
           </g>
           <text
-            fill="white"
+            fill={leftTitleColor}
             fontFamily="Roboto"
             fontSize="10"
             fontWeight="500"
@@ -131,7 +134,7 @@ function ChloreSVG({
           <g filter="url(#filter7)">
             <path
               d="M59.375 80L64.375 82.3868V76.6132L59.375 79V80ZM59.875 79.5V79H45.375V79.5V80H59.875V79.5Z"
-              fill="#26E2B3"
+              fill={leftTitleColor}
             />
           </g>
           {/* Value to the right of the croix icon in a rounded rectangle */}
