@@ -212,10 +212,19 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                         <div className="flex flex-wrap gap-1">
                           {value?.map((v, idx) => (
                             <span key={idx} className="text-xs text-white">
-                              {v || "xx"}
+                              {typeof v === "number"
+                                ? v.toFixed(2)
+                                : typeof v === "string"
+                                  ? v
+                                  : v || "xx"}
                             </span>
                           ))}
                         </div>
+                      ) : // value || "xx"
+                      typeof value === "number" ? (
+                        value.toFixed(2)
+                      ) : typeof value === "string" ? (
+                        value
                       ) : (
                         value || "xx"
                       )}
@@ -506,15 +515,15 @@ const PipeLine: React.FC = () => {
   ];
 
   const { isLoading } = useSWR(
-    `dpc-history/api/history`,
+    `dpc-history/api/historyz`,
     async () => {
       const res = await backendApi.findMany("dpc-history/api/history", {
         where: {
           serial: "JHF455XKPCH6DBLH",
-          createdAt: {
-            $gt: new Date(Date.now() - 1 * 60 * 60 * 1000),
-            // Last 24 hours
-          },
+          // createdAt: {
+          //   $gt: new Date(Date.now() - 1 * 60 * 60 * 1000),
+          //   // Last 24 hours
+          // },
         },
         pagination: {
           page: 1,
@@ -789,11 +798,11 @@ const PipeLine: React.FC = () => {
         setWidgetData([
           {
             title: "Pumped Volume",
-            value: filteredResults?.["s=B_FIT_02_TOT_MES_TM"]?.[length - 1]?.y,
+            value: filteredResults?.["s=B_FIT_02_TOT_MES_TM"],
           },
           {
             title: "Flow Rate",
-            value: filteredResults?.["s=B_FIT_02_MAE_TM"]?.[length - 1]?.y,
+            value: filteredResults?.["s=B_FIT_02_MAE_TM"],
           },
         ]);
 
@@ -947,14 +956,16 @@ const PipeLine: React.FC = () => {
               filteredResults?.["s=SP4_LSLL_01_TA"]?.[length - 1]?.y,
             suctionTankL: filteredResults?.["s=SP4_LSL_01_TS"]?.[length - 1]?.y,
             suctionTankH: filteredResults?.["s=SP4_LSH_01_TS"]?.[length - 1]?.y,
-            suctionTankHH: filteredResults?.["s=SP4_LSHH_01_TA"]?.[length - 1]?.y,
+            suctionTankHH:
+              filteredResults?.["s=SP4_LSHH_01_TA"]?.[length - 1]?.y,
 
             hammerArrestorL:
               filteredResults?.["s=SP4_ANTIB_LSL_TA"]?.[length - 1]?.y,
             hammerArrestorH:
               filteredResults?.["s=SP4_ANTIB_LSH_TA"]?.[length - 1]?.y,
 
-            runningStateP1: filteredResults?.["s=SP4_M01_TM_TLC"]?.[length - 1]?.y,
+            runningStateP1:
+              filteredResults?.["s=SP4_M01_TM_TLC"]?.[length - 1]?.y,
             runningStateP2:
               filteredResults?.["s=SP4_M02_TM_TLC"]?.[length - 1]?.y,
             runningStateP3:
@@ -982,14 +993,16 @@ const PipeLine: React.FC = () => {
               filteredResults?.["s=SP5_LSLL_01_TA"]?.[length - 1]?.y,
             suctionTankL: filteredResults?.["s=SP5_LSL_01_TS"]?.[length - 1]?.y,
             suctionTankH: filteredResults?.["s=SP5_LSH_01_TS"]?.[length - 1]?.y,
-            suctionTankHH: filteredResults?.["s=SP5_LSHH_01_TA"]?.[length - 1]?.y,
+            suctionTankHH:
+              filteredResults?.["s=SP5_LSHH_01_TA"]?.[length - 1]?.y,
 
             hammerArrestorL:
               filteredResults?.["s=SP5_ANTIB_LSL_TA"]?.[length - 1]?.y,
             hammerArrestorH:
               filteredResults?.["s=SP5_ANTIB_LSH_TA"]?.[length - 1]?.y,
 
-            runningStateP1: filteredResults?.["s=SP5_M01_TM_TLC"]?.[length - 1]?.y,
+            runningStateP1:
+              filteredResults?.["s=SP5_M01_TM_TLC"]?.[length - 1]?.y,
             runningStateP2:
               filteredResults?.["s=SP5_M02_TM_TLC"]?.[length - 1]?.y,
             runningStateP3:
@@ -1017,14 +1030,16 @@ const PipeLine: React.FC = () => {
               filteredResults?.["s=SP6_LSLL_01_TA"]?.[length - 1]?.y,
             suctionTankL: filteredResults?.["s=SP6_LSL_01_TS"]?.[length - 1]?.y,
             suctionTankH: filteredResults?.["s=SP6_LSH_01_TS"]?.[length - 1]?.y,
-            suctionTankHH: filteredResults?.["s=SP6_LSHH_01_TA"]?.[length - 1]?.y,
+            suctionTankHH:
+              filteredResults?.["s=SP6_LSHH_01_TA"]?.[length - 1]?.y,
 
             hammerArrestorL:
               filteredResults?.["s=SP6_ANTIB_LSL_TA"]?.[length - 1]?.y,
             hammerArrestorH:
               filteredResults?.["s=SP6_ANTIB_LSH_TA"]?.[length - 1]?.y,
 
-            runningStateP1: filteredResults?.["s=SP6_M01_TM_TLC"]?.[length - 1]?.y,
+            runningStateP1:
+              filteredResults?.["s=SP6_M01_TM_TLC"]?.[length - 1]?.y,
             runningStateP2:
               filteredResults?.["s=SP6_M02_TM_TLC"]?.[length - 1]?.y,
             runningStateP3:
@@ -1052,14 +1067,16 @@ const PipeLine: React.FC = () => {
               filteredResults?.["s=SP7_LSLL_01_TA"]?.[length - 1]?.y,
             suctionTankL: filteredResults?.["s=SP7_LSL_01_TS"]?.[length - 1]?.y,
             suctionTankH: filteredResults?.["s=SP7_LSH_01_TS"]?.[length - 1]?.y,
-            suctionTankHH: filteredResults?.["s=SP7_LSHH_01_TA"]?.[length - 1]?.y,
+            suctionTankHH:
+              filteredResults?.["s=SP7_LSHH_01_TA"]?.[length - 1]?.y,
 
             hammerArrestorL:
               filteredResults?.["s=SP7_ANTIB_LSL_TA"]?.[length - 1]?.y,
             hammerArrestorH:
               filteredResults?.["s=SP7_ANTIB_LSH_TA"]?.[length - 1]?.y,
 
-            runningStateP1: filteredResults?.["s=SP7_M01_TM_TLC"]?.[length - 1]?.y,
+            runningStateP1:
+              filteredResults?.["s=SP7_M01_TM_TLC"]?.[length - 1]?.y,
             runningStateP2:
               filteredResults?.["s=SP7_M02_TM_TLC"]?.[length - 1]?.y,
             runningStateP3:
@@ -1087,14 +1104,16 @@ const PipeLine: React.FC = () => {
               filteredResults?.["s=SP8_LSLL_01_TA"]?.[length - 1]?.y,
             suctionTankL: filteredResults?.["s=SP8_LSL_01_TS"]?.[length - 1]?.y,
             suctionTankH: filteredResults?.["s=SP8_LSH_01_TS"]?.[length - 1]?.y,
-            suctionTankHH: filteredResults?.["s=SP8_LSHH_01_TA"]?.[length - 1]?.y,
+            suctionTankHH:
+              filteredResults?.["s=SP8_LSHH_01_TA"]?.[length - 1]?.y,
 
             hammerArrestorL:
               filteredResults?.["s=SP8_ANTIB_LSL_TA"]?.[length - 1]?.y,
             hammerArrestorH:
               filteredResults?.["s=SP8_ANTIB_LSH_TA"]?.[length - 1]?.y,
 
-            runningStateP1: filteredResults?.["s=SP8_M01_TM_TLC"]?.[length - 1]?.y,
+            runningStateP1:
+              filteredResults?.["s=SP8_M01_TM_TLC"]?.[length - 1]?.y,
             runningStateP2:
               filteredResults?.["s=SP8_M02_TM_TLC"]?.[length - 1]?.y,
             runningStateP3:
@@ -1198,7 +1217,10 @@ const PipeLine: React.FC = () => {
               >
                 <h3 className="text-lg text-white">{item.title}</h3>
                 <span className="text-xl text-[#FFC829]">
-                  {item.value || "xx"}
+                  {(typeof item.value == "number" && item.value.toFixed(2)) ||
+                    (typeof item.value == "string" && item.value) ||
+                    item.value ||
+                    0}
                 </span>
               </CustomCardComponent>
             ))}
