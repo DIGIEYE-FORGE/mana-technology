@@ -13,9 +13,20 @@ import Light from "@/assets/light.svg?react";
 import Loader from "@/components/loader";
 import { Card } from "@/components/card";
 import ReactApexChart from "react-apexcharts";
+import { useEffect, useState } from "react";
+import {
+  formatData,
+  formatHistory,
+  updateDataWithSocket,
+} from "./utils/functions";
+import { io } from "socket.io-client";
+import { env } from "@/utils/env";
 
 const PebbleCrusher = () => {
   const { backendApi, dateRange } = useAppContext();
+  const [upData, setUpData] = useState<any>(null);
+  const [leftData, setLeftData] = useState<any>(null);
+  const [rightData, setRightData] = useState<any>(null);
 
   const { error: countError, isLoading: isLoadingCount } = useSWR(
     "count",
@@ -45,36 +56,42 @@ const PebbleCrusher = () => {
     },
   );
 
-  const { data, isLoading, error } = useSWR("last-telemetry", async () => {
-    const res = await backendApi.findMany("lastTelemetry", {
-      where: {
-        device: {
-          serial: "0V7ZJGB503H9WGH3",
+  const { isLoading, error } = useSWR(
+    "last-telemetry",
+    async () => {
+      const res = await backendApi.findMany("lastTelemetry", {
+        where: {
+          device: {
+            serial: "0V7ZJGB503H9WGH3",
+          },
         },
-      },
-      pagination: {
-        page: 1,
-        perPage: 400,
-      },
-    });
+        pagination: {
+          page: 1,
+          perPage: 400,
+        },
+      });
 
-    const filteredResults = res?.results?.reduce(
-      (acc: Record<string, any>, item: any) => {
-        acc[item.name] =
-          typeof item.value === "number" ? item.value?.toFixed(2) : item.value;
-        return acc;
+      return res;
+    },
+    {
+      onSuccess: (data) => {
+        const filteredResults = data?.results?.reduce(
+          (acc: Record<string, any>, item: any) => {
+            acc[item.name] =
+              typeof item.value === "number"
+                ? item.value?.toFixed(2)
+                : item.value;
+            return acc;
+          },
+          {} as Record<string, any>,
+        );
+
+        formatData(filteredResults, setUpData, setLeftData, setRightData);
       },
-      {} as Record<string, any>,
-    );
+    },
+  );
 
-    return filteredResults;
-  });
-
-  const {
-    data: history,
-    isLoading: isLoadingHistory,
-    error: historyError,
-  } = useSWR(
+  const { isLoading: isLoadingHistory, error: historyError } = useSWR(
     `dpc-history/api/history/${dateRange?.from}/${dateRange?.to}`,
     async () => {
       const res = await backendApi.findMany("dpc-history/api/history", {
@@ -91,26 +108,51 @@ const PebbleCrusher = () => {
         },
       });
 
-      const filteredResults = res?.results?.reduce(
-        (acc: Record<string, any>, item: any) => {
-          Object.entries(item).forEach(([key, value]) => {
-            if (typeof value === "number" && key !== "deviceId")
-              acc[key] = [
-                {
-                  x: new Date(item.createdAt),
-                  y: value,
-                },
-                ...(acc[key] || []),
-              ];
-          });
-          return acc;
-        },
-        {} as Record<string, any>,
-      );
+      return res;
+    },
+    {
+      onSuccess: (data) => {
+        const filteredResults = data?.results?.reduce(
+          (acc: Record<string, any>, item: any) => {
+            Object.entries(item).forEach(([key, value]) => {
+              if (typeof value === "number" && key !== "deviceId")
+                acc[key] = [
+                  {
+                    x: new Date(item.createdAt),
+                    y: value,
+                  },
+                  ...(acc[key] || []),
+                ];
+            });
+            return acc;
+          },
+          {} as Record<string, any>,
+        );
 
-      return filteredResults;
+        formatHistory(filteredResults, setLeftData, setRightData);
+      },
     },
   );
+
+  useEffect(() => {
+    const socket = io(env.VITE_URL_SOCKET);
+    socket.on("connect", () => {
+      console.log("Connected to WebSocket server Pipeline");
+    });
+    socket.on("disconnect", () => {
+      console.log("Disconnected from WebSocket server");
+    });
+    socket.on("error", (error) => {
+      console.error("WebSocket error:", error);
+    });
+    socket.on("serial-0V7ZJGB503H9WGH3", (data) => {
+      // console.log("Received message:", data);
+      updateDataWithSocket(data, setUpData, setLeftData, setRightData);
+    });
+    return () => {
+      socket.close();
+    };
+  }, []);
 
   return (
     <div
@@ -158,21 +200,21 @@ const PebbleCrusher = () => {
               />
             </div>
             <UpCards
-              flowRate={data?.["s=6210-WI-2215"] || 0}
-              energy={data?.["s=6100-TR-2001"] || 0}
-              utilization={data?.["s=6210-WI-2217"] || 0}
-              bounce1={data?.["s=6140-VT-2426A"] || 0}
-              bounce2={data?.["s=6140-VT-2426B"] || 0}
-              bounce3={data?.["s=6140-VT-2426C"] || 0}
+              flowRate={upData?.flowRate || 0}
+              energy={upData?.energy || 0}
+              utilization={upData?.utilization || 0}
+              bounce1={upData?.bounce1 || 0}
+              bounce2={upData?.bounce2 || 0}
+              bounce3={upData?.bounce3 || 0}
             />
             <div className="flex gap-5">
               <LeftBar
-                runningState={data?.["s=6210-WI-2217"] || 0}
-                nde={history?.["s=6140-TE-2426NDE"] || []}
-                de={history?.["s=6140-TE-2426DE"] || []}
-                u1={history?.["s=6140-TE-2426U1"] || []}
-                v1={history?.["s=6140-TE-2426V1"] || []}
-                w1={history?.["s=6140-TE-2426W1"] || []}
+                runningState={leftData?.runningState || 0}
+                nde={leftData?.nde || []}
+                de={leftData?.de || []}
+                u1={leftData?.u1 || []}
+                v1={leftData?.v1 || []}
+                w1={leftData?.w1 || []}
               />
               <Card className="h-[200px] flex-1 self-end !rounded">
                 <ReactApexChart
@@ -192,7 +234,7 @@ const PebbleCrusher = () => {
                       theme: "dark",
                     },
                     title: {
-                      text: "Pitman bearing temperature",
+                      text: "Crushed Ore Flow",
                       align: "left",
                       style: {
                         fontSize: "14px",
@@ -229,17 +271,22 @@ const PebbleCrusher = () => {
                       decimalsInFloat: 2,
                     },
                   }}
-                  series={[]}
+                  series={[
+                    {
+                      name: "Crushed Ore Flow",
+                      data: leftData?.crushedFlow || [],
+                    },
+                  ]}
                 />
               </Card>
               <RightBar
-                pressure={data?.["s=6210-WI-2215"] || 0}
-                hydraulic={data?.["s=6140-PDSH-2426C"] || 0}
-                clamping={data?.["s=6140-PIT-2426D"] || 0}
-                tramp={data?.["s=6140-PIT-2426E"] || 0}
-                lub={data?.["s=6140-PDSH-2426F"] || 0}
-                tank={history?.["s=6140-TE-2426E"] || 0}
-                return={history?.["s=6140-TE-2426F"] || 0}
+                pressure={rightData?.pressure || 0}
+                hydraulic={rightData?.hydraulic || 0}
+                clamping={rightData?.clamping || 0}
+                tramp={rightData?.tramp || 0}
+                lub={rightData?.lub || 0}
+                tank={rightData?.tank || []}
+                return={rightData?.return || []}
               />
             </div>
           </main>

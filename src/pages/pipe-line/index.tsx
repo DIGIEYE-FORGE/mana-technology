@@ -628,7 +628,7 @@ const PipeLine: React.FC = () => {
       console.error("WebSocket error:", error);
     });
     socket.on("serial-JHF455XKPCH6DBLH", (data) => {
-      console.log("Received message:", data);
+      // console.log("Received message:", data);
       updateStatesWithSocketData(data);
     });
     return () => {
