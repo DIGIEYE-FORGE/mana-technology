@@ -553,7 +553,7 @@ const PipeLine: React.FC = () => {
   ];
 
   const { isLoading, isValidating } = useSWR(
-    `dpc-history/api/history`,
+    `dpc-history/api/historyz`,
     async () => {
       const res = await backendApi.findMany("dpc-history/api/history", {
         where: {
@@ -567,6 +567,7 @@ const PipeLine: React.FC = () => {
       return res;
     },
     {
+      revalidateOnMount: true,
       onSuccess: (data) => {
         const length = data?.results?.length;
 
@@ -717,9 +718,8 @@ const PipeLine: React.FC = () => {
             }
           }}
         >
-          {/* <DialogTrigger></DialogTrigger> */}
           <DialogContent
-            className="z-[999999] flex h-[min(95vh,67rem)] min-w-[70rem] max-w-[min(95vw,90rem)] flex-col gap-20 border-none bg-transparent p-0 pb-6 pt-4 text-foreground backdrop-blur"
+            className="z-[999999] flex h-[min(125vh,70rem)] min-w-[70rem] max-w-[min(95vw,90rem)] scale-75 flex-col gap-20 border-none bg-transparent p-0 pb-6 pt-4 text-foreground backdrop-blur"
             style={{
               clipPath:
                 "polygon(0% 18.5%, 2.8% 13.5%, 34% 13.5%, 36.2% 9.3%, 36.2% 0%, 100% 0%, 100% 99.6%, 1.6% 99.6%, 1.6% 67%, 0% 64%)",

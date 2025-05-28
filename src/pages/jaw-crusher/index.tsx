@@ -97,7 +97,7 @@ const JawCrusher = () => {
             <Loader />
           </div>
         ) : (
-          <main className="relative flex !h-fit flex-col gap-5 px-6 pb-6">
+          <main className="relative flex h-1 min-h-[44rem] flex-1 flex-col gap-5 px-6 pb-6">
             <div className="machine-highlight absolute bottom-[150px] left-1/2 aspect-square w-[500px] -translate-x-1/2">
               <div className="circle circle-3 relative h-full w-full">
                 <Circle3 className="rotate h-full w-full duration-1000" />
@@ -114,7 +114,7 @@ const JawCrusher = () => {
               src="/model/bg-pattern.png"
               className="pointer-events-none absolute left-0 top-0 z-0 h-full w-full opacity-60"
             />
-            <div className="z-1 absolute inset-0 isolate flex flex-1 items-center justify-center p-0">
+            <div className="z-1 absolute inset-0 isolate flex h-1 flex-1 items-center justify-center p-0">
               <ModelCanvas
                 url={"/model/jaw02.glb"}
                 position={[10, 10, -40]}
@@ -134,7 +134,7 @@ const JawCrusher = () => {
               crushed={data?.["s=6210-WI-2217"] || 0}
             />
 
-            <div className="flex gap-5">
+            <div className="flex h-1 flex-1 gap-5">
               <LeftBar
                 runningState={data?.["s=6210-WI-2217"] || 0}
                 frameLeft={history?.["s=6032-TT-1130C"] || []}
