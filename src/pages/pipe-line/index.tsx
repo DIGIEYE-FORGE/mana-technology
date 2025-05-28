@@ -528,7 +528,7 @@ const PipeLine: React.FC = () => {
   ];
 
   const { isLoading, isValidating } = useSWR(
-    `dpc-history/api/history`,
+    `dpc-history/api/historyz`,
     async () => {
       const res = await backendApi.findMany("dpc-history/api/history", {
         where: {
@@ -542,6 +542,7 @@ const PipeLine: React.FC = () => {
       return res;
     },
     {
+      revalidateOnMount: true,
       onSuccess: (data) => {
         const length = data?.results?.length;
 
