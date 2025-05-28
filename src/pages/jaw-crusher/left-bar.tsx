@@ -23,9 +23,9 @@ const LeftBar = ({
   w1,
 }: LeftBarProps) => {
   return (
-    <div className="relative z-10 flex h-full w-[400px] shrink-0 flex-col gap-2">
+    <div className="relative z-10 flex h-full min-h-fit w-[400px] shrink-0 flex-col gap-2 overflow-x-hidden [&>.card]:h-1 [&>.card]:flex-1">
       <h1 className="text-xl font-bold">Jaw Crusher</h1>
-      <Card className="!rounded px-5 py-3">
+      <Card className="card !rounded px-5 py-3">
         <div className="mb-2 flex flex-col gap-1">
           <span>Running State</span>
           <span className="text-xl font-bold text-[#FFC829]">
@@ -52,7 +52,7 @@ const LeftBar = ({
           </div>
         </div>
       </Card>
-      <Card className="w-full pl-2 pt-2">
+      <Card className="card w-full pl-2 pt-2">
         <ReactApexChart
           height={170}
           options={{
@@ -119,7 +119,7 @@ const LeftBar = ({
           ]}
         />
       </Card>
-      <Card className="w-full pl-2 pt-2">
+      <Card className="card w-full pl-2 pt-2">
         <ReactApexChart
           height={170}
           options={{
@@ -186,7 +186,7 @@ const LeftBar = ({
           ]}
         />
       </Card>
-      <Card className="w-full pl-2 pt-2">
+      <Card className="card w-full pl-2 pt-2">
         <ReactApexChart
           height={170}
           options={{
