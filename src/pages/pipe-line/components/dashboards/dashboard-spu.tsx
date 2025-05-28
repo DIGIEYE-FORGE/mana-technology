@@ -1,83 +1,15 @@
-import LineChartWidget from "@/components/line-chart-widget";
+// import LineChartWidget from "@/components/line-chart-widget";
 import { Card } from "@/components/card";
 import LiquidProgress from "../progress";
 // import CircularGauge from "../progres-circle";
 import ChloreSVG from "../chlore";
+import ReactApexChart from "react-apexcharts";
 // import ProgressBar from "../progres-bar";
 
 const progressData = [
   { id: 1, name: "", percentage: 80 },
   { id: 2, name: "", percentage: 80 },
 ];
-const flowsInputData = [
-  { x: 1, y: 55 },
-  { x: 3, y: 60 },
-  { x: 5, y: 70 },
-  { x: 7, y: 65 },
-  { x: 9, y: 100 },
-  { x: 11, y: 80 },
-  { x: 13, y: 75 },
-  { x: 15, y: 95 },
-  { x: 17, y: 100 },
-  { x: 19, y: 90 },
-  { x: 21, y: 95 },
-];
-const flowsOutputData = [
-  { x: 1, y: 70 },
-  { x: 3, y: 50 },
-  { x: 5, y: 60 },
-  { x: 7, y: 80 },
-  { x: 9, y: 90 },
-  { x: 11, y: 100 },
-  { x: 13, y: 60 },
-  { x: 15, y: 70 },
-  { x: 17, y: 95 },
-  { x: 19, y: 60 },
-  { x: 21, y: 90 },
-];
-
-const levelData = [
-  { x: 1, y: 10 },
-  { x: 3, y: 40 },
-  { x: 5, y: 35 },
-  { x: 7, y: 50 },
-  { x: 9, y: 30 },
-  { x: 11, y: 55 },
-  { x: 13, y: 40 },
-  { x: 15, y: 60 },
-  { x: 17, y: 90 },
-  { x: 19, y: 25 },
-  { x: 21, y: 50 },
-];
-
-const chloreInputData = [
-  { x: 1, y: 20 },
-  { x: 3, y: 30 },
-  { x: 5, y: 40 },
-  { x: 7, y: 35 },
-  { x: 9, y: 50 },
-  { x: 11, y: 70 },
-  { x: 13, y: 45 },
-  { x: 15, y: 60 },
-  { x: 17, y: 80 },
-  { x: 19, y: 40 },
-  { x: 21, y: 65 },
-];
-
-const chloreOutputData = [
-  { x: 1, y: 30 },
-  { x: 3, y: 40 },
-  { x: 5, y: 50 },
-  { x: 7, y: 60 },
-  { x: 9, y: 70 },
-  { x: 11, y: 80 },
-  { x: 13, y: 90 },
-  { x: 15, y: 100 },
-  { x: 17, y: 95 },
-  { x: 19, y: 60 },
-  { x: 21, y: 90 },
-];
-
 const res = [
   {
     name: "Flow rate",
@@ -85,10 +17,12 @@ const res = [
       {
         name: "input",
         value: 0,
+        key: "flowRateInput",
       },
       {
         name: "to plant",
         value: 0,
+        key: "flowRateToPlant",
       },
     ],
   },
@@ -98,10 +32,12 @@ const res = [
       {
         name: "input",
         value: 0,
+        key: "volumeInput",
       },
       {
         name: "to plant",
         value: 0,
+        key: "volumeOutput",
       },
     ],
   },
@@ -111,6 +47,7 @@ const res = [
       {
         name: "input",
         value: 0,
+        key: "stock",
       },
       {
         name: "to plant",
@@ -120,6 +57,7 @@ const res = [
   },
 ];
 interface DashboardSPUProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: any;
 }
 export function DashboardSPU({ data }: DashboardSPUProps) {
@@ -138,7 +76,11 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                 <div key={dataIndex} className="flex w-full flex-col">
                   <span className="text-center text-sm">{dataItem.name}</span>
                   <div className="flex items-center justify-center gap-2 rounded-2xl border border-white bg-[#021E3F]/80 p-1 px-6 text-white backdrop-blur-md">
-                    <span className="text-lg font-bold">{dataItem.value}</span>
+                    <span className="text-lg font-bold">
+                      {dataItem.key
+                        ? data[dataItem.key] || dataItem.value
+                        : dataItem.value}
+                    </span>
                   </div>
                 </div>
               ))}
@@ -151,49 +93,136 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
         {/* Left column: 3 rows */}
         <div className="flex h-full min-h-0 flex-1 flex-col gap-3">
           <Card className="flex h-[22%] min-h-0 flex-1 flex-col">
-            <div className="flex p-0 px-4 pt-2">
-              <span className="font-medium text-white">Flows</span>
-            </div>
             <div className="debug [&>] flex-1 pl-2 pr-2 [&>*]:h-full [&>*]:w-full">
-              <LineChartWidget
-                attributes={{
-                  telemetries: [
-                    {
-                      area: false,
-                      label: "Input",
-                      color: "#26E2B3",
-                      serial: "JZVATMKQ1A8DA2P1",
-                      data: flowsInputData,
+              <ReactApexChart
+                height={"100%"}
+                options={{
+                  chart: {
+                    type: "line",
+                    zoom: {
+                      enabled: false,
                     },
-                    {
-                      area: false,
-                      label: "Output",
-                      color: "#FFD2A6",
-                      serial: "JZVATMKQ1A8DA2P1",
-                      data: flowsOutputData,
+                    toolbar: {
+                      show: false,
                     },
-                  ],
+                  },
+                  title: {
+                    text: "Flows",
+                    align: "left",
+                    style: {
+                      fontSize: "14px",
+                      color: "#ffffff",
+                    },
+                  },
+                  tooltip: {
+                    theme: "dark",
+                  },
+
+                  stroke: {
+                    curve: "smooth",
+                    width: 3,
+                  },
+                  colors: ["#0843e4"],
+                  legend: {
+                    labels: {
+                      colors: "#A2B0B8",
+                    },
+                    markers: {
+                      shape: "circle",
+                    },
+                  },
+                  xaxis: {
+                    labels: {
+                      style: {
+                        colors: "#A2B0B8",
+                      },
+                    },
+                    type: "datetime",
+                  },
+                  yaxis: {
+                    labels: {
+                      style: {
+                        colors: "#A2B0B8",
+                      },
+                    },
+                    decimalsInFloat: 2,
+                  },
                 }}
+                series={[
+                  {
+                    name: "level",
+                    data: data.flowInput || [],
+                  },
+                ]}
               />
             </div>
           </Card>
           <Card className="flex h-[18%] min-h-0 flex-1 flex-col">
-            <div className="flex p-0 px-4 pt-2">
-              <span className="font-medium text-white">Level</span>
-            </div>
             <div className="debug [&>] flex-1 pl-2 pr-2 [&>*]:h-full [&>*]:w-full">
-              <LineChartWidget
-                max={140}
-                attributes={{
-                  telemetries: [
-                    {
-                      area: false,
-                      label: "Level",
-                      color: "#26E2B3",
-                      data: levelData,
+              <ReactApexChart
+                height={"100%"}
+                options={{
+                  chart: {
+                    type: "line",
+                    zoom: {
+                      enabled: false,
                     },
-                  ],
+                    toolbar: {
+                      show: false,
+                    },
+                  },
+                  title: {
+                    text: "Level",
+                    align: "left",
+                    style: {
+                      fontSize: "14px",
+                      color: "#ffffff",
+                    },
+                  },
+                  tooltip: {
+                    theme: "dark",
+                  },
+
+                  stroke: {
+                    curve: "smooth",
+                    width: 3,
+                  },
+                  colors: ["#0843e4"],
+                  legend: {
+                    labels: {
+                      colors: "#A2B0B8",
+                    },
+                    markers: {
+                      shape: "circle",
+                    },
+                  },
+                  xaxis: {
+                    labels: {
+                      style: {
+                        colors: "#A2B0B8",
+                      },
+                    },
+                    type: "datetime",
+                  },
+                  yaxis: {
+                    labels: {
+                      style: {
+                        colors: "#A2B0B8",
+                      },
+                    },
+                    decimalsInFloat: 2,
+                  },
                 }}
+                series={[
+                  {
+                    name: "levelB1",
+                    data: data.filteredResults || [],
+                  },
+                  {
+                    name: "levelB2",
+                    data: data.filteredResults || [],
+                  },
+                ]}
               />
             </div>
           </Card>
@@ -210,23 +239,62 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
               </div>
             </div>
             <div className="debug [&>] flex-1 pl-2 pr-2 [&>*]:h-full [&>*]:w-full">
-              <LineChartWidget
-                attributes={{
-                  telemetries: [
-                    {
-                      area: false,
-                      label: "Input",
-                      color: "#26E2B3",
-                      data: chloreInputData,
+              <ReactApexChart
+                height={"100%"}
+                options={{
+                  chart: {
+                    type: "line",
+                    zoom: {
+                      enabled: false,
                     },
-                    {
-                      area: false,
-                      label: "Output",
-                      color: "#FFD2A6",
-                      data: chloreOutputData,
+                    toolbar: {
+                      show: false,
                     },
-                  ],
+                  },
+                  tooltip: {
+                    theme: "dark",
+                  },
+
+                  stroke: {
+                    curve: "smooth",
+                    width: 3,
+                  },
+                  colors: ["#0843e4"],
+                  legend: {
+                    labels: {
+                      colors: "#A2B0B8",
+                    },
+                    markers: {
+                      shape: "circle",
+                    },
+                  },
+                  xaxis: {
+                    labels: {
+                      style: {
+                        colors: "#A2B0B8",
+                      },
+                    },
+                    type: "datetime",
+                  },
+                  yaxis: {
+                    labels: {
+                      style: {
+                        colors: "#A2B0B8",
+                      },
+                    },
+                    decimalsInFloat: 2,
+                  },
                 }}
+                series={[
+                  {
+                    name: "levelB1",
+                    data: data.chloreInput || [],
+                  },
+                  {
+                    name: "levelB2",
+                    data: data.chloreOutput || [],
+                  },
+                ]}
               />
             </div>
           </Card>
@@ -236,6 +304,7 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
           <Card className="flex h-[28%] min-h-0 flex-1 items-center justify-center">
             <LiquidProgress
               textStyle="text-white font-bold"
+              stops={[]}
               percentage={progressData.map((item) => ({
                 value: item.percentage,
                 title: item.name,

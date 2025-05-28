@@ -836,7 +836,7 @@ const PipeLine: React.FC = () => {
             level: filteredResults?.["s=SP1_LIT_01_MAE_TM"] || [],
 
             chloreInput: filteredResults?.["s=SP1CHL_CHL_01_MAE_TM"] || [],
-            chlorePlant: filteredResults?.["s=SP1_CHL_02_MAE_TM"] || [],
+            chloreOutput: filteredResults?.["s=SP1_CHL_02_MAE_TM"] || [],
 
             suctionTankLL:
               filteredResults?.["s=SP1_LSLL_01_TA"]?.[length - 1]?.y,

@@ -1,21 +1,18 @@
-import LineChartWidget from "@/components/line-chart-widget";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// import LineChartWidget from "@/components/line-chart-widget";
 import { Card } from "@/components/card";
 import LiquidProgress from "../progress";
 import CircularGauge from "../progres-circle";
 import ProgressBar from "../progres-bar";
 import ChloreSVG from "../chlore";
 import HammerArrestorSVG from "@/assets/hammer-svg.svg?react";
-import SuctionTankSVG from "@/assets/suction-svg.svg?react";
+// import SuctionTankSVG from "@/assets/suction-svg.svg?react";
+import ReactApexChart from "react-apexcharts";
 
 const Data = [
-  { id: 1, name: "Flow rate XX" },
-  { id: 2, name: "Δt Flow XX" },
-  { id: 3, name: "Pumped volume XX" },
-];
-
-const progressData = [
-  { id: 1, name: "Suction tank", percentage: 80 },
-  { id: 2, name: "Hammer arrestor", percentage: 80 },
+  { id: 1, name: "Flow rate", key: "flowRate" },
+  { id: 2, name: "Δt Flow", key: "deltaFlow" },
+  { id: 3, name: "Pumped volume ", key: "pumpedVolume" },
 ];
 
 const valuesData = [
@@ -79,128 +76,128 @@ const progressDataLine = [
   },
 ];
 
-const flowsInputData = [
-  { x: 1, y: 55 },
-  { x: 3, y: 60 },
-  { x: 5, y: 70 },
-  { x: 7, y: 65 },
-  { x: 9, y: 100 },
-  { x: 11, y: 80 },
-  { x: 13, y: 75 },
-  { x: 15, y: 95 },
-  { x: 17, y: 100 },
-  { x: 19, y: 90 },
-  { x: 21, y: 95 },
-];
-const flowsOutputData = [
-  { x: 1, y: 70 },
-  { x: 3, y: 50 },
-  { x: 5, y: 60 },
-  { x: 7, y: 80 },
-  { x: 9, y: 90 },
-  { x: 11, y: 100 },
-  { x: 13, y: 60 },
-  { x: 15, y: 70 },
-  { x: 17, y: 95 },
-  { x: 19, y: 60 },
-  { x: 21, y: 90 },
-];
+// const flowsInputData = [
+//   { x: 1, y: 55 },
+//   { x: 3, y: 60 },
+//   { x: 5, y: 70 },
+//   { x: 7, y: 65 },
+//   { x: 9, y: 100 },
+//   { x: 11, y: 80 },
+//   { x: 13, y: 75 },
+//   { x: 15, y: 95 },
+//   { x: 17, y: 100 },
+//   { x: 19, y: 90 },
+//   { x: 21, y: 95 },
+// ];
+// const flowsOutputData = [
+//   { x: 1, y: 70 },
+//   { x: 3, y: 50 },
+//   { x: 5, y: 60 },
+//   { x: 7, y: 80 },
+//   { x: 9, y: 90 },
+//   { x: 11, y: 100 },
+//   { x: 13, y: 60 },
+//   { x: 15, y: 70 },
+//   { x: 17, y: 95 },
+//   { x: 19, y: 60 },
+//   { x: 21, y: 90 },
+// ];
 
-const pressuresData = {
-  Output: [
-    { x: 1, y: 80 },
-    { x: 3, y: 85 },
-    { x: 5, y: 90 },
-    { x: 7, y: 95 },
-    { x: 9, y: 100 },
-    { x: 11, y: 90 },
-    { x: 13, y: 95 },
-    { x: 15, y: 100 },
-    { x: 17, y: 90 },
-    { x: 19, y: 95 },
-    { x: 21, y: 100 },
-  ],
-  P1: [
-    { x: 1, y: 20 },
-    { x: 3, y: 40 },
-    { x: 5, y: 60 },
-    { x: 7, y: 50 },
-    { x: 9, y: 70 },
-    { x: 11, y: 40 },
-    { x: 13, y: 30 },
-    { x: 15, y: 60 },
-    { x: 17, y: 80 },
-    { x: 19, y: 60 },
-    { x: 21, y: 70 },
-  ],
-  P2: [
-    { x: 1, y: 60 },
-    { x: 3, y: 70 },
-    { x: 5, y: 80 },
-    { x: 7, y: 90 },
-    { x: 9, y: 80 },
-    { x: 11, y: 100 },
-    { x: 13, y: 90 },
-    { x: 15, y: 80 },
-    { x: 17, y: 100 },
-    { x: 19, y: 90 },
-    { x: 21, y: 80 },
-  ],
-  P3: [
-    { x: 1, y: 40 },
-    { x: 3, y: 60 },
-    { x: 5, y: 50 },
-    { x: 7, y: 70 },
-    { x: 9, y: 60 },
-    { x: 11, y: 50 },
-    { x: 13, y: 40 },
-    { x: 15, y: 60 },
-    { x: 17, y: 80 },
-    { x: 19, y: 70 },
-    { x: 21, y: 60 },
-  ],
-};
+// const pressuresData = {
+//   Output: [
+//     { x: 1, y: 80 },
+//     { x: 3, y: 85 },
+//     { x: 5, y: 90 },
+//     { x: 7, y: 95 },
+//     { x: 9, y: 100 },
+//     { x: 11, y: 90 },
+//     { x: 13, y: 95 },
+//     { x: 15, y: 100 },
+//     { x: 17, y: 90 },
+//     { x: 19, y: 95 },
+//     { x: 21, y: 100 },
+//   ],
+//   P1: [
+//     { x: 1, y: 20 },
+//     { x: 3, y: 40 },
+//     { x: 5, y: 60 },
+//     { x: 7, y: 50 },
+//     { x: 9, y: 70 },
+//     { x: 11, y: 40 },
+//     { x: 13, y: 30 },
+//     { x: 15, y: 60 },
+//     { x: 17, y: 80 },
+//     { x: 19, y: 60 },
+//     { x: 21, y: 70 },
+//   ],
+//   P2: [
+//     { x: 1, y: 60 },
+//     { x: 3, y: 70 },
+//     { x: 5, y: 80 },
+//     { x: 7, y: 90 },
+//     { x: 9, y: 80 },
+//     { x: 11, y: 100 },
+//     { x: 13, y: 90 },
+//     { x: 15, y: 80 },
+//     { x: 17, y: 100 },
+//     { x: 19, y: 90 },
+//     { x: 21, y: 80 },
+//   ],
+//   P3: [
+//     { x: 1, y: 40 },
+//     { x: 3, y: 60 },
+//     { x: 5, y: 50 },
+//     { x: 7, y: 70 },
+//     { x: 9, y: 60 },
+//     { x: 11, y: 50 },
+//     { x: 13, y: 40 },
+//     { x: 15, y: 60 },
+//     { x: 17, y: 80 },
+//     { x: 19, y: 70 },
+//     { x: 21, y: 60 },
+//   ],
+// };
 
-const levelData = [
-  { x: 1, y: 10 },
-  { x: 3, y: 40 },
-  { x: 5, y: 35 },
-  { x: 7, y: 50 },
-  { x: 9, y: 30 },
-  { x: 11, y: 55 },
-  { x: 13, y: 40 },
-  { x: 15, y: 60 },
-  { x: 17, y: 90 },
-  { x: 19, y: 25 },
-  { x: 21, y: 50 },
-];
+// const levelData = [
+//   { x: 1, y: 10 },
+//   { x: 3, y: 40 },
+//   { x: 5, y: 35 },
+//   { x: 7, y: 50 },
+//   { x: 9, y: 30 },
+//   { x: 11, y: 55 },
+//   { x: 13, y: 40 },
+//   { x: 15, y: 60 },
+//   { x: 17, y: 90 },
+//   { x: 19, y: 25 },
+//   { x: 21, y: 50 },
+// ];
 
-const chloreInputData = [
-  { x: 1, y: 20 },
-  { x: 3, y: 30 },
-  { x: 5, y: 40 },
-  { x: 7, y: 35 },
-  { x: 9, y: 50 },
-  { x: 11, y: 70 },
-  { x: 13, y: 45 },
-  { x: 15, y: 60 },
-  { x: 17, y: 80 },
-  { x: 19, y: 40 },
-  { x: 21, y: 65 },
-];
-const chloreOutputData = [
-  { x: 1, y: 30 },
-  { x: 3, y: 40 },
-  { x: 5, y: 50 },
-  { x: 7, y: 60 },
-  { x: 9, y: 70 },
-  { x: 11, y: 90 },
-  { x: 13, y: 60 },
-  { x: 15, y: 70 },
-  { x: 17, y: 75 },
-  { x: 19, y: 60 },
-  { x: 21, y: 70 },
-];
+// const chloreInputData = [
+//   { x: 1, y: 20 },
+//   { x: 3, y: 30 },
+//   { x: 5, y: 40 },
+//   { x: 7, y: 35 },
+//   { x: 9, y: 50 },
+//   { x: 11, y: 70 },
+//   { x: 13, y: 45 },
+//   { x: 15, y: 60 },
+//   { x: 17, y: 80 },
+//   { x: 19, y: 40 },
+//   { x: 21, y: 65 },
+// ];
+// const chloreOutputData = [
+//   { x: 1, y: 30 },
+//   { x: 3, y: 40 },
+//   { x: 5, y: 50 },
+//   { x: 7, y: 60 },
+//   { x: 9, y: 70 },
+//   { x: 11, y: 90 },
+//   { x: 13, y: 60 },
+//   { x: 15, y: 70 },
+//   { x: 17, y: 75 },
+//   { x: 19, y: 60 },
+//   { x: 21, y: 70 },
+// ];
 
 interface DashboardSP01Props {
   data: any;
@@ -218,22 +215,20 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
             key={item.id}
             className="rounded-md border-2 border-white bg-[#021E3F] p-2 px-4 text-white backdrop-blur-md"
           >
-            {item.name}
+            {item.name} {Number(data[item.key]).toFixed(0) || "0"}
           </div>
         ))}
       </div>
 
       {/* Main dashboard content */}
-      <div className="relative mr-4 flex h-full min-h-0 min-w-0 flex-1 gap-4 overflow-hidden py-4 pl-12 pr-4">
+      <div className="debug relative mr-4 flex h-full min-h-0 min-w-0 flex-1 gap-4 overflow-hidden py-4 pl-12 pr-4">
+        {/* {JSON.stringify(data)} */}
         {/* 2 columns × 4 rows grid layout */}
         <div className="grid h-full min-h-0 w-full min-w-0 flex-1 grid-cols-2 grid-rows-4 gap-4">
           {/* Row 1, Col 1 - Flows Chart */}
           <Card className="flex h-full flex-col">
-            <div className="m-0 flex p-0 px-4 pt-2">
-              <span className="font-medium text-white">Flows</span>
-            </div>
             <div className="flex-1 pl-2 pr-2">
-              <LineChartWidget
+              {/* <LineChartWidget
                 attributes={{
                   telemetries: [
                     {
@@ -241,17 +236,82 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                       label: "Input",
                       color: "#26E2B3",
                       serial: "JZVATMKQ1A8DA2P1",
-                      data: flowsInputData,
+                      data: data.flowsInput || [],
                     },
                     {
                       area: false,
                       label: "Output",
                       color: "#FFD2A6",
                       serial: "JZVATMKQ1A8DA2P1",
-                      data: flowsOutputData,
+                      data: data.flowsOutput || [],
                     },
                   ],
                 }}
+              /> */}
+              <ReactApexChart
+                height={"100%"}
+                options={{
+                  chart: {
+                    height: 200,
+                    type: "line",
+                    zoom: {
+                      enabled: false,
+                    },
+                    toolbar: {
+                      show: false,
+                    },
+                  },
+                  tooltip: {
+                    theme: "dark",
+                  },
+                  title: {
+                    text: "Flows",
+                    align: "left",
+                    style: {
+                      fontSize: "14px",
+                      color: "#ffffff",
+                    },
+                  },
+                  stroke: {
+                    curve: "smooth",
+                    width: 3,
+                  },
+                  colors: ["#E4A0F5", "#FFCA05"],
+                  legend: {
+                    labels: {
+                      colors: "#A2B0B8",
+                    },
+                    markers: {
+                      shape: "circle",
+                    },
+                  },
+                  xaxis: {
+                    labels: {
+                      style: {
+                        colors: "#A2B0B8",
+                      },
+                    },
+                    type: "datetime",
+                  },
+                  yaxis: {
+                    labels: {
+                      style: {
+                        colors: "#A2B0B8",
+                      },
+                    },
+                    decimalsInFloat: 2,
+                  },
+                }}
+                series={[
+                  {
+                    name: "Input",
+                    data: data.flowsInput || [],
+                  },
+                  {
+                    name: "Output",
+                    data: data.flowsOutput || [],
+                  },
+                ]}
               />
             </div>
           </Card>
@@ -262,10 +322,32 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
               <span className="mb-2 text-sm font-medium text-white">
                 Suction tank
               </span>
+
               <LiquidProgress
-                percentage={[{ value: 80, title: "" }]}
+                percentage={[{ value: 50, title: "" }]}
                 className="h-[7rem] w-[5rem]"
                 textStyle="text-white font-bold"
+                stops={
+                  [
+                    /// TODO
+                    // {
+                    //   color: "#E64C3C",
+                    //   value: data.suctionTankLL,
+                    // },
+                    // {
+                    //   color: "#e9cc0f",
+                    //   value: data.suctionTankL,
+                    // },
+                    // {
+                    //   color: "#26E2B3",
+                    //   value: data.suctionTankH,
+                    // },
+                    // {
+                    //   color: "#26E2B3",
+                    //   value: data.suctionTankHH,
+                    // },
+                  ]
+                }
               />
             </div>
             <div className="flex flex-1 flex-col items-center">
@@ -278,11 +360,8 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
 
           {/* Row 2, Col 1 - Pressures Chart */}
           <Card className="flex h-full flex-col">
-            <div className="m-0 flex p-0 px-4 pt-2">
-              <span className="font-medium text-white">Presures</span>
-            </div>
             <div className="flex-1 pl-2 pr-2">
-              <LineChartWidget
+              {/* <LineChartWidget
                 attributes={{
                   telemetries: [
                     {
@@ -311,6 +390,79 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                     },
                   ],
                 }}
+              /> */}
+              <ReactApexChart
+                height={"100%"}
+                options={{
+                  chart: {
+                    height: 200,
+                    type: "line",
+                    zoom: {
+                      enabled: false,
+                    },
+                    toolbar: {
+                      show: false,
+                    },
+                  },
+                  tooltip: {
+                    theme: "dark",
+                  },
+                  title: {
+                    text: "Presures",
+                    align: "left",
+                    style: {
+                      fontSize: "14px",
+                      color: "#ffffff",
+                    },
+                  },
+                  stroke: {
+                    curve: "smooth",
+                    width: 3,
+                  },
+                  colors: ["#E4A0F5", "#FFCA05", "#26E2B3", "#E64C3C"],
+                  legend: {
+                    labels: {
+                      colors: "#A2B0B8",
+                    },
+                    markers: {
+                      shape: "circle",
+                    },
+                  },
+                  xaxis: {
+                    labels: {
+                      style: {
+                        colors: "#A2B0B8",
+                      },
+                    },
+                    type: "datetime",
+                  },
+                  yaxis: {
+                    labels: {
+                      style: {
+                        colors: "#A2B0B8",
+                      },
+                    },
+                    decimalsInFloat: 2,
+                  },
+                }}
+                series={[
+                  {
+                    name: "Output",
+                    data: data.pressuresOutput || [],
+                  },
+                  {
+                    name: "P1",
+                    data: data.pressuresP1 || [],
+                  },
+                  {
+                    name: "P2",
+                    data: data.pressuresP2 || [],
+                  },
+                  {
+                    name: "P3",
+                    data: data.pressuresP3 || [],
+                  },
+                ]}
               />
             </div>
           </Card>
@@ -349,11 +501,11 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
 
           {/* Row 3, Col 1 - Level Chart */}
           <Card className="flex h-[180px] flex-col overflow-hidden">
-            <div className="m-0 flex p-0 px-4 pt-2">
+            {/* <div className="m-0 flex p-0 px-4 pt-2">
               <span className="font-medium text-white">Level</span>
-            </div>
+            </div> */}
             <div className="flex-1 pl-2 pr-2">
-              <LineChartWidget
+              {/* <LineChartWidget
                 max={140}
                 attributes={{
                   telemetries: [
@@ -365,6 +517,66 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                     },
                   ],
                 }}
+              /> */}
+              <ReactApexChart
+                height={"100%"}
+                options={{
+                  chart: {
+                    type: "line",
+                    zoom: {
+                      enabled: false,
+                    },
+                    toolbar: {
+                      show: false,
+                    },
+                  },
+                  tooltip: {
+                    theme: "dark",
+                  },
+                  title: {
+                    text: "level",
+                    align: "left",
+                    style: {
+                      fontSize: "14px",
+                      color: "#ffffff",
+                    },
+                  },
+                  stroke: {
+                    curve: "smooth",
+                    width: 3,
+                  },
+                  colors: ["#E4A0F5"],
+                  legend: {
+                    labels: {
+                      colors: "#A2B0B8",
+                    },
+                    markers: {
+                      shape: "circle",
+                    },
+                  },
+                  xaxis: {
+                    labels: {
+                      style: {
+                        colors: "#A2B0B8",
+                      },
+                    },
+                    type: "datetime",
+                  },
+                  yaxis: {
+                    labels: {
+                      style: {
+                        colors: "#A2B0B8",
+                      },
+                    },
+                    decimalsInFloat: 2,
+                  },
+                }}
+                series={[
+                  {
+                    name: "level",
+                    data: data.level || [],
+                  },
+                ]}
               />
             </div>
           </Card>
@@ -390,8 +602,8 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
 
           {/* Row 4, Col 1 - Chlore Chart */}
           <Card className="flex h-full flex-col">
-            <div className="relative m-0 flex items-center justify-between p-0 px-4 pt-2">
-              <span className="font-medium text-white">r</span>
+            <div className="debug relative m-0 flex items-center justify-between p-0 px-4 pt-2">
+              <span className="font-medium text-white">Clore</span>
               <div className="absolute right-4 flex gap-2 text-xs">
                 <span className="rounded-full border border-white bg-[#021E3F] px-3 py-1 text-white">
                   Input XX
@@ -402,23 +614,62 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
               </div>
             </div>
             <div className="flex-1 pl-2 pr-2">
-              <LineChartWidget
-                attributes={{
-                  telemetries: [
-                    {
-                      area: false,
-                      label: "Input",
-                      color: "#26E2B3",
-                      data: chloreInputData,
+              <ReactApexChart
+                height={"100%"}
+                options={{
+                  chart: {
+                    type: "line",
+                    zoom: {
+                      enabled: false,
                     },
-                    {
-                      area: false,
-                      label: "Output",
-                      color: "#FFD2A6",
-                      data: chloreOutputData,
+                    toolbar: {
+                      show: false,
                     },
-                  ],
+                  },
+                  tooltip: {
+                    theme: "dark",
+                  },
+
+                  stroke: {
+                    curve: "smooth",
+                    width: 3,
+                  },
+                  colors: ["#E4A0F5", "#FFCA05"],
+                  legend: {
+                    labels: {
+                      colors: "#A2B0B8",
+                    },
+                    markers: {
+                      shape: "circle",
+                    },
+                  },
+                  xaxis: {
+                    labels: {
+                      style: {
+                        colors: "#A2B0B8",
+                      },
+                    },
+                    type: "datetime",
+                  },
+                  yaxis: {
+                    labels: {
+                      style: {
+                        colors: "#A2B0B8",
+                      },
+                    },
+                    decimalsInFloat: 2,
+                  },
                 }}
+                series={[
+                  {
+                    name: "Input",
+                    data: data.chloreInput || [],
+                  },
+                  {
+                    name: "Output",
+                    data: data.chloreOutput || [],
+                  },
+                ]}
               />
             </div>
           </Card>
@@ -427,20 +678,20 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
           <Card className="flex h-full flex-col gap-0 p-4">
             <span className="text-xl font-bold">Chlore Station</span>
             <div className="flex items-center justify-center gap-8">
+              <ChloreSVG
+                topTitle={data.chloreStationH1 || "SP01-M-02"}
+                leftTitle={data.chloreStationL1 || "LSLL-01"}
+                bottomTitle=""
+                value={data.chloreStationvalue1 || "XX"}
+              />
               {/* First block */}
               <ChloreSVG
-                topTitle="SP01-M-03"
-                leftTitle="LSLL-03"
-                bottomTitle="SP01-M-01"
-                value="XX"
+                topTitle={data.chloreStationH2 || "SP01-M-03"}
+                leftTitle={data.chloreStationL2 || "LSLL-03"}
+                bottomTitle={data.chloreStationH1 || "SP01-M-01"}
+                value={data.chloreStationvalue2 || "XX"}
               />
               {/* Second block */}
-              <ChloreSVG
-                topTitle="SP01-M-03"
-                leftTitle="LSLL-04"
-                bottomTitle="SP01-M-02"
-                value="XX"
-              />
             </div>
           </Card>
         </div>
