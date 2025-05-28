@@ -372,7 +372,7 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
           </Card>
 
           {/* Row 2, Col 2 - Energy and Power section */}
-          <Card className="flex h-full items-center gap-2 p-4 opacity-50">
+          <Card className="flex h-full items-center  gap-2 p-4 opacity-40 cursor-not-allowed">
             <div className="flex h-full w-[6rem] flex-col items-center justify-between py-4">
               <span className="text-xl font-bold">Energy</span>
               <div className="flex flex-col items-center">
