@@ -39,6 +39,7 @@ import PebbleCrusher from "@/pages/pebble-crusher";
 import JawCrusher from "@/pages/jaw-crusher";
 // import GoliaPage from "@/pages/golia";
 import CrushingLayout from "@/pages/omniverse-layout";
+import Flotation from "@/pages/flotation";
 
 const routes: RouteObject[] = [
   {
@@ -100,6 +101,10 @@ const routes: RouteObject[] = [
       {
         path: "future",
         element: <FuturePage />,
+      },
+      {
+        path: "flotation",
+        element: <Flotation />,
       },
       // {
       //   path: "golia",
