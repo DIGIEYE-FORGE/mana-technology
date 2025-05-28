@@ -105,10 +105,10 @@ const LeftBar = ({
   air2Val,
 }: LeftBarProps) => {
   return (
-    <div className="relative z-10 flex h-full w-[500px] flex-col gap-3">
-      <Card className="flex w-full justify-between gap-2 px-2 py-2">
+    <div className="relative z-10 flex h-full w-[500px] flex-col gap-2">
+      <Card className="flex w-full justify-between gap-2 px-2 py-1">
         <ReactApexChart
-          height={150}
+          height={120}
           options={{
             chart: {
               height: 200,
@@ -207,9 +207,9 @@ const LeftBar = ({
           </div>
         </Card>
       </Card>
-      <Card className="flex w-full justify-between gap-2 px-2 py-2">
+      <Card className="flex w-full justify-between gap-2 px-2 py-1">
         <ReactApexChart
-          height={150}
+          height={120}
           options={{
             chart: {
               height: 200,
@@ -337,9 +337,9 @@ const LeftBar = ({
           </div>
         </Card>
       </Card>
-      <Card className="flex w-full justify-between gap-2 px-2 py-2">
+      <Card className="flex w-full justify-between gap-2 px-2 py-1">
         <ReactApexChart
-          height={150}
+          height={120}
           options={{
             chart: {
               height: 200,
