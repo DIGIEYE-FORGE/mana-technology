@@ -107,7 +107,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
       style={createPositionStyle(point.position)}
       onClick={() => onPointClick(point.id)}
     >
-      {showCard && (
+      {showCard && Object.values(point?.card?.attributes || {}).length > 3 && (
         <div
           className={cn(
             "absolute z-10 min-h-[10rem] min-w-[21rem] max-w-fit scale-[0.8] p-4 pr-6",
@@ -154,7 +154,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                       value: 18,
                     },
                     {
-                      color: "#0a50e6",
+                      color: "#0553fb",
                       value: 89,
                     },
                     {
@@ -165,16 +165,16 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                   percentage={
                     point?.card?.progress && Array.isArray(point.card.progress)
                       ? point.card.progress.map((p) => ({
-                          value: Number(p / 5) * 100,
+                          value: (p && Number(p / 5) * 100) || 0,
                           title: "",
                         }))
                       : [
                           {
-                            // value: Number(point.card.progress)?.toFixed(
-                            //   2,
-                            value: (
-                              Number(point.card.progress / 5) * 100
-                            ).toFixed(2) as unknown as number,
+                            value:
+                              ((point.card.progress as number) &&
+                                Number(point.card.progress / 5) * 100) ||
+                              0,
+
                             title: "",
                           },
                         ]
@@ -204,12 +204,12 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                         <div className="flex flex-wrap gap-1">
                           {value?.map((v, idx) => (
                             <span key={idx} className="text-xs text-white">
-                              {v}
+                              {v || "xx"}
                             </span>
                           ))}
                         </div>
                       ) : (
-                        value
+                        value || "xx"
                       )}
                     </span>
                   </div>
@@ -920,7 +920,7 @@ const PipeLine: React.FC = () => {
           SP1: {
             flowRate: filteredResults?.["s=SP4_FIT_02_MAE_TM"]?.[length - 1]?.y,
             pumpedVolume:
-              filteredResults?.["s=SP1_FIT_04_TOT_MES_TM"]?.[length - 1]?.y,
+              filteredResults?.["s=SP4_FIT_02_TOT_MES_TM"]?.[length - 1]?.y,
             deltaFlow:
               filteredResults?.["s=SP4_FIT_02_MAE_TM"]?.[length - 1]?.y -
               filteredResults?.["s=SP4_FIT_01_MAE_TM"]?.[length - 1]?.y,
@@ -1189,7 +1189,9 @@ const PipeLine: React.FC = () => {
                 )}
               >
                 <h3 className="text-lg text-white">{item.title}</h3>
-                <span className="text-xl text-[#FFC829]">{item.value}</span>
+                <span className="text-xl text-[#FFC829]">
+                  {item.value || "xx"}
+                </span>
               </CustomCardComponent>
             ))}
           </div>
@@ -1244,8 +1246,6 @@ const PipeLine: React.FC = () => {
           >
             <div className="flex h-[8%] shrink-0 items-center pl-[calc(36%+1rem)]">
               <span className="shrink-0 pl-6 font-ethnocentric text-sm font-extralight text-foreground first-letter:uppercase">
-                {/* {point.model?.dashboard?.title || "Dashboard"} */}
-                {/* {point.model?.dashboard?.title || "Pipeline Dashboard"} */}
                 {PipeLineAttributes.find((item) => item.id === activePoint)
                   ?.title || "Pipeline Dashboard"}
               </span>

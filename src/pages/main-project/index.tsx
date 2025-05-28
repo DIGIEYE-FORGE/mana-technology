@@ -223,17 +223,61 @@ const data = [
   //   image: "screen1.svg",
   //   to: "/vr-underground",
   //   position: {
-  //     bottom: "-7%",
-  //     right: "32.5%",
+  //     bottom: "70%",
+  //     right: "45.5%",
   //   },
   //   positionModel: {
   //     side: "left",
   //     align: "end",
   //     sideOffset: 20,
   //   },
-  //   background: "url(/vr-icon.svg)",
+  //   background: "url(/crusher.svg)",
   // },
-  ///////
+  {
+    type: "link",
+    image: "screen1.svg",
+    to: "/crushing",
+    position: {
+      bottom: "71%",
+      right: "42%",
+    },
+    positionModel: {
+      side: "left",
+      align: "end",
+      sideOffset: 20,
+    },
+    background: "url(/crusher.svg)",
+  },
+  {
+    type: "link",
+    image: "screen1.svg",
+    to: "/flotation",
+    position: {
+      bottom: "71%",
+      right: "46%",
+    },
+    positionModel: {
+      side: "left",
+      align: "end",
+      sideOffset: 20,
+    },
+    background: "url(/crusher.svg)",
+  },
+  {
+    type: "link",
+    image: "screen1.svg",
+    to: "/jaw-crusher",
+    position: {
+      bottom: "71%",
+      right: "38%",
+    },
+    positionModel: {
+      side: "left",
+      align: "end",
+      sideOffset: 20,
+    },
+    background: "url(/jaw.svg)",
+  },
   {
     title: "Electrical power line",
     type: "image",
@@ -707,7 +751,7 @@ export default function MainProjectPage() {
                 shadow-camera-bottom={-10}
               />
               <Suspense fallback={<Loader3D />}>
-                <Model
+                {/* <Model
                   hovered={hovered}
                   url={
                     `${env.VITE_LOCAL_MODELS === "true" ? "/ignore/" : "https://managem.digieye.io/statics/"}` +
@@ -715,7 +759,7 @@ export default function MainProjectPage() {
                   }
                   ref={modelRef}
                   onLoad={() => setLoading(false)}
-                />
+                /> */}
               </Suspense>
               <RotatingModel modelRef={modelRef} isRotating={isRotating} />
               <OrbitControls enableRotate rotateSpeed={1} zoomToCursor />

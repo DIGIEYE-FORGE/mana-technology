@@ -10,6 +10,7 @@ import Circle1 from "@/assets/circle-1.svg?react";
 import Circle2 from "@/assets/circle-2.svg?react";
 import Circle3 from "@/assets/circle-3.svg?react";
 import Light from "@/assets/light.svg?react";
+import Loader from "@/components/loader";
 
 const PebbleCrusher = () => {
   const { backendApi, dateRange } = useAppContext();
@@ -122,7 +123,7 @@ const PebbleCrusher = () => {
         <UpBar />
         {isLoading || isLoadingHistory || isLoadingCount ? (
           <div className="flex h-[calc(100svh-80px)] items-center justify-center">
-            <div className="loader"></div>
+            <Loader />
           </div>
         ) : error || historyError || countError ? (
           <div className="flex h-[calc(100svh-80px)] items-center justify-center">
