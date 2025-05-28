@@ -1,13 +1,18 @@
 function ChloreSVG({
-  value = "XX",
+  value = "00",
+  color = "#98FFE5",
   topTitle = "SP01-M-03",
   bottomTitle = "SP01-M-02",
   leftTitle = "LSLL-04",
   width = 200,
   height = 140,
 }) {
-  
-  const leftTitleColor = leftTitle.toLowerCase() === "true" ? "#26E2B3" : leftTitle.toLowerCase() === "false" ? "#E64C3C" : "white";
+  const leftTitleColor =
+    leftTitle.toLowerCase() === "true"
+      ? "#26E2B3"
+      : leftTitle.toLowerCase() === "false"
+        ? "#E64C3C"
+        : "white";
 
   return (
     <svg
@@ -69,7 +74,7 @@ function ChloreSVG({
           <g filter="url(#filter3)">
             <path
               d="M92.6305 94.667L92.6325 106.167C92.6327 107.272 93.528 108.167 94.6325 108.167L107.633 108.167"
-              stroke="#98FFE5"
+              stroke={color}
             />
           </g>
           <g filter="url(#filter4)">
@@ -78,7 +83,7 @@ function ChloreSVG({
               y1="108.167"
               x2="134.633"
               y2="108.167"
-              stroke="#98FFE5"
+              stroke={color}
             />
           </g>
           <g filter="url(#filter5)">
@@ -88,7 +93,7 @@ function ChloreSVG({
               width="13"
               height="13"
               rx="6.5"
-              fill="#98FFE5"
+              fill={color}
             />
             <path
               d="M118.892 103.064L113.942 108.014M113.942 108.014L108.992 112.964M113.942 108.014L108.992 103.064M113.942 108.014L118.892 112.964"
