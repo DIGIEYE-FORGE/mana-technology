@@ -33,7 +33,7 @@ const UpCards = ({
 }: UpCardsProps) => {
   return (
     <div className="flex w-full flex-col justify-between">
-      <div className="flex w-full gap-2">
+      <div className="grid grid-cols-7 w-full gap-2">
         <Card className="flex grow flex-col items-center gap-2 !rounded p-2">
           <span>Flow Rate (t/h)</span>
           <div className="flex w-full gap-3">
@@ -51,40 +51,40 @@ const UpCards = ({
             </Card>
           </div>
         </Card>
-        <Card className="flex max-w-fit grow items-center justify-center gap-5 !rounded px-5">
-          <RocketIcon className="size-16" />
+        <Card className="flex grow items-center justify-center gap-5 !rounded px-5">
+          <RocketIcon className="size-14 min-h-[3.5rem] min-w-[3.5rem]" />
           <div className="flex flex-col gap-1">
-            <span>Cadence</span>
+            <span>Throughput rate (t/h)</span>
             <span className="text-lg font-bold text-[#FFC829]">{cadence}</span>
           </div>
         </Card>
-        <Card className="flex max-w-fit grow items-center justify-center gap-5 !rounded px-5">
-          <CrushedIcon className="size-16" />
+        <Card className="flex grow items-center justify-center gap-5 !rounded px-5">
+          <CrushedIcon className="size-14 min-h-[3.5rem] min-w-[3.5rem]" />
           <div className="flex flex-col gap-1">
-            <span>Crushed ORE</span>
+            <span>Crushed Ore (t)</span>
             <span className="text-lg font-bold text-[#FFC829]">
-              {crushed} %
+              {crushed}
             </span>
           </div>
         </Card>
-        <Card className="flex max-w-fit grow items-center justify-center gap-5 !rounded px-5">
-          <LevelIcon className="size-16" />
+        <Card className="flex grow items-center justify-center gap-5 !rounded px-5">
+          <LevelIcon className="size-14 min-h-[3.5rem] min-w-[3.5rem]" />
           <div className="flex flex-col gap-1">
-            <span>Rom Stockpile Level</span>
+            <span className="text-wrap">Rom Stockpile Level (%)</span>
             <div className="flex w-full justify-between">
               <span className="text-lg font-bold text-[#FFC829]">
-                {stockpileLevelMin}
+                {stockpileLevelMin} %
               </span>
               <span className="text-lg font-bold text-[#FFC829]">
-                {stockpileLevelMax}
+                {stockpileLevelMax} %
               </span>
             </div>
           </div>
         </Card>
-        <Card className="flex max-w-fit grow items-center justify-center gap-5 !rounded px-5">
-          <SettingIcon className="size-16" />
+        <Card className="flex grow items-center justify-center gap-5 !rounded px-5">
+          <SettingIcon className="size-14 min-h-[3.5rem] min-w-[3.5rem]" />
           <div className="flex flex-col gap-1">
-            <span>Crushed Ore Stockpile Level</span>
+            <span>Crushed Ore Stockpile Level (%)</span>
             <div className="flex w-full justify-between">
               <span className="text-lg font-bold text-[#FFC829]">
                 {crushedOreMin} %
@@ -95,15 +95,15 @@ const UpCards = ({
             </div>
           </div>
         </Card>
-        <Card className="flex max-w-fit grow items-center justify-center gap-5 !rounded px-5">
-          <PlugIcon className="size-16" />
+        <Card className="flex grow items-center justify-center gap-5 !rounded px-5">
+          <PlugIcon className="size-14 min-h-[3.5rem] min-w-[3.5rem]" />
           <div className="flex flex-col gap-1">
             <span>Power (Kw)</span>
             <span className="text-lg font-bold text-[#FFC829]">{power}</span>
           </div>
         </Card>
-        <Card className="flex max-w-fit grow items-center justify-center gap-5 !rounded px-5">
-          <ElectricIcon className="size-16" />
+        <Card className="flex grow items-center justify-center gap-5 !rounded px-5">
+          <ElectricIcon className="size-14 min-h-[3.5rem] min-w-[3.5rem]" />
           <div className="flex flex-col gap-1">
             <span>Energy (kwh)</span>
             <span className="text-lg font-bold text-[#FFC829]">{energy}</span>

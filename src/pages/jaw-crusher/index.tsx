@@ -207,7 +207,7 @@ const JawCrusher = () => {
                       theme: "dark",
                     },
                     title: {
-                      text: "Crushed Ore Flow",
+                      text: "Crushed Ore Flow (t/h)",
                       align: "left",
                       style: {
                         fontSize: "14px",

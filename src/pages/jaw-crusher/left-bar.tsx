@@ -23,9 +23,9 @@ const LeftBar = ({
   w1,
 }: LeftBarProps) => {
   return (
-    <div className="relative z-10 flex h-full w-[400px] shrink-0 flex-col gap-2">
+    <div className="relative z-10 flex h-full min-h-fit w-[400px] shrink-0 flex-col gap-2 overflow-x-hidden [&>.card]:h-1 [&>.card]:flex-1">
       <h1 className="text-xl font-bold">Jaw Crusher</h1>
-      <Card className="!rounded px-5 py-3">
+      <Card className="card !rounded px-5 py-3">
         <div className="mb-2 flex flex-col gap-1">
           <span>Running State</span>
           <span className="text-xl font-bold text-[#FFC829]">
@@ -39,20 +39,20 @@ const LeftBar = ({
         </div>
         <div className="flex flex-col gap-1">
           <div className="flex w-full justify-between">
-            <span>Running hours</span>
-            <span className="text-xl font-bold text-[#FFC829]">XX</span>
+            <span>Operating hours (h)</span>
+            <span className="text-xl font-bold text-[#FFC829]">00</span>
           </div>
           <div className="flex w-full justify-between">
-            <span>Stop Hours</span>
-            <span className="text-xl font-bold text-[#FFC829]">XX</span>
+            <span>Downtime hours (h)</span>
+            <span className="text-xl font-bold text-[#FFC829]">00</span>
           </div>
           <div className="flex w-full justify-between">
             <span>Utilisation (%)</span>
-            <span className="text-xl font-bold text-[#FFC829]">XX</span>
+            <span className="text-xl font-bold text-[#FFC829]">00</span>
           </div>
         </div>
       </Card>
-      <Card className="w-full pl-2 pt-2">
+      <Card className="card w-full pl-2 pt-2">
         <ReactApexChart
           height={170}
           options={{
@@ -70,7 +70,7 @@ const LeftBar = ({
               theme: "dark",
             },
             title: {
-              text: "Frame bearing temperature",
+              text: "Frame bearing temperature (°C)",
               align: "left",
               style: {
                 fontSize: "14px",
@@ -119,7 +119,7 @@ const LeftBar = ({
           ]}
         />
       </Card>
-      <Card className="w-full pl-2 pt-2">
+      <Card className="card w-full pl-2 pt-2">
         <ReactApexChart
           height={170}
           options={{
@@ -137,7 +137,7 @@ const LeftBar = ({
               theme: "dark",
             },
             title: {
-              text: "Pitman bearing temperature",
+              text: "Pitman bearing temperature (°C)",
               align: "left",
               style: {
                 fontSize: "14px",
@@ -148,7 +148,7 @@ const LeftBar = ({
               curve: "smooth",
               width: 3,
             },
-            colors: ["#FFCA05"],
+            colors: ["#FFCA05", "#40EFDE"],
             legend: {
               labels: {
                 colors: "#A2B0B8",
@@ -176,17 +176,17 @@ const LeftBar = ({
           }}
           series={[
             {
-              name: "left",
+              name: "V1",
               data: pitmanLeft || [],
             },
             {
-              name: "right",
+              name: "W1",
               data: pitmanRight || [],
             },
           ]}
         />
       </Card>
-      <Card className="w-full pl-2 pt-2">
+      <Card className="card w-full pl-2 pt-2">
         <ReactApexChart
           height={170}
           options={{
@@ -204,7 +204,7 @@ const LeftBar = ({
               theme: "dark",
             },
             title: {
-              text: "Winding",
+              text: "Motor winding temperatures (°C)",
               align: "left",
               style: {
                 fontSize: "14px",
