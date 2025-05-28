@@ -19,6 +19,12 @@ import { useAppContext } from "@/Context";
 import useSWR from "swr";
 import { env } from "@/utils/env";
 import { io } from "socket.io-client";
+import {
+  formatAttributesData,
+  formatHistoryData,
+  updateAttributesData,
+  updateHistoryData,
+} from "./utils/functions";
 
 interface Position {
   top?: string;
@@ -327,6 +333,25 @@ const PipeLine: React.FC = () => {
     SP5: {},
     SP6: {},
   });
+
+  const updateStatesWithSocketData = (data: any) => {
+    // Update widgetData with new data
+    setWidgetData([
+      {
+        title: "Pumped Volume",
+        value: data?.["s=B_FIT_02_TOT_MES_TM"],
+      },
+      {
+        title: "Flow Rate",
+        value: data?.["s=B_FIT_02_MAE_TM"],
+      },
+    ]);
+
+    updateAttributesData(data, setAttributes);
+
+    updateHistoryData(data, setDataHistory);
+  };
+
   const [visibleCardIds, setVisibleCardIds] = useState<string[]>([
     "SP01",
     "SP02",
@@ -572,238 +597,6 @@ const PipeLine: React.FC = () => {
           {} as Record<string, any>,
         );
 
-        setAttributes({
-          SP01: {
-            progress: filteredResults?.["s=SP1_LIT_01_MAE_TM"]?.[length - 1]?.y,
-            attributes: {
-              "Chlore input":
-                filteredResults?.["s=SP01CHL_CHL_01_MAE_TM"]?.[length - 1]?.y,
-              "Chlore output":
-                filteredResults?.["s=SP1_CHL_02_MAE_TM"]?.[length - 1]?.y,
-              "Flow input":
-                filteredResults?.["s=SP1_FIT_01_MAE_TM"]?.[length - 1]?.y,
-              "Flow output":
-                filteredResults?.["s=SP1_FIT_02_MAE_TM"]?.[length - 1]?.y,
-              "delta flow":
-                +filteredResults?.["s=SP1_FIT_02_MAE_TM"]?.[length - 1]?.y -
-                +filteredResults?.["s=SP1_FIT_01_MAE_TM"]?.[length - 1]?.y,
-              "pression output":
-                filteredResults?.["s=SP1_PIT_04_MAE_TM"]?.[length - 1]?.y,
-              pumps: ["P01", "P02", "P03"],
-              "Running state": [
-                filteredResults?.["s=SP1_M01_RM_TS"]?.[length - 1]?.y,
-                filteredResults?.["s=SP1_M02_RM_TS"]?.[length - 1]?.y,
-                filteredResults?.["s=SP1_M03_RM_TS"]?.[length - 1]?.y,
-              ],
-              Pression: [
-                filteredResults?.["s=SP1_PIT_01_MAE_TM"]?.[length - 1]?.y,
-                filteredResults?.["s=SP1_PIT_02_MAE_TM"]?.[length - 1]?.y,
-                filteredResults?.["s=SP1_PIT_03_MAE_TM"]?.[length - 1]?.y,
-              ],
-            },
-          },
-          SP02: {
-            progress: filteredResults?.["s=SP2_LIT_01_MAE_TM"]?.[length - 1]?.y,
-            attributes: {
-              // "Chlore input":
-              //   filteredResults?.["s=SP02CHL_CHL_01_MAE_TM"]?.[length - 1]?.y,
-              // "Chlore output":
-              //   filteredResults?.["s=SP2_CHL_02_MAE_TM"]?.[length - 1]?.y,
-              "Flow input":
-                filteredResults?.["s=SP2_FIT_01_MAE_TM"]?.[length - 1]?.y,
-              "Flow output":
-                filteredResults?.["s=SP2_FIT_02_MAE_TM"]?.[length - 1]?.y,
-              "delta flow":
-                +filteredResults?.["s=SP2_FIT_02_MAE_TM"]?.[length - 1]?.y -
-                +filteredResults?.["s=SP2_FIT_01_MAE_TM"]?.[length - 1]?.y,
-              "pression output":
-                filteredResults?.["s=SP2_PIT_04_MAE_TM"]?.[length - 1]?.y,
-              pumps: ["P01", "P02", "P03"],
-              "Running state": [
-                filteredResults?.["s=SP2_M01_TM_TLC"]?.[length - 1]?.y,
-                filteredResults?.["s=SP2_M02_TM_TLC"]?.[length - 1]?.y,
-                filteredResults?.["s=SP2_M03_TM_TLC"]?.[length - 1]?.y,
-              ],
-              Pression: [
-                filteredResults?.["s=SP2_PIT_01_MAE_TM"]?.[length - 1]?.y,
-                filteredResults?.["s=SP2_PIT_02_MAE_TM"]?.[length - 1]?.y,
-                filteredResults?.["s=SP2_PIT_03_MAE_TM"]?.[length - 1]?.y,
-              ],
-            },
-          },
-          SP03: {
-            progress: filteredResults?.["s=SP3_LIT_01_MAE_TM"]?.[length - 1]?.y,
-            attributes: {
-              "Flow input":
-                filteredResults?.["s=SP3_FIT_01_MAE_TM"]?.[length - 1]?.y,
-              "Flow output":
-                filteredResults?.["s=SP3_FIT_02_MAE_TM"]?.[length - 1]?.y,
-              "delta flow":
-                +filteredResults?.["s=SP3_FIT_02_MAE_TM"]?.[length - 1]?.y -
-                +filteredResults?.["s=SP3_FIT_01_MAE_TM"]?.[length - 1]?.y,
-              "pression output":
-                filteredResults?.["s=SP3_PIT_04_MAE_TM"]?.[length - 1]?.y,
-              pumps: ["P01", "P02", "P03"],
-              "Running state": [
-                filteredResults?.["s=SP3_M01_TM_TLC"]?.[length - 1]?.y,
-                filteredResults?.["s=SP3_M02_TM_TLC"]?.[length - 1]?.y,
-                filteredResults?.["s=SP3_M03_TM_TLC"]?.[length - 1]?.y,
-              ],
-              Pression: [
-                filteredResults?.["s=SP3_PIT_01_MAE_TM"]?.[length - 1]?.y,
-                filteredResults?.["s=SP3_PIT_02_MAE_TM"]?.[length - 1]?.y,
-                filteredResults?.["s=SP3_PIT_03_MAE_TM"]?.[length - 1]?.y,
-              ],
-            },
-          },
-          SP1: {
-            progress: filteredResults?.["s=SP4_LIT_01_MAE_TM"]?.[length - 1]?.y,
-            attributes: {
-              "Flow input":
-                filteredResults?.["s=SP4_FIT_01_MAE_TM"]?.[length - 1]?.y,
-              "Flow output":
-                filteredResults?.["s=SP4_FIT_02_MAE_TM"]?.[length - 1]?.y,
-              "delta flow":
-                +filteredResults?.["s=SP4_FIT_02_MAE_TM"]?.[length - 1]?.y -
-                +filteredResults?.["s=SP4_FIT_01_MAE_TM"]?.[length - 1]?.y,
-              "pression output":
-                filteredResults?.["s=SP4_PIT_04_MAE_TM"]?.[length - 1]?.y,
-              pumps: ["P01", "P02", "P03"],
-              "Running state": [
-                filteredResults?.["s=SP4_M01_TM_TLC"]?.[length - 1]?.y,
-                filteredResults?.["s=SP4_M02_TM_TLC"]?.[length - 1]?.y,
-                filteredResults?.["s=SP4_M03_TM_TLC"]?.[length - 1]?.y,
-              ],
-              Pression: [
-                filteredResults?.["s=SP4_PIT_01_MAE_TM"]?.[length - 1]?.y,
-                filteredResults?.["s=SP4_PIT_02_MAE_TM"]?.[length - 1]?.y,
-                filteredResults?.["s=SP4_PIT_03_MAE_TM"]?.[length - 1]?.y,
-              ],
-            },
-          },
-          SP2: {
-            progress: filteredResults?.["s=SP5_LIT_01_MAE_TM"]?.[length - 1]?.y,
-            attributes: {
-              "Flow input":
-                filteredResults?.["s=SP5_FIT_01_MAE_TM"]?.[length - 1]?.y,
-              "Flow output":
-                filteredResults?.["s=SP5_FIT_02_MAE_TM"]?.[length - 1]?.y,
-              "delta flow":
-                +filteredResults?.["s=SP5_FIT_02_MAE_TM"]?.[length - 1]?.y -
-                +filteredResults?.["s=SP5_FIT_01_MAE_TM"]?.[length - 1]?.y,
-              "pression output":
-                filteredResults?.["s=SP5_PIT_04_MAE_TM"]?.[length - 1]?.y,
-              pumps: ["P01", "P02", "P03"],
-              "Running state": [
-                filteredResults?.["s=SP5_M01_TM_TLC"]?.[length - 1]?.y,
-                filteredResults?.["s=SP5_M02_TM_TLC"]?.[length - 1]?.y,
-                filteredResults?.["s=SP5_M03_TM_TLC"]?.[length - 1]?.y,
-              ],
-              Pression: [
-                filteredResults?.["s=SP5_PIT_01_MAE_TM"]?.[length - 1]?.y,
-                filteredResults?.["s=SP5_PIT_02_MAE_TM"]?.[length - 1]?.y,
-                filteredResults?.["s=SP5_PIT_03_MAE_TM"]?.[length - 1]?.y,
-              ],
-            },
-          },
-          SP3: {
-            progress: filteredResults?.["s=SP6_LIT_01_MAE_TM"]?.[length - 1]?.y,
-            attributes: {
-              "Flow input":
-                filteredResults?.["s=SP6_FIT_01_MAE_TM"]?.[length - 1]?.y,
-              "Flow output":
-                filteredResults?.["s=SP6_FIT_02_MAE_TM"]?.[length - 1]?.y,
-              "delta flow":
-                +filteredResults?.["s=SP6_FIT_02_MAE_TM"]?.[length - 1]?.y -
-                +filteredResults?.["s=SP6_FIT_01_MAE_TM"]?.[length - 1]?.y,
-              "pression output":
-                filteredResults?.["s=SP6_PIT_04_MAE_TM"]?.[length - 1]?.y,
-              pumps: ["P01", "P02", "P03"],
-              "Running state": [
-                filteredResults?.["s=SP6_M01_TM_TLC"]?.[length - 1]?.y,
-                filteredResults?.["s=SP6_M02_TM_TLC"]?.[length - 1]?.y,
-                filteredResults?.["s=SP6_M03_TM_TLC"]?.[length - 1]?.y,
-              ],
-              Pression: [
-                filteredResults?.["s=SP6_PIT_01_MAE_TM"]?.[length - 1]?.y,
-                filteredResults?.["s=SP6_PIT_02_MAE_TM"]?.[length - 1]?.y,
-                filteredResults?.["s=SP6_PIT_03_MAE_TM"]?.[length - 1]?.y,
-              ],
-            },
-          },
-          SP4: {
-            progress: filteredResults?.["s=SP7_LIT_01_MAE_TM"]?.[length - 1]?.y,
-            attributes: {
-              "Flow input":
-                filteredResults?.["s=SP7_FIT_01_MAE_TM"]?.[length - 1]?.y,
-              "Flow output":
-                filteredResults?.["s=SP7_FIT_02_MAE_TM"]?.[length - 1]?.y,
-              "delta flow":
-                +filteredResults?.["s=SP7_FIT_02_MAE_TM"]?.[length - 1]?.y -
-                +filteredResults?.["s=SP7_FIT_01_MAE_TM"]?.[length - 1]?.y,
-              "pression output":
-                filteredResults?.["s=SP7_PIT_04_MAE_TM"]?.[length - 1]?.y,
-              pumps: ["P01", "P02", "P03"],
-              "Running state": [
-                filteredResults?.["s=SP7_M01_TM_TLC"]?.[length - 1]?.y,
-                filteredResults?.["s=SP7_M02_TM_TLC"]?.[length - 1]?.y,
-                filteredResults?.["s=SP7_M03_TM_TLC"]?.[length - 1]?.y,
-              ],
-              Pression: [
-                filteredResults?.["s=SP7_PIT_01_MAE_TM"]?.[length - 1]?.y,
-                filteredResults?.["s=SP7_PIT_02_MAE_TM"]?.[length - 1]?.y,
-                filteredResults?.["s=SP7_PIT_03_MAE_TM"]?.[length - 1]?.y,
-              ],
-            },
-          },
-          SP5: {
-            progress: filteredResults?.["s=SP8_LIT_01_MAE_TM"]?.[length - 1]?.y,
-            attributes: {
-              "Flow input":
-                filteredResults?.["s=SP8_FIT_01_MAE_TM"]?.[length - 1]?.y,
-              "Flow output":
-                filteredResults?.["s=SP8_FIT_02_MAE_TM"]?.[length - 1]?.y,
-              "delta flow":
-                +filteredResults?.["s=SP8_FIT_02_MAE_TM"]?.[length - 1]?.y -
-                +filteredResults?.["s=SP8_FIT_01_MAE_TM"]?.[length - 1]?.y,
-              "pression output":
-                filteredResults?.["s=SP8_PIT_04_MAE_TM"]?.[length - 1]?.y,
-              pumps: ["P01", "P02", "P03"],
-              "Running state": [
-                filteredResults?.["s=SP8_M01_TM_TLC"]?.[length - 1]?.y,
-                filteredResults?.["s=SP8_M02_TM_TLC"]?.[length - 1]?.y,
-                filteredResults?.["s=SP8_M03_TM_TLC"]?.[length - 1]?.y,
-              ],
-              Pression: [
-                filteredResults?.["s=SP8_PIT_01_MAE_TM"]?.[length - 1]?.y,
-                filteredResults?.["s=SP8_PIT_02_MAE_TM"]?.[length - 1]?.y,
-                filteredResults?.["s=SP8_PIT_03_MAE_TM"]?.[length - 1]?.y,
-              ],
-            },
-          },
-          SP6: {
-            progress: [
-              filteredResults?.["s=B_LIT_01_MAE_TM"]?.[length - 1]?.y,
-              filteredResults?.["s=B_LIT_02_MAE_TM"]?.[length - 1]?.y,
-            ],
-            attributes: {
-              "Chlore input":
-                filteredResults?.["s=B_CHL_01_MAE_TM"]?.[length - 1]?.y,
-              "Chlore output":
-                filteredResults?.["s=B_CHL_02_MAE_TM"]?.[length - 1]?.y,
-              "Flow input":
-                filteredResults?.["s=B_FIT_01_MAE_TM"]?.[length - 1]?.y,
-              "Flow output":
-                filteredResults?.["s=B_FIT_02_MAE_TM"]?.[length - 1]?.y,
-              "delta flow":
-                +filteredResults?.["s=B_FIT_02_MAE_TM"]?.[length - 1]?.y -
-                +filteredResults?.["s=B_FIT_01_MAE_TM"]?.[length - 1]?.y,
-              "pression output":
-                filteredResults?.["s=B_PIT_04_MAE_TM"]?.[length - 1]?.y,
-            },
-          },
-        });
-
         setWidgetData([
           {
             title: "Pumped Volume",
@@ -815,360 +608,9 @@ const PipeLine: React.FC = () => {
           },
         ]);
 
-        setDataHistory({
-          SP01: {
-            flowRate: filteredResults?.["s=SP1_FIT_02_MAE_TM"]?.[length - 1]?.y,
-            pumpedVolume:
-              filteredResults?.["s=SP1_FIT_02_TOT_MES_TM"]?.[length - 1]?.y,
-            deltaFlow:
-              +filteredResults?.["s=SP1_FIT_02_MAE_TM"]?.[length - 1]?.y -
-              +filteredResults?.["s=SP1_FIT_01_MAE_TM"]?.[length - 1]?.y,
+        formatAttributesData(filteredResults, setAttributes);
 
-            flowsInput: filteredResults?.["s=SP1_FIT_01_MAE_TM"] || [],
-            flowsOutput: filteredResults?.["s=SP1_FIT_02_MAE_TM"] || [],
-
-            pressuresOutput: filteredResults?.["s=SP1_PIT_04_MAE_TM"] || [],
-            pressuresP1: filteredResults?.["s=SP1_PIT_01_MAE_TM"] || [],
-            pressuresP2: filteredResults?.["s=SP1_PIT_02_MAE_TM"] || [],
-            pressuresP3: filteredResults?.["s=SP1_PIT_03_MAE_TM"] || [],
-
-            level: filteredResults?.["s=SP1_LIT_01_MAE_TM"] || [],
-
-            chloreInput: filteredResults?.["s=SP01CHL_CHL_01_MAE_TM"] || [],
-            chloreOutput: filteredResults?.["s=SP1_CHL_02_MAE_TM"] || [],
-
-            suctionTankLL:
-              filteredResults?.["s=SP1_LSLL_01_TA"]?.[length - 1]?.y,
-            suctionTankL: filteredResults?.["s=SP1_LSL_01_TS"]?.[length - 1]?.y,
-            suctionTankH: filteredResults?.["s=SP1_LSH_01_TS"]?.[length - 1]?.y,
-            suctionTankHH:
-              filteredResults?.["s=SP1_LSHH_01_TA"]?.[length - 1]?.y,
-
-            hammerArrestorL:
-              filteredResults?.["s=SP1_ANTIB_LSL_TA"]?.[length - 1]?.y,
-            hammerArrestorH:
-              filteredResults?.["s=SP1_ANTIB_LSH_TA"]?.[length - 1]?.y,
-
-            runningStateP1:
-              filteredResults?.["s=SP1_M01_RM_TS"]?.[length - 1]?.y,
-            runningStateP2:
-              filteredResults?.["s=SP1_M02_TM_TLC"]?.[length - 1]?.y,
-            runningStateP3:
-              filteredResults?.["s=SP1_M03_TM_TLC"]?.[length - 1]?.y,
-
-            chloreStationvalue1:
-              filteredResults?.["s=SP01CHL_M01_RM_TS"]?.[length - 1]?.y,
-            chloreStationL1:
-              filteredResults?.["s=SP01CHL_LSLL_BAC1_TA"]?.[length - 1]?.y,
-            chloreStationM1:
-              filteredResults?.["s=SP01CHL_M03_RM_TS"]?.[length - 1]?.y,
-            chloreStationvalue2:
-              filteredResults?.["s=SP01CHL_M02_RM_TS"]?.[length - 1]?.y,
-            chloreStationL2:
-              filteredResults?.["s=SP01CHL_LSLL_BAC2_TA"]?.[length - 1]?.y,
-            chloreStationM2:
-              filteredResults?.["s=SP01CHL_M04_RM_TS"]?.[length - 1]?.y,
-          },
-          SP02: {
-            flowRate: filteredResults?.["s=SP2_FIT_02_MAE_TM"]?.[length - 1]?.y,
-            pumpedVolume:
-              filteredResults?.["s=SP2_FIT_02_TOT_MES_TM"]?.[length - 1]?.y,
-            deltaFlow:
-              filteredResults?.["s=SP2_FIT_02_MAE_TM"]?.[length - 1]?.y -
-              filteredResults?.["s=SP2_FIT_01_MAE_TM"]?.[length - 1]?.y,
-
-            flowsInput: filteredResults?.["s=SP2_FIT_01_MAE_TM"] || [],
-            flowsOutput: filteredResults?.["s=SP2_FIT_02_MAE_TM"] || [],
-
-            pressuresOutput: filteredResults?.["s=SP2_PIT_04_MAE_TM"] || [],
-            pressuresP1: filteredResults?.["s=SP2_PIT_01_MAE_TM"] || [],
-            pressuresP2: filteredResults?.["s=SP2_PIT_02_MAE_TM"] || [],
-            pressuresP3: filteredResults?.["s=SP2_PIT_03_MAE_TM"] || [],
-
-            level: filteredResults?.["s=SP2_LIT_01_MAE_TM"] || [],
-
-            suctionTankLL:
-              filteredResults?.["s=SP2_LSLL_01_TA"]?.[length - 1]?.y,
-            suctionTankL: filteredResults?.["s=SP2_LSL_01_TS"]?.[length - 1]?.y,
-            suctionTankH: filteredResults?.["s=SP2_LSH_01_TS"]?.[length - 1]?.y,
-            suctionTankHH:
-              filteredResults?.["s=SP2_LSHH_01_TA"]?.[length - 1]?.y,
-
-            hammerArrestorL:
-              filteredResults?.["s=SP2_ANTIB_LSL_TA"]?.[length - 1]?.y,
-            hammerArrestorH:
-              filteredResults?.["s=SP2_ANTIB_LSH_TA"]?.[length - 1]?.y,
-
-            runningStateP1:
-              filteredResults?.["s=SP2_M01_TM_TLC"]?.[length - 1]?.y,
-            runningStateP2:
-              filteredResults?.["s=SP2_M02_TM_TLC"]?.[length - 1]?.y,
-            runningStateP3:
-              filteredResults?.["s=SP2_M03_TM_TLC"]?.[length - 1]?.y,
-          },
-          SP03: {
-            flowRate: filteredResults?.["s=SP3_FIT_02_MAE_TM"]?.[length - 1]?.y,
-            pumpedVolume:
-              filteredResults?.["s=SP3_FIT_02_TOT_MES_TM"]?.[length - 1]?.y,
-            deltaFlow:
-              filteredResults?.["s=SP3_FIT_02_MAE_TM"]?.[length - 1]?.y -
-              filteredResults?.["s=SP3_FIT_01_MAE_TM"]?.[length - 1]?.y,
-
-            flowsInput: filteredResults?.["s=SP3_FIT_01_MAE_TM"] || [],
-            flowsOutput: filteredResults?.["s=SP3_FIT_02_MAE_TM"] || [],
-
-            pressuresOutput: filteredResults?.["s=SP3_PIT_04_MAE_TM"] || [],
-            pressuresP1: filteredResults?.["s=SP3_PIT_01_MAE_TM"] || [],
-            pressuresP2: filteredResults?.["s=SP3_PIT_02_MAE_TM"] || [],
-            pressuresP3: filteredResults?.["s=SP3_PIT_03_MAE_TM"] || [],
-
-            level: filteredResults?.["s=SP3_LIT_01_MAE_TM"] || [],
-
-            suctionTankLL:
-              filteredResults?.["s=SP3_LSLL_01_TA"]?.[length - 1]?.y,
-            suctionTankL: filteredResults?.["s=SP3_LSL_01_TS"]?.[length - 1]?.y,
-            suctionTankH: filteredResults?.["s=SP3_LSH_01_TS"]?.[length - 1]?.y,
-            suctionTankHH:
-              filteredResults?.["s=SP3_LSHH_01_TA"]?.[length - 1]?.y,
-
-            hammerArrestorL:
-              filteredResults?.["s=SP3_ANTIB_LSL_TA"]?.[length - 1]?.y,
-            hammerArrestorH:
-              filteredResults?.["s=SP3_ANTIB_LSH_TA"]?.[length - 1]?.y,
-
-            runningStateP1:
-              filteredResults?.["s=SP3_M01_TM_TLC"]?.[length - 1]?.y,
-            runningStateP2:
-              filteredResults?.["s=SP3_M02_TM_TLC"]?.[length - 1]?.y,
-            runningStateP3:
-              filteredResults?.["s=SP3_M03_TM_TLC"]?.[length - 1]?.y,
-          },
-          SP1: {
-            flowRate: filteredResults?.["s=SP4_FIT_02_MAE_TM"]?.[length - 1]?.y,
-            pumpedVolume:
-              filteredResults?.["s=SP4_FIT_02_TOT_MES_TM"]?.[length - 1]?.y,
-            deltaFlow:
-              filteredResults?.["s=SP4_FIT_02_MAE_TM"]?.[length - 1]?.y -
-              filteredResults?.["s=SP4_FIT_01_MAE_TM"]?.[length - 1]?.y,
-
-            flowsInput: filteredResults?.["s=SP4_FIT_01_MAE_TM"] || [],
-            flowsOutput: filteredResults?.["s=SP4_FIT_02_MAE_TM"] || [],
-
-            pressuresOutput: filteredResults?.["s=SP4_PIT_04_MAE_TM"] || [],
-            pressuresP1: filteredResults?.["s=SP4_PIT_01_MAE_TM"] || [],
-            pressuresP2: filteredResults?.["s=SP4_PIT_02_MAE_TM"] || [],
-            pressuresP3: filteredResults?.["s=SP4_PIT_03_MAE_TM"] || [],
-
-            level: filteredResults?.["s=SP4_LIT_01_MAE_TM"] || [],
-
-            suctionTankLL:
-              filteredResults?.["s=SP4_LSLL_01_TA"]?.[length - 1]?.y,
-            suctionTankL: filteredResults?.["s=SP4_LSL_01_TS"]?.[length - 1]?.y,
-            suctionTankH: filteredResults?.["s=SP4_LSH_01_TS"]?.[length - 1]?.y,
-            suctionTankHH:
-              filteredResults?.["s=SP4_LSHH_01_TA"]?.[length - 1]?.y,
-
-            hammerArrestorL:
-              filteredResults?.["s=SP4_ANTIB_LSL_TA"]?.[length - 1]?.y,
-            hammerArrestorH:
-              filteredResults?.["s=SP4_ANTIB_LSH_TA"]?.[length - 1]?.y,
-
-            runningStateP1:
-              filteredResults?.["s=SP4_M01_TM_TLC"]?.[length - 1]?.y,
-            runningStateP2:
-              filteredResults?.["s=SP4_M02_TM_TLC"]?.[length - 1]?.y,
-            runningStateP3:
-              filteredResults?.["s=SP4_M03_TM_TLC"]?.[length - 1]?.y,
-          },
-          SP2: {
-            flowRate: filteredResults?.["s=SP5_FIT_02_MAE_TM"]?.[length - 1]?.y,
-            pumpedVolume:
-              filteredResults?.["s=SP5_FIT_02_TOT_MES_TM"]?.[length - 1]?.y,
-            deltaFlow:
-              filteredResults?.["s=SP5_FIT_02_MAE_TM"]?.[length - 1]?.y -
-              filteredResults?.["s=SP5_FIT_01_MAE_TM"]?.[length - 1]?.y,
-
-            flowsInput: filteredResults?.["s=SP5_FIT_01_MAE_TM"] || [],
-            flowsOutput: filteredResults?.["s=SP5_FIT_02_MAE_TM"] || [],
-
-            pressuresOutput: filteredResults?.["s=SP5_PIT_04_MAE_TM"] || [],
-            pressuresP1: filteredResults?.["s=SP5_PIT_01_MAE_TM"] || [],
-            pressuresP2: filteredResults?.["s=SP5_PIT_02_MAE_TM"] || [],
-            pressuresP3: filteredResults?.["s=SP5_PIT_03_MAE_TM"] || [],
-
-            level: filteredResults?.["s=SP5_LIT_01_MAE_TM"] || [],
-
-            suctionTankLL:
-              filteredResults?.["s=SP5_LSLL_01_TA"]?.[length - 1]?.y,
-            suctionTankL: filteredResults?.["s=SP5_LSL_01_TS"]?.[length - 1]?.y,
-            suctionTankH: filteredResults?.["s=SP5_LSH_01_TS"]?.[length - 1]?.y,
-            suctionTankHH:
-              filteredResults?.["s=SP5_LSHH_01_TA"]?.[length - 1]?.y,
-
-            hammerArrestorL:
-              filteredResults?.["s=SP5_ANTIB_LSL_TA"]?.[length - 1]?.y,
-            hammerArrestorH:
-              filteredResults?.["s=SP5_ANTIB_LSH_TA"]?.[length - 1]?.y,
-
-            runningStateP1:
-              filteredResults?.["s=SP5_M01_TM_TLC"]?.[length - 1]?.y,
-            runningStateP2:
-              filteredResults?.["s=SP5_M02_TM_TLC"]?.[length - 1]?.y,
-            runningStateP3:
-              filteredResults?.["s=SP5_M03_TM_TLC"]?.[length - 1]?.y,
-          },
-          SP3: {
-            flowRate: filteredResults?.["s=SP6_FIT_02_MAE_TM"]?.[length - 1]?.y,
-            pumpedVolume:
-              filteredResults?.["s=SP6_FIT_02_TOT_MES_TM"]?.[length - 1]?.y,
-            deltaFlow:
-              filteredResults?.["s=SP6_FIT_02_MAE_TM"]?.[length - 1]?.y -
-              filteredResults?.["s=SP6_FIT_01_MAE_TM"]?.[length - 1]?.y,
-
-            flowsInput: filteredResults?.["s=SP6_FIT_01_MAE_TM"] || [],
-            flowsOutput: filteredResults?.["s=SP6_FIT_02_MAE_TM"] || [],
-
-            pressuresOutput: filteredResults?.["s=SP6_PIT_04_MAE_TM"] || [],
-            pressuresP1: filteredResults?.["s=SP6_PIT_01_MAE_TM"] || [],
-            pressuresP2: filteredResults?.["s=SP6_PIT_02_MAE_TM"] || [],
-            pressuresP3: filteredResults?.["s=SP6_PIT_03_MAE_TM"] || [],
-
-            level: filteredResults?.["s=SP6_LIT_01_MAE_TM"] || [],
-
-            suctionTankLL:
-              filteredResults?.["s=SP6_LSLL_01_TA"]?.[length - 1]?.y,
-            suctionTankL: filteredResults?.["s=SP6_LSL_01_TS"]?.[length - 1]?.y,
-            suctionTankH: filteredResults?.["s=SP6_LSH_01_TS"]?.[length - 1]?.y,
-            suctionTankHH:
-              filteredResults?.["s=SP6_LSHH_01_TA"]?.[length - 1]?.y,
-
-            hammerArrestorL:
-              filteredResults?.["s=SP6_ANTIB_LSL_TA"]?.[length - 1]?.y,
-            hammerArrestorH:
-              filteredResults?.["s=SP6_ANTIB_LSH_TA"]?.[length - 1]?.y,
-
-            runningStateP1:
-              filteredResults?.["s=SP6_M01_TM_TLC"]?.[length - 1]?.y,
-            runningStateP2:
-              filteredResults?.["s=SP6_M02_TM_TLC"]?.[length - 1]?.y,
-            runningStateP3:
-              filteredResults?.["s=SP6_M03_TM_TLC"]?.[length - 1]?.y,
-          },
-          SP4: {
-            flowRate: filteredResults?.["s=SP7_FIT_02_MAE_TM"]?.[length - 1]?.y,
-            pumpedVolume:
-              filteredResults?.["s=SP7_FIT_02_TOT_MES_TM"]?.[length - 1]?.y,
-            deltaFlow:
-              filteredResults?.["s=SP7_FIT_02_MAE_TM"]?.[length - 1]?.y -
-              filteredResults?.["s=SP7_FIT_01_MAE_TM"]?.[length - 1]?.y,
-
-            flowsInput: filteredResults?.["s=SP7_FIT_01_MAE_TM"] || [],
-            flowsOutput: filteredResults?.["s=SP7_FIT_02_MAE_TM"] || [],
-
-            pressuresOutput: filteredResults?.["s=SP7_PIT_04_MAE_TM"] || [],
-            pressuresP1: filteredResults?.["s=SP7_PIT_01_MAE_TM"] || [],
-            pressuresP2: filteredResults?.["s=SP7_PIT_02_MAE_TM"] || [],
-            pressuresP3: filteredResults?.["s=SP7_PIT_03_MAE_TM"] || [],
-
-            level: filteredResults?.["s=SP7_LIT_01_MAE_TM"] || [],
-
-            suctionTankLL:
-              filteredResults?.["s=SP7_LSLL_01_TA"]?.[length - 1]?.y,
-            suctionTankL: filteredResults?.["s=SP7_LSL_01_TS"]?.[length - 1]?.y,
-            suctionTankH: filteredResults?.["s=SP7_LSH_01_TS"]?.[length - 1]?.y,
-            suctionTankHH:
-              filteredResults?.["s=SP7_LSHH_01_TA"]?.[length - 1]?.y,
-
-            hammerArrestorL:
-              filteredResults?.["s=SP7_ANTIB_LSL_TA"]?.[length - 1]?.y,
-            hammerArrestorH:
-              filteredResults?.["s=SP7_ANTIB_LSH_TA"]?.[length - 1]?.y,
-
-            runningStateP1:
-              filteredResults?.["s=SP7_M01_TM_TLC"]?.[length - 1]?.y,
-            runningStateP2:
-              filteredResults?.["s=SP7_M02_TM_TLC"]?.[length - 1]?.y,
-            runningStateP3:
-              filteredResults?.["s=SP7_M03_TM_TLC"]?.[length - 1]?.y,
-          },
-          SP5: {
-            flowRate: filteredResults?.["s=SP8_FIT_02_MAE_TM"]?.[length - 1]?.y,
-            pumpedVolume:
-              filteredResults?.["s=SP8_FIT_02_TOT_MES_TM"]?.[length - 1]?.y,
-            deltaFlow:
-              filteredResults?.["s=SP8_FIT_02_MAE_TM"]?.[length - 1]?.y -
-              filteredResults?.["s=SP8_FIT_01_MAE_TM"]?.[length - 1]?.y,
-
-            flowsInput: filteredResults?.["s=SP8_FIT_01_MAE_TM"] || [],
-            flowsOutput: filteredResults?.["s=SP8_FIT_02_MAE_TM"] || [],
-
-            pressuresOutput: filteredResults?.["s=SP8_PIT_04_MAE_TM"] || [],
-            pressuresP1: filteredResults?.["s=SP8_PIT_01_MAE_TM"] || [],
-            pressuresP2: filteredResults?.["s=SP8_PIT_02_MAE_TM"] || [],
-            pressuresP3: filteredResults?.["s=SP8_PIT_03_MAE_TM"] || [],
-
-            level: filteredResults?.["s=SP8_LIT_01_MAE_TM"] || [],
-
-            suctionTankLL:
-              filteredResults?.["s=SP8_LSLL_01_TA"]?.[length - 1]?.y,
-            suctionTankL: filteredResults?.["s=SP8_LSL_01_TS"]?.[length - 1]?.y,
-            suctionTankH: filteredResults?.["s=SP8_LSH_01_TS"]?.[length - 1]?.y,
-            suctionTankHH:
-              filteredResults?.["s=SP8_LSHH_01_TA"]?.[length - 1]?.y,
-
-            hammerArrestorL:
-              filteredResults?.["s=SP8_ANTIB_LSL_TA"]?.[length - 1]?.y,
-            hammerArrestorH:
-              filteredResults?.["s=SP8_ANTIB_LSH_TA"]?.[length - 1]?.y,
-
-            runningStateP1:
-              filteredResults?.["s=SP8_M01_TM_TLC"]?.[length - 1]?.y,
-            runningStateP2:
-              filteredResults?.["s=SP8_M02_TM_TLC"]?.[length - 1]?.y,
-            runningStateP3:
-              filteredResults?.["s=SP8_M03_TM_TLC"]?.[length - 1]?.y,
-          },
-          SP6: {
-            flowRateInput:
-              filteredResults?.["s=B_FIT_01_MAE_TM"]?.[length - 1]?.y,
-            flowRatePlant:
-              filteredResults?.["s=B_FIT_02_MAE_TM"]?.[length - 1]?.y,
-
-            volumeInput:
-              filteredResults?.["s=B_FIT_01_TOT_MES_TM"]?.[length - 1]?.y,
-            volumePlant:
-              filteredResults?.["s=B_FIT_02_TOT_MES_TM"]?.[length - 1]?.y,
-            stock:
-              +filteredResults?.["s=B_FIT_02_TOT_MES_TM"]?.[length - 1]?.y -
-              +filteredResults?.["s=B_FIT_01_TOT_MES_TM"]?.[length - 1]?.y,
-
-            flowInput: filteredResults?.["s=B_FIT_01_MAE_TM"] || [],
-            flowPlant: filteredResults?.["s=B_FIT_02_MAE_TM"] || [],
-
-            levelB1: filteredResults?.["s=B_LIT_01_MAE_TM"] || [],
-            levelB2: filteredResults?.["s=B_LIT_02_MAE_TM"] || [],
-
-            chloreInput: filteredResults?.["s=B_CHL_01_MAE_TM"] || [],
-            chlorePlant: filteredResults?.["s=B_CHL_02_MAE_TM"] || [],
-
-            basinsValue1: filteredResults?.["s=B_LIT_01_MAE_TM"] || [],
-            basinLL1: filteredResults?.["s=B_LSLL_01_TA"]?.[length - 1]?.y,
-            basinL1: filteredResults?.["s=B_LSL_01_TS"]?.[length - 1]?.y,
-            basinH1: filteredResults?.["s=B_LSH_01_TS"]?.[length - 1]?.y,
-            basinHH1: filteredResults?.["s=B_LSHH_01_TA"]?.[length - 1]?.y,
-
-            basinsValue2: filteredResults?.["s=B_LIT_02_MAE_TM"] || [],
-            basinLL2: filteredResults?.["s=B_LSLL_02_TA"]?.[length - 1]?.y,
-            basinL2: filteredResults?.["s=B_LSL_02_TS"]?.[length - 1]?.y,
-            basinH2: filteredResults?.["s=B_LSH_02_TS"]?.[length - 1]?.y,
-            basinHH2: filteredResults?.["s=B_LSHH_02_TA"]?.[length - 1]?.y,
-
-            station1: filteredResults?.["s=B_M01_RM_TS"]?.[length - 1]?.y,
-            stationM1: filteredResults?.["s=B_M03_RM_TS"]?.[length - 1]?.y,
-            station2: filteredResults?.["s=B_M02_RM_TS"]?.[length - 1]?.y,
-            stationM2: filteredResults?.["s=B_M04_RM_TS"]?.[length - 1]?.y,
-          },
-        });
+        formatHistoryData(filteredResults, setDataHistory);
       },
     },
   );
@@ -1186,12 +628,13 @@ const PipeLine: React.FC = () => {
     });
     socket.on("serial-JHF455XKPCH6DBLH", (data) => {
       console.log("Received message:", data);
+      updateStatesWithSocketData(data);
     });
     return () => {
       socket.close();
     };
   }, []);
-  console.log("pipelinepage");
+
   const [activePoint, setActivePoint] = useState<string | null>(null);
 
   return (

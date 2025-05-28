@@ -17,34 +17,33 @@ import ReactApexChart from "react-apexcharts";
 const PebbleCrusher = () => {
   const { backendApi, dateRange } = useAppContext();
 
-  const {
-    data: count,
-    error: countError,
-    isLoading: isLoadingCount,
-  } = useSWR("count", async () => {
-    const res = await backendApi.getHistory(
-      "/dpc-history/api/history/count/0V7ZJGB503H9WGH3",
-      {
-        startDate: new Date(
-          dateRange?.from ||
-            /// last hour
-            new Date(Date.now() - 60 * 60 * 1000),
-        ).toISOString(),
-        endDate: new Date(dateRange?.to || new Date()).toISOString(),
-        telemetries: [
-          {
-            name: "s=6140-CR-2426",
-            value: true,
-          },
-          {
-            name: "s=6140-CR-2426",
-            value: false,
-          },
-        ],
-      },
-    );
-    return res;
-  });
+  const { error: countError, isLoading: isLoadingCount } = useSWR(
+    "count",
+    async () => {
+      const res = await backendApi.getHistory(
+        "/dpc-history/api/history/count/0V7ZJGB503H9WGH3",
+        {
+          startDate: new Date(
+            dateRange?.from ||
+              /// last hour
+              new Date(Date.now() - 60 * 60 * 1000),
+          ).toISOString(),
+          endDate: new Date(dateRange?.to || new Date()).toISOString(),
+          telemetries: [
+            {
+              name: "s=6140-CR-2426",
+              value: true,
+            },
+            {
+              name: "s=6140-CR-2426",
+              value: false,
+            },
+          ],
+        },
+      );
+      return res;
+    },
+  );
 
   const { data, isLoading, error } = useSWR("last-telemetry", async () => {
     const res = await backendApi.findMany("lastTelemetry", {
