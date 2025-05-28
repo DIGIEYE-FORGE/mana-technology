@@ -581,7 +581,7 @@ const PipeLine: React.FC = () => {
                 filteredResults?.["s=SP1_FIT_02_MAE_TM"]?.[length - 1]?.y,
               "delta flow":
                 +filteredResults?.["s=SP1_FIT_02_MAE_TM"]?.[length - 1]?.y -
-                +filteredResults?.["s=SP1_FIT_02_MAE_TM"]?.[length - 1]?.y,
+                +filteredResults?.["s=SP1_FIT_01_MAE_TM"]?.[length - 1]?.y,
               "pression output":
                 filteredResults?.["s=SP1_PIT_04_MAE_TM"]?.[length - 1]?.y,
               pumps: ["P01", "P02", "P03"],
@@ -835,7 +835,7 @@ const PipeLine: React.FC = () => {
 
             level: filteredResults?.["s=SP1_LIT_01_MAE_TM"] || [],
 
-            chloreInput: filteredResults?.["s=SP1CHL_CHL_01_MAE_TM"] || [],
+            chloreInput: filteredResults?.["s=SP01CHL_CHL_01_MAE_TM"] || [],
             chloreOutput: filteredResults?.["s=SP1_CHL_02_MAE_TM"] || [],
 
             suctionTankLL:
