@@ -1274,7 +1274,7 @@ const PipeLine: React.FC = () => {
           }}
         >
           <DialogContent
-            className="z-[999999] flex h-[min(95vh,67rem)] min-w-[70rem] max-w-[min(95vw,70rem)] flex-col gap-20 border-none bg-transparent p-0 pb-6 pt-4 text-foreground backdrop-blur"
+            className="z-[999999] flex h-[min(125vh,70rem)] min-w-[70rem] max-w-[min(95vw,90rem)] scale-75 flex-col gap-20 border-none bg-transparent p-0 pb-6 pt-4 text-foreground backdrop-blur"
             style={{
               clipPath:
                 "polygon(0% 18.5%, 2.8% 13.5%, 34% 13.5%, 36.2% 9.3%, 36.2% 0%, 100% 0%, 100% 99.6%, 1.6% 99.6%, 1.6% 67%, 0% 64%)",
