@@ -992,6 +992,7 @@ function LineChart({ className, series, ...props }: LineChartProps) {
               theme: {
                 mode: "dark",
               },
+
               tooltip: { cssClass: "text-black" },
               colors: ["#26E2B3", "#F79043"],
               grid: {
@@ -1002,7 +1003,7 @@ function LineChart({ className, series, ...props }: LineChartProps) {
               chart: {
                 background: "transparent",
                 toolbar: { show: false },
-                animations: { enabled: true },
+                animations: { enabled: false },
                 zoom: { enabled: false },
                 selection: { enabled: false },
                 dropShadow: { enabled: false },
