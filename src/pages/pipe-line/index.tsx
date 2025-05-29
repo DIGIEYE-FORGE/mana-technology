@@ -228,7 +228,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
               </div>
 
               <div className="flex flex-1 flex-col gap-1">
-                {JSON.stringify(point.card.attributes["Running state"])}
+                {/* {JSON.stringify(point.card.attributes["Running state"])} */}
                 {Object?.entries(point.card.attributes)
                   .filter((ele) => !["breakPoints"].includes(ele[0]))
                   ?.map(([key, value]) => (

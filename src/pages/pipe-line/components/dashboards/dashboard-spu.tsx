@@ -85,9 +85,10 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                   <span className="text-center text-sm">{dataItem.name}</span>
                   <div className="flex items-center justify-center gap-2 rounded-2xl border border-white bg-[#021E3F]/80 p-1 px-6 text-white backdrop-blur-md">
                     <span className="text-lg font-bold">
-                      {dataItem.key
+                      {(dataItem.key
                         ? data[dataItem.key] || dataItem.value
-                        : dataItem.value}
+                        : dataItem.value
+                      ).toFixed(2)}
                     </span>
                   </div>
                 </div>

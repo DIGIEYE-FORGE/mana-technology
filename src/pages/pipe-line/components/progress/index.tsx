@@ -146,7 +146,7 @@ const LiquidProgress: React.FC<LiquidProgressProps> = ({
               ))}
             <div className="absolute inset-0 flex items-center justify-center">
               <span className="text-xl font-bold text-white mix-blend-difference">
-                {value}%
+                {value.toFixed(2)}%
               </span>
             </div>
           </div>

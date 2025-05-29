@@ -557,10 +557,16 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
               </span>
               <div className="absolute right-4 flex gap-2 text-xs">
                 <span className="rounded-full border border-white bg-[#021E3F] px-3 py-1 text-white">
-                  Input XX
+                  Input{" "}
+                  {data.chloreInput[data.chloreInput.length - 1]?.y.toFixed(
+                    2,
+                  ) || "0"}
                 </span>
                 <span className="rounded-full border border-white bg-[#021E3F] px-3 py-1 text-white">
-                  Output XX
+                  Output{" "}
+                  {data.chloreOutput[data.chloreOutput.length - 1]?.y.toFixed(
+                    2,
+                  ) || "0"}
                 </span>
               </div>
             </div>
