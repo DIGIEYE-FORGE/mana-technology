@@ -14,7 +14,7 @@ const Data = [
   { id: 1, name: "Flow rate (l/s) :", key: "flowRate" },
   { id: 2, name: "Δt Flow (l/s) :", key: "deltaFlow" },
   { id: 3, name: "Pumped volume (m3/h) :", key: "pumpedVolume" },
-  { id: 4, name: "Turbidity:", key: "trubidite" },
+  { id: 4, name: "Turbidity (NTU):", key: "trubidite" },
 ];
 
 const valuesData = [
@@ -175,7 +175,7 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
           <Card className="flex h-full items-center justify-center gap-8 border-none bg-transparent p-4 shadow-none">
             <div className="flex flex-1 flex-col items-center">
               <span className="mb-2 text-sm font-medium text-white">
-                Suction tank
+                Suction sump
               </span>
               {/* {JSON.stringify({
                 suctionTankLL: data.suctionTankLL,
@@ -193,8 +193,8 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                 className="h-[7rem] w-[6rem]"
                 textStyle="text-white font-bold"
                 indictors={[
-                  data.suctionTankLL == "True" ? false : true,
-                  data.suctionTankL == "True" ? false : true,
+                  data.suctionTankLL == "True" ? true : false,
+                  data.suctionTankL == "True" ? true : false,
                   data.suctionTankH == "True" ? true : false,
                   data.suctionTankHH == "True" ? true : false,
                 ]}
@@ -202,13 +202,13 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
             </div>
             <div className="flex flex-1 flex-col items-center">
               <span className="mb-2 text-sm font-medium text-white">
-                Hammer arrestor
+                Surge arrestor
               </span>
               <HammerArrestorSVG
                 className={cn("size-[8rem] [&_.indicator]:fill-[#26e2b3]", {
                   // TODO: change this base on state
-                  "[&_.indicator-1]:!fill-red-500": true,
-                  "[&_.indicator-2]:!fill-red-500": true,
+                  "[&_.indicator-1]:!fill-red-500": data.hammerArrestorH1 === "True" ? true : false,
+                  "[&_.indicator-2]:!fill-red-500": data.hammerArrestorH2 === "True" ? true : false,
                 })}
               />
             </div>
@@ -305,13 +305,14 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                     type: "datetime",
                   },
                   yaxis: {
-                    min: 0,
                     labels: {
                       style: {
                         colors: "#A2B0B8",
                       },
                     },
                     decimalsInFloat: 0,
+                    min: 0,
+                    max: 30,
                   },
                   // yaxis: [
                   //   {

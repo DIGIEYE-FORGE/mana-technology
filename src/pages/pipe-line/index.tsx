@@ -670,7 +670,7 @@ const PipeLine: React.FC = () => {
         setWidgetData([
           {
             title: "Pumped Volume (m3/h)",
-            value: filteredResults?.["s=B_FIT_02_TOT_MES_TM"]?.[length - 1]?.y,
+            value: (filteredResults?.["s=B_FIT_02_TOT_MES_TM"]?.[length - 1]?.y * 3.6) || 0,
           },
           {
             title: "Flow Rate",
