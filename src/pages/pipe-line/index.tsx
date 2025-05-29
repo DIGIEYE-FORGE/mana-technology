@@ -774,7 +774,7 @@ const PipeLine: React.FC = () => {
           >
             <div className="flex h-[8%] shrink-0 items-center pl-[calc(36%+1rem)]">
               <span className="shrink-0 pl-6 font-ethnocentric text-sm font-extralight text-foreground first-letter:uppercase">
-                {PipeLineAttributes.find((item) => item.id === activePoint)
+                {PipeLineAttributes?.find((item) => item.id === activePoint)
                   ?.title || "Pipeline Dashboard"}
               </span>
               <DialogClose asChild>
@@ -788,7 +788,7 @@ const PipeLine: React.FC = () => {
               </DialogClose>
             </div>
             {
-              PipeLineAttributes.find((item) => item.id === activePoint)?.model
+              PipeLineAttributes?.find((item) => item.id === activePoint)?.model
                 .dashboard.component
             }
           </DialogContent>

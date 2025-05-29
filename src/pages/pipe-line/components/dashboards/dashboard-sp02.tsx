@@ -332,7 +332,7 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                   ]}
                   className="h-[10rem] w-[8rem]"
                   textStyle="text-white font-bold"
-                  stops={[]}
+                  indictors={[true, false, false, false]}
                 />
               </div>
               <div className="flex flex-1 flex-col items-center">

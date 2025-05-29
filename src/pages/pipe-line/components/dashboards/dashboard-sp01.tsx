@@ -91,32 +91,9 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
 
       {/* Main dashboard content */}
       <div className="relative mr-4 flex h-full min-h-0 min-w-0 flex-1 gap-4 overflow-hidden py-4 pl-12 pr-4">
-        {/* {JSON.stringify(data)} */}
-        {/* 2 columns × 4 rows grid layout */}
         <div className="grid h-full min-h-0 w-full min-w-0 flex-1 grid-cols-2 grid-rows-4 gap-4">
-          {/* Row 1, Col 1 - Flows Chart */}
           <Card className="flex h-full flex-col">
             <div className="flex-1 pl-2 pr-2">
-              {/* <LineChartWidget
-                attributes={{
-                  telemetries: [
-                    {
-                      area: false,
-                      label: "Input",
-                      color: "#26E2B3",
-                      serial: "JZVATMKQ1A8DA2P1",
-                      data: data.flowsInput || [],
-                    },
-                    {
-                      area: false,
-                      label: "Output",
-                      color: "#FFD2A6",
-                      serial: "JZVATMKQ1A8DA2P1",
-                      data: data.flowsOutput || [],
-                    },
-                  ],
-                }}
-              /> */}
               <ReactApexChart
                 height={"100%"}
                 options={{
@@ -168,10 +145,6 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                       style: {
                         colors: "#A2B0B8",
                       },
-                      // add (l/s) to the x-axis labels
-                      // formatter: (value: any) => {
-                      //   return `${value} l/s`;
-                      // },
                     },
                     type: "datetime",
                   },
@@ -210,25 +183,7 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                 ]}
                 className="h-[7rem] w-[6rem]"
                 textStyle="text-white font-bold"
-                stops={[
-                  /// TODO
-                  {
-                    color: "#E64C3C",
-                    value: 5,
-                  },
-                  {
-                    color: "#e9cc0f",
-                    value: 10,
-                  },
-                  {
-                    color: "#26E2B3",
-                    value: 86,
-                  },
-                  {
-                    color: "#26E2B3",
-                    value: 96,
-                  },
-                ]}
+                indictors={[true, false, false, false]}
               />
             </div>
             <div className="flex flex-1 flex-col items-center">
