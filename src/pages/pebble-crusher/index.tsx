@@ -79,10 +79,6 @@ const PebbleCrusher = () => {
       const res = await backendApi.findMany("dpc-history/api/history", {
         where: {
           serial: "0V7ZJGB503H9WGH3",
-          createdAt: {
-            $gt: dateRange?.from,
-            $lte: dateRange?.to,
-          },
         },
         pagination: {
           page: 1,
