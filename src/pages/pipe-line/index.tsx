@@ -167,6 +167,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                 "flex-col": point.id === "SP6",
               })}
             >
+              {/* {JSON.stringify(point.card.attributes)} */}
               <LiquidProgress
                 className={cn("h-[9rem] w-[7rem]", {
                   "w-[6.5rem]": point.id === "SP6",
@@ -181,10 +182,10 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                   point?.card?.progress && Array.isArray(point.card.progress)
                     ? point.card.progress.map((p) => ({
                         value:
-                          (
-                            p &&
-                            Number(p / (point.id === "SP6" ? 2.72 : 5)) * 100
-                          )?.toFixed(2) || 0,
+                          (p &&
+                            Number(p / (point.id === "SP6" ? 2.72 : 5)) *
+                              100) ||
+                          0,
                         title: "",
                       }))
                     : [
@@ -670,7 +671,9 @@ const PipeLine: React.FC = () => {
         setWidgetData([
           {
             title: "Pumped Volume (m3/h)",
-            value: (filteredResults?.["s=B_FIT_02_TOT_MES_TM"]?.[length - 1]?.y * 3.6) || 0,
+            value:
+              filteredResults?.["s=B_FIT_02_TOT_MES_TM"]?.[length - 1]?.y *
+                3.6 || 0,
           },
           {
             title: "Flow Rate",

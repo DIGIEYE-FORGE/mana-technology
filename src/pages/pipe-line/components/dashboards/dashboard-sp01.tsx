@@ -177,6 +177,7 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
               <span className="mb-2 text-sm font-medium text-white">
                 Suction sump
               </span>
+              {JSON.stringify(data.progress || "-------")}
               {/* {JSON.stringify({
                 suctionTankLL: data.suctionTankLL,
                 suctionTankL: data.suctionTankL,
@@ -207,8 +208,10 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
               <HammerArrestorSVG
                 className={cn("size-[8rem] [&_.indicator]:fill-[#26e2b3]", {
                   // TODO: change this base on state
-                  "[&_.indicator-1]:!fill-red-500": data.hammerArrestorH1 === "True" ? true : false,
-                  "[&_.indicator-2]:!fill-red-500": data.hammerArrestorH2 === "True" ? true : false,
+                  "[&_.indicator-1]:!fill-red-500":
+                    data.hammerArrestorH1 === "True" ? true : false,
+                  "[&_.indicator-2]:!fill-red-500":
+                    data.hammerArrestorH2 === "True" ? true : false,
                 })}
               />
             </div>
