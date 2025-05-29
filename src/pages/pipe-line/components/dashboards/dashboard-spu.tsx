@@ -347,19 +347,19 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
             <div className="flex min-h-0 flex-1 items-center justify-center gap-0">
               <ChloreSVG
                 topTitle="SP01-M-03"
-                leftTitle="LSLL-03"
+                // leftTitle="true"
                 bottomTitle="SP01-M-01"
                 value={data.station1 ?? "XX"}
-                width={280}
-                height={200}
+                width={350}
+                height={350}
               />
               <ChloreSVG
                 topTitle="SP01-M-03"
-                leftTitle="LSLL-04"
+                // leftTitle="false"
                 bottomTitle="SP01-M-02"
                 value={data.station2 ?? "XX"}
-                width={240}
-                height={170}
+                width={350}
+                height={350}
               />
             </div>
           </Card>
