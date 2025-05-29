@@ -13,7 +13,7 @@ import { cn, parseBoolean } from "@/lib/utils";
 const Data = [
   { id: 1, name: "Flow rate (l/s) :", key: "flowRate" },
   { id: 2, name: "Δt Flow (l/s) :", key: "deltaFlow" },
-  { id: 3, name: "Pumped volume (m3/h) :", key: "pumpedVolume" },
+  { id: 3, name: "Pumped volume (m3) :", key: "pumpedVolume" },
   { id: 4, name: "Turbidity (NTU):", key: "trubidite" },
 ];
 
@@ -177,7 +177,6 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
               <span className="mb-2 text-sm font-medium text-white">
                 Suction sump
               </span>
-              {JSON.stringify(data.progress || "-------")}
               {/* {JSON.stringify({
                 suctionTankLL: data.suctionTankLL,
                 suctionTankL: data.suctionTankL,
