@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Card } from "@/components/card";
 import ReactApexChart from "react-apexcharts";
 
@@ -35,6 +36,22 @@ const LeftBar = ({
             Hrs
           </span>
           <div className="flex h-8 w-full overflow-hidden rounded-sm">
+            {/* this for 24h */}
+            {runningState?.count[telemetryRunningState].map((ele: any) => {
+              return (
+                <div
+                  key={ele.value}
+                  className={`flex h-full items-center justify-center font-semibold text-[#FFC829] ${
+                    ele.value == "True" ? "bg-[#8AFF8A]" : "bg-[#FF5C5C]"
+                  }`}
+                  style={{
+                    width: `${(ele.difTimeHourly / 24) * 100}%`,
+                  }}
+                >
+                  {ele.value == "True" ? "Running" : "Stopped"}
+                </div>
+              );
+            })}
             {/* <div className="flex h-full w-[44%] items-center justify-center bg-[#8AFF8A] font-semibold text-black">
               XX
             </div>
@@ -44,23 +61,48 @@ const LeftBar = ({
             <div className="flex flex-1 items-center justify-center bg-[#8AFF8A] font-semibold text-black">
               XX
             </div> */}
-            {
-              
-            }
+            {}
           </div>
         </div>
         <div className="flex flex-col gap-1">
           <div className="flex w-full justify-between">
             <span>Running hours</span>
-            <span className="text-xl font-bold text-[#FFC829]">XX</span>
+            <span className="text-xl font-bold text-[#FFC829]">
+              {runningState?.count[telemetryRunningState]
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                .filter((ele: any) => ele.value == "True")
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                .reduce((acc: any, curr: any) => acc + curr.difTimeHourly, 0)}
+            </span>
           </div>
           <div className="flex w-full justify-between">
             <span>Stop Hours</span>
-            <span className="text-xl font-bold text-[#FFC829]">XX</span>
+            <span className="text-xl font-bold text-[#FFC829]">
+              {Math.round(
+                runningState?.count[telemetryRunningState]
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  .filter((ele: any) => ele.value == "False")
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  .reduce((acc: any, curr: any) => acc + curr.difTimeHourly, 0),
+              )}
+            </span>
           </div>
           <div className="flex w-full justify-between">
             <span>Utilisation (%)</span>
-            <span className="text-xl font-bold text-[#FFC829]">XX</span>
+            <span className="text-xl font-bold text-[#FFC829]">
+              {Math.round(
+                (runningState?.count[telemetryRunningState]
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  .filter((ele: any) => ele.value == "True")
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  .reduce(
+                    (acc: any, curr: any) => acc + curr.difTimeHourly,
+                    0,
+                  ) /
+                  24) *
+                  100,
+              )}
+            </span>
           </div>
         </div>
       </Card>
