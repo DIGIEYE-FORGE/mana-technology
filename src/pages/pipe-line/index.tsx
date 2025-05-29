@@ -685,7 +685,7 @@ const PipeLine: React.FC = () => {
     },
   );
 
-  const { isLoading: isLoadingCount } = useSWR(
+  const { isLoading: isLoadingCount, error: countError } = useSWR(
     "count-pipe-line",
     async () => {
       const res = await backendApi.getHistory(
@@ -866,7 +866,7 @@ const PipeLine: React.FC = () => {
                 className={cn(
                   "",
                   { hidden: item.hidden },
-                  item.value === "XX" && "opacity-50",
+                  item.value === "0" && "opacity-50",
                 )}
               >
                 <h3 className="text-lg text-white">{item.title}</h3>
