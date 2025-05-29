@@ -25,9 +25,6 @@ import {
   updateAttributesData,
   updateHistoryData,
 } from "./utils/functions";
-import ReactApexChart from "react-apexcharts";
-import { Card } from "@/components/card";
-import { twMerge } from "tailwind-merge";
 
 interface Position {
   top?: string;
@@ -168,19 +165,19 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                   stops={[
                     {
                       color: "red",
-                      value: +point?.card?.attributes?.breakPoints?.[0],
+                      value: 5,
                     },
                     {
                       color: "orange",
-                      value: +point?.card?.attributes?.breakPoints?.[1],
+                      value: 18,
                     },
                     {
                       color: "#0553fb",
-                      value: +point?.card?.attributes?.breakPoints?.[2],
+                      value: 89,
                     },
                     {
                       color: "green",
-                      value: +point?.card?.attributes?.breakPoints?.[3],
+                      value: 94,
                     },
                   ]}
                   percentage={
@@ -207,6 +204,26 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                             title: "",
                           },
                         ]
+                  }
+                  colorLL={
+                    point?.card?.attributes?.breakPoints?.[0] === "True"
+                      ? "#FF0000"
+                      : "#009670"
+                  }
+                  colorL={
+                    point?.card?.attributes?.breakPoints?.[1] === "True"
+                      ? "#FF0000"
+                      : "#009670"
+                  }
+                  colorH={
+                    point?.card?.attributes?.breakPoints?.[2] === "True"
+                      ? "#FF0000"
+                      : "#009670"
+                  }
+                  colorHH={
+                    point?.card?.attributes?.breakPoints?.[3] === "True"
+                      ? "#FF0000"
+                      : "#009670"
                   }
                 />
               </div>
@@ -565,7 +582,7 @@ const PipeLine: React.FC = () => {
         },
         pagination: {
           page: 1,
-          perPage: 10,
+          perPage: 1000,
         },
       });
       return res;
@@ -753,121 +770,9 @@ const PipeLine: React.FC = () => {
             }
           </DialogContent>
         </Dialog>
-        <LineChart />
       </main>
     </main>
   );
 };
 
 export default PipeLine;
-
-interface LineChartProps
-  extends Omit<React.HTMLAttributes<HTMLElement>, "children"> {
-  series?: ApexAxisChartSeries;
-}
-
-function LineChart({
-  className,
-  series = [
-    {
-      name: "Production",
-      data: [
-        {
-          x: new Date("2024-06-01"),
-          y: 10,
-        },
-        {
-          x: new Date("2024-06-02"),
-          y: 20,
-        },
-      ],
-      type: "area",
-    },
-  ],
-  ...props
-}: LineChartProps) {
-  return (
-    <div
-      className={twMerge(
-        "absolute bottom-6 left-[23%] -z-10 aspect-[2] w-[39rem]",
-        className,
-      )}
-      {...props}
-    >
-      <Card className="flex h-full w-full flex-col p-3">
-        <div className="font-semibold first-letter:uppercase">chart title</div>
-        <div className="h-1 flex-1">
-          <ReactApexChart
-            options={{
-              theme: {
-                mode: "dark",
-              },
-              tooltip: { cssClass: "text-black" },
-              colors: ["#E80053", "#4D09E8"],
-              grid: {
-                borderColor: "#373737",
-                xaxis: { lines: { show: true } },
-                yaxis: { lines: { show: false } },
-              },
-              chart: {
-                background: "transparent",
-                toolbar: { show: false },
-                animations: { enabled: true },
-                zoom: { enabled: false },
-                selection: { enabled: false },
-                dropShadow: { enabled: false },
-              },
-              stroke: { width: 2, curve: "smooth" },
-              dataLabels: { enabled: false },
-              fill: { type: "solid", opacity: [0.33, 1] },
-              legend: {
-                position: "bottom",
-                // markers: {
-                //   width: 26,
-                //   height: 12,
-                // },
-                fontWeight: 600,
-                fontSize: "12px",
-              },
-              xaxis: {
-                type: "datetime",
-                // max: dateRange.to ? new Date(dateRange.to).getTime() : undefined,
-                axisBorder: { show: false },
-                axisTicks: { show: false },
-
-                labels: {
-                  show: true,
-                  style: {
-                    fontSize: "12px",
-                    fontFamily: "Helvetica, Arial, sans-serif",
-                    fontWeight: 400,
-                    cssClass: "apexcharts",
-                  },
-                },
-              },
-              yaxis: {
-                min: 0,
-                tickAmount: 4,
-                labels: {
-                  show: true,
-                  formatter: function (value) {
-                    return value.toFixed(2);
-                  },
-                  style: {
-                    fontSize: "12px",
-                    fontFamily: "Helvetica, Arial, sans-serif",
-                    fontWeight: 400,
-                    cssClass: "apexcharts-xaxis-label",
-                  },
-                },
-              },
-            }}
-            series={series}
-            width={"100%"}
-            height={"100%"}
-          />
-        </div>
-      </Card>
-    </div>
-  );
-}
