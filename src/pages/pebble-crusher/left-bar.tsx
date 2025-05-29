@@ -82,7 +82,7 @@ const LeftBar = ({
               theme: "dark",
             },
             title: {
-              text: "Motor beering temperature",
+              text: "Motor bearing temperature",
               align: "left",
               style: {
                 fontSize: "14px",
