@@ -98,7 +98,7 @@ const LeftBar = ({
           </div>
         </div>
       </Card>
-      <Card className="w-full p-2 opacity-50">
+      <Card className="w-full p-2">
         <ReactApexChart
           height={265}
           options={{
