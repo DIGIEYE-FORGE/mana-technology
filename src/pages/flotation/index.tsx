@@ -22,7 +22,7 @@ import { io } from "socket.io-client";
 import { env } from "@/utils/env";
 
 const Flotation = () => {
-  const { backendApi, dateRange } = useAppContext();
+  const { backendApi } = useAppContext();
   const [upData, setUpData] = useState<any>({});
   const [leftData, setLeftData] = useState<any>({});
   const [rightData, setRightData] = useState<any>({});
@@ -235,6 +235,9 @@ const Flotation = () => {
                 air2={leftData?.air2 || []}
                 air1Val={leftData?.air1Val || 0}
                 air2Val={leftData?.air2Val || 0}
+                /******************************************** */
+                oreFlow={leftData?.oreFlow || []}
+                oreFlowVal={leftData?.oreFlowVal || 0}
               />
             </div>
             <RightBar

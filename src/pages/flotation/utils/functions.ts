@@ -94,6 +94,8 @@ export const formatData = (
 
       air1Val: data?.["s=6850-FIT-7541"] || 0,
       air2Val: data?.["s=6028-WI-1042"] || 0,
+
+      oreFlowVal: data?.["s=6120-WIT-2042"] || 0,
     };
   });
 
@@ -593,25 +595,89 @@ export const formatHistory = (data: any, setLeftData: any) => {
       oThickner2: data?.["s=6520-DIT-5215"] || [],
       iThickner: data?.["s=6510-DIT-5121"] || [],
 
-      pax1: (data?.["s=6730-FIT-6325"] || []).map((item: any, index) => ({
-        x: new Date(item.x),
-        y:
-          (+item.y || 0) +
-          (data?.["s=6730-FIT-6326"]?.[index]?.y || 0) +
-          (data?.["s=6730-FIT-6327"]?.[index]?.y || 0) +
-          (data?.["s=6730-FIT-6328"]?.[index]?.y || 0) +
-          (data?.["s=6730-FIT-6329"]?.[index]?.y || 0),
-      })),
-      pax2: data?.["s=6028-WI-1042"] || [],
+      pax1: (data?.["s=6730-FIT-6325"] || []).map(
+        (item: any, index: number) => ({
+          x: new Date(item.x),
+          y:
+            (+item.y || 0) +
+            (data?.["s=6730-FIT-6326"]?.[index]?.y || 0) +
+            (data?.["s=6730-FIT-6327"]?.[index]?.y || 0) +
+            (data?.["s=6730-FIT-6328"]?.[index]?.y || 0) +
+            (data?.["s=6730-FIT-6329"]?.[index]?.y || 0) +
+            (data?.["s=6730-FIT-6330"]?.[index]?.y || 0) +
+            (data?.["s=6730-FIT-6331"]?.[index]?.y || 0),
+        }),
+      ),
+      pax2: (data?.["s=6028-WI-1032"] || []).map(
+        (item: any, index: number) => ({
+          x: new Date(item.x),
+          y:
+            (+item.y || 0) +
+            (data?.["s=6730-FIT-6333"]?.[index]?.y || 0) +
+            (data?.["s=6730-FIT-6334"]?.[index]?.y || 0) +
+            (data?.["s=6730-FIT-6335"]?.[index]?.y || 0) +
+            (data?.["s=6730-FIT-6336"]?.[index]?.y || 0) +
+            (data?.["s=6730-FIT-6337"]?.[index]?.y || 0) +
+            (data?.["s=6730-FIT-6338"]?.[index]?.y || 0),
+        }),
+      ),
 
-      mibc1: data?.["s=6028-WI-1042"] || [],
-      mibc2: data?.["s=6028-WI-1042"] || [],
+      mibc1: (data?.["s=6720-FIT-6225"] || []).map(
+        (item: any, index: number) => ({
+          x: new Date(item.x),
+          y:
+            (item.y || 0) +
+            (data?.["s=6720-FIT-6226"]?.[index]?.y || 0) +
+            (data?.["s=6720-FIT-6227"]?.[index]?.y || 0),
+        }),
+      ),
+      mibc2: (data?.["s=6720-FIT-6229"] || []).map(
+        (item: any, index: number) => ({
+          x: new Date(item.x),
+          y:
+            (item.y || 0) +
+            (data?.["s=6720-FIT-6230"]?.[index]?.y || 0) +
+            (data?.["s=6720-FIT-6231"]?.[index]?.y || 0),
+        }),
+      ),
 
-      nahs1: data?.["s=6028-WI-1042"] || [],
-      nahs2: data?.["s=6028-WI-1042"] || [],
+      nahs1: (data?.["s=6740-FT-6422A"] || []).map(
+        (item: any, index: number) => ({
+          x: new Date(item.x),
+          y:
+            (item.y || 0) +
+            (data?.["s=6740-FT-6422B"]?.[index]?.y || 0) +
+            (data?.["s=6740-FT-6422C"]?.[index]?.y || 0) +
+            (data?.["s=6740-FT-6422D"]?.[index]?.y || 0) +
+            (data?.["s=6740-FT-6422E"]?.[index]?.y || 0) +
+            (data?.["s=6740-FT-6422F"]?.[index]?.y || 0) +
+            (data?.["s=6740-FT-6422G"]?.[index]?.y || 0),
+        }),
+      ),
+      nahs2: (data?.["s=6740-FIT-6425"] || []).map(
+        (item: any, index: number) => ({
+          x: new Date(item.x),
+          y:
+            (item.y || 0) +
+            (data?.["s=6740-FIT-6426"]?.[index]?.y || 0) +
+            (data?.["s=6740-FIT-6427"]?.[index]?.y || 0) +
+            (data?.["s=6740-FIT-6428"]?.[index]?.y || 0) +
+            (data?.["s=6740-FIT-6429"]?.[index]?.y || 0) +
+            (data?.["s=6740-FIT-6430"]?.[index]?.y || 0) +
+            (data?.["s=6740-FT-6422H"]?.[index]?.y || 0) +
+            (data?.["s=6740-FT-6422I"]?.[index]?.y || 0) +
+            (data?.["s=6740-FT-6422J"]?.[index]?.y || 0) +
+            (data?.["s=6740-FT-6422K"]?.[index]?.y || 0) +
+            (data?.["s=6740-FT-6422L"]?.[index]?.y || 0) +
+            (data?.["s=6740-FT-6422M"]?.[index]?.y || 0) +
+            (data?.["s=6740-FT-6422N"]?.[index]?.y || 0),
+        }),
+      ),
 
-      air1: data?.["s=6028-WI-1042"] || [],
+      air1: data?.["s=6850-FIT-7541"] || [],
       air2: data?.["s=6028-WI-1042"] || [],
+
+      oreFlow: data?.["s=6120-WIT-2042"] || [],
     };
   });
 };
@@ -712,6 +778,8 @@ export const updateDataWithSocket = (
 
       air1Val: data?.["s=6850-FIT-7541"] || 0,
       air2Val: data?.["s=6028-WI-1042"] || 0,
+
+      oreFlowVal: data?.["s=6120-WIT-2042"] || 0,
 
       oThickner: [
         ...(prev?.oThickner?.slice(1) || []),
@@ -819,14 +887,28 @@ export const updateDataWithSocket = (
         ...(prev?.pax1?.slice(1) || []),
         {
           x: new Date(),
-          y: data?.["s=6028-WI-1042"] || 0,
+          y:
+            (data?.["s=6730-FIT-6325"] || 0) +
+            (data?.["s=6730-FIT-6326"] || 0) +
+            (data?.["s=6730-FIT-6327"] || 0) +
+            (data?.["s=6730-FIT-6328"] || 0) +
+            (data?.["s=6730-FIT-6329"] || 0) +
+            (data?.["s=6730-FIT-6330"] || 0) +
+            (data?.["s=6730-FIT-6331"] || 0),
         },
       ],
       pax2: [
         ...(prev?.pax2?.slice(1) || []),
         {
           x: new Date(),
-          y: data?.["s=6028-WI-1042"] || 0,
+          y:
+            (data?.["s=6730-FIT-6332"] || 0) +
+            (data?.["s=6730-FIT-6333"] || 0) +
+            (data?.["s=6730-FIT-6334"] || 0) +
+            (data?.["s=6730-FIT-6335"] || 0) +
+            (data?.["s=6730-FIT-6336"] || 0) +
+            (data?.["s=6730-FIT-6337"] || 0) +
+            (data?.["s=6730-FIT-6338"] || 0),
         },
       ],
 
@@ -834,14 +916,20 @@ export const updateDataWithSocket = (
         ...(prev?.mibc1?.slice(1) || []),
         {
           x: new Date(),
-          y: data?.["s=6028-WI-1042"] || 0,
+          y:
+            (data?.["s=6720-FIT-6225"] || 0) +
+            (data?.["s=6720-FIT-6226"] || 0) +
+            (data?.["s=6720-FIT-6227"] || 0),
         },
       ],
       mibc2: [
         ...(prev?.mibc2?.slice(1) || []),
         {
           x: new Date(),
-          y: data?.["s=6028-WI-1042"] || 0,
+          y:
+            (data?.["s=6720-FIT-6229"] || 0) +
+            (data?.["s=6720-FIT-6230"] || 0) +
+            (data?.["s=6720-FIT-6231"] || 0),
         },
       ],
 
@@ -849,14 +937,34 @@ export const updateDataWithSocket = (
         ...(prev?.nahs1?.slice(1) || []),
         {
           x: new Date(),
-          y: data?.["s=6028-WI-1042"] || 0,
+          y:
+            (data?.["s=6740-FT-6422A"] || 0) +
+            (data?.["s=6740-FT-6422B"] || 0) +
+            (data?.["s=6740-FT-6422C"] || 0) +
+            (data?.["s=6740-FT-6422D"] || 0) +
+            (data?.["s=6740-FT-6422E"] || 0) +
+            (data?.["s=6740-FT-6422F"] || 0) +
+            (data?.["s=6740-FT-6422G"] || 0),
         },
       ],
       nahs2: [
         ...(prev?.nahs2?.slice(1) || []),
         {
           x: new Date(),
-          y: data?.["s=6028-WI-1042"] || 0,
+          y:
+            (data?.["s=6740-FIT-6425"] || 0) +
+            (data?.["s=6740-FIT-6426"] || 0) +
+            (data?.["s=6740-FIT-6427"] || 0) +
+            (data?.["s=6740-FIT-6428"] || 0) +
+            (data?.["s=6740-FIT-6429"] || 0) +
+            (data?.["s=6740-FIT-6430"] || 0) +
+            (data?.["s=6740-FT-6422H"] || 0) +
+            (data?.["s=6740-FT-6422I"] || 0) +
+            (data?.["s=6740-FT-6422J"] || 0) +
+            (data?.["s=6740-FT-6422K"] || 0) +
+            (data?.["s=6740-FT-6422L"] || 0) +
+            (data?.["s=6740-FT-6422M"] || 0) +
+            (data?.["s=6740-FT-6422N"] || 0),
         },
       ],
 
@@ -864,7 +972,7 @@ export const updateDataWithSocket = (
         ...(prev?.air1?.slice(1) || []),
         {
           x: new Date(),
-          y: data?.["s=6028-WI-1042"] || 0,
+          y: data?.["s=6850-FIT-7541"] || 0,
         },
       ],
       air2: [
@@ -872,6 +980,14 @@ export const updateDataWithSocket = (
         {
           x: new Date(),
           y: data?.["s=6028-WI-1042"] || 0,
+        },
+      ],
+
+      oreFlow: [
+        ...(prev?.oreFlow?.slice(1) || []),
+        {
+          x: new Date(),
+          y: data?.["s=6120-WIT-2042"] || 0,
         },
       ],
     };
