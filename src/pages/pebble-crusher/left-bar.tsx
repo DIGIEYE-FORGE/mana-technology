@@ -23,19 +23,11 @@ const LeftBar = ({
   telemetryRunningState,
 }: LeftBarProps) => {
   return (
-    <div className="relative z-10 flex h-full w-[500px] flex-col gap-3">
+    <div className="relative z-10 flex h-full w-[500px] flex-col gap-4">
       <Card className="!rounded px-5 py-3">
-        <div className="mb-2 flex flex-col gap-1">
+        <div className="mb-2 flex flex-col gap-4">
           <span>Running State</span>
-          <span className="text-xl font-bold text-[#FFC829]">
-            {runningState?.count[telemetryRunningState]
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              .filter((ele: any) => ele.value == "True")
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              .reduce((acc: any, curr: any) => acc + curr.difTimeHourly, 0)}
-            Hrs
-          </span>
-          <div className="flex h-8 w-full overflow-hidden rounded-sm">
+          <div className="flex h-10 w-full overflow-hidden rounded-sm">
             {/* this for 24h */}
             {runningState?.count[telemetryRunningState].map((ele: any) => {
               return (
@@ -64,7 +56,7 @@ const LeftBar = ({
             {}
           </div>
         </div>
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-2">
           <div className="flex w-full justify-between">
             <span>Operating hours (h)</span>
             <span className="text-xl font-bold text-[#FFC829]">
@@ -106,7 +98,7 @@ const LeftBar = ({
           </div>
         </div>
       </Card>
-      <Card className="w-full p-2">
+      <Card className="w-full p-2 opacity-50">
         <ReactApexChart
           height={265}
           options={{

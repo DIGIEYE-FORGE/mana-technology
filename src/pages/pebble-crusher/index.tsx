@@ -156,7 +156,7 @@ const PebbleCrusher = () => {
             </div>
             <UpCards
               flowRate={data?.["s=6210-WI-2215"] || 0}
-              speed={data?.["s=6140-SSL-2426A"] || 0}
+              speed={data?.["s=6140-Fréquence-BM-2426"] || 0}
               energy={data?.["s=6100-TR-2001"] || 0}
               bounce1={data?.["s=6140-VT-2426A"] || 0}
               bounce2={data?.["s=6140-VT-2426B"] || 0}
@@ -174,7 +174,7 @@ const PebbleCrusher = () => {
                 runningState={countData}
                 telemetryRunningState={"s=6140-CR-2426"}
               />
-              <Card className="h-[200px] flex-1 self-end !rounded">
+              <Card className="h-[200px] flex-1 self-end !rounded opacity-50">
                 <ReactApexChart
                   height={"100%"}
                   options={{
@@ -192,7 +192,7 @@ const PebbleCrusher = () => {
                       theme: "dark",
                     },
                     title: {
-                      text: "Pitman bearing temperature",
+                      text: "Crushed Ore FLow (t/h)",
                       align: "left",
                       style: {
                         fontSize: "14px",

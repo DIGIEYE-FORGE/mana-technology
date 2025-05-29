@@ -29,7 +29,6 @@ const RightBar = ({
   crushedOreApronFeeder1,
   crushedOreApronFeeder2,
   crushedOreApronFeeder3,
-  crushedDischargeConveyor,
   plantFeedConveyor,
   runingState,
 }: RightBarProps) => {
@@ -494,7 +493,7 @@ const RightBar = ({
                 }%</span>
           </div>
         </Card>
-        <Card className="flex flex-col gap-1 !rounded px-2 py-1">
+        {/* <Card className="flex flex-col gap-1 !rounded px-2 py-1">
           <div className="flex items-center justify-between text-sm">
             <span>Crusher Discharge Conveyor Scale</span>
             <span
@@ -537,7 +536,7 @@ const RightBar = ({
                     100 || 0
                 }%</span>
           </div>
-        </Card>
+        </Card> */}
         <Card className="flex flex-col gap-1 !rounded px-2 py-1">
           <div className="flex items-center justify-between text-sm">
             <span>Plant feed conveyor</span>
