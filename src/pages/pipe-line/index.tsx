@@ -986,12 +986,12 @@ function LineChart({
   return (
     <div
       className={twMerge(
-        "absolute bottom-6 left-[25%] -z-10 aspect-[2] w-[30em]",
+        "absolute bottom-6 left-[25%] -z-10 aspect-[2] w-[24em]",
         className,
       )}
       {...props}
     >
-      <Card className="flex h-full w-full flex-col p-3">
+      <div className="flex h-full w-full flex-col rounded-lg bg-card/10 p-3 backdrop-blur-sm">
         <div className="font-semibold first-letter:uppercase">chart title</div>
         <div className="h-1 flex-1">
           <ReactApexChart
@@ -1064,7 +1064,7 @@ function LineChart({
             height={"100%"}
           />
         </div>
-      </Card>
+      </div>
     </div>
   );
 }
