@@ -23,7 +23,7 @@ const LeftBar = ({
   w1,
 }: LeftBarProps) => {
   return (
-    <div className="relative z-10 flex h-full min-h-fit w-[400px] shrink-0 flex-col gap-2 overflow-x-hidden [&>.card]:h-1 [&>.card]:flex-1">
+    <div className="relative z-10 flex h-full min-h-fit w-[400px] shrink-0 flex-col gap-2 overflow-x-hidden [&>.card]:h-1 [&>.card]:flex-1 px-1">
       <h1 className="text-xl font-bold">Jaw Crusher</h1>
       <Card className="card !rounded px-5 py-3">
         <div className="mb-2 flex flex-col gap-1">
