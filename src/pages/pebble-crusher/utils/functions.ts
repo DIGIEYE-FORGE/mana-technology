@@ -42,6 +42,8 @@ export const formatHistory = (
   setLeftData: any,
   setRightData: any,
 ) => {
+  // console.log({ data });
+
   setLeftData((prev: any) => {
     return {
       ...prev,

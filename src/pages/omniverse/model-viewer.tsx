@@ -49,8 +49,6 @@ function Model({ url, speed = 0.5 }: ModelProps) {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [modelError, setModelError] = useState<boolean>(false);
 
-  console.log({ speed });
-
   // Use error handling with useGLTF
   const { scene } = useGLTF(url, true, undefined, (e) => {
     console.error("Error loading model:", e);

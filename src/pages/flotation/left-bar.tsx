@@ -747,7 +747,7 @@ const LeftBar = ({
         {/************************************************************************ */}
         <Card className="flex h-fit flex-1 shrink-0 flex-col self-end !rounded px-5 pt-5">
           <div className="flex items-center text-base">
-            <span className="font-semibold">Milled ore flow</span>
+            <span className="font-semibold">Milled ore flow (t/h)</span>
             <span className="ml-auto font-semibold text-[#FFC829]">
               {oreFlowVal}
             </span>

@@ -15,9 +15,19 @@ import { Card } from "@/components/card";
 import ReactApexChart from "react-apexcharts";
 import { ModelCanvas } from "../omniverse/model-viewer";
 import { env } from "@/utils/env";
+import {
+  formatData,
+  formatHistory,
+  updateDataWithSocket,
+} from "./utils/functions";
+import { useEffect, useState } from "react";
+import { io } from "socket.io-client";
 
 const PebbleCrusher = () => {
-  const { backendApi, dateRange } = useAppContext();
+  const { backendApi } = useAppContext();
+  const [upData, setUpData] = useState<any>({});
+  const [leftData, setLeftData] = useState<any>({});
+  const [rightData, setRightData] = useState<any>({});
 
   const {
     data: countData,
@@ -27,12 +37,6 @@ const PebbleCrusher = () => {
     const res = await backendApi.getHistory(
       "/dpc-history/api/history/count/0V7ZJGB503H9WGH3",
       {
-        // startDate: new Date(
-        //   dateRange?.from ||
-        //     /// last hour
-        //     new Date(Date.now() - 60 * 60 * 1000),
-        // ).toISOString(),
-        // endDate: new Date(dateRange?.to || new Date()).toISOString(),
         telemetries: [
           {
             name: "s=6140-CR-2426",
@@ -44,37 +48,44 @@ const PebbleCrusher = () => {
     return res;
   });
 
-  const { data, isLoading, error } = useSWR("last-telemetry", async () => {
-    const res = await backendApi.findMany("lastTelemetry", {
-      where: {
-        device: {
-          serial: "0V7ZJGB503H9WGH3",
+  const { data, isLoading, error } = useSWR(
+    "last-telemetry/pebble-crusher",
+    async () => {
+      const res = await backendApi.findMany("lastTelemetry", {
+        where: {
+          device: {
+            serial: "0V7ZJGB503H9WGH3",
+          },
         },
-      },
-      pagination: {
-        page: 1,
-        perPage: 400,
-      },
-    });
+        pagination: {
+          page: 1,
+          perPage: 400,
+        },
+      });
 
-    const filteredResults = res?.results?.reduce(
-      (acc: Record<string, any>, item: any) => {
-        acc[item.name] =
-          typeof item.value === "number" ? item.value?.toFixed(2) : item.value;
-        return acc;
+      return res;
+    },
+    {
+      revalidateOnMount: true,
+      onSuccess: (data) => {
+        const filteredResults = data?.results?.reduce(
+          (acc: Record<string, any>, item: any) => {
+            acc[item.name] =
+              typeof item.value === "number"
+                ? item.value?.toFixed(2)
+                : item.value;
+            return acc;
+          },
+          {} as Record<string, any>,
+        );
+
+        formatData(filteredResults, setUpData, setLeftData, setRightData);
       },
-      {} as Record<string, any>,
-    );
+    },
+  );
 
-    return filteredResults;
-  });
-
-  const {
-    data: history,
-    isLoading: isLoadingHistory,
-    error: historyError,
-  } = useSWR(
-    `dpc-history/api/history/${dateRange?.from}/${dateRange?.to}`,
+  const { isLoading: isLoadingHistory, error: historyError } = useSWR(
+    `dpc-history/api/history/pebble-crusher/history`,
     async () => {
       const res = await backendApi.findMany("dpc-history/api/history", {
         where: {
@@ -82,30 +93,56 @@ const PebbleCrusher = () => {
         },
         pagination: {
           page: 1,
-          perPage: 1000,
+          perPage: 10,
         },
       });
 
-      const filteredResults = res?.results?.reduce(
-        (acc: Record<string, any>, item: any) => {
-          Object.entries(item).forEach(([key, value]) => {
-            if (typeof value === "number" && key !== "deviceId")
-              acc[key] = [
-                {
-                  x: new Date(item.createdAt),
-                  y: value,
-                },
-                ...(acc[key] || []),
-              ];
-          });
-          return acc;
-        },
-        {} as Record<string, any>,
-      );
+      return res;
+    },
+    {
+      revalidateOnMount: true,
+      onSuccess: (data) => {
+        const filteredResults = data?.results?.reduce(
+          (acc: Record<string, any>, item: any) => {
+            Object.entries(item).forEach(([key, value]) => {
+              if (typeof value === "number" && key !== "deviceId")
+                acc[key] = [
+                  {
+                    x: new Date(item.createdAt),
+                    y: value,
+                  },
+                  ...(acc[key] || []),
+                ];
+            });
+            return acc;
+          },
+          {} as Record<string, any>,
+        );
 
-      return filteredResults;
+        formatHistory(filteredResults, setLeftData, setRightData);
+      },
     },
   );
+
+  useEffect(() => {
+    const socket = io(env.VITE_URL_SOCKET);
+    socket.on("connect", () => {
+      console.log("Connected to WebSocket server Pipeline");
+    });
+    socket.on("disconnect", () => {
+      console.log("Disconnected from WebSocket server");
+    });
+    socket.on("error", (error) => {
+      console.error("WebSocket error:", error);
+    });
+    socket.on("serial-0V7ZJGB503H9WGH3", (data) => {
+      // console.log("Received message:", data);
+      updateDataWithSocket(data, setUpData, setLeftData, setRightData);
+    });
+    return () => {
+      socket.close();
+    };
+  }, []);
 
   return (
     <div
@@ -129,7 +166,7 @@ const PebbleCrusher = () => {
           </div>
         ) : (
           <main className="relative flex !h-fit flex-col gap-5 px-6 pb-6">
-            <div className="machine-highlight absolute bottom-[150px] left-1/2 aspect-square w-[400px] -translate-x-1/2">
+            <div className="machine-highlight absolute bottom-[200px] left-1/2 aspect-square w-[300px] -translate-x-1/2 opacity-50">
               <div className="circle circle-3 relative h-full w-full">
                 <Circle3 className="rotate h-full w-full duration-1000" />
               </div>
@@ -148,29 +185,29 @@ const PebbleCrusher = () => {
             <div className="absolute inset-0 isolate z-0 flex flex-1 items-center justify-center p-0">
               {env.VITE_SHOW_MODEL === "true" && (
                 <ModelCanvas
-                  url={"/model/pebble_crusher.glb"}
-                  position={[-40, 15, -10]}
-                  fov={100}
+                  url={"/model/pebble-crusher.glb"}
+                  position={[-40, 15, -40]}
+                  fov={10}
                 />
               )}
             </div>
             <UpCards
-              flowRate={data?.["s=6210-WI-2215"] || 0}
-              speed={data?.["s=6140-Fréquence-BM-2426"] || 0}
-              energy={data?.["s=6100-TR-2001"] || 0}
-              bounce1={data?.["s=6140-VT-2426A"] || 0}
-              bounce2={data?.["s=6140-VT-2426B"] || 0}
-              bounce3={data?.["s=6140-VT-2426C"] || 0}
+              flowRate={upData?.flowRate || 0}
+              speed={upData?.speed || 0}
+              energy={upData?.energy || 0}
+              bounce1={upData?.bounce1 || 0}
+              bounce2={upData?.bounce2 || 0}
+              bounce3={upData?.bounce3 || 0}
               telemetryRunningState={"s=6140-CR-2426"}
               runningState={countData}
             />
             <div className="flex gap-5">
               <LeftBar
-                nde={history?.["s=6140-TE-2426NDE"] || []}
-                de={history?.["s=6140-TE-2426DE"] || []}
-                u1={history?.["s=6140-TE-2426U1"] || []}
-                v1={history?.["s=6140-TE-2426V1"] || []}
-                w1={history?.["s=6140-TE-2426W1"] || []}
+                nde={leftData?.nde || []}
+                de={leftData?.de || []}
+                u1={leftData?.u1 || []}
+                v1={leftData?.v1 || []}
+                w1={leftData?.w1 || []}
                 runningState={countData}
                 telemetryRunningState={"s=6140-CR-2426"}
               />
@@ -229,17 +266,22 @@ const PebbleCrusher = () => {
                       decimalsInFloat: 2,
                     },
                   }}
-                  series={[]}
+                  series={[
+                    {
+                      name: "Crushed Ore Flow",
+                      data: leftData?.crushedFlow,
+                    },
+                  ]}
                 />
               </Card>
               <RightBar
-                pressure={data?.["s=6210-WI-2215"] || 0}
-                hydraulic={data?.["s=6140-PDSH-2426C"] || 0}
-                clamping={data?.["s=6140-PIT-2426D"] || 0}
-                tramp={data?.["s=6140-PIT-2426E"] || 0}
-                lub={data?.["s=6140-PDSH-2426F"] || 0}
-                tank={history?.["s=6140-TE-2426E"] || 0}
-                return={history?.["s=6140-TE-2426F"] || 0}
+                pressure={rightData?.pressure || 0}
+                hydraulic={rightData?.hydraulic || 0}
+                clamping={rightData?.clamping || 0}
+                tramp={rightData?.tramp || 0}
+                lub={rightData?.lub || 0}
+                tank={rightData?.tank || 0}
+                return={rightData?.return || 0}
               />
             </div>
           </main>

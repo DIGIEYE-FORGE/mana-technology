@@ -71,7 +71,7 @@ const Flotation = () => {
         },
         pagination: {
           page: 1,
-          perPage: 1000,
+          perPage: 1,
         },
       });
 
@@ -143,7 +143,7 @@ const Flotation = () => {
           </div>
         ) : (
           <main className="relative flex !h-fit gap-5 px-6 pb-6 text-xs">
-            <div className="machine-highlight absolute bottom-[100px] left-1/2 aspect-square w-[400px] -translate-x-1/2">
+            <div className="machine-highlight absolute bottom-[200px] left-1/2 aspect-square w-[300px] -translate-x-1/2 opacity-50">
               <div className="circle circle-3 relative h-full w-full">
                 <Circle3 className="rotate h-full w-full duration-1000" />
               </div>
@@ -163,9 +163,9 @@ const Flotation = () => {
               {env.VITE_SHOW_MODEL === "true" && (
                 <ModelCanvas
                   url={"/ignore/flotation_05.glb"}
-                  position={[-140, 15, -10]}
-                  fov={100}
-                  speed={0}
+                  position={[-100, 50, 150]}
+                  fov={20}
+                  speed={0.1}
                 />
               )}
               // {/* )} */}
