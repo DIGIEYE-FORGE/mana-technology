@@ -350,8 +350,8 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                 leftTitle="LSLL-03"
                 bottomTitle="SP01-M-01"
                 value={data.station1 ?? "XX"}
-                width={240}
-                height={170}
+                width={280}
+                height={200}
               />
               <ChloreSVG
                 topTitle="SP01-M-03"

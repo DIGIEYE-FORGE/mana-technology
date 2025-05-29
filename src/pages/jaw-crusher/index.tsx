@@ -229,11 +229,11 @@ const JawCrusher = () => {
             />
             {/* {JSON.stringify(countData["count"]["s=6210-WI-2217"])} */}
             <div className="z-1 absolute inset-0 isolate flex h-1 flex-1 items-center justify-center p-0">
-              <ModelCanvas
+              {/* <ModelCanvas
                 url={"/model/jaw02.glb"}
                 position={[10, 10, -40]}
                 fov={20}
-              />
+              /> */}
             </div>
             <UpCards
               flowRateIn={upData?.flowRateIn || 0}

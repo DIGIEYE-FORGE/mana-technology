@@ -641,14 +641,18 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                 topTitle={data.chloreStationH1 || "SP01-M-02"}
                 leftTitle={data.chloreStationL1 || "LSLL-01"}
                 bottomTitle=""
-                value={data.chloreStationvalue1 || "XX"}
+                value={data.chloreStationvalue1 || "0"}
+                width={200}
+                height={200}
               />
               {/* First block */}
               <ChloreSVG
                 topTitle={data.chloreStationH2 || "SP01-M-03"}
                 leftTitle={data.chloreStationL2 || "LSLL-03"}
                 bottomTitle={data.chloreStationH1 || "SP01-M-01"}
-                value={data.chloreStationvalue2 || "XX"}
+                value={data.chloreStationvalue2 || "0"}
+                width={200}
+                height={200}
               />
               {/* Second block */}
             </div>
