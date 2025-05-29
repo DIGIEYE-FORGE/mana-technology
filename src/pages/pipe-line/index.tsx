@@ -28,6 +28,7 @@ import {
 } from "./utils/functions";
 import { twMerge } from "tailwind-merge";
 import ReactApexChart from "react-apexcharts";
+import { Card } from "@/components/card";
 
 interface Position {
   top?: string;
