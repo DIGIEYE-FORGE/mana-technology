@@ -58,8 +58,10 @@ const LeftBar = ({
             <span className="text-xl font-bold text-[#FFC829]">
               {runningState
                 ?.filter((ele: any) => ele.value)
-                .reduce((acc: number, ele: any) => acc + ele.difTimeHourly, 0) || 
-                0}
+                .reduce(
+                  (acc: number, ele: any) => acc + ele.difTimeHourly,
+                  0,
+                ) || 0}
             </span>
           </div>
           <div className="flex w-full justify-between">
