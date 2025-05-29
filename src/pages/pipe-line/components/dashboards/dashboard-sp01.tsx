@@ -75,6 +75,8 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
     },
   ];
 
+  return null;
+
   return (
     <>
       {/* Top metrics bar */}
