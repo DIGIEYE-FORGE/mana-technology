@@ -192,7 +192,7 @@ const PebbleCrusher = () => {
                       theme: "dark",
                     },
                     title: {
-                      text: "Pitman bearing temperature",
+                      text: "Crushed Ore Flow",
                       align: "left",
                       style: {
                         fontSize: "14px",
@@ -233,7 +233,7 @@ const PebbleCrusher = () => {
                 />
               </Card>
               <RightBar
-                pressure={data?.["s=6210-WI-2215"] || 0}
+                pressure={data?.["s=6140-PI-2426B"] || 0}
                 hydraulic={data?.["s=6140-PDSH-2426C"] || 0}
                 clamping={data?.["s=6140-PIT-2426D"] || 0}
                 tramp={data?.["s=6140-PIT-2426E"] || 0}
