@@ -374,7 +374,7 @@ const PipeLine: React.FC = () => {
     setWidgetData([
       {
         title: "Pumped Volume (m3/h)",
-        value: data?.["cc"] *3.6,
+        value: data?.["s=B_FIT_02_TOT_MES_TM"] *3.6,
       },
       {
         title: "Flow Rate",
