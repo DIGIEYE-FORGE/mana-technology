@@ -643,9 +643,9 @@ const PipeLine: React.FC = () => {
   );
 
   const {
-    data: countData,
-    error: countError,
-    isLoading: isLoadingCount,
+    // data: countData,
+    // error: countError,
+    // isLoading: isLoadingCount,
   } = useSWR(
     "count",
     async () => {
@@ -665,6 +665,102 @@ const PipeLine: React.FC = () => {
               name: "s=SP1_M03_RM_TS",
               value: [true, false],
             },
+            {
+              name: "s=SP2_M01_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP2_M02_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP2_M03_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP3_M01_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP3_M02_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP3_M03_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP4_M01_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP4_M02_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP4_M03_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP5_M01_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP5_M02_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP5_M03_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP6_M01_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP6_M02_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP6_M03_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP7_M01_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP7_M02_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP7_M03_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP8_M01_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP8_M02_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP8_M03_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=B_M01_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=B_M02_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=B_M03_RM_TS",
+              value: [true, false],
+            },
           ],
         },
       );
@@ -677,6 +773,8 @@ const PipeLine: React.FC = () => {
       },
     },
   );
+
+  console.log({ runningTime });
 
   useEffect(() => {
     const socket = io(env.VITE_URL_SOCKET);

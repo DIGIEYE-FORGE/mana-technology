@@ -20,7 +20,7 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
           +data?.["s=SP1_FIT_01_MAE_TM"]?.[length - 1]?.y,
         "pression output": data?.["s=SP1_PIT_04_MAE_TM"]?.[length - 1]?.y,
         pumps: ["P01", "P02", "P03"],
-        "Running state": [
+        "totalRunning state": [
           data?.["s=SP1_M01_RM_TS"]?.[length - 1]?.y,
           data?.["s=SP1_M02_RM_TS"]?.[length - 1]?.y,
           data?.["s=SP1_M03_RM_TS"]?.[length - 1]?.y,
@@ -1295,12 +1295,12 @@ export const formatRunningTime = (data: any, setDataRunningTime: any) => {
   const runningTime = Object.entries(data?.count || []).reduce(
     (acc: any, [key, value]: any) => {
       acc[key] = value.reduce((acc1: any, item: any) => {
-        acc1["runningTime"] =
-          (acc1["runningTime"] || 0) +
+        acc1["totalTime"] =
+          (acc1["totalTime"] || 0) +
           (item.value === "True" ? item.difTimeHourly : 0);
 
-        acc1["progress"] = [
-          ...(acc1["progress"] || []),
+        acc1["film"] = [
+          ...(acc1["film"] || []),
           {
             value: item?.value,
             percent: item?.percentage,
