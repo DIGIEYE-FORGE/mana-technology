@@ -148,11 +148,11 @@ const PebbleCrusher = () => {
               className="pointer-events-none absolute left-0 top-0 z-0 h-full w-full opacity-60"
             />
             <div className="absolute inset-0 isolate z-0 flex flex-1 items-center justify-center p-0">
-              {/* <ModelCanvas
+              <ModelCanvas
                 url={"/model/pebble.glb"}
                 position={[10, 10, -40]}
                 fov={20}
-              /> */}
+              />
             </div>
             <UpCards
               flowRate={data?.["s=6210-WI-2215"] || 0}
