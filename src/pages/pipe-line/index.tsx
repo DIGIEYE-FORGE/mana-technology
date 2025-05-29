@@ -22,6 +22,7 @@ import { io } from "socket.io-client";
 import {
   formatAttributesData,
   formatHistoryData,
+  formatRunningTime,
   updateAttributesData,
   updateHistoryData,
 } from "./utils/functions";
@@ -344,6 +345,18 @@ const PipeLine: React.FC = () => {
     SP6: {},
   });
 
+  const [runningTime, setRunningTime] = useState<any>({
+    SP01: {},
+    SP02: {},
+    SP03: {},
+    SP1: {},
+    SP2: {},
+    SP3: {},
+    SP4: {},
+    SP5: {},
+    SP6: {},
+  });
+
   const updateStatesWithSocketData = (data: any) => {
     // Update widgetData with new data
     setWidgetData([
@@ -391,7 +404,11 @@ const PipeLine: React.FC = () => {
         sideOffset: -250,
         dashboard: {
           title: "SP01 Dashboard",
-          component: <DashboardSP01 data={dataHistory?.SP01} />,
+          component: (
+            <DashboardSP01
+              data={{ ...dataHistory?.SP01, ...runningTime?.SP01 }}
+            />
+          ),
         },
       },
     },
@@ -637,15 +654,15 @@ const PipeLine: React.FC = () => {
         {
           telemetries: [
             {
-              name: "s=SP1_M01_TM_TLC",
+              name: "s=SP1_M01_RM_TS",
               value: [true, false],
             },
             {
-              name: "s=SP1_M02_TM_TLC",
+              name: "s=SP1_M02_RM_TS",
               value: [true, false],
             },
             {
-              name: "s=SP1_M03_TM_TLC",
+              name: "s=SP1_M03_RM_TS",
               value: [true, false],
             },
           ],
@@ -656,7 +673,7 @@ const PipeLine: React.FC = () => {
     },
     {
       onSuccess: (data) => {
-        console.log({ data });
+        formatRunningTime(data, setRunningTime);
       },
     },
   );
