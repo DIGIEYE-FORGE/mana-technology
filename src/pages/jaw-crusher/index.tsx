@@ -141,7 +141,7 @@ const JawCrusher = () => {
         },
         pagination: {
           page: 1,
-          perPage: 1000,
+          perPage: 10,
         },
       });
 
@@ -214,7 +214,7 @@ const JawCrusher = () => {
           </div>
         ) : (
           <main className="relative flex h-1 min-h-[44rem] flex-1 flex-col gap-5 px-6 pb-6">
-            <div className="machine-highlight absolute bottom-[150px] left-1/2 aspect-square w-[500px] -translate-x-1/2">
+            <div className="machine-highlight absolute bottom-[200px] left-1/2 aspect-square w-[300px] -translate-x-1/2 opacity-50">
               <div className="circle circle-3 relative h-full w-full">
                 <Circle3 className="rotate h-full w-full duration-1000" />
               </div>

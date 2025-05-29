@@ -27,7 +27,7 @@ import {
   updateHistoryData,
 } from "./utils/functions";
 import { twMerge } from "tailwind-merge";
-import { Card } from "@/components/card";
+// import { Card } from "@/components/card";
 import ReactApexChart from "react-apexcharts";
 
 interface Position {

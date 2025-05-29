@@ -48,7 +48,7 @@ const PebbleCrusher = () => {
     return res;
   });
 
-  const { data, isLoading, error } = useSWR(
+  const { isLoading, error } = useSWR(
     "last-telemetry/pebble-crusher",
     async () => {
       const res = await backendApi.findMany("lastTelemetry", {
