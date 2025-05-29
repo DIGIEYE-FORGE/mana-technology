@@ -91,7 +91,7 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
             key={item.id}
             className="rounded-md border-2 border-white bg-[#021E3F] p-2 px-4 text-white backdrop-blur-md"
           >
-            {item.name} {Number(data[item.key || 0])?.toFixed(2) || 0}
+            {item.name} {Number(data[item.key] || 0)?.toFixed(2) || 0}
           </div>
         ))}
       </div>
@@ -223,40 +223,6 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                       },
                       decimalsInFloat: 2,
                     },
-                    // yaxis: [
-                    //   {
-                    //     seriesName: "Output",
-                    //     labels: {
-                    //       style: {
-                    //         colors: "#A2B0B8",
-                    //       },
-                    //     },
-                    //     title: {
-                    //       text: "Output",
-                    //       style: {
-                    //         color: "#E4A0F5",
-                    //       },
-                    //     },
-                    //     decimalsInFloat: 2,
-                    //   },
-                    //   {
-                    //     seriesName: "p1",
-                    //     opposite: true,
-                    //     labels: {
-                    //       style: {
-                    //         colors: "#A2B0B8",
-                    //       },
-                    //     },
-                    //     title: {
-                    //       text: "P1, P2, P3",
-                    //       style: {
-                    //         color: "#A2B0B8",
-                    //       },
-                    //     },
-                    //     decimalsInFloat: 2,
-                    //     show: true,
-                    //   },
-                    // ],
                   }}
                   series={[
                     {

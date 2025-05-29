@@ -28,7 +28,70 @@ const JawCrusher = () => {
   const [leftData, setLeftData] = useState<any>(null);
   const [rightData, setRightData] = useState<any>(null);
 
-  const { isLoading } = useSWR(
+  const {
+    data: countData,
+    error: countError,
+    isLoading: isLoadingCount,
+  } = useSWR("count-0V7ZJGB503H9WGH3", async () => {
+    const res = await backendApi.getHistory(
+      "/dpc-history/api/history/count/0V7ZJGB503H9WGH3",
+      {
+        telemetries: [
+          {
+            name: "s=6210-WI-2217",
+            value: [true, false],
+          },
+          {
+            name: "s=6032-FD-1107",
+            value: [true, false],
+          },
+          {
+            name: "s=6028-FD-1021",
+            value: [true, false],
+          },
+          {
+            name: "s=6028-FD-1022",
+            value: [true, false],
+          },
+          {
+            name: "s=6028-CV-1037",
+            value: [true, false],
+          },
+          {
+            name: "s=6032-FD-1120",
+            value: [true, false],
+          },
+          {
+            name: "s=6026-ZA-1004",
+            value: [true, false],
+          },
+          {
+            name: "s=6120-FD-2021",
+            value: [true, false],
+          },
+          {
+            name: "s=6120-FD-2022",
+            value: [true, false],
+          },
+          {
+            name: "s=6120-FD-2023",
+            value: [true, false],
+          },
+          {
+            name: "s=6032-ZM-1142",
+            value: [true, false],
+          },
+          {
+            name: "s=6120-CV-2040",
+            value: [true, false],
+          },
+        ],
+      },
+    );
+    return res;
+  });
+
+  const { isLoading, error } = useSWR(
     "last-telemetry",
     async () => {
       const res = await backendApi.findMany("lastTelemetry", {
@@ -63,7 +126,7 @@ const JawCrusher = () => {
     },
   );
 
-  const { isLoading: isLoadingHistory } = useSWR(
+  const { isLoading: isLoadingHistory, error: errorHistory } = useSWR(
     `dpc-history/api/history/${dateRange?.from}/${dateRange?.to}`,
     async () => {
       const res = await backendApi.findMany("dpc-history/api/history", {
@@ -136,9 +199,15 @@ const JawCrusher = () => {
     >
       <main className="mx-auto flex max-w-[1920px] flex-col gap-3">
         <UpBar />
-        {isLoadingHistory || isLoading ? (
+        {isLoadingHistory || isLoading || isLoadingCount ? (
           <div className="flex h-[100svh] items-center justify-center">
             <Loader />
+          </div>
+        ) : countError || error || errorHistory ? (
+          <div className="flex h-[100svh] items-center justify-center">
+            <span className="text-white">
+              Error loading data, please try again later.
+            </span>
           </div>
         ) : (
           <main className="relative flex h-1 min-h-[44rem] flex-1 flex-col gap-5 px-6 pb-6">
@@ -158,6 +227,7 @@ const JawCrusher = () => {
               src="/model/bg-pattern.png"
               className="pointer-events-none absolute left-0 top-0 z-0 h-full w-full opacity-60"
             />
+            {/* {JSON.stringify(countData["count"]["s=6210-WI-2217"])} */}
             <div className="z-1 absolute inset-0 isolate flex h-1 flex-1 items-center justify-center p-0">
               <ModelCanvas
                 url={"/model/jaw02.glb"}
@@ -181,7 +251,9 @@ const JawCrusher = () => {
 
             <div className="flex h-1 flex-1 gap-5">
               <LeftBar
-                runningState={leftData?.runningState || 0}
+                runningState={
+                  (countData as any)?.count?.["s=6210-WI-2217"] || {}
+                }
                 frameLeft={leftData?.frameLeft || []}
                 frameRight={leftData?.frameRight || []}
                 pitmanLeft={leftData?.pitmanLeft || []}
@@ -254,6 +326,7 @@ const JawCrusher = () => {
                 />
               </Card>
               <RightBar
+                runingState={countData as any}
                 conveyorRom={rightData?.conveyorRom || 0}
                 romBinWithdrawal={rightData?.romBinWithdrawal || 0}
                 romStockpileAprf1={rightData?.romStockpileAprf1 || 0}

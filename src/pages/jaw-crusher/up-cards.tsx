@@ -31,11 +31,11 @@ const UpCards = ({
   crushedOreMax,
   energy,
   power,
-  jawCrusher
+  jawCrusher,
 }: UpCardsProps) => {
   return (
     <div className="flex w-full flex-col justify-between">
-      <div className="grid grid-cols-8 w-full gap-2">
+      <div className="grid w-full grid-cols-8 gap-2">
         <Card className="flex grow flex-col items-center gap-2 !rounded p-2">
           <span>Flow Rate (t/h)</span>
           <div className="flex w-full gap-3">
@@ -64,9 +64,7 @@ const UpCards = ({
           <CrushedIcon className="size-14 min-h-[3.5rem] min-w-[3.5rem]" />
           <div className="flex flex-col gap-1">
             <span>Crushed Ore (t)</span>
-            <span className="text-lg font-bold text-[#FFC829]">
-              {crushed}
-            </span>
+            <span className="text-lg font-bold text-[#FFC829]">{crushed}</span>
           </div>
         </Card>
         <Card className="flex grow items-center justify-center gap-5 !rounded px-5">
@@ -97,7 +95,7 @@ const UpCards = ({
             </div>
           </div>
         </Card>
-        <Card className="flex grow items-center justify-center gap-5 !rounded px-5">
+        <Card className="flex grow cursor-none items-center justify-center gap-5 !rounded px-5 opacity-50">
           <PlugIcon className="size-14 min-h-[3.5rem] min-w-[3.5rem]" />
           <div className="flex flex-col gap-1">
             <span>Power (Kw)</span>
@@ -115,7 +113,9 @@ const UpCards = ({
           <ElectricIcon className="size-14 min-h-[3.5rem] min-w-[3.5rem]" />
           <div className="flex flex-col gap-1">
             <span>Jaw Crusher Level (%)</span>
-            <span className="text-lg font-bold text-[#FFC829]">{jawCrusher}</span>
+            <span className="text-lg font-bold text-[#FFC829]">
+              {jawCrusher}
+            </span>
           </div>
         </Card>
       </div>

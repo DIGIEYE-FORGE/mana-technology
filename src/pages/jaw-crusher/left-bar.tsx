@@ -1,14 +1,16 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Card } from "@/components/card";
 import ReactApexChart from "react-apexcharts";
 
 interface LeftBarProps {
-  runningState: string | number;
+  runningState: any;
   frameLeft: { x: Date; y: number }[];
   frameRight: { x: Date; y: number }[];
   pitmanLeft: { x: Date; y: number }[];
   pitmanRight: { x: Date; y: number }[];
   v1: { x: Date; y: number }[];
   u1: { x: Date; y: number }[];
+
   w1: { x: Date; y: number }[];
 }
 
@@ -23,32 +25,75 @@ const LeftBar = ({
   w1,
 }: LeftBarProps) => {
   return (
-    <div className="relative z-10 flex h-full min-h-fit w-[400px] shrink-0 flex-col gap-2 overflow-x-hidden [&>.card]:h-1 [&>.card]:flex-1 px-1">
+    <div className="relative z-10 flex h-full min-h-fit w-[400px] shrink-0 flex-col gap-2 overflow-x-hidden px-1 [&>.card]:h-1 [&>.card]:flex-1">
       <h1 className="text-xl font-bold">Jaw Crusher</h1>
       <Card className="card !rounded px-5 py-3">
+        {/* {JSON.stringify(runningState)} */}
         <div className="mb-2 flex flex-col gap-1">
           <span>Running State</span>
           <span className="text-xl font-bold text-[#FFC829]">
-            {runningState} Hrs
+            {runningState
+              ?.filter((ele: any) => ele.value)
+              .reduce((acc: number, ele: any) => acc + ele.difTimeHourly, 0) ||
+              0}
+            Hrs
           </span>
           <div className="flex h-8 w-full overflow-hidden rounded-sm">
-            <div className="flex h-full w-[44%] items-center justify-center bg-[#8AFF8A] font-semibold text-black"></div>
+            {runningState?.map((ele: any) => {
+              return (
+                <div
+                  key={ele.value}
+                  className={`flex h-full items-center justify-center font-semibold text-[#FFC829] ${
+                    ele.value == "True" ? "bg-[#8AFF8A]" : "bg-[#FF5C5C]"
+                  }`}
+                  style={{
+                    width: `${(ele.difTimeHourly / 24) * 100}%`,
+                  }}
+                >
+                  {ele.value == "True" ? "Running" : "Stopped"}
+                </div>
+              );
+            })}
+            {/* <div className="flex h-full w-[44%] items-center justify-center bg-[#8AFF8A] font-semibold text-black"></div>
             <div className="flex h-full w-[20%] items-center justify-center bg-[#334DBB] font-semibold text-black"></div>
-            <div className="flex flex-1 items-center justify-center bg-[#FF5C5C] font-semibold text-black"></div>
+            <div className="flex flex-1 items-center justify-center bg-[#FF5C5C] font-semibold text-black"></div> */}
           </div>
         </div>
         <div className="flex flex-col gap-1">
           <div className="flex w-full justify-between">
             <span>Operating hours (h)</span>
-            <span className="text-xl font-bold text-[#FFC829]">00</span>
+            <span className="text-xl font-bold text-[#FFC829]">
+              {runningState
+                ?.filter((ele: any) => ele.value)
+                .reduce(
+                  (acc: number, ele: any) => acc + ele.difTimeHourly,
+                  0,
+                ) || 0}
+            </span>
           </div>
           <div className="flex w-full justify-between">
             <span>Downtime hours (h)</span>
-            <span className="text-xl font-bold text-[#FFC829]">00</span>
+            <span className="text-xl font-bold text-[#FFC829]">
+              {Math.floor(
+                runningState
+                  ?.filter((ele: any) => !ele.value)
+                  .reduce(
+                    (acc: number, ele: any) => acc + ele.difTimeHourly,
+                    0,
+                  ) || 0,
+              )}
+            </span>
           </div>
           <div className="flex w-full justify-between">
             <span>Utilisation (%)</span>
-            <span className="text-xl font-bold text-[#FFC829]">00</span>
+            <span className="text-xl font-bold text-[#FFC829]">
+              {runningState
+                ?.filter((ele: any) => ele.value)
+                .reduce(
+                  (acc: number, ele: any) => acc + ele.difTimeHourly,
+                  0,
+                ) || 0}
+            </span>
           </div>
         </div>
       </Card>

@@ -8,7 +8,7 @@ import ChloreSVG from "../chlore";
 import HammerArrestorSVG from "@/assets/hammer-svg.svg?react";
 // import SuctionTankSVG from "@/assets/suction-svg.svg?react";
 import ReactApexChart from "react-apexcharts";
-import { SWRConfig } from "swr";
+import { cn } from "@/lib/utils";
 
 const Data = [
   { id: 1, name: "Flow rate", key: "flowRate" },
@@ -90,7 +90,7 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
       </div>
 
       {/* Main dashboard content */}
-      <div className="debug relative mr-4 flex h-full min-h-0 min-w-0 flex-1 gap-4 overflow-hidden py-4 pl-12 pr-4">
+      <div className="relative mr-4 flex h-full min-h-0 min-w-0 flex-1 gap-4 overflow-hidden py-4 pl-12 pr-4">
         {/* {JSON.stringify(data)} */}
         {/* 2 columns × 4 rows grid layout */}
         <div className="grid h-full min-h-0 w-full min-w-0 flex-1 grid-cols-2 grid-rows-4 gap-4">
@@ -207,36 +207,40 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
 
               <LiquidProgress
                 percentage={[{ value: 50, title: "" }]}
-                className="h-[7rem] w-[5rem]"
+                className="h-[7rem] w-[6rem]"
                 textStyle="text-white font-bold"
-                stops={
-                  [
-                    /// TODO
-                    // {
-                    //   color: "#E64C3C",
-                    //   value: data.suctionTankLL,
-                    // },
-                    // {
-                    //   color: "#e9cc0f",
-                    //   value: data.suctionTankL,
-                    // },
-                    // {
-                    //   color: "#26E2B3",
-                    //   value: data.suctionTankH,
-                    // },
-                    // {
-                    //   color: "#26E2B3",
-                    //   value: data.suctionTankHH,
-                    // },
-                  ]
-                }
+                stops={[
+                  /// TODO
+                  {
+                    color: "#E64C3C",
+                    value: 5,
+                  },
+                  {
+                    color: "#e9cc0f",
+                    value: 10,
+                  },
+                  {
+                    color: "#26E2B3",
+                    value: 86,
+                  },
+                  {
+                    color: "#26E2B3",
+                    value: 96,
+                  },
+                ]}
               />
             </div>
             <div className="flex flex-1 flex-col items-center">
               <span className="mb-2 text-sm font-medium text-white">
                 Hammer arrestor
               </span>
-              <HammerArrestorSVG />
+              <HammerArrestorSVG
+                className={cn("size-[8rem] [&_.indicator]:fill-[#26e2b3]", {
+                  // TODO: change this base on state
+                  "[&_.indicator-1]:!fill-red-500": true,
+                  "[&_.indicator-2]:!fill-red-500": true,
+                })}
+              />
             </div>
           </Card>
 
