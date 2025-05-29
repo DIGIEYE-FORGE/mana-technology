@@ -11,6 +11,7 @@ interface UpCardsProps {
   bounce1: string | number;
   bounce2: string | number;
   bounce3: string | number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 }
 
 const UpCards = ({

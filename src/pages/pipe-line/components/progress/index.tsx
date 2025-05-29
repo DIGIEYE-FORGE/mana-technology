@@ -9,6 +9,10 @@ interface LiquidProgressProps {
   className?: string;
   style?: React.CSSProperties;
   textStyle?: string;
+  colorHH?: string;
+  colorH?: string;
+  colorL?: string;
+  colorLL?: string;
   stops: {
     color: string;
     value: number;
@@ -21,6 +25,10 @@ const LiquidProgress: React.FC<LiquidProgressProps> = ({
   style,
   textStyle = "text-gray-700",
   stops,
+  colorHH = "#98FFE5",
+  colorH = "#009670",
+  colorL = "#04B7F8",
+  colorLL = "#53EFFF",
 }) => {
   // Ensure percentage is always an array and has valid values
   const percentageArray = Array.isArray(percentage) ? percentage : [percentage];
@@ -119,15 +127,23 @@ const LiquidProgress: React.FC<LiquidProgressProps> = ({
                 />
               </svg>
             </div>
-            {(stops || [])?.map((stop, index) => (
-              <div
-                key={index}
-                className="absolute h-1 w-full translate-y-1/2 bg-gradient-to-r from-[#98FFE5] to-[#009670]"
-                style={{
-                  bottom: `${stop.value}%`,
-                }}
-              />
-            ))}
+            {(stops || [])
+              ?.sort((a, b) => a.value - b.value)
+              .map((stop, index) => (
+                <div
+                  key={index}
+                  className={cn(
+                    "absolute h-1 w-full translate-y-1/2 bg-gradient-to-r from-[#98FFE5] to-[#009670]",
+                    index == 0 ? `bg-[${colorLL}]` : "",
+                    index == 1 ? `bg-[${colorL}]` : "",
+                    index == 2 ? `bg-[${colorH}]` : "",
+                    index == 3 ? `bg-[${colorHH}]` : "",
+                  )}
+                  style={{
+                    bottom: `${stop.value}%`,
+                  }}
+                />
+              ))}
             <div className="absolute inset-0 flex items-center justify-center">
               <span className="text-xl font-bold text-white mix-blend-difference">
                 {value}%

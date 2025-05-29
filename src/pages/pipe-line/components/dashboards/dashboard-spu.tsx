@@ -118,7 +118,7 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                     },
                   },
                   title: {
-                    text: "Flows",
+                    text: "Flows (l/s)",
                     align: "left",
                     style: {
                       fontSize: "14px",
@@ -127,6 +127,9 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                   },
                   tooltip: {
                     theme: "dark",
+                    y: {
+                      formatter: (val: number) => `${val.toFixed(2)} (l/s)`,
+                    },
                   },
                   stroke: {
                     curve: "smooth",
@@ -218,6 +221,8 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                     type: "datetime",
                   },
                   yaxis: {
+                    min: 0,
+                    max: 100,
                     labels: {
                       style: {
                         colors: "#A2B0B8",
@@ -229,11 +234,21 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                 series={[
                   {
                     name: "B1",
-                    data: data.levelB1 || [],
+                    data: data.levelB1.map(
+                      (item: { x: string; y: number }) => ({
+                        x: item.x,
+                        y: (item.y / 2.7) * 100, // Assuming max level is 2.7
+                      }),
+                    ),
                   },
                   {
                     name: "B2",
-                    data: data.levelB2 || [],
+                    data: data.levelB2.map(
+                      (item: { x: string; y: number }) => ({
+                        x: item.x,
+                        y: (item.y / 2.7) * 100, // Assuming max level is 2.7
+                      }),
+                    ),
                   },
                 ]}
               />
