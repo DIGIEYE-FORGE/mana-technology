@@ -223,7 +223,9 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                           colors: "#A2B0B8",
                         },
                       },
-                      decimalsInFloat: 2,
+                      decimalsInFloat: 0,
+                      min: 0,
+                      max: 30,
                     },
                   }}
                   series={[
@@ -327,10 +329,11 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                 <span className="text mb-2 text-xl font-medium text-white">
                   Suction sump
                 </span>
+                {JSON.stringify(data.suctionTankLevel)}
                 <LiquidProgress
                   percentage={[
                     {
-                      value: (data.suctionTankLevel / 5) * 100 || 0,
+                      value: (data.progress / 5) * 100 || 0,
                       title: "",
                     },
                   ]}
@@ -338,8 +341,8 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                   textStyle="text-white font-bold"
                   // stops={[]}
                   indictors={[
-                    data.suctionTankLL == "True" ? false : true,
-                    data.suctionTankL == "True" ? false : true,
+                    data.suctionTankLL == "True" ? true : false,
+                    data.suctionTankL == "True" ? true : false,
                     data.suctionTankH == "True" ? true : false,
                     data.suctionTankHH == "True" ? true : false,
                   ]}
@@ -352,8 +355,10 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                 <HammerArrestorSVG
                   className={cn("size-[10rem] [&_.indicator]:fill-[#26e2b3]", {
                     // TODO: change this base on state
-                    "[&_.indicator-1]:!fill-red-500": false,
-                    "[&_.indicator-2]:!fill-red-500": true,
+                    "[&_.indicator-1]:!fill-red-500":
+                      data.surgeArrestorL == "True",
+                    "[&_.indicator-2]:!fill-red-500":
+                      data.surgeArrestorH == "True",
                   })}
                 />
               </div>

@@ -253,13 +253,13 @@ const JawCrusher = () => {
               power={upData?.power || 0}
               crushed={upData?.crushed || 0}
               jawCrusher={upData?.jawCrusher}
-              runingState={(countData as any)?.count?.["s=6210-WI-2217"] || {}}
+              runingState={(countData as any)?.count?.["s=6032-H-TOT-1130"] || {}}
             />
 
             <div className="flex h-1 flex-1 gap-5">
               <LeftBar
                 runningState={
-                  (countData as any)?.count?.["s=6210-WI-2217"] || {}
+                  (countData as any)?.count?.["s=6032-H-TOT-1130"] || {}
                 }
                 frameLeft={leftData?.frameLeft || []}
                 frameRight={leftData?.frameRight || []}

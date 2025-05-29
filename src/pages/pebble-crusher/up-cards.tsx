@@ -35,7 +35,7 @@ const UpCards = ({
             <span>Input</span>
             <span className="text-lg font-bold text-[#FFC829]">{flowRate}</span>
           </Card>
-          <Card className="flex grow flex-col items-center justify-center !rounded py-1">
+          <Card className="flex grow flex-col items-center justify-center !rounded py-1 opacity-50">
             <span>Output</span>
             <span className="text-lg font-bold text-[#FFC829]">{flowRate}</span>
           </Card>
@@ -44,7 +44,7 @@ const UpCards = ({
       <Card className="flex max-w-fit grow items-center justify-center gap-5 !rounded px-5">
         <RocketIcon className="size-16" />
         <div className="flex flex-col gap-1">
-          <span>Speed (tr/min)</span>
+          <span>Rotation frequency (tr/min)</span>
           <span className="text-lg font-bold text-[#FFC829]">{speed}</span>
         </div>
       </Card>
