@@ -514,6 +514,7 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
 export const formatHistoryData = (data: any, setDataHistory: any) => {
   setDataHistory({
     SP01: {
+      progress: data?.["s=SP1_LIT_01_MAE_TM"]?.[length - 1]?.y,
       flowRate: data?.["s=SP1_FIT_02_MAE_TM"]?.[length - 1]?.y,
       pumpedVolume: data?.["s=SP1_FIT_02_TOT_MES_TM"]?.[length - 1]?.y,
       trubidite: data?.["s=SP1_TURB_01_MAE_TM"]?.[length - 1]?.y,
@@ -554,6 +555,7 @@ export const formatHistoryData = (data: any, setDataHistory: any) => {
       chloreStationM2: data?.["s=SP01CHL_M04_RM_TS"]?.[length - 1]?.y,
     },
     SP02: {
+      progress: data?.["s=SP2_LIT_01_MAE_TM"]?.[length - 1]?.y,
       flowRate: data?.["s=SP2_FIT_02_MAE_TM"]?.[length - 1]?.y,
       pumpedVolume: data?.["s=SP2_FIT_02_TOT_MES_TM"]?.[length - 1]?.y,
       deltaFlow:
@@ -583,6 +585,7 @@ export const formatHistoryData = (data: any, setDataHistory: any) => {
       runningStateP3: data?.["s=SP2_M03_TM_TLC"]?.[length - 1]?.y,
     },
     SP03: {
+      progress: data?.["s=SP3_LIT_01_MAE_TM"]?.[length - 1]?.y,
       flowRate: data?.["s=SP3_FIT_02_MAE_TM"]?.[length - 1]?.y,
       pumpedVolume: data?.["s=SP3_FIT_02_TOT_MES_TM"]?.[length - 1]?.y,
       deltaFlow:
@@ -612,6 +615,7 @@ export const formatHistoryData = (data: any, setDataHistory: any) => {
       runningStateP3: data?.["s=SP3_M03_TM_TLC"]?.[length - 1]?.y,
     },
     SP1: {
+      progress: data?.["s=SP4_LIT_01_MAE_TM"]?.[length - 1]?.y,
       flowRate: data?.["s=SP4_FIT_02_MAE_TM"]?.[length - 1]?.y,
       pumpedVolume: data?.["s=SP4_FIT_02_TOT_MES_TM"]?.[length - 1]?.y,
       deltaFlow:
@@ -641,6 +645,7 @@ export const formatHistoryData = (data: any, setDataHistory: any) => {
       runningStateP3: data?.["s=SP4_M03_TM_TLC"]?.[length - 1]?.y,
     },
     SP2: {
+      progress: data?.["s=SP5_LIT_01_MAE_TM"]?.[length - 1]?.y,
       flowRate: data?.["s=SP5_FIT_02_MAE_TM"]?.[length - 1]?.y,
       pumpedVolume: data?.["s=SP5_FIT_02_TOT_MES_TM"]?.[length - 1]?.y,
       deltaFlow:
@@ -670,6 +675,7 @@ export const formatHistoryData = (data: any, setDataHistory: any) => {
       runningStateP3: data?.["s=SP5_M03_TM_TLC"]?.[length - 1]?.y,
     },
     SP3: {
+      progress: data?.["s=SP6_LIT_01_MAE_TM"]?.[length - 1]?.y,
       flowRate: data?.["s=SP6_FIT_02_MAE_TM"]?.[length - 1]?.y,
       pumpedVolume: data?.["s=SP6_FIT_02_TOT_MES_TM"]?.[length - 1]?.y,
       deltaFlow:
@@ -699,6 +705,7 @@ export const formatHistoryData = (data: any, setDataHistory: any) => {
       runningStateP3: data?.["s=SP6_M03_TM_TLC"]?.[length - 1]?.y,
     },
     SP4: {
+      progress: data?.["s=SP7_LIT_01_MAE_TM"]?.[length - 1]?.y,
       flowRate: data?.["s=SP7_FIT_02_MAE_TM"]?.[length - 1]?.y,
       pumpedVolume: data?.["s=SP7_FIT_02_TOT_MES_TM"]?.[length - 1]?.y,
       deltaFlow:
@@ -728,6 +735,7 @@ export const formatHistoryData = (data: any, setDataHistory: any) => {
       runningStateP3: data?.["s=SP7_M03_TM_TLC"]?.[length - 1]?.y,
     },
     SP5: {
+      progress: data?.["s=SP8_LIT_01_MAE_TM"]?.[length - 1]?.y,
       flowRate: data?.["s=SP8_FIT_02_MAE_TM"]?.[length - 1]?.y,
       pumpedVolume: data?.["s=SP8_FIT_02_TOT_MES_TM"]?.[length - 1]?.y,
       deltaFlow:
@@ -757,6 +765,10 @@ export const formatHistoryData = (data: any, setDataHistory: any) => {
       runningStateP3: data?.["s=SP8_M03_TM_TLC"]?.[length - 1]?.y,
     },
     SP6: {
+      progress: [
+        data?.["s=B_LIT_01_MAE_TM"]?.[length - 1]?.y,
+        data?.["s=B_LIT_02_MAE_TM"]?.[length - 1]?.y,
+      ],
       flowRateInput: data?.["s=B_FIT_01_MAE_TM"]?.[length - 1]?.y,
       flowRatePlant: data?.["s=B_FIT_02_MAE_TM"]?.[length - 1]?.y,
 
@@ -799,6 +811,7 @@ export const updateHistoryData = (data: any, setDataHistory: any) => {
   setDataHistory((prevHistory: any) => {
     const newHistory = {
       SP01: {
+        progress: data?.["s=SP1_LIT_01_MAE_TM"],
         flowRate: data?.["s=SP1_FIT_02_MAE_TM"],
         pumpedVolume: data?.["s=SP1_FIT_02_TOT_MES_TM"],
         deltaFlow:
@@ -863,9 +876,11 @@ export const updateHistoryData = (data: any, setDataHistory: any) => {
         chloreStationM2: data?.["SP01CHL_M04_RM_TS"],
       },
       SP02: {
-        flowRate: data?.["SP2_FIT_02_MAE_TM"],
-        pumpedVolume: data?.["SP2_FIT_02_TOT_MES_TM"],
-        deltaFlow: +data?.["SP2_FIT_02_MAE_TM"] - +data?.["SP2_FIT_01_MAE_TM"],
+        progress: data?.["s=SP2_LIT_01_MAE_TM"],
+        flowRate: data?.["s=SP2_FIT_02_MAE_TM"],
+        pumpedVolume: data?.["s=SP2_FIT_02_TOT_MES_TM"],
+        deltaFlow:
+          +data?.["s=SP2_FIT_02_MAE_TM"] - +data?.["s=SP2_FIT_01_MAE_TM"],
 
         flowsInput: [
           ...(prevHistory?.SP02?.flowsInput?.slice(1) || []),
@@ -911,9 +926,11 @@ export const updateHistoryData = (data: any, setDataHistory: any) => {
         runningStateP3: data?.["SP2_M03_TM_TLC"],
       },
       SP03: {
-        flowRate: data?.["SP3_FIT_02_MAE_TM"],
-        pumpedVolume: data?.["SP3_FIT_02_TOT_MES_TM"],
-        deltaFlow: +data?.["SP3_FIT_02_MAE_TM"] - +data?.["SP3_FIT_01_MAE_TM"],
+        progress: data?.["s=SP3_LIT_01_MAE_TM"],
+        flowRate: data?.["s=SP3_FIT_02_MAE_TM"],
+        pumpedVolume: data?.["s=SP3_FIT_02_TOT_MES_TM"],
+        deltaFlow:
+          +data?.["s=SP3_FIT_02_MAE_TM"] - +data?.["s=SP3_FIT_01_MAE_TM"],
 
         flowsInput: [
           ...(prevHistory?.SP03?.flowsInput?.slice(1) || []),
@@ -959,9 +976,11 @@ export const updateHistoryData = (data: any, setDataHistory: any) => {
         runningStateP3: data?.["SP3_M03_TM_TLC"],
       },
       SP1: {
-        flowRate: data?.["SP4_FIT_02_MAE_TM"],
-        pumpedVolume: data?.["SP4_FIT_02_TOT_MES_TM"],
-        deltaFlow: +data?.["SP4_FIT_02_MAE_TM"] - +data?.["SP4_FIT_01_MAE_TM"],
+        progress: data?.["s=SP4_LIT_01_MAE_TM"],
+        flowRate: data?.["s=SP4_FIT_02_MAE_TM"],
+        pumpedVolume: data?.["s=SP4_FIT_02_TOT_MES_TM"],
+        deltaFlow:
+          +data?.["s=SP4_FIT_02_MAE_TM"] - +data?.["s=SP4_FIT_01_MAE_TM"],
 
         flowsInput: [
           ...(prevHistory?.SP1?.flowsInput?.slice(1) || []),
@@ -1007,9 +1026,11 @@ export const updateHistoryData = (data: any, setDataHistory: any) => {
         runningStateP3: data?.["SP4_M03_TM_TLC"],
       },
       SP2: {
-        flowRate: data?.["SP5_FIT_02_MAE_TM"],
-        pumpedVolume: data?.["SP5_FIT_02_TOT_MES_TM"],
-        deltaFlow: +data?.["SP5_FIT_02_MAE_TM"] - +data?.["SP5_FIT_01_MAE_TM"],
+        progress: data?.["s=SP5_LIT_01_MAE_TM"],
+        flowRate: data?.["s=SP5_FIT_02_MAE_TM"],
+        pumpedVolume: data?.["s=SP5_FIT_02_TOT_MES_TM"],
+        deltaFlow:
+          +data?.["s=SP5_FIT_02_MAE_TM"] - +data?.["s=SP5_FIT_01_MAE_TM"],
 
         flowsInput: [
           ...(prevHistory?.SP2?.flowsInput?.slice(1) || []),
@@ -1055,9 +1076,11 @@ export const updateHistoryData = (data: any, setDataHistory: any) => {
         runningStateP3: data?.["SP5_M03_TM_TLC"],
       },
       SP3: {
-        flowRate: data?.["SP6_FIT_02_MAE_TM"],
-        pumpedVolume: data?.["SP6_FIT_02_TOT_MES_TM"],
-        deltaFlow: +data?.["SP6_FIT_02_MAE_TM"] - +data?.["SP6_FIT_01_MAE_TM"],
+        progress: data?.["s=SP6_LIT_01_MAE_TM"],
+        flowRate: data?.["s=SP6_FIT_02_MAE_TM"],
+        pumpedVolume: data?.["s=SP6_FIT_02_TOT_MES_TM"],
+        deltaFlow:
+          +data?.["s=SP6_FIT_02_MAE_TM"] - +data?.["s=SP6_FIT_01_MAE_TM"],
 
         flowsInput: [
           ...(prevHistory?.SP3?.flowsInput?.slice(1) || []),
@@ -1103,9 +1126,11 @@ export const updateHistoryData = (data: any, setDataHistory: any) => {
         runningStateP3: data?.["SP6_M03_TM_TLC"],
       },
       SP4: {
-        flowRate: data?.["SP7_FIT_02_MAE_TM"],
-        pumpedVolume: data?.["SP7_FIT_02_TOT_MES_TM"],
-        deltaFlow: +data?.["SP7_FIT_02_MAE_TM"] - +data?.["SP7_FIT_01_MAE_TM"],
+        progress: data?.["s=SP7_LIT_01_MAE_TM"],
+        flowRate: data?.["s=SP7_FIT_02_MAE_TM"],
+        pumpedVolume: data?.["s=SP7_FIT_02_TOT_MES_TM"],
+        deltaFlow:
+          +data?.["s=SP7_FIT_02_MAE_TM"] - +data?.["s=SP7_FIT_01_MAE_TM"],
 
         flowsInput: [
           ...(prevHistory?.SP4?.flowsInput?.slice(1) || []),
@@ -1151,9 +1176,11 @@ export const updateHistoryData = (data: any, setDataHistory: any) => {
         runningStateP3: data?.["SP7_M03_TM_TLC"],
       },
       SP5: {
-        flowRate: data?.["SP8_FIT_02_MAE_TM"],
-        pumpedVolume: data?.["SP8_FIT_02_TOT_MES_TM"],
-        deltaFlow: +data?.["SP8_FIT_02_MAE_TM"] - +data?.["SP8_FIT_01_MAE_TM"],
+        progress: data?.["s=SP8_LIT_01_MAE_TM"],
+        flowRate: data?.["s=SP8_FIT_02_MAE_TM"],
+        pumpedVolume: data?.["s=SP8_FIT_02_TOT_MES_TM"],
+        deltaFlow:
+          +data?.["s=SP8_FIT_02_MAE_TM"] - +data?.["s=SP8_FIT_01_MAE_TM"],
 
         flowsInput: [
           ...(prevHistory?.SP5?.flowsInput?.slice(1) || []),
@@ -1199,12 +1226,14 @@ export const updateHistoryData = (data: any, setDataHistory: any) => {
         runningStateP3: data?.["SP8_M03_TM_TLC"],
       },
       SP6: {
-        flowRateInput: data?.["B_FIT_01_MAE_TM"],
-        flowRatePlant: data?.["B_FIT_02_MAE_TM"],
+        progress: [data?.["s=B_LIT_01_MAE_TM"], data?.["s=B_LIT_02_MAE_TM"]],
+        flowRateInput: data?.["s=B_FIT_01_MAE_TM"],
+        flowRatePlant: data?.["s=B_FIT_02_MAE_TM"],
 
-        volumeInput: data?.["B_FIT_01_TOT_MES_TM"],
-        volumePlant: data?.["B_FIT_02_TOT_MES_TM"],
-        stock: +data?.["B_FIT_02_TOT_MES_TM"] - +data?.["B_FIT_01_TOT_MES_TM"],
+        volumeInput: data?.["s=B_FIT_01_TOT_MES_TM"],
+        volumePlant: data?.["s=B_FIT_02_TOT_MES_TM"],
+        stock:
+          +data?.["s=B_FIT_02_TOT_MES_TM"] - +data?.["s=B_FIT_01_TOT_MES_TM"],
 
         flowInput: [
           ...(prevHistory?.SP6?.flowInput?.slice(1) || []),
