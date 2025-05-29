@@ -42,14 +42,54 @@ export const formatData = (
       oThickner2Val: data?.["s=6520-DIT-5215"] || 0,
       iThicknerVal: data?.["s=6510-DIT-5121"] || 0,
 
-      pax1Val: data?.["s=6028-WI-1042"] || 0,
-      pax2Val: data?.["s=6028-WI-1042"] || 0,
+      pax1Val:
+        (data?.["s=6730-FIT-6325"] || 0) +
+        (data?.["s=6730-FIT-6326"] || 0) +
+        (data?.["s=6730-FIT-6327"] || 0) +
+        (data?.["s=6730-FIT-6328"] || 0) +
+        (data?.["s=6730-FIT-6329"] || 0) +
+        (data?.["s=6730-FIT-6330"] || 0) +
+        (data?.["s=6730-FIT-6331"] || 0),
+      pax2Val:
+        (data?.["s=6730-FIT-6332"] || 0) +
+        (data?.["s=6730-FIT-6333"] || 0) +
+        (data?.["s=6730-FIT-6334"] || 0) +
+        (data?.["s=6730-FIT-6335"] || 0) +
+        (data?.["s=6730-FIT-6336"] || 0) +
+        (data?.["s=6730-FIT-6337"] || 0) +
+        (data?.["s=6730-FIT-6338"] || 0),
 
-      mibc1Val: data?.["s=6028-WI-1042"] || 0,
-      mibc2Val: data?.["s=6028-WI-1042"] || 0,
+      mibc1Val:
+        (data?.["s=6720-FIT-6225"] || 0) +
+        (data?.["s=6720-FIT-6226"] || 0) +
+        (data?.["s=6720-FIT-6227"] || 0),
+      mibc2Val:
+        (data?.["s=6720-FIT-6229"] || 0) +
+        (data?.["s=6720-FIT-6230"] || 0) +
+        (data?.["s=6720-FIT-6231"] || 0),
 
-      nahs1Val: data?.["s=6028-WI-1042"] || 0,
-      nahs2Val: data?.["s=6028-WI-1042"] || 0,
+      nahs1Val:
+        (data?.["s=6740-FT-6422A"] || 0) +
+        (data?.["s=6740-FT-6422B"] || 0) +
+        (data?.["s=6740-FT-6422C"] || 0) +
+        (data?.["s=6740-FT-6422D"] || 0) +
+        (data?.["s=6740-FT-6422E"] || 0) +
+        (data?.["s=6740-FT-6422F"] || 0) +
+        (data?.["6740-FT-6422G"] || 0),
+      nahs2Val:
+        (data?.["s=6740-FIT-6425"] || 0) +
+        (data?.["s=6740-FIT-6426"] || 0) +
+        (data?.["s=6740-FIT-6427"] || 0) +
+        (data?.["s=6740-FIT-6428"] || 0) +
+        (data?.["s=6740-FIT-6429"] || 0) +
+        (data?.["s=6740-FIT-6430"] || 0) +
+        (data?.["s=6740-FT-6422H"] || 0) +
+        (data?.["s=6740-FT-6422I"] || 0) +
+        (data?.["s=6740-FT-6422J"] || 0) +
+        (data?.["s=6740-FT-6422K"] || 0) +
+        (data?.["s=6740-FT-6422L"] || 0) +
+        (data?.["s=6740-FT-6422M"] || 0) +
+        (data?.["s=6740-FT-6422N"] || 0),
 
       air1Val: data?.["s=6028-WI-1042"] || 0,
       air2Val: data?.["s=6028-WI-1042"] || 0,
@@ -72,23 +112,23 @@ export const formatData = (
             },
             {
               level: data?.["s=6310-LIT-3123"] || 0,
-              runningState: data?.["6310-AG-3143"] || "False",
+              runningState: data?.["s=6310-AG-3143"] || "False",
             },
             {
               level: data?.["s=6310-LIT-3124"] || 0,
-              runningState: data?.["6310-AG-3144"] || "False",
+              runningState: data?.["s=6310-AG-3144"] || "False",
             },
             {
               level: data?.["s=6310-LIT-3125"] || 0,
-              runningState: data?.["6310-AG-3145"] || "False",
+              runningState: data?.["s=6310-AG-3145"] || "False",
             },
             {
               level: data?.["s=6310-LIT-3126"] || 0,
-              runningState: data?.["6310-AG-3146"] || "False",
+              runningState: data?.["s=6310-AG-3146"] || "False",
             },
             {
               level: data?.["s=6310-LIT-3127"] || 0,
-              runningState: data?.["6310-AG-3147"] || "False",
+              runningState: data?.["s=6310-AG-3147"] || "False",
             },
             {
               runningState: data?.["s=6310-PP-3161"] || "False",
@@ -498,7 +538,7 @@ export const updateDataWithSocket = (
       oxydeYield: data?.["s=6028-WI-1042"] || 0,
       concentrateProduction: data?.["s=6028-WI-1042"] || 0,
       metalProduction: data?.["s=6028-WI-1042"] || 0,
-      energy: data?.["6900-MC-2002"] || 0 + data?.["6900-MC-2003"] || 0,
+      energy: data?.["s=6900-MC-2002"] || 0 + data?.["s=6900-MC-2003"] || 0,
       water: data?.["s=6028-WI-1042"] || 0,
     };
   });
@@ -525,17 +565,57 @@ export const updateDataWithSocket = (
       iRegrindVal: data?.["s=6330-DIT-3283"] || 0,
       iCyclRegrindVal: data?.["s=6330-DIT-3311"] || 0,
       iCyclDeslVal: data?.["s=6610-DIT-5411"] || 0,
-      oThickner2Val: data?.["s=6510-DIT-5121"] || 0,
-      iThicknerVal: data?.["s=6520-DIT-5215"] || 0,
+      oThickner2Val: data?.["s=6520-DIT-5215"] || 0,
+      iThicknerVal: data?.["s=6510-DIT-5121"] || 0,
 
-      pax1Val: data?.["s=6028-WI-1042"] || 0,
-      pax2Val: data?.["s=6028-WI-1042"] || 0,
+      pax1Val:
+        (data?.["s=6730-FIT-6325"] || 0) +
+        (data?.["s=6730-FIT-6326"] || 0) +
+        (data?.["s=6730-FIT-6327"] || 0) +
+        (data?.["s=6730-FIT-6328"] || 0) +
+        (data?.["s=6730-FIT-6329"] || 0) +
+        (data?.["s=6730-FIT-6330"] || 0) +
+        (data?.["s=6730-FIT-6331"] || 0),
+      pax2Val:
+        (data?.["s=6730-FIT-6332"] || 0) +
+        (data?.["s=6730-FIT-6333"] || 0) +
+        (data?.["s=6730-FIT-6334"] || 0) +
+        (data?.["s=6730-FIT-6335"] || 0) +
+        (data?.["s=6730-FIT-6336"] || 0) +
+        (data?.["s=6730-FIT-6337"] || 0) +
+        (data?.["s=6730-FIT-6338"] || 0),
 
-      mibc1Val: data?.["s=6028-WI-1042"] || 0,
-      mibc2Val: data?.["s=6028-WI-1042"] || 0,
+      mibc1Val:
+        (data?.["s=6720-FIT-6225"] || 0) +
+        (data?.["s=6720-FIT-6226"] || 0) +
+        (data?.["s=6720-FIT-6227"] || 0),
+      mibc2Val:
+        (data?.["s=6720-FIT-6229"] || 0) +
+        (data?.["s=6720-FIT-6230"] || 0) +
+        (data?.["s=6720-FIT-6231"] || 0),
 
-      nahs1Val: data?.["s=6028-WI-1042"] || 0,
-      nahs2Val: data?.["s=6028-WI-1042"] || 0,
+      nahs1Val:
+        (data?.["s=6740-FT-6422A"] || 0) +
+        (data?.["s=6740-FT-6422B"] || 0) +
+        (data?.["s=6740-FT-6422C"] || 0) +
+        (data?.["s=6740-FT-6422D"] || 0) +
+        (data?.["s=6740-FT-6422E"] || 0) +
+        (data?.["s=6740-FT-6422F"] || 0) +
+        (data?.["s=6740-FT-6422G"] || 0),
+      nahs2Val:
+        (data?.["s=6740-FIT-6425"] || 0) +
+        (data?.["s=6740-FIT-6426"] || 0) +
+        (data?.["s=6740-FIT-6427"] || 0) +
+        (data?.["s=6740-FIT-6428"] || 0) +
+        (data?.["s=6740-FIT-6429"] || 0) +
+        (data?.["s=6740-FIT-6430"] || 0) +
+        (data?.["s=6740-FT-6422H"] || 0) +
+        (data?.["s=6740-FT-6422I"] || 0) +
+        (data?.["s=6740-FT-6422J"] || 0) +
+        (data?.["s=6740-FT-6422K"] || 0) +
+        (data?.["s=6740-FT-6422L"] || 0) +
+        (data?.["s=6740-FT-6422M"] || 0) +
+        (data?.["s=6740-FT-6422N"] || 0),
 
       air1Val: data?.["s=6028-WI-1042"] || 0,
       air2Val: data?.["s=6028-WI-1042"] || 0,
