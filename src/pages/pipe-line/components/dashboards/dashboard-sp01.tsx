@@ -75,8 +75,6 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
     },
   ];
 
-  return null;
-
   return (
     <>
       {/* Top metrics bar */}
@@ -514,14 +512,15 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
               </span>
               <div className="absolute right-4 flex gap-2 text-xs">
                 <span className="rounded-full border border-white bg-[#021E3F] px-3 py-1 text-white">
-                  Input{" "}
-                  {data.chloreInput[data.chloreInput.length - 1]?.y.toFixed(
+                  Input
+                  {data.chloreInput[data.chloreInput.length - 1]?.y.toFixed?.(
                     2,
                   ) || "0"}
+                  {/* TODO:update this later */}
                 </span>
                 <span className="rounded-full border border-white bg-[#021E3F] px-3 py-1 text-white">
                   Output{" "}
-                  {data.chloreOutput[data.chloreOutput.length - 1]?.y.toFixed(
+                  {data.chloreOutput[data.chloreOutput.length - 1]?.y.toFixed?.(
                     2,
                   ) || "0"}
                 </span>

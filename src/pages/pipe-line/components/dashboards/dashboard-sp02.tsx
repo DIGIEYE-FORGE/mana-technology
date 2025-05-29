@@ -148,6 +148,7 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                       type: "datetime",
                     },
                     yaxis: {
+                      min: 0,
                       labels: {
                         style: {
                           colors: "#A2B0B8",
