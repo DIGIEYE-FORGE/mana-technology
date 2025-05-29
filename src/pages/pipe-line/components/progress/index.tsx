@@ -96,7 +96,8 @@ const LiquidProgress: React.FC<LiquidProgressProps> = ({
                   "absolute h-1 w-full translate-y-1/2 bg-red-500",
                   {
                     "bg-gradient-to-r from-[#98FFE5] to-[#009670]":
-                      indictors[index],
+                      // index <= 1 ? !indictors[index] : indictors[index],
+                      !indictors[index],
                   },
                 )}
                 style={{

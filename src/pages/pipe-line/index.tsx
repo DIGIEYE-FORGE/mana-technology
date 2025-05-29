@@ -26,6 +26,9 @@ import {
   updateAttributesData,
   updateHistoryData,
 } from "./utils/functions";
+import { twMerge } from "tailwind-merge";
+import { Card } from "@/components/card";
+import ReactApexChart from "react-apexcharts";
 
 interface Position {
   top?: string;
@@ -169,10 +172,10 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                   "w-[6.5rem]": point.id === "SP6",
                 })}
                 indictors={[
-                  point?.card?.attributes?.breakPoints?.[0] === "True",
-                  point?.card?.attributes?.breakPoints?.[1] === "True",
-                  point?.card?.attributes?.breakPoints?.[2] === "True",
-                  point?.card?.attributes?.breakPoints?.[3] === "True",
+                  point?.card?.attributes?.breakPoints?.[0] == "True",
+                  point?.card?.attributes?.breakPoints?.[1] == "True",
+                  point?.card?.attributes?.breakPoints?.[2] == "True",
+                  point?.card?.attributes?.breakPoints?.[3] == "True",
                 ]}
                 percentage={
                   point?.card?.progress && Array.isArray(point.card.progress)
@@ -222,7 +225,6 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
               />
 
               <div className="flex flex-1 flex-col gap-1">
-                {/* {JSON.stringify(point.card.attributes["Running state"])} */}
                 {Object?.entries(point.card.attributes)
                   .filter((ele) => !["breakPoints"].includes(ele[0]))
                   ?.map(([key, value]) => (
@@ -948,9 +950,121 @@ const PipeLine: React.FC = () => {
             }
           </DialogContent>
         </Dialog>
+        <LineChart />
       </main>
     </main>
   );
 };
 
 export default PipeLine;
+
+interface LineChartProps
+  extends Omit<React.HTMLAttributes<HTMLElement>, "children"> {
+  series?: ApexAxisChartSeries;
+}
+
+function LineChart({
+  className,
+  series = [
+    {
+      name: "Production",
+      data: [
+        {
+          x: new Date("2024-06-01"),
+          y: 10,
+        },
+        {
+          x: new Date("2024-06-02"),
+          y: 20,
+        },
+      ],
+      type: "area",
+    },
+  ],
+  ...props
+}: LineChartProps) {
+  return (
+    <div
+      className={twMerge(
+        "absolute bottom-6 left-[23%] -z-10 aspect-[2] w-[39rem]",
+        className,
+      )}
+      {...props}
+    >
+      <Card className="flex h-full w-full flex-col p-3">
+        <div className="font-semibold first-letter:uppercase">chart title</div>
+        <div className="h-1 flex-1">
+          <ReactApexChart
+            options={{
+              theme: {
+                mode: "dark",
+              },
+              tooltip: { cssClass: "text-black" },
+              colors: ["#26E2B3", "#4D09E8"],
+              grid: {
+                borderColor: "#373737",
+                xaxis: { lines: { show: true } },
+                yaxis: { lines: { show: false } },
+              },
+              chart: {
+                background: "transparent",
+                toolbar: { show: false },
+                animations: { enabled: true },
+                zoom: { enabled: false },
+                selection: { enabled: false },
+                dropShadow: { enabled: false },
+              },
+              stroke: { width: 1, curve: "smooth" },
+              dataLabels: { enabled: false },
+              fill: { type: "solid", opacity: [0.1, 0.5] },
+              legend: {
+                position: "bottom",
+                // markers: {
+                //   width: 26,
+                //   height: 12,
+                // },
+                fontWeight: 600,
+                fontSize: "12px",
+              },
+              xaxis: {
+                type: "datetime",
+                // max: dateRange.to ? new Date(dateRange.to).getTime() : undefined,
+                axisBorder: { show: false },
+                axisTicks: { show: false },
+
+                labels: {
+                  show: true,
+                  style: {
+                    fontSize: "12px",
+                    fontFamily: "Helvetica, Arial, sans-serif",
+                    fontWeight: 400,
+                    cssClass: "apexcharts",
+                  },
+                },
+              },
+              yaxis: {
+                min: 0,
+                tickAmount: 4,
+                labels: {
+                  show: true,
+                  formatter: function (value) {
+                    return value.toFixed(2);
+                  },
+                  style: {
+                    fontSize: "12px",
+                    fontFamily: "Helvetica, Arial, sans-serif",
+                    fontWeight: 400,
+                    cssClass: "apexcharts-xaxis-label",
+                  },
+                },
+              },
+            }}
+            series={series}
+            width={"100%"}
+            height={"100%"}
+          />
+        </div>
+      </Card>
+    </div>
+  );
+}

@@ -84,7 +84,7 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
             key={item.id}
             className="rounded-md border-2 border-white bg-[#021E3F] p-2 px-4 text-white backdrop-blur-md"
           >
-            {item.name} {Number(data[item.key] || 0)?.toFixed(2) || "0"}
+            {item.name} {Number(data[item.key] || 0)?.toFixed?.(2) || "0"}
           </div>
         ))}
       </div>
@@ -186,15 +186,15 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
               <LiquidProgress
                 percentage={[
                   {
-                    value: (+Number(data.progress).toFixed(2) / 5) * 100 || 0,
+                    value: (+Number(data.progress) / 5) * 100 || 0,
                     title: "",
                   },
                 ]}
                 className="h-[7rem] w-[6rem]"
                 textStyle="text-white font-bold"
                 indictors={[
-                  data.suctionTankLL == "True" ? true : false,
-                  data.suctionTankL == "True" ? true : false,
+                  data.suctionTankLL == "True" ? false : true,
+                  data.suctionTankL == "True" ? false : true,
                   data.suctionTankH == "True" ? true : false,
                   data.suctionTankHH == "True" ? true : false,
                 ]}
@@ -271,7 +271,7 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                     theme: "dark",
                     y: {
                       formatter: (value: any) => {
-                        return `${Number(value).toFixed(2)} (bar)`;
+                        return `${Number(value)?.toFixed(2)} (bar)`;
                       },
                     },
                   },
@@ -305,7 +305,7 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                     type: "datetime",
                   },
                   yaxis: {
-                    min: 30,
+                    min: 0,
                     labels: {
                       style: {
                         colors: "#A2B0B8",
@@ -442,7 +442,7 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                     theme: "dark",
                     y: {
                       formatter: (value: any) => {
-                        return `${Number(value).toFixed(0)} (%)`;
+                        return `${Number(value)?.toFixed(0)} (%)`;
                       },
                     },
                   },
@@ -531,16 +531,16 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
               <div className="absolute right-4 flex gap-2 text-xs">
                 <span className="rounded-full border border-white bg-[#021E3F] px-3 py-1 text-white">
                   Input
-                  {data.chloreInput[data.chloreInput.length - 1]?.y.toFixed?.(
+                  {data.chloreInput[data.chloreInput.length - 1]?.y?.toFixed?.(
                     2,
                   ) || "0"}
                   {/* TODO:update this later */}
                 </span>
                 <span className="rounded-full border border-white bg-[#021E3F] px-3 py-1 text-white">
                   Output{" "}
-                  {data.chloreOutput[data.chloreOutput.length - 1]?.y.toFixed?.(
-                    2,
-                  ) || "0"}
+                  {data.chloreOutput[
+                    data.chloreOutput.length - 1
+                  ]?.y?.toFixed?.(2) || "0"}
                 </span>
               </div>
             </div>
@@ -564,7 +564,7 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                     theme: "dark",
                     y: {
                       formatter: (value: any) => {
-                        return `${Number(value).toFixed(2)} (mg/l)`;
+                        return `${Number(value)?.toFixed(2)} (mg/l)`;
                       },
                     },
                   },
