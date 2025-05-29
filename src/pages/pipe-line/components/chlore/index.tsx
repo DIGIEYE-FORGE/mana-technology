@@ -13,7 +13,7 @@ function ChloreSVG({
       viewBox="0 0 111 115"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={twMerge("h-[18rem] w-[14rem]", className)}
+      className={twMerge("chlore", className)}
     >
       <g filter="url(#filter0_d_2010_1196)">
         <rect

@@ -8,7 +8,7 @@ import ChloreSVG from "../chlore";
 import HammerArrestorSVG from "@/assets/hammer-svg.svg?react";
 // import SuctionTankSVG from "@/assets/suction-svg.svg?react";
 import ReactApexChart from "react-apexcharts";
-import { cn } from "@/lib/utils";
+import { cn, parseBoolean } from "@/lib/utils";
 
 const Data = [
   { id: 1, name: "Flow rate", key: "flowRate" },
@@ -618,21 +618,29 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
             <span className="text-[14px] font-bold">Chlorine Stations</span>
             <div className="flex items-center justify-center gap-8">
               <ChloreSVG
-                topTitle={data.chloreStationH1 || "SP01-M-02"}
-                leftTitle={data.chloreStationL1 || "LSLL-01"}
-                bottomTitle=""
-                value={data.chloreStationvalue1 || "0"}
-                width={200}
-                height={200}
+                // topTitle={data.chloreStationH1 || "SP01-M-02"}
+                // leftTitle={data.chloreStationL1 || "LSLL-01"}
+                // bottomTitle=""
+                // value={data.chloreStationvalue1 || "0"}
+                // width={200}
+                // height={200}
+                topIndicator={parseBoolean(data.chloreStationH1)}
+                leftIndicator={parseBoolean(data.chloreStationL1)}
+                bottomIndicator={parseBoolean(data.chloreStationvalue1)}
+                className="h-[10rem] w-[10rem]"
               />
               {/* First block */}
               <ChloreSVG
-                topTitle={data.chloreStationH2 || "SP01-M-03"}
-                leftTitle={data.chloreStationL2 || "LSLL-03"}
-                bottomTitle={data.chloreStationH1 || "SP01-M-01"}
-                value={data.chloreStationvalue2 || "0"}
-                width={200}
-                height={200}
+                // topTitle={data.chloreStationH2 || "SP01-M-03"}
+                // leftTitle={data.chloreStationL2 || "LSLL-03"}
+                // bottomTitle={data.chloreStationH1 || "SP01-M-01"}
+                // value={data.chloreStationvalue2 || "0"}
+                // width={200}
+                // height={200}
+                topIndicator={parseBoolean(data.chloreStationH2)}
+                leftIndicator={parseBoolean(data.chloreStationL2)}
+                bottomIndicator={parseBoolean(data.chloreStationvalue2)}
+                className="h-[10rem] w-[10rem]"
               />
               {/* Second block */}
             </div>

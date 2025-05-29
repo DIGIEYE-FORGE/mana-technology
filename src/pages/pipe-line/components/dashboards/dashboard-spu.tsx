@@ -4,6 +4,7 @@ import LiquidProgress from "../progress";
 // import CircularGauge from "../progres-circle";
 import ChloreSVG from "../chlore";
 import ReactApexChart from "react-apexcharts";
+import { parseBoolean } from "@/lib/utils";
 // import ProgressBar from "../progres-bar";
 
 interface DashboardSPUProps {
@@ -336,7 +337,7 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                 value: (item.percentage / 2.7) * 100,
                 title: item.name,
               }))}
-              style={{ background: "#87EFD5" }}
+              style={{ background: "white" }}
               className="h-[14rem] !w-[9rem]"
               indictors={[
                 data.suctionTankLL == "True" ? true : false,
@@ -351,21 +352,34 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
               Chlorine Stations
             </span>
             <div className="flex min-h-0 flex-1 items-center justify-center gap-0">
-              <ChloreSVG
+              <span>{data.station1}</span>
+              {/* <ChloreSVG
                 topTitle="SP01-M-03"
                 // leftTitle="true"
                 bottomTitle="SP01-M-01"
                 value={data.station1 ?? "XX"}
                 width={350}
                 height={350}
-              />
+              /> */}
               <ChloreSVG
+                topIndicator={parseBoolean(false)}
+                leftIndicator={parseBoolean(true)}
+                bottomIndicator={parseBoolean(data.station1)}
+                className="h-[14rem] w-[14rem]"
+              />
+              {/* <ChloreSVG
                 topTitle="SP01-M-03"
                 // leftTitle="false"
                 bottomTitle="SP01-M-02"
                 value={data.station2 ?? "XX"}
                 width={350}
                 height={350}
+              /> */}
+              <ChloreSVG
+                topIndicator={parseBoolean(false)}
+                leftIndicator={parseBoolean(false)}
+                bottomIndicator={parseBoolean(data.station2)}
+                className="h-[14rem] w-[14rem]"
               />
             </div>
           </Card>
