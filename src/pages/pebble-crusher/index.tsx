@@ -211,7 +211,7 @@ const PebbleCrusher = () => {
                 runningState={countData}
                 telemetryRunningState={"s=6140-CR-2426"}
               />
-              <Card className="h-[200px] flex-1 self-end !rounded opacity-50">
+              <Card className="h-[200px] flex-1 self-end !rounded">
                 <ReactApexChart
                   height={"100%"}
                   options={{

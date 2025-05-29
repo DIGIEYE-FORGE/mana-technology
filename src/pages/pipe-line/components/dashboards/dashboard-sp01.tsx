@@ -13,7 +13,7 @@ import { cn, parseBoolean } from "@/lib/utils";
 const Data = [
   { id: 1, name: "Flow rate (l/s) :", key: "flowRate" },
   { id: 2, name: "Δt Flow (l/s) :", key: "deltaFlow" },
-  { id: 3, name: "Pumped volume (m3/h) :", key: "pumpedVolume" },
+  { id: 3, name: "Pumped volume (m3) :", key: "pumpedVolume" },
   { id: 4, name: "Turbidity (NTU):", key: "trubidite" },
 ];
 
@@ -177,13 +177,6 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
               <span className="mb-2 text-sm font-medium text-white">
                 Suction sump
               </span>
-              {JSON.stringify(data.progress || "-------")}
-              {/* {JSON.stringify({
-                suctionTankLL: data.suctionTankLL,
-                suctionTankL: data.suctionTankL,
-                suctionTankH: data.suctionTankH,
-                suctionTankHH: data.suctionTankHH,
-              })} */}
               <LiquidProgress
                 percentage={[
                   {
@@ -209,9 +202,9 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                 className={cn("size-[8rem] [&_.indicator]:fill-[#26e2b3]", {
                   // TODO: change this base on state
                   "[&_.indicator-1]:!fill-red-500":
-                    data.hammerArrestorH1 === "True" ? true : false,
+                    data.hammerArrestorH == "True" ? true : false,
                   "[&_.indicator-2]:!fill-red-500":
-                    data.hammerArrestorH2 === "True" ? true : false,
+                    data.hammerArrestorL == "True" ? true : false,
                 })}
               />
             </div>

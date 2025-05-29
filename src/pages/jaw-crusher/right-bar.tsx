@@ -50,9 +50,9 @@ const RightBar = ({
               })}
             ></span>
           </div>
-          <div className="h-2 w-full overflow-hidden rounded-xl bg-white">
+          <div className="h-2 w-full overflow-hidden rounded-xl bg-[#BFC1FA]">
             <div
-              className="h-full rounded-xl bg-[#9799F8]"
+              className="h-full rounded-xl bg-[#62E3CA]"
               style={{
                 width: `${
                   (runingState?.["count"]["s=6032-CV-1140"]
@@ -96,9 +96,9 @@ const RightBar = ({
               })}
             ></span>
           </div>
-          <div className="h-2 w-full overflow-hidden rounded-xl bg-white">
+          <div className="h-2 w-full overflow-hidden rounded-xl bg-[#BFC1FA]">
             <div
-              className="h-full rounded-xl bg-[#9799F8]"
+              className="h-full rounded-xl bg-[#62E3CA]"
               style={{
                 width: `${
                   (runingState?.["count"]["s=6032-FD-1107"]
@@ -141,9 +141,9 @@ const RightBar = ({
               })}
             ></span>
           </div>
-          <div className="h-2 w-full overflow-hidden rounded-xl bg-white">
+          <div className="h-2 w-full overflow-hidden rounded-xl bg-[#BFC1FA]">
             <div
-              className="h-full rounded-xl bg-[#9799F8]"
+              className="h-full rounded-xl bg-[#62E3CA]"
               style={{
                 width: `${
                   (runingState?.["count"]["s=6028-FD-1021"]
@@ -186,9 +186,9 @@ const RightBar = ({
               })}
             ></span>
           </div>
-          <div className="h-2 w-full overflow-hidden rounded-xl bg-white">
+          <div className="h-2 w-full overflow-hidden rounded-xl bg-[#BFC1FA]">
             <div
-              className="h-full rounded-xl bg-[#9799F8]"
+              className="h-full rounded-xl bg-[#62E3CA]"
               style={{
                 width: `${
                   (runingState?.["count"]["s=6028-FD-1022"]
@@ -231,9 +231,9 @@ const RightBar = ({
               })}
             ></span>
           </div>
-          <div className="h-2 w-full overflow-hidden rounded-xl bg-white">
+          <div className="h-2 w-full overflow-hidden rounded-xl bg-[#BFC1FA]">
             <div
-              className="h-full rounded-xl bg-[#9799F8]"
+              className="h-full rounded-xl bg-[#62E3CA]"
               style={{
                 width: `${
                   (runingState?.["count"]["s=6028-CV-1037"]
@@ -276,9 +276,9 @@ const RightBar = ({
               })}
             ></span>
           </div>
-          <div className="h-2 w-full overflow-hidden rounded-xl bg-white">
+          <div className="h-2 w-full overflow-hidden rounded-xl bg-[#BFC1FA]">
             <div
-              className="h-full rounded-xl bg-[#9799F8]"
+              className="h-full rounded-xl bg-[#62E3CA]"
               style={{
                 width: `${
                   (runingState?.["count"]["s=6032-FD-1120"]
@@ -321,9 +321,9 @@ const RightBar = ({
               })}
             ></span>
           </div>
-          <div className="h-2 w-full overflow-hidden rounded-xl bg-white">
+          <div className="h-2 w-full overflow-hidden rounded-xl bg-[#BFC1FA]">
             <div
-              className="h-full rounded-xl bg-[#9799F8]"
+              className="h-full rounded-xl bg-[#62E3CA]"
               style={{
                 width: `${
                   (runingState?.["count"]["s=6026-ZA-1004"]
@@ -368,9 +368,9 @@ const RightBar = ({
               ></span>
             }
           </div>
-          <div className="h-2 w-full overflow-hidden rounded-xl bg-white">
+          <div className="h-2 w-full overflow-hidden rounded-xl bg-[#BFC1FA]">
             <div
-              className="h-full rounded-xl bg-[#9799F8]"
+              className="h-full rounded-xl bg-[#62E3CA]"
               style={{
                 width: `${
                   (runingState?.["count"]["s=6120-FD-2021"]
@@ -415,9 +415,9 @@ const RightBar = ({
               ></span>
             }
           </div>
-          <div className="h-2 w-full overflow-hidden rounded-xl bg-white">
+          <div className="h-2 w-full overflow-hidden rounded-xl bg-[#BFC1FA]">
             <div
-              className="h-full rounded-xl bg-[#9799F8]"
+              className="h-full rounded-xl bg-[#62E3CA]"
               style={{
                 width: `${
                   (runingState?.["count"]["s=6120-FD-2022"]
@@ -459,9 +459,9 @@ const RightBar = ({
               })}
             ></span>
           </div>
-          <div className="h-2 w-full overflow-hidden rounded-xl bg-white">
+          <div className="h-2 w-full overflow-hidden rounded-xl bg-[#BFC1FA]">
             <div
-              className="h-full rounded-xl bg-[#9799F8]"
+              className="h-full rounded-xl bg-[#62E3CA]"
               style={{
                 width: `${
                   (runingState?.["count"]["s=6120-FD-2023"]
@@ -503,9 +503,9 @@ const RightBar = ({
               })}
             ></span>
           </div>
-          <div className="h-2 w-full overflow-hidden rounded-xl bg-white">
+          <div className="h-2 w-full overflow-hidden rounded-xl bg-[#BFC1FA]">
             <div
-              className="h-full rounded-xl bg-[#9799F8]"
+              className="h-full rounded-xl bg-[#62E3CA]"
               style={{
                 width: `${
                   (runingState?.["count"]["s=6032-ZM-1142"]
@@ -548,9 +548,9 @@ const RightBar = ({
               })}
             ></span>
           </div>
-          <div className="h-2 w-full overflow-hidden rounded-xl bg-white">
+          <div className="h-2 w-full overflow-hidden rounded-xl bg-[#BFC1FA]">
             <div
-              className="h-full rounded-xl bg-[#9799F8]"
+              className="h-full rounded-xl bg-[#62E3CA]"
               style={{
                 width: `${
                   (runingState?.["count"]["s=6120-CV-2040"]

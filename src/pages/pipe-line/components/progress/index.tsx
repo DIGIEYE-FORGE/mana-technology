@@ -38,14 +38,14 @@ const LiquidProgress: React.FC<LiquidProgressProps> = ({
 
   return (
     <div className="flex flex-col items-center justify-center gap-1">
-      <div className="flex gap-4">
+      <div className="flex min-w-[7rem] justify-between gap-4 text-center text-xs font-semibold">
         {percentage?.map((item, index) => (
           <div
             key={index}
             className={cn("flex flex-col items-center", textStyle)}
           >
             {item.title && (
-              <span className="text-sm font-semibold">{item?.title || ""}</span>
+              <span className="text-2xl font-semibold">{item?.title || ""}</span>
             )}
           </div>
         ))}

@@ -90,6 +90,10 @@ const JawCrusher = () => {
             name: "s=6032-CV-1140",
             value: [true, false],
           },
+          {
+            name: "s=6032-H-TOT-1130",
+            value: [true, false],
+          },
         ],
       },
     );
