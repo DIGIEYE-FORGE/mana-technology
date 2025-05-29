@@ -167,6 +167,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                 "flex-col": point.id === "SP6",
               })}
             >
+              {/* {JSON.stringify(point.card.attributes)} */}
               <LiquidProgress
                 className={cn("h-[9rem] w-[7rem]", {
                   "w-[6.5rem]": point.id === "SP6",
@@ -181,10 +182,10 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                   point?.card?.progress && Array.isArray(point.card.progress)
                     ? point.card.progress.map((p) => ({
                         value:
-                          (
-                            p &&
-                            Number(p / (point.id === "SP6" ? 2.72 : 5)) * 100
-                          )?.toFixed(2) || 0,
+                          (p &&
+                            Number(p / (point.id === "SP6" ? 2.72 : 5)) *
+                              100) ||
+                          0,
                         title: "",
                       }))
                     : [
@@ -373,8 +374,8 @@ const PipeLine: React.FC = () => {
     // Update widgetData with new data
     setWidgetData([
       {
-        title: "Pumped Volume",
-        value: data?.["s=B_FIT_02_TOT_MES_TM"],
+        title: "Pumped Volume (m3/h)",
+        value: data?.["s=B_FIT_02_TOT_MES_TM"] * 3.6,
       },
       {
         title: "Flow Rate",
@@ -669,8 +670,10 @@ const PipeLine: React.FC = () => {
         console.log("Filtered Results:", { data, filteredResults });
         setWidgetData([
           {
-            title: "Pumped Volume",
-            value: filteredResults?.["s=B_FIT_02_TOT_MES_TM"]?.[length - 1]?.y,
+            title: "Pumped Volume (m3/h)",
+            value:
+              filteredResults?.["s=B_FIT_02_TOT_MES_TM"]?.[length - 1]?.y *
+                3.6 || 0,
           },
           {
             title: "Flow Rate",
@@ -986,12 +989,12 @@ function LineChart({
   return (
     <div
       className={twMerge(
-        "absolute bottom-6 left-[23%] -z-10 aspect-[2] w-[39rem]",
+        "absolute bottom-6 left-[25%] -z-10 aspect-[2] w-[24em]",
         className,
       )}
       {...props}
     >
-      <Card className="flex h-full w-full flex-col p-3">
+      <div className="flex h-full w-full flex-col rounded-lg bg-card/10 p-3 backdrop-blur-sm">
         <div className="font-semibold first-letter:uppercase">chart title</div>
         <div className="h-1 flex-1">
           <ReactApexChart
@@ -1064,7 +1067,7 @@ function LineChart({
             height={"100%"}
           />
         </div>
-      </Card>
+      </div>
     </div>
   );
 }

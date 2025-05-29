@@ -42,7 +42,6 @@ const Flotation = () => {
           perPage: 1000,
         },
       });
-
       return res;
     },
     {
