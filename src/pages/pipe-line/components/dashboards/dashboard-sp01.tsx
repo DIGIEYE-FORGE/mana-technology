@@ -210,25 +210,7 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                 ]}
                 className="h-[7rem] w-[6rem]"
                 textStyle="text-white font-bold"
-                stops={[
-                  /// TODO
-                  {
-                    color: "#E64C3C",
-                    value: 5,
-                  },
-                  {
-                    color: "#e9cc0f",
-                    value: 10,
-                  },
-                  {
-                    color: "#26E2B3",
-                    value: 86,
-                  },
-                  {
-                    color: "#26E2B3",
-                    value: 96,
-                  },
-                ]}
+                indictors={[true, false, false, false]}
               />
             </div>
             <div className="flex flex-1 flex-col items-center">
@@ -536,12 +518,16 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
               Pumps running state
             </span>
             <div className="flex flex-1 flex-col justify-center gap-0">
-              {progressDataLine.map((item) => (
+              {[
+                { ...data?.p1, title: "p1" },
+                { ...data?.p2, title: "p2" },
+                { ...data?.p3, title: "p3" },
+              ].map((item) => (
                 <ProgressBar
-                  data={item.data}
+                  data={item?.film}
                   key={item.id}
-                  value={item.value || "--"}
-                  unite={item.unite || "--"}
+                  value={item.totalTime?.toFixed(2) || "--"}
+                  unite={item.unite || "h"}
                   title={item.title || "--"}
                   className="h-6 overflow-hidden bg-white/20"
                 />

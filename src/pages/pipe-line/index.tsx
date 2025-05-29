@@ -429,7 +429,11 @@ const PipeLine: React.FC = () => {
         sideOffset: -400,
         dashboard: {
           title: "SP02 Dashboard",
-          component: <DashboardSP02 data={dataHistory?.SP02} />,
+          component: (
+            <DashboardSP02
+              data={{ ...dataHistory?.SP02, ...runningTime?.SP02 }}
+            />
+          ),
         },
       },
     },
@@ -450,7 +454,11 @@ const PipeLine: React.FC = () => {
         sideOffset: -320,
         dashboard: {
           title: "SP03 Dashboard",
-          component: <DashboardSP02 data={dataHistory?.SP03} />,
+          component: (
+            <DashboardSP02
+              data={{ ...dataHistory?.SP03, ...runningTime?.SP03 }}
+            />
+          ),
         },
       },
     },
@@ -471,7 +479,11 @@ const PipeLine: React.FC = () => {
         sideOffset: 0,
         dashboard: {
           title: "SP1 Dashboard",
-          component: <DashboardSP02 data={dataHistory?.SP1} />,
+          component: (
+            <DashboardSP02
+              data={{ ...dataHistory?.SP1, ...runningTime?.SP1 }}
+            />
+          ),
         },
       },
     },
@@ -492,7 +504,11 @@ const PipeLine: React.FC = () => {
         sideOffset: -300,
         dashboard: {
           title: "SP2 Dashboard",
-          component: <DashboardSP02 data={dataHistory?.SP2} />,
+          component: (
+            <DashboardSP02
+              data={{ ...dataHistory?.SP2, ...runningTime?.SP2 }}
+            />
+          ),
         },
       },
     },
@@ -513,7 +529,11 @@ const PipeLine: React.FC = () => {
         sideOffset: 0,
         dashboard: {
           title: "SP3 Dashboard",
-          component: <DashboardSP02 data={dataHistory?.SP3} />,
+          component: (
+            <DashboardSP02
+              data={{ ...dataHistory?.SP3, ...runningTime?.SP3 }}
+            />
+          ),
         },
       },
     },
@@ -534,7 +554,11 @@ const PipeLine: React.FC = () => {
         sideOffset: 0,
         dashboard: {
           title: "SP4 Dashboard",
-          component: <DashboardSP02 data={dataHistory?.SP4} />,
+          component: (
+            <DashboardSP02
+              data={{ ...dataHistory?.SP4, ...runningTime?.SP4 }}
+            />
+          ),
         },
       },
     },
@@ -555,7 +579,11 @@ const PipeLine: React.FC = () => {
         sideOffset: 0,
         dashboard: {
           title: "SP5 Dashboard",
-          component: <DashboardSP02 data={dataHistory?.SP5} />,
+          component: (
+            <DashboardSP02
+              data={{ ...dataHistory?.SP5, ...runningTime?.SP5 }}
+            />
+          ),
         },
       },
     },
@@ -573,7 +601,9 @@ const PipeLine: React.FC = () => {
       model: {
         dashboard: {
           title: "Basin",
-          component: <DashboardSPU data={dataHistory?.SP6} />,
+          component: (
+            <DashboardSPU data={{ ...dataHistory?.SP6, ...runningTime?.SP6 }} />
+          ),
         },
       },
     },
@@ -645,7 +675,7 @@ const PipeLine: React.FC = () => {
   const {
     // data: countData,
     // error: countError,
-    // isLoading: isLoadingCount,
+    isLoading: isLoadingCount,
   } = useSWR(
     "count",
     async () => {
@@ -842,7 +872,7 @@ const PipeLine: React.FC = () => {
           <div className="relative h-1 flex-1 pr-[6rem]">
             <div className="relative h-full px-8 pb-6 pt-[3rem]">
               <PipeLineSvg className="h-full w-full" />
-              {isLoading || isValidating ? (
+              {isLoading || isLoadingCount || isValidating ? (
                 <div className="absolute inset-0 flex items-center justify-center">
                   <Loader className="size-[4rem] animate-spin text-white" />
                 </div>

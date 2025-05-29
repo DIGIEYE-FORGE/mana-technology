@@ -2,10 +2,9 @@ import { cn } from "@/lib/utils";
 
 interface ProgressBarProps {
   data: {
-    min: number;
-    max: number;
+    percent: number;
     // status: string;
-    color: string;
+    value: string;
   }[];
   className?: string;
   value?: string;
@@ -29,8 +28,8 @@ function ProgressBar({
           <div
             key={index}
             style={{
-              backgroundColor: item.color,
-              width: `${item.max - item.min}%`,
+              backgroundColor: item.value === "True" ? "#26E2B3" : "#E64C3C",
+              width: `${item.percent}%`,
               position: "relative",
               height: "100%",
               color: "#fff",

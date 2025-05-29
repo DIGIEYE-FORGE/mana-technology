@@ -383,12 +383,16 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                 Pumps running state
               </div>
               <div className="flex flex-1 flex-col justify-center gap-0">
-                {progressDataLine.map((item) => (
+                {[
+                  { ...data?.p1, title: "p1" },
+                  { ...data?.p2, title: "p2" },
+                  { ...data?.p3, title: "p3" },
+                ].map((item) => (
                   <ProgressBar
-                    data={item.data}
+                    data={item.film}
                     key={item.id}
-                    value={item.value || "--"}
-                    unite={item.unite || "--"}
+                    value={item.totalTime?.toFixed(2) || "--"}
+                    unite={item.unite || "h"}
                     title={item.title || "--"}
                     className="h-6 overflow-hidden bg-white/20"
                   />
