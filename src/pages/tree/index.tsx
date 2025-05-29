@@ -40,9 +40,7 @@ export function RotatingModel({ modelRef }: { modelRef: any }) {
 
 function TreePage() {
   const modelRef = useRef();
-  const [loading, setLoading] = useState(
-    env.VITE_SHOW_MODEL === "true" ? true : false,
-  );
+  const [loading, setLoading] = useState(true);
   const [active, setActive] = useState<number | null>(null);
 
   useEffect(() => {

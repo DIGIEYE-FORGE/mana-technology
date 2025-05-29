@@ -1,8 +1,8 @@
 import { Card } from "@/components/card";
-import { env } from "process";
 
 import ReactApexChart from "react-apexcharts";
 import { ModelCanvas } from "./model-viewer";
+import { env } from "@/utils/env";
 // import { ModelCanvas } from "./model-viewer";
 
 function Crushing() {
@@ -284,6 +284,7 @@ function Crushing() {
               fov={100}
             />
           )}
+          // {/* )} */}
           {/* <ModelCanvas
             url={"/model/jaw02.glb"}
             position={[-40, 15, -20]}

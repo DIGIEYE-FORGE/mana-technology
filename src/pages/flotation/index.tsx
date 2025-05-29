@@ -172,6 +172,7 @@ const Flotation = () => {
                   fov={100}
                 />
               )}
+              // {/* )} */}
             </div>
             <div className="flex w-full flex-col justify-between gap-1">
               <UpCards

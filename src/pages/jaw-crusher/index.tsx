@@ -241,6 +241,7 @@ const JawCrusher = () => {
                   fov={20}
                 />
               )}
+              {/* {JSON.stringify(leftData?.crushedFlow)} */}
             </div>
             <UpCards
               flowRateIn={upData?.flowRateIn || 0}
