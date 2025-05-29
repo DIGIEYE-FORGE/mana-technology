@@ -21,6 +21,7 @@ import {
 } from "./utils/functions";
 import { io } from "socket.io-client";
 import { env } from "@/utils/env";
+import { ModelCanvas } from "../omniverse/model-viewer";
 
 const JawCrusher = () => {
   const { backendApi, dateRange } = useAppContext();
@@ -233,11 +234,13 @@ const JawCrusher = () => {
             />
             {/* {JSON.stringify(countData["count"]["s=6210-WI-2217"])} */}
             <div className="z-1 absolute inset-0 isolate flex h-1 flex-1 items-center justify-center p-0">
-              {/* <ModelCanvas
-                url={"/model/jaw02.glb"}
-                position={[10, 10, -40]}
-                fov={20}
-              /> */}
+              {env.VITE_SHOW_MODEL && (
+                <ModelCanvas
+                  url={"/model/jaw02.glb"}
+                  position={[10, 10, -40]}
+                  fov={20}
+                />
+              )}
             </div>
             <UpCards
               flowRateIn={upData?.flowRateIn || 0}
@@ -251,9 +254,7 @@ const JawCrusher = () => {
               power={upData?.power || 0}
               crushed={upData?.crushed || 0}
               jawCrusher={upData?.jawCrusher}
-              runingState={
-                  (countData as any)?.count?.["s=6210-WI-2217"] || {}
-                }
+              runingState={(countData as any)?.count?.["s=6210-WI-2217"] || {}}
             />
 
             <div className="flex h-1 flex-1 gap-5">

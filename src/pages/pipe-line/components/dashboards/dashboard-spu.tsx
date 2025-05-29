@@ -333,7 +333,7 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
             <LiquidProgress
               textStyle="text-white font-bold"
               percentage={progressData.map((item) => ({
-                value: item.percentage,
+                value: (item.percentage / 2.7) * 100,
                 title: item.name,
               }))}
               style={{ background: "#87EFD5" }}

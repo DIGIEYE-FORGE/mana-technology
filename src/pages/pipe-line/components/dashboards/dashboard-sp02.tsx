@@ -329,7 +329,10 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                 </span>
                 <LiquidProgress
                   percentage={[
-                    { value: data.suctionTankLevel || 0, title: "" },
+                    {
+                      value: (data.suctionTankLevel / 5) * 100 || 0,
+                      title: "",
+                    },
                   ]}
                   className="h-[10rem] w-[8rem]"
                   textStyle="text-white font-bold"
@@ -374,7 +377,7 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                 />
               </div>
               <div className="m-0 grid flex-1 grid-cols-3 grid-rows-2 gap-2">
-                {valuesData.map((item) => (
+                {valuesData?.map((item) => (
                   <div
                     key={item.id}
                     className="flex h-[70px] w-[60px] flex-col items-center justify-center gap-2 rounded-md border-2 border-gray-500 bg-[#021E3F]/60 p-1 text-white backdrop-blur-md"
@@ -394,7 +397,7 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                   { ...data?.p1, title: "p1" },
                   { ...data?.p2, title: "p2" },
                   { ...data?.p3, title: "p3" },
-                ].map((item) => (
+                ]?.map((item) => (
                   <ProgressBar
                     data={item.film}
                     key={item.id}

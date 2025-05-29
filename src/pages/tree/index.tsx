@@ -40,7 +40,9 @@ export function RotatingModel({ modelRef }: { modelRef: any }) {
 
 function TreePage() {
   const modelRef = useRef();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(
+    env.VITE_SHOW_MODEL === "true" ? true : false,
+  );
   const [active, setActive] = useState<number | null>(null);
 
   useEffect(() => {
@@ -200,14 +202,16 @@ function TreePage() {
           shadow-camera-bottom={-10}
         />
         <Suspense fallback={<Loader3D />}>
-          {/* <Model
-            url={
-              `${env.VITE_LOCAL_MODELS === "true" ? "/ignore/" : "https://managem.digieye.io/statics/"}` +
-              "mine026.glb"
-            }
-            ref={modelRef}
-            onLoad={() => setLoading(false)}
-          /> */}
+          {env.VITE_SHOW_MODEL === "true" && (
+            <Model
+              url={
+                `${env.VITE_LOCAL_MODELS === "true" ? "/ignore/" : "https://managem.digieye.io/statics/"}` +
+                "mine026.glb"
+              }
+              ref={modelRef}
+              onLoad={() => setLoading(false)}
+            />
+          )}
         </Suspense>
         <RotatingModel modelRef={modelRef} />
         <OrbitControls enableRotate rotateSpeed={1} zoomToCursor />

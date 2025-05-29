@@ -13,6 +13,8 @@ import Light from "@/assets/light.svg?react";
 import Loader from "@/components/loader";
 import { Card } from "@/components/card";
 import ReactApexChart from "react-apexcharts";
+import { ModelCanvas } from "../omniverse/model-viewer";
+import { env } from "@/utils/env";
 
 const PebbleCrusher = () => {
   const { backendApi, dateRange } = useAppContext();
@@ -148,11 +150,13 @@ const PebbleCrusher = () => {
               className="pointer-events-none absolute left-0 top-0 z-0 h-full w-full opacity-60"
             />
             <div className="absolute inset-0 isolate z-0 flex flex-1 items-center justify-center p-0">
-              {/* <ModelCanvas
-                url={"/model/pebble.glb"}
-                position={[10, 10, -40]}
-                fov={20}
-              /> */}
+              {env.VITE_SHOW_MODEL === "true" && (
+                <ModelCanvas
+                  url={"/model/pebble_crusher.glb"}
+                  position={[-40, 15, -10]}
+                  fov={100}
+                />
+              )}
             </div>
             <UpCards
               flowRate={data?.["s=6210-WI-2215"] || 0}

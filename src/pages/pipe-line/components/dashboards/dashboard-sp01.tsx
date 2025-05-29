@@ -177,9 +177,18 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
               <span className="mb-2 text-sm font-medium text-white">
                 Suction tank
               </span>
+              {/* {JSON.stringify({
+                suctionTankLL: data.suctionTankLL,
+                suctionTankL: data.suctionTankL,
+                suctionTankH: data.suctionTankH,
+                suctionTankHH: data.suctionTankHH,
+              })} */}
               <LiquidProgress
                 percentage={[
-                  { value: +Number(data.progress).toFixed(2) || 0, title: "" },
+                  {
+                    value: (+Number(data.progress).toFixed(2) / 5) * 100 || 0,
+                    title: "",
+                  },
                 ]}
                 className="h-[7rem] w-[6rem]"
                 textStyle="text-white font-bold"
@@ -383,7 +392,7 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
               />
             </div>
             <div className="m-0 grid flex-1 grid-cols-3 grid-rows-2 gap-2">
-              {valuesData.map((item) => (
+              {valuesData?.map((item) => (
                 <div
                   key={item.id}
                   className="flex h-[70px] w-[60px] flex-col items-center justify-center gap-2 rounded-md border-2 border-gray-500 bg-[#021E3F]/60 p-1 text-white backdrop-blur-md"
@@ -480,7 +489,7 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                 series={[
                   {
                     name: "level",
-                    data: data.level.map((item: { x: string; y: number }) => ({
+                    data: data.level?.map((item: { x: string; y: number }) => ({
                       x: item.x,
                       y: (item.y / 5) * 100,
                     })),
@@ -500,7 +509,7 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                 { ...data?.p1, title: "p1" },
                 { ...data?.p2, title: "p2" },
                 { ...data?.p3, title: "p3" },
-              ].map((item) => (
+              ]?.map((item) => (
                 <ProgressBar
                   data={item?.film}
                   key={item.id}
