@@ -373,12 +373,12 @@ const PipeLine: React.FC = () => {
     // Update widgetData with new data
     setWidgetData([
       {
-        title: "Pumped Volume (m3/h)",
-        value: data?.["s=B_FIT_02_TOT_MES_TM"] * 3.6,
+        title: "Pumped Volume (m3)",
+        value: data?.["s=B_FIT_02_TOT_MES_TM"] / 1000,
       },
       {
-        title: "Flow Rate",
-        value: data?.["s=B_FIT_02_MAE_TM"],
+        title: "Flow Rate (m3/h)",
+        value: data?.["s=B_FIT_02_MAE_TM"] * 3.6,
       },
     ]);
 
@@ -669,10 +669,10 @@ const PipeLine: React.FC = () => {
         console.log("Filtered Results:", { data, filteredResults });
         setWidgetData([
           {
-            title: "Pumped Volume (m3/h)",
+            title: "Pumped Volume (m3)",
             value:
-              filteredResults?.["s=B_FIT_02_TOT_MES_TM"]?.[length - 1]?.y *
-                3.6 || 0,
+              filteredResults?.["s=B_FIT_02_TOT_MES_TM"]?.[length - 1]?.y /
+                1000 || 0,
           },
           {
             title: "Flow Rate",
@@ -686,7 +686,7 @@ const PipeLine: React.FC = () => {
     },
   );
 
-  const { isLoading: isLoadingCount, error: countError } = useSWR(
+  const { isLoading: isLoadingCount } = useSWR(
     "count-pipe-line",
     async () => {
       const res = await backendApi.getHistory(
