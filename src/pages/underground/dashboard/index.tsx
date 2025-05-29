@@ -4,78 +4,17 @@ import { Card } from "@/components/card";
 // import { ConeChart } from "@/components/cone-chart";
 import { D3DonutChart } from "@/components/d3-donut chart";
 import Engins from "@/components/engins";
-// import LineChartWidget from "@/components/line-chart-widget";
 import { Button } from "@/components/ui/button";
 import Ventillation from "@/components/ventillation";
 import { ChevronsDown } from "lucide-react";
 import { Link } from "react-router-dom";
-import ReactApexChart from "react-apexcharts";
-import useSWR from "swr";
-import { HistoryType } from "@/utils";
-import Loader from "@/components/loader";
+import LineChartWidget from "@/components/line-chart-widget";
+
 
 export default function UndergroundDashboardPage() {
-  const { dateRange, backendApi } = useAppContext();
+  const { dateRange} = useAppContext();
 
-  const { data: monthlyData, isLoading: isLoadingMonthly } = useSWR(
-    `monthly-progress${JSON.stringify(dateRange)}`,
-    async () => {
-      const { results } = await backendApi.findMany<HistoryType>(
-        "/dpc-history/api/history",
-        {
-          pagination: { page: 1, perPage: 10_000 },
-          select: ["UG_METRES_PLANIFIE", "UG_METRES_REALISE_TOTAL"],
-          orderBy: "createdAt:asc",
-          where: {
-            serial: "WF5CW7A4T9R9VU9F",
-            createdAt: {
-              $gt: new Date(dateRange?.from as Date),
-              $lte: dateRange?.to && new Date(dateRange?.to as Date),
-            },
-          },
-        },
-      );
-
-      const planifieData = results.map((item) => ({
-        x: new Date(item.createdAt),
-        y: item.UG_METRES_PLANIFIE as number,
-      }));
-
-      const realiseData = results.map((item) => ({
-        x: new Date(item.createdAt),
-        y: item.UG_METRES_REALISE_TOTAL as number,
-      }));
-
-      return { planifieData, realiseData };
-    },
-  );
-
-  const { data: cycleTimeData, isLoading: isLoadingCycleTime } = useSWR(
-    `cycle-time${JSON.stringify(dateRange)}`,
-    async () => {
-      const { results } = await backendApi.findMany<HistoryType>(
-        "/dpc-history/api/history",
-        {
-          pagination: { page: 1, perPage: 10_000 },
-          select: ["UG_SUIVI_TEMPS_MOYEN_CYCLE"],
-          orderBy: "createdAt:asc",
-          where: {
-            serial: "HTCBJYTZC333HN7C",
-            createdAt: {
-              $gt: new Date(dateRange?.from as Date),
-              $lte: dateRange?.to && new Date(dateRange?.to as Date),
-            },
-          },
-        },
-      );
-
-      return results.map((item) => ({
-        x: new Date(item.createdAt),
-        y: item.UG_SUIVI_TEMPS_MOYEN_CYCLE as number,
-      }));
-    },
-  );
-
+  
   return (
     <div className="grid h-fit w-full auto-rows-[17rem] grid-cols-3 gap-6 md:grid-cols-6 xl:grid-cols-9 2xl:auto-rows-[19rem] [&>*]:col-span-3">
       <Card className="flex flex-col p-4">
@@ -139,69 +78,31 @@ export default function UndergroundDashboardPage() {
         </h1>
         <div className="w-full text-center text-xs text-gray-400"></div>
         <div className="flex-1">
-          {isLoadingMonthly ? (
-            <div className="grid h-full w-full place-content-center">
-              <Loader />
-            </div>
-          ) : (
-            <ReactApexChart
-              height="100%"
-              options={{
-                chart: {
+          <LineChartWidget
+            yAxis="one"
+            selectionDate={true}
+            attributes={{
+              stacked: true,
+              telemetries: [
+                {
+                  name: "UG_METRES_PLANIFIE",
+                  color: "#78F6EA",
+                  label: "Planifié",
+                  serial: "WF5CW7A4T9R9VU9F",
                   type: "line",
-                  zoom: {
-                    enabled: false,
-                  },
-                  toolbar: {
-                    show: false,
-                  },
-                  background: "transparent",
-                },
-                tooltip: {
-                  theme: "dark",
-                },
-                stroke: {
-                  curve: "smooth",
-                  width: 3,
-                },
-                colors: ["#78F6EA", "#B98EFF"],
-                legend: {
-                  labels: {
-                    colors: "#A2B0B8",
-                  },
-                  markers: {
-                    shape: "circle",
-                  },
-                },
-                xaxis: {
-                  labels: {
-                    style: {
-                      colors: "#A2B0B8",
-                    },
-                  },
-                  type: "datetime",
-                },
-                yaxis: {
-                  labels: {
-                    style: {
-                      colors: "#A2B0B8",
-                    },
-                  },
-                  decimalsInFloat: 2,
-                },
-              }}
-              series={[
-                {
-                  name: "Planifié",
-                  data: monthlyData?.planifieData || [],
+                  accumulated: true,
                 },
                 {
-                  name: "Réalisé",
-                  data: monthlyData?.realiseData || [],
+                  name: "UG_METRES_REALISE_TOTAL",
+                  color: "#B98EFF",
+                  label: "Réalisé",
+                  serial: "WF5CW7A4T9R9VU9F",
+                  type: "line",
+                  accumulated: true,
                 },
-              ]}
-            />
-          )}
+              ],
+            }}
+          />
         </div>
       </Card>
       <Card className="flex flex-col p-4">
@@ -488,65 +389,20 @@ export default function UndergroundDashboardPage() {
           Temps Moyen de cycle (h)
         </h1>
         <div className="h-1 flex-1">
-          {isLoadingCycleTime ? (
-            <div className="grid h-full w-full place-content-center">
-              <Loader />
-            </div>
-          ) : (
-            <ReactApexChart
-              height="100%"
-              options={{
-                chart: {
-                  type: "line",
-                  zoom: {
-                    enabled: false,
-                  },
-                  toolbar: {
-                    show: false,
-                  },
-                  background: "transparent",
-                },
-                tooltip: {
-                  theme: "dark",
-                },
-                stroke: {
-                  curve: "smooth",
-                  width: 3,
-                },
-                colors: ["#78F6EA"],
-                legend: {
-                  labels: {
-                    colors: "#A2B0B8",
-                  },
-                  markers: {
-                    shape: "circle",
-                  },
-                },
-                xaxis: {
-                  labels: {
-                    style: {
-                      colors: "#A2B0B8",
-                    },
-                  },
-                  type: "datetime",
-                },
-                yaxis: {
-                  labels: {
-                    style: {
-                      colors: "#A2B0B8",
-                    },
-                  },
-                  decimalsInFloat: 2,
-                },
-              }}
-              series={[
+          <LineChartWidget
+            selectionDate={false}
+            attributes={{
+              telemetries: [
                 {
-                  name: "Temps Moyen de cycle",
-                  data: cycleTimeData || [],
+                  area: true,
+                  name: "UG_SUIVI_TEMPS_MOYEN_CYCLE",
+                  color: "#78F6EA",
+                  label: "Temps Moyen de cycle",
+                  serial: "HTCBJYTZC333HN7C",
                 },
-              ]}
-            />
-          )}
+              ],
+            }}
+          />
         </div>
       </Card>
       <Card className="col-span-full flex flex-col gap-2 px-6 pt-4">

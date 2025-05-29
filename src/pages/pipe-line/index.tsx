@@ -130,7 +130,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
           className={cn(
             "absolute z-10 min-h-[10rem] min-w-[21rem] max-w-fit scale-[0.8] p-4 pr-6",
             getCardPositionClass(point.card.position),
-            point.id === "SP6" ? "scale-[0.70] bg-red-500" : "scale[0.8]",
+            point.id === "SP6" ? "scale-[0.80] bg-red-500" : "scale[0.8]",
           )}
           style={{
             ...(point.card.optionsPosition || {}),
@@ -161,24 +161,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                   className={cn("h-[9rem] w-[7rem]", {
                     "w-[3rem]": point.id === "SP6",
                   })}
-                  stops={[
-                    {
-                      color: "red",
-                      value: 5,
-                    },
-                    {
-                      color: "orange",
-                      value: 18,
-                    },
-                    {
-                      color: "#0553fb",
-                      value: 89,
-                    },
-                    {
-                      color: "green",
-                      value: 94,
-                    },
-                  ]}
+                  indictors={[false, true, true, false]}
                   percentage={
                     point?.card?.progress && Array.isArray(point.card.progress)
                       ? point.card.progress.map((p) => ({
@@ -228,52 +211,55 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
               </div>
 
               <div className="flex flex-1 flex-col gap-1">
-                {Object?.entries(point.card.attributes)?.map(([key, value]) => (
-                  <div key={key} className="flex justify-between">
-                    <span className="text-xs text-gray-400">
-                      {key} {ATTRIBUTE_UNITS[key] ? ATTRIBUTE_UNITS[key] : ""}
-                    </span>
-                    <span className="text-xs text-white">
-                      {key == "Running state" ? (
-                        <div className="flex flex-wrap gap-1">
-                          {value?.map((state: string, index: number) => (
-                            <div
-                              key={index}
-                              className="aspect-video h-5 w-6 rounded-sm border-0 border-white"
-                              style={{
-                                backgroundColor:
-                                  state === "True" ? "#26E2B3" : "#FF0000",
-                              }}
-                            ></div>
-                          ))}
-                        </div>
-                      ) : value instanceof Array ? (
-                        <div className="flex flex-wrap gap-1">
-                          {value?.map((v, idx) => (
-                            <span key={idx} className="text-xs text-white">
-                              {typeof v === "number"
-                                ? v.toFixed(2)
-                                : v == "True" || v == "False"
-                                  ? v === "True"
-                                    ? "On"
-                                    : "Off"
-                                  : // If it's a string or undefined/null, display it directly
-                                    typeof v === "string"
-                                    ? v
-                                    : v || "0"}
-                            </span>
-                          ))}
-                        </div>
-                      ) : typeof value === "number" ? (
-                        (value || 0)?.toFixed(2)
-                      ) : typeof value === "string" ? (
-                        value
-                      ) : (
-                        value || "0"
-                      )}
-                    </span>
-                  </div>
-                ))}
+                {/* {JSON.stringify(point.card.attributes["Running state"])} */}
+                {Object?.entries(point.card.attributes)
+                  .filter((ele) => !["breakPoints"].includes(ele[0]))
+                  ?.map(([key, value]) => (
+                    <div key={key} className="flex justify-between">
+                      <span className="text-xs text-gray-400">
+                        {key} {ATTRIBUTE_UNITS[key] ? ATTRIBUTE_UNITS[key] : ""}
+                      </span>
+                      <span className="text-xs text-white">
+                        {key == "Running state" ? (
+                          <div className="flex flex-wrap gap-1">
+                            {value?.map((state: string, index: number) => (
+                              <div
+                                key={index}
+                                className="aspect-video h-5 w-6 rounded-sm border-0 border-white"
+                                style={{
+                                  backgroundColor:
+                                    state === "True" ? "#26E2B3" : "#FF0000",
+                                }}
+                              ></div>
+                            ))}
+                          </div>
+                        ) : value instanceof Array ? (
+                          <div className="flex flex-wrap gap-1">
+                            {value?.map((v, idx) => (
+                              <span key={idx} className="text-xs text-white">
+                                {typeof v === "number"
+                                  ? v.toFixed(2)
+                                  : v == "True" || v == "False"
+                                    ? v === "True"
+                                      ? "On"
+                                      : "Off"
+                                    : // If it's a string or undefined/null, display it directly
+                                      typeof v === "string"
+                                      ? v
+                                      : v || "0"}
+                              </span>
+                            ))}
+                          </div>
+                        ) : typeof value === "number" ? (
+                          (value || 0)?.toFixed(2)
+                        ) : typeof value === "string" ? (
+                          value
+                        ) : (
+                          value || "0"
+                        )}
+                      </span>
+                    </div>
+                  ))}
               </div>
             </div>
           </div>
@@ -387,7 +373,6 @@ const PipeLine: React.FC = () => {
     "SP5",
     "SP6",
   ]);
-  console.log("sp01 ");
   const PipeLineAttributes = [
     {
       id: "SP01",
@@ -563,7 +548,7 @@ const PipeLine: React.FC = () => {
       position: { top: "86%", right: "-3%" },
       card: {
         position: "left",
-        optionsPosition: { top: "-210%", left: "-90%" },
+        optionsPosition: { top: "-270%", left: "-70%" },
         progress: 0,
         attributes: {},
       },
@@ -636,6 +621,42 @@ const PipeLine: React.FC = () => {
 
         formatAttributesData(filteredResults, setAttributes);
         formatHistoryData(filteredResults, setDataHistory);
+      },
+    },
+  );
+
+  const {
+    data: countData,
+    error: countError,
+    isLoading: isLoadingCount,
+  } = useSWR(
+    "count",
+    async () => {
+      const res = await backendApi.getHistory(
+        "/dpc-history/api/history/count/JHF455XKPCH6DBLH",
+        {
+          telemetries: [
+            {
+              name: "s=SP1_M01_TM_TLC",
+              value: [true, false],
+            },
+            {
+              name: "s=SP1_M02_TM_TLC",
+              value: [true, false],
+            },
+            {
+              name: "s=SP1_M03_TM_TLC",
+              value: [true, false],
+            },
+          ],
+        },
+      );
+
+      return res;
+    },
+    {
+      onSuccess: (data) => {
+        console.log({ data });
       },
     },
   );

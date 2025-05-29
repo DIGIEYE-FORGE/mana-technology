@@ -328,7 +328,7 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                 </span>
                 <LiquidProgress
                   percentage={[
-                    { value: data.suctionTankLevel || 0, title: "" },
+                    { value: data.suctionTankLevel || 0, title: "jfjf" },
                   ]}
                   className="h-[10rem] w-[8rem]"
                   textStyle="text-white font-bold"

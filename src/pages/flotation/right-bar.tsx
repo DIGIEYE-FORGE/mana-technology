@@ -819,11 +819,11 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span className="col-start-3">level</span>
               <span className="col-span-3 ml-auto">Running state</span>
               <span className="col-span-2">Cell 1</span>
-              <span className="">{oxyde.cleaner2.cells[0].level}</span>
+              <span className="">{oxyde?.cleaner2?.cells?.[0]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.cleaner2.cells[0].runningState === "True"
+                  oxyde?.cleaner2?.cells?.[0]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
