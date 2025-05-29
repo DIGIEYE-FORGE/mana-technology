@@ -176,6 +176,7 @@ const JawCrusher = () => {
               energy={upData?.energy || 0}
               power={upData?.power || 0}
               crushed={upData?.crushed || 0}
+              jawCrusher={upData?.jawCrusher}
             />
 
             <div className="flex h-1 flex-1 gap-5">

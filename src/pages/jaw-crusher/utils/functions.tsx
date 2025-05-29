@@ -17,6 +17,7 @@ export const formatData = (
       energy: data?.["s=6100-TR-2001"] || 0,
       power: data?.["s=6210-WI-2217"] || 0,
       crushed: data?.["s=6210-WI-2217"] || 0,
+      jawCrusher: data?.["s=6032-LIT-1130"] || 0,
     };
   });
   setLeftData((prev: any) => {
@@ -79,6 +80,7 @@ export const updateDataWithSocket = (
       energy: data?.["s=6100-TR-2001"] || 0,
       power: data?.["s=6210-WI-2217"] || 0,
       crushed: data?.["s=6210-WI-2217"] || 0,
+      jawCrusher: data?.["s=6032-LIT-1130"] || 0,
     };
   });
 

@@ -17,6 +17,7 @@ interface UpCardsProps {
   crushedOreMax: string | number;
   energy: string | number;
   power: string | number;
+  jawCrusher: string | number;
 }
 
 const UpCards = ({
@@ -30,10 +31,11 @@ const UpCards = ({
   crushedOreMax,
   energy,
   power,
+  jawCrusher
 }: UpCardsProps) => {
   return (
     <div className="flex w-full flex-col justify-between">
-      <div className="grid grid-cols-7 w-full gap-2">
+      <div className="grid grid-cols-8 w-full gap-2">
         <Card className="flex grow flex-col items-center gap-2 !rounded p-2">
           <span>Flow Rate (t/h)</span>
           <div className="flex w-full gap-3">
@@ -107,6 +109,13 @@ const UpCards = ({
           <div className="flex flex-col gap-1">
             <span>Energy (kwh)</span>
             <span className="text-lg font-bold text-[#FFC829]">{energy}</span>
+          </div>
+        </Card>
+        <Card className="flex grow items-center justify-center gap-5 !rounded px-5">
+          <ElectricIcon className="size-14 min-h-[3.5rem] min-w-[3.5rem]" />
+          <div className="flex flex-col gap-1">
+            <span>Jaw Crusher Level (%)</span>
+            <span className="text-lg font-bold text-[#FFC829]">{jawCrusher}</span>
           </div>
         </Card>
       </div>
