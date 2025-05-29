@@ -131,7 +131,8 @@ const JawCrusher = () => {
               crushedOreMax={data?.["s=6120-LI-2006B"] || 0}
               energy={data?.["s=6100-TR-2001"] || 0}
               power={data?.["s=6210-WI-2217"] || 0}
-              crushed={data?.["s=6210-WI-2217"] || 0}
+              crushed={data?.["s=6032-WI-1142"] || 0}
+              jawCrusher={data?.["s=6032-LIT-1130"] || 0}
             />
             
             <div className="flex h-1 flex-1 gap-5">
@@ -200,7 +201,10 @@ const JawCrusher = () => {
                       decimalsInFloat: 2,
                     },
                   }}
-                  series={[]}
+                  series={[{
+                    name: "",
+                    data: history?.["s=6032-WI-1142"] || []
+                  }]}
                 />
               </Card>
               <RightBar
@@ -215,7 +219,7 @@ const JawCrusher = () => {
                 crushedOreApronFeeder2={data?.["s=6120-FD-2022"] || 0}
                 crushedOreApronFeeder3={data?.["s=6120-FD-2023"] || 0}
                 crushedDischargeConveyor={data?.["s=6032-ZM-1142"] || 0}
-                plantFeedConveyor={data?.["s=6120-CV-2040s"] || 0}
+                plantFeedConveyor={data?.["s=6120-CV-2040"] || 0}
               />
             </div>
           </main>

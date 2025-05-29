@@ -19,7 +19,7 @@ const UpBar = () => {
           {}
           {parentPath
             ? pathname.split("/").at(-1) === "tree"
-              ? "Cycle de développement"
+              ? "Development Cycle"
               : "VOD"
             : "Pebble crusher"}
         </span>

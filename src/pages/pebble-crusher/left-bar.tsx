@@ -64,7 +64,7 @@ const LeftBar = ({ runningState, nde, de, u1, v1, w1 }: LeftBarProps) => {
               theme: "dark",
             },
             title: {
-              text: "Motor beering temperature",
+              text: "Motor bearing temperature",
               align: "left",
               style: {
                 fontSize: "14px",
