@@ -13,38 +13,57 @@ import Light from "@/assets/light.svg?react";
 import Loader from "@/components/loader";
 import { Card } from "@/components/card";
 import ReactApexChart from "react-apexcharts";
+import { useEffect, useState } from "react";
+import {
+  formatData,
+  formatHistory,
+  updateDataWithSocket,
+} from "./utils/functions";
+import { io } from "socket.io-client";
+import { env } from "@/utils/env";
 
 const JawCrusher = () => {
   const { backendApi, dateRange } = useAppContext();
+  const [upData, setUpData] = useState<any>(null);
+  const [leftData, setLeftData] = useState<any>(null);
+  const [rightData, setRightData] = useState<any>(null);
 
-  const { data, isLoading } = useSWR("last-telemetry", async () => {
-    const res = await backendApi.findMany("lastTelemetry", {
-      where: {
-        device: {
-          serial: "0V7ZJGB503H9WGH3",
+  const { isLoading } = useSWR(
+    "last-telemetry",
+    async () => {
+      const res = await backendApi.findMany("lastTelemetry", {
+        where: {
+          device: {
+            serial: "0V7ZJGB503H9WGH3",
+          },
         },
+        pagination: {
+          page: 1,
+          perPage: 1000,
+        },
+      });
+
+      return res;
+    },
+    {
+      onSuccess: (data) => {
+        const filteredResults = data?.results?.reduce(
+          (acc: Record<string, any>, item: any) => {
+            acc[item.name] =
+              typeof item.value === "number"
+                ? item.value?.toFixed(2)
+                : item.value;
+            return acc;
+          },
+          {} as Record<string, any>,
+        );
+
+        formatData(filteredResults, setUpData, setLeftData, setRightData);
       },
-      pagination: {
-        page: 1,
-        perPage: 1000,
-      },
-    });
+    },
+  );
 
-    const filteredResults = res?.results?.reduce(
-      (acc: Record<string, any>, item: any) => {
-        acc[item.name] =
-          typeof item.value === "number" ? item.value?.toFixed(2) : item.value;
-        return acc;
-      },
-      {} as Record<string, any>,
-    );
-
-    console.log({ filteredResults });
-
-    return filteredResults;
-  });
-
-  const { data: history, isLoading: isLoadingHistory } = useSWR(
+  const { isLoading: isLoadingHistory } = useSWR(
     `dpc-history/api/history/${dateRange?.from}/${dateRange?.to}`,
     async () => {
       const res = await backendApi.findMany("dpc-history/api/history", {
@@ -61,26 +80,51 @@ const JawCrusher = () => {
         },
       });
 
-      const filteredResults = res?.results?.reduce(
-        (acc: Record<string, any>, item: any) => {
-          Object.entries(item).forEach(([key, value]) => {
-            if (typeof value === "number" && key !== "deviceId")
-              acc[key] = [
-                {
-                  x: new Date(item.createdAt),
-                  y: value,
-                },
-                ...(acc[key] || []),
-              ];
-          });
-          return acc;
-        },
-        {} as Record<string, any>,
-      );
+      return res;
+    },
+    {
+      onSuccess: (data) => {
+        const filteredResults = data?.results?.reduce(
+          (acc: Record<string, any>, item: any) => {
+            Object.entries(item).forEach(([key, value]) => {
+              if (typeof value === "number" && key !== "deviceId")
+                acc[key] = [
+                  {
+                    x: new Date(item.createdAt),
+                    y: value,
+                  },
+                  ...(acc[key] || []),
+                ];
+            });
+            return acc;
+          },
+          {} as Record<string, any>,
+        );
 
-      return filteredResults;
+        formatHistory(filteredResults, setLeftData);
+      },
     },
   );
+
+  useEffect(() => {
+    const socket = io(env.VITE_URL_SOCKET);
+    socket.on("connect", () => {
+      console.log("Connected to WebSocket server Pipeline");
+    });
+    socket.on("disconnect", () => {
+      console.log("Disconnected from WebSocket server");
+    });
+    socket.on("error", (error) => {
+      console.error("WebSocket error:", error);
+    });
+    socket.on("serial-0V7ZJGB503H9WGH3", (data) => {
+      // console.log("Received message:", data);
+      updateDataWithSocket(data, setUpData, setLeftData, setRightData);
+    });
+    return () => {
+      socket.close();
+    };
+  }, []);
 
   return (
     <div
@@ -114,7 +158,7 @@ const JawCrusher = () => {
               src="/model/bg-pattern.png"
               className="pointer-events-none absolute left-0 top-0 z-0 h-full w-full opacity-60"
             />
-            <div className="z-1 absolute inset-0 isolate flex h-1 flex-1 items-center justify-center p-0 ">
+            <div className="z-1 absolute inset-0 isolate flex h-1 flex-1 items-center justify-center p-0">
               <ModelCanvas
                 url={"/model/jaw02.glb"}
                 position={[10, 10, -40]}
@@ -122,29 +166,29 @@ const JawCrusher = () => {
               />
             </div>
             <UpCards
-              flowRateIn={data?.["s=6028-WI-1042"] || 0}
-              flowRateOut={data?.["s=6032-WI-1142"] || 0}
-              cadence={data?.["s=6032-WI-1142"] || 0}
-              stockpileLevelMin={data?.["s=6028-LI-1009A"] || 0}
-              stockpileLevelMax={data?.["s=6028-LI-1009B"] || 0}
-              crushedOreMin={data?.["s=6120-LI-2006A"] || 0}
-              crushedOreMax={data?.["s=6120-LI-2006B"] || 0}
-              energy={data?.["s=6100-TR-2001"] || 0}
-              power={data?.["s=6210-WI-2217"] || 0}
-              crushed={data?.["s=6032-WI-1142"] || 0}
-              jawCrusher={data?.["s=6032-LIT-1130"] || 0}
+              flowRateIn={upData?.flowRateIn || 0}
+              flowRateOut={upData?.flowRateOut || 0}
+              cadence={upData?.cadence || 0}
+              stockpileLevelMin={upData?.stockpileLevelMin || 0}
+              stockpileLevelMax={upData?.stockpileLevelMax || 0}
+              crushedOreMin={upData?.crushedOreMin || 0}
+              crushedOreMax={upData?.crushedOreMax || 0}
+              energy={upData?.energy || 0}
+              power={upData?.power || 0}
+              crushed={upData?.crushed || 0}
+              jawCrusher={upData?.jawCrusher}
             />
-            
+
             <div className="flex h-1 flex-1 gap-5">
               <LeftBar
-                runningState={data?.["s=6210-WI-2217"] || 0}
-                frameLeft={history?.["s=6032-TT-1130C"] || []}
-                frameRight={history?.["s=6032-TT-1130D"] || []}
-                pitmanLeft={history?.["s=6032-TT-1130E"] || []}
-                pitmanRight={history?.["s=6032-TT-1130F"] || []}
-                v1={history?.["s=6032-TE-1130V1"] || []}
-                u1={history?.["s=6032-TE-1130U1"] || []}
-                w1={history?.["s=6032-TE-1130W1"] || []}
+                runningState={leftData?.runningState || 0}
+                frameLeft={leftData?.frameLeft || []}
+                frameRight={leftData?.frameRight || []}
+                pitmanLeft={leftData?.pitmanLeft || []}
+                pitmanRight={leftData?.pitmanRight || []}
+                v1={leftData?.v1 || []}
+                u1={leftData?.u1 || []}
+                w1={leftData?.w1 || []}
               />
               <Card className="h-[200px] flex-1 self-end !rounded">
                 <ReactApexChart
@@ -201,25 +245,29 @@ const JawCrusher = () => {
                       decimalsInFloat: 2,
                     },
                   }}
-                  series={[{
-                    name: "",
-                    data: history?.["s=6032-WI-1142"] || []
-                  }]}
+                  series={[
+                    {
+                      name: "Crushed Ore Flow",
+                      data: leftData?.crushedFlow || [],
+                    },
+                  ]}
                 />
               </Card>
               <RightBar
-                conveyorRom={data?.["s=6032-FD-1107"] || 0}
-                romBinWithdrawal={data?.["s=6032-FD-1107"] || 0}
-                romStockpileAprf1={data?.["s=6028-FD-1021"] || 0}
-                romStockpileAprf2={data?.["s=6028-FD-1022"] || 0}
-                apronDischarge={data?.["s=6028-CV-1037"] || 0}
-                grizzlyFeeder={data?.["s=6032-FD-1120"] || 0}
-                diverterChute={data?.["s=6026-ZA-1004"] || 0}
-                crushedOreApronFeeder1={data?.["s=6120-FD-2021"] || 0}
-                crushedOreApronFeeder2={data?.["s=6120-FD-2022"] || 0}
-                crushedOreApronFeeder3={data?.["s=6120-FD-2023"] || 0}
-                crushedDischargeConveyor={data?.["s=6032-ZM-1142"] || 0}
-                plantFeedConveyor={data?.["s=6120-CV-2040"] || 0}
+                conveyorRom={rightData?.conveyorRom || 0}
+                romBinWithdrawal={rightData?.romBinWithdrawal || 0}
+                romStockpileAprf1={rightData?.romStockpileAprf1 || 0}
+                romStockpileAprf2={rightData?.romStockpileAprf2 || 0}
+                apronDischarge={rightData?.apronDischarge || 0}
+                grizzlyFeeder={rightData?.grizzlyFeeder || 0}
+                diverterChute={rightData?.diverterChute || 0}
+                crushedOreApronFeeder1={rightData?.crushedOreApronFeeder1 || 0}
+                crushedOreApronFeeder2={rightData?.crushedOreApronFeeder2 || 0}
+                crushedOreApronFeeder3={rightData?.crushedOreApronFeeder3 || 0}
+                crushedDischargeConveyor={
+                  rightData?.crushedDischargeConveyor || 0
+                }
+                plantFeedConveyor={rightData?.plantFeedConveyor || 0}
               />
             </div>
           </main>

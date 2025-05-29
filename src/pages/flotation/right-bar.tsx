@@ -95,71 +95,71 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span className="col-start-3">level</span>
               <span className="col-span-3 ml-auto">Running state</span>
               <span className="col-span-2">Cell 1</span>
-              <span className="">{sulfide.rougher.cells[0].level}</span>
+              <span className="">{sulfide?.rougher?.cells?.[0]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.rougher.cells[0].runningState === "True"
+                  sulfide?.rougher?.cells?.[0]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 2</span>
-              <span className="">{sulfide.rougher.cells[1].level}</span>
+              <span className="">{sulfide?.rougher?.cells?.[1]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.rougher.cells[1].runningState === "True"
+                  sulfide?.rougher?.cells?.[1]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 3</span>
-              <span className="">{sulfide.rougher.cells[2].level}</span>
+              <span className="">{sulfide?.rougher?.cells?.[2]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.rougher.cells[2].runningState === "True"
+                  sulfide?.rougher?.cells?.[2]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 4</span>
-              <span className="">{sulfide.rougher.cells[3].level}</span>
+              <span className="">{sulfide?.rougher?.cells?.[3]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.rougher.cells[3].runningState === "True"
+                  sulfide?.rougher?.cells?.[3]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 5</span>
-              <span className="">{sulfide.rougher.cells[4].level}</span>
+              <span className="">{sulfide?.rougher?.cells?.[4]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.rougher.cells[4].runningState === "True"
+                  sulfide?.rougher?.cells?.[4]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 6</span>
-              <span className="">{sulfide.rougher.cells[5].level}</span>
+              <span className="">{sulfide?.rougher?.cells?.[5]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.rougher.cells[5].runningState === "True"
+                  sulfide?.rougher?.cells?.[5]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 7</span>
-              <span className="">{sulfide.rougher.cells[6].level}</span>
+              <span className="">{sulfide?.rougher?.cells?.[6]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.rougher.cells[6].runningState === "True"
+                  sulfide?.rougher?.cells?.[6]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -168,7 +168,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.rougher.cells[7].runningState === "True"
+                  sulfide?.rougher?.cells?.[7]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -177,7 +177,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.rougher.cells[8].runningState === "True"
+                  sulfide?.rougher?.cells?.[8]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -186,7 +186,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.rougher.cells[9].runningState === "True"
+                  sulfide?.rougher?.cells?.[9]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -195,7 +195,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.rougher.cells[10].runningState === "True"
+                  sulfide?.rougher?.cells?.[10]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -206,71 +206,71 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span className="col-start-3">level</span>
               <span className="col-span-3 ml-auto">Running state</span>
               <span className="col-span-2">Cell 1</span>
-              <span className="">{oxyde.rougher.cells[0].level}</span>
+              <span className="">{oxyde?.rougher?.cells?.[0]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.rougher.cells[0].runningState === "True"
+                  oxyde?.rougher?.cells?.[0]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 2</span>
-              <span className="">{oxyde.rougher.cells[1].level}</span>
+              <span className="">{oxyde?.rougher?.cells?.[1]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.rougher.cells[1].runningState === "True"
+                  oxyde?.rougher?.cells?.[1]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 3</span>
-              <span className="">{oxyde.rougher.cells[2].level}</span>
+              <span className="">{oxyde?.rougher?.cells?.[2]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.rougher.cells[2].runningState === "True"
+                  oxyde?.rougher?.cells?.[2]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 4</span>
-              <span className="">{oxyde.rougher.cells[3].level}</span>
+              <span className="">{oxyde?.rougher?.cells?.[3]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.rougher.cells[3].runningState === "True"
+                  oxyde?.rougher?.cells?.[3]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 5</span>
-              <span className="">{oxyde.rougher.cells[4].level}</span>
+              <span className="">{oxyde?.rougher?.cells?.[4]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.rougher.cells[4].runningState === "True"
+                  oxyde?.rougher?.cells?.[4]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 6</span>
-              <span className="">{oxyde.rougher.cells[5].level}</span>
+              <span className="">{oxyde?.rougher?.cells?.[5]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.rougher.cells[5].runningState === "True"
+                  oxyde?.rougher?.cells?.[5]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 7</span>
-              <span className="">{oxyde.rougher.cells[6].level}</span>
+              <span className="">{oxyde?.rougher?.cells?.[6]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.rougher.cells[6].runningState === "True"
+                  oxyde?.rougher?.cells?.[6]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -279,7 +279,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.rougher.cells[7].runningState === "True"
+                  oxyde?.rougher?.cells?.[7]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -288,7 +288,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.rougher.cells[8].runningState === "True"
+                  oxyde?.rougher?.cells?.[8]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -297,7 +297,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.rougher.cells[9].runningState === "True"
+                  oxyde?.rougher?.cells?.[9]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -306,7 +306,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.rougher.cells[10].runningState === "True"
+                  oxyde?.rougher?.cells?.[10]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -321,61 +321,61 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span className="col-start-3">level</span>
               <span className="col-span-3 ml-auto">Running state</span>
               <span className="col-span-2">Cell 1</span>
-              <span className="">{sulfide.scavenger.cells[0].level}</span>
+              <span className="">{sulfide?.scavenger?.cells?.[0]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.scavenger.cells[0].runningState === "True"
+                  sulfide?.scavenger?.cells?.[0]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 2</span>
-              <span className="">{sulfide.scavenger.cells[1].level}</span>
+              <span className="">{sulfide?.scavenger?.cells?.[1]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.scavenger.cells[1].runningState === "True"
+                  sulfide?.scavenger?.cells?.[1]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 3</span>
-              <span className=""> {sulfide.scavenger.cells[2].level}</span>
+              <span className="">{sulfide?.scavenger?.cells?.[2]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.scavenger.cells[2].runningState === "True"
+                  sulfide?.scavenger?.cells?.[2]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 4</span>
-              <span className="">{sulfide.scavenger.cells[3].level}</span>
+              <span className="">{sulfide?.scavenger?.cells?.[3]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.scavenger.cells[3].runningState === "True"
+                  sulfide?.scavenger?.cells?.[3]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 5</span>
-              <span className="">{sulfide.scavenger.cells[4].level}</span>
+              <span className="">{sulfide?.scavenger?.cells?.[4]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.scavenger.cells[4].runningState === "True"
+                  sulfide?.scavenger?.cells?.[4]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 6</span>
-              <span className="">{sulfide.scavenger.cells[5].level}</span>
+              <span className="">{sulfide?.scavenger?.cells?.[5]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.scavenger.cells[5].runningState === "True"
+                  sulfide?.scavenger?.cells?.[5]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -385,7 +385,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.scavenger.cells[6].runningState === "True"
+                  sulfide?.scavenger?.cells?.[6]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -394,7 +394,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.scavenger.cells[7].runningState === "True"
+                  sulfide?.scavenger?.cells?.[7]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -403,7 +403,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.scavenger.cells[8].runningState === "True"
+                  sulfide?.scavenger?.cells?.[8]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -412,7 +412,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.scavenger.cells[9].runningState === "True"
+                  sulfide?.scavenger?.cells?.[9]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -423,61 +423,61 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span className="col-start-3">level</span>
               <span className="col-span-3 ml-auto">Running state</span>
               <span className="col-span-2">Cell 1</span>
-              <span className="">{oxyde.scavenger.cells[0].level}</span>
+              <span className="">{oxyde?.scavenger?.cells?.[0]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.scavenger.cells[0].runningState === "True"
+                  oxyde?.scavenger?.cells?.[0]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 2</span>
-              <span className="">{oxyde.scavenger.cells[1].level}</span>
+              <span className="">{oxyde?.scavenger?.cells?.[1]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.scavenger.cells[1].runningState === "True"
+                  oxyde?.scavenger?.cells?.[1]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 3</span>
-              <span className="">{oxyde.scavenger.cells[2].level}</span>
+              <span className="">{oxyde?.scavenger?.cells?.[2]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.scavenger.cells[2].runningState === "True"
+                  oxyde?.scavenger?.cells?.[2]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 4</span>
-              <span className="">{oxyde.scavenger.cells[3].level}</span>
+              <span className="">{oxyde?.scavenger?.cells?.[3]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.scavenger.cells[3].runningState === "True"
+                  oxyde?.scavenger?.cells?.[3]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 5</span>
-              <span className="">{oxyde.scavenger.cells[4].level}</span>
+              <span className="">{oxyde?.scavenger?.cells?.[4]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.scavenger.cells[4].runningState === "True"
+                  oxyde?.scavenger?.cells?.[4]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 6</span>
-              <span className="">{oxyde.scavenger.cells[5].level}</span>
+              <span className="">{oxyde?.scavenger?.cells?.[5]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.scavenger.cells[5].runningState === "True"
+                  oxyde?.scavenger?.cells?.[5]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -487,7 +487,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.scavenger.cells[6].runningState === "True"
+                  oxyde?.scavenger?.cells?.[6]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -496,7 +496,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.scavenger.cells[7].runningState === "True"
+                  oxyde?.scavenger?.cells?.[7]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -505,7 +505,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.scavenger.cells[8].runningState === "True"
+                  oxyde?.scavenger?.cells?.[8]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -514,7 +514,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.scavenger.cells[9].runningState === "True"
+                  oxyde?.scavenger?.cells?.[9]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -529,61 +529,61 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span className="col-start-3">level</span>
               <span className="col-span-3 ml-auto">Running state</span>
               <span className="col-span-2">Cell 1</span>
-              <span className="">{sulfide.cleaner1.cells[0].level}</span>
+              <span className="">{sulfide?.cleaner1?.cells?.[0]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.cleaner1.cells[0].runningState === "True"
+                  sulfide?.cleaner1?.cells?.[0]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 2</span>
-              <span className="">{sulfide.cleaner1.cells[1].level}</span>
+              <span className="">{sulfide?.cleaner1?.cells?.[1]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.cleaner1.cells[1].runningState === "True"
+                  sulfide?.cleaner1?.cells?.[1]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 3</span>
-              <span className="">{sulfide.cleaner1.cells[2].level}</span>
+              <span className="">{sulfide?.cleaner1?.cells?.[2]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.cleaner1.cells[2].runningState === "True"
+                  sulfide?.cleaner1?.cells?.[2]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 4</span>
-              <span className="">{sulfide.cleaner1.cells[3].level}</span>
+              <span className="">{sulfide?.cleaner1?.cells?.[3]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.cleaner1.cells[3].runningState === "True"
+                  sulfide?.cleaner1?.cells?.[3]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 5</span>
-              <span className="">{sulfide.cleaner1.cells[4].level}</span>
+              <span className="">{sulfide?.cleaner1?.cells?.[4]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.cleaner1.cells[4].runningState === "True"
+                  sulfide?.cleaner1?.cells?.[4]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 6</span>
-              <span className="">{sulfide.cleaner1.cells[5].level}</span>
+              <span className="">{sulfide?.cleaner1?.cells?.[5]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.cleaner1.cells[5].runningState === "True"
+                  sulfide?.cleaner1?.cells?.[5]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -593,7 +593,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.cleaner1.cells[6].runningState === "True"
+                  sulfide?.cleaner1?.cells?.[6]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -602,7 +602,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.cleaner1.cells[7].runningState === "True"
+                  sulfide?.cleaner1?.cells?.[7]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -611,7 +611,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.cleaner1.cells[8].runningState === "True"
+                  sulfide?.cleaner1?.cells?.[8]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -620,7 +620,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.cleaner1.cells[9].runningState === "True"
+                  sulfide?.cleaner1?.cells?.[9]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -631,51 +631,51 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span className="col-start-3">level</span>
               <span className="col-span-3 ml-auto">Running state</span>
               <span className="col-span-2">Cell 1</span>
-              <span className="">{oxyde.cleaner1.cells[0].level}</span>
+              <span className="">{oxyde?.cleaner1?.cells?.[0]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.cleaner1.cells[0].runningState === "True"
+                  oxyde?.cleaner1?.cells?.[0]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 2</span>
-              <span className="">{oxyde.cleaner1.cells[1].level}</span>
+              <span className="">{oxyde?.cleaner1?.cells?.[1]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.cleaner1.cells[1].runningState === "True"
+                  oxyde?.cleaner1?.cells?.[1]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 3</span>
-              <span className="">{oxyde.cleaner1.cells[2].level}</span>
+              <span className="">{oxyde?.cleaner1?.cells?.[2]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.cleaner1.cells[2].runningState === "True"
+                  oxyde?.cleaner1?.cells?.[2]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 4</span>
-              <span className="">{oxyde.cleaner1.cells[3].level}</span>
+              <span className="">{oxyde?.cleaner1?.cells?.[3]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.cleaner1.cells[3].runningState === "True"
+                  oxyde?.cleaner1?.cells?.[3]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 5</span>
-              <span className="">{oxyde.cleaner1.cells[4].level}</span>
+              <span className="">{oxyde?.cleaner1?.cells?.[4]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.cleaner1.cells[4].runningState === "True"
+                  oxyde?.cleaner1?.cells?.[4]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -685,7 +685,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.cleaner1.cells[5].runningState === "True"
+                  oxyde?.cleaner1?.cells?.[5]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -694,7 +694,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.cleaner1.cells[6].runningState === "True"
+                  oxyde?.cleaner1?.cells?.[6]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -703,7 +703,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.cleaner1.cells[7].runningState === "True"
+                  oxyde?.cleaner1?.cells?.[7]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -712,7 +712,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.cleaner1.cells[8].runningState === "True"
+                  oxyde?.cleaner1?.cells?.[8]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -727,51 +727,51 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span className="col-start-3">level</span>
               <span className="col-span-3 ml-auto">2nd Cleaner</span>
               <span className="col-span-2">Cell 1</span>
-              <span className="">{sulfide.cleaner2.cells[0].level}</span>
+              <span className="">{sulfide?.cleaner2?.cells?.[0]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.cleaner2.cells[0].runningState === "True"
+                  sulfide?.cleaner2?.cells?.[0]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 2</span>
-              <span className="">{sulfide.cleaner2.cells[1].level}</span>
+              <span className="">{sulfide?.cleaner2?.cells?.[1]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.cleaner2.cells[1].runningState === "True"
+                  sulfide?.cleaner2?.cells?.[1]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 3</span>
-              <span className="">{sulfide.cleaner2.cells[2].level}</span>
+              <span className="">{sulfide?.cleaner2?.cells?.[2]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.cleaner2.cells[2].runningState === "True"
+                  sulfide?.cleaner2?.cells?.[2]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 4</span>
-              <span className="">{sulfide.cleaner2.cells[3].level}</span>
+              <span className="">{sulfide?.cleaner2?.cells?.[3]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.cleaner2.cells[3].runningState === "True"
+                  sulfide?.cleaner2?.cells?.[3]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 5</span>
-              <span className="">{sulfide.cleaner2.cells[4].level}</span>
+              <span className="">{sulfide?.cleaner2?.cells?.[4]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.cleaner2.cells[4].runningState === "True"
+                  sulfide?.cleaner2?.cells?.[4]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -781,7 +781,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.cleaner2.cells[5].runningState === "True"
+                  sulfide?.cleaner2?.cells?.[5]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -790,7 +790,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.cleaner2.cells[6].runningState === "True"
+                  sulfide?.cleaner2?.cells?.[6]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -799,7 +799,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.cleaner2.cells[7].runningState === "True"
+                  sulfide?.cleaner2?.cells?.[7]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -808,7 +808,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.cleaner2.cells[8].runningState === "True"
+                  sulfide?.cleaner2?.cells?.[8]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -829,31 +829,31 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
                 )}
               ></span>
               <span className="col-span-2">Cell 2</span>
-              <span className="">{oxyde.cleaner2.cells[1].level}</span>
+              <span className="">{oxyde?.cleaner2?.cells?.[1]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.cleaner2.cells[1].runningState === "True"
+                  oxyde?.cleaner2?.cells?.[1]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 3</span>
-              <span className="">{oxyde.cleaner2.cells[2].level}</span>
+              <span className="">{oxyde?.cleaner2?.cells?.[2]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.cleaner2.cells[2].runningState === "True"
+                  oxyde?.cleaner2?.cells?.[2]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 4</span>
-              <span className="">{oxyde.cleaner2.cells[3].level}</span>
+              <span className="">{oxyde?.cleaner2?.cells?.[3]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.cleaner2.cells[3].runningState === "True"
+                  oxyde?.cleaner2?.cells?.[3]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -863,7 +863,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.cleaner2.cells[4].runningState === "True"
+                  oxyde?.cleaner2?.cells?.[4]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -872,7 +872,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.cleaner2.cells[5].runningState === "True"
+                  oxyde?.cleaner2?.cells?.[5]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -881,7 +881,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.cleaner2.cells[6].runningState === "True"
+                  oxyde?.cleaner2?.cells?.[6]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -890,7 +890,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.cleaner2.cells[7].runningState === "True"
+                  oxyde?.cleaner2?.cells?.[7]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -905,31 +905,31 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span className="col-start-3">level</span>
               <span className="col-span-3 ml-auto">Running state</span>
               <span className="col-span-2">Cell 1</span>
-              <span className="">{sulfide.cleaner3.cells[0].level}</span>
+              <span className="">{sulfide?.cleaner3?.cells?.[0]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.cleaner3.cells[0].runningState === "True"
+                  sulfide?.cleaner3?.cells?.[0]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 2</span>
-              <span className="">{sulfide.cleaner3.cells[1].level}</span>
+              <span className="">{sulfide?.cleaner3?.cells?.[1]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.cleaner3.cells[1].runningState === "True"
+                  sulfide?.cleaner3?.cells?.[1]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 3</span>
-              <span className="">{sulfide.cleaner3.cells[2].level}</span>
+              <span className="">{sulfide?.cleaner3?.cells?.[2]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.cleaner3.cells[2].runningState === "True"
+                  sulfide?.cleaner3?.cells?.[2]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -939,7 +939,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.cleaner3.cells[3].runningState === "True"
+                  sulfide?.cleaner3?.cells?.[3]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -948,7 +948,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.cleaner3.cells[4].runningState === "True"
+                  sulfide?.cleaner3?.cells?.[4]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -959,21 +959,21 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span className="col-start-3">level</span>
               <span className="col-span-3 ml-auto">Running state</span>
               <span className="col-span-2">Cell 1</span>
-              <span className="">{oxyde.cleaner3.cells[0].level}</span>
+              <span className="">{oxyde?.cleaner3?.cells?.[0]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.cleaner3.cells[0].runningState === "True"
+                  oxyde?.cleaner3?.cells?.[0]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
               ></span>
               <span className="col-span-2">Cell 2</span>
-              <span className="">{oxyde.cleaner3.cells[1].level}</span>
+              <span className="">{oxyde?.cleaner3?.cells?.[1]?.level}</span>
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.cleaner3.cells[1].runningState === "True"
+                  oxyde?.cleaner3?.cells?.[1]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -983,7 +983,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.cleaner3.cells[2].runningState === "True"
+                  oxyde?.cleaner3?.cells?.[2]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -992,7 +992,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.cleaner3.cells[3].runningState === "True"
+                  oxyde?.cleaner3?.cells?.[3]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -1006,7 +1006,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
             <span
               className={cn(
                 "ml-auto flex h-3 w-6 rounded-[2px]",
-                oxyde.mill.cells[0].runningState === "True"
+                oxyde?.mill?.cells?.[0]?.runningState === "True"
                   ? "bg-[#26E2B3]"
                   : "bg-[#FF0000]",
               )}
@@ -1018,7 +1018,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.mill.cells[0].runningState === "True"
+                  sulfide?.mill?.cells?.[0]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -1027,7 +1027,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.mill.cells[1].runningState === "True"
+                  sulfide?.mill?.cells?.[1]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -1036,7 +1036,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  sulfide.mill.cells[2].runningState === "True"
+                  sulfide?.mill?.cells?.[2]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -1048,7 +1048,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.mill.cells[1].runningState === "True"
+                  oxyde?.mill?.cells?.[1]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -1057,7 +1057,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.mill.cells[2].runningState === "True"
+                  oxyde?.mill?.cells?.[2]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
@@ -1066,7 +1066,7 @@ const RightBar = ({ oxyde, sulfide }: RightBarProps) => {
               <span
                 className={cn(
                   "col-start-6 ml-auto flex h-3 w-6 rounded-[2px]",
-                  oxyde.mill.cells[3].runningState === "True"
+                  oxyde?.mill?.cells?.[3]?.runningState === "True"
                     ? "bg-[#26E2B3]"
                     : "bg-[#FF0000]",
                 )}
