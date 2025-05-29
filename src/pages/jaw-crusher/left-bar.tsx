@@ -29,15 +29,8 @@ const LeftBar = ({
       <h1 className="text-xl font-bold">Jaw Crusher</h1>
       <Card className="card !rounded px-5 py-3">
         {/* {JSON.stringify(runningState)} */}
-        <div className="mb-2 flex flex-col gap-1">
+        <div className="mb-2 flex flex-col gap-4">
           <span>Running State</span>
-          <span className="text-xl font-bold text-[#FFC829]">
-            {runningState
-              ?.filter((ele: any) => ele.value)
-              .reduce((acc: number, ele: any) => acc + ele.difTimeHourly, 0) ||
-              0}
-            Hrs
-          </span>
           <div className="flex h-8 w-full overflow-hidden rounded-sm">
             {runningState?.map((ele: any) => {
               return (
@@ -65,10 +58,8 @@ const LeftBar = ({
             <span className="text-xl font-bold text-[#FFC829]">
               {runningState
                 ?.filter((ele: any) => ele.value)
-                .reduce(
-                  (acc: number, ele: any) => acc + ele.difTimeHourly,
-                  0,
-                ) || 0}
+                .reduce((acc: number, ele: any) => acc + ele.difTimeHourly, 0) || 
+                0}
             </span>
           </div>
           <div className="flex w-full justify-between">
@@ -85,7 +76,7 @@ const LeftBar = ({
             </span>
           </div>
           <div className="flex w-full justify-between">
-            <span>Utilisation (%)</span>
+            <span>Utilization (%)</span>
             <span className="text-xl font-bold text-[#FFC829]">
               {runningState
                 ?.filter((ele: any) => ele.value)
@@ -115,7 +106,7 @@ const LeftBar = ({
               theme: "dark",
             },
             title: {
-              text: "Frame bearing temperature (°C)",
+              text: "Frame bearing temperatures (°C)",
               align: "left",
               style: {
                 fontSize: "14px",
@@ -182,7 +173,7 @@ const LeftBar = ({
               theme: "dark",
             },
             title: {
-              text: "Pitman bearing temperature (°C)",
+              text: "Pitman bearing temperatures (°C)",
               align: "left",
               style: {
                 fontSize: "14px",

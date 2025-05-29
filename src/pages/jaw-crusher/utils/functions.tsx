@@ -16,7 +16,7 @@ export const formatData = (
       crushedOreMax: data?.["s=6120-LI-2006B"] || 0,
       energy: data?.["s=6100-TR-2001"] || 0,
       power: data?.["s=6210-WI-2217"] || 0,
-      crushed: data?.["s=6210-WI-2217"] || 0,
+      crushed: data?.["s=6032-WIQ-1142"] || 0,
       jawCrusher: data?.["s=6032-LIT-1130"] || 0,
     };
   });
@@ -29,7 +29,7 @@ export const formatData = (
   setRightData((prev: any) => {
     return {
       ...prev,
-      conveyorRom: data?.["s=6032-FD-1107"] || 0,
+      conveyorRom: data?.["s=6032-CV-1140"] || 0,
       romBinWithdrawal: data?.["s=6032-FD-1107"] || 0,
       romStockpileAprf1: data?.["s=6028-FD-1021"] || 0,
       romStockpileAprf2: data?.["s=6028-FD-1022"] || 0,
@@ -79,7 +79,7 @@ export const updateDataWithSocket = (
       crushedOreMax: data?.["s=6120-LI-2006B"] || 0,
       energy: data?.["s=6100-TR-2001"] || 0,
       power: data?.["s=6210-WI-2217"] || 0,
-      crushed: data?.["s=6210-WI-2217"] || 0,
+      crushed: data?.["s=6032-WIQ-1142"] || 0,
       jawCrusher: data?.["s=6032-LIT-1130"] || 0,
     };
   });
@@ -126,7 +126,7 @@ export const updateDataWithSocket = (
   setRightData((prev: any) => {
     return {
       ...prev,
-      conveyorRom: data?.["s=6032-FD-1107"] || 0,
+      conveyorRom: data?.["s=6032-CV-1140"] || 0,
       romBinWithdrawal: data?.["s=6032-FD-1107"] || 0,
       romStockpileAprf1: data?.["s=6028-FD-1021"] || 0,
       romStockpileAprf2: data?.["s=6028-FD-1022"] || 0,
