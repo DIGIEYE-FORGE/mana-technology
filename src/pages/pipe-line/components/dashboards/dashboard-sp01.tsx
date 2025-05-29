@@ -209,9 +209,9 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                 className={cn("size-[8rem] [&_.indicator]:fill-[#26e2b3]", {
                   // TODO: change this base on state
                   "[&_.indicator-1]:!fill-red-500":
-                    data.hammerArrestorH1 === "True" ? true : false,
+                    data.hammerArrestorH == "True" ? true : false,
                   "[&_.indicator-2]:!fill-red-500":
-                    data.hammerArrestorH2 === "True" ? true : false,
+                    data.hammerArrestorL == "True" ? true : false,
                 })}
               />
             </div>
