@@ -965,7 +965,7 @@ function LineChart({
   className,
   series = [
     {
-      name: "Production",
+      name: "To basin",
       data: [
         {
           x: new Date("2024-06-01"),
@@ -973,10 +973,32 @@ function LineChart({
         },
         {
           x: new Date("2024-06-02"),
+          y: 14,
+        },
+        {
+          x: new Date("2024-06-03"),
           y: 20,
         },
       ],
-      type: "area",
+      type: "line",
+    },
+    {
+      name: "To plant",
+      data: [
+        {
+          x: new Date("2024-06-01"),
+          y: 20,
+        },
+        {
+          x: new Date("2024-06-02"),
+          y: 14,
+        },
+        {
+          x: new Date("2024-06-03"),
+          y: 10,
+        },
+      ],
+      type: "line",
     },
   ],
   ...props
@@ -984,21 +1006,23 @@ function LineChart({
   return (
     <div
       className={twMerge(
-        "absolute bottom-6 left-[25%] -z-10 aspect-[2] w-[24em]",
+        "absolute bottom-6 left-[4rem] -z-10 aspect-[2.6] h-[11rem]",
         className,
       )}
       {...props}
     >
-      <div className="flex h-full w-full flex-col rounded-lg bg-card/10 p-3 backdrop-blur-sm">
-        <div className="font-semibold first-letter:uppercase">chart title</div>
-        <div className="h-1 flex-1">
+      <Card className="flex h-full w-full flex-col backdrop-blur-sm">
+        <div className="px-3 pt-3 font-semibold first-letter:uppercase">
+          flow rate (m<sup>3</sup>/h)
+        </div>
+        <div className="h-1 flex-1 -translate-y-4">
           <ReactApexChart
             options={{
               theme: {
                 mode: "dark",
               },
               tooltip: { cssClass: "text-black" },
-              colors: ["#26E2B3", "#4D09E8"],
+              colors: ["#26E2B3", "#F79043"],
               grid: {
                 borderColor: "#373737",
                 xaxis: { lines: { show: true } },
@@ -1012,9 +1036,9 @@ function LineChart({
                 selection: { enabled: false },
                 dropShadow: { enabled: false },
               },
-              stroke: { width: 1, curve: "smooth" },
+              stroke: { width: 2, curve: "smooth" },
               dataLabels: { enabled: false },
-              fill: { type: "solid", opacity: [0.1, 0.5] },
+              fill: { type: "solid" },
               legend: {
                 position: "bottom",
                 // markers: {
@@ -1058,11 +1082,11 @@ function LineChart({
               },
             }}
             series={series}
-            width={"100%"}
-            height={"100%"}
+            width={"105%"}
+            height={"110%"}
           />
         </div>
-      </div>
+      </Card>
     </div>
   );
 }
