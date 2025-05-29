@@ -32,7 +32,7 @@ const RightBar = ({
   return: returnData,
 }: RightBarProps) => {
   return (
-    <div className="relative z-10 flex h-full w-[500px] flex-col gap-3 opacity-50">
+    <div className="relative z-10 flex h-full w-[500px] flex-col gap-3">
       <Card className="flex flex-col gap-2 !rounded px-5 py-3">
         <span className="font-semibold">Hydraulic System</span>
         <Card className="flex items-center justify-center gap-5 !rounded px-5 py-1">

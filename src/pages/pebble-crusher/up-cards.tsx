@@ -19,7 +19,6 @@ interface UpCardsProps {
 const UpCards = ({
   flowRate,
   speed,
-  energy,
   bounce1,
   bounce2,
   bounce3,
@@ -35,9 +34,9 @@ const UpCards = ({
             <span>Input</span>
             <span className="text-lg font-bold text-[#FFC829]">{flowRate}</span>
           </Card>
-          <Card className="flex grow flex-col items-center justify-center !rounded py-1 opacity-50">
+          <Card className="flex grow flex-col items-center justify-center !rounded py-1">
             <span>Output</span>
-            <span className="text-lg font-bold text-[#FFC829]">{flowRate}</span>
+            <span className="text-lg font-bold text-[#FFC829]">##</span>
           </Card>
         </div>
       </Card>
@@ -48,18 +47,18 @@ const UpCards = ({
           <span className="text-lg font-bold text-[#FFC829]">{speed}</span>
         </div>
       </Card>
-      <Card className="flex max-w-fit grow items-center justify-center gap-5 !rounded px-5 opacity-50">
+      <Card className="flex max-w-fit grow items-center justify-center gap-5 !rounded px-5">
         <PlugIcon className="size-16" />
         <div className="flex flex-col gap-1">
           <span>Power (Kw)</span>
-          <span className="text-lg font-bold text-[#FFC829]">0</span>
+          <span className="text-lg font-bold text-[#FFC829]">##</span>
         </div>
       </Card>
-      <Card className="flex max-w-fit grow items-center justify-center gap-5 !rounded px-5 opacity-50">
+      <Card className="flex max-w-fit grow items-center justify-center gap-5 !rounded px-5">
         <ElectricIcon className="size-16" />
         <div className="flex flex-col gap-1">
           <span>Energy (kwh)</span>
-          <span className="text-lg font-bold text-[#FFC829]">{energy}</span>
+          <span className="text-lg font-bold text-[#FFC829]">##</span>
         </div>
       </Card>
       <Card className="flex max-w-fit grow items-center justify-center gap-5 !rounded px-5">
