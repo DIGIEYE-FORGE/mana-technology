@@ -223,7 +223,9 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                           colors: "#A2B0B8",
                         },
                       },
-                      decimalsInFloat: 2,
+                      decimalsInFloat: 0,
+                      min: 0,
+                      max: 30, 
                     },
                   }}
                   series={[
@@ -352,8 +354,8 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                 <HammerArrestorSVG
                   className={cn("size-[10rem] [&_.indicator]:fill-[#26e2b3]", {
                     // TODO: change this base on state
-                    "[&_.indicator-1]:!fill-red-500": false,
-                    "[&_.indicator-2]:!fill-red-500": true,
+                    "[&_.indicator-1]:!fill-red-500": data.surgeArrestorL == "True",
+                    "[&_.indicator-2]:!fill-red-500": data.surgeArrestorH == "True",
                   })}
                 />
               </div>
