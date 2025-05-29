@@ -10,11 +10,9 @@ import { ChevronsDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import LineChartWidget from "@/components/line-chart-widget";
 
-
 export default function UndergroundDashboardPage() {
-  const { dateRange} = useAppContext();
+  const { dateRange } = useAppContext();
 
-  
   return (
     <div className="grid h-fit w-full auto-rows-[17rem] grid-cols-3 gap-6 md:grid-cols-6 xl:grid-cols-9 2xl:auto-rows-[19rem] [&>*]:col-span-3">
       <Card className="flex flex-col p-4">
@@ -229,7 +227,7 @@ export default function UndergroundDashboardPage() {
         <Link to="/underground/ventilation1">
           <Button className="flex w-fit gap-2" size={"sm"} variant={"link"}>
             <ChevronsDown size={16} />
-            <span>Voir plus</span>
+            <span>See More</span>
           </Button>
         </Link>
       </Card>
@@ -380,7 +378,7 @@ export default function UndergroundDashboardPage() {
         >
           <Button className="flex h-5 w-fit gap-2" size={"sm"} variant={"link"}>
             <ChevronsDown size={16} />
-            <span className="text-center">Voir plus</span>
+            <span className="text-center">See More</span>
           </Button>
         </Link>
       </Card>

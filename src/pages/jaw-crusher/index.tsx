@@ -114,6 +114,7 @@ const JawCrusher = () => {
       return res;
     },
     {
+      revalidateOnMount: true,
       onSuccess: (data) => {
         const filteredResults = data?.results?.reduce(
           (acc: Record<string, any>, item: any) => {
@@ -147,6 +148,7 @@ const JawCrusher = () => {
       return res;
     },
     {
+      revalidateOnMount: true,
       onSuccess: (data) => {
         const filteredResults = data?.results?.reduce(
           (acc: Record<string, any>, item: any) => {

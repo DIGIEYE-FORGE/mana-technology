@@ -41,12 +41,15 @@ interface ModelProps {
   url: string;
   position?: [number, number, number];
   fov?: number;
+  speed?: number;
 }
 
-function Model({ url }: ModelProps) {
+function Model({ url, speed = 0.5 }: ModelProps) {
   const groupRef = useRef<Group>(null);
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [modelError, setModelError] = useState<boolean>(false);
+
+  console.log({ speed });
 
   // Use error handling with useGLTF
   const { scene } = useGLTF(url, true, undefined, (e) => {
@@ -56,7 +59,7 @@ function Model({ url }: ModelProps) {
 
   useFrame((_, delta) => {
     if (groupRef.current && !isHovered) {
-      groupRef.current.rotation.y += delta * 0.5; // Adjust rotation speed as needed
+      groupRef.current.rotation.y += delta * speed; // Adjust rotation speed as needed
     }
   });
 
@@ -97,8 +100,8 @@ function Model({ url }: ModelProps) {
 }
 
 // eslint-disable-next-line no-empty-pattern
-export default function ModelViewer({ url }: ModelProps) {
-  return <Model url={url} />;
+export default function ModelViewer({ url, speed }: ModelProps) {
+  return <Model url={url} speed={speed} />;
 }
 
 // Main Canvas component
@@ -106,6 +109,7 @@ export function ModelCanvas({
   url = "",
   position = [-60, 5, 10],
   fov = 20,
+  speed,
 }: ModelProps) {
   return (
     <Canvas camera={{ position, fov }} className="h-full w-full">
@@ -114,7 +118,7 @@ export function ModelCanvas({
       <OrbitControls makeDefault />
 
       <Suspense fallback={<ModelLoader />}>
-        <ModelViewer url={url} />
+        <ModelViewer url={url} speed={speed} />
       </Suspense>
     </Canvas>
   );

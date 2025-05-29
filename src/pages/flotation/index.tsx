@@ -163,9 +163,10 @@ const Flotation = () => {
             <div className="z-1 absolute inset-0 isolate flex flex-1 items-center justify-center p-0">
               {env.VITE_SHOW_MODEL === "true" && (
                 <ModelCanvas
-                  url={"/ignore/flotation_01.glb"}
-                  position={[-40, 15, -10]}
+                  url={"/ignore/flotation_05.glb"}
+                  position={[-140, 15, -10]}
                   fov={100}
+                  speed={0}
                 />
               )}
               // {/* )} */}

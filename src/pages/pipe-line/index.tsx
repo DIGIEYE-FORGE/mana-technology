@@ -155,7 +155,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                   setActivePoint(point.id);
                 }}
               >
-                Voir plus
+                See More
                 <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
             </div>
@@ -371,7 +371,7 @@ const PipeLine: React.FC = () => {
     setWidgetData([
       {
         title: "Pumped Volume (m3/h)",
-        value: data?.["cc"] *3.6,
+        value: data?.["cc"] * 3.6,
       },
       {
         title: "Flow Rate",

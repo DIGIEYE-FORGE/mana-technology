@@ -128,7 +128,7 @@ const LeftBar = ({
               theme: "dark",
             },
             title: {
-              text: "Concentrate Production",
+              text: "Concentrate Production (t/h)",
               align: "left",
               style: {
                 fontSize: "14px",
@@ -454,8 +454,8 @@ const LeftBar = ({
       </Card>
       <div className="flex justify-between gap-2">
         <Card className="flex w-[500px] shrink-0 flex-col !rounded p-2">
-          <div className="mb-2 flex items-center">
-            <span>Reagents</span>
+          <div className="mb-2 flex items-center pl-4">
+            <span className="text-sm font-semibold">Reagents (m3/h)</span>
             <span className="ml-auto text-xs">CONS.</span>
             <span className="ml-2 text-xs">SPEC.</span>
           </div>
