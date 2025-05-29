@@ -156,11 +156,13 @@ const PebbleCrusher = () => {
             </div>
             <UpCards
               flowRate={data?.["s=6210-WI-2215"] || 0}
+              speed={data?.["s=6140-SSL-2426A"] || 0}
               energy={data?.["s=6100-TR-2001"] || 0}
-              utilization={data?.["s=6210-WI-2217"] || 0}
               bounce1={data?.["s=6140-VT-2426A"] || 0}
               bounce2={data?.["s=6140-VT-2426B"] || 0}
               bounce3={data?.["s=6140-VT-2426C"] || 0}
+              telemetryRunningState={"s=6140-CR-2426"}
+              runningState={countData}
             />
             <div className="flex gap-5">
               <LeftBar

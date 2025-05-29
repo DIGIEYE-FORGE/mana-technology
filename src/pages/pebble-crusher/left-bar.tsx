@@ -66,7 +66,7 @@ const LeftBar = ({
         </div>
         <div className="flex flex-col gap-1">
           <div className="flex w-full justify-between">
-            <span>Running hours</span>
+            <span>Operating hours (h)</span>
             <span className="text-xl font-bold text-[#FFC829]">
               {runningState?.count[telemetryRunningState]
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -76,7 +76,7 @@ const LeftBar = ({
             </span>
           </div>
           <div className="flex w-full justify-between">
-            <span>Stop Hours</span>
+            <span>Downtime hours (h)</span>
             <span className="text-xl font-bold text-[#FFC829]">
               {Math.round(
                 runningState?.count[telemetryRunningState]
@@ -88,7 +88,7 @@ const LeftBar = ({
             </span>
           </div>
           <div className="flex w-full justify-between">
-            <span>Utilisation (%)</span>
+            <span>Utilization (%)</span>
             <span className="text-xl font-bold text-[#FFC829]">
               {Math.round(
                 (runningState?.count[telemetryRunningState]
@@ -124,7 +124,7 @@ const LeftBar = ({
               theme: "dark",
             },
             title: {
-              text: "Motor bearing temperature",
+              text: "Motor bearing temperatures (°C)",
               align: "left",
               style: {
                 fontSize: "14px",
@@ -191,7 +191,7 @@ const LeftBar = ({
               theme: "dark",
             },
             title: {
-              text: "Motor winding temperature",
+              text: "Motor winding temperatures (°C)",
               align: "left",
               style: {
                 fontSize: "14px",

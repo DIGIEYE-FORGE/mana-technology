@@ -6,21 +6,25 @@ import SettingIcon from "@/assets/setting.svg?react";
 
 interface UpCardsProps {
   flowRate: string | number;
+  speed: string | number;
   energy: string | number;
-  utilization: string | number;
   bounce1: string | number;
   bounce2: string | number;
   bounce3: string | number;
+  runningState: any;
+  telemetryRunningState: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 }
 
 const UpCards = ({
   flowRate,
+  speed,
   energy,
-  utilization,
   bounce1,
   bounce2,
   bounce3,
+  runningState,
+  telemetryRunningState
 }: UpCardsProps) => {
   return (
     <div className="flex w-full gap-2">
@@ -41,17 +45,17 @@ const UpCards = ({
         <RocketIcon className="size-16" />
         <div className="flex flex-col gap-1">
           <span>Speed (tr/min)</span>
-          <span className="text-lg font-bold text-[#FFC829]">xx</span>
+          <span className="text-lg font-bold text-[#FFC829]">{speed}</span>
         </div>
       </Card>
-      <Card className="flex max-w-fit grow items-center justify-center gap-5 !rounded px-5">
+      <Card className="flex max-w-fit grow items-center justify-center gap-5 !rounded px-5 opacity-50">
         <PlugIcon className="size-16" />
         <div className="flex flex-col gap-1">
           <span>Power (Kw)</span>
-          <span className="text-lg font-bold text-[#FFC829]">xx</span>
+          <span className="text-lg font-bold text-[#FFC829]">0</span>
         </div>
       </Card>
-      <Card className="flex max-w-fit grow items-center justify-center gap-5 !rounded px-5">
+      <Card className="flex max-w-fit grow items-center justify-center gap-5 !rounded px-5 opacity-50">
         <ElectricIcon className="size-16" />
         <div className="flex flex-col gap-1">
           <span>Energy (kwh)</span>
@@ -63,12 +67,23 @@ const UpCards = ({
         <div className="flex flex-col gap-1">
           <span>Utilization (%)</span>
           <span className="text-lg font-bold text-[#FFC829]">
-            {utilization}
+            {Math.round(
+                (runningState?.count[telemetryRunningState]
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  .filter((ele: any) => ele.value == "True")
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  .reduce(
+                    (acc: any, curr: any) => acc + curr.difTimeHourly,
+                    0,
+                  ) /
+                  24) *
+                  100,
+              )}
           </span>
         </div>
       </Card>
       <Card className="flex grow flex-col items-center gap-2 !rounded p-2">
-        <span>Adjustment Ring Bounce</span>
+        <span>Adjustment Ring Bounce vibrations(mm/s)</span>
         <div className="flex w-full gap-3">
           <Card className="flex grow flex-col items-center justify-center !rounded py-1">
             <span>1</span>

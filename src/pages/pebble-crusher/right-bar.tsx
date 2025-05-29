@@ -96,7 +96,7 @@ const RightBar = ({
               theme: "dark",
             },
             title: {
-              text: "Oil Temperature",
+              text: "Oil Temperatures (°C)",
               align: "left",
               style: {
                 fontSize: "14px",

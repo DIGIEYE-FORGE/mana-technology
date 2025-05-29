@@ -8,6 +8,7 @@ export const formatData = (
     return {
       ...prev,
       flowRate: data?.["s=6210-WI-2215"] || 0,
+      speed: data?.["s=6140-SSL-2426A"] || 0,
       energy: data?.["s=6100-TR-2001"] || 0,
       utilization: data?.["s=6210-WI-2217"] || 0,
       bounce1: data?.["s=6140-VT-2426A"] || 0,
@@ -73,6 +74,7 @@ export const updateDataWithSocket = (
       ...prev,
       flowRate: data?.["s=6210-WI-2215"] || 0,
       energy: data?.["s=6100-TR-2001"] || 0,
+      speed: data?.["s=6140-SSL-2426A"] || 0,
       utilization: data?.["s=6210-WI-2217"] || 0,
       bounce1: data?.["s=6140-VT-2426A"] || 0,
       bounce2: data?.["s=6140-VT-2426B"] || 0,
