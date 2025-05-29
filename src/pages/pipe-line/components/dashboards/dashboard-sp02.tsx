@@ -17,12 +17,12 @@ const Data = [
 ];
 
 const valuesData = [
-  { id: 1, name: "V1", value: "0" },
-  { id: 2, name: "V2", value: "0" },
-  { id: 3, name: "V3", value: "0" },
-  { id: 4, name: "I1", value: "0" },
-  { id: 5, name: "I2", value: "0" },
-  { id: 6, name: "I3", value: "0" },
+  { id: 1, name: "V1", value: "00" },
+  { id: 2, name: "V2", value: "00" },
+  { id: 3, name: "V3", value: "00" },
+  { id: 4, name: "I1", value: "00" },
+  { id: 5, name: "I2", value: "00" },
+  { id: 6, name: "I3", value: "00" },
 ];
 
 const progressDataLine = [
@@ -85,7 +85,7 @@ interface DashboardSP02Props {
 export function DashboardSP02({ data }: DashboardSP02Props) {
   return (
     <>
-      <div className="absolute right-[1rem] top-[13%] flex gap-4">
+      <div className="debug absolute right-[1rem] top-[13%] flex gap-4">
         {Data.map((item) => (
           <div
             key={item.id}
@@ -100,13 +100,16 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
           <div className="flex flex-1 flex-col gap-[0.5rem] [&>*]:flex-1">
             <Card className="flex h-[202px] flex-col">
               <div className="px-4 pt-3 text-[14px] font-bold text-white">
-                Flows
+                Flows (l/s)
               </div>
               <div className="flex-1 pl-2 pr-2">
                 <ReactApexChart
                   height={"100%"}
                   options={{
                     chart: {
+                      animations: {
+                        enabled: false, // Disable animations for smoother performance
+                      },
                       type: "line",
                       zoom: {
                         enabled: false,
@@ -117,6 +120,9 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                     },
                     tooltip: {
                       theme: "dark",
+                      y: {
+                        formatter: (val: number) => `${val.toFixed(2)} l/s`,
+                      },
                     },
 
                     stroke: {
@@ -164,13 +170,16 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
             </Card>
             <Card className="flex h-[202px] flex-col">
               <div className="p-4 pb-0 text-[14px] font-bold text-white">
-                Pressures
+                Pressures (bar)
               </div>
               <div className="flex-1 pl-2 pr-2">
                 <ReactApexChart
                   height={"100%"}
                   options={{
                     chart: {
+                      animations: {
+                        enabled: false, // Disable animations for smoother performance
+                      },
                       type: "line",
                       zoom: {
                         enabled: false,
@@ -181,110 +190,15 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                     },
                     tooltip: {
                       theme: "dark",
+                      y: {
+                        formatter: (val: number) => `${val.toFixed(2)} (bar)`,
+                      },
                     },
                     stroke: {
                       curve: "smooth",
                       width: 3,
                     },
                     colors: ["#E4A0F5", "#FFCA05", "#26E2B3", "#E64C3C"],
-                    legend: {
-                      labels: {
-                        colors: "#A2B0B8",
-                      },
-                      markers: {
-                        shape: "circle",
-                      },
-                    },
-                    xaxis: {
-                      labels: {
-                        style: {
-                          colors: "#A2B0B8",
-                        },
-                      },
-                      type: "datetime",
-                    },
-                    yaxis: [
-                      {
-                        seriesName: "Output",
-                        labels: {
-                          style: {
-                            colors: "#A2B0B8",
-                          },
-                        },
-                        title: {
-                          text: "Output",
-                          style: {
-                            color: "#E4A0F5",
-                          },
-                        },
-                        decimalsInFloat: 2,
-                      },
-                      {
-                        seriesName: "p1",
-                        opposite: true,
-                        labels: {
-                          style: {
-                            colors: "#A2B0B8",
-                          },
-                        },
-                        title: {
-                          text: "P1, P2, P3",
-                          style: {
-                            color: "#A2B0B8",
-                          },
-                        },
-                        decimalsInFloat: 2,
-                        show: true,
-                      },
-                    ],
-                  }}
-                  series={[
-                    {
-                      name: "Output",
-                      data: data.pressuresOutput || [],
-                    },
-                    {
-                      name: "p1",
-                      data: data.pressuresP1 || [],
-                    },
-                    {
-                      name: "p2",
-                      data: data.pressuresP2 || [],
-                    },
-                    {
-                      name: "p3",
-                      data: data.pressuresP3 || [],
-                    },
-                  ]}
-                />
-              </div>
-            </Card>
-            <Card className="flex h-[202px] flex-col">
-              <div className="p-4 pb-0 text-[14px] font-bold text-white">
-                Level
-              </div>
-              <div className="flex-1 pl-2 pr-2">
-                <ReactApexChart
-                  height={"100%"}
-                  options={{
-                    chart: {
-                      type: "line",
-                      zoom: {
-                        enabled: false,
-                      },
-                      toolbar: {
-                        show: false,
-                      },
-                    },
-                    tooltip: {
-                      theme: "dark",
-                    },
-
-                    stroke: {
-                      curve: "smooth",
-                      width: 3,
-                    },
-                    colors: ["#0843e4"],
                     legend: {
                       labels: {
                         colors: "#A2B0B8",
@@ -309,11 +223,130 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                       },
                       decimalsInFloat: 2,
                     },
+                    // yaxis: [
+                    //   {
+                    //     seriesName: "Output",
+                    //     labels: {
+                    //       style: {
+                    //         colors: "#A2B0B8",
+                    //       },
+                    //     },
+                    //     title: {
+                    //       text: "Output",
+                    //       style: {
+                    //         color: "#E4A0F5",
+                    //       },
+                    //     },
+                    //     decimalsInFloat: 2,
+                    //   },
+                    //   {
+                    //     seriesName: "p1",
+                    //     opposite: true,
+                    //     labels: {
+                    //       style: {
+                    //         colors: "#A2B0B8",
+                    //       },
+                    //     },
+                    //     title: {
+                    //       text: "P1, P2, P3",
+                    //       style: {
+                    //         color: "#A2B0B8",
+                    //       },
+                    //     },
+                    //     decimalsInFloat: 2,
+                    //     show: true,
+                    //   },
+                    // ],
+                  }}
+                  series={[
+                    {
+                      name: "Output",
+                      data: data.pressuresOutput || [],
+                    },
+                    {
+                      name: "p1",
+                      data: data.pressuresP1 || [],
+                    },
+                    {
+                      name: "p2",
+                      data: data.pressuresP2 || [],
+                    },
+                    {
+                      name: "p3",
+                      data: data.pressuresP3 || [],
+                    },
+                  ]}
+                />
+              </div>
+            </Card>
+            <Card className="flex h-[202px] flex-col">
+              <div className="p-4 pb-0 text-[14px] font-bold text-white">
+                Level (%)
+              </div>
+              <div className="flex-1 pl-2 pr-2">
+                <ReactApexChart
+                  height={"100%"}
+                  options={{
+                    chart: {
+                      animations: {
+                        enabled: false, // Disable animations for smoother performance
+                      },
+                      type: "line",
+                      zoom: {
+                        enabled: false,
+                      },
+                      toolbar: {
+                        show: false,
+                      },
+                    },
+                    tooltip: {
+                      theme: "dark",
+                      y: {
+                        formatter: (val: number) => `${val.toFixed(2)} %`,
+                      },
+                    },
+
+                    stroke: {
+                      curve: "smooth",
+                      width: 3,
+                    },
+                    colors: ["#0843e4"],
+                    legend: {
+                      labels: {
+                        colors: "#A2B0B8",
+                      },
+                      markers: {
+                        shape: "circle",
+                      },
+                    },
+                    xaxis: {
+                      labels: {
+                        style: {
+                          colors: "#A2B0B8",
+                        },
+                      },
+                      type: "datetime",
+                    },
+                    yaxis: {
+                      min: 0,
+                      max: 100,
+                      labels: {
+                        style: {
+                          colors: "#A2B0B8",
+                        },
+                      },
+                      decimalsInFloat: 0,
+                    },
                   }}
                   series={[
                     {
                       name: "level",
-                      data: data.level || [],
+                      data: data.level.map(
+                        (item: { x: string | number; y: number }) => ({
+                          x: new Date(item.x),
+                          y: (item.y / 5) * 100, // Assuming y is in cm and we want to convert it to percentage
+                        }),
+                      ),
                     },
                   ]}
                 />

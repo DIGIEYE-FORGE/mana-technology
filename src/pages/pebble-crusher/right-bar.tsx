@@ -34,7 +34,7 @@ const RightBar = ({
   return (
     <div className="relative z-10 flex h-full w-[500px] flex-col gap-3">
       <Card className="flex flex-col gap-2 !rounded px-5 py-3">
-        <span className="font-semibold">Hydrolic System</span>
+        <span className="font-semibold">Hydraulic System</span>
         <Card className="flex items-center justify-center gap-5 !rounded px-5 py-1">
           <DropIcon className="size-16" />
           <span className="text-lg font-medium">Pressure</span>{" "}
@@ -71,7 +71,7 @@ const RightBar = ({
         <Card className="flex items-center justify-center gap-5 !rounded px-5 py-1">
           <LubIcon className="size-16" />
           <span className="text-lg font-medium">
-            Lub Filter Differentiel
+            Lub Filter Differential
           </span>{" "}
           <span className="ml-auto text-xl font-bold text-[#FFC829]">
             {lub}

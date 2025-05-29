@@ -57,12 +57,22 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
         },
       ],
     },
+    {
+      name: "trubidité",
+      data: [
+        {
+          name: "trubidité",
+          value: data.trubidite || 0,
+          key: "trubidite",
+        },
+      ],
+    },
   ];
 
   return (
     <div className="relative mb-8 flex h-full min-h-0 flex-1 flex-col overflow-hidden pl-12 pr-6">
       {/* Summary bar */}
-      <div className="mb-6 ml-auto grid w-full max-w-[60rem] grid-cols-3 grid-rows-1 gap-2">
+      <div className="mb-6 ml-auto grid w-full max-w-[60rem] grid-cols-4 grid-rows-1 gap-2">
         {res.map((item, index) => (
           <div
             key={index}
@@ -97,6 +107,9 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                 options={{
                   chart: {
                     type: "line",
+                    animations: {
+                      enabled: false, // Disable animations for smoother performance
+                    },
                     zoom: {
                       enabled: false,
                     },
@@ -105,7 +118,7 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                     },
                   },
                   title: {
-                    text: "Flows",
+                    text: "Flows (l/s)",
                     align: "left",
                     style: {
                       fontSize: "14px",
@@ -114,6 +127,9 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                   },
                   tooltip: {
                     theme: "dark",
+                    y: {
+                      formatter: (val: number) => `${val.toFixed(2)} (l/s)`,
+                    },
                   },
                   stroke: {
                     curve: "smooth",
@@ -205,6 +221,8 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                     type: "datetime",
                   },
                   yaxis: {
+                    min: 0,
+                    max: 100,
                     labels: {
                       style: {
                         colors: "#A2B0B8",
@@ -216,11 +234,21 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                 series={[
                   {
                     name: "B1",
-                    data: data.levelB1 || [],
+                    data: data.levelB1.map(
+                      (item: { x: string; y: number }) => ({
+                        x: item.x,
+                        y: (item.y / 2.7) * 100, // Assuming max level is 2.7
+                      }),
+                    ),
                   },
                   {
                     name: "B2",
-                    data: data.levelB2 || [],
+                    data: data.levelB2.map(
+                      (item: { x: string; y: number }) => ({
+                        x: item.x,
+                        y: (item.y / 2.7) * 100, // Assuming max level is 2.7
+                      }),
+                    ),
                   },
                 ]}
               />

@@ -7,6 +7,7 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
         "Chlore output": data?.["s=SP1_CHL_02_MAE_TM"]?.[length - 1]?.y,
         "Flow input": data?.["s=SP1_FIT_01_MAE_TM"]?.[length - 1]?.y,
         "Flow output": data?.["s=SP1_FIT_02_MAE_TM"]?.[length - 1]?.y,
+
         "delta flow":
           +data?.["s=SP1_FIT_02_MAE_TM"]?.[length - 1]?.y -
           +data?.["s=SP1_FIT_01_MAE_TM"]?.[length - 1]?.y,
@@ -240,6 +241,7 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
         "Chlore output": data?.["s=B_CHL_02_MAE_TM"]?.[length - 1]?.y,
         "Flow input": data?.["s=B_FIT_01_MAE_TM"]?.[length - 1]?.y,
         "Flow output": data?.["s=B_FIT_02_MAE_TM"]?.[length - 1]?.y,
+        "trubidite": data?.["s=s=B_TURB_01_MAE_TM"]?.[length - 1]?.y,
         "delta flow":
           +data?.["s=B_FIT_02_MAE_TM"]?.[length - 1]?.y -
           +data?.["s=B_FIT_01_MAE_TM"]?.[length - 1]?.y,
@@ -264,6 +266,7 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
         "Chlore output": data?.["s=SP1_CHL_02_MAE_TM"],
         "Flow input": data?.["s=SP1_FIT_01_MAE_TM"],
         "Flow output": data?.["s=SP1_FIT_02_MAE_TM"],
+        trubidite : data?.["s=SP1_TURB_01_MAE_TM"],
         "delta flow":
           +data?.["s=SP1_FIT_02_MAE_TM"] - +data?.["s=SP1_FIT_01_MAE_TM"],
         "pression output": data?.["s=SP1_PIT_04_MAE_TM"],
@@ -486,6 +489,7 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
         "Chlore output": data?.["s=B_CHL_02_MAE_TM"],
         "Flow input": data?.["s=B_FIT_01_MAE_TM"],
         "Flow output": data?.["s=B_FIT_02_MAE_TM"],
+        "trubidite": data?.["s=B_TURB_01_MAE_TM"],
         "delta flow":
           +data?.["s=B_FIT_02_MAE_TM"] - +data?.["s=B_FIT_01_MAE_TM"],
         "pression output": data?.["s=B_PIT_04_MAE_TM"],
@@ -505,6 +509,7 @@ export const formatHistoryData = (data: any, setDataHistory: any) => {
     SP01: {
       flowRate: data?.["s=SP1_FIT_02_MAE_TM"]?.[length - 1]?.y,
       pumpedVolume: data?.["s=SP1_FIT_02_TOT_MES_TM"]?.[length - 1]?.y,
+      trubidite: data?.["s=SP1_TURB_01_MAE_TM"]?.[length - 1]?.y,
       deltaFlow:
         +data?.["s=SP1_FIT_02_MAE_TM"]?.[length - 1]?.y -
         +data?.["s=SP1_FIT_01_MAE_TM"]?.[length - 1]?.y,

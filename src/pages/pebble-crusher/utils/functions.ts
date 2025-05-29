@@ -19,6 +19,7 @@ export const formatData = (
     return {
       ...prev,
       runningState: data?.["s=6210-WI-2217"] || 0,
+      telemetryRunningState: data?.["s=6140-CR-2426"] || 0,
     };
   });
   setRightData((prev: any) => {
@@ -83,6 +84,7 @@ export const updateDataWithSocket = (
     return {
       ...prev,
       runningState: data?.["s=6210-WI-2217"] || 0,
+      telemetryRunningState: data?.["s=6140-CR-2426"] || 0,
       nde: [
         ...(prev?.nde?.slice(1) || []),
         { x: new Date(), y: data?.["s=6140-TE-2426NDE"] || 0 },

@@ -28,33 +28,30 @@ const PebbleCrusher = () => {
   const [leftData, setLeftData] = useState<any>(null);
   const [rightData, setRightData] = useState<any>(null);
 
-  const { error: countError, isLoading: isLoadingCount } = useSWR(
-    "count",
-    async () => {
-      const res = await backendApi.getHistory(
-        "/dpc-history/api/history/count/0V7ZJGB503H9WGH3",
-        {
-          startDate: new Date(
-            dateRange?.from ||
-              /// last hour
-              new Date(Date.now() - 60 * 60 * 1000),
-          ).toISOString(),
-          endDate: new Date(dateRange?.to || new Date()).toISOString(),
-          telemetries: [
-            {
-              name: "s=6140-CR-2426",
-              value: true,
-            },
-            {
-              name: "s=6140-CR-2426",
-              value: false,
-            },
-          ],
-        },
-      );
-      return res;
-    },
-  );
+  const {
+    data: countData,
+    error: countError,
+    isLoading: isLoadingCount,
+  } = useSWR("count", async () => {
+    const res = await backendApi.getHistory(
+      "/dpc-history/api/history/count/0V7ZJGB503H9WGH3",
+      {
+        // startDate: new Date(
+        //   dateRange?.from ||
+        //     /// last hour
+        //     new Date(Date.now() - 60 * 60 * 1000),
+        // ).toISOString(),
+        // endDate: new Date(dateRange?.to || new Date()).toISOString(),
+        telemetries: [
+          {
+            name: "s=6140-CR-2426",
+            value: [true, false],
+          },
+        ],
+      },
+    );
+    return res;
+  });
 
   const { isLoading, error } = useSWR(
     "last-telemetry",
@@ -176,6 +173,7 @@ const PebbleCrusher = () => {
           </div>
         ) : (
           <main className="relative flex !h-fit flex-col gap-5 px-6 pb-6">
+            {JSON.stringify(countData)}
             <div className="machine-highlight absolute bottom-[150px] left-1/2 aspect-square w-[500px] -translate-x-1/2">
               <div className="circle circle-3 relative h-full w-full">
                 <Circle3 className="rotate h-full w-full duration-1000" />
@@ -215,6 +213,7 @@ const PebbleCrusher = () => {
                 u1={leftData?.u1 || []}
                 v1={leftData?.v1 || []}
                 w1={leftData?.w1 || []}
+                telemetryRunningState={leftData?.runningState || 0}
               />
               <Card className="h-[200px] flex-1 self-end !rounded">
                 <ReactApexChart
