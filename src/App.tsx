@@ -157,7 +157,7 @@ function App() {
               <GoliaWidget
                 style={{
                   position: "fixed",
-                  bottom: "20px",
+                  top: "80px",
                   right: "20px",
                   zIndex: 999999,
                 }}
@@ -170,7 +170,7 @@ function App() {
                 }}
                 containerStyle={{
                   resize: "both",
-                  bottom: "30px",
+                  top: "80px",
                   right: "90px",
                 }}
                 bot={bot}

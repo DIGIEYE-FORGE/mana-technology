@@ -30,8 +30,6 @@ const UpCards = ({
   stockpileLevelMax,
   crushedOreMin,
   crushedOreMax,
-  energy,
-  power,
   jawCrusher,
   runingState,
 }: UpCardsProps) => {
@@ -103,18 +101,18 @@ const UpCards = ({
             </div>
           </div>
         </Card>
-        <Card className="flex grow cursor-none items-center justify-center gap-5 !rounded px-5 opacity-50">
+        <Card className="flex grow cursor-none items-center justify-center gap-5 !rounded px-5">
           <PlugIcon className="size-14 min-h-[3.5rem] min-w-[3.5rem]" />
           <div className="flex flex-col gap-1">
             <span>Power (Kw)</span>
-            <span className="text-lg font-bold text-[#FFC829]">{power}</span>
+            <span className="text-lg font-bold text-[#FFC829]">##</span>
           </div>
         </Card>
-        <Card className="flex grow items-center justify-center gap-5 !rounded px-5 opacity-50">
+        <Card className="flex grow items-center justify-center gap-5 !rounded px-5">
           <ElectricIcon className="size-14 min-h-[3.5rem] min-w-[3.5rem]" />
           <div className="flex flex-col gap-1">
             <span>Energy (kwh)</span>
-            <span className="text-lg font-bold text-[#FFC829]">{energy}</span>
+            <span className="text-lg font-bold text-[#FFC829]">##</span>
           </div>
         </Card>
         <Card className="flex grow items-center justify-center gap-5 !rounded px-5">

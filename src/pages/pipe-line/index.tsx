@@ -27,8 +27,8 @@ import {
   updateHistoryData,
 } from "./utils/functions";
 import { twMerge } from "tailwind-merge";
-// import { Card } from "@/components/card";
 import ReactApexChart from "react-apexcharts";
+import { Card } from "@/components/card";
 
 interface Position {
   top?: string;
@@ -167,7 +167,6 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                 "flex-col": point.id === "SP6",
               })}
             >
-              {/* {JSON.stringify(point.card.attributes)} */}
               <LiquidProgress
                 className={cn("h-[9rem] w-[7rem]", {
                   "w-[6.5rem]": point.id === "SP6",
@@ -374,12 +373,12 @@ const PipeLine: React.FC = () => {
     // Update widgetData with new data
     setWidgetData([
       {
-        title: "Pumped Volume (m3/h)",
-        value: data?.["cc"] * 3.6,
+        title: "Pumped Volume (m3)",
+        value: data?.["s=B_FIT_02_TOT_MES_TM"] / 1000,
       },
       {
-        title: "Flow Rate",
-        value: data?.["s=B_FIT_02_MAE_TM"],
+        title: "Flow Rate (m3/h)",
+        value: data?.["s=B_FIT_02_MAE_TM"] * 3.6,
       },
     ]);
 
@@ -670,10 +669,10 @@ const PipeLine: React.FC = () => {
         console.log("Filtered Results:", { data, filteredResults });
         setWidgetData([
           {
-            title: "Pumped Volume (m3/h)",
+            title: "Pumped Volume (m3)",
             value:
-              filteredResults?.["s=B_FIT_02_TOT_MES_TM"]?.[length - 1]?.y *
-                3.6 || 0,
+              filteredResults?.["s=B_FIT_02_TOT_MES_TM"]?.[length - 1]?.y /
+                1000 || 0,
           },
           {
             title: "Flow Rate",
@@ -687,12 +686,8 @@ const PipeLine: React.FC = () => {
     },
   );
 
-  const {
-    // data: countData,
-    // error: countError,
-    isLoading: isLoadingCount,
-  } = useSWR(
-    "count",
+  const { isLoading: isLoadingCount } = useSWR(
+    "count-pipe-line",
     async () => {
       const res = await backendApi.getHistory(
         "/dpc-history/api/history/count/JHF455XKPCH6DBLH",
@@ -813,6 +808,7 @@ const PipeLine: React.FC = () => {
       return res;
     },
     {
+      revalidateOnMount: true,
       onSuccess: (data) => {
         formatRunningTime(data, setRunningTime);
       },
@@ -871,7 +867,7 @@ const PipeLine: React.FC = () => {
                 className={cn(
                   "",
                   { hidden: item.hidden },
-                  item.value === "XX" && "opacity-50",
+                  item.value === "0" && "opacity-50",
                 )}
               >
                 <h3 className="text-lg text-white">{item.title}</h3>
@@ -953,7 +949,18 @@ const PipeLine: React.FC = () => {
             }
           </DialogContent>
         </Dialog>
-        <LineChart />
+        <LineChart
+          series={[
+            {
+              name: "To basin",
+              data: { ...dataHistory?.SP6, ...runningTime?.SP6 }.flowInput,
+            },
+            {
+              name: "To plant",
+              data: { ...dataHistory?.SP6, ...runningTime?.SP6 }.flowPlant,
+            },
+          ]}
+        />
       </main>
     </main>
   );
@@ -966,44 +973,27 @@ interface LineChartProps
   series?: ApexAxisChartSeries;
 }
 
-function LineChart({
-  className,
-  series = [
-    {
-      name: "Production",
-      data: [
-        {
-          x: new Date("2024-06-01"),
-          y: 10,
-        },
-        {
-          x: new Date("2024-06-02"),
-          y: 20,
-        },
-      ],
-      type: "area",
-    },
-  ],
-  ...props
-}: LineChartProps) {
+function LineChart({ className, series, ...props }: LineChartProps) {
   return (
     <div
       className={twMerge(
-        "absolute bottom-6 left-[25%] -z-10 aspect-[2] w-[24em]",
+        "absolute bottom-6 left-[4rem] -z-10 h-[11rem] w-[60rem]",
         className,
       )}
       {...props}
     >
-      <div className="flex h-full w-full flex-col rounded-lg bg-card/10 p-3 backdrop-blur-sm">
-        <div className="font-semibold first-letter:uppercase">chart title</div>
-        <div className="h-1 flex-1">
+      <Card className="flex h-full w-full flex-col backdrop-blur-sm">
+        <div className="px-3 pt-3 font-semibold first-letter:uppercase">
+          flow rate (m<sup>3</sup>/h)
+        </div>
+        <div className="h-1 flex-1 -translate-y-4">
           <ReactApexChart
             options={{
               theme: {
                 mode: "dark",
               },
               tooltip: { cssClass: "text-black" },
-              colors: ["#26E2B3", "#4D09E8"],
+              colors: ["#26E2B3", "#F79043"],
               grid: {
                 borderColor: "#373737",
                 xaxis: { lines: { show: true } },
@@ -1017,9 +1007,9 @@ function LineChart({
                 selection: { enabled: false },
                 dropShadow: { enabled: false },
               },
-              stroke: { width: 1, curve: "smooth" },
+              stroke: { width: 1.5, curve: "smooth" },
               dataLabels: { enabled: false },
-              fill: { type: "solid", opacity: [0.1, 0.5] },
+              fill: { type: "solid" },
               legend: {
                 position: "bottom",
                 // markers: {
@@ -1064,10 +1054,10 @@ function LineChart({
             }}
             series={series}
             width={"100%"}
-            height={"100%"}
+            height={"110%"}
           />
         </div>
-      </div>
+      </Card>
     </div>
   );
 }
