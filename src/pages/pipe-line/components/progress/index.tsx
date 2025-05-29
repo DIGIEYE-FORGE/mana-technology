@@ -27,8 +27,8 @@ const LiquidProgress: React.FC<LiquidProgressProps> = ({
   const percentageArray = Array.isArray(percentage) ? percentage : [percentage];
 
   const clamped = percentageArray
-    .filter((item) => item && typeof item.value !== "undefined")
-    .map((item) =>
+    ?.filter((item) => item && typeof item.value !== "undefined")
+    ?.map((item) =>
       Math.max(0, Math.min(100, parseFloat(String(item.value || 0)))),
     );
 
@@ -39,7 +39,7 @@ const LiquidProgress: React.FC<LiquidProgressProps> = ({
   return (
     <div className="flex flex-col items-center justify-center gap-1">
       <div className="flex gap-4">
-        {percentage.map((item, index) => (
+        {percentage?.map((item, index) => (
           <div
             key={index}
             className={cn("flex flex-col items-center", textStyle)}
@@ -58,7 +58,7 @@ const LiquidProgress: React.FC<LiquidProgressProps> = ({
           overflow: "hidden",
         }}
       >
-        {clamped.map((value, index) => (
+        {clamped?.map((value, index) => (
           <div
             key={index}
             className={cn("relative h-full", className)}
@@ -105,7 +105,7 @@ const LiquidProgress: React.FC<LiquidProgressProps> = ({
               />
             ))}
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-xl font-bold text-white mix-blend-difference">
+              <span className="text-sm font-bold text-white mix-blend-difference">
                 {value.toFixed(2)}%
               </span>
             </div>
