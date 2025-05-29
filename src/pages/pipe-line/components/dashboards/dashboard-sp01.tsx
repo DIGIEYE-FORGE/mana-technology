@@ -33,47 +33,47 @@ interface DashboardSP01Props {
 export function DashboardSP01({ data }: DashboardSP01Props) {
   console.log({ data });
 
-  const progressDataLine = [
-    {
-      id: 1,
-      title: "P1",
-      data: [
-        {
-          min: 0,
-          max: 100,
-          color: data.runningStateP1 ? "#26E2B3" : "#E64C3C",
-        },
-      ],
-      value: "XX",
-      unite: "Hrs",
-    },
-    {
-      id: 2,
-      title: "P2",
-      data: [
-        {
-          min: 0,
-          max: 100,
-          color: data.runningStateP2 ? "#26E2B3" : "#E64C3C",
-        },
-      ],
-      value: "XX",
-      unite: "Hrs",
-    },
-    {
-      id: 3,
-      title: "P3",
-      data: [
-        {
-          min: 0,
-          max: 100,
-          color: data.runningStateP3 ? "#26E2B3" : "#E64C3C",
-        },
-      ],
-      value: "XX",
-      unite: "Hrs",
-    },
-  ];
+  // const progressDataLine = [
+  //   {
+  //     id: 1,
+  //     title: "P1",
+  //     data: [
+  //       {
+  //         min: 0,
+  //         max: 100,
+  //         color: data.runningStateP1 ? "#26E2B3" : "#E64C3C",
+  //       },
+  //     ],
+  //     value: "XX",
+  //     unite: "Hrs",
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "P2",
+  //     data: [
+  //       {
+  //         min: 0,
+  //         max: 100,
+  //         color: data.runningStateP2 ? "#26E2B3" : "#E64C3C",
+  //       },
+  //     ],
+  //     value: "XX",
+  //     unite: "Hrs",
+  //   },
+  //   {
+  //     id: 3,
+  //     title: "P3",
+  //     data: [
+  //       {
+  //         min: 0,
+  //         max: 100,
+  //         color: data.runningStateP3 ? "#26E2B3" : "#E64C3C",
+  //       },
+  //     ],
+  //     value: "XX",
+  //     unite: "Hrs",
+  //   },
+  // ];
 
   return (
     <>
@@ -91,32 +91,9 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
 
       {/* Main dashboard content */}
       <div className="relative mr-4 flex h-full min-h-0 min-w-0 flex-1 gap-4 overflow-hidden py-4 pl-12 pr-4">
-        {/* {JSON.stringify(data)} */}
-        {/* 2 columns × 4 rows grid layout */}
         <div className="grid h-full min-h-0 w-full min-w-0 flex-1 grid-cols-2 grid-rows-4 gap-4">
-          {/* Row 1, Col 1 - Flows Chart */}
           <Card className="flex h-full flex-col">
             <div className="flex-1 pl-2 pr-2">
-              {/* <LineChartWidget
-                attributes={{
-                  telemetries: [
-                    {
-                      area: false,
-                      label: "Input",
-                      color: "#26E2B3",
-                      serial: "JZVATMKQ1A8DA2P1",
-                      data: data.flowsInput || [],
-                    },
-                    {
-                      area: false,
-                      label: "Output",
-                      color: "#FFD2A6",
-                      serial: "JZVATMKQ1A8DA2P1",
-                      data: data.flowsOutput || [],
-                    },
-                  ],
-                }}
-              /> */}
               <ReactApexChart
                 height={"100%"}
                 options={{
@@ -168,10 +145,6 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                       style: {
                         colors: "#A2B0B8",
                       },
-                      // add (l/s) to the x-axis labels
-                      // formatter: (value: any) => {
-                      //   return `${value} l/s`;
-                      // },
                     },
                     type: "datetime",
                   },
@@ -210,7 +183,12 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                 ]}
                 className="h-[7rem] w-[6rem]"
                 textStyle="text-white font-bold"
-                indictors={[true, false, false, false]}
+                indictors={[
+                  data.suctionTankLL == "True" ? true : false,
+                  data.suctionTankL == "True" ? true : false,
+                  data.suctionTankH == "True" ? true : false,
+                  data.suctionTankHH == "True" ? true : false,
+                ]}
               />
             </div>
             <div className="flex flex-1 flex-col items-center">
@@ -543,14 +521,15 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
               </span>
               <div className="absolute right-4 flex gap-2 text-xs">
                 <span className="rounded-full border border-white bg-[#021E3F] px-3 py-1 text-white">
-                  Input{" "}
-                  {data.chloreInput[data.chloreInput.length - 1]?.y.toFixed(
+                  Input
+                  {data.chloreInput[data.chloreInput.length - 1]?.y.toFixed?.(
                     2,
                   ) || "0"}
+                  {/* TODO:update this later */}
                 </span>
                 <span className="rounded-full border border-white bg-[#021E3F] px-3 py-1 text-white">
                   Output{" "}
-                  {data.chloreOutput[data.chloreOutput.length - 1]?.y.toFixed(
+                  {data.chloreOutput[data.chloreOutput.length - 1]?.y.toFixed?.(
                     2,
                   ) || "0"}
                 </span>
