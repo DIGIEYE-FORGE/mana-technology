@@ -59,10 +59,10 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
       ],
     },
     {
-      name: "trubidité",
+      name: "Turbidity",
       data: [
         {
-          name: "trubidité",
+          name: "Turbidity",
           value: data.trubidite || 0,
           key: "trubidite",
         },
