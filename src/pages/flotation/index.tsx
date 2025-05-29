@@ -23,7 +23,7 @@ import { env } from "@/utils/env";
 import { ModelCanvas } from "../omniverse/model-viewer";
 
 const Flotation = () => {
-  const { backendApi, dateRange } = useAppContext();
+  const { backendApi } = useAppContext();
   const [upData, setUpData] = useState<any>({});
   const [leftData, setLeftData] = useState<any>({});
   const [rightData, setRightData] = useState<any>({});
