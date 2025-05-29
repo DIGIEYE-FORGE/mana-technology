@@ -420,7 +420,9 @@ const tree = {
 export default function MainProjectPage() {
   const [isRotating, setIsRotating] = useState(true);
   const modelRef = useRef();
-  const [, setLoading] = useState(true);
+  const [, setLoading] = useState(
+    env.VITE_SHOW_MODEL === "true" ? true : false,
+  );
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [hovered] = useState("");
 

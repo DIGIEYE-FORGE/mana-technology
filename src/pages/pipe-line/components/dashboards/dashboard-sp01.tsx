@@ -193,8 +193,8 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                 className="h-[7rem] w-[6rem]"
                 textStyle="text-white font-bold"
                 indictors={[
-                  data.suctionTankLL == "True" ? true : false,
-                  data.suctionTankL == "True" ? true : false,
+                  data.suctionTankLL == "True" ? false : true,
+                  data.suctionTankL == "True" ? false : true,
                   data.suctionTankH == "True" ? true : false,
                   data.suctionTankHH == "True" ? true : false,
                 ]}

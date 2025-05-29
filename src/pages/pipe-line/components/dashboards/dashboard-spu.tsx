@@ -331,6 +331,12 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
         {/* Right column: 2 rows */}
         <div className="flex h-full min-h-0 flex-1 flex-col gap-3">
           <Card className="flex h-[28%] min-h-0 flex-1 items-center justify-center">
+            {JSON.stringify({
+              suctionTankLL: data.suctionTankLL,
+              suctionTankL: data.suctionTankL,
+              suctionTankH: data.suctionTankH,
+              suctionTankHH: data.suctionTankHH,
+            })}
             <LiquidProgress
               textStyle="text-white font-bold"
               percentage={progressData.map((item) => ({

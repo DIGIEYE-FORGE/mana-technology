@@ -24,7 +24,7 @@ function ProgressBar({
       {/* Render each segment of the progress bar */}
       <span className="p-4 text-xs text-white">{!title ? "--" : title}</span>
       <div className={cn("flex flex-1 gap-0", className)}>
-        {data.map((item, index) => (
+        {(data || [])?.map((item, index) => (
           <div
             key={index}
             style={{

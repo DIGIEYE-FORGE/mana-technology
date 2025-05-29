@@ -169,10 +169,10 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                   "w-[6.5rem]": point.id === "SP6",
                 })}
                 indictors={[
-                  point?.card?.attributes?.breakPoints?.[0] === "True",
-                  point?.card?.attributes?.breakPoints?.[1] === "True",
-                  point?.card?.attributes?.breakPoints?.[2] === "True",
-                  point?.card?.attributes?.breakPoints?.[3] === "True",
+                  point?.card?.attributes?.breakPoints?.[0] == "True",
+                  point?.card?.attributes?.breakPoints?.[1] == "True",
+                  point?.card?.attributes?.breakPoints?.[2] == "True",
+                  point?.card?.attributes?.breakPoints?.[3] == "True",
                 ]}
                 percentage={
                   point?.card?.progress && Array.isArray(point.card.progress)
@@ -222,7 +222,6 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
               />
 
               <div className="flex flex-1 flex-col gap-1">
-                {/* {JSON.stringify(point.card.attributes["Running state"])} */}
                 {Object?.entries(point.card.attributes)
                   .filter((ele) => !["breakPoints"].includes(ele[0]))
                   ?.map(([key, value]) => (
