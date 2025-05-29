@@ -204,10 +204,10 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
               <span className="mb-2 text-sm font-medium text-white">
                 Suction tank
               </span>
-              {JSON.stringify(data?.progress)}
-
               <LiquidProgress
-                percentage={[{ value: data.progress || 0, title: "" }]}
+                percentage={[
+                  { value: +Number(data.progress).toFixed(2) || 0, title: "" },
+                ]}
                 className="h-[7rem] w-[6rem]"
                 textStyle="text-white font-bold"
                 stops={[
@@ -557,10 +557,16 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
               </span>
               <div className="absolute right-4 flex gap-2 text-xs">
                 <span className="rounded-full border border-white bg-[#021E3F] px-3 py-1 text-white">
-                  Input XX
+                  Input{" "}
+                  {data.chloreInput[data.chloreInput.length - 1]?.y.toFixed(
+                    2,
+                  ) || "0"}
                 </span>
                 <span className="rounded-full border border-white bg-[#021E3F] px-3 py-1 text-white">
-                  Output XX
+                  Output{" "}
+                  {data.chloreOutput[data.chloreOutput.length - 1]?.y.toFixed(
+                    2,
+                  ) || "0"}
                 </span>
               </div>
             </div>
@@ -641,14 +647,18 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                 topTitle={data.chloreStationH1 || "SP01-M-02"}
                 leftTitle={data.chloreStationL1 || "LSLL-01"}
                 bottomTitle=""
-                value={data.chloreStationvalue1 || "XX"}
+                value={data.chloreStationvalue1 || "0"}
+                width={200}
+                height={200}
               />
               {/* First block */}
               <ChloreSVG
                 topTitle={data.chloreStationH2 || "SP01-M-03"}
                 leftTitle={data.chloreStationL2 || "LSLL-03"}
                 bottomTitle={data.chloreStationH1 || "SP01-M-01"}
-                value={data.chloreStationvalue2 || "XX"}
+                value={data.chloreStationvalue2 || "0"}
+                width={200}
+                height={200}
               />
               {/* Second block */}
             </div>

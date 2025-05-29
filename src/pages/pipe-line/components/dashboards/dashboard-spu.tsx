@@ -85,9 +85,10 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                   <span className="text-center text-sm">{dataItem.name}</span>
                   <div className="flex items-center justify-center gap-2 rounded-2xl border border-white bg-[#021E3F]/80 p-1 px-6 text-white backdrop-blur-md">
                     <span className="text-lg font-bold">
-                      {dataItem.key
+                      {(dataItem.key
                         ? data[dataItem.key] || dataItem.value
-                        : dataItem.value}
+                        : dataItem.value
+                      ).toFixed(2)}
                     </span>
                   </div>
                 </div>
@@ -347,19 +348,19 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
             <div className="flex min-h-0 flex-1 items-center justify-center gap-0">
               <ChloreSVG
                 topTitle="SP01-M-03"
-                leftTitle="LSLL-03"
+                // leftTitle="true"
                 bottomTitle="SP01-M-01"
                 value={data.station1 ?? "XX"}
-                width={240}
-                height={170}
+                width={350}
+                height={350}
               />
               <ChloreSVG
                 topTitle="SP01-M-03"
-                leftTitle="LSLL-04"
+                // leftTitle="false"
                 bottomTitle="SP01-M-02"
                 value={data.station2 ?? "XX"}
-                width={240}
-                height={170}
+                width={350}
+                height={350}
               />
             </div>
           </Card>

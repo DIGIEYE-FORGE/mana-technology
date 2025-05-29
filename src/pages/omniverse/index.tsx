@@ -275,11 +275,11 @@ function Crushing() {
       {/* ------------------------- middle side ------------------------- */}
       <div className="relative isolate flex flex-1 flex-col gap-2 px-6">
         <div className="absolute inset-0 isolate z-0 flex flex-1 items-center justify-center p-0">
-          {/* <ModelCanvas
+          <ModelCanvas
             url={"/model/jaw02.glb"}
             position={[-40, 15, -20]}
             fov={10}
-          /> */}
+          />
         </div>
         <Card className="mt-auto w-full">
           <ReactApexChart

@@ -161,24 +161,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                   className={cn("h-[9rem] w-[7rem]", {
                     "w-[3rem]": point.id === "SP6",
                   })}
-                  stops={[
-                    {
-                      color: "red",
-                      value: 5,
-                    },
-                    {
-                      color: "orange",
-                      value: 18,
-                    },
-                    {
-                      color: "#0553fb",
-                      value: 89,
-                    },
-                    {
-                      color: "green",
-                      value: 94,
-                    },
-                  ]}
+                  indictors={[false, true, true, false]}
                   percentage={
                     point?.card?.progress && Array.isArray(point.card.progress)
                       ? point.card.progress.map((p) => ({
@@ -228,7 +211,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
               </div>
 
               <div className="flex flex-1 flex-col gap-1">
-                {JSON.stringify(point.card.attributes["Running state"])}
+                {/* {JSON.stringify(point.card.attributes["Running state"])} */}
                 {Object?.entries(point.card.attributes)
                   .filter((ele) => !["breakPoints"].includes(ele[0]))
                   ?.map(([key, value]) => (
