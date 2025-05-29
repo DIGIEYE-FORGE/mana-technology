@@ -161,7 +161,23 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                   className={cn("h-[9rem] w-[7rem]", {
                     "w-[3rem]": point.id === "SP6",
                   })}
-                  indictors={[false, true, true, false]}
+                  indictors={
+                    (
+                      point.card.attributes.breakPoints?.map((ele: string) =>
+                        ele === "True" ? true : false,
+                      ) || [true, false, false, false]
+                    )
+                      .slice(0, 4)
+                      .concat(
+                        Array(
+                          Math.max(
+                            0,
+                            4 -
+                              (point.card.attributes.breakPoints?.length || 0),
+                          ),
+                        ).fill(false),
+                      ) as [boolean, boolean, boolean, boolean]
+                  }
                   percentage={
                     point?.card?.progress && Array.isArray(point.card.progress)
                       ? point.card.progress.map((p) => ({

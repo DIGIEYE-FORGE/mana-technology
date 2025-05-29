@@ -26,13 +26,14 @@ const LiquidProgress: React.FC<LiquidProgressProps> = ({
   // Ensure percentage is always an array and has valid values
   const percentageArray = Array.isArray(percentage) ? percentage : [percentage];
 
-  const clamped = percentageArray
-    .filter((item) => item && typeof item.value !== "undefined")
-    .map((item) =>
-      Math.max(0, Math.min(100, parseFloat(String(item.value || 0)))),
-    );
+  const clamped =
+    percentageArray
+      .filter((item) => item && typeof item.value !== "undefined")
+      .map((item) =>
+        Math.max(0, Math.min(100, parseFloat(String(item.value || 0)))),
+      ) || [];
 
-  if (clamped.length === 0) {
+  if (clamped?.length === 0) {
     return <div className={cn("h-0 w-0", className)} style={style} />;
   }
 
@@ -45,7 +46,7 @@ const LiquidProgress: React.FC<LiquidProgressProps> = ({
             className={cn("flex flex-col items-center", textStyle)}
           >
             {item.title && (
-              <span className="text-sm font-semibold">{item.title}</span>
+              <span className="text-sm font-semibold">{item?.title || ""}</span>
             )}
           </div>
         ))}
@@ -58,7 +59,7 @@ const LiquidProgress: React.FC<LiquidProgressProps> = ({
           overflow: "hidden",
         }}
       >
-        {clamped.map((value, index) => (
+        {(clamped || [])?.map((value, index) => (
           <div
             key={index}
             className={cn("relative h-full", className)}
@@ -89,7 +90,7 @@ const LiquidProgress: React.FC<LiquidProgressProps> = ({
                 />
               </svg>
             </div>
-            {[10, 20, 80, 90].map((bottom, index) => (
+            {[10, 20, 80, 90]?.map((bottom, index) => (
               <div
                 key={index}
                 className={cn(
@@ -106,7 +107,7 @@ const LiquidProgress: React.FC<LiquidProgressProps> = ({
             ))}
             <div className="absolute inset-0 flex items-center justify-center">
               <span className="text-xl font-bold text-white mix-blend-difference">
-                {value.toFixed(2)}%
+                {value}%
               </span>
             </div>
           </div>

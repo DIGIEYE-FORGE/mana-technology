@@ -328,11 +328,17 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                 </span>
                 <LiquidProgress
                   percentage={[
-                    { value: data.suctionTankLevel || 0, title: "jfjf" },
+                    { value: data.suctionTankLevel || 0, title: "" },
                   ]}
                   className="h-[10rem] w-[8rem]"
                   textStyle="text-white font-bold"
-                  stops={[]}
+                  // stops={[]}
+                  indictors={[
+                    data.suctionTankLL == "True" ? true : false,
+                    data.suctionTankL == "True" ? true : false,
+                    data.suctionTankH == "True" ? true : false,
+                    data.suctionTankHH == "True" ? true : false,
+                  ]}
                 />
               </div>
               <div className="flex flex-1 flex-col items-center">

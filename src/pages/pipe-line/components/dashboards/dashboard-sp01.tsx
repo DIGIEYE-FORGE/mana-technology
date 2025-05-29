@@ -210,25 +210,14 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                 ]}
                 className="h-[7rem] w-[6rem]"
                 textStyle="text-white font-bold"
-                stops={[
-                  /// TODO
-                  {
-                    color: "#E64C3C",
-                    value: 5,
-                  },
-                  {
-                    color: "#e9cc0f",
-                    value: 10,
-                  },
-                  {
-                    color: "#26E2B3",
-                    value: 86,
-                  },
-                  {
-                    color: "#26E2B3",
-                    value: 96,
-                  },
+                indictors={[
+                  data.suctionTankLL == "True" ? true : false,
+                  data.suctionTankL == "True" ? true : false,
+                  data.suctionTankH == "True" ? true : false,
+                  data.suctionTankHH == "True" ? true : false,
                 ]}
+
+                
               />
             </div>
             <div className="flex flex-1 flex-col items-center">
