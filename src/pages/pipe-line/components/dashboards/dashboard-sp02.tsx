@@ -11,9 +11,9 @@ import ReactApexChart from "react-apexcharts";
 import { cn } from "@/lib/utils";
 
 const Data = [
-  { id: 1, name: "Flow rate", key: "flowRate" },
-  { id: 2, name: "Δt Flow", key: "deltaFlow" },
-  { id: 3, name: "Pumped volume", key: "pumpedVolume" },
+  { id: 1, name: "Flow rate (l/s) :", key: "flowRate" },
+  { id: 2, name: "Δt Flow (l/s) :", key: "deltaFlow" },
+  { id: 3, name: "Pumped volume (m3/h) :", key: "pumpedVolume" },
 ];
 
 const valuesData = [
@@ -172,7 +172,7 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
             </Card>
             <Card className="flex h-[202px] flex-col">
               <div className="p-4 pb-0 text-[14px] font-bold text-white">
-                Pressures (bar)
+                Pressure (bar)
               </div>
               <div className="flex-1 pl-2 pr-2">
                 <ReactApexChart
@@ -325,7 +325,7 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
             <Card className="flex h-full items-center justify-center gap-8 border-none bg-transparent p-4 shadow-none">
               <div className="flex flex-1 flex-col items-center">
                 <span className="text mb-2 text-xl font-medium text-white">
-                  Suction tank
+                  Suction sump
                 </span>
                 <LiquidProgress
                   percentage={[
@@ -347,7 +347,7 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
               </div>
               <div className="flex flex-1 flex-col items-center">
                 <span className="mb-2 text-xl font-medium text-white">
-                  Hammer arrestor
+                  Surge arrestor
                 </span>
                 <HammerArrestorSVG
                   className={cn("size-[10rem] [&_.indicator]:fill-[#26e2b3]", {

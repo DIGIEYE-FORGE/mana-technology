@@ -370,8 +370,8 @@ const PipeLine: React.FC = () => {
     // Update widgetData with new data
     setWidgetData([
       {
-        title: "Pumped Volume",
-        value: data?.["s=B_FIT_02_TOT_MES_TM"],
+        title: "Pumped Volume (m3/h)",
+        value: data?.["cc"] *3.6,
       },
       {
         title: "Flow Rate",
@@ -666,7 +666,7 @@ const PipeLine: React.FC = () => {
         console.log("Filtered Results:", { data, filteredResults });
         setWidgetData([
           {
-            title: "Pumped Volume",
+            title: "Pumped Volume (m3/h)",
             value: filteredResults?.["s=B_FIT_02_TOT_MES_TM"]?.[length - 1]?.y,
           },
           {

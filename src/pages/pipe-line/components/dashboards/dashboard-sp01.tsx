@@ -11,10 +11,10 @@ import ReactApexChart from "react-apexcharts";
 import { cn, parseBoolean } from "@/lib/utils";
 
 const Data = [
-  { id: 1, name: "Flow rate", key: "flowRate" },
-  { id: 2, name: "Δt Flow", key: "deltaFlow" },
-  { id: 3, name: "Pumped volume ", key: "pumpedVolume" },
-  { id: 4, name: "trubidite", key: "trubidite" },
+  { id: 1, name: "Flow rate (l/s) :", key: "flowRate" },
+  { id: 2, name: "Δt Flow (l/s) :", key: "deltaFlow" },
+  { id: 3, name: "Pumped volume (m3/h) :", key: "pumpedVolume" },
+  { id: 4, name: "Turbidity:", key: "trubidite" },
 ];
 
 const valuesData = [
