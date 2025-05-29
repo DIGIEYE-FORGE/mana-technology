@@ -22,6 +22,7 @@ import { io } from "socket.io-client";
 import {
   formatAttributesData,
   formatHistoryData,
+  formatRunningTime,
   updateAttributesData,
   updateHistoryData,
 } from "./utils/functions";
@@ -131,6 +132,9 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
             "absolute z-10 min-h-[10rem] min-w-[21rem] max-w-fit scale-[0.8] p-4 pr-6",
             getCardPositionClass(point.card.position),
             point.id === "SP6" ? "scale-[0.80] bg-red-500" : "scale[0.8]",
+            {
+              "min-w-[16rem]": point.id === "SP6",
+            },
           )}
           style={{
             ...(point.card.optionsPosition || {}),
@@ -155,60 +159,67 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                 <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
             </div>
-            <div className="flex h-full w-full gap-2">
-              <div className="w-[7rem]">
-                <LiquidProgress
-                  className={cn("h-[9rem] w-[7rem]", {
-                    "w-[3rem]": point.id === "SP6",
-                  })}
-                  indictors={[false, true, true, false]}
-                  percentage={
-                    point?.card?.progress && Array.isArray(point.card.progress)
-                      ? point.card.progress.map((p) => ({
+            <div
+              className={cn("flex h-full w-full gap-2", {
+                "flex-col": point.id === "SP6",
+              })}
+            >
+              <LiquidProgress
+                className={cn("h-[9rem] w-[7rem]", {
+                  "w-[6.5rem]": point.id === "SP6",
+                })}
+                indictors={[
+                  point?.card?.attributes?.breakPoints?.[0] === "True",
+                  point?.card?.attributes?.breakPoints?.[1] === "True",
+                  point?.card?.attributes?.breakPoints?.[2] === "True",
+                  point?.card?.attributes?.breakPoints?.[3] === "True",
+                ]}
+                percentage={
+                  point?.card?.progress && Array.isArray(point.card.progress)
+                    ? point.card.progress.map((p) => ({
+                        value:
+                          (
+                            p &&
+                            Number(p / (point.id === "SP6" ? 2.72 : 5)) * 100
+                          )?.toFixed(2) || 0,
+                        title: "",
+                      }))
+                    : [
+                        {
                           value:
                             (
-                              p &&
-                              Number(p / (point.id === "SP6" ? 2.72 : 5)) * 100
+                              (point.card.progress as number) &&
+                              Number(
+                                point.card.progress /
+                                  (point.id === "SP6" ? 2.72 : 5),
+                              ) * 100
                             )?.toFixed(2) || 0,
-                          title: "",
-                        }))
-                      : [
-                          {
-                            value:
-                              (
-                                (point.card.progress as number) &&
-                                Number(
-                                  point.card.progress /
-                                    (point.id === "SP6" ? 2.72 : 5),
-                                ) * 100
-                              )?.toFixed(2) || 0,
 
-                            title: "",
-                          },
-                        ]
-                  }
-                  colorLL={
-                    point?.card?.attributes?.breakPoints?.[0] === "True"
-                      ? "#FF0000"
-                      : "#009670"
-                  }
-                  colorL={
-                    point?.card?.attributes?.breakPoints?.[1] === "True"
-                      ? "#FF0000"
-                      : "#009670"
-                  }
-                  colorH={
-                    point?.card?.attributes?.breakPoints?.[2] === "True"
-                      ? "#FF0000"
-                      : "#009670"
-                  }
-                  colorHH={
-                    point?.card?.attributes?.breakPoints?.[3] === "True"
-                      ? "#FF0000"
-                      : "#009670"
-                  }
-                />
-              </div>
+                          title: "",
+                        },
+                      ]
+                }
+                colorLL={
+                  point?.card?.attributes?.breakPoints?.[0] === "True"
+                    ? "#FF0000"
+                    : "#009670"
+                }
+                colorL={
+                  point?.card?.attributes?.breakPoints?.[1] === "True"
+                    ? "#FF0000"
+                    : "#009670"
+                }
+                colorH={
+                  point?.card?.attributes?.breakPoints?.[2] === "True"
+                    ? "#FF0000"
+                    : "#009670"
+                }
+                colorHH={
+                  point?.card?.attributes?.breakPoints?.[3] === "True"
+                    ? "#FF0000"
+                    : "#009670"
+                }
+              />
 
               <div className="flex flex-1 flex-col gap-1">
                 {/* {JSON.stringify(point.card.attributes["Running state"])} */}
@@ -344,6 +355,18 @@ const PipeLine: React.FC = () => {
     SP6: {},
   });
 
+  const [runningTime, setRunningTime] = useState<any>({
+    SP01: {},
+    SP02: {},
+    SP03: {},
+    SP1: {},
+    SP2: {},
+    SP3: {},
+    SP4: {},
+    SP5: {},
+    SP6: {},
+  });
+
   const updateStatesWithSocketData = (data: any) => {
     // Update widgetData with new data
     setWidgetData([
@@ -391,7 +414,11 @@ const PipeLine: React.FC = () => {
         sideOffset: -250,
         dashboard: {
           title: "SP01 Dashboard",
-          component: <DashboardSP01 data={dataHistory?.SP01} />,
+          component: (
+            <DashboardSP01
+              data={{ ...dataHistory?.SP01, ...runningTime?.SP01 }}
+            />
+          ),
         },
       },
     },
@@ -412,7 +439,11 @@ const PipeLine: React.FC = () => {
         sideOffset: -400,
         dashboard: {
           title: "SP02 Dashboard",
-          component: <DashboardSP02 data={dataHistory?.SP02} />,
+          component: (
+            <DashboardSP02
+              data={{ ...dataHistory?.SP02, ...runningTime?.SP02 }}
+            />
+          ),
         },
       },
     },
@@ -433,7 +464,11 @@ const PipeLine: React.FC = () => {
         sideOffset: -320,
         dashboard: {
           title: "SP03 Dashboard",
-          component: <DashboardSP02 data={dataHistory?.SP03} />,
+          component: (
+            <DashboardSP02
+              data={{ ...dataHistory?.SP03, ...runningTime?.SP03 }}
+            />
+          ),
         },
       },
     },
@@ -454,7 +489,11 @@ const PipeLine: React.FC = () => {
         sideOffset: 0,
         dashboard: {
           title: "SP1 Dashboard",
-          component: <DashboardSP02 data={dataHistory?.SP1} />,
+          component: (
+            <DashboardSP02
+              data={{ ...dataHistory?.SP1, ...runningTime?.SP1 }}
+            />
+          ),
         },
       },
     },
@@ -475,7 +514,11 @@ const PipeLine: React.FC = () => {
         sideOffset: -300,
         dashboard: {
           title: "SP2 Dashboard",
-          component: <DashboardSP02 data={dataHistory?.SP2} />,
+          component: (
+            <DashboardSP02
+              data={{ ...dataHistory?.SP2, ...runningTime?.SP2 }}
+            />
+          ),
         },
       },
     },
@@ -496,7 +539,11 @@ const PipeLine: React.FC = () => {
         sideOffset: 0,
         dashboard: {
           title: "SP3 Dashboard",
-          component: <DashboardSP02 data={dataHistory?.SP3} />,
+          component: (
+            <DashboardSP02
+              data={{ ...dataHistory?.SP3, ...runningTime?.SP3 }}
+            />
+          ),
         },
       },
     },
@@ -517,7 +564,11 @@ const PipeLine: React.FC = () => {
         sideOffset: 0,
         dashboard: {
           title: "SP4 Dashboard",
-          component: <DashboardSP02 data={dataHistory?.SP4} />,
+          component: (
+            <DashboardSP02
+              data={{ ...dataHistory?.SP4, ...runningTime?.SP4 }}
+            />
+          ),
         },
       },
     },
@@ -538,7 +589,11 @@ const PipeLine: React.FC = () => {
         sideOffset: 0,
         dashboard: {
           title: "SP5 Dashboard",
-          component: <DashboardSP02 data={dataHistory?.SP5} />,
+          component: (
+            <DashboardSP02
+              data={{ ...dataHistory?.SP5, ...runningTime?.SP5 }}
+            />
+          ),
         },
       },
     },
@@ -556,7 +611,9 @@ const PipeLine: React.FC = () => {
       model: {
         dashboard: {
           title: "Basin",
-          component: <DashboardSPU data={dataHistory?.SP6} />,
+          component: (
+            <DashboardSPU data={{ ...dataHistory?.SP6, ...runningTime?.SP6 }} />
+          ),
         },
       },
     },
@@ -626,8 +683,8 @@ const PipeLine: React.FC = () => {
   );
 
   const {
-    data: countData,
-    error: countError,
+    // data: countData,
+    // error: countError,
     isLoading: isLoadingCount,
   } = useSWR(
     "count",
@@ -637,15 +694,111 @@ const PipeLine: React.FC = () => {
         {
           telemetries: [
             {
-              name: "s=SP1_M01_TM_TLC",
+              name: "s=SP1_M01_RM_TS",
               value: [true, false],
             },
             {
-              name: "s=SP1_M02_TM_TLC",
+              name: "s=SP1_M02_RM_TS",
               value: [true, false],
             },
             {
-              name: "s=SP1_M03_TM_TLC",
+              name: "s=SP1_M03_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP2_M01_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP2_M02_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP2_M03_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP3_M01_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP3_M02_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP3_M03_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP4_M01_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP4_M02_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP4_M03_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP5_M01_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP5_M02_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP5_M03_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP6_M01_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP6_M02_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP6_M03_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP7_M01_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP7_M02_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP7_M03_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP8_M01_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP8_M02_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=SP8_M03_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=B_M01_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=B_M02_RM_TS",
+              value: [true, false],
+            },
+            {
+              name: "s=B_M03_RM_TS",
               value: [true, false],
             },
           ],
@@ -656,10 +809,12 @@ const PipeLine: React.FC = () => {
     },
     {
       onSuccess: (data) => {
-        console.log({ data });
+        formatRunningTime(data, setRunningTime);
       },
     },
   );
+
+  console.log({ runningTime });
 
   useEffect(() => {
     const socket = io(env.VITE_URL_SOCKET);
@@ -727,7 +882,7 @@ const PipeLine: React.FC = () => {
           <div className="relative h-1 flex-1 pr-[6rem]">
             <div className="relative h-full px-8 pb-6 pt-[3rem]">
               <PipeLineSvg className="h-full w-full" />
-              {isLoading || isValidating ? (
+              {isLoading || isLoadingCount || isValidating ? (
                 <div className="absolute inset-0 flex items-center justify-center">
                   <Loader className="size-[4rem] animate-spin text-white" />
                 </div>
@@ -774,7 +929,7 @@ const PipeLine: React.FC = () => {
           >
             <div className="flex h-[8%] shrink-0 items-center pl-[calc(36%+1rem)]">
               <span className="shrink-0 pl-6 font-ethnocentric text-sm font-extralight text-foreground first-letter:uppercase">
-                {PipeLineAttributes.find((item) => item.id === activePoint)
+                {PipeLineAttributes?.find((item) => item.id === activePoint)
                   ?.title || "Pipeline Dashboard"}
               </span>
               <DialogClose asChild>
@@ -788,7 +943,7 @@ const PipeLine: React.FC = () => {
               </DialogClose>
             </div>
             {
-              PipeLineAttributes.find((item) => item.id === activePoint)?.model
+              PipeLineAttributes?.find((item) => item.id === activePoint)?.model
                 .dashboard.component
             }
           </DialogContent>

@@ -25,57 +25,57 @@ const valuesData = [
   { id: 6, name: "I3", value: "00" },
 ];
 
-const progressDataLine = [
-  {
-    id: 1,
-    title: "P1",
-    data: [
-      {
-        min: 0,
-        max: 70,
-        color: "#26E2B3",
-      },
-      {
-        min: 70,
-        max: 85,
-        color: "#E64C3C",
-      },
-      {
-        min: 85,
-        max: 100,
-        color: "#26E2B3",
-      },
-    ],
-    value: "0",
-    unite: "Hrs",
-  },
-  {
-    id: 2,
-    title: "P2",
-    data: [
-      {
-        min: 0,
-        max: 100,
-        color: "#26E2B3",
-      },
-    ],
-    value: "0",
-    unite: "Hrs",
-  },
-  {
-    id: 3,
-    title: "P3",
-    data: [
-      {
-        min: 0,
-        max: 100,
-        color: "#26E2B3",
-      },
-    ],
-    value: "0",
-    unite: "Hrs",
-  },
-];
+// const progressDataLine = [
+//   {
+//     id: 1,
+//     title: "P1",
+//     data: [
+//       {
+//         min: 0,
+//         max: 70,
+//         color: "#26E2B3",
+//       },
+//       {
+//         min: 70,
+//         max: 85,
+//         color: "#E64C3C",
+//       },
+//       {
+//         min: 85,
+//         max: 100,
+//         color: "#26E2B3",
+//       },
+//     ],
+//     value: "0",
+//     unite: "Hrs",
+//   },
+//   {
+//     id: 2,
+//     title: "P2",
+//     data: [
+//       {
+//         min: 0,
+//         max: 100,
+//         color: "#26E2B3",
+//       },
+//     ],
+//     value: "0",
+//     unite: "Hrs",
+//   },
+//   {
+//     id: 3,
+//     title: "P3",
+//     data: [
+//       {
+//         min: 0,
+//         max: 100,
+//         color: "#26E2B3",
+//       },
+//     ],
+//     value: "0",
+//     unite: "Hrs",
+//   },
+// ];
 
 interface DashboardSP02Props {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -148,6 +148,7 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                       type: "datetime",
                     },
                     yaxis: {
+                      min: 0,
                       labels: {
                         style: {
                           colors: "#A2B0B8",
@@ -328,11 +329,20 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                 </span>
                 <LiquidProgress
                   percentage={[
-                    { value: data.suctionTankLevel || 0, title: "jfjf" },
+                    {
+                      value: (data.suctionTankLevel / 5) * 100 || 0,
+                      title: "",
+                    },
                   ]}
                   className="h-[10rem] w-[8rem]"
                   textStyle="text-white font-bold"
-                  stops={[]}
+                  // stops={[]}
+                  indictors={[
+                    data.suctionTankLL == "True" ? true : false,
+                    data.suctionTankL == "True" ? true : false,
+                    data.suctionTankH == "True" ? true : false,
+                    data.suctionTankHH == "True" ? true : false,
+                  ]}
                 />
               </div>
               <div className="flex flex-1 flex-col items-center">
@@ -367,7 +377,7 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                 />
               </div>
               <div className="m-0 grid flex-1 grid-cols-3 grid-rows-2 gap-2">
-                {valuesData.map((item) => (
+                {valuesData?.map((item) => (
                   <div
                     key={item.id}
                     className="flex h-[70px] w-[60px] flex-col items-center justify-center gap-2 rounded-md border-2 border-gray-500 bg-[#021E3F]/60 p-1 text-white backdrop-blur-md"
@@ -383,12 +393,16 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                 Pumps running state
               </div>
               <div className="flex flex-1 flex-col justify-center gap-0">
-                {progressDataLine.map((item) => (
+                {[
+                  { ...data?.p1, title: "p1" },
+                  { ...data?.p2, title: "p2" },
+                  { ...data?.p3, title: "p3" },
+                ]?.map((item) => (
                   <ProgressBar
-                    data={item.data}
+                    data={item.film}
                     key={item.id}
-                    value={item.value || "--"}
-                    unite={item.unite || "--"}
+                    value={item.totalTime?.toFixed(2) || "--"}
+                    unite={item.unite || "h"}
                     title={item.title || "--"}
                     className="h-6 overflow-hidden bg-white/20"
                   />

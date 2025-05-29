@@ -126,6 +126,17 @@ export function ThreeDModel({
         shadow-camera-bottom={-10}
       />
       <Suspense fallback={<Loader3D />}>
+        {env.VITE_SHOW_MODEL === "true" && (
+          <Model
+            url={
+              `${env.VITE_LOCAL_MODELS === "true" ? "/ignore/" : "https://managem.digieye.io/statics/"}` +
+              "mine026.glb"
+            }
+            ref={modelRef}
+            onLoad={() => setLoading(false)}
+          />
+        )}
+        // {/* )} */}
         {/* <Model
           url={
             `${env.VITE_LOCAL_MODELS === "true" ? "/ignore/" : "https://managem.digieye.io/statics/"}` +

@@ -33,47 +33,47 @@ interface DashboardSP01Props {
 export function DashboardSP01({ data }: DashboardSP01Props) {
   console.log({ data });
 
-  const progressDataLine = [
-    {
-      id: 1,
-      title: "P1",
-      data: [
-        {
-          min: 0,
-          max: 100,
-          color: data.runningStateP1 ? "#26E2B3" : "#E64C3C",
-        },
-      ],
-      value: "XX",
-      unite: "Hrs",
-    },
-    {
-      id: 2,
-      title: "P2",
-      data: [
-        {
-          min: 0,
-          max: 100,
-          color: data.runningStateP2 ? "#26E2B3" : "#E64C3C",
-        },
-      ],
-      value: "XX",
-      unite: "Hrs",
-    },
-    {
-      id: 3,
-      title: "P3",
-      data: [
-        {
-          min: 0,
-          max: 100,
-          color: data.runningStateP3 ? "#26E2B3" : "#E64C3C",
-        },
-      ],
-      value: "XX",
-      unite: "Hrs",
-    },
-  ];
+  // const progressDataLine = [
+  //   {
+  //     id: 1,
+  //     title: "P1",
+  //     data: [
+  //       {
+  //         min: 0,
+  //         max: 100,
+  //         color: data.runningStateP1 ? "#26E2B3" : "#E64C3C",
+  //       },
+  //     ],
+  //     value: "XX",
+  //     unite: "Hrs",
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "P2",
+  //     data: [
+  //       {
+  //         min: 0,
+  //         max: 100,
+  //         color: data.runningStateP2 ? "#26E2B3" : "#E64C3C",
+  //       },
+  //     ],
+  //     value: "XX",
+  //     unite: "Hrs",
+  //   },
+  //   {
+  //     id: 3,
+  //     title: "P3",
+  //     data: [
+  //       {
+  //         min: 0,
+  //         max: 100,
+  //         color: data.runningStateP3 ? "#26E2B3" : "#E64C3C",
+  //       },
+  //     ],
+  //     value: "XX",
+  //     unite: "Hrs",
+  //   },
+  // ];
 
   return (
     <>
@@ -91,32 +91,9 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
 
       {/* Main dashboard content */}
       <div className="relative mr-4 flex h-full min-h-0 min-w-0 flex-1 gap-4 overflow-hidden py-4 pl-12 pr-4">
-        {/* {JSON.stringify(data)} */}
-        {/* 2 columns × 4 rows grid layout */}
         <div className="grid h-full min-h-0 w-full min-w-0 flex-1 grid-cols-2 grid-rows-4 gap-4">
-          {/* Row 1, Col 1 - Flows Chart */}
           <Card className="flex h-full flex-col">
             <div className="flex-1 pl-2 pr-2">
-              {/* <LineChartWidget
-                attributes={{
-                  telemetries: [
-                    {
-                      area: false,
-                      label: "Input",
-                      color: "#26E2B3",
-                      serial: "JZVATMKQ1A8DA2P1",
-                      data: data.flowsInput || [],
-                    },
-                    {
-                      area: false,
-                      label: "Output",
-                      color: "#FFD2A6",
-                      serial: "JZVATMKQ1A8DA2P1",
-                      data: data.flowsOutput || [],
-                    },
-                  ],
-                }}
-              /> */}
               <ReactApexChart
                 height={"100%"}
                 options={{
@@ -168,10 +145,6 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                       style: {
                         colors: "#A2B0B8",
                       },
-                      // add (l/s) to the x-axis labels
-                      // formatter: (value: any) => {
-                      //   return `${value} l/s`;
-                      // },
                     },
                     type: "datetime",
                   },
@@ -204,30 +177,26 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
               <span className="mb-2 text-sm font-medium text-white">
                 Suction tank
               </span>
+              {/* {JSON.stringify({
+                suctionTankLL: data.suctionTankLL,
+                suctionTankL: data.suctionTankL,
+                suctionTankH: data.suctionTankH,
+                suctionTankHH: data.suctionTankHH,
+              })} */}
               <LiquidProgress
                 percentage={[
-                  { value: +Number(data.progress).toFixed(2) || 0, title: "" },
+                  {
+                    value: (+Number(data.progress).toFixed(2) / 5) * 100 || 0,
+                    title: "",
+                  },
                 ]}
                 className="h-[7rem] w-[6rem]"
                 textStyle="text-white font-bold"
-                stops={[
-                  /// TODO
-                  {
-                    color: "#E64C3C",
-                    value: 5,
-                  },
-                  {
-                    color: "#e9cc0f",
-                    value: 10,
-                  },
-                  {
-                    color: "#26E2B3",
-                    value: 86,
-                  },
-                  {
-                    color: "#26E2B3",
-                    value: 96,
-                  },
+                indictors={[
+                  data.suctionTankLL == "True" ? true : false,
+                  data.suctionTankL == "True" ? true : false,
+                  data.suctionTankH == "True" ? true : false,
+                  data.suctionTankHH == "True" ? true : false,
                 ]}
               />
             </div>
@@ -423,7 +392,7 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
               />
             </div>
             <div className="m-0 grid flex-1 grid-cols-3 grid-rows-2 gap-2">
-              {valuesData.map((item) => (
+              {valuesData?.map((item) => (
                 <div
                   key={item.id}
                   className="flex h-[70px] w-[60px] flex-col items-center justify-center gap-2 rounded-md border-2 border-gray-500 bg-[#021E3F]/60 p-1 text-white backdrop-blur-md"
@@ -520,7 +489,7 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
                 series={[
                   {
                     name: "level",
-                    data: data.level.map((item: { x: string; y: number }) => ({
+                    data: data.level?.map((item: { x: string; y: number }) => ({
                       x: item.x,
                       y: (item.y / 5) * 100,
                     })),
@@ -536,12 +505,16 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
               Pumps running state
             </span>
             <div className="flex flex-1 flex-col justify-center gap-0">
-              {progressDataLine.map((item) => (
+              {[
+                { ...data?.p1, title: "p1" },
+                { ...data?.p2, title: "p2" },
+                { ...data?.p3, title: "p3" },
+              ]?.map((item) => (
                 <ProgressBar
-                  data={item.data}
+                  data={item?.film}
                   key={item.id}
-                  value={item.value || "--"}
-                  unite={item.unite || "--"}
+                  value={item.totalTime?.toFixed(2) || "--"}
+                  unite={item.unite || "h"}
                   title={item.title || "--"}
                   className="h-6 overflow-hidden bg-white/20"
                 />
@@ -557,14 +530,15 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
               </span>
               <div className="absolute right-4 flex gap-2 text-xs">
                 <span className="rounded-full border border-white bg-[#021E3F] px-3 py-1 text-white">
-                  Input{" "}
-                  {data.chloreInput[data.chloreInput.length - 1]?.y.toFixed(
+                  Input
+                  {data.chloreInput[data.chloreInput.length - 1]?.y.toFixed?.(
                     2,
                   ) || "0"}
+                  {/* TODO:update this later */}
                 </span>
                 <span className="rounded-full border border-white bg-[#021E3F] px-3 py-1 text-white">
                   Output{" "}
-                  {data.chloreOutput[data.chloreOutput.length - 1]?.y.toFixed(
+                  {data.chloreOutput[data.chloreOutput.length - 1]?.y.toFixed?.(
                     2,
                   ) || "0"}
                 </span>

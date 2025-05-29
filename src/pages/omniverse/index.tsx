@@ -2,6 +2,8 @@ import { Card } from "@/components/card";
 
 import ReactApexChart from "react-apexcharts";
 import { ModelCanvas } from "./model-viewer";
+import { env } from "@/utils/env";
+// import { ModelCanvas } from "./model-viewer";
 
 function Crushing() {
   return (
@@ -275,11 +277,19 @@ function Crushing() {
       {/* ------------------------- middle side ------------------------- */}
       <div className="relative isolate flex flex-1 flex-col gap-2 px-6">
         <div className="absolute inset-0 isolate z-0 flex flex-1 items-center justify-center p-0">
-          <ModelCanvas
+          {env.VITE_SHOW_MODEL === "true" && (
+            <ModelCanvas
+              url={"/model/jaw_crusher.glb"}
+              position={[-40, 15, -10]}
+              fov={100}
+            />
+          )}
+          // {/* )} */}
+          {/* <ModelCanvas
             url={"/model/jaw02.glb"}
             position={[-40, 15, -20]}
             fov={10}
-          />
+          /> */}
         </div>
         <Card className="mt-auto w-full">
           <ReactApexChart

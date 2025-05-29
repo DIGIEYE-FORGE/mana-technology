@@ -200,14 +200,16 @@ function TreePage() {
           shadow-camera-bottom={-10}
         />
         <Suspense fallback={<Loader3D />}>
-          {/* <Model
-            url={
-              `${env.VITE_LOCAL_MODELS === "true" ? "/ignore/" : "https://managem.digieye.io/statics/"}` +
-              "mine026.glb"
-            }
-            ref={modelRef}
-            onLoad={() => setLoading(false)}
-          /> */}
+          {env.VITE_SHOW_MODEL === "true" && (
+            <Model
+              url={
+                `${env.VITE_LOCAL_MODELS === "true" ? "/ignore/" : "https://managem.digieye.io/statics/"}` +
+                "mine026.glb"
+              }
+              ref={modelRef}
+              onLoad={() => setLoading(false)}
+            />
+          )}
         </Suspense>
         <RotatingModel modelRef={modelRef} />
         <OrbitControls enableRotate rotateSpeed={1} zoomToCursor />

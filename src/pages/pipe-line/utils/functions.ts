@@ -20,7 +20,7 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
           +data?.["s=SP1_FIT_01_MAE_TM"]?.[length - 1]?.y,
         "pression output": data?.["s=SP1_PIT_04_MAE_TM"]?.[length - 1]?.y,
         pumps: ["P01", "P02", "P03"],
-        "Running state": [
+        "totalRunning state": [
           data?.["s=SP1_M01_RM_TS"]?.[length - 1]?.y,
           data?.["s=SP1_M02_RM_TS"]?.[length - 1]?.y,
           data?.["s=SP1_M03_RM_TS"]?.[length - 1]?.y,
@@ -543,9 +543,9 @@ export const formatHistoryData = (data: any, setDataHistory: any) => {
       hammerArrestorL: data?.["s=SP1_ANTIB_LSL_TA"]?.[length - 1]?.y,
       hammerArrestorH: data?.["s=SP1_ANTIB_LSH_TA"]?.[length - 1]?.y,
 
-      runningStateP1: data?.["s=SP1_M01_TM_TLC"]?.[length - 1]?.y,
-      runningStateP2: data?.["s=SP1_M02_TM_TLC"]?.[length - 1]?.y,
-      runningStateP3: data?.["s=SP1_M03_TM_TLC"]?.[length - 1]?.y,
+      runningStateP1: data?.["s=SP1_M01_RM_TS"]?.[length - 1]?.y,
+      runningStateP2: data?.["s=SP1_M02_TM_TS"]?.[length - 1]?.y,
+      runningStateP3: data?.["s=SP1_M03_TM_TS"]?.[length - 1]?.y,
 
       chloreStationvalue1: data?.["s=SP01CHL_M01_RM_TS"]?.[length - 1]?.y,
       chloreStationL1: data?.["s=SP01CHL_LSLL_BAC1_TA"]?.[length - 1]?.y,
@@ -580,9 +580,9 @@ export const formatHistoryData = (data: any, setDataHistory: any) => {
       hammerArrestorL: data?.["s=SP2_ANTIB_LSL_TA"]?.[length - 1]?.y,
       hammerArrestorH: data?.["s=SP2_ANTIB_LSH_TA"]?.[length - 1]?.y,
 
-      runningStateP1: data?.["s=SP2_M01_TM_TLC"]?.[length - 1]?.y,
-      runningStateP2: data?.["s=SP2_M02_TM_TLC"]?.[length - 1]?.y,
-      runningStateP3: data?.["s=SP2_M03_TM_TLC"]?.[length - 1]?.y,
+      runningStateP1: data?.["s=SP2_M01_RM_TS"]?.[length - 1]?.y,
+      runningStateP2: data?.["s=SP2_M02_RM_TS"]?.[length - 1]?.y,
+      runningStateP3: data?.["s=SP2_M03_RM_TS"]?.[length - 1]?.y,
     },
     SP03: {
       progress: data?.["s=SP3_LIT_01_MAE_TM"]?.[length - 1]?.y,
@@ -610,9 +610,9 @@ export const formatHistoryData = (data: any, setDataHistory: any) => {
       hammerArrestorL: data?.["s=SP3_ANTIB_LSL_TA"]?.[length - 1]?.y,
       hammerArrestorH: data?.["s=SP3_ANTIB_LSH_TA"]?.[length - 1]?.y,
 
-      runningStateP1: data?.["s=SP3_M01_TM_TLC"]?.[length - 1]?.y,
-      runningStateP2: data?.["s=SP3_M02_TM_TLC"]?.[length - 1]?.y,
-      runningStateP3: data?.["s=SP3_M03_TM_TLC"]?.[length - 1]?.y,
+      runningStateP1: data?.["s=SP3_M01_RM_TS"]?.[length - 1]?.y,
+      runningStateP2: data?.["s=SP3_M02_RM_TS"]?.[length - 1]?.y,
+      runningStateP3: data?.["s=SP3_M03_RM_TS"]?.[length - 1]?.y,
     },
     SP1: {
       progress: data?.["s=SP4_LIT_01_MAE_TM"]?.[length - 1]?.y,
@@ -640,9 +640,9 @@ export const formatHistoryData = (data: any, setDataHistory: any) => {
       hammerArrestorL: data?.["s=SP4_ANTIB_LSL_TA"]?.[length - 1]?.y,
       hammerArrestorH: data?.["s=SP4_ANTIB_LSH_TA"]?.[length - 1]?.y,
 
-      runningStateP1: data?.["s=SP4_M01_TM_TLC"]?.[length - 1]?.y,
-      runningStateP2: data?.["s=SP4_M02_TM_TLC"]?.[length - 1]?.y,
-      runningStateP3: data?.["s=SP4_M03_TM_TLC"]?.[length - 1]?.y,
+      runningStateP1: data?.["s=SP4_M01_RM_TS"]?.[length - 1]?.y,
+      runningStateP2: data?.["s=SP4_M02_RM_TS"]?.[length - 1]?.y,
+      runningStateP3: data?.["s=SP4_M03_RM_TS"]?.[length - 1]?.y,
     },
     SP2: {
       progress: data?.["s=SP5_LIT_01_MAE_TM"]?.[length - 1]?.y,
@@ -670,9 +670,9 @@ export const formatHistoryData = (data: any, setDataHistory: any) => {
       hammerArrestorL: data?.["s=SP5_ANTIB_LSL_TA"]?.[length - 1]?.y,
       hammerArrestorH: data?.["s=SP5_ANTIB_LSH_TA"]?.[length - 1]?.y,
 
-      runningStateP1: data?.["s=SP5_M01_TM_TLC"]?.[length - 1]?.y,
-      runningStateP2: data?.["s=SP5_M02_TM_TLC"]?.[length - 1]?.y,
-      runningStateP3: data?.["s=SP5_M03_TM_TLC"]?.[length - 1]?.y,
+      runningStateP1: data?.["s=SP5_M01_RM_TS"]?.[length - 1]?.y,
+      runningStateP2: data?.["s=SP5_M02_RM_TS"]?.[length - 1]?.y,
+      runningStateP3: data?.["s=SP5_M03_RM_TS"]?.[length - 1]?.y,
     },
     SP3: {
       progress: data?.["s=SP6_LIT_01_MAE_TM"]?.[length - 1]?.y,
@@ -700,9 +700,9 @@ export const formatHistoryData = (data: any, setDataHistory: any) => {
       hammerArrestorL: data?.["s=SP6_ANTIB_LSL_TA"]?.[length - 1]?.y,
       hammerArrestorH: data?.["s=SP6_ANTIB_LSH_TA"]?.[length - 1]?.y,
 
-      runningStateP1: data?.["s=SP6_M01_TM_TLC"]?.[length - 1]?.y,
-      runningStateP2: data?.["s=SP6_M02_TM_TLC"]?.[length - 1]?.y,
-      runningStateP3: data?.["s=SP6_M03_TM_TLC"]?.[length - 1]?.y,
+      runningStateP1: data?.["s=SP6_M01_RM_TS"]?.[length - 1]?.y,
+      runningStateP2: data?.["s=SP6_M02_RM_TS"]?.[length - 1]?.y,
+      runningStateP3: data?.["s=SP6_M03_RM_TS"]?.[length - 1]?.y,
     },
     SP4: {
       progress: data?.["s=SP7_LIT_01_MAE_TM"]?.[length - 1]?.y,
@@ -730,9 +730,9 @@ export const formatHistoryData = (data: any, setDataHistory: any) => {
       hammerArrestorL: data?.["s=SP7_ANTIB_LSL_TA"]?.[length - 1]?.y,
       hammerArrestorH: data?.["s=SP7_ANTIB_LSH_TA"]?.[length - 1]?.y,
 
-      runningStateP1: data?.["s=SP7_M01_TM_TLC"]?.[length - 1]?.y,
-      runningStateP2: data?.["s=SP7_M02_TM_TLC"]?.[length - 1]?.y,
-      runningStateP3: data?.["s=SP7_M03_TM_TLC"]?.[length - 1]?.y,
+      runningStateP1: data?.["s=SP7_M01_RM_TS"]?.[length - 1]?.y,
+      runningStateP2: data?.["s=SP7_M02_RM_TS"]?.[length - 1]?.y,
+      runningStateP3: data?.["s=SP7_M03_RM_TS"]?.[length - 1]?.y,
     },
     SP5: {
       progress: data?.["s=SP8_LIT_01_MAE_TM"]?.[length - 1]?.y,
@@ -760,9 +760,9 @@ export const formatHistoryData = (data: any, setDataHistory: any) => {
       hammerArrestorL: data?.["s=SP8_ANTIB_LSL_TA"]?.[length - 1]?.y,
       hammerArrestorH: data?.["s=SP8_ANTIB_LSH_TA"]?.[length - 1]?.y,
 
-      runningStateP1: data?.["s=SP8_M01_TM_TLC"]?.[length - 1]?.y,
-      runningStateP2: data?.["s=SP8_M02_TM_TLC"]?.[length - 1]?.y,
-      runningStateP3: data?.["s=SP8_M03_TM_TLC"]?.[length - 1]?.y,
+      runningStateP1: data?.["s=SP8_M01_RM_TS"]?.[length - 1]?.y,
+      runningStateP2: data?.["s=SP8_M02_RM_TS"]?.[length - 1]?.y,
+      runningStateP3: data?.["s=SP8_M03_RM_TS"]?.[length - 1]?.y,
     },
     SP6: {
       progress: [
@@ -865,8 +865,8 @@ export const updateHistoryData = (data: any, setDataHistory: any) => {
         hammerArrestorH: data?.["SP1_ANTIB_LSH_TA"],
 
         runningStateP1: data?.["SP1_M01_RM_TS"],
-        runningStateP2: data?.["SP1_M02_TM_TLC"],
-        runningStateP3: data?.["SP1_M03_TM_TLC"],
+        runningStateP2: data?.["SP1_M02_RM_TS"],
+        runningStateP3: data?.["SP1_M03_RM_TS"],
 
         chloreStationvalue1: data?.["SP01CHL_M01_RM_TS"],
         chloreStationL1: data?.["SP01CHL_LSLL_BAC1_TA"],
@@ -921,9 +921,9 @@ export const updateHistoryData = (data: any, setDataHistory: any) => {
         hammerArrestorL: data?.["s=SP2_ANTIB_LSL_TA"],
         hammerArrestorH: data?.["s=SP2_ANTIB_LSH_TA"],
 
-        runningStateP1: data?.["s=SP2_M01_TM_TLC"],
-        runningStateP2: data?.["s=SP2_M02_TM_TLC"],
-        runningStateP3: data?.["s=SP2_M03_TM_TLC"],
+        runningStateP1: data?.["s=SP2_M01_RM_TS"],
+        runningStateP2: data?.["s=SP2_M02_RM_TS"],
+        runningStateP3: data?.["s=SP2_M03_RM_TS"],
       },
       SP03: {
         progress: data?.["s=SP3_LIT_01_MAE_TM"],
@@ -971,9 +971,9 @@ export const updateHistoryData = (data: any, setDataHistory: any) => {
         hammerArrestorL: data?.["s=SP3_ANTIB_LSL_TA"],
         hammerArrestorH: data?.["s=SP3_ANTIB_LSH_TA"],
 
-        runningStateP1: data?.["s=SP3_M01_TM_TLC"],
-        runningStateP2: data?.["s=SP3_M02_TM_TLC"],
-        runningStateP3: data?.["s=SP3_M03_TM_TLC"],
+        runningStateP1: data?.["s=SP3_M01_RM_TS"],
+        runningStateP2: data?.["s=SP3_M02_RM_TS"],
+        runningStateP3: data?.["s=SP3_M03_RM_TS"],
       },
       SP1: {
         progress: data?.["s=SP4_LIT_01_MAE_TM"],
@@ -1021,9 +1021,9 @@ export const updateHistoryData = (data: any, setDataHistory: any) => {
         hammerArrestorL: data?.["s=SP4_ANTIB_LSL_TA"],
         hammerArrestorH: data?.["s=SP4_ANTIB_LSH_TA"],
 
-        runningStateP1: data?.["s=SP4_M01_TM_TLC"],
-        runningStateP2: data?.["s=SP4_M02_TM_TLC"],
-        runningStateP3: data?.["s=SP4_M03_TM_TLC"],
+        runningStateP1: data?.["s=SP4_M01_RM_TS"],
+        runningStateP2: data?.["s=SP4_M02_RM_TS"],
+        runningStateP3: data?.["s=SP4_M03_RM_TS"],
       },
       SP2: {
         progress: data?.["s=SP5_LIT_01_MAE_TM"],
@@ -1071,9 +1071,9 @@ export const updateHistoryData = (data: any, setDataHistory: any) => {
         hammerArrestorL: data?.["s=SP5_ANTIB_LSL_TA"],
         hammerArrestorH: data?.["s=SP5_ANTIB_LSH_TA"],
 
-        runningStateP1: data?.["s=SP5_M01_TM_TLC"],
-        runningStateP2: data?.["s=SP5_M02_TM_TLC"],
-        runningStateP3: data?.["s=SP5_M03_TM_TLC"],
+        runningStateP1: data?.["s=SP5_M01_RM_TS"],
+        runningStateP2: data?.["s=SP5_M02_RM_TS"],
+        runningStateP3: data?.["s=SP5_M03_RM_TS"],
       },
       SP3: {
         progress: data?.["s=SP6_LIT_01_MAE_TM"],
@@ -1121,9 +1121,9 @@ export const updateHistoryData = (data: any, setDataHistory: any) => {
         hammerArrestorL: data?.["s=SP6_ANTIB_LSL_TA"],
         hammerArrestorH: data?.["s=SP6_ANTIB_LSH_TA"],
 
-        runningStateP1: data?.["s=SP6_M01_TM_TLC"],
-        runningStateP2: data?.["s=SP6_M02_TM_TLC"],
-        runningStateP3: data?.["s=SP6_M03_TM_TLC"],
+        runningStateP1: data?.["s=SP6_M01_RM_TS"],
+        runningStateP2: data?.["s=SP6_M02_RM_TS"],
+        runningStateP3: data?.["s=SP6_M03_RM_TS"],
       },
       SP4: {
         progress: data?.["s=SP7_LIT_01_MAE_TM"],
@@ -1171,9 +1171,9 @@ export const updateHistoryData = (data: any, setDataHistory: any) => {
         hammerArrestorL: data?.["s=SP7_ANTIB_LSL_TA"],
         hammerArrestorH: data?.["s=SP7_ANTIB_LSH_TA"],
 
-        runningStateP1: data?.["s=SP7_M01_TM_TLC"],
-        runningStateP2: data?.["s=SP7_M02_TM_TLC"],
-        runningStateP3: data?.["s=SP7_M03_TM_TLC"],
+        runningStateP1: data?.["s=SP7_M01_RM_TS"],
+        runningStateP2: data?.["s=SP7_M02_RM_TS"],
+        runningStateP3: data?.["s=SP7_M03_RM_TS"],
       },
       SP5: {
         progress: data?.["s=SP8_LIT_01_MAE_TM"],
@@ -1221,9 +1221,9 @@ export const updateHistoryData = (data: any, setDataHistory: any) => {
         hammerArrestorL: data?.["s=SP8_ANTIB_LSL_TA"],
         hammerArrestorH: data?.["s=SP8_ANTIB_LSH_TA"],
 
-        runningStateP1: data?.["s=SP8_M01_TM_TLC"],
-        runningStateP2: data?.["s=SP8_M02_TM_TLC"],
-        runningStateP3: data?.["s=SP8_M03_TM_TLC"],
+        runningStateP1: data?.["s=SP8_M01_RM_TS"],
+        runningStateP2: data?.["s=SP8_M02_RM_TS"],
+        runningStateP3: data?.["s=SP8_M03_RM_TS"],
       },
       SP6: {
         progress: [data?.["s=B_LIT_01_MAE_TM"], data?.["s=B_LIT_02_MAE_TM"]],
@@ -1288,5 +1288,78 @@ export const updateHistoryData = (data: any, setDataHistory: any) => {
     };
 
     return newHistory;
+  });
+};
+
+export const formatRunningTime = (data: any, setDataRunningTime: any) => {
+  const runningTime = Object.entries(data?.count || []).reduce(
+    (acc: any, [key, value]: any) => {
+      acc[key] = value.reduce((acc1: any, item: any) => {
+        acc1["totalTime"] =
+          (acc1["totalTime"] || 0) +
+          (item.value === "True" ? item.difTimeHourly : 0);
+
+        acc1["film"] = [
+          ...(acc1["film"] || []),
+          {
+            value: item?.value,
+            percent: item?.percentage,
+          },
+        ];
+
+        return acc1;
+      }, {});
+
+      return acc;
+    },
+    {},
+  );
+
+  setDataRunningTime({
+    SP01: {
+      p1: runningTime?.["s=SP1_M01_RM_TS"],
+      p2: runningTime?.["s=SP1_M02_RM_TS"],
+      p3: runningTime?.["s=SP1_M03_RM_TS"],
+    },
+    SP02: {
+      p1: runningTime?.["s=SP2_M01_RM_TS"],
+      p2: runningTime?.["s=SP2_M02_RM_TS"],
+      p3: runningTime?.["s=SP2_M03_RM_TS"],
+    },
+    SP03: {
+      p1: runningTime?.["s=SP3_M01_RM_TS"],
+      p2: runningTime?.["s=SP3_M02_RM_TS"],
+      p3: runningTime?.["s=SP3_M03_RM_TS"],
+    },
+    SP1: {
+      p1: runningTime?.["s=SP4_M01_RM_TS"],
+      p2: runningTime?.["s=SP4_M02_RM_TS"],
+      p3: runningTime?.["s=SP4_M03_RM_TS"],
+    },
+    SP2: {
+      p1: runningTime?.["s=SP5_M01_RM_TS"],
+      p2: runningTime?.["s=SP5_M02_RM_TS"],
+      p3: runningTime?.["s=SP5_M03_RM_TS"],
+    },
+    SP3: {
+      p1: runningTime?.["s=SP6_M01_RM_TS"],
+      p2: runningTime?.["s=SP6_M02_RM_TS"],
+      p3: runningTime?.["s=SP6_M03_RM_TS"],
+    },
+    SP4: {
+      p1: runningTime?.["s=SP7_M01_RM_TS"],
+      p2: runningTime?.["s=SP7_M02_RM_TS"],
+      p3: runningTime?.["s=SP7_M03_RM_TS"],
+    },
+    SP5: {
+      p1: runningTime?.["s=SP8_M01_RM_TS"],
+      p2: runningTime?.["s=SP8_M02_RM_TS"],
+      p3: runningTime?.["s=SP8_M03_RM_TS"],
+    },
+    SP6: {
+      p1: runningTime?.["s=B_M01_RM_TS"],
+      p2: runningTime?.["s=B_M02_RM_TS"],
+      p3: runningTime?.["s=B_M03_RM_TS"],
+    },
   });
 };

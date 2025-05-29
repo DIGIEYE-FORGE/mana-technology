@@ -5,7 +5,7 @@ import LeftBar from "./left-bar";
 import RightBar from "./right-bar";
 import { useAppContext } from "@/Context";
 import useSWR from "swr";
-import { ModelCanvas } from "../omniverse/model-viewer";
+// import { ModelCanvas } from "../omniverse/model-viewer";
 import Circle1 from "@/assets/circle-1.svg?react";
 import Circle2 from "@/assets/circle-2.svg?react";
 import Circle3 from "@/assets/circle-3.svg?react";
@@ -13,6 +13,8 @@ import Light from "@/assets/light.svg?react";
 import Loader from "@/components/loader";
 import { Card } from "@/components/card";
 import ReactApexChart from "react-apexcharts";
+import { ModelCanvas } from "../omniverse/model-viewer";
+import { env } from "@/utils/env";
 
 const PebbleCrusher = () => {
   const { backendApi, dateRange } = useAppContext();
@@ -131,7 +133,7 @@ const PebbleCrusher = () => {
           </div>
         ) : (
           <main className="relative flex !h-fit flex-col gap-5 px-6 pb-6">
-            <div className="machine-highlight absolute bottom-[150px] left-1/2 aspect-square w-[500px] -translate-x-1/2">
+            <div className="machine-highlight absolute bottom-[150px] left-1/2 aspect-square w-[400px] -translate-x-1/2">
               <div className="circle circle-3 relative h-full w-full">
                 <Circle3 className="rotate h-full w-full duration-1000" />
               </div>
@@ -148,11 +150,13 @@ const PebbleCrusher = () => {
               className="pointer-events-none absolute left-0 top-0 z-0 h-full w-full opacity-60"
             />
             <div className="absolute inset-0 isolate z-0 flex flex-1 items-center justify-center p-0">
-              {/* <ModelCanvas
-                url={"/model/pebble.glb"}
-                position={[10, 10, -40]}
-                fov={20}
-              /> */}
+              {env.VITE_SHOW_MODEL === "true" && (
+                <ModelCanvas
+                  url={"/model/pebble_crusher.glb"}
+                  position={[-40, 15, -10]}
+                  fov={100}
+                />
+              )}
             </div>
             <UpCards
               flowRate={data?.["s=6210-WI-2215"] || 0}

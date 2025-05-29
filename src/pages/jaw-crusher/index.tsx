@@ -5,7 +5,7 @@ import LeftBar from "./left-bar";
 import RightBar from "./right-bar";
 import { useAppContext } from "@/Context";
 import useSWR from "swr";
-import { ModelCanvas } from "../omniverse/model-viewer";
+// import { ModelCanvas } from "../omniverse/model-viewer";
 import Circle1 from "@/assets/circle-1.svg?react";
 import Circle2 from "@/assets/circle-2.svg?react";
 import Circle3 from "@/assets/circle-3.svg?react";
@@ -21,6 +21,7 @@ import {
 } from "./utils/functions";
 import { io } from "socket.io-client";
 import { env } from "@/utils/env";
+import { ModelCanvas } from "../omniverse/model-viewer";
 
 const JawCrusher = () => {
   const { backendApi, dateRange } = useAppContext();
@@ -233,11 +234,14 @@ const JawCrusher = () => {
             />
             {/* {JSON.stringify(countData["count"]["s=6210-WI-2217"])} */}
             <div className="z-1 absolute inset-0 isolate flex h-1 flex-1 items-center justify-center p-0">
-              {/* <ModelCanvas
-                url={"/model/jaw02.glb"}
-                position={[10, 10, -40]}
-                fov={20}
-              /> */}
+              {env.VITE_SHOW_MODEL && (
+                <ModelCanvas
+                  url={"/model/jaw02.glb"}
+                  position={[10, 10, -40]}
+                  fov={20}
+                />
+              )}
+              {/* {JSON.stringify(leftData?.crushedFlow)} */}
             </div>
             <UpCards
               flowRateIn={upData?.flowRateIn || 0}
@@ -251,9 +255,7 @@ const JawCrusher = () => {
               power={upData?.power || 0}
               crushed={upData?.crushed || 0}
               jawCrusher={upData?.jawCrusher}
-              runingState={
-                  (countData as any)?.count?.["s=6210-WI-2217"] || {}
-                }
+              runingState={(countData as any)?.count?.["s=6210-WI-2217"] || {}}
             />
 
             <div className="flex h-1 flex-1 gap-5">
