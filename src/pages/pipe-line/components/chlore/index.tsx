@@ -6,9 +6,10 @@ function ChloreSVG({
   leftTitle = "LSLL-04",
   width = 200,
   height = 140,
+  active = false,
 }) {
   const leftTitleColor =
-    leftTitle.toLowerCase() === "true"
+    leftTitle.toLowerCase() === "true" || active
       ? "#26E2B3"
       : leftTitle.toLowerCase() === "false"
         ? "#E64C3C"
@@ -93,7 +94,7 @@ function ChloreSVG({
               width="13"
               height="13"
               rx="6.5"
-              fill={color}
+              fill={"#fff"}
             />
             <path
               d="M118.892 103.064L113.942 108.014M113.942 108.014L108.992 112.964M113.942 108.014L108.992 103.064M113.942 108.014L118.892 112.964"
