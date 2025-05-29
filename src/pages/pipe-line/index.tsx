@@ -130,7 +130,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
           className={cn(
             "absolute z-10 min-h-[10rem] min-w-[21rem] max-w-fit scale-[0.8] p-4 pr-6",
             getCardPositionClass(point.card.position),
-            point.id === "SP6" ? "scale-[0.70] bg-red-500" : "scale[0.8]",
+            point.id === "SP6" ? "scale-[0.80] bg-red-500" : "scale[0.8]",
           )}
           style={{
             ...(point.card.optionsPosition || {}),
@@ -228,52 +228,54 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
               </div>
 
               <div className="flex flex-1 flex-col gap-1">
-                {Object?.entries(point.card.attributes)?.map(([key, value]) => (
-                  <div key={key} className="flex justify-between">
-                    <span className="text-xs text-gray-400">
-                      {key} {ATTRIBUTE_UNITS[key] ? ATTRIBUTE_UNITS[key] : ""}
-                    </span>
-                    <span className="text-xs text-white">
-                      {key == "Running state" ? (
-                        <div className="flex flex-wrap gap-1">
-                          {value?.map((state: string, index: number) => (
-                            <div
-                              key={index}
-                              className="aspect-video h-5 w-6 rounded-sm border-0 border-white"
-                              style={{
-                                backgroundColor:
-                                  state === "True" ? "#26E2B3" : "#FF0000",
-                              }}
-                            ></div>
-                          ))}
-                        </div>
-                      ) : value instanceof Array ? (
-                        <div className="flex flex-wrap gap-1">
-                          {value?.map((v, idx) => (
-                            <span key={idx} className="text-xs text-white">
-                              {typeof v === "number"
-                                ? v.toFixed(2)
-                                : v == "True" || v == "False"
-                                  ? v === "True"
-                                    ? "On"
-                                    : "Off"
-                                  : // If it's a string or undefined/null, display it directly
-                                    typeof v === "string"
-                                    ? v
-                                    : v || "0"}
-                            </span>
-                          ))}
-                        </div>
-                      ) : typeof value === "number" ? (
-                        (value || 0)?.toFixed(2)
-                      ) : typeof value === "string" ? (
-                        value
-                      ) : (
-                        value || "0"
-                      )}
-                    </span>
-                  </div>
-                ))}
+                {Object?.entries(point.card.attributes)
+                  .filter((ele) => !["breakPoints"].includes(ele[0]))
+                  ?.map(([key, value]) => (
+                    <div key={key} className="flex justify-between">
+                      <span className="text-xs text-gray-400">
+                        {key} {ATTRIBUTE_UNITS[key] ? ATTRIBUTE_UNITS[key] : ""}
+                      </span>
+                      <span className="text-xs text-white">
+                        {key == "Running state" ? (
+                          <div className="flex flex-wrap gap-1">
+                            {value?.map((state: string, index: number) => (
+                              <div
+                                key={index}
+                                className="aspect-video h-5 w-6 rounded-sm border-0 border-white"
+                                style={{
+                                  backgroundColor:
+                                    state === "True" ? "#26E2B3" : "#FF0000",
+                                }}
+                              ></div>
+                            ))}
+                          </div>
+                        ) : value instanceof Array ? (
+                          <div className="flex flex-wrap gap-1">
+                            {value?.map((v, idx) => (
+                              <span key={idx} className="text-xs text-white">
+                                {typeof v === "number"
+                                  ? v.toFixed(2)
+                                  : v == "True" || v == "False"
+                                    ? v === "True"
+                                      ? "On"
+                                      : "Off"
+                                    : // If it's a string or undefined/null, display it directly
+                                      typeof v === "string"
+                                      ? v
+                                      : v || "0"}
+                              </span>
+                            ))}
+                          </div>
+                        ) : typeof value === "number" ? (
+                          (value || 0)?.toFixed(2)
+                        ) : typeof value === "string" ? (
+                          value
+                        ) : (
+                          value || "0"
+                        )}
+                      </span>
+                    </div>
+                  ))}
               </div>
             </div>
           </div>
@@ -563,7 +565,7 @@ const PipeLine: React.FC = () => {
       position: { top: "86%", right: "-3%" },
       card: {
         position: "left",
-        optionsPosition: { top: "-210%", left: "-90%" },
+        optionsPosition: { top: "-270%", left: "-70%" },
         progress: 0,
         attributes: {},
       },
