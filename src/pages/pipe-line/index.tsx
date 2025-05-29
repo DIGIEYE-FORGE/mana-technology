@@ -949,7 +949,18 @@ const PipeLine: React.FC = () => {
             }
           </DialogContent>
         </Dialog>
-        <LineChart />
+        <LineChart
+          series={[
+            {
+              name: "To basin",
+              data: { ...dataHistory?.SP6, ...runningTime?.SP6 }.flowInput,
+            },
+            {
+              name: "To plant",
+              data: { ...dataHistory?.SP6, ...runningTime?.SP6 }.flowPlant,
+            },
+          ]}
+        />
       </main>
     </main>
   );
@@ -962,52 +973,11 @@ interface LineChartProps
   series?: ApexAxisChartSeries;
 }
 
-function LineChart({
-  className,
-  series = [
-    {
-      name: "To basin",
-      data: [
-        {
-          x: new Date("2024-06-01"),
-          y: 10,
-        },
-        {
-          x: new Date("2024-06-02"),
-          y: 14,
-        },
-        {
-          x: new Date("2024-06-03"),
-          y: 20,
-        },
-      ],
-      type: "line",
-    },
-    {
-      name: "To plant",
-      data: [
-        {
-          x: new Date("2024-06-01"),
-          y: 20,
-        },
-        {
-          x: new Date("2024-06-02"),
-          y: 14,
-        },
-        {
-          x: new Date("2024-06-03"),
-          y: 10,
-        },
-      ],
-      type: "line",
-    },
-  ],
-  ...props
-}: LineChartProps) {
+function LineChart({ className, series, ...props }: LineChartProps) {
   return (
     <div
       className={twMerge(
-        "absolute bottom-6 left-[4rem] -z-10 aspect-[2.6] h-[11rem]",
+        "absolute bottom-6 left-[4rem] -z-10 h-[11rem] w-[60rem]",
         className,
       )}
       {...props}
@@ -1037,7 +1007,7 @@ function LineChart({
                 selection: { enabled: false },
                 dropShadow: { enabled: false },
               },
-              stroke: { width: 2, curve: "smooth" },
+              stroke: { width: 1.5, curve: "smooth" },
               dataLabels: { enabled: false },
               fill: { type: "solid" },
               legend: {
@@ -1083,7 +1053,7 @@ function LineChart({
               },
             }}
             series={series}
-            width={"105%"}
+            width={"100%"}
             height={"110%"}
           />
         </div>
