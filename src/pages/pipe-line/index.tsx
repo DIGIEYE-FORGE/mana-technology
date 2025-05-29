@@ -671,7 +671,8 @@ const PipeLine: React.FC = () => {
           {
             title: "Pumped Volume (m3)",
             value:
-              filteredResults?.["s=B_FIT_02_TOT_MES_TM"]?.[length - 1]?.y / 1000 || 0,
+              filteredResults?.["s=B_FIT_02_TOT_MES_TM"]?.[length - 1]?.y /
+                1000 || 0,
           },
           {
             title: "Flow Rate",
@@ -685,7 +686,7 @@ const PipeLine: React.FC = () => {
     },
   );
 
-  const { isLoading: isLoadingCount, error: countError } = useSWR(
+  const { isLoading: isLoadingCount } = useSWR(
     "count-pipe-line",
     async () => {
       const res = await backendApi.getHistory(
