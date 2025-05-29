@@ -260,17 +260,16 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                                   : // If it's a string or undefined/null, display it directly
                                     typeof v === "string"
                                     ? v
-                                    : v || "xx"}
+                                    : v || "0"}
                             </span>
                           ))}
                         </div>
-                      ) : // value || "xx"
-                      typeof value === "number" ? (
-                        value.toFixed(2)
+                      ) : typeof value === "number" ? (
+                        (value || 0)?.toFixed(2)
                       ) : typeof value === "string" ? (
                         value
                       ) : (
-                        value || "xx"
+                        value || "0"
                       )}
                     </span>
                   </div>
@@ -586,7 +585,7 @@ const PipeLine: React.FC = () => {
         },
         pagination: {
           page: 1,
-          perPage: 1000,
+          perPage: 100,
         },
       });
       return res;
@@ -622,7 +621,7 @@ const PipeLine: React.FC = () => {
           },
           {} as Record<string, any>,
         );
-
+        console.log("Filtered Results:", filteredResults);
         setWidgetData([
           {
             title: "Pumped Volume",
@@ -635,7 +634,6 @@ const PipeLine: React.FC = () => {
         ]);
 
         formatAttributesData(filteredResults, setAttributes);
-
         formatHistoryData(filteredResults, setDataHistory);
       },
     },
@@ -699,7 +697,7 @@ const PipeLine: React.FC = () => {
                   {(typeof item.value == "number" && item.value.toFixed(2)) ||
                     (typeof item.value == "string" && item.value) ||
                     item.value ||
-                    0}
+                    "0"}
                 </span>
               </CustomCardComponent>
             ))}
