@@ -332,7 +332,7 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
           <Card className="flex h-[28%] min-h-0 flex-1 items-center justify-center">
             <LiquidProgress
               textStyle="text-white font-bold"
-              stops={[]}
+              indictors={[true, false, false, false]}
               percentage={progressData.map((item) => ({
                 value: item.percentage,
                 title: item.name,
