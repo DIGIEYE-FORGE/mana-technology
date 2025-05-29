@@ -970,7 +970,7 @@ function LineChart({
   className,
   series = [
     {
-      name: "TO Basin",
+      name: "To basin",
       data: [
         {
           x: new Date("2024-06-01"),
@@ -985,7 +985,7 @@ function LineChart({
           y: 20,
         },
       ],
-      type: "area",
+      type: "line",
     },
     {
       name: "To plant",
@@ -1003,7 +1003,7 @@ function LineChart({
           y: 10,
         },
       ],
-      type: "area",
+      type: "line",
     },
   ],
   ...props
@@ -1011,23 +1011,23 @@ function LineChart({
   return (
     <div
       className={twMerge(
-        "absolute bottom-6 left-[25%] -z-10 aspect-[2.4] h-[12rem]",
+        "absolute bottom-6 left-[4rem] -z-10 aspect-[2.6] h-[11rem]",
         className,
       )}
       {...props}
     >
-      <Card className="flex h-full w-full flex-col p-3 backdrop-blur-sm">
-        <div className="font-semibold first-letter:uppercase">
+      <Card className="flex h-full w-full flex-col backdrop-blur-sm">
+        <div className="px-3 pt-3 font-semibold first-letter:uppercase">
           flow rate (m<sup>3</sup>/h)
         </div>
-        <div className="h-1 flex-1">
+        <div className="h-1 flex-1 -translate-y-4">
           <ReactApexChart
             options={{
               theme: {
                 mode: "dark",
               },
               tooltip: { cssClass: "text-black" },
-              colors: ["#26E2B3", "#4D09E8"],
+              colors: ["#26E2B3", "#F79043"],
               grid: {
                 borderColor: "#373737",
                 xaxis: { lines: { show: true } },
@@ -1043,7 +1043,7 @@ function LineChart({
               },
               stroke: { width: 2, curve: "smooth" },
               dataLabels: { enabled: false },
-              fill: { type: "solid", opacity: [0.1, 0.5] },
+              fill: { type: "solid" },
               legend: {
                 position: "bottom",
                 // markers: {
@@ -1087,8 +1087,8 @@ function LineChart({
               },
             }}
             series={series}
-            width={"100%"}
-            height={"100%"}
+            width={"105%"}
+            height={"110%"}
           />
         </div>
       </Card>
