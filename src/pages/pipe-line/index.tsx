@@ -228,6 +228,7 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
               </div>
 
               <div className="flex flex-1 flex-col gap-1">
+                {JSON.stringify(point.card.attributes["Running state"])}
                 {Object?.entries(point.card.attributes)
                   .filter((ele) => !["breakPoints"].includes(ele[0]))
                   ?.map(([key, value]) => (
@@ -389,7 +390,6 @@ const PipeLine: React.FC = () => {
     "SP5",
     "SP6",
   ]);
-  console.log("sp01 ");
   const PipeLineAttributes = [
     {
       id: "SP01",
@@ -638,6 +638,42 @@ const PipeLine: React.FC = () => {
 
         formatAttributesData(filteredResults, setAttributes);
         formatHistoryData(filteredResults, setDataHistory);
+      },
+    },
+  );
+
+  const {
+    data: countData,
+    error: countError,
+    isLoading: isLoadingCount,
+  } = useSWR(
+    "count",
+    async () => {
+      const res = await backendApi.getHistory(
+        "/dpc-history/api/history/count/JHF455XKPCH6DBLH",
+        {
+          telemetries: [
+            {
+              name: "s=SP1_M01_TM_TLC",
+              value: [true, false],
+            },
+            {
+              name: "s=SP1_M02_TM_TLC",
+              value: [true, false],
+            },
+            {
+              name: "s=SP1_M03_TM_TLC",
+              value: [true, false],
+            },
+          ],
+        },
+      );
+
+      return res;
+    },
+    {
+      onSuccess: (data) => {
+        console.log({ data });
       },
     },
   );
