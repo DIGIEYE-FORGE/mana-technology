@@ -387,6 +387,7 @@ const PipeLine: React.FC = () => {
     "SP5",
     "SP6",
   ]);
+  console.log("sp01 ");
   const PipeLineAttributes = [
     {
       id: "SP01",
@@ -621,7 +622,7 @@ const PipeLine: React.FC = () => {
           },
           {} as Record<string, any>,
         );
-        console.log("Filtered Results:", filteredResults);
+        console.log("Filtered Results:", { data, filteredResults });
         setWidgetData([
           {
             title: "Pumped Volume",
