@@ -11,7 +11,7 @@ import Light from "@/assets/light.svg?react";
 import { useEffect, useState } from "react";
 import { useAppContext } from "@/Context";
 import useSWR from "swr";
-import { ModelCanvas } from "../omniverse/model-viewer";
+// import { ModelCanvas } from "../omniverse/model-viewer";
 import {
   formatData,
   formatHistory,
@@ -147,7 +147,7 @@ const Flotation = () => {
           </div>
         ) : (
           <main className="relative flex !h-fit gap-5 px-6 pb-6 text-xs">
-            <div className="machine-highlight absolute bottom-0 left-1/2 aspect-square w-[500px] -translate-x-1/2">
+            <div className="machine-highlight absolute bottom-[100px] left-1/2 aspect-square w-[400px] -translate-x-1/2">
               <div className="circle circle-3 relative h-full w-full">
                 <Circle3 className="rotate h-full w-full duration-1000" />
               </div>

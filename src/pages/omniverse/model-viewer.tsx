@@ -2,7 +2,7 @@ import { useGLTF } from "@react-three/drei";
 // import { useFrame } from "@react-three/fiber";
 import { useRef, useState, useEffect, Suspense } from "react";
 import { Group } from "three";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Html } from "@react-three/drei";
 import { TriangleAlertIcon } from "lucide-react";
 
@@ -45,13 +45,19 @@ interface ModelProps {
 
 function Model({ url }: ModelProps) {
   const groupRef = useRef<Group>(null);
-  const [, setIsHovered] = useState<boolean>(false);
+  const [isHovered, setIsHovered] = useState<boolean>(false);
   const [modelError, setModelError] = useState<boolean>(false);
 
   // Use error handling with useGLTF
   const { scene } = useGLTF(url, true, undefined, (e) => {
     console.error("Error loading model:", e);
     setModelError(true);
+  });
+
+  useFrame((_, delta) => {
+    if (groupRef.current && !isHovered) {
+      groupRef.current.rotation.y += delta * 0.5; // Adjust rotation speed as needed
+    }
   });
 
   // Error handling through a try-catch in useEffect

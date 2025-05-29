@@ -5,7 +5,7 @@ import LeftBar from "./left-bar";
 import RightBar from "./right-bar";
 import { useAppContext } from "@/Context";
 import useSWR from "swr";
-import { ModelCanvas } from "../omniverse/model-viewer";
+// import { ModelCanvas } from "../omniverse/model-viewer";
 import Circle1 from "@/assets/circle-1.svg?react";
 import Circle2 from "@/assets/circle-2.svg?react";
 import Circle3 from "@/assets/circle-3.svg?react";

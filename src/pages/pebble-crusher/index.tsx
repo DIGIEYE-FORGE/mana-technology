@@ -5,7 +5,7 @@ import LeftBar from "./left-bar";
 import RightBar from "./right-bar";
 import { useAppContext } from "@/Context";
 import useSWR from "swr";
-import { ModelCanvas } from "../omniverse/model-viewer";
+// import { ModelCanvas } from "../omniverse/model-viewer";
 import Circle1 from "@/assets/circle-1.svg?react";
 import Circle2 from "@/assets/circle-2.svg?react";
 import Circle3 from "@/assets/circle-3.svg?react";
@@ -131,7 +131,7 @@ const PebbleCrusher = () => {
           </div>
         ) : (
           <main className="relative flex !h-fit flex-col gap-5 px-6 pb-6">
-            <div className="machine-highlight absolute bottom-[150px] left-1/2 aspect-square w-[500px] -translate-x-1/2">
+            <div className="machine-highlight absolute bottom-[150px] left-1/2 aspect-square w-[400px] -translate-x-1/2">
               <div className="circle circle-3 relative h-full w-full">
                 <Circle3 className="rotate h-full w-full duration-1000" />
               </div>

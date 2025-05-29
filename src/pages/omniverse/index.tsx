@@ -1,7 +1,7 @@
 import { Card } from "@/components/card";
 
 import ReactApexChart from "react-apexcharts";
-import { ModelCanvas } from "./model-viewer";
+// import { ModelCanvas } from "./model-viewer";
 
 function Crushing() {
   return (
