@@ -1007,7 +1007,7 @@ function LineChart({
   return (
     <div
       className={twMerge(
-        "absolute bottom-6 left-[4rem] -z-10 aspect-[2.6] h-[11rem]",
+        "absolute bottom-6 left-[4rem] -z-10 h-[11rem] w-[60rem]",
         className,
       )}
       {...props}
@@ -1083,7 +1083,7 @@ function LineChart({
               },
             }}
             series={series}
-            width={"105%"}
+            width={"100%"}
             height={"110%"}
           />
         </div>
