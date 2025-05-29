@@ -374,7 +374,7 @@ const PipeLine: React.FC = () => {
     setWidgetData([
       {
         title: "Pumped Volume (m3/h)",
-        value: data?.["s=B_FIT_02_TOT_MES_TM"] *3.6,
+        value: data?.["s=B_FIT_02_TOT_MES_TM"] * 3.6,
       },
       {
         title: "Flow Rate",
@@ -986,7 +986,7 @@ function LineChart({
   return (
     <div
       className={twMerge(
-        "absolute bottom-6 left-[23%] -z-10 aspect-[2] w-[39rem]",
+        "absolute bottom-6 left-[25%] -z-10 aspect-[2] w-[30em]",
         className,
       )}
       {...props}
