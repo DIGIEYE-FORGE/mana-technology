@@ -51,6 +51,8 @@ interface LeftBarProps {
   air2: { x: Date; y: number }[];
   air1Val: number | string;
   air2Val: number | string;
+  oreFlow: { x: Date; y: number }[];
+  oreFlowVal: number | string;
 }
 
 const LeftBar = ({
@@ -103,10 +105,12 @@ const LeftBar = ({
   air2,
   air1Val,
   air2Val,
+  oreFlow,
+  oreFlowVal,
 }: LeftBarProps) => {
   return (
-    <div className="relative z-10 flex h-full w-[500px] flex-col gap-2">
-      <Card className="flex w-full justify-between gap-2 px-2 py-1">
+    <div className="relative z-10 flex h-full w-full flex-col gap-2">
+      <Card className="flex w-[500px] justify-between gap-2 px-2 py-1">
         <ReactApexChart
           height={120}
           options={{
@@ -207,7 +211,7 @@ const LeftBar = ({
           </div>
         </Card>
       </Card>
-      <Card className="flex w-full justify-between gap-2 px-2 py-1">
+      <Card className="flex w-[500px] justify-between gap-2 px-2 py-1">
         <ReactApexChart
           height={120}
           options={{
@@ -337,7 +341,7 @@ const LeftBar = ({
           </div>
         </Card>
       </Card>
-      <Card className="flex w-full justify-between gap-2 px-2 py-1">
+      <Card className="flex w-[500px] justify-between gap-2 px-2 py-1">
         <ReactApexChart
           height={120}
           options={{
@@ -448,269 +452,357 @@ const LeftBar = ({
           </div>
         </Card>
       </Card>
-      <Card className="flex w-full flex-col !rounded p-2">
-        <div className="mb-2 flex items-center">
-          <span>Reagents</span>
-          <span className="ml-auto text-xs">CONS.</span>
-          <span className="ml-2 text-xs">SPEC.</span>
-        </div>
-        <div className="flex items-center gap-3">
-          <Card className="!rounded">
-            <ReactApexChart
-              height={100}
-              options={{
-                chart: {
-                  height: 100,
-                  type: "line",
-                  zoom: {
-                    enabled: false,
+      <div className="flex justify-between gap-2">
+        <Card className="flex w-[500px] shrink-0 flex-col !rounded p-2">
+          <div className="mb-2 flex items-center">
+            <span>Reagents</span>
+            <span className="ml-auto text-xs">CONS.</span>
+            <span className="ml-2 text-xs">SPEC.</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <Card className="!rounded">
+              <ReactApexChart
+                height={100}
+                options={{
+                  chart: {
+                    height: 100,
+                    type: "line",
+                    zoom: {
+                      enabled: false,
+                    },
+                    toolbar: {
+                      show: false,
+                    },
                   },
-                  toolbar: {
+                  tooltip: {
+                    theme: "dark",
+                  },
+                  stroke: {
+                    curve: "smooth",
+                    width: 3,
+                  },
+                  colors: [
+                    "#FFCA05",
+                    "#FF5C5C",
+                    "#05E8D2",
+                    "#3DCBFF",
+                    "#FFFFFF",
+                  ],
+                  legend: {
                     show: false,
                   },
-                },
-                tooltip: {
-                  theme: "dark",
-                },
-                stroke: {
-                  curve: "smooth",
-                  width: 3,
-                },
-                colors: ["#FFCA05", "#FF5C5C", "#05E8D2", "#3DCBFF", "#FFFFFF"],
-                legend: {
-                  show: false,
-                },
-                xaxis: {
-                  labels: {
-                    style: {
-                      colors: "#A2B0B8",
+                  xaxis: {
+                    labels: {
+                      style: {
+                        colors: "#A2B0B8",
+                      },
+                    },
+                    type: "datetime",
+                  },
+                  yaxis: {
+                    labels: {
+                      style: {
+                        colors: "#A2B0B8",
+                      },
+                    },
+                    decimalsInFloat: 2,
+                  },
+                }}
+                series={[
+                  {
+                    name: "PAX1",
+                    data: pax1 || [],
+                  },
+                  {
+                    name: "PAX2",
+                    data: pax2 || [],
+                  },
+                ]}
+              />
+            </Card>
+            <Card className="flex h-fit grow items-center !rounded px-2 py-3">
+              <span>PAX</span>
+              <span className="ml-auto font-semibold text-[#FFC829]">
+                {pax1Val}
+              </span>
+              <span className="ml-3 font-semibold text-[#FFC829]">
+                {pax2Val}
+              </span>
+            </Card>
+          </div>
+          <div className="flex items-center gap-3">
+            <Card className="!rounded">
+              <ReactApexChart
+                height={100}
+                options={{
+                  chart: {
+                    height: 100,
+                    type: "line",
+                    zoom: {
+                      enabled: false,
+                    },
+                    toolbar: {
+                      show: false,
                     },
                   },
-                  type: "datetime",
-                },
-                yaxis: {
-                  labels: {
-                    style: {
-                      colors: "#A2B0B8",
-                    },
+                  tooltip: {
+                    theme: "dark",
                   },
-                  decimalsInFloat: 2,
-                },
-              }}
-              series={[
-                {
-                  name: "PAX1",
-                  data: pax1 || [],
-                },
-                {
-                  name: "PAX2",
-                  data: pax2 || [],
-                },
-              ]}
-            />
-          </Card>
-          <Card className="flex h-fit grow items-center !rounded px-2 py-3">
-            <span>PAX</span>
-            <span className="ml-auto font-semibold text-[#FFC829]">
-              {pax1Val}
-            </span>
-            <span className="ml-3 font-semibold text-[#FFC829]">{pax2Val}</span>
-          </Card>
-        </div>
-        <div className="flex items-center gap-3">
-          <Card className="!rounded">
-            <ReactApexChart
-              height={100}
-              options={{
-                chart: {
-                  height: 100,
-                  type: "line",
-                  zoom: {
-                    enabled: false,
+                  stroke: {
+                    curve: "smooth",
+                    width: 3,
                   },
-                  toolbar: {
+                  colors: [
+                    "#FFCA05",
+                    "#FF5C5C",
+                    "#05E8D2",
+                    "#3DCBFF",
+                    "#FFFFFF",
+                  ],
+                  legend: {
                     show: false,
                   },
-                },
-                tooltip: {
-                  theme: "dark",
-                },
-                stroke: {
-                  curve: "smooth",
-                  width: 3,
-                },
-                colors: ["#FFCA05", "#FF5C5C", "#05E8D2", "#3DCBFF", "#FFFFFF"],
-                legend: {
-                  show: false,
-                },
-                xaxis: {
-                  labels: {
-                    style: {
-                      colors: "#A2B0B8",
+                  xaxis: {
+                    labels: {
+                      style: {
+                        colors: "#A2B0B8",
+                      },
+                    },
+                    type: "datetime",
+                  },
+                  yaxis: {
+                    labels: {
+                      style: {
+                        colors: "#A2B0B8",
+                      },
+                    },
+                    decimalsInFloat: 2,
+                  },
+                }}
+                series={[
+                  {
+                    name: "MIBC1",
+                    data: mibc1 || [],
+                  },
+                  {
+                    name: "MIBC2",
+                    data: mibc2 || [],
+                  },
+                ]}
+              />
+            </Card>
+            <Card className="flex h-fit grow items-center !rounded px-2 py-3">
+              <span>MIBC</span>
+              <span className="ml-auto font-semibold text-[#FFC829]">
+                {mibc1Val}
+              </span>
+              <span className="ml-3 font-semibold text-[#FFC829]">
+                {mibc2Val}
+              </span>
+            </Card>
+          </div>
+          <div className="flex items-center gap-3">
+            <Card className="!rounded">
+              <ReactApexChart
+                height={100}
+                options={{
+                  chart: {
+                    height: 100,
+                    type: "line",
+                    zoom: {
+                      enabled: false,
+                    },
+                    toolbar: {
+                      show: false,
                     },
                   },
-                  type: "datetime",
-                },
-                yaxis: {
-                  labels: {
-                    style: {
-                      colors: "#A2B0B8",
-                    },
+                  tooltip: {
+                    theme: "dark",
                   },
-                  decimalsInFloat: 2,
-                },
-              }}
-              series={[
-                {
-                  name: "MIBC1",
-                  data: mibc1 || [],
-                },
-                {
-                  name: "MIBC2",
-                  data: mibc2 || [],
-                },
-              ]}
-            />
-          </Card>
-          <Card className="flex h-fit grow items-center !rounded px-2 py-3">
-            <span>MIBC</span>
-            <span className="ml-auto font-semibold text-[#FFC829]">
-              {mibc1Val}
-            </span>
-            <span className="ml-3 font-semibold text-[#FFC829]">
-              {mibc2Val}
-            </span>
-          </Card>
-        </div>
-        <div className="flex items-center gap-3">
-          <Card className="!rounded">
-            <ReactApexChart
-              height={100}
-              options={{
-                chart: {
-                  height: 100,
-                  type: "line",
-                  zoom: {
-                    enabled: false,
+                  stroke: {
+                    curve: "smooth",
+                    width: 3,
                   },
-                  toolbar: {
+                  colors: [
+                    "#FFCA05",
+                    "#FF5C5C",
+                    "#05E8D2",
+                    "#3DCBFF",
+                    "#FFFFFF",
+                  ],
+                  legend: {
                     show: false,
                   },
-                },
-                tooltip: {
-                  theme: "dark",
-                },
-                stroke: {
-                  curve: "smooth",
-                  width: 3,
-                },
-                colors: ["#FFCA05", "#FF5C5C", "#05E8D2", "#3DCBFF", "#FFFFFF"],
-                legend: {
-                  show: false,
-                },
-                xaxis: {
-                  labels: {
-                    style: {
-                      colors: "#A2B0B8",
+                  xaxis: {
+                    labels: {
+                      style: {
+                        colors: "#A2B0B8",
+                      },
+                    },
+                    type: "datetime",
+                  },
+                  yaxis: {
+                    labels: {
+                      style: {
+                        colors: "#A2B0B8",
+                      },
+                    },
+                    decimalsInFloat: 2,
+                  },
+                }}
+                series={[
+                  {
+                    name: "nahs1",
+                    data: nahs1 || [],
+                  },
+                  {
+                    name: "nahs2",
+                    data: nahs2 || [],
+                  },
+                ]}
+              />
+            </Card>
+            <Card className="flex h-fit grow items-center !rounded px-2 py-3">
+              <span>NAHS</span>
+              <span className="ml-auto font-semibold text-[#FFC829]">
+                {nahs1Val}
+              </span>
+              <span className="ml-3 font-semibold text-[#FFC829]">
+                {nahs2Val}
+              </span>
+            </Card>
+          </div>
+          <div className="flex items-center gap-3">
+            <Card className="!rounded">
+              <ReactApexChart
+                height={100}
+                options={{
+                  chart: {
+                    height: 100,
+                    type: "line",
+                    zoom: {
+                      enabled: false,
+                    },
+                    toolbar: {
+                      show: false,
                     },
                   },
-                  type: "datetime",
-                },
-                yaxis: {
-                  labels: {
-                    style: {
-                      colors: "#A2B0B8",
-                    },
+                  tooltip: {
+                    theme: "dark",
                   },
-                  decimalsInFloat: 2,
-                },
-              }}
-              series={[
-                {
-                  name: "nahs1",
-                  data: nahs1 || [],
-                },
-                {
-                  name: "nahs2",
-                  data: nahs2 || [],
-                },
-              ]}
-            />
-          </Card>
-          <Card className="flex h-fit grow items-center !rounded px-2 py-3">
-            <span>NAHS</span>
-            <span className="ml-auto font-semibold text-[#FFC829]">
-              {nahs1Val}
-            </span>
-            <span className="ml-3 font-semibold text-[#FFC829]">
-              {nahs2Val}
-            </span>
-          </Card>
-        </div>
-        <div className="flex items-center gap-3">
-          <Card className="!rounded">
-            <ReactApexChart
-              height={100}
-              options={{
-                chart: {
-                  height: 100,
-                  type: "line",
-                  zoom: {
-                    enabled: false,
+                  stroke: {
+                    curve: "smooth",
+                    width: 3,
                   },
-                  toolbar: {
+                  colors: [
+                    "#FFCA05",
+                    "#FF5C5C",
+                    "#05E8D2",
+                    "#3DCBFF",
+                    "#FFFFFF",
+                  ],
+                  legend: {
                     show: false,
                   },
+                  xaxis: {
+                    labels: {
+                      style: {
+                        colors: "#A2B0B8",
+                      },
+                    },
+                    type: "datetime",
+                  },
+                  yaxis: {
+                    labels: {
+                      style: {
+                        colors: "#A2B0B8",
+                      },
+                    },
+                    decimalsInFloat: 2,
+                  },
+                }}
+                series={[
+                  {
+                    name: "air1",
+                    data: air1 || [],
+                  },
+                  {
+                    name: "air2",
+                    data: air2 || [],
+                  },
+                ]}
+              />
+            </Card>
+            <Card className="flex h-fit grow items-center !rounded px-2 py-3">
+              <span>AIR</span>
+              <span className="ml-auto font-semibold text-[#FFC829]">
+                {air1Val}
+              </span>
+              <span className="ml-3 font-semibold text-[#FFC829]">
+                {air2Val}
+              </span>
+            </Card>
+          </div>
+        </Card>
+        {/************************************************************************ */}
+        <Card className="flex h-fit flex-1 shrink-0 flex-col self-end !rounded px-5 pt-5">
+          <div className="flex items-center text-base">
+            <span className="font-semibold">Milled ore flow</span>
+            <span className="ml-auto font-semibold text-[#FFC829]">
+              {oreFlowVal}
+            </span>
+          </div>
+          <ReactApexChart
+            height={200}
+            width={"100%"}
+            options={{
+              chart: {
+                height: 100,
+                type: "line",
+                zoom: {
+                  enabled: false,
                 },
-                tooltip: {
-                  theme: "dark",
-                },
-                stroke: {
-                  curve: "smooth",
-                  width: 3,
-                },
-                colors: ["#FFCA05", "#FF5C5C", "#05E8D2", "#3DCBFF", "#FFFFFF"],
-                legend: {
+                toolbar: {
                   show: false,
                 },
-                xaxis: {
-                  labels: {
-                    style: {
-                      colors: "#A2B0B8",
-                    },
+              },
+              tooltip: {
+                theme: "dark",
+              },
+              stroke: {
+                curve: "smooth",
+                width: 3,
+              },
+              colors: ["#FFCA05", "#FF5C5C", "#05E8D2", "#3DCBFF", "#FFFFFF"],
+              legend: {
+                show: false,
+              },
+              xaxis: {
+                labels: {
+                  style: {
+                    colors: "#A2B0B8",
                   },
-                  type: "datetime",
                 },
-                yaxis: {
-                  labels: {
-                    style: {
-                      colors: "#A2B0B8",
-                    },
+                type: "datetime",
+              },
+              yaxis: {
+                labels: {
+                  style: {
+                    colors: "#A2B0B8",
                   },
-                  decimalsInFloat: 2,
                 },
-              }}
-              series={[
-                {
-                  name: "air1",
-                  data: air1 || [],
-                },
-                {
-                  name: "air2",
-                  data: air2 || [],
-                },
-              ]}
-            />
-          </Card>
-          <Card className="flex h-fit grow items-center !rounded px-2 py-3">
-            <span>AIR</span>
-            <span className="ml-auto font-semibold text-[#FFC829]">
-              {air1Val}
-            </span>
-            <span className="ml-3 font-semibold text-[#FFC829]">{air2Val}</span>
-          </Card>
-        </div>
-      </Card>
+                decimalsInFloat: 2,
+              },
+            }}
+            series={[
+              {
+                name: "flow",
+                data: oreFlow || [],
+              },
+            ]}
+          />
+        </Card>
+      </div>
     </div>
   );
 };

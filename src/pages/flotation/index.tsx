@@ -239,6 +239,9 @@ const Flotation = () => {
                 air2={leftData?.air2 || []}
                 air1Val={leftData?.air1Val || 0}
                 air2Val={leftData?.air2Val || 0}
+                /******************************************** */
+                oreFlow={leftData?.oreFlow || []}
+                oreFlowVal={leftData?.oreFlowVal || 0}
               />
             </div>
             <RightBar
