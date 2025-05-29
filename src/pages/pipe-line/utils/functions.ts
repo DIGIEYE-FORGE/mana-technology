@@ -796,7 +796,6 @@ export const updateHistoryData = (data: any, setDataHistory: any) => {
         pumpedVolume: data?.["s=SP1_FIT_02_TOT_MES_TM"],
         deltaFlow:
           +data?.["s=SP1_FIT_02_MAE_TM"] - +data?.["s=SP1_FIT_01_MAE_TM"],
-
         flowsInput: [
           ...(prevHistory?.SP01?.flowsInput?.slice(1) || []),
           { x: new Date(), y: data?.["s=SP1_FIT_01_MAE_TM"] },

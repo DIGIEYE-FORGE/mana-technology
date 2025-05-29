@@ -4,7 +4,7 @@ import { Card } from "@/components/card";
 // import { ConeChart } from "@/components/cone-chart";
 import { D3DonutChart } from "@/components/d3-donut chart";
 import Engins from "@/components/engins";
-import LineChartWidget from "@/components/line-chart-widget";
+// import LineChartWidget from "@/components/line-chart-widget";
 import { Button } from "@/components/ui/button";
 import Ventillation from "@/components/ventillation";
 import { ChevronsDown } from "lucide-react";
@@ -33,21 +33,21 @@ export default function UndergroundDashboardPage() {
               $lte: dateRange?.to && new Date(dateRange?.to as Date),
             },
           },
-        }
+        },
       );
 
-      const planifieData = results.map(item => ({
+      const planifieData = results.map((item) => ({
         x: new Date(item.createdAt),
-        y: item.UG_METRES_PLANIFIE as number
+        y: item.UG_METRES_PLANIFIE as number,
       }));
 
-      const realiseData = results.map(item => ({
+      const realiseData = results.map((item) => ({
         x: new Date(item.createdAt),
-        y: item.UG_METRES_REALISE_TOTAL as number
+        y: item.UG_METRES_REALISE_TOTAL as number,
       }));
 
       return { planifieData, realiseData };
-    }
+    },
   );
 
   const { data: cycleTimeData, isLoading: isLoadingCycleTime } = useSWR(
@@ -66,14 +66,14 @@ export default function UndergroundDashboardPage() {
               $lte: dateRange?.to && new Date(dateRange?.to as Date),
             },
           },
-        }
+        },
       );
 
-      return results.map(item => ({
+      return results.map((item) => ({
         x: new Date(item.createdAt),
-        y: item.UG_SUIVI_TEMPS_MOYEN_CYCLE as number
+        y: item.UG_SUIVI_TEMPS_MOYEN_CYCLE as number,
       }));
-    }
+    },
   );
 
   return (

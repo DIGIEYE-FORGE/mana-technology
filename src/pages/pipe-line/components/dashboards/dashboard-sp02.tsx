@@ -83,9 +83,10 @@ interface DashboardSP02Props {
 }
 
 export function DashboardSP02({ data }: DashboardSP02Props) {
+  console.log("DashboardSP02 data:", data);
   return (
     <>
-      <div className="debug absolute right-[1rem] top-[13%] flex gap-4">
+      <div className="absolute right-[1rem] top-[13%] flex gap-4">
         {Data.map((item) => (
           <div
             key={item.id}
@@ -319,7 +320,6 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
               </div>
             </Card>
           </div>
-
           <div className="flex flex-1 flex-col gap-[0.5rem] [&>*]:flex-1">
             <Card className="flex h-full items-center justify-center gap-8 border-none bg-transparent p-4 shadow-none">
               <div className="flex flex-1 flex-col items-center">
@@ -327,7 +327,9 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                   Suction tank
                 </span>
                 <LiquidProgress
-                  percentage={[{ value: 80, title: "" }]}
+                  percentage={[
+                    { value: data.suctionTankLevel || 0, title: "" },
+                  ]}
                   className="h-[10rem] w-[8rem]"
                   textStyle="text-white font-bold"
                   stops={[]}

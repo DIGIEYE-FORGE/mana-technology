@@ -161,7 +161,6 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                   className={cn("h-[9rem] w-[7rem]", {
                     "w-[3rem]": point.id === "SP6",
                   })}
-                  style={{}}
                   stops={[
                     {
                       color: "red",
@@ -254,9 +253,14 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                             <span key={idx} className="text-xs text-white">
                               {typeof v === "number"
                                 ? v.toFixed(2)
-                                : typeof v === "string"
-                                  ? v
-                                  : v || "xx"}
+                                : v == "True" || v == "False"
+                                  ? v === "True"
+                                    ? "On"
+                                    : "Off"
+                                  : // If it's a string or undefined/null, display it directly
+                                    typeof v === "string"
+                                    ? v
+                                    : v || "xx"}
                             </span>
                           ))}
                         </div>
@@ -649,7 +653,6 @@ const PipeLine: React.FC = () => {
       console.error("WebSocket error:", error);
     });
     socket.on("serial-JHF455XKPCH6DBLH", (data) => {
-      // console.log("Received message:", data);
       updateStatesWithSocketData(data);
     });
     return () => {

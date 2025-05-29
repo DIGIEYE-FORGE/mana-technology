@@ -204,9 +204,10 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
               <span className="mb-2 text-sm font-medium text-white">
                 Suction tank
               </span>
+              {JSON.stringify(data?.progress)}
 
               <LiquidProgress
-                percentage={[{ value: 50, title: "" }]}
+                percentage={[{ value: data.progress || 0, title: "" }]}
                 className="h-[7rem] w-[6rem]"
                 textStyle="text-white font-bold"
                 stops={[

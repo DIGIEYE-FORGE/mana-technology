@@ -164,11 +164,11 @@ const Flotation = () => {
               className="pointer-events-none absolute left-0 top-0 z-0 h-full w-full opacity-60"
             />
             <div className="z-1 absolute inset-0 isolate flex flex-1 items-center justify-center p-0">
-              {/* <ModelCanvas
+              <ModelCanvas
                 url={"/ignore/flotation_01.glb"}
                 position={[-40, 15, -10]}
                 fov={100}
-              /> */}
+              />
             </div>
             <div className="flex w-full flex-col justify-between gap-1">
               <UpCards
