@@ -43,6 +43,7 @@ interface PumpAttributes {
   pumps: string[];
   "Running state": string[];
   Pression: string[];
+  breakPoints: string[];
 }
 
 interface CardConfig {
@@ -164,19 +165,19 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                   stops={[
                     {
                       color: "red",
-                      value: 5,
+                      value: +point?.card?.attributes?.breakPoints?.[0],
                     },
                     {
                       color: "orange",
-                      value: 18,
+                      value: +point?.card?.attributes?.breakPoints?.[1],
                     },
                     {
                       color: "#0553fb",
-                      value: 89,
+                      value: +point?.card?.attributes?.breakPoints?.[2],
                     },
                     {
                       color: "green",
-                      value: 94,
+                      value: +point?.card?.attributes?.breakPoints?.[3],
                     },
                   ]}
                   percentage={

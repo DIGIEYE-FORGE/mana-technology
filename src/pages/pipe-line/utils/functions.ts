@@ -22,6 +22,12 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
           data?.["s=SP1_PIT_02_MAE_TM"]?.[length - 1]?.y,
           data?.["s=SP1_PIT_03_MAE_TM"]?.[length - 1]?.y,
         ],
+        breakPoints: [
+          data?.["s=SP1_LSLL_01_TA"]?.[length - 1]?.y,
+          data?.["s=SP1_LSL_01_TS"]?.[length - 1]?.y,
+          data?.["s=SP1_LSH_01_TS"]?.[length - 1]?.y,
+          data?.["s=SP1_LSHH_01_TA"]?.[length - 1]?.y,
+        ],
       },
     },
     SP02: {
@@ -48,6 +54,12 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
           data?.["s=SP2_PIT_02_MAE_TM"]?.[length - 1]?.y,
           data?.["s=SP2_PIT_03_MAE_TM"]?.[length - 1]?.y,
         ],
+        breakPoints: [
+          data?.["s=SP2_LSLL_01_TA"]?.[length - 1]?.y,
+          data?.["s=SP2_LSL_01_TS"]?.[length - 1]?.y,
+          data?.["s=SP2_LSH_01_TS"]?.[length - 1]?.y,
+          data?.["s=SP2_LSHH_01_TA"]?.[length - 1]?.y,
+        ],
       },
     },
     SP03: {
@@ -69,6 +81,12 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
           data?.["s=SP3_PIT_01_MAE_TM"]?.[length - 1]?.y,
           data?.["s=SP3_PIT_02_MAE_TM"]?.[length - 1]?.y,
           data?.["s=SP3_PIT_03_MAE_TM"]?.[length - 1]?.y,
+        ],
+        breakPoints: [
+          data?.["s=SP3_LSLL_01_TA"]?.[length - 1]?.y,
+          data?.["s=SP3_LSL_01_TS"]?.[length - 1]?.y,
+          data?.["s=SP3_LSH_01_TS"]?.[length - 1]?.y,
+          data?.["s=SP3_LSHH_01_TA"]?.[length - 1]?.y,
         ],
       },
     },
@@ -92,6 +110,12 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
           data?.["s=SP4_PIT_02_MAE_TM"]?.[length - 1]?.y,
           data?.["s=SP4_PIT_03_MAE_TM"]?.[length - 1]?.y,
         ],
+        breakPoints: [
+          data?.["s=SP4_LSLL_01_TA"]?.[length - 1]?.y,
+          data?.["s=SP4_LSL_01_TS"]?.[length - 1]?.y,
+          data?.["s=SP4_LSH_01_TS"]?.[length - 1]?.y,
+          data?.["s=SP4_LSHH_01_TA"]?.[length - 1]?.y,
+        ],
       },
     },
     SP2: {
@@ -113,6 +137,12 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
           data?.["s=SP5_PIT_01_MAE_TM"]?.[length - 1]?.y,
           data?.["s=SP5_PIT_02_MAE_TM"]?.[length - 1]?.y,
           data?.["s=SP5_PIT_03_MAE_TM"]?.[length - 1]?.y,
+        ],
+        breakPoints: [
+          data?.["s=SP5_LSLL_01_TA"]?.[length - 1]?.y,
+          data?.["s=SP5_LSL_01_TS"]?.[length - 1]?.y,
+          data?.["s=SP5_LSH_01_TS"]?.[length - 1]?.y,
+          data?.["s=SP5_LSHH_01_TA"]?.[length - 1]?.y,
         ],
       },
     },
@@ -136,6 +166,12 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
           data?.["s=SP6_PIT_02_MAE_TM"]?.[length - 1]?.y,
           data?.["s=SP6_PIT_03_MAE_TM"]?.[length - 1]?.y,
         ],
+        breakPoints: [
+          data?.["s=SP6_LSLL_01_TA"]?.[length - 1]?.y,
+          data?.["s=SP6_LSL_01_TS"]?.[length - 1]?.y,
+          data?.["s=SP6_LSH_01_TS"]?.[length - 1]?.y,
+          data?.["s=SP6_LSHH_01_TA"]?.[length - 1]?.y,
+        ],
       },
     },
     SP4: {
@@ -157,6 +193,12 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
           data?.["s=SP7_PIT_01_MAE_TM"]?.[length - 1]?.y,
           data?.["s=SP7_PIT_02_MAE_TM"]?.[length - 1]?.y,
           data?.["s=SP7_PIT_03_MAE_TM"]?.[length - 1]?.y,
+        ],
+        breakPoints: [
+          data?.["s=SP7_LSLL_01_TA"]?.[length - 1]?.y,
+          data?.["s=SP7_LSL_01_TS"]?.[length - 1]?.y,
+          data?.["s=SP7_LSH_01_TS"]?.[length - 1]?.y,
+          data?.["s=SP7_LSHH_01_TA"]?.[length - 1]?.y,
         ],
       },
     },
@@ -180,6 +222,12 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
           data?.["s=SP8_PIT_02_MAE_TM"]?.[length - 1]?.y,
           data?.["s=SP8_PIT_03_MAE_TM"]?.[length - 1]?.y,
         ],
+        breakPoints: [
+          data?.["s=SP8_LSLL_01_TA"]?.[length - 1]?.y,
+          data?.["s=SP8_LSL_01_TS"]?.[length - 1]?.y,
+          data?.["s=SP8_LSH_01_TS"]?.[length - 1]?.y,
+          data?.["s=SP8_LSHH_01_TA"]?.[length - 1]?.y,
+        ],
       },
     },
     SP6: {
@@ -196,6 +244,12 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
           +data?.["s=B_FIT_02_MAE_TM"]?.[length - 1]?.y -
           +data?.["s=B_FIT_01_MAE_TM"]?.[length - 1]?.y,
         "pression output": data?.["s=B_PIT_04_MAE_TM"]?.[length - 1]?.y,
+        breakPoints: [
+          data?.["s=B_LSLL_01_TA"]?.[length - 1]?.y,
+          data?.["s=B_LSL_01_TS"]?.[length - 1]?.y,
+          data?.["s=B_LSH_01_TS"]?.[length - 1]?.y,
+          data?.["s=B_LSHH_01_TA"]?.[length - 1]?.y,
+        ],
       },
     },
   });
@@ -224,6 +278,12 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
           data?.["s=SP1_PIT_02_MAE_TM"],
           data?.["s=SP1_PIT_03_MAE_TM"],
         ],
+        breakPoints: [
+          data?.["s=SP1_LSLL_01_TA"],
+          data?.["s=SP1_LSL_01_TS"],
+          data?.["s=SP1_LSH_01_TS"],
+          data?.["s=SP1_LSHH_01_TA"],
+        ],
       },
     },
     SP02: {
@@ -249,6 +309,12 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
           data?.["s=SP2_PIT_02_MAE_TM"],
           data?.["s=SP2_PIT_03_MAE_TM"],
         ],
+        breakPoints: [
+          data?.["s=SP2_LSLL_01_TA"],
+          data?.["s=SP2_LSL_01_TS"],
+          data?.["s=SP2_LSH_01_TS"],
+          data?.["s=SP2_LSHH_01_TA"],
+        ],
       },
     },
     SP03: {
@@ -269,6 +335,12 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
           data?.["s=SP3_PIT_01_MAE_TM"],
           data?.["s=SP3_PIT_02_MAE_TM"],
           data?.["s=SP3_PIT_03_MAE_TM"],
+        ],
+        breakPoints: [
+          data?.["s=SP3_LSLL_01_TA"],
+          data?.["s=SP3_LSL_01_TS"],
+          data?.["s=SP3_LSH_01_TS"],
+          data?.["s=SP3_LSHH_01_TA"],
         ],
       },
     },
@@ -291,6 +363,12 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
           data?.["s=SP4_PIT_02_MAE_TM"],
           data?.["s=SP4_PIT_03_MAE_TM"],
         ],
+        breakPoints: [
+          data?.["s=SP4_LSLL_01_TA"],
+          data?.["s=SP4_LSL_01_TS"],
+          data?.["s=SP4_LSH_01_TS"],
+          data?.["s=SP4_LSHH_01_TA"],
+        ],
       },
     },
     SP2: {
@@ -311,6 +389,12 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
           data?.["s=SP5_PIT_01_MAE_TM"],
           data?.["s=SP5_PIT_02_MAE_TM"],
           data?.["s=SP5_PIT_03_MAE_TM"],
+        ],
+        breakPoints: [
+          data?.["s=SP5_LSLL_01_TA"],
+          data?.["s=SP5_LSL_01_TS"],
+          data?.["s=SP5_LSH_01_TS"],
+          data?.["s=SP5_LSHH_01_TA"],
         ],
       },
     },
@@ -333,6 +417,12 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
           data?.["s=SP6_PIT_02_MAE_TM"],
           data?.["s=SP6_PIT_03_MAE_TM"],
         ],
+        breakPoints: [
+          data?.["s=SP6_LSLL_01_TA"],
+          data?.["s=SP6_LSL_01_TS"],
+          data?.["s=SP6_LSH_01_TS"],
+          data?.["s=SP6_LSHH_01_TA"],
+        ],
       },
     },
     SP4: {
@@ -353,6 +443,12 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
           data?.["s=SP7_PIT_01_MAE_TM"],
           data?.["s=SP7_PIT_02_MAE_TM"],
           data?.["s=SP7_PIT_03_MAE_TM"],
+        ],
+        breakPoints: [
+          data?.["s=SP7_LSLL_01_TA"],
+          data?.["s=SP7_LSL_01_TS"],
+          data?.["s=SP7_LSH_01_TS"],
+          data?.["s=SP7_LSHH_01_TA"],
         ],
       },
     },
@@ -375,6 +471,12 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
           data?.["s=SP8_PIT_02_MAE_TM"],
           data?.["s=SP8_PIT_03_MAE_TM"],
         ],
+        breakPoints: [
+          data?.["s=SP8_LSLL_01_TA"],
+          data?.["s=SP8_LSL_01_TS"],
+          data?.["s=SP8_LSH_01_TS"],
+          data?.["s=SP8_LSHH_01_TA"],
+        ],
       },
     },
     SP6: {
@@ -387,6 +489,12 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
         "delta flow":
           +data?.["s=B_FIT_02_MAE_TM"] - +data?.["s=B_FIT_01_MAE_TM"],
         "pression output": data?.["s=B_PIT_04_MAE_TM"],
+        breakPoints: [
+          data?.["s=B_LSLL_01_TA"],
+          data?.["s=B_LSL_01_TS"],
+          data?.["s=B_LSH_01_TS"],
+          data?.["s=B_LSHH_01_TA"],
+        ],
       },
     },
   });
