@@ -27,7 +27,6 @@ import {
   updateHistoryData,
 } from "./utils/functions";
 import { twMerge } from "tailwind-merge";
-import { Card } from "@/components/card";
 import ReactApexChart from "react-apexcharts";
 
 interface Position {
@@ -167,7 +166,6 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                 "flex-col": point.id === "SP6",
               })}
             >
-              {/* {JSON.stringify(point.card.attributes)} */}
               <LiquidProgress
                 className={cn("h-[9rem] w-[7rem]", {
                   "w-[6.5rem]": point.id === "SP6",
@@ -687,12 +685,8 @@ const PipeLine: React.FC = () => {
     },
   );
 
-  const {
-    // data: countData,
-    // error: countError,
-    isLoading: isLoadingCount,
-  } = useSWR(
-    "count",
+  const { isLoading: isLoadingCount } = useSWR(
+    "count-pipe-line",
     async () => {
       const res = await backendApi.getHistory(
         "/dpc-history/api/history/count/JHF455XKPCH6DBLH",
@@ -813,6 +807,7 @@ const PipeLine: React.FC = () => {
       return res;
     },
     {
+      revalidateOnMount: true,
       onSuccess: (data) => {
         formatRunningTime(data, setRunningTime);
       },

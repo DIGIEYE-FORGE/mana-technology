@@ -177,13 +177,6 @@ export function DashboardSP01({ data }: DashboardSP01Props) {
               <span className="mb-2 text-sm font-medium text-white">
                 Suction sump
               </span>
-              {JSON.stringify(data.progress || "-------")}
-              {/* {JSON.stringify({
-                suctionTankLL: data.suctionTankLL,
-                suctionTankL: data.suctionTankL,
-                suctionTankH: data.suctionTankH,
-                suctionTankHH: data.suctionTankHH,
-              })} */}
               <LiquidProgress
                 percentage={[
                   {
