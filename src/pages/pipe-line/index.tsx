@@ -670,7 +670,9 @@ const PipeLine: React.FC = () => {
         setWidgetData([
           {
             title: "Pumped Volume (m3/h)",
-            value: (filteredResults?.["s=B_FIT_02_TOT_MES_TM"]?.[length - 1]?.y * 3.6) || 0,
+            value:
+              filteredResults?.["s=B_FIT_02_TOT_MES_TM"]?.[length - 1]?.y *
+                3.6 || 0,
           },
           {
             title: "Flow Rate",
@@ -967,7 +969,7 @@ function LineChart({
   className,
   series = [
     {
-      name: "Production",
+      name: "TO Basin",
       data: [
         {
           x: new Date("2024-06-01"),
@@ -975,7 +977,29 @@ function LineChart({
         },
         {
           x: new Date("2024-06-02"),
+          y: 14,
+        },
+        {
+          x: new Date("2024-06-03"),
           y: 20,
+        },
+      ],
+      type: "area",
+    },
+    {
+      name: "To plant",
+      data: [
+        {
+          x: new Date("2024-06-01"),
+          y: 20,
+        },
+        {
+          x: new Date("2024-06-02"),
+          y: 14,
+        },
+        {
+          x: new Date("2024-06-03"),
+          y: 10,
         },
       ],
       type: "area",
@@ -986,13 +1010,15 @@ function LineChart({
   return (
     <div
       className={twMerge(
-        "absolute bottom-6 left-[25%] -z-10 aspect-[2] w-[24em]",
+        "absolute bottom-6 left-[25%] -z-10 aspect-[2.4] h-[12rem]",
         className,
       )}
       {...props}
     >
-      <div className="flex h-full w-full flex-col rounded-lg bg-card/10 p-3 backdrop-blur-sm">
-        <div className="font-semibold first-letter:uppercase">chart title</div>
+      <Card className="flex h-full w-full flex-col p-3 backdrop-blur-sm">
+        <div className="font-semibold first-letter:uppercase">
+          flow rate (m<sup>3</sup>/h)
+        </div>
         <div className="h-1 flex-1">
           <ReactApexChart
             options={{
@@ -1014,7 +1040,7 @@ function LineChart({
                 selection: { enabled: false },
                 dropShadow: { enabled: false },
               },
-              stroke: { width: 1, curve: "smooth" },
+              stroke: { width: 2, curve: "smooth" },
               dataLabels: { enabled: false },
               fill: { type: "solid", opacity: [0.1, 0.5] },
               legend: {
@@ -1064,7 +1090,7 @@ function LineChart({
             height={"100%"}
           />
         </div>
-      </div>
+      </Card>
     </div>
   );
 }
