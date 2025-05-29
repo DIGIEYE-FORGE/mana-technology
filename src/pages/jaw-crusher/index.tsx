@@ -85,6 +85,10 @@ const JawCrusher = () => {
             name: "s=6120-CV-2040",
             value: [true, false],
           },
+          {
+            name: "s=6032-CV-1140",
+            value: [true, false],
+          },
         ],
       },
     );
@@ -247,6 +251,9 @@ const JawCrusher = () => {
               power={upData?.power || 0}
               crushed={upData?.crushed || 0}
               jawCrusher={upData?.jawCrusher}
+              runingState={
+                  (countData as any)?.count?.["s=6210-WI-2217"] || {}
+                }
             />
 
             <div className="flex h-1 flex-1 gap-5">

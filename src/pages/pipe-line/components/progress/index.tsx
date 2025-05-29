@@ -26,12 +26,20 @@ const LiquidProgress: React.FC<LiquidProgressProps> = ({
   // Ensure percentage is always an array and has valid values
   const percentageArray = Array.isArray(percentage) ? percentage : [percentage];
 
+<<<<<<< HEAD
   const clamped =
     percentageArray
       .filter((item) => item && typeof item.value !== "undefined")
       .map((item) =>
         Math.max(0, Math.min(100, parseFloat(String(item.value || 0)))),
       ) || [];
+=======
+  const clamped = percentageArray
+    ?.filter((item) => item && typeof item.value !== "undefined")
+    ?.map((item) =>
+      Math.max(0, Math.min(100, parseFloat(String(item.value || 0)))),
+    );
+>>>>>>> 4d163f1c72a7c9aeda2b5689bb4c4edadf32c6fe
 
   if (clamped?.length === 0) {
     return <div className={cn("h-0 w-0", className)} style={style} />;
@@ -40,7 +48,7 @@ const LiquidProgress: React.FC<LiquidProgressProps> = ({
   return (
     <div className="flex flex-col items-center justify-center gap-1">
       <div className="flex gap-4">
-        {percentage.map((item, index) => (
+        {percentage?.map((item, index) => (
           <div
             key={index}
             className={cn("flex flex-col items-center", textStyle)}
@@ -59,7 +67,11 @@ const LiquidProgress: React.FC<LiquidProgressProps> = ({
           overflow: "hidden",
         }}
       >
+<<<<<<< HEAD
         {(clamped || [])?.map((value, index) => (
+=======
+        {clamped?.map((value, index) => (
+>>>>>>> 4d163f1c72a7c9aeda2b5689bb4c4edadf32c6fe
           <div
             key={index}
             className={cn("relative h-full", className)}

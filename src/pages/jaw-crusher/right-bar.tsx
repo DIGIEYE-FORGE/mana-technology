@@ -37,13 +37,13 @@ const RightBar = ({
     <Card className="flex h-full w-[400px] flex-col gap-2 overflow-hidden !rounded px-4 py-3">
       {/* {JSON.stringify(runingState)} */}
       <div className="flex w-full items-center justify-between">
-        <span className="text-lg font-semibold">Utilisation</span>
+        <span className="text-lg font-semibold">Utilization</span>
         <span className="text-lg font-semibold">Running State</span>
       </div>
       <div className="h-1 flex-1 flex-col gap-2 space-y-2 overflow-auto px-1">
         <Card className="flex flex-col gap-1 !rounded px-2 py-1">
           <div className="flex items-center justify-between text-sm">
-            <span>Convoyer Rom</span>
+            <span>Crusher Discharge Conveyor</span>
             <span
               className={cn("flex h-3 w-6 rounded-xl", {
                 "bg-[#8AFF8A]": conveyorRom == "True",
@@ -56,7 +56,7 @@ const RightBar = ({
               className="h-full rounded-xl bg-[#9799F8]"
               style={{
                 width: `${
-                  (runingState?.["count"]["s=6032-FD-1107"]
+                  (runingState?.["count"]["s=6032-CV-1140"]
                     .filter((ele: any) => {
                       return ele == "True";
                     })
@@ -71,8 +71,18 @@ const RightBar = ({
             ></div>
           </div>
           <div className="flex items-center justify-between text-sm">
-            <span>0%</span>
-            <span>100%</span>
+            <span>{
+                  (runingState?.["count"]["s=6032-CV-1140"]
+                    .filter((ele: any) => {
+                      return ele == "True";
+                    })
+                    .reduce(
+                      (acc: any, curr: any) => acc + curr.difTimeHourly,
+                      0,
+                    ) /
+                    24) *
+                    100 || 0
+                }%</span>
           </div>
         </Card>
 
@@ -107,8 +117,18 @@ const RightBar = ({
             ></div>
           </div>
           <div className="flex items-center justify-between text-sm">
-            <span>0%</span>
-            <span>100%</span>
+            <span>{
+                  (runingState?.["count"]["s=6032-FD-1107"]
+                    .filter((ele: any) => {
+                      return ele == "True";
+                    })
+                    .reduce(
+                      (acc: any, curr: any) => acc + curr.difTimeHourly,
+                      0,
+                    ) /
+                    24) *
+                    100 || 0
+                }%</span>
           </div>
         </Card>
         <Card className="flex flex-col gap-1 !rounded px-2 py-1">
@@ -142,8 +162,18 @@ const RightBar = ({
             ></div>
           </div>
           <div className="flex items-center justify-between text-sm">
-            <span>0%</span>
-            <span>100%</span>
+            <span>{
+                  (runingState?.["count"]["s=6028-FD-1021"]
+                    .filter((ele: any) => {
+                      return ele == "True";
+                    })
+                    .reduce(
+                      (acc: any, curr: any) => acc + curr.difTimeHourly,
+                      0,
+                    ) /
+                    24) *
+                    100 || 0
+                }</span>
           </div>
         </Card>
         <Card className="flex flex-col gap-1 !rounded px-2 py-1">
@@ -177,8 +207,18 @@ const RightBar = ({
             ></div>
           </div>
           <div className="flex items-center justify-between text-sm">
-            <span>0%</span>
-            <span>100%</span>
+            <span>{
+                  (runingState?.["count"]["s=6028-FD-1022"]
+                    .filter((ele: any) => {
+                      return ele == "True";
+                    })
+                    .reduce(
+                      (acc: any, curr: any) => acc + curr.difTimeHourly,
+                      0,
+                    ) /
+                    24) *
+                    100 || 0
+                }%</span>
           </div>
         </Card>
         <Card className="flex flex-col gap-1 !rounded px-2 py-1">
@@ -212,8 +252,18 @@ const RightBar = ({
             ></div>
           </div>
           <div className="flex items-center justify-between text-sm">
-            <span>0%</span>
-            <span>100%</span>
+            <span>{
+                  (runingState?.["count"]["s=6028-CV-1037"]
+                    .filter((ele: any) => {
+                      return ele == "True";
+                    })
+                    .reduce(
+                      (acc: any, curr: any) => acc + curr.difTimeHourly,
+                      0,
+                    ) /
+                    24) *
+                    100 || 0
+                }%</span>
           </div>
         </Card>
         <Card className="flex flex-col gap-1 !rounded px-2 py-1">
@@ -247,8 +297,18 @@ const RightBar = ({
             ></div>
           </div>
           <div className="flex items-center justify-between text-sm">
-            <span>0%</span>
-            <span>100%</span>
+            <span>{
+                  (runingState?.["count"]["s=6032-FD-1120"]
+                    .filter((ele: any) => {
+                      return ele == "True";
+                    })
+                    .reduce(
+                      (acc: any, curr: any) => acc + curr.difTimeHourly,
+                      0,
+                    ) /
+                    24) *
+                    100 || 0
+                }%</span>
           </div>
         </Card>
         <Card className="flex flex-col gap-1 !rounded px-2 py-1">
@@ -282,8 +342,18 @@ const RightBar = ({
             ></div>
           </div>
           <div className="flex items-center justify-between text-sm">
-            <span>0%</span>
-            <span>100%</span>
+            <span>{
+                  (runingState?.["count"]["s=6026-ZA-1004"]
+                    .filter((ele: any) => {
+                      return ele == "True";
+                    })
+                    .reduce(
+                      (acc: any, curr: any) => acc + curr.difTimeHourly,
+                      0,
+                    ) /
+                    24) *
+                    100 || 0
+                }%</span>
           </div>
         </Card>
         <Card className="flex flex-col gap-1 !rounded px-2 py-1">
@@ -319,8 +389,18 @@ const RightBar = ({
             ></div>
           </div>
           <div className="flex items-center justify-between text-sm">
-            <span>0%</span>
-            <span>100%</span>
+            <span>{
+                  (runingState?.["count"]["s=6120-FD-2021"]
+                    .filter((ele: any) => {
+                      return ele == "True";
+                    })
+                    .reduce(
+                      (acc: any, curr: any) => acc + curr.difTimeHourly,
+                      0,
+                    ) /
+                    24) *
+                    100 || 0
+                }%</span>
           </div>
         </Card>
         <Card className="flex flex-col gap-1 !rounded px-2 py-1">
@@ -356,8 +436,18 @@ const RightBar = ({
             ></div>
           </div>
           <div className="flex items-center justify-between text-sm">
-            <span>0%</span>
-            <span>100%</span>
+            <span>{
+                  (runingState?.["count"]["s=6120-FD-2022"]
+                    .filter((ele: any) => {
+                      return ele == "True";
+                    })
+                    .reduce(
+                      (acc: any, curr: any) => acc + curr.difTimeHourly,
+                      0,
+                    ) /
+                    24) *
+                    100 || 0
+                }%</span>
           </div>
         </Card>
         <Card className="flex flex-col gap-1 !rounded px-2 py-1">
@@ -390,13 +480,23 @@ const RightBar = ({
             ></div>
           </div>
           <div className="flex items-center justify-between text-sm">
-            <span>0%</span>
-            <span>100%</span>
+            <span>{
+                  (runingState?.["count"]["s=6120-FD-2023"]
+                    .filter((ele: any) => {
+                      return ele == "True";
+                    })
+                    .reduce(
+                      (acc: any, curr: any) => acc + curr.difTimeHourly,
+                      0,
+                    ) /
+                    24) *
+                    100 || 0
+                }%</span>
           </div>
         </Card>
         <Card className="flex flex-col gap-1 !rounded px-2 py-1">
           <div className="flex items-center justify-between text-sm">
-            <span>Crushed discharge conveyor</span>
+            <span>Crusher Discharge Conveyor Scale</span>
             <span
               className={cn("flex h-3 w-6 rounded-xl", {
                 "bg-[#8AFF8A]": crushedDischargeConveyor == "True",
@@ -424,8 +524,18 @@ const RightBar = ({
             ></div>
           </div>
           <div className="flex items-center justify-between text-sm">
-            <span>0%</span>
-            <span>100%</span>
+            <span>{
+                  (runingState?.["count"]["s=6032-ZM-1142"]
+                    .filter((ele: any) => {
+                      return ele == "True";
+                    })
+                    .reduce(
+                      (acc: any, curr: any) => acc + curr.difTimeHourly,
+                      0,
+                    ) /
+                    24) *
+                    100 || 0
+                }%</span>
           </div>
         </Card>
         <Card className="flex flex-col gap-1 !rounded px-2 py-1">
@@ -459,8 +569,18 @@ const RightBar = ({
             ></div>
           </div>
           <div className="flex items-center justify-between text-sm">
-            <span>0%</span>
-            <span>100%</span>
+            <span>{
+                  (runingState?.["count"]["s=6120-CV-2040"]
+                    .filter((ele: any) => {
+                      return ele == "True";
+                    })
+                    .reduce(
+                      (acc: any, curr: any) => acc + curr.difTimeHourly,
+                      0,
+                    ) /
+                    24) *
+                    100 || 0
+                }%</span>
           </div>
         </Card>
       </div>

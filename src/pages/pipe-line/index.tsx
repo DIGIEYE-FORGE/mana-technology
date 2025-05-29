@@ -131,6 +131,9 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
             "absolute z-10 min-h-[10rem] min-w-[21rem] max-w-fit scale-[0.8] p-4 pr-6",
             getCardPositionClass(point.card.position),
             point.id === "SP6" ? "scale-[0.80] bg-red-500" : "scale[0.8]",
+            {
+              "min-w-[16rem]": point.id === "SP6",
+            },
           )}
           style={{
             ...(point.card.optionsPosition || {}),
@@ -155,76 +158,62 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                 <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
             </div>
-            <div className="flex h-full w-full gap-2">
-              <div className="w-[7rem]">
-                <LiquidProgress
-                  className={cn("h-[9rem] w-[7rem]", {
-                    "w-[3rem]": point.id === "SP6",
-                  })}
-                  indictors={
-                    (
-                      point.card.attributes.breakPoints?.map((ele: string) =>
-                        ele === "True" ? true : false,
-                      ) || [true, false, false, false]
-                    )
-                      .slice(0, 4)
-                      .concat(
-                        Array(
-                          Math.max(
-                            0,
-                            4 -
-                              (point.card.attributes.breakPoints?.length || 0),
-                          ),
-                        ).fill(false),
-                      ) as [boolean, boolean, boolean, boolean]
-                  }
-                  percentage={
-                    point?.card?.progress && Array.isArray(point.card.progress)
-                      ? point.card.progress.map((p) => ({
+            <div
+              className={cn("flex h-full w-full gap-2", {
+                "flex-col": point.id === "SP6",
+              })}
+            >
+              <LiquidProgress
+                className={cn("h-[9rem] w-[7rem]", {
+                  "w-[6.5rem]": point.id === "SP6",
+                })}
+                indictors={[false, true, true, false]}
+                percentage={
+                  point?.card?.progress && Array.isArray(point.card.progress)
+                    ? point.card.progress.map((p) => ({
+                        value:
+                          (
+                            p &&
+                            Number(p / (point.id === "SP6" ? 2.72 : 5)) * 100
+                          )?.toFixed(2) || 0,
+                        title: "",
+                      }))
+                    : [
+                        {
                           value:
                             (
-                              p &&
-                              Number(p / (point.id === "SP6" ? 2.72 : 5)) * 100
+                              (point.card.progress as number) &&
+                              Number(
+                                point.card.progress /
+                                  (point.id === "SP6" ? 2.72 : 5),
+                              ) * 100
                             )?.toFixed(2) || 0,
-                          title: "",
-                        }))
-                      : [
-                          {
-                            value:
-                              (
-                                (point.card.progress as number) &&
-                                Number(
-                                  point.card.progress /
-                                    (point.id === "SP6" ? 2.72 : 5),
-                                ) * 100
-                              )?.toFixed(2) || 0,
 
-                            title: "",
-                          },
-                        ]
-                  }
-                  colorLL={
-                    point?.card?.attributes?.breakPoints?.[0] === "True"
-                      ? "#FF0000"
-                      : "#009670"
-                  }
-                  colorL={
-                    point?.card?.attributes?.breakPoints?.[1] === "True"
-                      ? "#FF0000"
-                      : "#009670"
-                  }
-                  colorH={
-                    point?.card?.attributes?.breakPoints?.[2] === "True"
-                      ? "#FF0000"
-                      : "#009670"
-                  }
-                  colorHH={
-                    point?.card?.attributes?.breakPoints?.[3] === "True"
-                      ? "#FF0000"
-                      : "#009670"
-                  }
-                />
-              </div>
+                          title: "",
+                        },
+                      ]
+                }
+                colorLL={
+                  point?.card?.attributes?.breakPoints?.[0] === "True"
+                    ? "#FF0000"
+                    : "#009670"
+                }
+                colorL={
+                  point?.card?.attributes?.breakPoints?.[1] === "True"
+                    ? "#FF0000"
+                    : "#009670"
+                }
+                colorH={
+                  point?.card?.attributes?.breakPoints?.[2] === "True"
+                    ? "#FF0000"
+                    : "#009670"
+                }
+                colorHH={
+                  point?.card?.attributes?.breakPoints?.[3] === "True"
+                    ? "#FF0000"
+                    : "#009670"
+                }
+              />
 
               <div className="flex flex-1 flex-col gap-1">
                 {/* {JSON.stringify(point.card.attributes["Running state"])} */}
@@ -790,7 +779,7 @@ const PipeLine: React.FC = () => {
           >
             <div className="flex h-[8%] shrink-0 items-center pl-[calc(36%+1rem)]">
               <span className="shrink-0 pl-6 font-ethnocentric text-sm font-extralight text-foreground first-letter:uppercase">
-                {PipeLineAttributes.find((item) => item.id === activePoint)
+                {PipeLineAttributes?.find((item) => item.id === activePoint)
                   ?.title || "Pipeline Dashboard"}
               </span>
               <DialogClose asChild>
@@ -804,7 +793,7 @@ const PipeLine: React.FC = () => {
               </DialogClose>
             </div>
             {
-              PipeLineAttributes.find((item) => item.id === activePoint)?.model
+              PipeLineAttributes?.find((item) => item.id === activePoint)?.model
                 .dashboard.component
             }
           </DialogContent>

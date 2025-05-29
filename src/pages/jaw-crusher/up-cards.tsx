@@ -18,6 +18,7 @@ interface UpCardsProps {
   energy: string | number;
   power: string | number;
   jawCrusher: string | number;
+  runingState: any;
 }
 
 const UpCards = ({
@@ -32,7 +33,12 @@ const UpCards = ({
   energy,
   power,
   jawCrusher,
+  runingState
 }: UpCardsProps) => {
+  const runingHours = runingState
+                ?.filter((ele: any) => ele.value)
+                .reduce((acc: number, ele: any) => acc + ele.difTimeHourly, 0) || 
+                0
   return (
     <div className="flex w-full flex-col justify-between">
       <div className="grid w-full grid-cols-8 gap-2">
@@ -57,7 +63,9 @@ const UpCards = ({
           <RocketIcon className="size-14 min-h-[3.5rem] min-w-[3.5rem]" />
           <div className="flex flex-col gap-1">
             <span>Throughput rate (t/h)</span>
-            <span className="text-lg font-bold text-[#FFC829]">{cadence}</span>
+            <span className="text-lg font-bold text-[#FFC829]">{
+              runingHours === 0 ? 0 : Number(cadence) / runingHours 
+              }</span>
           </div>
         </Card>
         <Card className="flex grow items-center justify-center gap-5 !rounded px-5">
@@ -73,10 +81,10 @@ const UpCards = ({
             <span className="text-wrap">Rom Stockpile Level (%)</span>
             <div className="flex w-full justify-between">
               <span className="text-lg font-bold text-[#FFC829]">
-                {stockpileLevelMin} %
+                {stockpileLevelMin}
               </span>
               <span className="text-lg font-bold text-[#FFC829]">
-                {stockpileLevelMax} %
+                {stockpileLevelMax}
               </span>
             </div>
           </div>
@@ -84,13 +92,13 @@ const UpCards = ({
         <Card className="flex grow items-center justify-center gap-5 !rounded px-5">
           <SettingIcon className="size-14 min-h-[3.5rem] min-w-[3.5rem]" />
           <div className="flex flex-col gap-1">
-            <span>Crushed Ore Stockpile Level (%)</span>
+            <span>Crushed Ore Stock Level (%)</span>
             <div className="flex w-full justify-between">
               <span className="text-lg font-bold text-[#FFC829]">
-                {crushedOreMin} %
+                {crushedOreMin}
               </span>
               <span className="text-lg font-bold text-[#FFC829]">
-                {crushedOreMax} %
+                {crushedOreMax}
               </span>
             </div>
           </div>
@@ -102,7 +110,7 @@ const UpCards = ({
             <span className="text-lg font-bold text-[#FFC829]">{power}</span>
           </div>
         </Card>
-        <Card className="flex grow items-center justify-center gap-5 !rounded px-5">
+        <Card className="flex grow items-center justify-center gap-5 !rounded px-5  opacity-50">
           <ElectricIcon className="size-14 min-h-[3.5rem] min-w-[3.5rem]" />
           <div className="flex flex-col gap-1">
             <span>Energy (kwh)</span>
