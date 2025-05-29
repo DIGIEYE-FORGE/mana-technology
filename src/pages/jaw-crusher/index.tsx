@@ -24,7 +24,7 @@ import { env } from "@/utils/env";
 import { ModelCanvas } from "../omniverse/model-viewer";
 
 const JawCrusher = () => {
-  const { backendApi, dateRange } = useAppContext();
+  const { backendApi } = useAppContext();
   const [upData, setUpData] = useState<any>(null);
   const [leftData, setLeftData] = useState<any>(null);
   const [rightData, setRightData] = useState<any>(null);
@@ -97,7 +97,7 @@ const JawCrusher = () => {
   });
 
   const { isLoading, error } = useSWR(
-    "last-telemetry",
+    "last-telemetry/jaw-crusher",
     async () => {
       const res = await backendApi.findMany("lastTelemetry", {
         where: {
@@ -133,7 +133,7 @@ const JawCrusher = () => {
   );
 
   const { isLoading: isLoadingHistory, error: errorHistory } = useSWR(
-    `dpc-history/api/history/${dateRange?.from}/${dateRange?.to}`,
+    `dpc-history/api/history/jaw-crusher/history`,
     async () => {
       const res = await backendApi.findMany("dpc-history/api/history", {
         where: {
@@ -253,13 +253,15 @@ const JawCrusher = () => {
               power={upData?.power || 0}
               crushed={upData?.crushed || 0}
               jawCrusher={upData?.jawCrusher}
-              runingState={(countData as any)?.count?.["s=6032-H-TOT-1130"] || {}}
+              runingState={
+                (countData as any)?.count?.["s=6032-H-TOT-1130"] || {}
+              }
             />
 
             <div className="flex h-1 flex-1 gap-5">
               <LeftBar
                 runningState={
-                  (countData as any)?.count?.["s=6032-H-TOT-1130"] || {}
+                  (countData as any)?.count?.["s=6032-H-TOT-1130"] || []
                 }
                 frameLeft={leftData?.frameLeft || []}
                 frameRight={leftData?.frameRight || []}

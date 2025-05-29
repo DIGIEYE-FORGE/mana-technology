@@ -93,7 +93,7 @@ const PebbleCrusher = () => {
         },
         pagination: {
           page: 1,
-          perPage: 10,
+          perPage: 1000,
         },
       });
 
