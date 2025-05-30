@@ -329,7 +329,6 @@ export function DashboardSP02({ data }: DashboardSP02Props) {
                 <span className="text mb-2 text-xl font-medium text-white">
                   Suction sump
                 </span>
-                {JSON.stringify(data.suctionTankLevel)}
                 <LiquidProgress
                   percentage={[
                     {
