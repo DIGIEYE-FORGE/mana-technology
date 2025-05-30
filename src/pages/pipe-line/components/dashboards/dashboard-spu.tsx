@@ -199,7 +199,7 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                     },
                   },
                   title: {
-                    text: "Level",
+                    text: "Level (%)",
                     align: "left",
                     style: {
                       fontSize: "14px",
@@ -208,6 +208,9 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                   },
                   tooltip: {
                     theme: "dark",
+                    y: {
+                      formatter: (val: number) => `${val.toFixed(0)} (%)`,
+                    },
                   },
                   stroke: {
                     curve: "smooth",
@@ -238,7 +241,7 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                         colors: "#A2B0B8",
                       },
                     },
-                    decimalsInFloat: 2,
+                    decimalsInFloat: 0,
                   },
                 }}
                 series={[
@@ -266,7 +269,9 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
           </Card>
           <Card className="flex h-[22%] min-h-0 flex-1 flex-col">
             <div className="relative flex items-center justify-between p-0 px-4 pt-2">
-              <span className="text-[14px] font-bold text-white">Chlorine</span>
+              <span className="text-[14px] font-bold text-white">
+                Chlorine (mg/l)
+              </span>
               <div className="absolute right-4 flex gap-2 text-xs">
                 <span className="rounded-full border border-white bg-[#021E3F] px-3 py-1 text-white">
                   Input {data.chloreInput?.at(-1)?.y ?? "00"}
@@ -291,6 +296,9 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                   },
                   tooltip: {
                     theme: "dark",
+                    y: {
+                      formatter: (val: number) => `${val.toFixed(2)} (mg/l)`,
+                    },
                   },
                   stroke: {
                     curve: "smooth",
@@ -368,29 +376,12 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
               Chlorine Stations
             </span>
             <div className="flex min-h-0 flex-1 items-center justify-center gap-0">
-              <span>{data.station1}</span>
-              {/* <ChloreSVG
-                topTitle="SP01-M-03"
-                // leftTitle="true"
-                bottomTitle="SP01-M-01"
-                value={data.station1 ?? "XX"}
-                width={350}
-                height={350}
-              /> */}
               <ChloreSVG
                 topIndicator={parseBoolean(false)}
                 leftIndicator={parseBoolean(true)}
                 bottomIndicator={parseBoolean(data.station1)}
                 className="h-[14rem] w-[14rem]"
               />
-              {/* <ChloreSVG
-                topTitle="SP01-M-03"
-                // leftTitle="false"
-                bottomTitle="SP01-M-02"
-                value={data.station2 ?? "XX"}
-                width={350}
-                height={350}
-              /> */}
               <ChloreSVG
                 topIndicator={parseBoolean(false)}
                 leftIndicator={parseBoolean(false)}
