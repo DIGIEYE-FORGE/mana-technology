@@ -48,6 +48,24 @@ const PebbleCrusher = () => {
     return res;
   });
 
+  const {data: RunningHoursData} = useSWR(
+      "running-hours-jaw-crusher",
+      async () => {
+         const res = await backendApi.getHistory(
+        "/dpc-history/api/history/firstLast/0V7ZJGB503H9WGH3",
+        {
+          telemetry: "s=6140-H-TOT-2426",
+          startDate: new Date(new Date().setHours(0,0,0,0)).toISOString(),
+          endDate:  new Date().toISOString()
+        },
+      );
+      return res;
+      },
+      {
+        revalidateOnMount: true,
+      }
+    )
+
   const { isLoading, error } = useSWR(
     "last-telemetry/pebble-crusher",
     async () => {
@@ -200,9 +218,11 @@ const PebbleCrusher = () => {
               bounce3={upData?.bounce3 || 0}
               telemetryRunningState={"s=6140-CR-2426"}
               runningState={countData}
+              runningHours={(RunningHoursData as any)}
             />
             <div className="flex gap-5">
               <LeftBar
+                runningHours={(RunningHoursData as any)}
                 nde={leftData?.nde || []}
                 de={leftData?.de || []}
                 u1={leftData?.u1 || []}
@@ -269,7 +289,7 @@ const PebbleCrusher = () => {
                   series={[
                     {
                       name: "Crushed Ore Flow",
-                      data: leftData?.crushedFlow,
+                      data: []
                     },
                   ]}
                 />

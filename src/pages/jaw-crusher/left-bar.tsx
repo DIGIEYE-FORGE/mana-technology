@@ -1,8 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Card } from "@/components/card";
+import { getHoursSinceMidnight } from "@/utils";
 import ReactApexChart from "react-apexcharts";
 
 interface LeftBarProps {
+  runningHours: {
+    firstValue: number,
+    lastValue: number
+  } | undefined
   runningState: any;
   frameLeft: { x: Date; y: number }[];
   frameRight: { x: Date; y: number }[];
@@ -15,6 +20,7 @@ interface LeftBarProps {
 }
 
 const LeftBar = ({
+  runningHours,
   runningState,
   frameLeft,
   frameRight,
@@ -24,6 +30,11 @@ const LeftBar = ({
   u1,
   w1,
 }: LeftBarProps) => {
+  const operatingHours = runningHours ? runningHours.firstValue - runningHours.lastValue : 0
+  const HoursSinceMidnight = getHoursSinceMidnight()
+  const downtimeHours = HoursSinceMidnight - operatingHours
+  const utilization = (operatingHours/HoursSinceMidnight) * 100
+
   return (
     <div className="relative z-10 flex h-full min-h-fit w-[400px] shrink-0 flex-col gap-2 overflow-x-hidden px-1 [&>.card]:h-1 [&>.card]:flex-1">
       <h1 className="text-xl font-bold">Jaw Crusher</h1>
@@ -56,36 +67,19 @@ const LeftBar = ({
           <div className="flex w-full justify-between">
             <span>Operating hours (h)</span>
             <span className="text-xl font-bold text-[#FFC829]">
-              {runningState
-                ?.filter((ele: any) => ele.value)
-                .reduce(
-                  (acc: number, ele: any) => acc + ele.difTimeHourly,
-                  0,
-                ) || 0}
+               {operatingHours}
             </span>
           </div>
           <div className="flex w-full justify-between">
             <span>Downtime hours (h)</span>
             <span className="text-xl font-bold text-[#FFC829]">
-              {Math.floor(
-                runningState
-                  ?.filter((ele: any) => !ele.value)
-                  .reduce(
-                    (acc: number, ele: any) => acc + ele.difTimeHourly,
-                    0,
-                  ) || 0,
-              )}
+              {downtimeHours.toFixed(1)}
             </span>
           </div>
           <div className="flex w-full justify-between">
             <span>Utilization (%)</span>
             <span className="text-xl font-bold text-[#FFC829]">
-              {runningState
-                ?.filter((ele: any) => ele.value)
-                .reduce(
-                  (acc: number, ele: any) => acc + ele.difTimeHourly,
-                  0,
-                ) || 0}
+              {utilization}
             </span>
           </div>
         </div>

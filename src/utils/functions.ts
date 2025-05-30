@@ -43,3 +43,14 @@ export async function toggleFullScreen() {
     return false;
   }
 }
+
+
+export function getHoursSinceMidnight() {
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+    
+    // Convert to decimal hours
+    return hours + (minutes / 60) + (seconds / 3600);
+}

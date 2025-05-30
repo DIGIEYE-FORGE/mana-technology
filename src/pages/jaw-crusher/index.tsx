@@ -100,6 +100,24 @@ const JawCrusher = () => {
     return res;
   });
 
+  const {data: RunningHoursData} = useSWR(
+      "running-hours-jaw-crusher",
+      async () => {
+         const res = await backendApi.getHistory(
+        "/dpc-history/api/history/firstLast/0V7ZJGB503H9WGH3",
+        {
+          telemetry: "s=6032-H-TOT-1130",
+          startDate: new Date(new Date().setHours(0,0,0,0)).toISOString(),
+          endDate:  new Date().toISOString()
+        },
+      );
+      return res;
+      },
+      {
+        revalidateOnMount: true,
+      }
+    )
+
   const { isLoading, error } = useSWR(
     "last-telemetry/jaw-crusher",
     async () => {
@@ -267,6 +285,7 @@ const JawCrusher = () => {
                 runningState={
                   (countData as any)?.count?.["s=6032-H-TOT-1130"] || []
                 }
+                runningHours={(RunningHoursData as any)}
                 frameLeft={leftData?.frameLeft || []}
                 frameRight={leftData?.frameRight || []}
                 pitmanLeft={leftData?.pitmanLeft || []}

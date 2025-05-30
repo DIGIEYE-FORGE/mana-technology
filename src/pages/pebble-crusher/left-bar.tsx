@@ -1,9 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Card } from "@/components/card";
+import { getHoursSinceMidnight } from "@/utils";
 import ReactApexChart from "react-apexcharts";
 
 interface LeftBarProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  runningHours: {
+    firstValue: number,
+    lastValue: number
+  } | undefined
   runningState: any;
   nde: { x: Date; y: number }[];
   de: { x: Date; y: number }[];
@@ -21,7 +26,12 @@ const LeftBar = ({
   v1,
   w1,
   telemetryRunningState,
+  runningHours
 }: LeftBarProps) => {
+  const operatingHours = runningHours ? runningHours.firstValue - runningHours.lastValue : 0
+  const HoursSinceMidnight = getHoursSinceMidnight()
+  const downtimeHours = HoursSinceMidnight - operatingHours
+  const utilization = (operatingHours/HoursSinceMidnight) * 100
   return (
     <div className="relative z-10 flex h-full w-[500px] flex-col gap-4">
       <Card className="!rounded px-5 py-3">
@@ -60,40 +70,19 @@ const LeftBar = ({
           <div className="flex w-full justify-between">
             <span>Operating hours (h)</span>
             <span className="text-xl font-bold text-[#FFC829]">
-              {runningState?.count[telemetryRunningState]
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                .filter((ele: any) => ele.value == "True")
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                .reduce((acc: any, curr: any) => acc + curr.difTimeHourly, 0)}
+              {operatingHours.toFixed(1)}
             </span>
           </div>
           <div className="flex w-full justify-between">
             <span>Downtime hours (h)</span>
             <span className="text-xl font-bold text-[#FFC829]">
-              {Math.round(
-                runningState?.count[telemetryRunningState]
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  .filter((ele: any) => ele.value == "False")
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  .reduce((acc: any, curr: any) => acc + curr.difTimeHourly, 0),
-              )}
+              {downtimeHours.toFixed(1)}
             </span>
           </div>
           <div className="flex w-full justify-between">
             <span>Utilization (%)</span>
             <span className="text-xl font-bold text-[#FFC829]">
-              {Math.round(
-                (runningState?.count[telemetryRunningState]
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  .filter((ele: any) => ele.value == "True")
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  .reduce(
-                    (acc: any, curr: any) => acc + curr.difTimeHourly,
-                    0,
-                  ) /
-                  24) *
-                  100,
-              )}
+              {utilization}
             </span>
           </div>
         </div>

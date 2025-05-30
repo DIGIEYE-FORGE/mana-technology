@@ -3,6 +3,7 @@ import RocketIcon from "@/assets/rocket.svg?react";
 import PlugIcon from "@/assets/plug.svg?react";
 import ElectricIcon from "@/assets/electric.svg?react";
 import SettingIcon from "@/assets/setting.svg?react";
+import { getHoursSinceMidnight } from "@/utils";
 
 interface UpCardsProps {
   flowRate: string | number;
@@ -13,6 +14,10 @@ interface UpCardsProps {
   bounce3: string | number;
   runningState: any;
   telemetryRunningState: string;
+  runningHours: {
+    firstValue: number,
+    lastValue: number
+  } | undefined
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 }
 
@@ -22,9 +27,11 @@ const UpCards = ({
   bounce1,
   bounce2,
   bounce3,
-  runningState,
-  telemetryRunningState
+  runningHours
 }: UpCardsProps) => {
+  const operatingHours = runningHours ? runningHours.firstValue - runningHours.lastValue : 0
+  const HoursSinceMidnight = getHoursSinceMidnight()
+  const utilization = (operatingHours/HoursSinceMidnight) * 100
   return (
     <div className="flex w-full gap-2">
       <Card className="flex grow flex-col items-center gap-2 !rounded p-2">
@@ -66,18 +73,7 @@ const UpCards = ({
         <div className="flex flex-col gap-1">
           <span>Utilization (%)</span>
           <span className="text-lg font-bold text-[#FFC829]">
-            {Math.round(
-                (runningState?.count[telemetryRunningState]
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  .filter((ele: any) => ele.value == "True")
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  .reduce(
-                    (acc: any, curr: any) => acc + curr.difTimeHourly,
-                    0,
-                  ) /
-                  24) *
-                  100,
-              )}
+            {utilization}
           </span>
         </div>
       </Card>
