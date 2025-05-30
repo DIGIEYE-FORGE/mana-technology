@@ -7,13 +7,13 @@ export const formatData = (
   setUpData((prev: any) => {
     return {
       ...prev,
-      flowRateIn: data?.["s=6028-WI-1042"] || 0,
-      flowRateOut: data?.["s=6032-WI-1142"] || 0,
-      cadence: data?.["s=6032-WI-1142"] || 0,
-      stockpileLevelMin: data?.["s=6028-LI-1009A"] || 0,
-      stockpileLevelMax: data?.["s=6028-LI-1009B"] || 0,
-      crushedOreMin: data?.["s=6120-LI-2006A"] || 0,
-      crushedOreMax: data?.["s=6120-LI-2006B"] || 0,
+      flowRateIn: data?.["s=6028-WIT-1042"] || 0,
+      flowRateOut: data?.["s=6032-WIT-1142"] || 0,
+      cadence: data?.["s=6032-WQI-1142"] || 0,
+      stockpileLevelMin: data?.["s=6028-LIT-1009A"] || 0,
+      stockpileLevelMax: data?.["s=6028-LIT-1009B"] || 0,
+      crushedOreMin: data?.["s=6120-LIT-2006A"] || 0,
+      crushedOreMax: data?.["s=6120-LIT-2006B"] || 0,
       energy: data?.["s=6100-TR-2001"] || 0,
       power: data?.["s=6210-WI-2217"] || 0,
       crushed: data?.["s=6032-WIQ-1142"] || 0,
@@ -23,7 +23,7 @@ export const formatData = (
   setLeftData((prev: any) => {
     return {
       ...prev,
-      runningState: data?.["s=6210-WI-2217"] || 0,
+      runningState: data?.["s=6032-CR-1130"] || 0,
     };
   });
   setRightData((prev: any) => {
@@ -70,13 +70,13 @@ export const updateDataWithSocket = (
   setUpData((prev: any) => {
     return {
       ...prev,
-      flowRateIn: data?.["s=6028-WI-1042"] || 0,
-      flowRateOut: data?.["s=6032-WI-1142"] || 0,
-      cadence: data?.["s=6032-WI-1142"] || 0,
-      stockpileLevelMin: data?.["s=6028-LI-1009A"] || 0,
-      stockpileLevelMax: data?.["s=6028-LI-1009B"] || 0,
-      crushedOreMin: data?.["s=6120-LI-2006A"] || 0,
-      crushedOreMax: data?.["s=6120-LI-2006B"] || 0,
+      flowRateIn: data?.["s=6028-WIT-1042"] || 0,
+      flowRateOut: data?.["s=6032-WIT-1142"] || 0,
+      cadence: data?.["s=6032-WQI-1142"] || 0,
+      stockpileLevelMin: data?.["s=6028-LIT-1009A"] || 0,
+      stockpileLevelMax: data?.["s=6028-LIT-1009B"] || 0,
+      crushedOreMin: data?.["s=6120-LIT-2006A"] || 0,
+      crushedOreMax: data?.["s=6120-LIT-2006B"] || 0,
       energy: data?.["s=6100-TR-2001"] || 0,
       power: data?.["s=6210-WI-2217"] || 0,
       crushed: data?.["s=6032-WIQ-1142"] || 0,
@@ -87,7 +87,7 @@ export const updateDataWithSocket = (
   setLeftData((prev: any) => {
     return {
       ...prev,
-      runningState: data?.["s=6210-WI-2217"] || 0,
+      runningState: data?.["s=6032-CR-1130"] || 0,
       frameLeft: [
         ...(prev?.frameLeft?.slice(1) || []),
         { x: new Date(), y: data?.["s=6032-TT-1130C"] || 0 },
