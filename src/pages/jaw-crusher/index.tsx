@@ -352,7 +352,7 @@ const JawCrusher = () => {
                   series={[
                     {
                       name: "Crushed Ore Flow",
-                      data: [],
+                      data: leftData?.crushedFlow || [],
                     },
                   ]}
                 />

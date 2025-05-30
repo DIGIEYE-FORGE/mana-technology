@@ -56,7 +56,7 @@ export const formatHistory = (data: any, setLeftData: any) => {
       v1: data?.["s=6032-TE-1130V1"] || [],
       u1: data?.["s=6032-TE-1130U1"] || [],
       w1: data?.["s=6032-TE-1130W1"] || [],
-      crushedFlow: data?.["s=6032-WI-1142"] || [],
+      crushedFlow: data?.["s=6032-WIT-1142"] || [],
     };
   });
 };
@@ -118,7 +118,7 @@ export const updateDataWithSocket = (
       ],
       crushedFlow: [
         ...(prev?.crushedFlow?.slice(1) || []),
-        { x: new Date(), y: data?.["s=6032-WI-1142"] || 0 },
+        { x: new Date(), y: data?.["s=6032-WIT-1142"] || 0 },
       ],
     };
   });
