@@ -508,12 +508,20 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
         "delta flow":
           +data?.["s=B_FIT_02_MAE_TM"] - +data?.["s=B_FIT_01_MAE_TM"],
         "pression output": data?.["s=B_PIT_04_MAE_TM"],
-        breakPoints: [
-          data?.["s=B_LSLL_01_TA"],
-          data?.["s=B_LSL_01_TS"],
-          data?.["s=B_LSH_01_TS"],
-          data?.["s=B_LSHH_01_TA"],
-        ],
+          breakPoints: [
+          [
+            data?.["s=B_LSLL_01_TA"],
+            data?.["s=B_LSL_01_TS"],
+            data?.["s=B_LSH_01_TS"],
+            data?.["s=B_LSHH_01_TA"],
+          ],
+          [
+            data?.["s=B_LSLL_02_TA"],
+            data?.["s=B_LSL_02_TS"],
+            data?.["s=B_LSH_02_TS"],
+            data?.["s=B_LSHH_02_TA"],
+          ],
+        ]
       },
     },
   });
@@ -1278,7 +1286,6 @@ export const updateHistoryData = (data: any, setDataHistory: any) => {
         basinL1: data?.["s=B_LSL_01_TS"],
         basinH1: data?.["s=B_LSH_01_TS"],
         basinHH1: data?.["s=B_LSHH_01_TA"],
-
         basinsValue2: [
           ...(prevHistory?.SP6?.basinsValue2?.slice(1) || []),
           { x: new Date(), y: data?.["s=B_LIT_02_MAE_TM"] },
@@ -1287,7 +1294,6 @@ export const updateHistoryData = (data: any, setDataHistory: any) => {
         basinL2: data?.["s=B_LSL_02_TS"],
         basinH2: data?.["s=B_LSH_02_TS"],
         basinHH2: data?.["s=B_LSHH_02_TA"],
-
         station1: data?.["s=B_M01_RM_TS"],
         stationM1: data?.["s=B_M03_RM_TS"],
         station2: data?.["s=B_M02_RM_TS"],

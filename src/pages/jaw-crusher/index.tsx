@@ -100,23 +100,23 @@ const JawCrusher = () => {
     return res;
   });
 
-  const {data: RunningHoursData} = useSWR(
-      "running-hours-jaw-crusher",
-      async () => {
-         const res = await backendApi.getHistory(
+  const { data: RunningHoursData } = useSWR(
+    "running-hours-jaw-crusher",
+    async () => {
+      const res = await backendApi.getHistory(
         "/dpc-history/api/history/firstLast/0V7ZJGB503H9WGH3",
         {
           telemetry: "s=6032-H-TOT-1130",
-          startDate: new Date(new Date().setHours(0,0,0,0)).toISOString(),
-          endDate:  new Date().toISOString()
+          startDate: new Date(new Date().setHours(0, 0, 0, 0)).toISOString(),
+          endDate: new Date().toISOString(),
         },
       );
       return res;
-      },
-      {
-        revalidateOnMount: true,
-      }
-    )
+    },
+    {
+      revalidateOnMount: true,
+    },
+  );
 
   const { isLoading, error } = useSWR(
     "last-telemetry/jaw-crusher",
@@ -285,7 +285,7 @@ const JawCrusher = () => {
                 runningState={
                   (countData as any)?.count?.["s=6032-H-TOT-1130"] || []
                 }
-                runningHours={(RunningHoursData as any)}
+                runningHours={RunningHoursData as any}
                 frameLeft={leftData?.frameLeft || []}
                 frameRight={leftData?.frameRight || []}
                 pitmanLeft={leftData?.pitmanLeft || []}
@@ -352,7 +352,7 @@ const JawCrusher = () => {
                   series={[
                     {
                       name: "Crushed Ore Flow",
-                      data: leftData?.crushedFlow || [],
+                      data: [],
                     },
                   ]}
                 />

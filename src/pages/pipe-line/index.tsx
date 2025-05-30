@@ -171,12 +171,37 @@ const PipelinePoint: React.FC<PipelinePointProps> = ({
                 className={cn("h-[9rem] w-[7rem]", {
                   "w-[6.5rem]": point.id === "SP6",
                 })}
-                indictors={[
-                  point?.card?.attributes?.breakPoints?.[0] == "True",
-                  point?.card?.attributes?.breakPoints?.[1] == "True",
-                  point?.card?.attributes?.breakPoints?.[2] == "True",
-                  point?.card?.attributes?.breakPoints?.[3] == "True",
-                ]}
+                indictors={
+                  point.id === "SP6"
+                    ? [
+                        [
+                          point?.card?.attributes?.breakPoints?.[0][0] ==
+                            "True",
+                          point?.card?.attributes?.breakPoints?.[0][1] ==
+                            "True",
+                          point?.card?.attributes?.breakPoints?.[0][2] ==
+                            "True",
+                          point?.card?.attributes?.breakPoints?.[0][3] ==
+                            "True",
+                        ],
+                        [
+                          point?.card?.attributes?.breakPoints?.[1][0] ==
+                            "True",
+                          point?.card?.attributes?.breakPoints?.[1][1] ==
+                            "True",
+                          point?.card?.attributes?.breakPoints?.[1][2] ==
+                            "True",
+                          point?.card?.attributes?.breakPoints?.[1][3] ==
+                            "True",
+                        ],
+                      ]
+                    : [
+                        point?.card?.attributes?.breakPoints?.[0] == "True",
+                        point?.card?.attributes?.breakPoints?.[1] == "True",
+                        point?.card?.attributes?.breakPoints?.[2] == "True",
+                        point?.card?.attributes?.breakPoints?.[3] == "True",
+                      ]
+                }
                 percentage={
                   point?.card?.progress && Array.isArray(point.card.progress)
                     ? point.card.progress.map((p) => ({

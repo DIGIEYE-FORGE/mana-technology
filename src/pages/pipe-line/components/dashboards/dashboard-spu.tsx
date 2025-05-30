@@ -359,14 +359,14 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
                 [
                   data.basinLL1 == "True" ? true : false,
                   data.basinL1 == "True" ? true : false,
-                  data.suctionTankH == "True" ? true : false,
-                  data.suctionTankHH == "True" ? true : false,
+                  data.basinH1 == "True" ? true : false,
+                  data.basinHH1 == "True" ? true : false,
                 ],
                 [
                   data.basinLL2 == "True" ? true : false,
                   data.basinL2 == "True" ? true : false,
-                  data.suctionTankH2 == "True" ? true : false,
-                  data.suctionTankHH2 == "True" ? true : false,
+                  data.basinH2 == "True" ? true : false,
+                  data.basinHH2 == "True" ? true : false,
                 ],
               ]}
             />
