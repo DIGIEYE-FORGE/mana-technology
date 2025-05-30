@@ -92,9 +92,9 @@ const ATTRIBUTE_UNITS: Record<string, string> = {
   "Chlore output": "(mg/L)",
   "Flow input": "(L/s)",
   "Flow output": "(L/s)",
-  "delta flow": "(L/s)",
-  "pression output": "(bar)",
-  Pression: "(bar)",
+  "Delta flow": "(L/s)",
+  "Output pressure": "(bar)",
+  Pressure: "(bar)",
 };
 
 const createPositionStyle = (position: Position): React.CSSProperties => {
