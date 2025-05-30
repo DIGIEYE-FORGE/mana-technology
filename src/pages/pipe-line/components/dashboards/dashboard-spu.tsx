@@ -269,10 +269,10 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
               <span className="text-[14px] font-bold text-white">Chlorine</span>
               <div className="absolute right-4 flex gap-2 text-xs">
                 <span className="rounded-full border border-white bg-[#021E3F] px-3 py-1 text-white">
-                  Input {data.chloreInput?.at(-1)?.y ?? "XX"}
+                  Input {data.chloreInput?.at(-1)?.y ?? "00"}
                 </span>
                 <span className="rounded-full border border-white bg-[#021E3F] px-3 py-1 text-white">
-                  Output {data.chlorePlant?.at(-1)?.y ?? "XX"}
+                  Output {data.chlorePlant?.at(-1)?.y ?? "00"}
                 </span>
               </div>
             </div>
@@ -348,10 +348,18 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
               style={{ background: "white" }}
               className="h-[14rem] !w-[9rem]"
               indictors={[
-                data.suctionTankLL == "True" ? true : false,
-                data.suctionTankL == "True" ? true : false,
-                data.suctionTankH == "True" ? true : false,
-                data.suctionTankHH == "True" ? true : false,
+                [
+                  data.basinLL1 == "True" ? true : false,
+                  data.basinL1 == "True" ? true : false,
+                  data.suctionTankH == "True" ? true : false,
+                  data.suctionTankHH == "True" ? true : false,
+                ],
+                [
+                  data.basinLL2 == "True" ? true : false,
+                  data.basinL2 == "True" ? true : false,
+                  data.suctionTankH2 == "True" ? true : false,
+                  data.suctionTankHH2 == "True" ? true : false,
+                ],
               ]}
             />
           </Card>

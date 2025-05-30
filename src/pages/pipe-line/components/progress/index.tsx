@@ -13,7 +13,9 @@ interface LiquidProgressProps {
   colorH?: string;
   colorL?: string;
   colorLL?: string;
-  indictors: [boolean, boolean, boolean, boolean];
+  indictors:
+    | [boolean, boolean, boolean, boolean]
+    | [boolean, boolean, boolean, boolean][];
 }
 
 const LiquidProgress: React.FC<LiquidProgressProps> = ({
@@ -23,7 +25,6 @@ const LiquidProgress: React.FC<LiquidProgressProps> = ({
   textStyle = "text-gray-700",
   indictors,
 }) => {
-  // Ensure percentage is always an array and has valid values
   const percentageArray = Array.isArray(percentage) ? percentage : [percentage];
 
   const clamped = percentageArray
@@ -36,20 +37,27 @@ const LiquidProgress: React.FC<LiquidProgressProps> = ({
     return <div className={cn("h-0 w-0", className)} style={style} />;
   }
 
+  const normalizedIndictors = Array.isArray(indictors[0])
+    ? (indictors as [boolean, boolean, boolean, boolean][])
+    : percentageArray.map(
+        () => indictors as [boolean, boolean, boolean, boolean],
+      );
+
   return (
     <div className="flex flex-col items-center justify-center gap-1">
       <div className="flex min-w-[7rem] justify-between gap-4 text-center text-xs font-semibold">
-        {percentage?.map((item, index) => (
+        {percentageArray.map((item, index) => (
           <div
             key={index}
             className={cn("flex flex-col items-center", textStyle)}
           >
             {item.title && (
-              <span className="text-2xl font-semibold">{item?.title || ""}</span>
+              <span className="text-2xl font-semibold">{item.title}</span>
             )}
           </div>
         ))}
       </div>
+
       <div
         className={cn("relative flex h-fit w-fit gap-2")}
         style={{
@@ -58,7 +66,7 @@ const LiquidProgress: React.FC<LiquidProgressProps> = ({
           overflow: "hidden",
         }}
       >
-        {clamped?.map((value, index) => (
+        {clamped.map((value, index) => (
           <div
             key={index}
             className={cn("relative h-full", className)}
@@ -70,7 +78,6 @@ const LiquidProgress: React.FC<LiquidProgressProps> = ({
             <div
               className={cn(
                 "absolute bottom-0 left-0 h-full w-full overflow-hidden",
-                // className,
               )}
               style={{
                 height: `${value}%`,
@@ -89,15 +96,15 @@ const LiquidProgress: React.FC<LiquidProgressProps> = ({
                 />
               </svg>
             </div>
-            {[10, 20, 80, 90]?.map((bottom, index) => (
+
+            {[10, 20, 80, 90].map((bottom, i) => (
               <div
-                key={index}
+                key={i}
                 className={cn(
                   "absolute h-1 w-full translate-y-1/2 bg-red-500",
                   {
                     "bg-gradient-to-r from-[#98FFE5] to-[#009670]":
-                      // index <= 1 ? !indictors[index] : indictors[index],
-                      !indictors[index],
+                      !normalizedIndictors[index]?.[i],
                   },
                 )}
                 style={{
@@ -105,6 +112,7 @@ const LiquidProgress: React.FC<LiquidProgressProps> = ({
                 }}
               />
             ))}
+
             <div className="absolute inset-0 flex items-center justify-center">
               <span className="text-xl font-bold text-white mix-blend-difference">
                 {value?.toFixed?.(2)}%

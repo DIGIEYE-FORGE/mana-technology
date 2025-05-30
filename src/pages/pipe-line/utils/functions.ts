@@ -254,11 +254,19 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
           +data?.["s=B_FIT_01_MAE_TM"]?.[length - 1]?.y,
         "pression output": data?.["s=B_PIT_04_MAE_TM"]?.[length - 1]?.y,
         breakPoints: [
-          data?.["s=B_LSLL_01_TA"]?.[length - 1]?.y,
-          data?.["s=B_LSL_01_TS"]?.[length - 1]?.y,
-          data?.["s=B_LSH_01_TS"]?.[length - 1]?.y,
-          data?.["s=B_LSHH_01_TA"]?.[length - 1]?.y,
-        ],
+          [
+            data?.["s=B_LSLL_01_TA"]?.[length - 1]?.y,
+            data?.["s=B_LSL_01_TS"]?.[length - 1]?.y,
+            data?.["s=B_LSH_01_TS"]?.[length - 1]?.y,
+            data?.["s=B_LSHH_01_TA"]?.[length - 1]?.y,
+          ],
+          [
+            data?.["s=B_LSLL_02_TA"]?.[length - 1]?.y,
+            data?.["s=B_LSL_02_TS"]?.[length - 1]?.y,
+            data?.["s=B_LSH_02_TS"]?.[length - 1]?.y,
+            data?.["s=B_LSHH_02_TA"]?.[length - 1]?.y,
+          ],
+        ]
       },
     },
   });
