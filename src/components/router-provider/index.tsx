@@ -40,6 +40,7 @@ import JawCrusher from "@/pages/jaw-crusher";
 // import GoliaPage from "@/pages/golia";
 import CrushingLayout from "@/pages/omniverse-layout";
 import Flotation from "@/pages/flotation";
+import ElectricalEnergy from "@/pages/electrical-energy";
 
 const routes: RouteObject[] = [
   {
@@ -105,6 +106,10 @@ const routes: RouteObject[] = [
       {
         path: "flotation",
         element: <Flotation />,
+      },
+      {
+        path: "electrical-energy",
+        element: <ElectricalEnergy />,
       },
       // {
       //   path: "golia",

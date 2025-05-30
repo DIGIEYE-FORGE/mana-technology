@@ -47,17 +47,17 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
         //   data?.["s=SP2_CHL_02_MAE_TM"]?.[length - 1]?.y,
         "Flow input": data?.["s=SP2_FIT_01_MAE_TM"]?.[length - 1]?.y,
         "Flow output": data?.["s=SP2_FIT_02_MAE_TM"]?.[length - 1]?.y,
-        "delta flow":
+        "Delta flow":
           +data?.["s=SP2_FIT_02_MAE_TM"]?.[length - 1]?.y -
           +data?.["s=SP2_FIT_01_MAE_TM"]?.[length - 1]?.y,
-        "pression output": data?.["s=SP2_PIT_04_MAE_TM"]?.[length - 1]?.y,
-        pumps: ["P01", "P02", "P03"],
+        "Output pressure": data?.["s=SP2_PIT_04_MAE_TM"]?.[length - 1]?.y,
+        Pumps: ["P01", "P02", "P03"],
         "Running state": [
           data?.["s=SP2_M01_RM_TS"]?.[length - 1]?.y,
           data?.["s=SP2_M02_RM_TS"]?.[length - 1]?.y,
           data?.["s=SP2_M03_RM_TS"]?.[length - 1]?.y,
         ],
-        Pression: [
+        Pressure: [
           data?.["s=SP2_PIT_01_MAE_TM"]?.[length - 1]?.y,
           data?.["s=SP2_PIT_02_MAE_TM"]?.[length - 1]?.y,
           data?.["s=SP2_PIT_03_MAE_TM"]?.[length - 1]?.y,
@@ -75,17 +75,17 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
       attributes: {
         "Flow input": data?.["s=SP3_FIT_01_MAE_TM"]?.[length - 1]?.y,
         "Flow output": data?.["s=SP3_FIT_02_MAE_TM"]?.[length - 1]?.y,
-        "delta flow":
+        "Delta flow":
           +data?.["s=SP3_FIT_02_MAE_TM"]?.[length - 1]?.y -
           +data?.["s=SP3_FIT_01_MAE_TM"]?.[length - 1]?.y,
-        "pression output": data?.["s=SP3_PIT_04_MAE_TM"]?.[length - 1]?.y,
-        pumps: ["P01", "P02", "P03"],
+        "Output pressure": data?.["s=SP3_PIT_04_MAE_TM"]?.[length - 1]?.y,
+        Pumps: ["P01", "P02", "P03"],
         "Running state": [
           data?.["s=SP3_M01_RM_TS"]?.[length - 1]?.y,
           data?.["s=SP3_M02_RM_TS"]?.[length - 1]?.y,
           data?.["s=SP3_M03_RM_TS"]?.[length - 1]?.y,
         ],
-        Pression: [
+        Pressure: [
           data?.["s=SP3_PIT_01_MAE_TM"]?.[length - 1]?.y,
           data?.["s=SP3_PIT_02_MAE_TM"]?.[length - 1]?.y,
           data?.["s=SP3_PIT_03_MAE_TM"]?.[length - 1]?.y,
@@ -103,17 +103,17 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
       attributes: {
         "Flow input": data?.["s=SP4_FIT_01_MAE_TM"]?.[length - 1]?.y,
         "Flow output": data?.["s=SP4_FIT_02_MAE_TM"]?.[length - 1]?.y,
-        "delta flow":
+        "Delta flow":
           +data?.["s=SP4_FIT_02_MAE_TM"]?.[length - 1]?.y -
           +data?.["s=SP4_FIT_01_MAE_TM"]?.[length - 1]?.y,
-        "pression output": data?.["s=SP4_PIT_04_MAE_TM"]?.[length - 1]?.y,
-        pumps: ["P01", "P02", "P03"],
+        "Output pressure": data?.["s=SP4_PIT_04_MAE_TM"]?.[length - 1]?.y,
+        Pumps: ["P01", "P02", "P03"],
         "Running state": [
           data?.["s=SP4_M01_RM_TS"]?.[length - 1]?.y,
           data?.["s=SP4_M02_RM_TS"]?.[length - 1]?.y,
           data?.["s=SP4_M03_RM_TS"]?.[length - 1]?.y,
         ],
-        Pression: [
+        Pressure: [
           data?.["s=SP4_PIT_01_MAE_TM"]?.[length - 1]?.y,
           data?.["s=SP4_PIT_02_MAE_TM"]?.[length - 1]?.y,
           data?.["s=SP4_PIT_03_MAE_TM"]?.[length - 1]?.y,
@@ -131,17 +131,17 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
       attributes: {
         "Flow input": data?.["s=SP5_FIT_01_MAE_TM"]?.[length - 1]?.y,
         "Flow output": data?.["s=SP5_FIT_02_MAE_TM"]?.[length - 1]?.y,
-        "delta flow":
+        "Delta flow":
           +data?.["s=SP5_FIT_02_MAE_TM"]?.[length - 1]?.y -
           +data?.["s=SP5_FIT_01_MAE_TM"]?.[length - 1]?.y,
-        "pression output": data?.["s=SP5_PIT_04_MAE_TM"]?.[length - 1]?.y,
-        pumps: ["P01", "P02", "P03"],
+        "Output pressure": data?.["s=SP5_PIT_04_MAE_TM"]?.[length - 1]?.y,
+        Pumps: ["P01", "P02", "P03"],
         "Running state": [
           data?.["s=SP5_M01_RM_TS"]?.[length - 1]?.y,
           data?.["s=SP5_M02_RM_TS"]?.[length - 1]?.y,
           data?.["s=SP5_M03_RM_TS"]?.[length - 1]?.y,
         ],
-        Pression: [
+        Pressure: [
           data?.["s=SP5_PIT_01_MAE_TM"]?.[length - 1]?.y,
           data?.["s=SP5_PIT_02_MAE_TM"]?.[length - 1]?.y,
           data?.["s=SP5_PIT_03_MAE_TM"]?.[length - 1]?.y,
@@ -159,17 +159,17 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
       attributes: {
         "Flow input": data?.["s=SP6_FIT_01_MAE_TM"]?.[length - 1]?.y,
         "Flow output": data?.["s=SP6_FIT_02_MAE_TM"]?.[length - 1]?.y,
-        "delta flow":
+        "Delta flow":
           +data?.["s=SP6_FIT_02_MAE_TM"]?.[length - 1]?.y -
           +data?.["s=SP6_FIT_01_MAE_TM"]?.[length - 1]?.y,
-        "pression output": data?.["s=SP6_PIT_04_MAE_TM"]?.[length - 1]?.y,
-        pumps: ["P01", "P02", "P03"],
+        "Output pressure": data?.["s=SP6_PIT_04_MAE_TM"]?.[length - 1]?.y,
+        Pumps: ["P01", "P02", "P03"],
         "Running state": [
           data?.["s=SP6_M01_RM_TS"]?.[length - 1]?.y,
           data?.["s=SP6_M02_RM_TS"]?.[length - 1]?.y,
           data?.["s=SP6_M03_RM_TS"]?.[length - 1]?.y,
         ],
-        Pression: [
+        Pressure: [
           data?.["s=SP6_PIT_01_MAE_TM"]?.[length - 1]?.y,
           data?.["s=SP6_PIT_02_MAE_TM"]?.[length - 1]?.y,
           data?.["s=SP6_PIT_03_MAE_TM"]?.[length - 1]?.y,
@@ -187,17 +187,17 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
       attributes: {
         "Flow input": data?.["s=SP7_FIT_01_MAE_TM"]?.[length - 1]?.y,
         "Flow output": data?.["s=SP7_FIT_02_MAE_TM"]?.[length - 1]?.y,
-        "delta flow":
+        "Delta flow":
           +data?.["s=SP7_FIT_02_MAE_TM"]?.[length - 1]?.y -
           +data?.["s=SP7_FIT_01_MAE_TM"]?.[length - 1]?.y,
-        "pression output": data?.["s=SP7_PIT_04_MAE_TM"]?.[length - 1]?.y,
-        pumps: ["P01", "P02", "P03"],
+        "Output pressure": data?.["s=SP7_PIT_04_MAE_TM"]?.[length - 1]?.y,
+        Pumps: ["P01", "P02", "P03"],
         "Running state": [
           data?.["s=SP7_M01_RM_TS"]?.[length - 1]?.y,
           data?.["s=SP7_M02_RM_TS"]?.[length - 1]?.y,
           data?.["s=SP7_M03_RM_TS"]?.[length - 1]?.y,
         ],
-        Pression: [
+        Pressure: [
           data?.["s=SP7_PIT_01_MAE_TM"]?.[length - 1]?.y,
           data?.["s=SP7_PIT_02_MAE_TM"]?.[length - 1]?.y,
           data?.["s=SP7_PIT_03_MAE_TM"]?.[length - 1]?.y,
@@ -215,17 +215,17 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
       attributes: {
         "Flow input": data?.["s=SP8_FIT_01_MAE_TM"]?.[length - 1]?.y,
         "Flow output": data?.["s=SP8_FIT_02_MAE_TM"]?.[length - 1]?.y,
-        "delta flow":
+        "Delta flow":
           +data?.["s=SP8_FIT_02_MAE_TM"]?.[length - 1]?.y -
           +data?.["s=SP8_FIT_01_MAE_TM"]?.[length - 1]?.y,
-        "pression output": data?.["s=SP8_PIT_04_MAE_TM"]?.[length - 1]?.y,
-        pumps: ["P01", "P02", "P03"],
+        "Output pressure": data?.["s=SP8_PIT_04_MAE_TM"]?.[length - 1]?.y,
+        Pumps: ["P01", "P02", "P03"],
         "Running state": [
           data?.["s=SP8_M01_RM_TS"]?.[length - 1]?.y,
           data?.["s=SP8_M02_RM_TS"]?.[length - 1]?.y,
           data?.["s=SP8_M03_RM_TS"]?.[length - 1]?.y,
         ],
-        Pression: [
+        Pressure: [
           data?.["s=SP8_PIT_01_MAE_TM"]?.[length - 1]?.y,
           data?.["s=SP8_PIT_02_MAE_TM"]?.[length - 1]?.y,
           data?.["s=SP8_PIT_03_MAE_TM"]?.[length - 1]?.y,
@@ -249,10 +249,10 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
         "Flow input": data?.["s=B_FIT_01_MAE_TM"]?.[length - 1]?.y,
         "Flow output": data?.["s=B_FIT_02_MAE_TM"]?.[length - 1]?.y,
         trubidite: data?.["s=B_TURB_01_MAE_TM"]?.[length - 1]?.y,
-        "delta flow":
+        "Delta flow":
           +data?.["s=B_FIT_02_MAE_TM"]?.[length - 1]?.y -
           +data?.["s=B_FIT_01_MAE_TM"]?.[length - 1]?.y,
-        "pression output": data?.["s=B_PIT_04_MAE_TM"]?.[length - 1]?.y,
+        "Output pressure": data?.["s=B_PIT_04_MAE_TM"]?.[length - 1]?.y,
         breakPoints: [
           [
             data?.["s=B_LSLL_01_TA"]?.[length - 1]?.y,
@@ -313,16 +313,16 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
         //   filteredResults?.["s=SP2_CHL_02_MAE_TM"]?.[length - 1]?.y,
         "Flow input": data?.["s=SP2_FIT_01_MAE_TM"],
         "Flow output": data?.["s=SP2_FIT_02_MAE_TM"],
-        "delta flow":
+        "Delta flow":
           +data?.["s=SP2_FIT_02_MAE_TM"] - +data?.["s=SP2_FIT_01_MAE_TM"],
-        "pression output": data?.["s=SP2_PIT_04_MAE_TM"],
-        pumps: ["P01", "P02", "P03"],
+        "Output pressure": data?.["s=SP2_PIT_04_MAE_TM"],
+        Pumps: ["P01", "P02", "P03"],
         "Running state": [
           data?.["s=SP2_M01_RM_TS"],
           data?.["s=SP2_M02_RM_TS"],
           data?.["s=SP2_M03_RM_TS"],
         ],
-        Pression: [
+        Pressure: [
           data?.["s=SP2_PIT_01_MAE_TM"],
           data?.["s=SP2_PIT_02_MAE_TM"],
           data?.["s=SP2_PIT_03_MAE_TM"],
@@ -340,16 +340,16 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
       attributes: {
         "Flow input": data?.["s=SP3_FIT_01_MAE_TM"],
         "Flow output": data?.["s=SP3_FIT_02_MAE_TM"],
-        "delta flow":
+        "Delta flow":
           +data?.["s=SP3_FIT_02_MAE_TM"] - +data?.["s=SP3_FIT_01_MAE_TM"],
-        "pression output": data?.["s=SP3_PIT_04_MAE_TM"],
-        pumps: ["P01", "P02", "P03"],
+        "Output pressure": data?.["s=SP3_PIT_04_MAE_TM"],
+        Pumps: ["P01", "P02", "P03"],
         "Running state": [
           data?.["s=SP3_M01_RM_TS"],
           data?.["s=SP3_M02_RM_TS"],
           data?.["s=SP3_M03_RM_TS"],
         ],
-        Pression: [
+        Pressure: [
           data?.["s=SP3_PIT_01_MAE_TM"],
           data?.["s=SP3_PIT_02_MAE_TM"],
           data?.["s=SP3_PIT_03_MAE_TM"],
@@ -367,16 +367,16 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
       attributes: {
         "Flow input": data?.["s=SP4_FIT_01_MAE_TM"],
         "Flow output": data?.["s=SP4_FIT_02_MAE_TM"],
-        "delta flow":
+        "Delta flow":
           +data?.["s=SP4_FIT_02_MAE_TM"] - +data?.["s=SP4_FIT_01_MAE_TM"],
-        "pression output": data?.["s=SP4_PIT_04_MAE_TM"],
-        pumps: ["P01", "P02", "P03"],
+        "Output pressure": data?.["s=SP4_PIT_04_MAE_TM"],
+        Pumps: ["P01", "P02", "P03"],
         "Running state": [
           data?.["s=SP4_M01_RM_TS"],
           data?.["s=SP4_M02_RM_TS"],
           data?.["s=SP4_M03_RM_TS"],
         ],
-        Pression: [
+        Pressure: [
           data?.["s=SP4_PIT_01_MAE_TM"],
           data?.["s=SP4_PIT_02_MAE_TM"],
           data?.["s=SP4_PIT_03_MAE_TM"],
@@ -394,16 +394,16 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
       attributes: {
         "Flow input": data?.["s=SP5_FIT_01_MAE_TM"],
         "Flow output": data?.["s=SP5_FIT_02_MAE_TM"],
-        "delta flow":
+        "Delta flow":
           +data?.["s=SP5_FIT_02_MAE_TM"] - +data?.["s=SP5_FIT_01_MAE_TM"],
-        "pression output": data?.["s=SP5_PIT_04_MAE_TM"],
-        pumps: ["P01", "P02", "P03"],
+        "Output pressure": data?.["s=SP5_PIT_04_MAE_TM"],
+        Pumps: ["P01", "P02", "P03"],
         "Running state": [
           data?.["s=SP5_M01_RM_TS"],
           data?.["s=SP5_M02_RM_TS"],
           data?.["s=SP5_M03_RM_TS"],
         ],
-        Pression: [
+        Pressure: [
           data?.["s=SP5_PIT_01_MAE_TM"],
           data?.["s=SP5_PIT_02_MAE_TM"],
           data?.["s=SP5_PIT_03_MAE_TM"],
@@ -421,16 +421,16 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
       attributes: {
         "Flow input": data?.["s=SP6_FIT_01_MAE_TM"],
         "Flow output": data?.["s=SP6_FIT_02_MAE_TM"],
-        "delta flow":
+        "Delta flow":
           +data?.["s=SP6_FIT_02_MAE_TM"] - +data?.["s=SP6_FIT_01_MAE_TM"],
-        "pression output": data?.["s=SP6_PIT_04_MAE_TM"],
-        pumps: ["P01", "P02", "P03"],
+        "Output pressure": data?.["s=SP6_PIT_04_MAE_TM"],
+        Pumps: ["P01", "P02", "P03"],
         "Running state": [
           data?.["s=SP6_M01_RM_TS"],
           data?.["s=SP6_M02_RM_TS"],
           data?.["s=SP6_M03_RM_TS"],
         ],
-        Pression: [
+        Pressure: [
           data?.["s=SP6_PIT_01_MAE_TM"],
           data?.["s=SP6_PIT_02_MAE_TM"],
           data?.["s=SP6_PIT_03_MAE_TM"],
@@ -448,16 +448,16 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
       attributes: {
         "Flow input": data?.["s=SP7_FIT_01_MAE_TM"],
         "Flow output": data?.["s=SP7_FIT_02_MAE_TM"],
-        "delta flow":
+        "Delta flow":
           +data?.["s=SP7_FIT_02_MAE_TM"] - +data?.["s=SP7_FIT_01_MAE_TM"],
-        "pression output": data?.["s=SP7_PIT_04_MAE_TM"],
-        pumps: ["P01", "P02", "P03"],
+        "Output pressure": data?.["s=SP7_PIT_04_MAE_TM"],
+        Pumps: ["P01", "P02", "P03"],
         "Running state": [
           data?.["s=SP7_M01_RM_TS"],
           data?.["s=SP7_M02_RM_TS"],
           data?.["s=SP7_M03_RM_TS"],
         ],
-        Pression: [
+        Pressure: [
           data?.["s=SP7_PIT_01_MAE_TM"],
           data?.["s=SP7_PIT_02_MAE_TM"],
           data?.["s=SP7_PIT_03_MAE_TM"],
@@ -475,16 +475,16 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
       attributes: {
         "Flow input": data?.["s=SP8_FIT_01_MAE_TM"],
         "Flow output": data?.["s=SP8_FIT_02_MAE_TM"],
-        "delta flow":
+        "Delta flow":
           +data?.["s=SP8_FIT_02_MAE_TM"] - +data?.["s=SP8_FIT_01_MAE_TM"],
-        "pression output": data?.["s=SP8_PIT_04_MAE_TM"],
-        pumps: ["P01", "P02", "P03"],
+        "Output pressure": data?.["s=SP8_PIT_04_MAE_TM"],
+        Pumps: ["P01", "P02", "P03"],
         "Running state": [
           data?.["s=SP8_M01_RM_TS"],
           data?.["s=SP8_M02_RM_TS"],
           data?.["s=SP8_M03_RM_TS"],
         ],
-        Pression: [
+        Pressure: [
           data?.["s=SP8_PIT_01_MAE_TM"],
           data?.["s=SP8_PIT_02_MAE_TM"],
           data?.["s=SP8_PIT_03_MAE_TM"],
@@ -505,9 +505,9 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
         "Flow input": data?.["s=B_FIT_01_MAE_TM"],
         "Flow output": data?.["s=B_FIT_02_MAE_TM"],
         trubidite: data?.["s=B_TURB_01_MAE_TM"],
-        "delta flow":
+        "Delta flow":
           +data?.["s=B_FIT_02_MAE_TM"] - +data?.["s=B_FIT_01_MAE_TM"],
-        "pression output": data?.["s=B_PIT_04_MAE_TM"],
+        "Output pressure": data?.["s=B_PIT_04_MAE_TM"],
         breakPoints: [
           [
             data?.["s=B_LSLL_01_TA"],
