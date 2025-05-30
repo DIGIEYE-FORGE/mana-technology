@@ -46,13 +46,13 @@ const UpCards = ({
             <Card className="flex grow flex-col items-center justify-center !rounded py-1">
               <span>Input</span>
               <span className="text-lg font-bold text-[#FFC829]">
-                {flowRateIn}
+                {Number(flowRateIn).toFixed(0)}
               </span>
             </Card>
             <Card className="flex grow flex-col items-center justify-center !rounded py-1">
               <span>Output</span>
               <span className="text-lg font-bold text-[#FFC829]">
-                {flowRateOut}
+                {Number(flowRateOut).toFixed(0)}
               </span>
             </Card>
           </div>
@@ -62,7 +62,7 @@ const UpCards = ({
           <div className="flex flex-col gap-1">
             <span>Throughput rate (t/h)</span>
             <span className="text-lg font-bold text-[#FFC829]">
-              {runingHours === 0 ? 0 : Number(cadence) / runingHours}
+              {(runingHours === 0 ? 0 : Number(cadence) / runingHours).toFixed(0)}
             </span>
           </div>
         </Card>
@@ -70,7 +70,7 @@ const UpCards = ({
           <CrushedIcon className="size-14 min-h-[3.5rem] min-w-[3.5rem]" />
           <div className="flex flex-col gap-1">
             <span>Crushed Ore (t)</span>
-            <span className="text-lg font-bold text-[#FFC829]">{crushed}</span>
+            <span className="text-lg font-bold text-[#FFC829]">{Number(crushed).toFixed(0)}</span>
           </div>
         </Card>
         <Card className="flex grow items-center justify-center gap-5 !rounded px-5">
@@ -79,10 +79,10 @@ const UpCards = ({
             <span className="text-wrap">Rom Stockpile Level (%)</span>
             <div className="flex w-full justify-between">
               <span className="text-lg font-bold text-[#FFC829]">
-                {stockpileLevelMin}
+                {Number(stockpileLevelMin).toFixed(0)}
               </span>
               <span className="text-lg font-bold text-[#FFC829]">
-                {stockpileLevelMax}
+                {Number(stockpileLevelMax).toFixed(0)}
               </span>
             </div>
           </div>
@@ -93,10 +93,10 @@ const UpCards = ({
             <span>Crushed Ore Stock Level (%)</span>
             <div className="flex w-full justify-between">
               <span className="text-lg font-bold text-[#FFC829]">
-                {crushedOreMin}
+                {Number(crushedOreMin).toFixed(0)}
               </span>
               <span className="text-lg font-bold text-[#FFC829]">
-                {crushedOreMax}
+                {Number(crushedOreMax).toFixed(0)}
               </span>
             </div>
           </div>
@@ -120,7 +120,7 @@ const UpCards = ({
           <div className="flex flex-col gap-1">
             <span>Jaw Crusher Level (%)</span>
             <span className="text-lg font-bold text-[#FFC829]">
-              {jawCrusher}
+              {Number(jawCrusher).toFixed(0)}
             </span>
           </div>
         </Card>
