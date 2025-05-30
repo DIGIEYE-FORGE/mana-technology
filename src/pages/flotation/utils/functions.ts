@@ -106,49 +106,49 @@ export const formatData = (
         rougher: {
           cells: [
             {
-              level: data?.["s=6310-LIT-3121"] || 0,
+              level: data?.["s=6310-LIC-3121"] || 0,
               runningState:
                 data?.["s=6310-AG-3141-F"] === "True" ||
                 data?.["s=6310-AG-3141-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6310-LIT-3122"] || 0,
+              level: data?.["s=6310-LIC-3122"] || 0,
               runningState:
                 data?.["s=6310-AG-3142-F"] === "True" ||
                 data?.["s=6310-AG-3142-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6310-LIT-3123"] || 0,
+              level: data?.["s=6310-LIC-3123"] || 0,
               runningState:
                 data?.["s=6310-AG-3143-F"] === "True" ||
                 data?.["s=6310-AG-3143-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6310-LIT-3124"] || 0,
+              level: data?.["s=6310-LIC-3124"] || 0,
               runningState:
                 data?.["s=6310-AG-3144-F"] === "True" ||
                 data?.["s=6310-AG-3144-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6310-LIT-3125"] || 0,
+              level: data?.["s=6310-LIC-3125"] || 0,
               runningState:
                 data?.["s=6310-AG-3145-F"] === "True" ||
                 data?.["s=6310-AG-3145-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6310-LIT-3126"] || 0,
+              level: data?.["s=6310-LIC-3126"] || 0,
               runningState:
                 data?.["s=6310-AG-3146-F"] === "True" ||
                 data?.["s=6310-AG-3146-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6310-LIT-3127"] || 0,
+              level: data?.["s=6310-LIC-3127"] || 0,
               runningState:
                 data?.["s=6310-AG-3147-F"] === "True" ||
                 data?.["s=6310-AG-3147-R"] === "True" ||
@@ -171,42 +171,42 @@ export const formatData = (
         scavenger: {
           cells: [
             {
-              level: data?.["s=6320-LIT-3221"] || 0,
+              level: data?.["s=6320-LIC-3221"] || 0,
               runningState:
                 data?.["s=6320-AG-3241-F"] === "True" ||
                 data?.["s=6320-AG-3241-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6320-LIT-3222"] || 0,
+              level: data?.["s=6320-LIC-3222"] || 0,
               runningState:
                 data?.["s=6320-AG-3242-F"] === "True" ||
                 data?.["s=6320-AG-3242-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6320-LIT-3223"] || 0,
+              level: data?.["s=6320-LIC-3223"] || 0,
               runningState:
                 data?.["s=6320-AG-3243-F"] === "True" ||
                 data?.["s=6320-AG-3243-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6320-LIT-3224"] || 0,
+              level: data?.["s=6320-LIC-3224"] || 0,
               runningState:
                 data?.["s=6320-AG-3244-F"] === "True" ||
                 data?.["s=6320-AG-3244-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6320-LIT-3225"] || 0,
+              level: data?.["s=6320-LIC-3225"] || 0,
               runningState:
                 data?.["s=6320-AG-3245-F"] === "True" ||
                 data?.["s=6320-AG-3245-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6320-LIT-3226"] || 0,
+              level: data?.["s=6320-LIC-3226"] || 0,
               runningState:
                 data?.["s=6320-AG-3246-F"] === "True" ||
                 data?.["s=6320-AG-3246-R"] === "True" ||
@@ -229,27 +229,27 @@ export const formatData = (
         cleaner1: {
           cells: [
             {
-              level: data?.["s=6340-LIT-3421"] || 0,
+              level: data?.["s=6340-LIC-3422"] || 0,
               runningState: data?.["s=6340-AG-3441"] || "False",
             },
             {
-              level: data?.["s=6340-LIT-3422"] || 0,
+              level: data?.["s=6340-LIC-3422"] || 0,
               runningState: data?.["s=6340-AG-3442"] || "False",
             },
             {
-              level: data?.["s=6340-LIT-3423"] || 0,
+              level: data?.["s=6340-LIC-3424"] || 0,
               runningState: data?.["s=6340-AG-3443"] || "False",
             },
             {
-              level: data?.["s=6340-LIT-3424"] || 0,
+              level: data?.["s=6340-LIC-3424"] || 0,
               runningState: data?.["s=6340-AG-3444"] || "False",
             },
             {
-              level: data?.["s=6340-LIT-3425"] || 0,
+              level: data?.["s=6340-LIC-3426"] || 0,
               runningState: data?.["s=6340-AG-3445"] || "False",
             },
             {
-              level: data?.["s=6340-LIT-3426"] || 0,
+              level: data?.["s=6340-LIC-3426"] || 0,
               runningState: data?.["s=6340-AG-3446"] || "False",
             },
             {
@@ -269,23 +269,23 @@ export const formatData = (
         cleaner2: {
           cells: [
             {
-              level: data?.["s=6350-LIT-3525"] || 0,
+              level: data?.["s=6350-LIC-3525"] || 0,
               runningState: data?.["s=6350-AG-3545"] || "False",
             },
             {
-              level: data?.["s=6350-LIT-3526"] || 0,
+              level: data?.["s=6350-LIC-3527"] || 0,
               runningState: data?.["s=6350-AG-3546"] || "False",
             },
             {
-              level: data?.["s=6350-LIT-3527"] || 0,
+              level: data?.["s=6350-LIC-3527"] || 0,
               runningState: data?.["s=6350-AG-3547"] || "False",
             },
             {
-              level: data?.["s=6350-LIT-3528"] || 0,
+              level: data?.["s=6350-LIC-3529"] || 0,
               runningState: data?.["s=6350-AG-3548"] || "False",
             },
             {
-              level: data?.["s=6350-LIT-3529"] || 0,
+              level: data?.["s=6350-LIC-3529"] || 0,
               runningState: data?.["s=6350-AG-3549"] || "False",
             },
             {
@@ -305,15 +305,15 @@ export const formatData = (
         cleaner3: {
           cells: [
             {
-              level: data?.["s=6350-LIT-3521"] || 0,
+              level: data?.["s=6350-LIC-3521"] || 0,
               runningState: data?.["s=6350-AG-3541"] || "False",
             },
             {
-              level: data?.["s=6350-LIT-3522"] || 0,
+              level: data?.["s=6350-LIC-3523"] || 0,
               runningState: data?.["s=6350-AG-3542"] || "False",
             },
             {
-              level: data?.["s=6350-LIT-3523"] || 0,
+              level: data?.["s=6350-LIC-3523"] || 0,
               runningState: data?.["s=6350-AG-3543"] || "False",
             },
             {
@@ -342,49 +342,49 @@ export const formatData = (
         rougher: {
           cells: [
             {
-              level: data?.["s=6410-LIT-4121"] || 0,
+              level: data?.["s=6410-LIC-4121"] || 0,
               runningState:
                 data?.["s=6410-AG-4141-F"] === "True" ||
                 data?.["s=6410-AG-4141-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6410-LIT-4122"] || 0,
+              level: data?.["s=6410-LIC-4122"] || 0,
               runningState:
                 data?.["s=6410-AG-4142-F"] === "True" ||
                 data?.["s=6410-AG-4142-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6410-LIT-4123"] || 0,
+              level: data?.["s=6410-LIC-4123"] || 0,
               runningState:
                 data?.["s=6410-AG-4143-F"] === "True" ||
                 data?.["s=6410-AG-4143-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6410-LIT-4124"] || 0,
+              level: data?.["s=6410-LIC-4124"] || 0,
               runningState:
                 data?.["s=6410-AG-4144-F"] === "True" ||
                 data?.["s=6410-AG-4144-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6410-LIT-4125"] || 0,
+              level: data?.["s=6410-LIC-4125"] || 0,
               runningState:
                 data?.["s=6410-AG-4145-F"] === "True" ||
                 data?.["s=6410-AG-4145-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6410-LIT-4126"] || 0,
+              level: data?.["s=6410-LIC-4126"] || 0,
               runningState:
                 data?.["s=6410-AG-4146-F"] === "True" ||
                 data?.["s=6410-AG-4146-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6410-LIT-4127"] || 0,
+              level: data?.["s=6410-LIC-4127"] || 0,
               runningState:
                 data?.["s=6410-AG-4147-F"] === "True" ||
                 data?.["s=6410-AG-4147-R"] === "True" ||
@@ -407,42 +407,42 @@ export const formatData = (
         scavenger: {
           cells: [
             {
-              level: data?.["s=6420-LIT-4221"] || 0,
+              level: data?.["s=6420-LIC-4221"] || 0,
               runningState:
                 data?.["s=6420-AG-4241-F"] === "True" ||
                 data?.["s=6420-AG-4241-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6420-LIT-4222"] || 0,
+              level: data?.["s=6420-LIC-4222"] || 0,
               runningState:
                 data?.["s=6420-AG-4242-F"] === "True" ||
                 data?.["s=6420-AG-4242-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6420-LIT-4223"] || 0,
+              level: data?.["s=6420-LIC-4223"] || 0,
               runningState:
                 data?.["s=6420-AG-4243-F"] === "True" ||
                 data?.["s=6420-AG-4243-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6420-LIT-4224"] || 0,
+              level: data?.["s=6420-LIC-4224"] || 0,
               runningState:
                 data?.["s=6420-AG-4244-F"] === "True" ||
                 data?.["s=6420-AG-4244-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6420-LIT-4225"] || 0,
+              level: data?.["s=6420-LIC-4225"] || 0,
               runningState:
                 data?.["s=6420-AG-4245-F"] === "True" ||
                 data?.["s=6420-AG-4245-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6420-LIT-4226"] || 0,
+              level: data?.["s=6420-LIC-4226"] || 0,
               runningState:
                 data?.["s=6420-AG-4246-F"] === "True" ||
                 data?.["s=6420-AG-4246-R"] === "True" ||
@@ -465,23 +465,23 @@ export const formatData = (
         cleaner1: {
           cells: [
             {
-              level: data?.["s=6430-LIT-4321"] || 0,
+              level: data?.["s=6430-LIC-4321"] || 0,
               runningState: data?.["s=6430-AG-4341"] || "False",
             },
             {
-              level: data?.["s=6430-LIT-4322"] || 0,
+              level: data?.["s=6430-LIC-4323"] || 0,
               runningState: data?.["s=6430-AG-4342"] || "False",
             },
             {
-              level: data?.["s=6430-LIT-4323"] || 0,
+              level: data?.["s=6430-LIC-4323"] || 0,
               runningState: data?.["s=6430-AG-4343"] || "False",
             },
             {
-              level: data?.["s=6430-LIT-4324"] || 0,
+              level: data?.["s=6430-LIC-4325"] || 0,
               runningState: data?.["s=6430-AG-4344"] || "False",
             },
             {
-              level: data?.["s=6430-LIT-4325"] || 0,
+              level: data?.["s=6430-LIC-4325"] || 0,
               runningState: data?.["s=6430-AG-4345"] || "False",
             },
             {
@@ -501,19 +501,19 @@ export const formatData = (
         cleaner2: {
           cells: [
             {
-              level: data?.["s=6440-LIT-4425"] || 0,
+              level: data?.["s=6440-LIC-4426"] || 0,
               runningState: data?.["s=6440-AG-4445"] || "False",
             },
             {
-              level: data?.["s=6440-LIT-4426"] || 0,
+              level: data?.["s=6440-LIC-4426"] || 0,
               runningState: data?.["s=6440-AG-4446"] || "False",
             },
             {
-              level: data?.["s=6440-LIT-4427"] || 0,
+              level: data?.["s=6440-LIC-4428"] || 0,
               runningState: data?.["s=6440-AG-4447"] || "False",
             },
             {
-              level: data?.["s=6440-LIT-4428"] || 0,
+              level: data?.["s=6440-LIC-4428"] || 0,
               runningState: data?.["s=6440-AG-4448"] || "False",
             },
             {
@@ -533,11 +533,11 @@ export const formatData = (
         cleaner3: {
           cells: [
             {
-              level: data?.["s=6440-LIT-4421"] || 0,
+              level: data?.["s=6440-LIC-4422"] || 0,
               runningState: data?.["s=6440-AG-4441"] || "False",
             },
             {
-              level: data?.["s=6440-LIT-4422"] || 0,
+              level: data?.["s=6440-LIC-4422"] || 0,
               runningState: data?.["s=6440-AG-4442"] || "False",
             },
             {
@@ -677,7 +677,7 @@ export const formatHistory = (data: any, setLeftData: any) => {
       air1: data?.["s=6850-FIT-7541"] || [],
       air2: data?.["s=6028-WI-1042"] || [],
 
-      oreFlow: data?.["s=6120-WIT-2042"] || [],
+      oreFlow: data?.["s=6220-WIT-2211"] || [],
     };
   });
 };
@@ -987,7 +987,7 @@ export const updateDataWithSocket = (
         ...(prev?.oreFlow?.slice(1) || []),
         {
           x: new Date(),
-          y: data?.["s=6120-WIT-2042"] || 0,
+          y: data?.["s=6220-WIT-2211"] || 0,
         },
       ],
     };
@@ -1000,49 +1000,49 @@ export const updateDataWithSocket = (
         rougher: {
           cells: [
             {
-              level: data?.["s=6310-LIT-3121"] || 0,
+              level: data?.["s=6310-LIC-3121"] || 0,
               runningState:
                 data?.["s=6310-AG-3141-F"] === "True" ||
                 data?.["s=6310-AG-3141-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6310-LIT-3122"] || 0,
+              level: data?.["s=6310-LIC-3122"] || 0,
               runningState:
                 data?.["s=6310-AG-3142-F"] === "True" ||
                 data?.["s=6310-AG-3142-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6310-LIT-3123"] || 0,
+              level: data?.["s=6310-LIC-3123"] || 0,
               runningState:
                 data?.["s=6310-AG-3143-F"] === "True" ||
                 data?.["s=6310-AG-3143-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6310-LIT-3124"] || 0,
+              level: data?.["s=6310-LIC-3124"] || 0,
               runningState:
                 data?.["s=6310-AG-3144-F"] === "True" ||
                 data?.["s=6310-AG-3144-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6310-LIT-3125"] || 0,
+              level: data?.["s=6310-LIC-3125"] || 0,
               runningState:
                 data?.["s=6310-AG-3145-F"] === "True" ||
                 data?.["s=6310-AG-3145-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6310-LIT-3126"] || 0,
+              level: data?.["s=6310-LIC-3126"] || 0,
               runningState:
                 data?.["s=6310-AG-3146-F"] === "True" ||
                 data?.["s=6310-AG-3146-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6310-LIT-3127"] || 0,
+              level: data?.["s=6310-LIC-3127"] || 0,
               runningState:
                 data?.["s=6310-AG-3147-F"] === "True" ||
                 data?.["s=6310-AG-3147-R"] === "True" ||
@@ -1065,42 +1065,42 @@ export const updateDataWithSocket = (
         scavenger: {
           cells: [
             {
-              level: data?.["s=6320-LIT-3221"] || 0,
+              level: data?.["s=6320-LIC-3221"] || 0,
               runningState:
                 data?.["s=6320-AG-3241-F"] === "True" ||
                 data?.["s=6320-AG-3241-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6320-LIT-3222"] || 0,
+              level: data?.["s=6320-LIC-3222"] || 0,
               runningState:
                 data?.["s=6320-AG-3242-F"] === "True" ||
                 data?.["s=6320-AG-3242-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6320-LIT-3223"] || 0,
+              level: data?.["s=6320-LIC-3223"] || 0,
               runningState:
                 data?.["s=6320-AG-3243-F"] === "True" ||
                 data?.["s=6320-AG-3243-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6320-LIT-3224"] || 0,
+              level: data?.["s=6320-LIC-3224"] || 0,
               runningState:
                 data?.["s=6320-AG-3244-F"] === "True" ||
                 data?.["s=6320-AG-3244-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6320-LIT-3225"] || 0,
+              level: data?.["s=6320-LIC-3225"] || 0,
               runningState:
                 data?.["s=6320-AG-3245-F"] === "True" ||
                 data?.["s=6320-AG-3245-R"] === "True" ||
                 "False",
             },
             {
-              level: data?.["s=6320-LIT-3226"] || 0,
+              level: data?.["s=6320-LIC-3226"] || 0,
               runningState:
                 data?.["s=6320-AG-3246-F"] === "True" ||
                 data?.["s=6320-AG-3246-R"] === "True" ||
@@ -1123,27 +1123,27 @@ export const updateDataWithSocket = (
         cleaner1: {
           cells: [
             {
-              level: data?.["s=6340-LIT-3421"] || 0,
+              level: data?.["s=6340-LIC-3422"] || 0,
               runningState: data?.["s=6340-AG-3441"] || "False",
             },
             {
-              level: data?.["s=6340-LIT-3422"] || 0,
+              level: data?.["s=6340-LIC-3422"] || 0,
               runningState: data?.["s=6340-AG-3442"] || "False",
             },
             {
-              level: data?.["s=6340-LIT-3423"] || 0,
+              level: data?.["s=6340-LIC-3424"] || 0,
               runningState: data?.["s=6340-AG-3443"] || "False",
             },
             {
-              level: data?.["s=6340-LIT-3424"] || 0,
+              level: data?.["s=6340-LIC-3424"] || 0,
               runningState: data?.["s=6340-AG-3444"] || "False",
             },
             {
-              level: data?.["s=6340-LIT-3425"] || 0,
+              level: data?.["s=6340-LIC-3426"] || 0,
               runningState: data?.["s=6340-AG-3445"] || "False",
             },
             {
-              level: data?.["s=6340-LIT-3426"] || 0,
+              level: data?.["s=6340-LIC-3426"] || 0,
               runningState: data?.["s=6340-AG-3446"] || "False",
             },
             {
@@ -1163,23 +1163,23 @@ export const updateDataWithSocket = (
         cleaner2: {
           cells: [
             {
-              level: data?.["s=6350-LIT-3525"] || 0,
+              level: data?.["s=6350-LIC-3525"] || 0,
               runningState: data?.["s=6350-AG-3545"] || "False",
             },
             {
-              level: data?.["s=6350-LIT-3526"] || 0,
+              level: data?.["s=6350-LIC-3527"] || 0,
               runningState: data?.["s=6350-AG-3546"] || "False",
             },
             {
-              level: data?.["s=6350-LIT-3527"] || 0,
+              level: data?.["s=6350-LIC-3527"] || 0,
               runningState: data?.["s=6350-AG-3547"] || "False",
             },
             {
-              level: data?.["s=6350-LIT-3528"] || 0,
+              level: data?.["s=6350-LIC-3529"] || 0,
               runningState: data?.["s=6350-AG-3548"] || "False",
             },
             {
-              level: data?.["s=6350-LIT-3529"] || 0,
+              level: data?.["s=6350-LIC-3529"] || 0,
               runningState: data?.["s=6350-AG-3549"] || "False",
             },
             {
@@ -1199,15 +1199,15 @@ export const updateDataWithSocket = (
         cleaner3: {
           cells: [
             {
-              level: data?.["s=6350-LIT-3521"] || 0,
+              level: data?.["s=6350-LIC-3521"] || 0,
               runningState: data?.["s=6350-AG-3541"] || "False",
             },
             {
-              level: data?.["s=6350-LIT-3522"] || 0,
+              level: data?.["s=6350-LIC-3523"] || 0,
               runningState: data?.["s=6350-AG-3542"] || "False",
             },
             {
-              level: data?.["s=6350-LIT-3523"] || 0,
+              level: data?.["s=6350-LIC-3523"] || 0,
               runningState: data?.["s=6350-AG-3543"] || "False",
             },
             {
@@ -1236,31 +1236,31 @@ export const updateDataWithSocket = (
         rougher: {
           cells: [
             {
-              level: data?.["s=6410-LIT-4121"] || 0,
+              level: data?.["s=6410-LIC-4121"] || 0,
               runningState: data?.["s=6410-AG-4141"] || "False",
             },
             {
-              level: data?.["s=6410-LIT-4122"] || 0,
+              level: data?.["s=6410-LIC-4122"] || 0,
               runningState: data?.["s=6410-AG-4142"] || "False",
             },
             {
-              level: data?.["s=6410-LIT-4123"] || 0,
+              level: data?.["s=6410-LIC-4123"] || 0,
               runningState: data?.["s=6410-AG-4143"] || "False",
             },
             {
-              level: data?.["s=6410-LIT-4124"] || 0,
+              level: data?.["s=6410-LIC-4124"] || 0,
               runningState: data?.["s=6410-AG-4144"] || "False",
             },
             {
-              level: data?.["s=6410-LIT-4125"] || 0,
+              level: data?.["s=6410-LIC-4125"] || 0,
               runningState: data?.["s=6410-AG-4145"] || "False",
             },
             {
-              level: data?.["s=6410-LIT-4126"] || 0,
+              level: data?.["s=6410-LIC-4126"] || 0,
               runningState: data?.["s=6410-AG-4146"] || "False",
             },
             {
-              level: data?.["s=6410-LIT-4127"] || 0,
+              level: data?.["s=6410-LIC-4127"] || 0,
               runningState: data?.["s=6410-AG-4147"] || "False",
             },
             {
@@ -1280,27 +1280,27 @@ export const updateDataWithSocket = (
         scavenger: {
           cells: [
             {
-              level: data?.["s=6420-LIT-4221"] || 0,
+              level: data?.["s=6420-LIC-4221"] || 0,
               runningState: data?.["s=6420-AG-4241"] || "False",
             },
             {
-              level: data?.["s=6420-LIT-4222"] || 0,
+              level: data?.["s=6420-LIC-4222"] || 0,
               runningState: data?.["s=6420-AG-4242"] || "False",
             },
             {
-              level: data?.["s=6420-LIT-4223"] || 0,
+              level: data?.["s=6420-LIC-4223"] || 0,
               runningState: data?.["s=6420-AG-4243"] || "False",
             },
             {
-              level: data?.["s=6420-LIT-4224"] || 0,
+              level: data?.["s=6420-LIC-4224"] || 0,
               runningState: data?.["s=6420-AG-4244"] || "False",
             },
             {
-              level: data?.["s=6420-LIT-4225"] || 0,
+              level: data?.["s=6420-LIC-4225"] || 0,
               runningState: data?.["s=6420-AG-4245"] || "False",
             },
             {
-              level: data?.["s=6420-LIT-4226"] || 0,
+              level: data?.["s=6420-LIC-4226"] || 0,
               runningState: data?.["s=6420-AG-4246"] || "False",
             },
             {
@@ -1320,23 +1320,23 @@ export const updateDataWithSocket = (
         cleaner1: {
           cells: [
             {
-              level: data?.["s=6430-LIT-4321"] || 0,
+              level: data?.["s=6430-LIC-4321"] || 0,
               runningState: data?.["s=6430-AG-4341"] || "False",
             },
             {
-              level: data?.["s=6430-LIT-4322"] || 0,
+              level: data?.["s=6430-LIC-4323"] || 0,
               runningState: data?.["s=6430-AG-4342"] || "False",
             },
             {
-              level: data?.["s=6430-LIT-4323"] || 0,
+              level: data?.["s=6430-LIC-4323"] || 0,
               runningState: data?.["s=6430-AG-4343"] || "False",
             },
             {
-              level: data?.["s=6430-LIT-4324"] || 0,
+              level: data?.["s=6430-LIC-4325"] || 0,
               runningState: data?.["s=6430-AG-4344"] || "False",
             },
             {
-              level: data?.["s=6430-LIT-4325"] || 0,
+              level: data?.["s=6430-LIC-4325"] || 0,
               runningState: data?.["s=6430-AG-4345"] || "False",
             },
             {
@@ -1356,19 +1356,19 @@ export const updateDataWithSocket = (
         cleaner2: {
           cells: [
             {
-              level: data?.["s=6440-LIT-4425"] || 0,
+              level: data?.["s=6440-LIC-4426"] || 0,
               runningState: data?.["s=6440-AG-4445"] || "False",
             },
             {
-              level: data?.["s=6440-LIT-4426"] || 0,
+              level: data?.["s=6440-LIC-4426"] || 0,
               runningState: data?.["s=6440-AG-4446"] || "False",
             },
             {
-              level: data?.["s=6440-LIT-4427"] || 0,
+              level: data?.["s=6440-LIC-4428"] || 0,
               runningState: data?.["s=6440-AG-4447"] || "False",
             },
             {
-              level: data?.["s=6440-LIT-4428"] || 0,
+              level: data?.["s=6440-LIC-4428"] || 0,
               runningState: data?.["s=6440-AG-4448"] || "False",
             },
             {
@@ -1388,11 +1388,11 @@ export const updateDataWithSocket = (
         cleaner3: {
           cells: [
             {
-              level: data?.["s=6440-LIT-4421"] || 0,
+              level: data?.["s=6440-LIC-4422"] || 0,
               runningState: data?.["s=6440-AG-4441"] || "False",
             },
             {
-              level: data?.["s=6440-LIT-4422"] || 0,
+              level: data?.["s=6440-LIC-4422"] || 0,
               runningState: data?.["s=6440-AG-4442"] || "False",
             },
             {
