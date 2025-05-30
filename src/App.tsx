@@ -11,6 +11,9 @@ import LoginPage from "./pages/login";
 import BpIndicator from "./components/bp-indicator";
 import { useNavigate, useLocation } from "react-router-dom";
 import { GoliaBot, GoliaWidget } from "golia-chatbot";
+
+const now = new Date();
+
 function App() {
   const [user, setUser] = useState<User | null | undefined>(undefined);
   const navigate = useNavigate();
@@ -27,7 +30,14 @@ function App() {
   const [bot, setBot] = useState<GoliaBot | null>(null);
   const [isLoadingBot, setIsLoadingBot] = useState(true);
   const [dateRange, setDateRange] = useState<TDateRange>({
-    from: new Date(new Date("2025-01-01").setHours(0, 0, 0, 0)),
+    from: new Date(
+      new Date(now.getFullYear(), now.getMonth() - 1, now.getDate()).setHours(
+        0,
+        0,
+        0,
+        0,
+      ),
+    ),
     to: new Date(new Date().setHours(23, 59, 59, 999)),
   });
   const backendApi = useMemo(
