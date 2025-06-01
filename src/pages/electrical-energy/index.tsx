@@ -168,12 +168,12 @@ const ElectricalEnergy = () => {
           perPage: 10,
         },
       });
-      
+
       return res;
     },
     {
       revalidateOnMount: true,
-      onSuccess: (data) => {       
+      onSuccess: (data) => {
         const filteredResults = data?.results?.reduce(
           (acc: Record<string, any>, item: any) => {
             Object.entries(item).forEach(([key, value]) => {
@@ -209,16 +209,16 @@ const ElectricalEnergy = () => {
     });
     socket.on("serial-XN8EMW32H1T7CNI3", (data) => {
       console.log("Received message:", data);
-      let result:{ [key: string]: any } = {};
+      const result: { [key: string]: any } = {};
       for (const [key, value] of Object.entries(data)) {
-        if (typeof value === 'number') {
+        if (typeof value === "number") {
           // Apply .toFixed(2) to number values
           result[key] = Number(value.toFixed(2));
         } else {
           result[key] = value;
         }
       }
-      
+
       console.log(result);
       updateDataWithSocket(
         result,
@@ -304,6 +304,22 @@ const ElectricalEnergy = () => {
                 offsitePowerValue={upData?.offsitePower || 0}
               />
               <MiddleBar
+                line1={middleData?.line1 || false}
+                line2={middleData?.line2 || false}
+                crushing={middleData?.crushing || false}
+                plant1={middleData?.plant1 || false}
+                plant2={middleData?.plant2 || false}
+                mine={middleData?.mine || false}
+                grinding={middleData?.grinding || false}
+                reagents={middleData?.reagents || false}
+                flotation={middleData?.flotation || false}
+                concentrate={middleData?.concentrate || false}
+                tailing={middleData?.tailing || false}
+                sulfide={middleData?.sulfide || false}
+                oxyde={middleData?.oxyde || false}
+                regrinding={middleData?.regrinding || false}
+                sag={middleData?.sag || false}
+                ball={middleData?.ball || false}
                 valueLeft={middleData?.valueLeft || "60 KV N° 691"}
                 valueRight={middleData?.valueRight || "60 KV N° 691"}
                 activePowerLeft={middleData?.activePowerLeft || 0}

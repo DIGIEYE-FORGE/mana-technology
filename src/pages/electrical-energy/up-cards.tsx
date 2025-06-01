@@ -4,7 +4,7 @@ interface UpCardsProps {
   energy: string | number;
   powerDemand: string | number;
   cosphi: string | number;
-  reactivePower: string | number;
+  reactivePower: number;
   totalPower: string | number;
 }
 
@@ -35,7 +35,7 @@ const UpCards = ({
         <Card className="flex h-16 items-center justify-between gap-5 !rounded px-5">
           <span>Reactive power (Mvar)</span>
           <span className="text-lg font-bold text-[#FFC829]">
-            {reactivePower}
+            {reactivePower.toFixed(2)}
           </span>
         </Card>
         <Card className="flex h-16 items-center justify-between gap-5 !rounded px-5">

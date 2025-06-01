@@ -1,7 +1,23 @@
-import Pattern from "@/assets/electrical-pattern.svg?react";
 import MiniCard from "./mini-card";
+import EnergySVG from "./components";
 
 interface MiddleBarProps {
+  line1: boolean;
+  line2: boolean;
+  crushing: boolean;
+  plant1: boolean;
+  plant2: boolean;
+  mine: boolean;
+  grinding: boolean;
+  reagents: boolean;
+  flotation: boolean;
+  concentrate: boolean;
+  tailing: boolean;
+  sulfide: boolean;
+  oxyde: boolean;
+  regrinding: boolean;
+  sag: boolean;
+  ball: boolean;
   valueLeft: string | number;
   valueRight: string | number;
   activePowerLeft: string | number;
@@ -25,19 +41,35 @@ interface MiddleBarProps {
   ibRight: string | number;
   icRight: string | number;
   vaMiddle: number;
-  vbMiddle:  number;
+  vbMiddle: number;
   vcMiddle: string | number;
   iCrushing: string | number;
   pCrushing: string | number;
   iProcess: string | number;
   pProcess: string | number;
-  iMine:  number;
-  pMine:  number;
+  iMine: number;
+  pMine: number;
   iArray: string[] | number[];
   pArray: string[] | number[];
 }
 
 const MiddleBar = ({
+  line1,
+  line2,
+  crushing,
+  plant1,
+  plant2,
+  mine,
+  grinding,
+  reagents,
+  flotation,
+  concentrate,
+  tailing,
+  sulfide,
+  oxyde,
+  regrinding,
+  sag,
+  ball,
   valueLeft,
   valueRight,
   activePowerLeft,
@@ -74,7 +106,25 @@ const MiddleBar = ({
 }: MiddleBarProps) => {
   return (
     <div className="relative flex flex-1 items-center justify-center">
-      <Pattern />
+      {line1}
+      <EnergySVG
+        line1={line1}
+        line2={line2}
+        crushing={crushing}
+        plant1={plant1}
+        plant2={plant2}
+        mine={mine}
+        grinding={grinding}
+        reagents={reagents}
+        flotation={flotation}
+        concentrate={concentrate}
+        tailing={tailing}
+        sulfide={sulfide}
+        oxyde={oxyde}
+        regrinding={regrinding}
+        sag={sag}
+        ball={ball}
+      />
       <div className="absolute top-[105px] flex w-[380px] justify-between">
         <MiniCard value={valueLeft} />
         <MiniCard value={valueRight} />
@@ -169,7 +219,6 @@ const MiddleBar = ({
               <span className="font-semibold">Vc</span>
               <span className="font-semibold text-[#FFC829]">{vcRight}</span>
             </div>
-            
           </div>
           <div className="flex w-full justify-between">
             <div className="flex flex-col">
@@ -191,7 +240,9 @@ const MiddleBar = ({
       <div className="absolute top-[410px] flex gap-2 pl-5">
         <div className="flex gap-1">
           <span className="grow">Uab (Kv)</span>
-          <span className="font-semibold text-[#FFC829]">{(vaMiddle / 1000).toFixed(2)}</span>
+          <span className="font-semibold text-[#FFC829]">
+            {(vaMiddle / 1000).toFixed(2)}
+          </span>
         </div>
         <div className="flex gap-1">
           <span className="grow">Frequency (Hz)</span>
@@ -239,12 +290,15 @@ const MiddleBar = ({
           </div>
           <div className="flex items-center gap-3">
             <span className="grow">P (Kw)</span>
-            <MiniCard className="font-semibold text-[#FFC829]" value={(pMine/1000).toFixed(2)} />
+            <MiniCard
+              className="font-semibold text-[#FFC829]"
+              value={(pMine / 1000).toFixed(2)}
+            />
           </div>
         </div>
       </div>
       {/*********************************************************************************************************** */}
-      <div className="w-[1200px] pl-5 absolute bottom-[100px] left-[90px] flex">
+      <div className="absolute bottom-[100px] left-[90px] flex w-[1200px] pl-5">
         <div className="flex flex-col gap-2">
           <div className="flex items-center">
             <span className="mr-12">I (a)</span>

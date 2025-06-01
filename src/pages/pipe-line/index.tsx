@@ -634,7 +634,7 @@ const PipeLine: React.FC = () => {
         progress: 0,
         attributes: {},
       },
-      image: "/lines-images/sp5.png",
+      image: "/lines-images/spu.png",
       model: {
         dashboard: {
           title: "Basin",
