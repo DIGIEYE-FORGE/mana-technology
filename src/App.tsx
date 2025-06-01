@@ -167,8 +167,8 @@ function App() {
               <GoliaWidget
                 style={{
                   position: "fixed",
-                  top: "80px",
-                  right: "20px",
+                  top: "1px",
+                  right: "1000px",
                   zIndex: 999999,
                 }}
                 launcherStyle={{

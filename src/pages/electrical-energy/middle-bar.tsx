@@ -257,7 +257,7 @@ const MiddleBar = ({
       <div className="absolute top-[660px] flex w-full justify-between px-[2rem]">
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-3">
-            <span className="grow">I (a)</span>
+            <span className="grow">I (A)</span>
             <MiniCard
               className="w-[5rem] font-semibold text-[#FFC829]"
               value={iCrushing}
@@ -273,7 +273,7 @@ const MiddleBar = ({
         </div>
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-3">
-            <span className="grow">I (a)</span>
+            <span className="grow">I (A)</span>
             <MiniCard
               className="w-[5rem] font-semibold text-[#FFC829]"
               value={iProcess}
