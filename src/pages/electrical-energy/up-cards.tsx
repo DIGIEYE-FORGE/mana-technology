@@ -25,7 +25,7 @@ const UpCards = ({
           </span>
         </Card>
         <Card className="flex h-16 items-center justify-between gap-5 !rounded px-5">
-          <span>Power demand (Mw))</span>
+          <span>Power demand (Mw)</span>
           <span className="text-lg font-bold text-[#FFC829]">
             {powerDemand.toFixed(2)}
           </span>
