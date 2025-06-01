@@ -37,7 +37,6 @@ const LeftBar = ({
           <span className="font-semibold">Power (Mw)</span>
           <span className="font-bold text-[#FFC829]">{powerValue}</span>
         </div>
-        {/* {JSON.stringify(power.map((item) => item.y))} */}
         <ReactApexChart
           height={140}
           options={{

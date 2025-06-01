@@ -105,7 +105,7 @@ const MiddleBar = ({
   pArray,
 }: MiddleBarProps) => {
   return (
-    <div className="relative flex h-[68rem] w-[100rem] flex-1 items-center justify-center">
+    <div className="debug relative flex h-[70%rem] w-[100rem] flex-1 items-center justify-center">
       {line1}
       <div className="absolute h-full w-full">
         <EnergySVG
