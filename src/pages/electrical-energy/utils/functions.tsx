@@ -78,28 +78,28 @@ export const formatData = (
       ...prev,
       line1:
         data?.[
-          "s=TIZERT_UCL_6MD85_TR1_UI3p1_Valm_Val_eff_Upp_phsAB_cVal_mag_f.Value"
-        ] != 0,
+          "s=TIZERT_6MD85_D1_UI3p1_Valm_Val_eff_Iph_phsA_cVal_mag_f.Value"
+        ] > 0,
       line2:
         data?.[
-          "s=TIZERT_UCL_6MD85_TR2_UI3p1_Valm_Val_eff_Upp_phsAB_cVal_mag_f.Value"
-        ] == 0,
+          "s=TIZERT_6MD85_D2_UI3p1_Valm_Val_eff_Iph_phsA_cVal_mag_f.Value"
+        ] > 0,
       crushing:
         data?.[
-          "s=TIZERT_POSTE_MT_J11_DEPART_N_5_CONCASSAGE_Measurement_VI_MMXU_Phase_to_Phase_Voltages_phsAB_cVal_mag_f.Value"
-        ] == 0,
+          "s=TIZERT_POSTE_MT_J11_DEPART_N_5_CONCASSAGE_Measurement_VI_MMXU_Phase_Currents_phsA_cVal_mag_f.Value"
+        ] > 0,
       plant1:
         data?.[
-          "s=TIZERT_POSTE_MT_J5_DEPART_N_7_USINE2_Measurement_VI_MMXU_Phase_to_Phase_Voltages_phsAB_cVal_mag_f.Value"
-        ] == 0,
+          "s=TIZERT_POSTE_MT_J5_DEPART_N_7_USINE2_Measurement_VI_MMXU_Phase_Currents_phsA_cVal_mag_f.Value"
+        ] > 0,
       plant2:
         data?.[
-          "s=TIZERT_POSTE_MT_J10_DEPART_N_6_USINE_1_Measurement_VI_MMXU_Phase_to_Phase_Voltages_phsAB_cVal_mag_f.Value"
-        ] == 0,
+          "s=TIZERT_POSTE_MT_J10_DEPART_N_6_USINE_1_Measurement_VI_MMXU_Phase_Currents_phsA_cVal_mag_f.Value"
+        ] > 0,
       mine:
         data?.[
-          "s=TIZERT_POSTE_MT_J4_DEPART_N_8_MINE_Measurement_VI_MMXU_Phase_to_Phase_Voltages_phsAB_cVal_mag_f.Value"
-        ] == 0,
+          "s=TIZERT_POSTE_MT_J4_DEPART_N_8_MINE_Measurement_VI_MMXU_Phase_Currents_phsA_cVal_mag_f.Value"
+        ] > 0,
 
       valueLeft: data?.["s=6210-WI-2217"] || 0,
       valueRight: data?.["s=6100-TR-2001"] || 0,
@@ -716,28 +716,28 @@ export const updateDataWithSocket = (
       ...prev,
       line1:
         data?.[
-          "s=TIZERT_UCL_6MD85_TR1_UI3p1_Valm_Val_eff_Upp_phsAB_cVal_mag_f.Value"
+          "s=TIZERT_6MD85_D1_UI3p1_Valm_Val_eff_Iph_phsA_cVal_mag_f.Value"
         ] > 0,
       line2:
         data?.[
-          "s=TIZERT_UCL_6MD85_TR2_UI3p1_Valm_Val_eff_Upp_phsAB_cVal_mag_f.Value"
-        ] == 0,
+          "s=TIZERT_6MD85_D2_UI3p1_Valm_Val_eff_Iph_phsA_cVal_mag_f.Value"
+        ] > 0,
       crushing:
         data?.[
-          "s=TIZERT_POSTE_MT_J11_DEPART_N_5_CONCASSAGE_Measurement_VI_MMXU_Phase_to_Phase_Voltages_phsAB_cVal_mag_f.Value"
-        ] == 0,
+          "s=TIZERT_POSTE_MT_J11_DEPART_N_5_CONCASSAGE_Measurement_VI_MMXU_Phase_Currents_phsA_cVal_mag_f.Value"
+        ] > 0,
       plant1:
         data?.[
-          "s=TIZERT_POSTE_MT_J5_DEPART_N_7_USINE2_Measurement_VI_MMXU_Phase_to_Phase_Voltages_phsAB_cVal_mag_f.Value"
-        ] == 0,
+          "s=TIZERT_POSTE_MT_J5_DEPART_N_7_USINE2_Measurement_VI_MMXU_Phase_Currents_phsA_cVal_mag_f.Value"
+        ] > 0,
       plant2:
         data?.[
-          "s=TIZERT_POSTE_MT_J10_DEPART_N_6_USINE_1_Measurement_VI_MMXU_Phase_to_Phase_Voltages_phsAB_cVal_mag_f.Value"
-        ] == 0,
+          "s=TIZERT_POSTE_MT_J10_DEPART_N_6_USINE_1_Measurement_VI_MMXU_Phase_Currents_phsA_cVal_mag_f.Value"
+        ] > 0,
       mine:
         data?.[
-          "s=TIZERT_POSTE_MT_J4_DEPART_N_8_MINE_Measurement_VI_MMXU_Phase_to_Phase_Voltages_phsAB_cVal_mag_f.Value"
-        ] == 0,
+          "s=TIZERT_POSTE_MT_J4_DEPART_N_8_MINE_Measurement_VI_MMXU_Phase_Currents_phsA_cVal_mag_f.Value"
+        ] > 0,
       valueLeft: data?.["s=6210-WI-2217"] || 0,
       valueRight: data?.["s=6100-TR-2001"] || 0,
 

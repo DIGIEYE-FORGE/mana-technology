@@ -67,10 +67,10 @@ export function DashboardSPU({ data }: DashboardSPUProps) {
       ],
     },
     {
-      name: "Turbidity (NTU)",
+      name: "Turbidity (NFU)",
       data: [
         {
-          name: "Turbidity",
+          name: "Turbidity (NFU)",
           value: data.trubidite || 0,
           key: "trubidite",
         },

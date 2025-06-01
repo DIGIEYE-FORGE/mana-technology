@@ -138,7 +138,7 @@ const ElectricalEnergy = () => {
           (acc: Record<string, any>, item: any) => {
             acc[item.name] =
               typeof item.value === "number"
-                ? item.value?.toFixed(2)
+                ? Math.abs(item.value)?.toFixed(2)
                 : item.value;
             return acc;
           },
@@ -213,7 +213,7 @@ const ElectricalEnergy = () => {
       for (const [key, value] of Object.entries(data)) {
         if (typeof value === "number") {
           // Apply .toFixed(2) to number values
-          result[key] = Number(value.toFixed(2));
+          result[key] = Math.abs(Number(value)).toFixed(2);
         } else {
           result[key] = value;
         }

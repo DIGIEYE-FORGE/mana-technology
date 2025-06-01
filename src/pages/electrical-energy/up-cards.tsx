@@ -42,9 +42,7 @@ const UpCards = ({
         </Card>
         <Card className="flex h-16 items-center justify-between gap-5 !rounded px-5">
           <span>Total power (MVA)</span>
-          <span className="text-lg font-bold text-[#FFC829]">
-            {totalPower.toFixed(2)}
-          </span>
+          <span className="text-lg font-bold text-[#FFC829]">{totalPower}</span>
         </Card>
       </div>
     </div>
