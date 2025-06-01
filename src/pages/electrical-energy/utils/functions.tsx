@@ -180,12 +180,20 @@ export const formatData = (
 
       vaMiddle:
         data?.[
-          "s=TIZERT_POSTE_MT_J6_ARRIVEE_TR2_Measurement_VI_MMXU_Frequency_mag_f.Value"
-        ] || 0,
+          "s=TIZERT_POSTE_MT_J6_ARRIVEE_TR2_Measurement_VI_MMXU_Phase_to_Phase_Voltages_phsAB_cVal_mag_f.Value"
+        ] ||
+        data?.[
+          "s=TIZERT_POSTE_MT_J9_ARRIVEE_TR1_Measurement_VI_MMXU_Phase_to_Phase_Voltages_phsAB_cVal_mag_f.Value"
+        ] ||
+        0,
       vbMiddle:
         data?.[
           "s=TIZERT_POSTE_MT_J6_ARRIVEE_TR2_Measurement_VI_MMXU_Frequency_mag_f.Value"
-        ] || 0,
+        ] ||
+        data?.[
+          "s=TIZERT_POSTE_MT_J9_ARRIVEE_TR1_Measurement_VI_MMXU_Frequency_mag_f.Value"
+        ] ||
+        0,
       vcMiddle:
         data?.[
           "s=TIZERT_POSTE_MT_J9_ARRIVEE_TR1_Measurement_VI_MMXU_Frequency_mag_f.Value"
@@ -210,7 +218,11 @@ export const formatData = (
       pProcess:
         data?.[
           "s=TIZERT_POSTE_MT_J10_DEPART_N_6_USINE_1_Measurement_VI_MMXU_Total_Real_Power_Total_P_mag_f.Value"
-        ] || 0,
+        ] ||
+        data?.[
+          "s=TIZERT_POSTE_MT_J5_DEPART_N_7_USINE2_Measurement_VI_MMXU_Total_Real_Power_Total_P_mag_f.Value"
+        ] ||
+        0,
       iMine:
         data?.[
           "s=TIZERT_POSTE_MT_J4_DEPART_N_8_MINE_Measurement_VI_MMXU_Phase_Currents_phsA_cVal_mag_f.Value"
@@ -218,7 +230,11 @@ export const formatData = (
       pMine:
         data?.[
           "s=TIZERT_POSTE_MT_J4_DEPART_N_8_MINE_Measurement_VI_MMXU_Total_Real_Power__Total_P__mag_f.Value"
-        ] || 0,
+        ] ||
+        data?.[
+          "s=TIZERT_POSTE_MT_J5_DEPART_N_7_USINE2_Measurement_VI_MMXU_Phase_Currents_phsA_cVal_mag_f.Value"
+        ] ||
+        0,
 
       iArray: [
         data?.["value"] || 0,
@@ -620,7 +636,15 @@ export const updateDataWithSocket = (
       ...prev,
       powerValue: data?.["s=6210-WI-2217"] || 0,
       energyValue: data?.["s=6100-TR-2001"] || 0,
-      plantPowerValue: data?.["s=6210-WI-2217"] || 0,
+      plantPowerValue:
+        data?.[
+          "s=TIZERT_POSTE_MT_J5_DEPART_N_7_USINE2_Measurement_VI_MMXU_Total_Real_Power__Total_P__mag_f.Value"
+        ] ||
+        0 +
+          data?.[
+            "s=TIZERT_POSTE_MT_J10_DEPART_N_6_USINE_1_Measurement_VI_MMXU_Total_Real_Power_Total_P_mag_f.Value"
+          ] ||
+        0,
       minePowerValue: data?.["s=6210-WI-2217"] || 0,
       offsitePowerValue: data?.["s=6210-WI-2217"] || 0,
       power: [
@@ -810,7 +834,11 @@ export const updateDataWithSocket = (
       vbMiddle:
         data?.[
           "s=TIZERT_POSTE_MT_J6_ARRIVEE_TR2_Measurement_VI_MMXU_Frequency_mag_f.Value"
-        ] || 0,
+        ] ||
+        data?.[
+          "s=TIZERT_POSTE_MT_J9_ARRIVEE_TR1_Measurement_VI_MMXU_Frequency_mag_f.Value"
+        ] ||
+        0,
       vcMiddle:
         data?.[
           "s=TIZERT_POSTE_MT_J6_ARRIVEE_TR2_Measurement_VI_MMXU_Phase_to_Phase_Voltages_phsAB_cVal_mag_f.Value"
@@ -835,7 +863,11 @@ export const updateDataWithSocket = (
       pProcess:
         data?.[
           "s=TIZERT_POSTE_MT_J10_DEPART_N_6_USINE_1_Measurement_VI_MMXU_Total_Real_Power_Total_P_mag_f.Value"
-        ] || 0,
+        ] ||
+        data?.[
+          "s=TIZERT_POSTE_MT_J5_DEPART_N_7_USINE2_Measurement_VI_MMXU_Total_Real_Power_Total_P_mag_f.Value"
+        ] ||
+        0,
       iMine:
         data?.[
           "s=TIZERT_POSTE_MT_J4_DEPART_N_8_MINE_Measurement_VI_MMXU_Phase_Currents_phsA_cVal_mag_f.Value"
@@ -843,7 +875,11 @@ export const updateDataWithSocket = (
       pMine:
         data?.[
           "s=TIZERT_POSTE_MT_J4_DEPART_N_8_MINE_Measurement_VI_MMXU_Total_Real_Power__Total_P__mag_f.Value"
-        ] || 0,
+        ] ||
+        data?.[
+          "s=TIZERT_POSTE_MT_J5_DEPART_N_7_USINE2_Measurement_VI_MMXU_Phase_Currents_phsA_cVal_mag_f.Value"
+        ] ||
+        0,
 
       iArray: [
         data?.["s=6210-WI-2217"] || 0,
