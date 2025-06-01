@@ -11,7 +11,8 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
           data?.["s=SP01CHL_CHL_01_MAE_TM"]?.[
             data?.["s=SP01CHL_CHL_01_MAE_TM"].length - 1
           ]?.y,
-        "Chlorine output (mg/l)": data?.["s=SP1_CHL_02_MAE_TM"]?.[length - 1]?.y,
+        "Chlorine output (mg/l)":
+          data?.["s=SP1_CHL_02_MAE_TM"]?.[length - 1]?.y,
         "Flow input (l/s)": data?.["s=SP1_FIT_01_MAE_TM"]?.[length - 1]?.y,
         "Flow output (l/s)": data?.["s=SP1_FIT_02_MAE_TM"]?.[length - 1]?.y,
         Turbidity: data?.["s=SP1_TURB_01_MAE_TM"]?.[length - 1]?.y,
