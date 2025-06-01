@@ -1,11 +1,11 @@
 import { Card } from "@/components/card";
 
 interface UpCardsProps {
-  energy: string | number;
-  powerDemand: string | number;
-  cosphi: string | number;
+  energy: number;
+  powerDemand: number;
+  cosphi: number;
   reactivePower: number;
-  totalPower: string | number;
+  totalPower: number;
 }
 
 const UpCards = ({
@@ -20,12 +20,14 @@ const UpCards = ({
       <div className="grid w-full grid-cols-5 gap-2">
         <Card className="flex h-16 items-center justify-between gap-5 !rounded px-5">
           <span>Energy (Mwh)</span>
-          <span className="text-lg font-bold text-[#FFC829]">{energy}</span>
+          <span className="text-lg font-bold text-[#FFC829]">
+            {energy.toFixed(2)}
+          </span>
         </Card>
         <Card className="flex h-16 items-center justify-between gap-5 !rounded px-5">
           <span>Power demand (Mw))</span>
           <span className="text-lg font-bold text-[#FFC829]">
-            {powerDemand}
+            {powerDemand.toFixed(2)}
           </span>
         </Card>
         <Card className="flex h-16 items-center justify-between gap-5 !rounded px-5">
@@ -40,7 +42,9 @@ const UpCards = ({
         </Card>
         <Card className="flex h-16 items-center justify-between gap-5 !rounded px-5">
           <span>Total power (MVA)</span>
-          <span className="text-lg font-bold text-[#FFC829]">{totalPower}</span>
+          <span className="text-lg font-bold text-[#FFC829]">
+            {totalPower.toFixed(2)}
+          </span>
         </Card>
       </div>
     </div>
