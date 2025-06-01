@@ -253,7 +253,7 @@ const MiddleBar = ({
       <div className="absolute top-[550px] flex w-[800px] justify-between pl-5">
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-3">
-            <span className="grow">I (a)</span>
+            <span className="grow">I (A)</span>
             <MiniCard
               className="font-semibold text-[#FFC829]"
               value={iCrushing}
@@ -269,7 +269,7 @@ const MiddleBar = ({
         </div>
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-3">
-            <span className="grow">I (a)</span>
+            <span className="grow">I (A)</span>
             <MiniCard
               className="font-semibold text-[#FFC829]"
               value={iProcess}
@@ -285,7 +285,7 @@ const MiddleBar = ({
         </div>
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-3">
-            <span className="grow">I (a)</span>
+            <span className="grow">I (A)</span>
             <MiniCard className="font-semibold text-[#FFC829]" value={iMine} />
           </div>
           <div className="flex items-center gap-3">
@@ -301,7 +301,7 @@ const MiddleBar = ({
       <div className="absolute bottom-[100px] left-[90px] flex w-[1200px] pl-5">
         <div className="flex flex-col gap-2">
           <div className="flex items-center">
-            <span className="mr-12">I (a)</span>
+            <span className="mr-12">I (A)</span>
             {iArray.map((item, index) => (
               <MiniCard
                 key={index}
