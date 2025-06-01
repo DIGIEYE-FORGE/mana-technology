@@ -181,7 +181,7 @@ const ElectricalEnergy = () => {
                 acc[key] = [
                   {
                     x: new Date(item.createdAt),
-                    y: value,
+                    y: Math.abs(value),
                   },
                   ...(acc[key] || []),
                 ];

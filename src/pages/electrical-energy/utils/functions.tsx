@@ -514,25 +514,17 @@ export const formatHistory = (
 ) => {
   data = changeKey(data);
   setLeftData((prev: any) => {
-    console.log("history");
-    console.log(
-      data?.[
-        "s=TIZERT_6MD85_D1_UI3p1_Valm_Val_eff_Uph_phsB_cVal_mag_f.Value"
-      ] || [],
-    );
-
     return {
       ...prev,
       power: (
-        data?.["s=TIZERT_UCL_6MD85_TR1_UI3p1_Valm_Puiss_P_total_mag_f.Value"] ||
-        []
+        data?.["s=TIZERT_6MD85_D1_UI3p1_Valm_Puiss_P_total_mag_f.Value"] || []
       ).map((item: any, index: number) => ({
         x: new Date(item?.x),
         y:
           (+item.y || 0) +
-            data?.[
-              "s=TIZERT_UCL_6MD85_TR2_UI3p1_Valm_Puiss_P_total_mag_f.Value"
-            ]?.[index].y || 0,
+            data?.["s=TIZERT_6MD85_D2_UI3p1_Valm_Puiss_P_total_mag_f.Value"]?.[
+              index
+            ].y || 0,
       })),
       energy: data?.["s=6100-TR-2001"] || [],
       plantPower: (
@@ -576,28 +568,37 @@ export const updateDataWithSocket = (
   setMiddleData: any,
 ) => {
   data = changeKey(data);
+  const power =
+    Number(data?.["s=TIZERT_6MD85_D1_UI3p1_Valm_Puiss_P_total_mag_f.Value"]) +
+    Number(data?.["s=TIZERT_6MD85_D2_UI3p1_Valm_Puiss_P_total_mag_f.Value"]);
+  console.log("Power");
+  console.log(power);
+  console.log(
+    Number(
+      data?.["s=TIZERT_6MD85_D1_UI3p1_Valm_Puiss_P_total_mag_f.Value"] || 0,
+    ),
+  );
+  console.log(
+    Number(
+      data?.["s=TIZERT_6MD85_D2_UI3p1_Valm_Puiss_P_total_mag_f.Value"] || 0,
+    ),
+  );
+  const totalPower =
+    Number(
+      data?.["s=TIZERT_6MD85_D1_UI3p1_Valm_Puiss_S_total_mag_f.Value"] || 0,
+    ) +
+    Number(
+      data?.["s=TIZERT_6MD85_D2_UI3p1_Valm_Puiss_S_total_mag_f.Value"] || 0,
+    );
+  const Rpower =
+    Number(
+      data?.["s=TIZERT_6MD85_D1_UI3p1_Valm_Puiss_Q_total_mag_f.Value"] || 0,
+    ) +
+    Number(
+      data?.["s=TIZERT_6MD85_D2_UI3p1_Valm_Puiss_Q_total_mag_f.Value"] || 0,
+    );
+
   setUpData((prev: any) => {
-    const power =
-      Number(
-        data?.["s=TIZERT_6MD85_D1_UI3p1_Valm_Puiss_P_total_mag_f.Value"] || 0,
-      ) +
-      Number(
-        data?.["s=TIZERT_6MD85_D2_UI3p1_Valm_Puiss_P_total_mag_f.Value"] || 0,
-      );
-    const totalPower =
-      Number(
-        data?.["s=TIZERT_6MD85_D1_UI3p1_Valm_Puiss_S_total_mag_f.Value"] || 0,
-      ) +
-      Number(
-        data?.["s=TIZERT_6MD85_D2_UI3p1_Valm_Puiss_S_total_mag_f.Value"] || 0,
-      );
-    const Rpower =
-      Number(
-        data?.["s=TIZERT_6MD85_D1_UI3p1_Valm_Puiss_Q_total_mag_f.Value"] || 0,
-      ) +
-      Number(
-        data?.["s=TIZERT_6MD85_D2_UI3p1_Valm_Puiss_Q_total_mag_f.Value"] || 0,
-      );
     return {
       ...prev,
       energy: data?.["s=6100-TR-2001"] || 0,
@@ -626,13 +627,7 @@ export const updateDataWithSocket = (
         ...(prev?.power?.slice(1) || []),
         {
           x: new Date(),
-          y:
-            (data?.[
-              "s=TIZERT_UCL_6MD85_TR1_UI3p1_Valm_Puiss_P_total_mag_f.Value"
-            ] || 0) +
-            (data?.[
-              "s=TIZERT_UCL_6MD85_TR2_UI3p1_Valm_Puiss_P_total_mag_f.Value"
-            ] || 0),
+          y: power,
         },
       ],
       energy: [
@@ -706,12 +701,6 @@ export const updateDataWithSocket = (
   });
 
   setMiddleData((prev: any) => {
-    console.log("middle data");
-    console.log(
-      data?.[
-        "s=TIZERT_UCL_6MD85_TR1_UI3p1_Valm_Val_eff_Upp_phsAB_cVal_mag_f.Value"
-      ] > 0,
-    );
     return {
       ...prev,
       line1:
