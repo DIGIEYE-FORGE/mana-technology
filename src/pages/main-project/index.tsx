@@ -294,7 +294,7 @@ const data = [
     },
     background: "url(/video.svg)",
   },
-  //// TODO update svg 
+  //// TODO update svg
   {
     title: "Electrical power line",
     type: "link",
@@ -310,7 +310,7 @@ const data = [
       align: "end",
       sideOffset: 20,
     },
-    background: "url(/video.svg)",
+    background: "url(/elec.png)",
   },
 
   {
