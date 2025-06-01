@@ -27,6 +27,9 @@ const LeftBar = ({
   minePowerValue,
   offsitePowerValue,
 }: LeftBarProps) => {
+  console.log({
+    power: power,
+  });
   return (
     <div className="relative z-10 flex h-full min-h-fit w-[400px] shrink-0 flex-col gap-2 overflow-x-hidden px-1 [&>.card]:h-1 [&>.card]:flex-1">
       <Card className="card w-full pl-2 pt-2">
@@ -34,6 +37,7 @@ const LeftBar = ({
           <span className="font-semibold">Power (Mw)</span>
           <span className="font-bold text-[#FFC829]">{powerValue}</span>
         </div>
+        {/* {JSON.stringify(power.map((item) => item.y))} */}
         <ReactApexChart
           height={140}
           options={{
@@ -73,6 +77,7 @@ const LeftBar = ({
               type: "datetime",
             },
             yaxis: {
+              min: 0,
               labels: {
                 style: {
                   colors: "#A2B0B8",
