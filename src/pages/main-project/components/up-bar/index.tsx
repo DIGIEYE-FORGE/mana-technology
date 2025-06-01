@@ -11,9 +11,11 @@ import { toggleFullScreen } from "@/utils";
 export function MainProjectUpBar() {
   const { fullScreen, setFullScreen } = useAppContext();
   return (
-    <div className="group sticky top-0 z-10 flex h-up-bar w-full shrink-0 items-center justify-end gap-2 border-b px-6 backdrop-blur">
+    <div className="debug group sticky top-0 z-10 flex h-up-bar w-full shrink-0 items-center justify-end gap-2 border-b px-6 backdrop-blur">
       <div className="mr-auto flex items-center gap-6">
         <img src="/logo.svg" alt="logo" />
+        {/* //// TODO  update with logo svg     */}
+        <img src="/logo_v2.png" alt="logo" className="h-[2rem]" />
         <span className="h-3/4 border-l py-3 pl-4 font-ethnocentric text-lg font-bold">
           Tizert Project Digital Twin
         </span>
@@ -23,9 +25,7 @@ export function MainProjectUpBar() {
           </Button>
         </Link>
       </div>
-      <Link to="/crushing" className="gap-2">
-        crushing
-      </Link>
+
       <OverviewButton variant={"ghost"} className="gap-2">
         Project Overview
       </OverviewButton>

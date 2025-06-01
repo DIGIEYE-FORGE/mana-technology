@@ -80,7 +80,7 @@ const magazine = [
   {
     name: "ELECTRICAL LINE",
     bottom: "40%",
-    left: "7%",
+    left: "10%",
     type: "information",
     click: "Electrical power line",
   },
@@ -284,7 +284,25 @@ const data = [
     image: "/ElectricalPowerLine.png",
     position: {
       top: "40%",
-      left: "2%",
+      left: "5%",
+    },
+    url: "/ElectricalPowerLine.png",
+    positionModel: {
+      side: "left",
+      align: "end",
+      sideOffset: 20,
+    },
+    background: "url(/video.svg)",
+  },
+  //// TODO update svg 
+  {
+    title: "Electrical power line",
+    type: "link",
+    image: "/ElectricalPowerLine.png",
+    to: "/electrical-energy",
+    position: {
+      top: "40%",
+      left: "1%",
     },
     url: "/ElectricalPowerLine.png",
     positionModel: {

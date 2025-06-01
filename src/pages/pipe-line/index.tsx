@@ -46,6 +46,7 @@ interface PumpAttributes {
   "Pressure output": string;
   pumps: string[];
   "Running state": string[];
+  Turbidity: string;
   Pressure: string[];
   breakPoints: string[];
 }
@@ -94,7 +95,8 @@ const ATTRIBUTE_UNITS: Record<string, string> = {
   "Flow output": "(L/s)",
   "delta flow": "(L/s)",
   "Pressure output": "(bar)",
-  "Pressure": "(bar)",
+  Pressure: "(bar)",
+  Turbidity: "(NFU)",
 };
 
 const createPositionStyle = (position: Position): React.CSSProperties => {
@@ -701,8 +703,9 @@ const PipeLine: React.FC = () => {
           },
           {
             title: "Flow Rate (m3/h)",
-            value: filteredResults?.["s=B_FIT_02_MAE_TM"]?.[length - 1]?.y *
-              3.6 || 0,
+            value:
+              filteredResults?.["s=B_FIT_02_MAE_TM"]?.[length - 1]?.y * 3.6 ||
+              0,
           },
         ]);
 

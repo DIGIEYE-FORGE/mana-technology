@@ -167,21 +167,21 @@ function App() {
               <GoliaWidget
                 style={{
                   position: "fixed",
-                  top: "1px",
+                  top: "5px",
                   right: "1000px",
                   zIndex: 999999,
                 }}
                 launcherStyle={{
                   border: "2px solid white",
                   borderRadius: "50%",
-                  width: 60,
-                  height: 60,
+                  width: 50,
+                  height: 50,
                   boxShadow: "0 8px 30px rgba(0,0,0,0.12)",
                 }}
                 containerStyle={{
                   resize: "both",
                   top: "80px",
-                  right: "90px",
+                  right: "43%",
                 }}
                 bot={bot}
                 placeholder="Ask me anything..."
