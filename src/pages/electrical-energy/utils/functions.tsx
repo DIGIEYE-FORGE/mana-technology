@@ -36,7 +36,7 @@ export const formatData = (
       energy: energy,
       powerDemand: power,
       cosphi: (
-        power / Math.sqrt(Math.pow(power, 2) + Math.pow(totalPower, 2))
+        power / Math.sqrt(Math.pow(power, 2) + Math.pow(Rpower, 2))
       ).toFixed(2),
       reactivePower: Rpower,
       totalPower: totalPower,
@@ -630,7 +630,7 @@ export const updateDataWithSocket = (
       energy: data?.["s=6100-TR-2001"] || 0,
       powerDemand: power,
       cosphi: (
-        power / Math.sqrt(Math.pow(power, 2) + Math.pow(totalPower, 2))
+        power / Math.sqrt(Math.pow(power, 2) + Math.pow(Rpower, 2))
       ).toFixed(2),
       reactivePower: Rpower,
       totalPower: totalPower.toFixed(2),
