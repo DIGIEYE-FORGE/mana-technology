@@ -136,6 +136,22 @@ const MiddleBar = ({
           ball={ball}
           className="h-full w-full"
         />
+        <div className="absolute top-[15%] flex w-full justify-between px-[4rem]">
+          <div className="flex items-center gap-3">
+            <span className="grow">Uab (kw)</span>
+            <MiniCard
+              className="w-[5rem] font-semibold text-[#FFC829]"
+              value={0}
+            />
+          </div>
+          <div className="flex items-center gap-3">
+            <span className="grow">Uab (kw)</span>
+            <MiniCard
+              className="w-[5rem] font-semibold text-[#FFC829]"
+              value={0}
+            />
+          </div>
+        </div>
         <div className="absolute bottom-[28%] flex w-full justify-between px-[2rem]">
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-3">
