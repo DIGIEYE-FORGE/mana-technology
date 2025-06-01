@@ -320,8 +320,8 @@ const ElectricalEnergy = () => {
                 regrinding={middleData?.regrinding || false}
                 sag={middleData?.sag || false}
                 ball={middleData?.ball || false}
-                valueLeft={middleData?.valueLeft || "60 KV N° 691"}
-                valueRight={middleData?.valueRight || "60 KV N° 691"}
+                valueLeft={middleData?.valueLeft || 0}
+                valueRight={middleData?.valueRight || 0}
                 activePowerLeft={middleData?.activePowerLeft || 0}
                 reactivePowerLeft={middleData?.reactivePowerLeft || 0}
                 totalPowerLeft={middleData?.totalPowerLeft || 0}

@@ -101,8 +101,14 @@ export const formatData = (
           "s=TIZERT_POSTE_MT_J4_DEPART_N_8_MINE_Measurement_VI_MMXU_Phase_Currents_phsA_cVal_mag_f.Value"
         ] > 0,
 
-      valueLeft: data?.["s=6210-WI-2217"] || 0,
-      valueRight: data?.["s=6100-TR-2001"] || 0,
+      valueLeft:
+        data?.[
+          "s=TIZERT_6MD85_D1_UI3p1_Valm_Val_eff_Upp_phsAB_cVal_mag_f.Value"
+        ] || 0,
+      valueRight:
+        data?.[
+          "s=TIZERT_6MD85_D2_UI3p1_Valm_Val_eff_Upp_phsAB_cVal_mag_f.Value"
+        ] || 0,
 
       activePowerLeft:
         data?.["s=TIZERT_6MD85_D1_UI3p1_Valm_Puiss_P_total_mag_f.Value"] || 0,
@@ -605,13 +611,7 @@ export const updateDataWithSocket = (
       powerDemand: power,
       cosphi: (power / totalPower).toFixed(2),
       reactivePower: Rpower,
-      totalPower:
-        data?.["s=TIZERT_UCL_6MD85_TR1_UI3p1_Valm_Puiss_S_total_mag_f.Value"] ||
-        0 +
-          data?.[
-            "s=TIZERT_UCL_6MD85_TR2_UI3p1_Valm_Puiss_S_total_mag_f.Value"
-          ] ||
-        0,
+      totalPower: totalPower.toFixed(2),
     };
   });
 
@@ -727,8 +727,14 @@ export const updateDataWithSocket = (
         data?.[
           "s=TIZERT_POSTE_MT_J4_DEPART_N_8_MINE_Measurement_VI_MMXU_Phase_Currents_phsA_cVal_mag_f.Value"
         ] > 0,
-      valueLeft: data?.["s=6210-WI-2217"] || 0,
-      valueRight: data?.["s=6100-TR-2001"] || 0,
+      valueLeft:
+        data?.[
+          "s=TIZERT_6MD85_D1_UI3p1_Valm_Val_eff_Upp_phsAB_cVal_mag_f.Value"
+        ] || 0,
+      valueRight:
+        data?.[
+          "s=TIZERT_6MD85_D2_UI3p1_Valm_Val_eff_Upp_phsAB_cVal_mag_f.Value"
+        ] || 0,
 
       activePowerLeft:
         data?.["s=TIZERT_6MD85_D1_UI3p1_Valm_Puiss_P_total_mag_f.Value"] || 0,

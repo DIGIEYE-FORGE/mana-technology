@@ -110,11 +110,11 @@ const MiddleBar = ({
         <div className="absolute left-0 top-0 h-full w-full overflow-hidden">
           <MiniCard
             className="absolute left-1/4 top-[2px] z-10 w-[12rem] bg-[#021E3F]/80 py-2"
-            value={valueLeft}
+            value="60 KV N° 691"
           ></MiniCard>
           <MiniCard
             className="absolute right-1/4 top-[2px] z-10 w-[12rem] bg-[#021E3F]/80 py-2"
-            value={valueRight}
+            value="60 KV N° 691"
           ></MiniCard>
         </div>
         <EnergySVG
@@ -138,17 +138,17 @@ const MiddleBar = ({
         />
         <div className="absolute top-[15%] flex w-full justify-between px-[4rem]">
           <div className="flex items-center gap-3">
-            <span className="grow">Uab (kw)</span>
+            <span className="grow">Uab (Kv)</span>
             <MiniCard
               className="w-[5rem] font-semibold text-[#FFC829]"
-              value={0}
+              value={valueLeft}
             />
           </div>
           <div className="flex items-center gap-3">
-            <span className="grow">Uab (kw)</span>
+            <span className="grow">Uab (Kv)</span>
             <MiniCard
               className="w-[5rem] font-semibold text-[#FFC829]"
-              value={0}
+              value={valueRight}
             />
           </div>
         </div>
@@ -187,7 +187,7 @@ const MiddleBar = ({
           </div>
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-3">
-              <span className="grow">I (a)</span>
+              <span className="grow">I (A)</span>
               <MiniCard
                 className="w-[5rem] font-semibold text-[#FFC829]"
                 value={iMine}
@@ -327,7 +327,7 @@ const MiddleBar = ({
         <div className="absolute bottom-[2%] flex w-full">
           <div className="flex w-full flex-col gap-2">
             <div className="flex w-full items-center">
-              <span className="w-[5rem]">I (a)</span>
+              <span className="w-[5rem]">I (A)</span>
               <div className="flex flex-1 items-center justify-between">
                 {iArray.map((item, index) => (
                   <MiniCard
