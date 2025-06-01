@@ -29,9 +29,9 @@ const ElectricalEnergy = () => {
     // data: countData,
     error: countError,
     isLoading: isLoadingCount,
-  } = useSWR("count-0V7ZJGB503H9WGH3", async () => {
+  } = useSWR("count-XN8EMW32H1T7CNI3", async () => {
     const res = await backendApi.getHistory(
-      "/dpc-history/api/history/count/0V7ZJGB503H9WGH3",
+      "/dpc-history/api/history/count/XN8EMW32H1T7CNI3",
       {
         telemetries: [
           {
@@ -100,7 +100,7 @@ const ElectricalEnergy = () => {
   //   "running-hours-jaw-crusher",
   //   async () => {
   //     const res = await backendApi.getHistory(
-  //       "/dpc-history/api/history/firstLast/0V7ZJGB503H9WGH3",
+  //       "/dpc-history/api/history/firstLast/XN8EMW32H1T7CNI3",
   //       {
   //         telemetry: "s=6032-H-TOT-1130",
   //         startDate: new Date(new Date().setHours(0, 0, 0, 0)).toISOString(),
@@ -120,7 +120,7 @@ const ElectricalEnergy = () => {
       const res = await backendApi.findMany("lastTelemetry", {
         where: {
           device: {
-            serial: "0V7ZJGB503H9WGH3",
+            serial: "XN8EMW32H1T7CNI3",
           },
         },
         pagination: {
@@ -161,19 +161,19 @@ const ElectricalEnergy = () => {
     async () => {
       const res = await backendApi.findMany("dpc-history/api/history", {
         where: {
-          serial: "0V7ZJGB503H9WGH3",
+          serial: "XN8EMW32H1T7CNI3",
         },
         pagination: {
           page: 1,
           perPage: 10,
         },
       });
-
+      
       return res;
     },
     {
       revalidateOnMount: true,
-      onSuccess: (data) => {
+      onSuccess: (data) => {       
         const filteredResults = data?.results?.reduce(
           (acc: Record<string, any>, item: any) => {
             Object.entries(item).forEach(([key, value]) => {
@@ -207,10 +207,21 @@ const ElectricalEnergy = () => {
     socket.on("error", (error) => {
       console.error("WebSocket error:", error);
     });
-    socket.on("serial-0V7ZJGB503H9WGH3", (data) => {
-      // console.log("Received message:", data);
+    socket.on("serial-XN8EMW32H1T7CNI3", (data) => {
+      console.log("Received message:", data);
+      let result:{ [key: string]: any } = {};
+      for (const [key, value] of Object.entries(data)) {
+        if (typeof value === 'number') {
+          // Apply .toFixed(2) to number values
+          result[key] = Number(value.toFixed(2));
+        } else {
+          result[key] = value;
+        }
+      }
+      
+      console.log(result);
       updateDataWithSocket(
-        data,
+        result,
         setUpData,
         setLeftData,
         setRightData,
@@ -293,8 +304,8 @@ const ElectricalEnergy = () => {
                 offsitePowerValue={upData?.offsitePower || 0}
               />
               <MiddleBar
-                valueLeft={middleData?.valueLeft || "60 Kw N° 691"}
-                valueRight={middleData?.valueRight || "60 Kw N° 691"}
+                valueLeft={middleData?.valueLeft || "60 KV N° 691"}
+                valueRight={middleData?.valueRight || "60 KV N° 691"}
                 activePowerLeft={middleData?.activePowerLeft || 0}
                 reactivePowerLeft={middleData?.reactivePowerLeft || 0}
                 totalPowerLeft={middleData?.totalPowerLeft || 0}

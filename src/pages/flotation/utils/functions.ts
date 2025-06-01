@@ -110,61 +110,61 @@ export const formatData = (
               runningState:
                 data?.["s=6310-AG-3141-F"] === "True" ||
                 data?.["s=6310-AG-3141-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6310-LIC-3122"] || 0,
               runningState:
                 data?.["s=6310-AG-3142-F"] === "True" ||
                 data?.["s=6310-AG-3142-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6310-LIC-3123"] || 0,
               runningState:
                 data?.["s=6310-AG-3143-F"] === "True" ||
                 data?.["s=6310-AG-3143-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6310-LIC-3124"] || 0,
               runningState:
                 data?.["s=6310-AG-3144-F"] === "True" ||
                 data?.["s=6310-AG-3144-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6310-LIC-3125"] || 0,
               runningState:
                 data?.["s=6310-AG-3145-F"] === "True" ||
                 data?.["s=6310-AG-3145-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6310-LIC-3126"] || 0,
               runningState:
                 data?.["s=6310-AG-3146-F"] === "True" ||
                 data?.["s=6310-AG-3146-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6310-LIC-3127"] || 0,
               runningState:
                 data?.["s=6310-AG-3147-F"] === "True" ||
                 data?.["s=6310-AG-3147-R"] === "True" ||
-                "False",
+                false,
             },
             {
-              runningState: data?.["s=6310-PP-3161"] || "False",
+              runningState: data?.["s=6310-PP-3161"] === "True" ,
             },
             {
-              runningState: data?.["s=6310-PP-3771"] || "False",
+              runningState: data?.["s=6310-PP-3771"] === "True" ,
             },
             {
-              runningState: data?.["s=6310-PP-3162"] || "False",
+              runningState: data?.["s=6310-PP-3162"] === "True" ,
             },
             {
-              runningState: data?.["s=6310-PP-3772"] || "False",
+              runningState: data?.["s=6310-PP-3772"] === "True" ,
             },
           ],
         },
@@ -175,54 +175,54 @@ export const formatData = (
               runningState:
                 data?.["s=6320-AG-3241-F"] === "True" ||
                 data?.["s=6320-AG-3241-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6320-LIC-3222"] || 0,
               runningState:
                 data?.["s=6320-AG-3242-F"] === "True" ||
                 data?.["s=6320-AG-3242-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6320-LIC-3223"] || 0,
               runningState:
                 data?.["s=6320-AG-3243-F"] === "True" ||
                 data?.["s=6320-AG-3243-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6320-LIC-3224"] || 0,
               runningState:
                 data?.["s=6320-AG-3244-F"] === "True" ||
                 data?.["s=6320-AG-3244-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6320-LIC-3225"] || 0,
               runningState:
                 data?.["s=6320-AG-3245-F"] === "True" ||
                 data?.["s=6320-AG-3245-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6320-LIC-3226"] || 0,
               runningState:
                 data?.["s=6320-AG-3246-F"] === "True" ||
                 data?.["s=6320-AG-3246-R"] === "True" ||
-                "False",
+                false,
             },
             {
-              runningState: data?.["s=6320-PP-3261"] || "False",
+              runningState: data?.["s=6320-PP-3261"] === "True" ,
             },
             {
-              runningState: data?.["s=6320-PP-3271"] || "False",
+              runningState: data?.["s=6320-PP-3271"] === "True" ,
             },
             {
-              runningState: data?.["s=6320-PP-3262"] || "False",
+              runningState: data?.["s=6320-PP-3262"] === "True" ,
             },
             {
-              runningState: data?.["s=6320-PP-3272"] || "False",
+              runningState: data?.["s=6320-PP-3272"] === "True" ,
             },
           ],
         },
@@ -230,39 +230,39 @@ export const formatData = (
           cells: [
             {
               level: data?.["s=6340-LIC-3422"] || 0,
-              runningState: data?.["s=6340-AG-3441"] || "False",
+              runningState: data?.["s=6340-AG-3441"] === "True" ,
             },
             {
               level: data?.["s=6340-LIC-3422"] || 0,
-              runningState: data?.["s=6340-AG-3442"] || "False",
+              runningState: data?.["s=6340-AG-3442"] === "True" ,
             },
             {
               level: data?.["s=6340-LIC-3424"] || 0,
-              runningState: data?.["s=6340-AG-3443"] || "False",
+              runningState: data?.["s=6340-AG-3443"] === "True" ,
             },
             {
               level: data?.["s=6340-LIC-3424"] || 0,
-              runningState: data?.["s=6340-AG-3444"] || "False",
+              runningState: data?.["s=6340-AG-3444"] === "True" ,
             },
             {
               level: data?.["s=6340-LIC-3426"] || 0,
-              runningState: data?.["s=6340-AG-3445"] || "False",
+              runningState: data?.["s=6340-AG-3445"] === "True" ,
             },
             {
               level: data?.["s=6340-LIC-3426"] || 0,
-              runningState: data?.["s=6340-AG-3446"] || "False",
+              runningState: data?.["s=6340-AG-3446"] === "True" ,
             },
             {
-              runningState: data?.["s=6340-PP-3461"] || "False",
+              runningState: data?.["s=6340-PP-3461"] === "True" ,
             },
             {
-              runningState: data?.["s=6340-PP-3471"] || "False",
+              runningState: data?.["s=6340-PP-3471"] === "True" ,
             },
             {
-              runningState: data?.["s=6340-PP-3462"] || "False",
+              runningState: data?.["s=6340-PP-3462"] === "True" ,
             },
             {
-              runningState: data?.["s=6340-PP-3472"] || "False",
+              runningState: data?.["s=6340-PP-3472"] === "True" ,
             },
           ],
         },
@@ -270,35 +270,35 @@ export const formatData = (
           cells: [
             {
               level: data?.["s=6350-LIC-3525"] || 0,
-              runningState: data?.["s=6350-AG-3545"] || "False",
+              runningState: data?.["s=6350-AG-3545"] === "True" ,
             },
             {
               level: data?.["s=6350-LIC-3527"] || 0,
-              runningState: data?.["s=6350-AG-3546"] || "False",
+              runningState: data?.["s=6350-AG-3546"] === "True" ,
             },
             {
               level: data?.["s=6350-LIC-3527"] || 0,
-              runningState: data?.["s=6350-AG-3547"] || "False",
+              runningState: data?.["s=6350-AG-3547"] === "True" ,
             },
             {
               level: data?.["s=6350-LIC-3529"] || 0,
-              runningState: data?.["s=6350-AG-3548"] || "False",
+              runningState: data?.["s=6350-AG-3548"] === "True" ,
             },
             {
               level: data?.["s=6350-LIC-3529"] || 0,
-              runningState: data?.["s=6350-AG-3549"] || "False",
+              runningState: data?.["s=6350-AG-3549"] === "True" ,
             },
             {
-              runningState: data?.["s=6350-PP-3561"] || "False",
+              runningState: data?.["s=6350-PP-3561"] === "True" ,
             },
             {
-              runningState: data?.["s=6350-PP-3571"] || "False",
+              runningState: data?.["s=6350-PP-3571"] === "True" ,
             },
             {
-              runningState: data?.["s=6350-PP-3562"] || "False",
+              runningState: data?.["s=6350-PP-3562"] === "True" ,
             },
             {
-              runningState: data?.["s=6350-PP-3572"] || "False",
+              runningState: data?.["s=6350-PP-3572"] === "True" ,
             },
           ],
         },
@@ -306,34 +306,34 @@ export const formatData = (
           cells: [
             {
               level: data?.["s=6350-LIC-3521"] || 0,
-              runningState: data?.["s=6350-AG-3541"] || "False",
+              runningState: data?.["s=6350-AG-3541"] === "True" ,
             },
             {
               level: data?.["s=6350-LIC-3523"] || 0,
-              runningState: data?.["s=6350-AG-3542"] || "False",
+              runningState: data?.["s=6350-AG-3542"] === "True" ,
             },
             {
               level: data?.["s=6350-LIC-3523"] || 0,
-              runningState: data?.["s=6350-AG-3543"] || "False",
+              runningState: data?.["s=6350-AG-3543"] === "True" ,
             },
             {
-              runningState: data?.["s=6350-PP-3581"] || "False",
+              runningState: data?.["s=6350-PP-3581"] === "True" ,
             },
             {
-              runningState: data?.["s=6350-PP-3582"] || "False",
+              runningState: data?.["s=6350-PP-3582"] === "True" ,
             },
           ],
         },
         mill: {
           cells: [
             {
-              runningState: data?.["s=6330-PP-3311"] || "False",
+              runningState: data?.["s=6330-PP-3311"] === "True" ,
             },
             {
-              runningState: data?.["s=6330-PP-3312"] || "False",
+              runningState: data?.["s=6330-PP-3312"] === "True" ,
             },
             {
-              runningState: data?.["s=6330-PP-3287"] || "False",
+              runningState: data?.["s=6330-PP-3287"] === "True" ,
             },
           ],
         },
@@ -346,61 +346,61 @@ export const formatData = (
               runningState:
                 data?.["s=6410-AG-4141-F"] === "True" ||
                 data?.["s=6410-AG-4141-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6410-LIC-4122"] || 0,
               runningState:
                 data?.["s=6410-AG-4142-F"] === "True" ||
                 data?.["s=6410-AG-4142-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6410-LIC-4123"] || 0,
               runningState:
                 data?.["s=6410-AG-4143-F"] === "True" ||
                 data?.["s=6410-AG-4143-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6410-LIC-4124"] || 0,
               runningState:
                 data?.["s=6410-AG-4144-F"] === "True" ||
                 data?.["s=6410-AG-4144-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6410-LIC-4125"] || 0,
               runningState:
                 data?.["s=6410-AG-4145-F"] === "True" ||
                 data?.["s=6410-AG-4145-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6410-LIC-4126"] || 0,
               runningState:
                 data?.["s=6410-AG-4146-F"] === "True" ||
                 data?.["s=6410-AG-4146-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6410-LIC-4127"] || 0,
               runningState:
                 data?.["s=6410-AG-4147-F"] === "True" ||
                 data?.["s=6410-AG-4147-R"] === "True" ||
-                "False",
+                false,
             },
             {
-              runningState: data?.["s=6410-PP-4161"] || "False",
+              runningState: data?.["s=6410-PP-4161"] === "True" ,
             },
             {
-              runningState: data?.["s=6410-PP-4171"] || "False",
+              runningState: data?.["s=6410-PP-4171"] === "True" ,
             },
             {
-              runningState: data?.["s=6410-PP-4162"] || "False",
+              runningState: data?.["s=6410-PP-4162"] === "True" ,
             },
             {
-              runningState: data?.["s=6410-PP-4172"] || "False",
+              runningState: data?.["s=6410-PP-4172"] === "True" ,
             },
           ],
         },
@@ -411,54 +411,54 @@ export const formatData = (
               runningState:
                 data?.["s=6420-AG-4241-F"] === "True" ||
                 data?.["s=6420-AG-4241-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6420-LIC-4222"] || 0,
               runningState:
                 data?.["s=6420-AG-4242-F"] === "True" ||
                 data?.["s=6420-AG-4242-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6420-LIC-4223"] || 0,
               runningState:
                 data?.["s=6420-AG-4243-F"] === "True" ||
                 data?.["s=6420-AG-4243-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6420-LIC-4224"] || 0,
               runningState:
                 data?.["s=6420-AG-4244-F"] === "True" ||
                 data?.["s=6420-AG-4244-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6420-LIC-4225"] || 0,
               runningState:
                 data?.["s=6420-AG-4245-F"] === "True" ||
                 data?.["s=6420-AG-4245-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6420-LIC-4226"] || 0,
               runningState:
                 data?.["s=6420-AG-4246-F"] === "True" ||
                 data?.["s=6420-AG-4246-R"] === "True" ||
-                "False",
+                false,
             },
             {
-              runningState: data?.["s=6420-PP-4261"] || "False",
+              runningState: data?.["s=6420-PP-4261"] === "True" ,
             },
             {
-              runningState: data?.["s=6420-PP-4271"] || "False",
+              runningState: data?.["s=6420-PP-4271"] === "True" ,
             },
             {
-              runningState: data?.["s=6420-PP-4262"] || "False",
+              runningState: data?.["s=6420-PP-4262"] === "True" ,
             },
             {
-              runningState: data?.["s=6420-PP-4272"] || "False",
+              runningState: data?.["s=6420-PP-4272"] === "True" ,
             },
           ],
         },
@@ -466,35 +466,35 @@ export const formatData = (
           cells: [
             {
               level: data?.["s=6430-LIC-4321"] || 0,
-              runningState: data?.["s=6430-AG-4341"] || "False",
+              runningState: data?.["s=6430-AG-4341"] === "True" ,
             },
             {
               level: data?.["s=6430-LIC-4323"] || 0,
-              runningState: data?.["s=6430-AG-4342"] || "False",
+              runningState: data?.["s=6430-AG-4342"] === "True" ,
             },
             {
               level: data?.["s=6430-LIC-4323"] || 0,
-              runningState: data?.["s=6430-AG-4343"] || "False",
+              runningState: data?.["s=6430-AG-4343"] === "True" ,
             },
             {
               level: data?.["s=6430-LIC-4325"] || 0,
-              runningState: data?.["s=6430-AG-4344"] || "False",
+              runningState: data?.["s=6430-AG-4344"] === "True" ,
             },
             {
               level: data?.["s=6430-LIC-4325"] || 0,
-              runningState: data?.["s=6430-AG-4345"] || "False",
+              runningState: data?.["s=6430-AG-4345"] === "True" ,
             },
             {
-              runningState: data?.["s=6430-PP-4361"] || "False",
+              runningState: data?.["s=6430-PP-4361"] === "True" ,
             },
             {
-              runningState: data?.["s=6430-PP-4371"] || "False",
+              runningState: data?.["s=6430-PP-4371"] === "True" ,
             },
             {
-              runningState: data?.["s=6430-PP-4362"] || "False",
+              runningState: data?.["s=6430-PP-4362"] === "True" ,
             },
             {
-              runningState: data?.["s=6430-PP-4372"] || "False",
+              runningState: data?.["s=6430-PP-4372"] === "True" ,
             },
           ],
         },
@@ -502,31 +502,31 @@ export const formatData = (
           cells: [
             {
               level: data?.["s=6440-LIC-4426"] || 0,
-              runningState: data?.["s=6440-AG-4445"] || "False",
+              runningState: data?.["s=6440-AG-4445"] === "True" ,
             },
             {
               level: data?.["s=6440-LIC-4426"] || 0,
-              runningState: data?.["s=6440-AG-4446"] || "False",
+              runningState: data?.["s=6440-AG-4446"] === "True" ,
             },
             {
               level: data?.["s=6440-LIC-4428"] || 0,
-              runningState: data?.["s=6440-AG-4447"] || "False",
+              runningState: data?.["s=6440-AG-4447"] === "True" ,
             },
             {
               level: data?.["s=6440-LIC-4428"] || 0,
-              runningState: data?.["s=6440-AG-4448"] || "False",
+              runningState: data?.["s=6440-AG-4448"] === "True" ,
             },
             {
-              runningState: data?.["s=6440-PP-4461"] || "False",
+              runningState: data?.["s=6440-PP-4461"] === "True" ,
             },
             {
-              runningState: data?.["s=6440-PP-4471"] || "False",
+              runningState: data?.["s=6440-PP-4471"] === "True" ,
             },
             {
-              runningState: data?.["s=6440-PP-4462"] || "False",
+              runningState: data?.["s=6440-PP-4462"] === "True" ,
             },
             {
-              runningState: data?.["s=6440-PP-4472"] || "False",
+              runningState: data?.["s=6440-PP-4472"] === "True" ,
             },
           ],
         },
@@ -534,33 +534,33 @@ export const formatData = (
           cells: [
             {
               level: data?.["s=6440-LIC-4422"] || 0,
-              runningState: data?.["s=6440-AG-4441"] || "False",
+              runningState: data?.["s=6440-AG-4441"] === "True" ,
             },
             {
               level: data?.["s=6440-LIC-4422"] || 0,
-              runningState: data?.["s=6440-AG-4442"] || "False",
+              runningState: data?.["s=6440-AG-4442"] === "True" ,
             },
             {
-              runningState: data?.["s=6440-PP-4481"] || "False",
+              runningState: data?.["s=6440-PP-4481"] === "True" ,
             },
             {
-              runningState: data?.["s=6440-PP-4482"] || "False",
+              runningState: data?.["s=6440-PP-4482"] === "True" ,
             },
           ],
         },
         mill: {
           cells: [
             {
-              runningState: data?.["s=6330-ML-3342"] || "False",
+              runningState: data?.["s=6330-ML-3342"] === "True" ,
             },
             {
-              runningState: data?.["s=6330-PP-3283"] || "False",
+              runningState: data?.["s=6330-PP-3283"] === "True" ,
             },
             {
-              runningState: data?.["s=6330-PP-3284"] || "False",
+              runningState: data?.["s=6330-PP-3284"] === "True" ,
             },
             {
-              runningState: data?.["s=6330-PP-3288"] || "False",
+              runningState: data?.["s=6330-PP-3288"] === "True" ,
             },
           ],
         },
@@ -1004,61 +1004,61 @@ export const updateDataWithSocket = (
               runningState:
                 data?.["s=6310-AG-3141-F"] === "True" ||
                 data?.["s=6310-AG-3141-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6310-LIC-3122"] || 0,
               runningState:
                 data?.["s=6310-AG-3142-F"] === "True" ||
                 data?.["s=6310-AG-3142-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6310-LIC-3123"] || 0,
               runningState:
                 data?.["s=6310-AG-3143-F"] === "True" ||
                 data?.["s=6310-AG-3143-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6310-LIC-3124"] || 0,
               runningState:
                 data?.["s=6310-AG-3144-F"] === "True" ||
                 data?.["s=6310-AG-3144-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6310-LIC-3125"] || 0,
               runningState:
                 data?.["s=6310-AG-3145-F"] === "True" ||
                 data?.["s=6310-AG-3145-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6310-LIC-3126"] || 0,
               runningState:
                 data?.["s=6310-AG-3146-F"] === "True" ||
                 data?.["s=6310-AG-3146-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6310-LIC-3127"] || 0,
               runningState:
                 data?.["s=6310-AG-3147-F"] === "True" ||
                 data?.["s=6310-AG-3147-R"] === "True" ||
-                "False",
+                false,
             },
             {
-              runningState: data?.["s=6310-PP-3161"] || "False",
+              runningState: data?.["s=6310-PP-3161"] === "True" ,
             },
             {
-              runningState: data?.["s=6310-PP-3771"] || "False",
+              runningState: data?.["s=6310-PP-3771"] === "True" ,
             },
             {
-              runningState: data?.["s=6310-PP-3162"] || "False",
+              runningState: data?.["s=6310-PP-3162"] === "True" ,
             },
             {
-              runningState: data?.["s=6310-PP-3772"] || "False",
+              runningState: data?.["s=6310-PP-3772"] === "True" ,
             },
           ],
         },
@@ -1069,54 +1069,54 @@ export const updateDataWithSocket = (
               runningState:
                 data?.["s=6320-AG-3241-F"] === "True" ||
                 data?.["s=6320-AG-3241-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6320-LIC-3222"] || 0,
               runningState:
                 data?.["s=6320-AG-3242-F"] === "True" ||
                 data?.["s=6320-AG-3242-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6320-LIC-3223"] || 0,
               runningState:
                 data?.["s=6320-AG-3243-F"] === "True" ||
                 data?.["s=6320-AG-3243-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6320-LIC-3224"] || 0,
               runningState:
                 data?.["s=6320-AG-3244-F"] === "True" ||
                 data?.["s=6320-AG-3244-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6320-LIC-3225"] || 0,
               runningState:
                 data?.["s=6320-AG-3245-F"] === "True" ||
                 data?.["s=6320-AG-3245-R"] === "True" ||
-                "False",
+                false,
             },
             {
               level: data?.["s=6320-LIC-3226"] || 0,
               runningState:
-                data?.["s=6320-AG-3246-F"] === "True" ||
+                data?.["s=6320-AG-3246-F"] === "True"  ||
                 data?.["s=6320-AG-3246-R"] === "True" ||
-                "False",
+                false,
             },
             {
-              runningState: data?.["s=6320-PP-3261"] || "False",
+              runningState: data?.["s=6320-PP-3261"] === "True" ,
             },
             {
-              runningState: data?.["s=6320-PP-3271"] || "False",
+              runningState: data?.["s=6320-PP-3271"] === "True" ,
             },
             {
-              runningState: data?.["s=6320-PP-3262"] || "False",
+              runningState: data?.["s=6320-PP-3262"] === "True" ,
             },
             {
-              runningState: data?.["s=6320-PP-3272"] || "False",
+              runningState: data?.["s=6320-PP-3272"] === "True" ,
             },
           ],
         },
@@ -1124,39 +1124,39 @@ export const updateDataWithSocket = (
           cells: [
             {
               level: data?.["s=6340-LIC-3422"] || 0,
-              runningState: data?.["s=6340-AG-3441"] || "False",
+              runningState: data?.["s=6340-AG-3441"] === "True" ,
             },
             {
               level: data?.["s=6340-LIC-3422"] || 0,
-              runningState: data?.["s=6340-AG-3442"] || "False",
+              runningState: data?.["s=6340-AG-3442"] === "True" ,
             },
             {
               level: data?.["s=6340-LIC-3424"] || 0,
-              runningState: data?.["s=6340-AG-3443"] || "False",
+              runningState: data?.["s=6340-AG-3443"] === "True" ,
             },
             {
               level: data?.["s=6340-LIC-3424"] || 0,
-              runningState: data?.["s=6340-AG-3444"] || "False",
+              runningState: data?.["s=6340-AG-3444"] === "True" ,
             },
             {
               level: data?.["s=6340-LIC-3426"] || 0,
-              runningState: data?.["s=6340-AG-3445"] || "False",
+              runningState: data?.["s=6340-AG-3445"] === "True" ,
             },
             {
               level: data?.["s=6340-LIC-3426"] || 0,
-              runningState: data?.["s=6340-AG-3446"] || "False",
+              runningState: data?.["s=6340-AG-3446"] === "True" ,
             },
             {
-              runningState: data?.["s=6340-PP-3461"] || "False",
+              runningState: data?.["s=6340-PP-3461"] === "True" ,
             },
             {
-              runningState: data?.["s=6340-PP-3471"] || "False",
+              runningState: data?.["s=6340-PP-3471"] === "True" ,
             },
             {
-              runningState: data?.["s=6340-PP-3462"] || "False",
+              runningState: data?.["s=6340-PP-3462"] === "True" ,
             },
             {
-              runningState: data?.["s=6340-PP-3472"] || "False",
+              runningState: data?.["s=6340-PP-3472"] === "True" ,
             },
           ],
         },
@@ -1164,35 +1164,35 @@ export const updateDataWithSocket = (
           cells: [
             {
               level: data?.["s=6350-LIC-3525"] || 0,
-              runningState: data?.["s=6350-AG-3545"] || "False",
+              runningState: data?.["s=6350-AG-3545"] === "True" ,
             },
             {
               level: data?.["s=6350-LIC-3527"] || 0,
-              runningState: data?.["s=6350-AG-3546"] || "False",
+              runningState: data?.["s=6350-AG-3546"] === "True" ,
             },
             {
               level: data?.["s=6350-LIC-3527"] || 0,
-              runningState: data?.["s=6350-AG-3547"] || "False",
+              runningState: data?.["s=6350-AG-3547"] === "True" ,
             },
             {
               level: data?.["s=6350-LIC-3529"] || 0,
-              runningState: data?.["s=6350-AG-3548"] || "False",
+              runningState: data?.["s=6350-AG-3548"] === "True" ,
             },
             {
               level: data?.["s=6350-LIC-3529"] || 0,
-              runningState: data?.["s=6350-AG-3549"] || "False",
+              runningState: data?.["s=6350-AG-3549"] === "True" ,
             },
             {
-              runningState: data?.["s=6350-PP-3561"] || "False",
+              runningState: data?.["s=6350-PP-3561"] === "True" ,
             },
             {
-              runningState: data?.["s=6350-PP-3571"] || "False",
+              runningState: data?.["s=6350-PP-3571"] === "True" ,
             },
             {
-              runningState: data?.["s=6350-PP-3562"] || "False",
+              runningState: data?.["s=6350-PP-3562"] === "True" ,
             },
             {
-              runningState: data?.["s=6350-PP-3572"] || "False",
+              runningState: data?.["s=6350-PP-3572"] === "True" ,
             },
           ],
         },
@@ -1200,34 +1200,34 @@ export const updateDataWithSocket = (
           cells: [
             {
               level: data?.["s=6350-LIC-3521"] || 0,
-              runningState: data?.["s=6350-AG-3541"] || "False",
+              runningState: data?.["s=6350-AG-3541"] === "True" ,
             },
             {
               level: data?.["s=6350-LIC-3523"] || 0,
-              runningState: data?.["s=6350-AG-3542"] || "False",
+              runningState: data?.["s=6350-AG-3542"] === "True" ,
             },
             {
               level: data?.["s=6350-LIC-3523"] || 0,
-              runningState: data?.["s=6350-AG-3543"] || "False",
+              runningState: data?.["s=6350-AG-3543"] === "True" ,
             },
             {
-              runningState: data?.["s=6350-PP-3581"] || "False",
+              runningState: data?.["s=6350-PP-3581"] === "True" ,
             },
             {
-              runningState: data?.["s=6350-PP-3582"] || "False",
+              runningState: data?.["s=6350-PP-3582"] === "True" ,
             },
           ],
         },
         mill: {
           cells: [
             {
-              runningState: data?.["s=6330-PP-3311"] || "False",
+              runningState: data?.["s=6330-PP-3311"] === "True" ,
             },
             {
-              runningState: data?.["s=6330-PP-3312"] || "False",
+              runningState: data?.["s=6330-PP-3312"] === "True" ,
             },
             {
-              runningState: data?.["s=6330-PP-3287"] || "False",
+              runningState: data?.["s=6330-PP-3287"] === "True" ,
             },
           ],
         },
@@ -1237,43 +1237,43 @@ export const updateDataWithSocket = (
           cells: [
             {
               level: data?.["s=6410-LIC-4121"] || 0,
-              runningState: data?.["s=6410-AG-4141"] || "False",
+              runningState: data?.["s=6410-AG-4141"] === "True" ,
             },
             {
               level: data?.["s=6410-LIC-4122"] || 0,
-              runningState: data?.["s=6410-AG-4142"] || "False",
+              runningState: data?.["s=6410-AG-4142"] === "True" ,
             },
             {
               level: data?.["s=6410-LIC-4123"] || 0,
-              runningState: data?.["s=6410-AG-4143"] || "False",
+              runningState: data?.["s=6410-AG-4143"] === "True" ,
             },
             {
               level: data?.["s=6410-LIC-4124"] || 0,
-              runningState: data?.["s=6410-AG-4144"] || "False",
+              runningState: data?.["s=6410-AG-4144"] === "True" ,
             },
             {
               level: data?.["s=6410-LIC-4125"] || 0,
-              runningState: data?.["s=6410-AG-4145"] || "False",
+              runningState: data?.["s=6410-AG-4145"] === "True" ,
             },
             {
               level: data?.["s=6410-LIC-4126"] || 0,
-              runningState: data?.["s=6410-AG-4146"] || "False",
+              runningState: data?.["s=6410-AG-4146"] === "True" ,
             },
             {
               level: data?.["s=6410-LIC-4127"] || 0,
-              runningState: data?.["s=6410-AG-4147"] || "False",
+              runningState: data?.["s=6410-AG-4147"] === "True" ,
             },
             {
-              runningState: data?.["s=6410-PP-4161"] || "False",
+              runningState: data?.["s=6410-PP-4161"] === "True" ,
             },
             {
-              runningState: data?.["s=6410-PP-4171"] || "False",
+              runningState: data?.["s=6410-PP-4171"] === "True" ,
             },
             {
-              runningState: data?.["s=6410-PP-4162"] || "False",
+              runningState: data?.["s=6410-PP-4162"] === "True" ,
             },
             {
-              runningState: data?.["s=6410-PP-4172"] || "False",
+              runningState: data?.["s=6410-PP-4172"] === "True" ,
             },
           ],
         },
@@ -1281,39 +1281,39 @@ export const updateDataWithSocket = (
           cells: [
             {
               level: data?.["s=6420-LIC-4221"] || 0,
-              runningState: data?.["s=6420-AG-4241"] || "False",
+              runningState: data?.["s=6420-AG-4241"] === "True" ,
             },
             {
               level: data?.["s=6420-LIC-4222"] || 0,
-              runningState: data?.["s=6420-AG-4242"] || "False",
+              runningState: data?.["s=6420-AG-4242"] === "True" ,
             },
             {
               level: data?.["s=6420-LIC-4223"] || 0,
-              runningState: data?.["s=6420-AG-4243"] || "False",
+              runningState: data?.["s=6420-AG-4243"] === "True" ,
             },
             {
               level: data?.["s=6420-LIC-4224"] || 0,
-              runningState: data?.["s=6420-AG-4244"] || "False",
+              runningState: data?.["s=6420-AG-4244"] === "True" ,
             },
             {
               level: data?.["s=6420-LIC-4225"] || 0,
-              runningState: data?.["s=6420-AG-4245"] || "False",
+              runningState: data?.["s=6420-AG-4245"] === "True" ,
             },
             {
               level: data?.["s=6420-LIC-4226"] || 0,
-              runningState: data?.["s=6420-AG-4246"] || "False",
+              runningState: data?.["s=6420-AG-4246"] === "True" ,
             },
             {
-              runningState: data?.["s=6420-PP-4261"] || "False",
+              runningState: data?.["s=6420-PP-4261"] === "True" ,
             },
             {
-              runningState: data?.["s=6420-PP-4271"] || "False",
+              runningState: data?.["s=6420-PP-4271"] === "True" ,
             },
             {
-              runningState: data?.["s=6420-PP-4262"] || "False",
+              runningState: data?.["s=6420-PP-4262"] === "True" ,
             },
             {
-              runningState: data?.["s=6420-PP-4272"] || "False",
+              runningState: data?.["s=6420-PP-4272"] === "True" ,
             },
           ],
         },
@@ -1321,35 +1321,35 @@ export const updateDataWithSocket = (
           cells: [
             {
               level: data?.["s=6430-LIC-4321"] || 0,
-              runningState: data?.["s=6430-AG-4341"] || "False",
+              runningState: data?.["s=6430-AG-4341"] === "True" ,
             },
             {
               level: data?.["s=6430-LIC-4323"] || 0,
-              runningState: data?.["s=6430-AG-4342"] || "False",
+              runningState: data?.["s=6430-AG-4342"] === "True" ,
             },
             {
               level: data?.["s=6430-LIC-4323"] || 0,
-              runningState: data?.["s=6430-AG-4343"] || "False",
+              runningState: data?.["s=6430-AG-4343"] === "True" ,
             },
             {
               level: data?.["s=6430-LIC-4325"] || 0,
-              runningState: data?.["s=6430-AG-4344"] || "False",
+              runningState: data?.["s=6430-AG-4344"] === "True" ,
             },
             {
               level: data?.["s=6430-LIC-4325"] || 0,
-              runningState: data?.["s=6430-AG-4345"] || "False",
+              runningState: data?.["s=6430-AG-4345"] === "True" ,
             },
             {
-              runningState: data?.["s=6430-PP-4361"] || "False",
+              runningState: data?.["s=6430-PP-4361"] === "True" ,
             },
             {
-              runningState: data?.["s=6430-PP-4371"] || "False",
+              runningState: data?.["s=6430-PP-4371"] === "True" ,
             },
             {
-              runningState: data?.["s=6430-PP-4362"] || "False",
+              runningState: data?.["s=6430-PP-4362"] === "True" ,
             },
             {
-              runningState: data?.["s=6430-PP-4372"] || "False",
+              runningState: data?.["s=6430-PP-4372"] === "True" ,
             },
           ],
         },
@@ -1357,31 +1357,31 @@ export const updateDataWithSocket = (
           cells: [
             {
               level: data?.["s=6440-LIC-4426"] || 0,
-              runningState: data?.["s=6440-AG-4445"] || "False",
+              runningState: data?.["s=6440-AG-4445"] === "True" ,
             },
             {
               level: data?.["s=6440-LIC-4426"] || 0,
-              runningState: data?.["s=6440-AG-4446"] || "False",
+              runningState: data?.["s=6440-AG-4446"] === "True" ,
             },
             {
               level: data?.["s=6440-LIC-4428"] || 0,
-              runningState: data?.["s=6440-AG-4447"] || "False",
+              runningState: data?.["s=6440-AG-4447"] === "True" ,
             },
             {
               level: data?.["s=6440-LIC-4428"] || 0,
-              runningState: data?.["s=6440-AG-4448"] || "False",
+              runningState: data?.["s=6440-AG-4448"] === "True" ,
             },
             {
-              runningState: data?.["s=6440-PP-4461"] || "False",
+              runningState: data?.["s=6440-PP-4461"] === "True" ,
             },
             {
-              runningState: data?.["s=6440-PP-4471"] || "False",
+              runningState: data?.["s=6440-PP-4471"] === "True" ,
             },
             {
-              runningState: data?.["s=6440-PP-4462"] || "False",
+              runningState: data?.["s=6440-PP-4462"] === "True" ,
             },
             {
-              runningState: data?.["s=6440-PP-4472"] || "False",
+              runningState: data?.["s=6440-PP-4472"] === "True" ,
             },
           ],
         },
@@ -1389,33 +1389,33 @@ export const updateDataWithSocket = (
           cells: [
             {
               level: data?.["s=6440-LIC-4422"] || 0,
-              runningState: data?.["s=6440-AG-4441"] || "False",
+              runningState: data?.["s=6440-AG-4441"] === "True" ,
             },
             {
               level: data?.["s=6440-LIC-4422"] || 0,
-              runningState: data?.["s=6440-AG-4442"] || "False",
+              runningState: data?.["s=6440-AG-4442"] === "True" ,
             },
             {
-              runningState: data?.["s=6440-PP-4481"] || "False",
+              runningState: data?.["s=6440-PP-4481"] === "True" ,
             },
             {
-              runningState: data?.["s=6440-PP-4482"] || "False",
+              runningState: data?.["s=6440-PP-4482"] === "True" ,
             },
           ],
         },
         mill: {
           cells: [
             {
-              runningState: data?.["s=6330-ML-3342"] || "False",
+              runningState: data?.["s=6330-ML-3342"] === "True" ,
             },
             {
-              runningState: data?.["s=6330-PP-3283"] || "False",
+              runningState: data?.["s=6330-PP-3283"] === "True" ,
             },
             {
-              runningState: data?.["s=6330-PP-3284"] || "False",
+              runningState: data?.["s=6330-PP-3284"] === "True" ,
             },
             {
-              runningState: data?.["s=6330-PP-3288"] || "False",
+              runningState: data?.["s=6330-PP-3288"] === "True" ,
             },
           ],
         },

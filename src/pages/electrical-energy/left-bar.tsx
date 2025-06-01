@@ -262,7 +262,11 @@ const LeftBar = ({
           }}
           series={[
             {
-              name: "minePower",
+              name: "UG",
+              data: minePower || [], //TODO Get data from tag
+            },
+            {
+              name: "OP",
               data: minePower || [],
             },
           ]}
@@ -322,7 +326,15 @@ const LeftBar = ({
           }}
           series={[
             {
-              name: "offsitePower",
+              name: "Pipeline",
+              data: offsitePower || [], //TODO get data from tag of ALL yaxis
+            },
+            {
+              name: "TSF",
+              data: offsitePower || [],
+            },
+            {
+              name: "G5",
               data: offsitePower || [],
             },
           ]}

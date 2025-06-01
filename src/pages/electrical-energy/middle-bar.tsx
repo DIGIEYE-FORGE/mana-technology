@@ -14,7 +14,7 @@ interface MiddleBarProps {
   iaLeft: string | number;
   ibLeft: string | number;
   icLeft: string | number;
-  activePowerRight: string | number;
+  activePowerRight: number;
   reactivePowerRight: string | number;
   totalPowerRight: string | number;
   cosPhiRight: string | number;
@@ -24,15 +24,15 @@ interface MiddleBarProps {
   iaRight: string | number;
   ibRight: string | number;
   icRight: string | number;
-  vaMiddle: string | number;
-  vbMiddle: string | number;
+  vaMiddle: number;
+  vbMiddle:  number;
   vcMiddle: string | number;
   iCrushing: string | number;
   pCrushing: string | number;
   iProcess: string | number;
   pProcess: string | number;
-  iMine: string | number;
-  pMine: string | number;
+  iMine:  number;
+  pMine:  number;
   iArray: string[] | number[];
   pArray: string[] | number[];
 }
@@ -89,13 +89,13 @@ const MiddleBar = ({
             </span>
           </div>
           <div className="flex w-full justify-between">
-            <span className="font-semibold">Reactive power (Mw)</span>
+            <span className="font-semibold">Reactive power (Mvar)</span>
             <span className="font-semibold text-[#FFC829]">
               {reactivePowerLeft}
             </span>
           </div>
           <div className="flex w-full justify-between">
-            <span className="font-semibold">Total power (Mw)</span>
+            <span className="font-semibold">Total power (Mva)</span>
             <span className="font-semibold text-[#FFC829]">
               {totalPowerLeft}
             </span>
@@ -141,13 +141,13 @@ const MiddleBar = ({
             </span>
           </div>
           <div className="flex w-full justify-between">
-            <span className="font-semibold">Reactive power (Mw)</span>
+            <span className="font-semibold">Reactive power (Mvar)</span>
             <span className="font-semibold text-[#FFC829]">
               {reactivePowerRight}
             </span>
           </div>
           <div className="flex w-full justify-between">
-            <span className="font-semibold">Total power (Mw)</span>
+            <span className="font-semibold">Total power (Mva)</span>
             <span className="font-semibold text-[#FFC829]">
               {totalPowerRight}
             </span>
@@ -169,6 +169,7 @@ const MiddleBar = ({
               <span className="font-semibold">Vc</span>
               <span className="font-semibold text-[#FFC829]">{vcRight}</span>
             </div>
+            
           </div>
           <div className="flex w-full justify-between">
             <div className="flex flex-col">
@@ -187,18 +188,14 @@ const MiddleBar = ({
         </div>
       </div>
       {/*********************************************************************************************************** */}
-      <div className="absolute top-[430px] flex gap-2 pl-5">
+      <div className="absolute top-[410px] flex gap-2 pl-5">
         <div className="flex gap-1">
-          <span className="grow">Va (Kv)</span>
-          <span className="font-semibold text-[#FFC829]">{vaMiddle}</span>
+          <span className="grow">Uab (Kv)</span>
+          <span className="font-semibold text-[#FFC829]">{(vaMiddle / 1000).toFixed(2)}</span>
         </div>
         <div className="flex gap-1">
-          <span className="grow">Vb (Kv)</span>
+          <span className="grow">Frequency (Hz)</span>
           <span className="font-semibold text-[#FFC829]">{vbMiddle}</span>
-        </div>
-        <div className="flex gap-1">
-          <span className="grow">Vc (Kv)</span>
-          <span className="font-semibold text-[#FFC829]">{vcMiddle}</span>
         </div>
       </div>
       {/*********************************************************************************************************** */}
@@ -242,12 +239,12 @@ const MiddleBar = ({
           </div>
           <div className="flex items-center gap-3">
             <span className="grow">P (Kw)</span>
-            <MiniCard className="font-semibold text-[#FFC829]" value={pMine} />
+            <MiniCard className="font-semibold text-[#FFC829]" value={(pMine/1000).toFixed(2)} />
           </div>
         </div>
       </div>
       {/*********************************************************************************************************** */}
-      <div className="w-[800px]pl-5 absolute bottom-[100px] left-[90px] flex">
+      <div className="w-[1200px] pl-5 absolute bottom-[100px] left-[90px] flex">
         <div className="flex flex-col gap-2">
           <div className="flex items-center">
             <span className="mr-12">I (a)</span>

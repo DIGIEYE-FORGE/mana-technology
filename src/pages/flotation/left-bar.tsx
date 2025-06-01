@@ -592,7 +592,7 @@ const LeftBar = ({
               />
             </Card>
             <Card className="flex h-fit grow items-center !rounded px-2 py-3">
-              <span>MIBC</span>
+              <span>SENFROTH</span>
               <span className="ml-auto font-semibold text-[#FFC829]">
                 {mibc1Val}
               </span>
