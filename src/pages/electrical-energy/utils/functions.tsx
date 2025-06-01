@@ -27,13 +27,17 @@ export const formatData = (
     Number(
       data?.["s=TIZERT_6MD85_D2_UI3p1_Valm_Puiss_Q_total_mag_f.Value"] || 0,
     );
+  // calc cosphi
+
   const energy = data?.["s=6100-TR-2001"] || 0;
   setUpData((prev: any) => {
     return {
       ...prev,
       energy: energy,
       powerDemand: power,
-      cosphi: (power / totalPower).toFixed(2),
+      cosphi: (
+        power / Math.sqrt(Math.pow(power, 2) * Math.pow(totalPower, 2))
+      ).toFixed(2),
       reactivePower: Rpower,
       totalPower: totalPower,
     };
@@ -625,7 +629,9 @@ export const updateDataWithSocket = (
       ...prev,
       energy: data?.["s=6100-TR-2001"] || 0,
       powerDemand: power,
-      cosphi: (power / totalPower).toFixed(2),
+      cosphi: (
+        power / Math.sqrt(Math.pow(power, 2) * Math.pow(totalPower, 2))
+      ).toFixed(2),
       reactivePower: Rpower,
       totalPower: totalPower.toFixed(2),
     };
