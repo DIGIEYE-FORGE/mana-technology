@@ -38,15 +38,15 @@ interface Position {
 }
 
 interface PumpAttributes {
-  "Chlore input": string;
-  "Chlore output": string;
+  "Chlorine input": string;
+  "Chlorine output": string;
   "Flow input": string;
   "Flow output": string;
-  "delta flow": string;
-  "pression output": string;
+  "Delta flow": string;
+  "Pressure output": string;
   pumps: string[];
   "Running state": string[];
-  Pression: string[];
+  Pressure: string[];
   breakPoints: string[];
 }
 
@@ -88,13 +88,13 @@ interface PipelinePointProps {
 }
 
 const ATTRIBUTE_UNITS: Record<string, string> = {
-  "Chlore input": "(mg/L)",
-  "Chlore output": "(mg/L)",
+  "Chlorine input": "(mg/L)",
+  "Chlorine output": "(mg/L)",
   "Flow input": "(L/s)",
   "Flow output": "(L/s)",
-  "Delta flow": "(L/s)",
-  "Output pressure": "(bar)",
-  Pressure: "(bar)",
+  "delta flow": "(L/s)",
+  "Pressure output": "(bar)",
+  "Pressure": "(bar)",
 };
 
 const createPositionStyle = (position: Position): React.CSSProperties => {
@@ -700,8 +700,9 @@ const PipeLine: React.FC = () => {
                 1000 || 0,
           },
           {
-            title: "Flow Rate",
-            value: filteredResults?.["s=B_FIT_02_MAE_TM"]?.[length - 1]?.y,
+            title: "Flow Rate (m3/h)",
+            value: filteredResults?.["s=B_FIT_02_MAE_TM"]?.[length - 1]?.y *
+              3.6 || 0,
           },
         ]);
 

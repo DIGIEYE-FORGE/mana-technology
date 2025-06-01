@@ -7,7 +7,7 @@ export const formatData = (
   setUpData((prev: any) => {
     return {
       ...prev,
-      flowRate: data?.["s=6210-WI-2215"] || 0,
+      flowRate: data?.["s=6210-WIT-2215"] || 0,
       speed: data?.["s=6140-Fréquence-BM-2426"] || 0,
       energy: data?.["s=6100-TR-2001"] || 0,
       utilization: data?.["s=6210-WI-2217"] || 0,
@@ -19,7 +19,7 @@ export const formatData = (
   setLeftData((prev: any) => {
     return {
       ...prev,
-      runningState: data?.["s=6210-WI-2217"] || 0,
+      runningState: data?.["s=6140-CR-2426"] || 0,
       telemetryRunningState: data?.["s=6140-CR-2426"] || 0,
     };
   });
@@ -74,7 +74,7 @@ export const updateDataWithSocket = (
   setUpData((prev: any) => {
     return {
       ...prev,
-      flowRate: data?.["s=6210-WI-2215"] || 0,
+      flowRate: data?.["s=6210-WIT-2215"] || 0,
       energy: data?.["s=6100-TR-2001"] || 0,
       speed: data?.["s=6140-Fréquence-BM-2426"] || 0,
       utilization: data?.["s=6210-WI-2217"] || 0,
@@ -87,7 +87,7 @@ export const updateDataWithSocket = (
   setLeftData((prev: any) => {
     return {
       ...prev,
-      runningState: data?.["s=6210-WI-2217"] || 0,
+      runningState: data?.["s=6140-CR-2426"] || 0,
       telemetryRunningState: data?.["s=6140-CR-2426"] || 0,
       nde: [
         ...(prev?.nde?.slice(1) || []),

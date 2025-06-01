@@ -7,25 +7,26 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
       progress: data?.["s=SP1_LIT_01_MAE_TM"]?.[length - 1]?.y,
       // progress: 2,
       attributes: {
-        "Chlore input":
+        "Chlorine input (mg/l)":
           data?.["s=SP01CHL_CHL_01_MAE_TM"]?.[
             data?.["s=SP01CHL_CHL_01_MAE_TM"].length - 1
           ]?.y,
-        "Chlore output": data?.["s=SP1_CHL_02_MAE_TM"]?.[length - 1]?.y,
-        "Flow input": data?.["s=SP1_FIT_01_MAE_TM"]?.[length - 1]?.y,
-        "Flow output": data?.["s=SP1_FIT_02_MAE_TM"]?.[length - 1]?.y,
-
-        "Delta flow":
+        "Chlorine output (mg/l)":
+          data?.["s=SP1_CHL_02_MAE_TM"]?.[length - 1]?.y,
+        "Flow input (l/s)": data?.["s=SP1_FIT_01_MAE_TM"]?.[length - 1]?.y,
+        "Flow output (l/s)": data?.["s=SP1_FIT_02_MAE_TM"]?.[length - 1]?.y,
+        Turbidity: data?.["s=SP1_TURB_01_MAE_TM"]?.[length - 1]?.y,
+        "Delta flow (l/s)":
           +data?.["s=SP1_FIT_02_MAE_TM"]?.[length - 1]?.y -
           +data?.["s=SP1_FIT_01_MAE_TM"]?.[length - 1]?.y,
-        "Output pressure": data?.["s=SP1_PIT_04_MAE_TM"]?.[length - 1]?.y,
+        "Output pressure (bar)": data?.["s=SP1_PIT_04_MAE_TM"]?.[length - 1]?.y,
         Pumps: ["P01", "P02", "P03"],
-        "totalRunning state": [
+        "Running state": [
           data?.["s=SP1_M01_RM_TS"]?.[length - 1]?.y,
           data?.["s=SP1_M02_RM_TS"]?.[length - 1]?.y,
           data?.["s=SP1_M03_RM_TS"]?.[length - 1]?.y,
         ],
-        Pressure: [
+        "Pressure (bar)": [
           data?.["s=SP1_PIT_01_MAE_TM"]?.[length - 1]?.y,
           data?.["s=SP1_PIT_02_MAE_TM"]?.[length - 1]?.y,
           data?.["s=SP1_PIT_03_MAE_TM"]?.[length - 1]?.y,
@@ -45,12 +46,12 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
         //   data?.["s=SP02CHL_CHL_01_MAE_TM"]?.[length - 1]?.y,
         // "Chlore output":
         //   data?.["s=SP2_CHL_02_MAE_TM"]?.[length - 1]?.y,
-        "Flow input": data?.["s=SP2_FIT_01_MAE_TM"]?.[length - 1]?.y,
-        "Flow output": data?.["s=SP2_FIT_02_MAE_TM"]?.[length - 1]?.y,
-        "Delta flow":
+        "Flow input (l/s)": data?.["s=SP2_FIT_01_MAE_TM"]?.[length - 1]?.y,
+        "Flow output (l/s)": data?.["s=SP2_FIT_02_MAE_TM"]?.[length - 1]?.y,
+        "Delta flow (l/s)":
           +data?.["s=SP2_FIT_02_MAE_TM"]?.[length - 1]?.y -
           +data?.["s=SP2_FIT_01_MAE_TM"]?.[length - 1]?.y,
-        "Output pressure": data?.["s=SP2_PIT_04_MAE_TM"]?.[length - 1]?.y,
+        "Pressure output": data?.["s=SP2_PIT_04_MAE_TM"]?.[length - 1]?.y,
         Pumps: ["P01", "P02", "P03"],
         "Running state": [
           data?.["s=SP2_M01_RM_TS"]?.[length - 1]?.y,
@@ -75,10 +76,10 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
       attributes: {
         "Flow input": data?.["s=SP3_FIT_01_MAE_TM"]?.[length - 1]?.y,
         "Flow output": data?.["s=SP3_FIT_02_MAE_TM"]?.[length - 1]?.y,
-        "Delta flow":
+        "Delta flow (l/s)":
           +data?.["s=SP3_FIT_02_MAE_TM"]?.[length - 1]?.y -
           +data?.["s=SP3_FIT_01_MAE_TM"]?.[length - 1]?.y,
-        "Output pressure": data?.["s=SP3_PIT_04_MAE_TM"]?.[length - 1]?.y,
+        "Pressure output": data?.["s=SP3_PIT_04_MAE_TM"]?.[length - 1]?.y,
         Pumps: ["P01", "P02", "P03"],
         "Running state": [
           data?.["s=SP3_M01_RM_TS"]?.[length - 1]?.y,
@@ -103,10 +104,10 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
       attributes: {
         "Flow input": data?.["s=SP4_FIT_01_MAE_TM"]?.[length - 1]?.y,
         "Flow output": data?.["s=SP4_FIT_02_MAE_TM"]?.[length - 1]?.y,
-        "Delta flow":
+        "Delta flow (l/s)":
           +data?.["s=SP4_FIT_02_MAE_TM"]?.[length - 1]?.y -
           +data?.["s=SP4_FIT_01_MAE_TM"]?.[length - 1]?.y,
-        "Output pressure": data?.["s=SP4_PIT_04_MAE_TM"]?.[length - 1]?.y,
+        "Pressure output": data?.["s=SP4_PIT_04_MAE_TM"]?.[length - 1]?.y,
         Pumps: ["P01", "P02", "P03"],
         "Running state": [
           data?.["s=SP4_M01_RM_TS"]?.[length - 1]?.y,
@@ -131,10 +132,10 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
       attributes: {
         "Flow input": data?.["s=SP5_FIT_01_MAE_TM"]?.[length - 1]?.y,
         "Flow output": data?.["s=SP5_FIT_02_MAE_TM"]?.[length - 1]?.y,
-        "Delta flow":
+        "Delta flow (l/s)":
           +data?.["s=SP5_FIT_02_MAE_TM"]?.[length - 1]?.y -
           +data?.["s=SP5_FIT_01_MAE_TM"]?.[length - 1]?.y,
-        "Output pressure": data?.["s=SP5_PIT_04_MAE_TM"]?.[length - 1]?.y,
+        "Pressure output": data?.["s=SP5_PIT_04_MAE_TM"]?.[length - 1]?.y,
         Pumps: ["P01", "P02", "P03"],
         "Running state": [
           data?.["s=SP5_M01_RM_TS"]?.[length - 1]?.y,
@@ -159,10 +160,10 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
       attributes: {
         "Flow input": data?.["s=SP6_FIT_01_MAE_TM"]?.[length - 1]?.y,
         "Flow output": data?.["s=SP6_FIT_02_MAE_TM"]?.[length - 1]?.y,
-        "Delta flow":
+        "Delta flow (l/s)":
           +data?.["s=SP6_FIT_02_MAE_TM"]?.[length - 1]?.y -
           +data?.["s=SP6_FIT_01_MAE_TM"]?.[length - 1]?.y,
-        "Output pressure": data?.["s=SP6_PIT_04_MAE_TM"]?.[length - 1]?.y,
+        "Pressure output": data?.["s=SP6_PIT_04_MAE_TM"]?.[length - 1]?.y,
         Pumps: ["P01", "P02", "P03"],
         "Running state": [
           data?.["s=SP6_M01_RM_TS"]?.[length - 1]?.y,
@@ -187,10 +188,10 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
       attributes: {
         "Flow input": data?.["s=SP7_FIT_01_MAE_TM"]?.[length - 1]?.y,
         "Flow output": data?.["s=SP7_FIT_02_MAE_TM"]?.[length - 1]?.y,
-        "Delta flow":
+        "Delta flow (l/s)":
           +data?.["s=SP7_FIT_02_MAE_TM"]?.[length - 1]?.y -
           +data?.["s=SP7_FIT_01_MAE_TM"]?.[length - 1]?.y,
-        "Output pressure": data?.["s=SP7_PIT_04_MAE_TM"]?.[length - 1]?.y,
+        "Pressure output": data?.["s=SP7_PIT_04_MAE_TM"]?.[length - 1]?.y,
         Pumps: ["P01", "P02", "P03"],
         "Running state": [
           data?.["s=SP7_M01_RM_TS"]?.[length - 1]?.y,
@@ -215,10 +216,10 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
       attributes: {
         "Flow input": data?.["s=SP8_FIT_01_MAE_TM"]?.[length - 1]?.y,
         "Flow output": data?.["s=SP8_FIT_02_MAE_TM"]?.[length - 1]?.y,
-        "Delta flow":
+        "Delta flow (l/s)":
           +data?.["s=SP8_FIT_02_MAE_TM"]?.[length - 1]?.y -
           +data?.["s=SP8_FIT_01_MAE_TM"]?.[length - 1]?.y,
-        "Output pressure": data?.["s=SP8_PIT_04_MAE_TM"]?.[length - 1]?.y,
+        "Pressure output": data?.["s=SP8_PIT_04_MAE_TM"]?.[length - 1]?.y,
         Pumps: ["P01", "P02", "P03"],
         "Running state": [
           data?.["s=SP8_M01_RM_TS"]?.[length - 1]?.y,
@@ -244,15 +245,15 @@ export const formatAttributesData = (data: any, setDataAttributes: any) => {
         data?.["s=B_LIT_02_MAE_TM"]?.[length - 1]?.y,
       ],
       attributes: {
-        "Chlore input": data?.["s=B_CHL_01_MAE_TM"]?.[length - 1]?.y,
-        "Chlore output": data?.["s=B_CHL_02_MAE_TM"]?.[length - 1]?.y,
+        "Chlorine input": data?.["s=B_CHL_01_MAE_TM"]?.[length - 1]?.y,
+        "Chlorine output": data?.["s=B_CHL_02_MAE_TM"]?.[length - 1]?.y,
         "Flow input": data?.["s=B_FIT_01_MAE_TM"]?.[length - 1]?.y,
         "Flow output": data?.["s=B_FIT_02_MAE_TM"]?.[length - 1]?.y,
-        trubidite: data?.["s=B_TURB_01_MAE_TM"]?.[length - 1]?.y,
-        "Delta flow":
+        Turbidity: data?.["s=B_TURB_01_MAE_TM"]?.[length - 1]?.y,
+        "Delta flow (l/s)":
           +data?.["s=B_FIT_02_MAE_TM"]?.[length - 1]?.y -
           +data?.["s=B_FIT_01_MAE_TM"]?.[length - 1]?.y,
-        "Output pressure": data?.["s=B_PIT_04_MAE_TM"]?.[length - 1]?.y,
+        "Pressure output": data?.["s=B_PIT_04_MAE_TM"]?.[length - 1]?.y,
         breakPoints: [
           [
             data?.["s=B_LSLL_01_TA"]?.[length - 1]?.y,
@@ -277,12 +278,12 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
     SP01: {
       progress: data?.["s=SP1_LIT_01_MAE_TM"],
       attributes: {
-        "Chlore input": data?.["s=SP01CHL_CHL_01_MAE_TM"],
-        "Chlore output": data?.["s=SP1_CHL_02_MAE_TM"],
+        "Chlorine input": data?.["s=SP01CHL_CHL_01_MAE_TM"],
+        "Chlorine output": data?.["s=SP1_CHL_02_MAE_TM"],
         "Flow input": data?.["s=SP1_FIT_01_MAE_TM"],
         "Flow output": data?.["s=SP1_FIT_02_MAE_TM"],
         Turbidity: data?.["s=SP1_TURB_01_MAE_TM"],
-        "Delta flow":
+        "Delta flow (l/s)":
           +data?.["s=SP1_FIT_02_MAE_TM"] - +data?.["s=SP1_FIT_01_MAE_TM"],
         "Output pressure": data?.["s=SP1_PIT_04_MAE_TM"],
         Pumps: ["P01", "P02", "P03"],
@@ -313,9 +314,9 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
         //   filteredResults?.["s=SP2_CHL_02_MAE_TM"]?.[length - 1]?.y,
         "Flow input": data?.["s=SP2_FIT_01_MAE_TM"],
         "Flow output": data?.["s=SP2_FIT_02_MAE_TM"],
-        "Delta flow":
+        "Delta flow (l/s)":
           +data?.["s=SP2_FIT_02_MAE_TM"] - +data?.["s=SP2_FIT_01_MAE_TM"],
-        "Output pressure": data?.["s=SP2_PIT_04_MAE_TM"],
+        "Pressure output": data?.["s=SP2_PIT_04_MAE_TM"],
         Pumps: ["P01", "P02", "P03"],
         "Running state": [
           data?.["s=SP2_M01_RM_TS"],
@@ -340,9 +341,9 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
       attributes: {
         "Flow input": data?.["s=SP3_FIT_01_MAE_TM"],
         "Flow output": data?.["s=SP3_FIT_02_MAE_TM"],
-        "Delta flow":
+        "Delta flow (l/s)":
           +data?.["s=SP3_FIT_02_MAE_TM"] - +data?.["s=SP3_FIT_01_MAE_TM"],
-        "Output pressure": data?.["s=SP3_PIT_04_MAE_TM"],
+        "Pressure output": data?.["s=SP3_PIT_04_MAE_TM"],
         Pumps: ["P01", "P02", "P03"],
         "Running state": [
           data?.["s=SP3_M01_RM_TS"],
@@ -367,9 +368,9 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
       attributes: {
         "Flow input": data?.["s=SP4_FIT_01_MAE_TM"],
         "Flow output": data?.["s=SP4_FIT_02_MAE_TM"],
-        "Delta flow":
+        "Delta flow (l/s)":
           +data?.["s=SP4_FIT_02_MAE_TM"] - +data?.["s=SP4_FIT_01_MAE_TM"],
-        "Output pressure": data?.["s=SP4_PIT_04_MAE_TM"],
+        "Pressure output": data?.["s=SP4_PIT_04_MAE_TM"],
         Pumps: ["P01", "P02", "P03"],
         "Running state": [
           data?.["s=SP4_M01_RM_TS"],
@@ -394,9 +395,9 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
       attributes: {
         "Flow input": data?.["s=SP5_FIT_01_MAE_TM"],
         "Flow output": data?.["s=SP5_FIT_02_MAE_TM"],
-        "Delta flow":
+        "Delta flow (l/s)":
           +data?.["s=SP5_FIT_02_MAE_TM"] - +data?.["s=SP5_FIT_01_MAE_TM"],
-        "Output pressure": data?.["s=SP5_PIT_04_MAE_TM"],
+        "Pressure output": data?.["s=SP5_PIT_04_MAE_TM"],
         Pumps: ["P01", "P02", "P03"],
         "Running state": [
           data?.["s=SP5_M01_RM_TS"],
@@ -421,9 +422,9 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
       attributes: {
         "Flow input": data?.["s=SP6_FIT_01_MAE_TM"],
         "Flow output": data?.["s=SP6_FIT_02_MAE_TM"],
-        "Delta flow":
+        "Delta flow (l/s)":
           +data?.["s=SP6_FIT_02_MAE_TM"] - +data?.["s=SP6_FIT_01_MAE_TM"],
-        "Output pressure": data?.["s=SP6_PIT_04_MAE_TM"],
+        "Pressure output": data?.["s=SP6_PIT_04_MAE_TM"],
         Pumps: ["P01", "P02", "P03"],
         "Running state": [
           data?.["s=SP6_M01_RM_TS"],
@@ -448,9 +449,9 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
       attributes: {
         "Flow input": data?.["s=SP7_FIT_01_MAE_TM"],
         "Flow output": data?.["s=SP7_FIT_02_MAE_TM"],
-        "Delta flow":
+        "Delta flow (l/s)":
           +data?.["s=SP7_FIT_02_MAE_TM"] - +data?.["s=SP7_FIT_01_MAE_TM"],
-        "Output pressure": data?.["s=SP7_PIT_04_MAE_TM"],
+        "Pressure output": data?.["s=SP7_PIT_04_MAE_TM"],
         Pumps: ["P01", "P02", "P03"],
         "Running state": [
           data?.["s=SP7_M01_RM_TS"],
@@ -475,16 +476,16 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
       attributes: {
         "Flow input": data?.["s=SP8_FIT_01_MAE_TM"],
         "Flow output": data?.["s=SP8_FIT_02_MAE_TM"],
-        "Delta flow":
+        "Delta flow (l/s)":
           +data?.["s=SP8_FIT_02_MAE_TM"] - +data?.["s=SP8_FIT_01_MAE_TM"],
-        "Output pressure": data?.["s=SP8_PIT_04_MAE_TM"],
+        "Pressure output": data?.["s=SP8_PIT_04_MAE_TM"],
         Pumps: ["P01", "P02", "P03"],
         "Running state": [
           data?.["s=SP8_M01_RM_TS"],
           data?.["s=SP8_M02_RM_TS"],
           data?.["s=SP8_M03_RM_TS"],
         ],
-        Pressure: [
+        Pressures: [
           data?.["s=SP8_PIT_01_MAE_TM"],
           data?.["s=SP8_PIT_02_MAE_TM"],
           data?.["s=SP8_PIT_03_MAE_TM"],
@@ -500,14 +501,14 @@ export const updateAttributesData = (data: any, setDataAttributes: any) => {
     SP6: {
       progress: [data?.["s=B_LIT_01_MAE_TM"], data?.["s=B_LIT_02_MAE_TM"]],
       attributes: {
-        "Chlore input": data?.["s=B_CHL_01_MAE_TM"],
-        "Chlore output": data?.["s=B_CHL_02_MAE_TM"],
+        "Chlorine input": data?.["s=B_CHL_01_MAE_TM"],
+        "Chlorine output": data?.["s=B_CHL_02_MAE_TM"],
         "Flow input": data?.["s=B_FIT_01_MAE_TM"],
         "Flow output": data?.["s=B_FIT_02_MAE_TM"],
-        trubidite: data?.["s=B_TURB_01_MAE_TM"],
-        "Delta flow":
+        Turbidity: data?.["s=B_TURB_01_MAE_TM"],
+        "Delta flow (l/s)":
           +data?.["s=B_FIT_02_MAE_TM"] - +data?.["s=B_FIT_01_MAE_TM"],
-        "Output pressure": data?.["s=B_PIT_04_MAE_TM"],
+        "Pressure output": data?.["s=B_PIT_04_MAE_TM"],
         breakPoints: [
           [
             data?.["s=B_LSLL_01_TA"],
@@ -533,7 +534,7 @@ export const formatHistoryData = (data: any, setDataHistory: any) => {
       progress: data?.["s=SP1_LIT_01_MAE_TM"]?.[length - 1]?.y,
       flowRate: data?.["s=SP1_FIT_02_MAE_TM"]?.[length - 1]?.y,
       pumpedVolume: data?.["s=SP1_FIT_02_TOT_MES_TM"]?.[length - 1]?.y,
-      trubidite: data?.["s=SP1_TURB_01_MAE_TM"]?.[length - 1]?.y,
+      Turbidity: data?.["s=SP1_TURB_01_MAE_TM"]?.[length - 1]?.y,
       deltaFlow:
         +data?.["s=SP1_FIT_02_MAE_TM"]?.[length - 1]?.y -
         +data?.["s=SP1_FIT_01_MAE_TM"]?.[length - 1]?.y,

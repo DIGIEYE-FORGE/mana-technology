@@ -252,16 +252,14 @@ const JawCrusher = () => {
               src="/model/bg-pattern.png"
               className="pointer-events-none absolute left-0 top-0 z-0 h-full w-full opacity-60"
             />
-            {/* {JSON.stringify(countData["count"]["s=6210-WI-2217"])} */}
-            <div className="z-1 absolute inset-0 isolate flex h-1 flex-1 items-center justify-center p-0">
-              {env.VITE_SHOW_MODEL && (
+            <div className="absolute inset-0 isolate z-0 flex flex-1 items-center justify-center p-0">
+              {env.VITE_SHOW_MODEL === "true" && (
                 <ModelCanvas
                   url={"/model/jaw02.glb"}
-                  position={[10, 10, -40]}
-                  fov={20}
+                  position={[-40, 15, -40]}
+                  fov={10}
                 />
               )}
-              {/* {JSON.stringify(leftData?.crushedFlow)} */}
             </div>
             <UpCards
               flowRateIn={upData?.flowRateIn || 0}
