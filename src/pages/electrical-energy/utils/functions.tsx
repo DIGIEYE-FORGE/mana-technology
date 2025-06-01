@@ -250,6 +250,8 @@ export const formatData = (
 
 function changeKey(data: any): any {
   const mapper = {
+    J10_USINE1_P:
+      "s=TIZERT_POSTE_MT_J10_DEPART_N_6_USINE_1_Measurement_VI_MMXU_Total_Real_Power_Total_P_mag_f.Value",
     "6MD85_D1_ComFault": "s=TIZERT_6MD85_D1_ComFault.Value",
     "6MD85_D1_Cmd_D1":
       "s=TIZERT_6MD85_D1_D1_Commande_Ordre_avec_sign__retour.Value",
@@ -391,8 +393,6 @@ function changeKey(data: any): any {
       "s=TIZERT_POSTE_MT_J10_DEPART_N_6_USINE_1_Measurement_VI_MMXU_Total_Power_Factor__Total_PF__mag_f.Value",
     J10_USINE1_Q:
       "s=TIZERT_POSTE_MT_J10_DEPART_N_6_USINE_1_Measurement_VI_MMXU_Total_Reactive_Power__Total_Q__mag_f.Value",
-    J10_USINE1_P:
-      "s=TIZERT_POSTE_MT_J10_DEPART_N_6_USINE_1_Measurement_VI_MMXU_Total_Real_Power__Total_P__mag_f.Value",
     J11_CONCASSAGE_IphA:
       "s=TIZERT_POSTE_MT_J11_DEPART_N_5_CONCASSAGE_Measurement_VI_MMXU_Phase_Currents_phsA_cVal_mag_f.Value",
     J11_CONCASSAGE_IphB:
@@ -643,7 +643,7 @@ export const updateDataWithSocket = (
               "s=TIZERT_POSTE_MT_J5_DEPART_N_7_USINE2_Measurement_VI_MMXU_Total_Real_Power__Total_P__mag_f.Value"
             ] || 0) +
             (data?.[
-              "s=TIZERT_POSTE_MT_J10_DEPART_N_6_USINE_1_Measurement_VI_MMXU_Total_Real_Power__Total_P__mag_f.Value"
+              "s=TIZERT_POSTE_MT_J10_DEPART_N_6_USINE_1_Measurement_VI_MMXU_Total_Real_Power_Total_P_mag_f.Value"
             ] || 0),
         },
       ],
