@@ -168,7 +168,7 @@ function App() {
                 style={{
                   position: "fixed",
                   top: "5px",
-                  right: "1000px",
+                  right: "40%",
                   zIndex: 999999,
                 }}
                 launcherStyle={{
@@ -176,6 +176,7 @@ function App() {
                   borderRadius: "50%",
                   width: 50,
                   height: 50,
+
                   boxShadow: "0 8px 30px rgba(0,0,0,0.12)",
                 }}
                 containerStyle={{

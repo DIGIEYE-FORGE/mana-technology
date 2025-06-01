@@ -106,8 +106,17 @@ const MiddleBar = ({
 }: MiddleBarProps) => {
   return (
     <div className="relative flex h-[100%] min-h-full w-[100rem] flex-1 items-center justify-center">
-      {line1}
       <div className="relative h-[53rem] w-full scale-90">
+        <div className="absolute left-0 top-0 h-full w-full overflow-hidden">
+          <MiniCard
+            className="absolute left-1/4 top-[2px] z-10 w-[12rem] bg-[#021E3F]/80 py-2"
+            value={valueLeft}
+          ></MiniCard>
+          <MiniCard
+            className="absolute right-1/4 top-[2px] z-10 w-[12rem] bg-[#021E3F]/80 py-2"
+            value={valueRight}
+          ></MiniCard>
+        </div>
         <EnergySVG
           line1={line1}
           line2={line2}
@@ -127,7 +136,7 @@ const MiddleBar = ({
           ball={ball}
           className="h-full w-full"
         />
-        <div className=" absolute bottom-[28%] flex w-full justify-between px-[2rem]">
+        <div className="absolute bottom-[28%] flex w-full justify-between px-[2rem]">
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-3">
               <span className="grow">I (A)</span>
@@ -328,17 +337,13 @@ const MiddleBar = ({
           </div>
         </div>
       </div>
-
       {/* <div className="debug absolute top-[105px] flex w-[380px] justify-between">
         <MiniCard value={valueLeft} />
         <MiniCard value={valueRight} />
       </div> */}
       {/*********************************************************************************************************** */}
-
       {/*********************************************************************************************************** */}
-
       {/*********************************************************************************************************** */}
-
       {/*********************************************************************************************************** */}
     </div>
   );
